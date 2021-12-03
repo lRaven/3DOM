@@ -1,7 +1,7 @@
 <template>
-  <div class="banner" id="banner">
-    <div class="banner__container center">da</div>
-  </div>
+  <section class="banner" id="banner">
+    <div class="banner__container center"></div>
+  </section>
 </template>
 
 <script>
@@ -11,4 +11,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.banner {
+  background-color: var(--light-gray);
+}
 </style>
