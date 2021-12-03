@@ -1,26 +1,38 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="theme-container">
+    <page-header></page-header>
+    <!-- <page-footer></page-footer> -->
+    <call-button></call-button>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import PageHeader from "./components/global/header.vue";
+import CallButton from "./components/general/call.vue";
+// import PageFooter from "./components/global/footer.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    PageHeader,
+    CallButton,
+    // PageFooter,
+  },
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+@import "./assets/css/variables.css";
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap");
+#app,
+.theme-container {
+  height: 100%;
+}
+</style>
+
+<style lang="scss" scoped>
+@media (min-width: 768px) {
+}
+@media (min-width: 1024px) {
 }
 </style>

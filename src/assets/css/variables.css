@@ -1,0 +1,22 @@
+:root {
+	--dark: #4b4b4b;
+	--gray: #505c74;
+	--middle-gray: #aeb3bf;
+	--light-gray: #eeeeee;
+	--white: #fefefe;
+	--blue: #007bfc;
+	--light-blue: #64b6fa;
+
+	--text-45: 4.5rem;
+	--text-42: 4.2rem;
+	--text-38: 3.8rem;
+	--text-36: 3.6rem;
+	--text-32: 3.2rem;
+	--text-30: 3rem;
+	--text-24: 2.4rem;
+	--text-18: 1.8rem;
+	--text-16: 1.6rem;
+	--text-15: 1.5rem;
+	--text-14: 1.4rem;
+	--text-13: 1.3rem;
+}
