@@ -1,17 +1,19 @@
 <template>
   <div class="theme-container">
     <page-header></page-header>
-    <!-- <page-footer></page-footer> -->
     <main class="main">
       <banner></banner>
+      <catalog></catalog>
     </main>
     <call-button></call-button>
+    <!-- <page-footer></page-footer> -->
   </div>
 </template>
 
 <script>
 import PageHeader from "./components/global/header.vue";
 import Banner from "./components/general/banner.vue";
+import Catalog from "./components/general/catalog.vue";
 import CallButton from "./components/general/call.vue";
 // import PageFooter from "./components/global/footer.vue";
 
@@ -20,9 +22,15 @@ export default {
   components: {
     PageHeader,
     Banner,
+    Catalog,
     CallButton,
     // PageFooter,
   },
+
+  data() {
+    return {};
+  },
+  methods: {},
 };
 </script>
 

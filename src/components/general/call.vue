@@ -1,7 +1,7 @@
 <template>
   <figure>
     <a href="#" class="call">
-      <img src="/img/icon/call-circle.svg" alt="" />
+      <img src="img/icon/call-circle.svg" alt="" />
     </a>
   </figure>
 </template>
@@ -22,6 +22,7 @@ figure {
   pointer-events: none;
 }
 .call {
+  user-select: none;
   pointer-events: fill;
   position: absolute;
   bottom: 0;
