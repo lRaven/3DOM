@@ -13,7 +13,7 @@
       </label>
       <label class="dropdown__item">
         <input type="radio" class="radio__real" name="address" />
-        <span class="radio__fake">item1</span>
+        <span class="radio__fake">item2</span>
       </label>
     </div>
   </div>
@@ -49,10 +49,10 @@ export default {
     color: var(--dark);
     font-size: 1.8rem;
     font-weight: 600;
-    transition: all 1s ease;
+    transition: all 1.3s ease;
     &.open {
       border-radius: 2rem 2rem 0 0;
-      transition: all 0.2s ease;
+      transition: all 0.1s ease;
     }
   }
   &__arrow {
