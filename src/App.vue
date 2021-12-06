@@ -11,11 +11,11 @@
 </template>
 
 <script>
-import PageHeader from "./components/global/header.vue";
-import Banner from "./components/general/banner.vue";
-import Catalog from "./components/general/catalog.vue";
-import CallButton from "./components/general/call.vue";
-// import PageFooter from "./components/global/footer.vue";
+import PageHeader from "./components/global/Header.vue";
+import Banner from "./components/general/Banner.vue";
+import Catalog from "./components/general/Catalog.vue";
+import CallButton from "./components/general/Call.vue";
+// import PageFooter from "./components/global/Footer.vue";
 
 export default {
   name: "App",
