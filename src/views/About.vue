@@ -1,5 +1,16 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+  <main></main>
 </template>
+
+<script>
+export default {
+  name: "About",
+  setup() {},
+};
+</script>
+
+<style lang="scss" scoped>
+main {
+  padding-top: 6rem;
+}
+</style>
