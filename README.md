@@ -1,5 +1,11 @@
 # client
 
+# Technologies:
+- Vue v3
+- Vue router
+- VueX
+- VueScrollTo
+
 ## Project setup
 ```
 npm install
