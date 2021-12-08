@@ -4,7 +4,7 @@
 - Vue v3
 - Vue router
 - VueX
-- VueScrollTo
+- Vue ScrollTo
 
 ## Project setup
 ```
