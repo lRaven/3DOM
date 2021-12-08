@@ -1,7 +1,7 @@
 <template>
 	<section class="catalog center">
 		<form action="#">
-			<div class="catalog__top">
+			<div class="catalog__header">
 				<div class="catalog__address">
 					<h3 class="catalog__title">Живу красиво!</h3>
 					<p>Выбери своё жилище</p>
@@ -55,7 +55,7 @@
 <style lang="scss" scoped>
 	.catalog {
 		padding-top: 3rem;
-		&__top {
+		&__header {
 			display: grid;
 			grid-template-columns: repeat(3, 1fr);
 			grid-gap: 2.4rem;

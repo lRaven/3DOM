@@ -11,6 +11,10 @@
 				{{ tag.tag }}
 			</div>
 		</div>
+		<div class="catalog__item-name">
+			<h3>{{ item.type }}</h3>
+			<h4>{{ item.title }}</h4>
+		</div>
 	</div>
 </template>
 
@@ -39,6 +43,8 @@
 							},
 						],
 						style: `background-color: var(--white); color: var(--blue);`,
+						type: "Жилой комплекс",
+						title: "Dolce vita",
 					},
 					{
 						id: 2,
@@ -58,6 +64,8 @@
 							},
 						],
 						style: `background-color: var(--light-blue); color: var(--white);`,
+						type: "Клубный дом",
+						title: "Академический",
 					},
 					{
 						id: 3,
@@ -81,6 +89,8 @@
 							},
 						],
 						style: `background-color: var(--white); color: var(--blue);`,
+						type: "Жилой комплекс",
+						title: "Андреевский",
 					},
 					{
 						id: 4,
@@ -94,9 +104,14 @@
 				const tags = document.querySelector(".catalog__item-tags");
 				tags.classList.add("right");
 			},
+			setNamePosition() {
+				const name = document.querySelectorAll(".catalog__item-name");
+				name[2].classList.add("left");
+			},
 		},
 		mounted() {
 			this.setTagsPosition();
+			this.setNamePosition();
 		},
 	};
 </script>
@@ -143,6 +158,28 @@
 			border-radius: 2rem;
 			&:nth-child(n + 3) {
 				width: 100%;
+			}
+		}
+		&-name {
+			position: absolute;
+			bottom: 2rem;
+			right: 2rem;
+			&.left {
+				right: inherit;
+				left: 2rem;
+			}
+			h3,
+			h4 {
+				font-weight: 800;
+				color: var(--white);
+			}
+			h3 {
+				font-size: var(--text-24);
+			}
+			h4 {
+				font-size: var(--text-36);
+				text-transform: uppercase;
+				text-align: center;
 			}
 		}
 	}
