@@ -1,16 +1,15 @@
 <template>
 	<section class="catalog center">
-		<div class="catalog__top">
-			<div class="catalog__address">
-				<h3 class="catalog__title">Живу красиво!</h3>
-				<p>Выбери своё жилище</p>
-				<form action="#">
+		<form action="#">
+			<div class="catalog__top">
+				<div class="catalog__address">
+					<h3 class="catalog__title">Живу красиво!</h3>
+					<p>Выбери своё жилище</p>
+
 					<dropdown></dropdown>
-				</form>
-			</div>
-			<img src="img/catalog/catalog-img.png" alt="" />
-			<div class="catalog__price">
-				<form action="#">
+				</div>
+				<img src="img/catalog/catalog-img.png" alt="" />
+				<div class="catalog__price">
 					<div class="catalog__price-range">
 						<p>Укажите примерную стоимость, млн руб</p>
 						<range-slider
@@ -26,9 +25,12 @@
 							<checkbox></checkbox>
 						</div>
 					</div>
-				</form>
+				</div>
 			</div>
-		</div>
+			<div class="catalog__list">
+				<catalog-item></catalog-item>
+			</div>
+		</form>
 	</section>
 </template>
 
@@ -36,6 +38,7 @@
 	import Dropdown from "./Dropdown.vue";
 	import RangeSlider from "./RangeSlider.vue";
 	import Checkbox from "./Checkbox.vue";
+	import CatalogItem from "./CatalogItem.vue";
 
 	export default {
 		name: "Catalog",
@@ -43,6 +46,7 @@
 			Dropdown,
 			RangeSlider,
 			Checkbox,
+			CatalogItem,
 		},
 		setup() {},
 	};
@@ -55,6 +59,7 @@
 			display: grid;
 			grid-template-columns: repeat(3, 1fr);
 			grid-gap: 2.4rem;
+			margin-bottom: 4rem;
 			img {
 				border-radius: 2.5rem;
 				height: 100%;
@@ -80,18 +85,17 @@
 			}
 		}
 		&__price {
-			form {
-				height: 100%;
-				display: flex;
-				flex-direction: column;
-				justify-content: space-between;
-				p {
-					font-size: var(--text-15);
-					font-weight: 600;
-					color: var(--gray);
-					margin-bottom: 1.4rem;
-				}
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			p {
+				font-size: var(--text-15);
+				font-weight: 600;
+				color: var(--gray);
+				margin-bottom: 1.4rem;
 			}
+
 			&-range {
 				p {
 					text-align: center;
@@ -103,6 +107,11 @@
 					justify-content: space-between;
 				}
 			}
+		}
+		&__list {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			grid-gap: 6rem 2.2rem;
 		}
 	}
 </style>

@@ -4,8 +4,8 @@
 			<banner></banner>
 			<catalog></catalog>
 		</main>
-		<call-button></call-button>
 		<!-- <page-footer></page-footer> -->
+		<call-button></call-button>
 	</div>
 </template>
 

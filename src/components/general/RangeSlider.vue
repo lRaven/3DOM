@@ -56,7 +56,7 @@
 <style lang="scss" scoped>
 	.slider {
 		position: relative;
-		padding: 2.4rem 1.5rem;
+		padding: 2.2rem 1.5rem;
 		border-radius: 2rem;
 		background-color: var(--light-gray);
 		&__values {

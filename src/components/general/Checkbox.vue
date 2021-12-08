@@ -50,7 +50,7 @@
 			text-align: center;
 			width: 9.5rem;
 			border-radius: 2rem;
-			padding: 2rem 1rem;
+			padding: 2.2rem 1.3rem;
 			color: var(--gray);
 			font-size: var(--text-16);
 			font-weight: 600;

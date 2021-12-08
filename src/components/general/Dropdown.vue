@@ -46,12 +46,13 @@
 <style lang="scss" scoped>
 	.dropdown {
 		position: relative;
+		z-index: 2;
 		&__selected {
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
 			border-radius: 2rem;
-			padding: 2rem;
+			padding: 1.6rem 2rem;
 			background-color: var(--light-gray);
 			color: var(--dark);
 			font-size: 1.8rem;
@@ -78,7 +79,7 @@
 		&__content {
 			position: absolute;
 			left: 0;
-			top: 6.8rem;
+			top: 6rem;
 			width: 100%;
 			height: 0;
 			border-radius: 0 0 2rem 2rem;

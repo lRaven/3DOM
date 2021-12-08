@@ -1,0 +1,149 @@
+<template>
+	<div class="catalog__item" v-for="item in items" :key="item.id">
+		<img :src="item.img" alt="" />
+		<div class="catalog__item-tags">
+			<div
+				class="catalog__item-tag"
+				:style="item.style"
+				v-for="tag in item.tags"
+				:key="tag.id"
+			>
+				{{ tag.tag }}
+			</div>
+		</div>
+	</div>
+</template>
+
+<script>
+	export default {
+		name: "CatalogItem",
+		props: {},
+		data() {
+			return {
+				items: [
+					{
+						id: 1,
+						img: `img/catalog/catalog-item1.png`,
+						tags: [
+							{
+								id: 1,
+								tag: "Волгоград",
+							},
+							{
+								id: 2,
+								tag: "Бизнес-класс",
+							},
+							{
+								id: 3,
+								tag: "Ворошиловский район",
+							},
+						],
+						style: `background-color: var(--white); color: var(--blue);`,
+					},
+					{
+						id: 2,
+						img: `img/catalog/catalog-item2.png`,
+						tags: [
+							{
+								id: 1,
+								tag: "Волгоград",
+							},
+							{
+								id: 2,
+								tag: "Комфорт-класс",
+							},
+							{
+								id: 3,
+								tag: "Ворошиловский район",
+							},
+						],
+						style: `background-color: var(--light-blue); color: var(--white);`,
+					},
+					{
+						id: 3,
+						img: `img/catalog/catalog-item3.png`,
+						tags: [
+							{
+								id: 1,
+								tag: "Ахтубинск",
+							},
+							{
+								id: 2,
+								tag: "Комфорт-класс",
+							},
+							{
+								id: 3,
+								tag: "Уникальное фасадное решение",
+							},
+							{
+								id: 4,
+								tag: "Огороженная территория",
+							},
+						],
+						style: `background-color: var(--white); color: var(--blue);`,
+					},
+					{
+						id: 4,
+						img: `img/catalog/catalog-item4.png`,
+					},
+				],
+			};
+		},
+		methods: {
+			setTagsPosition() {
+				const tags = document.querySelector(".catalog__item-tags");
+				tags.classList.add("right");
+			},
+		},
+		mounted() {
+			this.setTagsPosition();
+		},
+	};
+</script>
+
+<style lang="scss" scoped>
+	.catalog__item {
+		position: relative;
+		border-radius: 2.5rem;
+		padding: 2rem;
+		overflow: hidden;
+		height: 49rem;
+		img {
+			position: absolute;
+			left: 0;
+			top: 0;
+			height: 100%;
+			width: 100%;
+			object-fit: cover;
+			z-index: -1;
+		}
+		&-tags {
+			position: absolute;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			align-items: center;
+			gap: 0.5rem;
+			width: 27.7rem;
+			top: 2rem;
+			left: 2rem;
+
+			&.right {
+				left: inherit;
+				right: 2rem;
+			}
+		}
+		&-tag {
+			display: inline-block;
+			min-width: 13.6rem;
+			padding: 0.8rem 1rem;
+			font-size: var(--text-14);
+			font-weight: 600;
+			text-align: center;
+			border-radius: 2rem;
+			&:nth-child(n + 3) {
+				width: 100%;
+			}
+		}
+	}
+</style>
