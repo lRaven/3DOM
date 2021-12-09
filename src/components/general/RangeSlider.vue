@@ -1,6 +1,6 @@
 <template>
 	<div class="slider">
-		<div class="slider__values">
+		<div class="slider__values" v-if="minMax">
 			<div class="slider__min">
 				<span>От</span>
 				<span class="slider__min-value">{{ min }}</span>
@@ -9,6 +9,10 @@
 				<span>до</span>
 				<span class="slider__max-value">{{ max }}</span>
 			</div>
+		</div>
+		<div class="slider__sum" v-else>
+			<span class="slider__value"></span>
+			<span>руб</span>
 		</div>
 		<div class="slider__range-container">
 			<span class="slider__range-circle1"></span>
@@ -28,27 +32,45 @@
 <script>
 	export default {
 		props: {
-			min: String,
-			max: String,
-			value: String,
-			step: String,
+			min: Number,
+			max: Number,
+			value: Number,
+			step: Number,
+			minMax: Boolean,
 		},
 		setup() {},
 		methods: {
 			setMaxValue() {
-				const slider = document.querySelector(".slider__range");
-				let sliderMax = document.querySelector(".slider__max-value");
-				sliderMax.textContent = slider.value;
+				const sliders = document.querySelectorAll(".min-max");
+				sliders.forEach((slider) => {
+					let sliderRange = slider.querySelector(".slider__range");
+					let sliderMax = slider.querySelector(".slider__max-value");
 
-				slider.addEventListener("input", () => {
-					let sliderMax =
-						document.querySelector(".slider__max-value");
-					sliderMax.textContent = slider.value;
+					sliderMax.textContent = sliderRange.value;
+					sliderRange.addEventListener("input", () => {
+						sliderMax.textContent = sliderRange.value;
+					});
+				});
+			},
+			setValue() {
+				const sliders = document.querySelectorAll(".value");
+				sliders.forEach((slider) => {
+					let sliderValue = slider.querySelector(".slider__value");
+					let sliderRange = slider.querySelector(".slider__range");
+					let sliderRangeValue = Number(sliderRange.value);
+
+					sliderValue.textContent = sliderRangeValue.toLocaleString();
+					sliderRange.addEventListener("input", () => {
+						let sliderRangeValue = Number(sliderRange.value);
+						sliderValue.textContent =
+							sliderRangeValue.toLocaleString();
+					});
 				});
 			},
 		},
 		mounted() {
 			this.setMaxValue();
+			this.setValue();
 		},
 	};
 </script>
@@ -65,6 +87,14 @@
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
+		}
+		&__sum {
+			font-size: var(--text-16);
+			font-weight: 600;
+			color: var(--gray);
+			span + span {
+				margin-left: 0.6rem;
+			}
 		}
 		&__min {
 			span {
