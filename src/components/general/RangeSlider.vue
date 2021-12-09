@@ -100,8 +100,6 @@
 									sliderValueEnd <= "4"
 								) {
 									sliderText.textContent = "года";
-								} else if (sliderValueTwoEnd == "11") {
-									sliderText.textContent = "лет";
 								} else {
 									sliderText.textContent = "лет";
 								}
