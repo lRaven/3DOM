@@ -6,9 +6,13 @@
 					<img src="img/icon/logo.svg" alt="logo" />
 				</a>
 				<nav class="header__nav">
-					<a href="#" class="header__link">Ремонты</a>
-					<a href="#" class="header__link">Квартиры</a>
-					<a href="#" class="header__link">Ипотека</a>
+					<a href="#" class="header__link"> Ремонты </a>
+					<a class="header__link" @click="goto('#catalog')">
+						Квартиры
+					</a>
+					<a class="header__link" @click="goto('#mortgage')">
+						Ипотека
+					</a>
 					<a href="#" class="header__link">Trade-in</a>
 					<a href="#" class="header__link">Услуги</a>
 					<a href="#" class="header__link">Офисы продаж</a>
@@ -31,6 +35,14 @@
 <script>
 	export default {
 		name: "PageHeader",
+		methods: {
+			goto(id) {
+				const section = document.querySelector(id).offsetTop;
+				const header = document.querySelector("#header").clientHeight;
+				console.log(header);
+				window.scrollTo(0, section - header, { behavior: "smooth" });
+			},
+		},
 	};
 </script>
 
@@ -75,6 +87,7 @@
 			gap: 3rem;
 		}
 		&__link {
+			cursor: pointer;
 			position: relative;
 			&::after {
 				content: "";

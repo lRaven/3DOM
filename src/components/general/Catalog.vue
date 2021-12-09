@@ -1,5 +1,5 @@
 <template>
-	<section class="catalog center">
+	<section class="catalog center" id="catalog">
 		<form action="#">
 			<div class="catalog__header">
 				<div class="catalog__address">
