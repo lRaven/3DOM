@@ -3,6 +3,7 @@
 		<main class="main">
 			<banner></banner>
 			<catalog></catalog>
+			<mortgage></mortgage>
 		</main>
 		<!-- <page-footer></page-footer> -->
 		<call-button></call-button>
@@ -12,6 +13,7 @@
 <script>
 	import Banner from "../components/general/Banner.vue";
 	import Catalog from "../components/general/Catalog.vue";
+	import Mortgage from "../components/general/Mortgage.vue";
 	import CallButton from "../components/general/Call.vue";
 
 	export default {
@@ -19,6 +21,7 @@
 		components: {
 			Banner,
 			Catalog,
+			Mortgage,
 			CallButton,
 			// PageFooter,
 		},
@@ -36,6 +39,8 @@
 
 	body {
 		font-family: "Montserrat", sans-serif;
+	}
+	section {
 	}
 </style>
 
