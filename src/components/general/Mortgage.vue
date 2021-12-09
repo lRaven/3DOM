@@ -13,11 +13,13 @@
 		</div>
 		<div class="mortgage__main">
 			<form action="#">
-				<div class="mortgage__item">
+				<div class="mortgage__item mortgage__calculation">
 					<toggle-switch
 						:description="'Семья с детьми'"
 					></toggle-switch>
 					<range-slider
+						title="Стоимость квартиры, руб"
+						text="руб"
 						:min="100000"
 						:max="30000000"
 						:value="5000000"
@@ -26,13 +28,26 @@
 						:minMax="false"
 					></range-slider>
 					<range-slider
-						:min="2"
-						:max="300"
-						:value="5"
-						:step="5"
+						title="Первоначальный взнос, руб"
+						text="руб"
+						:min="100000"
+						:max="10000000"
+						:value="1500000"
+						:step="100000"
 						class="value"
 						:minMax="false"
 					></range-slider>
+					<range-slider
+						title="Срок погашения кредита"
+						text="лет"
+						:min="0"
+						:max="30"
+						:value="25"
+						:step="1"
+						class="value"
+						:minMax="false"
+					></range-slider>
+					<btn text="Получить одобрение онлайн" class="blue"></btn>
 				</div>
 				<div class="mortgage__item"></div>
 				<div class="mortgage__item"></div>
@@ -44,12 +59,14 @@
 <script>
 	import ToggleSwitch from "./ToggleSwitch.vue";
 	import RangeSlider from "./RangeSlider.vue";
+	import Btn from "./Btn.vue";
 
 	export default {
 		name: "Mortgage",
 		components: {
 			ToggleSwitch,
 			RangeSlider,
+			Btn,
 		},
 	};
 </script>
@@ -89,9 +106,16 @@
 				grid-template-columns: repeat(3, 1fr);
 			}
 		}
-		&__item {
-			div + div {
-				margin-top: 3rem;
+		&__calculation {
+			display: flex;
+			flex-direction: column;
+			gap: 3rem;
+			align-items: center;
+			div {
+				width: 100%;
+			}
+			.blue {
+				padding: 2rem;
 			}
 		}
 	}

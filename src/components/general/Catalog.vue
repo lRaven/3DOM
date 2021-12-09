@@ -11,8 +11,8 @@
 				<img src="img/catalog/catalog-img.png" alt="" />
 				<div class="catalog__price">
 					<div class="catalog__price-range">
-						<p>Укажите примерную стоимость, млн руб</p>
 						<range-slider
+							title="Укажите примерную стоимость, млн руб"
 							:min="2.2"
 							:max="100"
 							:value="22.2"
@@ -96,12 +96,6 @@
 				font-weight: 600;
 				color: var(--gray);
 				margin-bottom: 1.4rem;
-			}
-
-			&-range {
-				p {
-					text-align: center;
-				}
 			}
 			&-dates {
 				div {

@@ -1,30 +1,34 @@
 <template>
-	<div class="slider">
-		<div class="slider__values" v-if="minMax">
-			<div class="slider__min">
-				<span>От</span>
-				<span class="slider__min-value">{{ min }}</span>
+	<div>
+		<p>{{ title }}</p>
+		<div class="slider">
+			<div class="slider__values" v-if="minMax">
+				<div class="slider__min">
+					<span>От</span>
+					<span class="slider__min-value">{{ min }}</span>
+				</div>
+				<div class="slider__max">
+					<span>до</span>
+					<span class="slider__max-value">{{ max }}</span>
+				</div>
 			</div>
-			<div class="slider__max">
-				<span>до</span>
-				<span class="slider__max-value">{{ max }}</span>
+			<div class="slider__sum" v-else>
+				<span class="slider__value"></span>
+				<span class="slider__text">{{ text }}</span>
 			</div>
-		</div>
-		<div class="slider__sum" v-else>
-			<span class="slider__value"></span>
-			<span>руб</span>
-		</div>
-		<div class="slider__range-container">
-			<span class="slider__range-circle1"></span>
-			<input
-				type="range"
-				:min="min"
-				:max="max"
-				:value="value"
-				:step="step"
-				class="slider__range"
-			/>
-			<span class="slider__range-circle2"></span>
+			<div class="slider__range-container">
+				<span class="slider__range-circle1"></span>
+				<input
+					type="range"
+					:min="min"
+					:max="max"
+					:value="value"
+					:step="step"
+					:text="text"
+					class="slider__range"
+				/>
+				<span class="slider__range-circle2"></span>
+			</div>
 		</div>
 	</div>
 </template>
@@ -32,6 +36,8 @@
 <script>
 	export default {
 		props: {
+			title: String,
+			text: String,
 			min: Number,
 			max: Number,
 			value: Number,
@@ -52,13 +58,14 @@
 					});
 				});
 			},
+
 			setValue() {
 				const sliders = document.querySelectorAll(".value");
 				sliders.forEach((slider) => {
-					let sliderValue = slider.querySelector(".slider__value");
-					let sliderRange = slider.querySelector(".slider__range");
-					let sliderRangeValue = Number(sliderRange.value);
+					const sliderValue = slider.querySelector(".slider__value");
+					const sliderRange = slider.querySelector(".slider__range");
 
+					let sliderRangeValue = Number(sliderRange.value);
 					sliderValue.textContent = sliderRangeValue.toLocaleString();
 					sliderRange.addEventListener("input", () => {
 						let sliderRangeValue = Number(sliderRange.value);
@@ -67,15 +74,59 @@
 					});
 				});
 			},
+			setWordDeclension() {
+				const sliders = document.querySelectorAll(".value");
+				sliders.forEach((slider) => {
+					const sliderText = slider.querySelector(".slider__text");
+					const sliderRange = slider.querySelector(".slider__range");
+
+					if (sliderText.textContent == "лет") {
+						sliderRange.addEventListener("input", () => {
+							let sliderValueEnd = sliderRange.value
+								.toString()
+								.slice(-1);
+							let sliderValueTwoEnd = sliderRange.value
+								.toString()
+								.slice(-2);
+
+							if (
+								sliderValueTwoEnd < "11" ||
+								sliderValueTwoEnd > "14"
+							) {
+								if (sliderValueEnd == "1") {
+									sliderText.textContent = "год";
+								} else if (
+									sliderValueEnd > "1" &&
+									sliderValueEnd <= "4"
+								) {
+									sliderText.textContent = "года";
+								} else if (sliderValueTwoEnd == "11") {
+									sliderText.textContent = "лет";
+								} else {
+									sliderText.textContent = "лет";
+								}
+							}
+						});
+					}
+				});
+			},
 		},
 		mounted() {
 			this.setMaxValue();
 			this.setValue();
+			this.setWordDeclension();
 		},
 	};
 </script>
 
 <style lang="scss" scoped>
+	p {
+		font-size: var(--text-15);
+		color: var(--gray);
+		font-weight: 600;
+		margin-left: 1.5rem;
+		margin-bottom: 1.3rem;
+	}
 	.slider {
 		position: relative;
 		padding: 2.2rem 1.5rem;
