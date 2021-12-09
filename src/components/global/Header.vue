@@ -39,7 +39,7 @@
 			goto(id) {
 				const section = document.querySelector(id).offsetTop;
 				const header = document.querySelector("#header").clientHeight;
-				console.log(header);
+
 				window.scrollTo(0, section - header, { behavior: "smooth" });
 			},
 		},

@@ -13,10 +13,12 @@
 					<div class="catalog__price-range">
 						<p>Укажите примерную стоимость, млн руб</p>
 						<range-slider
-							min="2.2"
-							max="100"
-							value="22.2"
-							step="0.2"
+							:min="2.2"
+							:max="100"
+							:value="22.2"
+							:step="0.2"
+							class="min-max"
+							:minMax="true"
 						></range-slider>
 					</div>
 					<div class="catalog__price-dates">
