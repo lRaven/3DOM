@@ -126,6 +126,7 @@
 
 <style lang="scss" scoped>
 	.mortgage {
+		margin-bottom: 3rem;
 		&__header {
 			display: grid;
 			grid-template-columns: repeat(2, 1fr);
