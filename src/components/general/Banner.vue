@@ -11,15 +11,18 @@
 					</p>
 					<btn text="Оформить заявку" class="white"></btn>
 					<div class="banner__order-decoration">
-						<img src="img/icon/transcripts-list.svg" alt="" />
+						<img
+							src="img/icon/general/transcripts-list.svg"
+							alt=""
+						/>
 					</div>
 				</div>
 				<div class="banner__watch">
 					<h2>На всё готовенькое!</h2>
 					<div class="banner__watch-left">
 						<img
-							src="img/bannerGeneral/banner-img2.png"
-							alt="govno"
+							src="img/general/bannerGeneral/banner-img2.png"
+							alt=""
 						/>
 					</div>
 					<div class="banner__watch-right">
@@ -37,7 +40,7 @@
 				</div>
 			</div>
 			<div class="banner__right">
-				<img src="img/bannerGeneral/banner-img1.png" alt="" />
+				<img src="img/general/bannerGeneral/banner-img1.png" alt="" />
 				<div class="banner__right-content">
 					<h2>Легко отделались!</h2>
 					<div class="banner__right-text">

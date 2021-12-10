@@ -3,7 +3,7 @@
 		<div class="header__container center">
 			<div class="header__left">
 				<a href="#" class="header__logo">
-					<img src="img/icon/logo.svg" alt="logo" />
+					<img src="img/icon/general/logo.svg" alt="logo" />
 				</a>
 				<nav class="header__nav">
 					<a href="#" class="header__link"> Ремонты </a>
@@ -20,7 +20,7 @@
 			</div>
 			<div class="header__right">
 				<a href="#">
-					<img src="img/icon/call-blue.svg" alt="call" />
+					<img src="img/icon/general/call-blue.svg" alt="call" />
 				</a>
 				<div class="header__tel">
 					<span>8 (8442) 607 600</span>

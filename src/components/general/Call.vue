@@ -1,7 +1,7 @@
 <template>
 	<figure>
 		<a href="#" class="call">
-			<img src="img/icon/call-circle.svg" alt="" />
+			<img src="img/general/icon/call-circle.svg" alt="" />
 		</a>
 	</figure>
 </template>

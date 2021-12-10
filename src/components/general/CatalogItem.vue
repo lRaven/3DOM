@@ -27,7 +27,7 @@
 				items: [
 					{
 						id: 1,
-						img: `img/catalog/catalog-item1.png`,
+						img: `img/general/catalog/catalog-item1.png`,
 						tags: [
 							{
 								id: 1,
@@ -48,7 +48,7 @@
 					},
 					{
 						id: 2,
-						img: `img/catalog/catalog-item2.png`,
+						img: `img/general/catalog/catalog-item2.png`,
 						tags: [
 							{
 								id: 1,
@@ -69,7 +69,7 @@
 					},
 					{
 						id: 3,
-						img: `img/catalog/catalog-item3.png`,
+						img: `img/general/catalog/catalog-item3.png`,
 						tags: [
 							{
 								id: 1,
@@ -94,7 +94,7 @@
 					},
 					{
 						id: 4,
-						img: `img/catalog/catalog-item4.png`,
+						img: `img/general/catalog/catalog-item4.png`,
 					},
 				],
 			};

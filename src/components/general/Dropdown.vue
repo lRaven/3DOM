@@ -3,7 +3,7 @@
 		<div class="dropdown__selected">
 			<p>Районы, кварталы, жилые массивы…</p>
 			<div class="dropdown__arrow" @click="reverseArrow()">
-				<img src="img/icon/arrow.svg" alt="" />
+				<img src="img/icon/general/arrow.svg" alt="" />
 			</div>
 		</div>
 		<div class="dropdown__content">

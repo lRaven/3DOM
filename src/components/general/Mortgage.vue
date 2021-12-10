@@ -9,7 +9,7 @@
 				</p>
 				<h4>Предложение наше — выгода ваша</h4>
 			</div>
-			<img src="img/mortgage/mortgage-top.png" alt="" />
+			<img src="img/general/mortgage/mortgage-top.png" alt="" />
 		</div>
 		<div class="mortgage__main">
 			<form action="#">

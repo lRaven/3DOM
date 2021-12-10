@@ -4,19 +4,19 @@
 			<div class="footer__socials">
 				<p>Соцсети</p>
 				<a href="#" target="_blank" class="footer__social">
-					<img src="img/icon/fb.svg" alt="" />
+					<img src="img/icon/general/fb.svg" alt="" />
 				</a>
 				<a href="#" target="_blank" class="footer__social">
-					<img src="img/icon/wa.svg" alt="" />
+					<img src="img/icon/general/wa.svg" alt="" />
 				</a>
 				<a href="#" target="_blank" class="footer__social">
-					<img src="img/icon/tg.svg" alt="" />
+					<img src="img/icon/general/tg.svg" alt="" />
 				</a>
 				<a href="#" target="_blank" class="footer__social">
-					<img src="img/icon/ig.svg" alt="" />
+					<img src="img/icon/general/ig.svg" alt="" />
 				</a>
 				<a href="#" target="_blank" class="footer__social">
-					<img src="img/icon/vk.svg" alt="" />
+					<img src="img/icon/general/vk.svg" alt="" />
 				</a>
 			</div>
 			<ul class="footer__links">
