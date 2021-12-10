@@ -20,8 +20,8 @@
 					<range-slider
 						title="Стоимость квартиры, руб"
 						text="руб"
-						:min="100000"
-						:max="30000000"
+						:min="2000000"
+						:max="20000000"
 						:value="5000000"
 						:step="100000"
 						class="value"
@@ -126,7 +126,7 @@
 
 <style lang="scss" scoped>
 	.mortgage {
-		margin-bottom: 3rem;
+		margin-bottom: 1.5rem;
 		&__header {
 			display: grid;
 			grid-template-columns: repeat(2, 1fr);
@@ -173,6 +173,8 @@
 				width: 100%;
 			}
 			.blue {
+				position: relative;
+				top: 2.5rem;
 				padding: 2rem;
 			}
 		}
