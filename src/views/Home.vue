@@ -4,8 +4,8 @@
 			<banner></banner>
 			<catalog></catalog>
 			<mortgage></mortgage>
+			<layout></layout>
 		</main>
-		<!-- <page-footer></page-footer> -->
 		<call-button></call-button>
 	</div>
 </template>
@@ -14,6 +14,7 @@
 	import Banner from "../components/general/Banner.vue";
 	import Catalog from "../components/general/Catalog.vue";
 	import Mortgage from "../components/general/Mortgage.vue";
+	import Layout from "../components/general/Layout.vue";
 	import CallButton from "../components/general/Call.vue";
 
 	export default {
@@ -22,8 +23,8 @@
 			Banner,
 			Catalog,
 			Mortgage,
+			Layout,
 			CallButton,
-			// PageFooter,
 		},
 
 		data() {
@@ -39,8 +40,6 @@
 
 	body {
 		font-family: "Montserrat", sans-serif;
-	}
-	section {
 	}
 </style>
 
