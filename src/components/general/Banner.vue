@@ -20,10 +20,7 @@
 				<div class="banner__watch">
 					<h2>На всё готовенькое!</h2>
 					<div class="banner__watch-left">
-						<img
-							src="img/general/bannerGeneral/banner-img2.png"
-							alt=""
-						/>
+						<img src="img/general/banner-img2.png" alt="" />
 					</div>
 					<div class="banner__watch-right">
 						<p>
@@ -40,7 +37,7 @@
 				</div>
 			</div>
 			<div class="banner__right">
-				<img src="img/general/bannerGeneral/banner-img1.png" alt="" />
+				<img src="img/general/banner-img1.png" alt="" />
 				<div class="banner__right-content">
 					<h2>Легко отделались!</h2>
 					<div class="banner__right-text">
