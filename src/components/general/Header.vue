@@ -43,6 +43,9 @@
 				window.scrollTo(0, section - header, { behavior: "smooth" });
 			},
 		},
+		mounted() {
+			this.goto("#header");
+		},
 	};
 </script>
 
