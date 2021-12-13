@@ -34,7 +34,7 @@
 
 <script>
 	export default {
-		name: "PageHeader",
+		name: "Header",
 		methods: {
 			goto(id) {
 				const section = document.querySelector(id).offsetTop;

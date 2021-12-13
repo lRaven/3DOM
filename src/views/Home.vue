@@ -1,38 +1,38 @@
 <template>
 	<div class="theme-container">
-		<page-header></page-header>
+		<Header />
 		<main class="main">
-			<banner></banner>
-			<catalog></catalog>
-			<mortgage></mortgage>
-			<layout></layout>
+			<banner />
+			<catalog />
+			<mortgage />
+			<layout />
 		</main>
-		<page-footer></page-footer>
-		<call-button></call-button>
+		<Footer />
+		<Call />
 	</div>
 </template>
 
 <script>
-	import PageHeader from "../components/general/Header.vue";
+	import Header from "../components/general/Header.vue";
 
 	import Banner from "../components/general/Banner.vue";
 	import Catalog from "../components/general/Catalog.vue";
 	import Mortgage from "../components/general/Mortgage.vue";
 	import Layout from "../components/general/Layout.vue";
-	import CallButton from "../components/general/Call.vue";
+	import Call from "../components/general/Call.vue";
 
-	import PageFooter from "../components/general/Footer.vue";
+	import Footer from "../components/general/Footer.vue";
 
 	export default {
-		name: "App",
+		name: "Home",
 		components: {
-			PageHeader,
+			Header,
 			Banner,
 			Catalog,
 			Mortgage,
 			Layout,
-			CallButton,
-			PageFooter,
+			Call,
+			Footer,
 		},
 
 		data() {

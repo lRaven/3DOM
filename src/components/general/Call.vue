@@ -7,7 +7,7 @@
 </template>
 <script>
 	export default {
-		name: "CallButton",
+		name: "Call",
 	};
 </script>
 <style lang="scss" scoped>
