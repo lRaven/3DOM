@@ -1,13 +1,21 @@
 <template>
-	<Header />
+	<div class="theme-container">
+		<Header />
+		<main class="main" id="main">
+			<Banner />
+		</main>
+	</div>
 </template>
 
 <script>
 	import Header from "../components/academ/Header.vue";
 
+	import Banner from "../components/academ/Banner.vue";
+
 	export default {
 		components: {
 			Header,
+			Banner,
 		},
 	};
 </script>
