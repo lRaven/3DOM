@@ -50,11 +50,14 @@
 	}
 	.fade-enter-active,
 	.fade-leave-active {
-		transition: opacity 0.5s ease;
+		transition: all 0.5s ease;
+		transform: translateY(0rem);
 	}
 
 	.fade-enter-from,
 	.fade-leave-to {
 		opacity: 0;
+		transform: translateY(3rem);
+		transition: all 0.5s ease;
 	}
 </style>
