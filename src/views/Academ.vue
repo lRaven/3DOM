@@ -1,21 +1,29 @@
 <template>
-	<div class="theme-container">
-		<Header />
-		<main class="main" id="main">
-			<Banner />
-		</main>
-	</div>
+	<transition>
+		<div class="theme-container">
+			<Header />
+			<main class="main" id="main">
+				<Banner />
+				<Statistics />
+				<Apartments />
+			</main>
+		</div>
+	</transition>
 </template>
 
 <script>
 	import Header from "../components/academ/Header.vue";
 
 	import Banner from "../components/academ/Banner.vue";
+	import Statistics from "../components/academ/Statistics.vue";
+	import Apartments from "../components/academ/Apartments.vue";
 
 	export default {
 		components: {
 			Header,
 			Banner,
+			Statistics,
+			Apartments,
 		},
 	};
 </script>

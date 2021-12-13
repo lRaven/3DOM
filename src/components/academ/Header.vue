@@ -33,7 +33,7 @@
 					</div>
 				</a>
 				<nav class="nav">
-					<a href="#" class="link">Главная</a>
+					<a href="#academ" class="link">Главная</a>
 					<a href="#" class="link">Квартиры</a>
 					<a href="#" class="link">Офисы</a>
 					<a href="#" class="link">Парковки</a>
