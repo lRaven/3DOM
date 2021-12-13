@@ -36,7 +36,7 @@
 							mask="url(#path-1-inside-1_2328_21211)"
 						/>
 					</svg>
-					<img src="/img/academ/circle-img.png" alt="" />
+					<img src="img/academ/circle-img.png" alt="" />
 				</div>
 				<div class="banner__left-text">
 					<p>Добро пожаловать!</p>
@@ -75,7 +75,7 @@
 	.banner {
 		padding-top: 6.8rem;
 		padding-bottom: 6rem;
-		background: url(/img/academ/banner-bg.png) right bottom / 130rem 80rem
+		background: url("/img/academ/banner-bg.png") right bottom / 130rem 80rem
 				no-repeat,
 			var(--dark-green);
 		&__container {

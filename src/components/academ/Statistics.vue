@@ -25,7 +25,7 @@
 				</div>
 			</div>
 			<figure class="statistics__img">
-				<img src="/img/academ/stats-img.png" alt="" />
+				<img src="img/academ/stats-img.png" alt="" />
 			</figure>
 		</div>
 	</section>

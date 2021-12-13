@@ -3,11 +3,14 @@
 		<div class="theme-container">
 			<Header />
 			<main class="main" id="main">
-				<Banner />
-				<Statistics />
-				<Apartments />
-				<Location />
-				<Gallery />
+				<banner />
+				<statistics />
+				<apartments />
+				<location />
+				<gallery />
+				<infrastructure />
+				<parking />
+				<pantry />
 			</main>
 		</div>
 	</transition>
@@ -21,6 +24,9 @@
 	import Apartments from "../components/academ/Apartments.vue";
 	import Location from "../components/academ/Location.vue";
 	import Gallery from "../components/academ/Gallery.vue";
+	import Infrastructure from "../components/academ/Infrastructure.vue";
+	import Parking from "../components/academ/Parking.vue";
+	import Pantry from "../components/academ/Pantry.vue";
 
 	export default {
 		components: {
@@ -30,6 +36,9 @@
 			Apartments,
 			Location,
 			Gallery,
+			Infrastructure,
+			Parking,
+			Pantry,
 		},
 	};
 </script>
@@ -42,12 +51,6 @@
 		overflow: hidden;
 		background: var(--dark-green);
 		display: flex;
-	}
-	h1,
-	h2,
-	h3,
-	h4 {
-		text-transform: uppercase;
 	}
 
 	a {

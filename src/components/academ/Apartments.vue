@@ -34,70 +34,70 @@
 					<div class="wrapper">
 						<figure class="slide__item">
 							<img
-								src="/img/academ/plan1.svg"
+								src="img/academ/plan1.svg"
 								alt=""
 								class="apartments__miniature"
 							/>
 						</figure>
 						<figure class="slide__item">
 							<img
-								src="/img/academ/plan2.svg"
+								src="img/academ/plan2.svg"
 								alt=""
 								class="apartments__miniature"
 							/>
 						</figure>
 						<figure class="slide__item">
 							<img
-								src="/img/academ/plan3.svg"
+								src="img/academ/plan3.svg"
 								alt=""
 								class="apartments__miniature"
 							/>
 						</figure>
 						<figure class="slide__item">
 							<img
-								src="/img/academ/plan4.svg"
+								src="img/academ/plan4.svg"
 								alt=""
 								class="apartments__miniature"
 							/>
 						</figure>
 						<figure class="slide__item">
 							<img
-								src="/img/academ/plan5.svg"
+								src="img/academ/plan5.svg"
 								alt=""
 								class="apartments__miniature"
 							/>
 						</figure>
 						<figure class="slide__item">
 							<img
-								src="/img/academ/plan6.svg"
+								src="img/academ/plan6.svg"
 								alt=""
 								class="apartments__miniature"
 							/>
 						</figure>
 						<figure class="slide__item">
 							<img
-								src="/img/academ/plan7.svg"
+								src="img/academ/plan7.svg"
 								alt=""
 								class="apartments__miniature"
 							/>
 						</figure>
 						<figure class="slide__item">
 							<img
-								src="/img/academ/plan8.svg"
+								src="img/academ/plan8.svg"
 								alt=""
 								class="apartments__miniature"
 							/>
 						</figure>
 						<figure class="slide__item">
 							<img
-								src="/img/academ/plan9.svg"
+								src="img/academ/plan9.svg"
 								alt=""
 								class="apartments__miniature"
 							/>
 						</figure>
 						<figure class="slide__item">
 							<img
-								src="/img/academ/plan10.svg"
+								src="img/academ/plan10.svg"
 								alt=""
 								class="apartments__miniature"
 							/>
@@ -105,7 +105,7 @@
 					</div>
 					<figure class="slide__main">
 						<img
-							src="/img/academ/plan-middle.svg"
+							src="img/academ/plan-middle.svg"
 							alt=""
 							class="apartments__middle"
 						/>
@@ -115,70 +115,70 @@
 					<div class="wrapper">
 						<figure class="slide__item">
 							<img
-								src="/img/academ/plan1.svg"
+								src="img/academ/plan1.svg"
 								alt=""
 								class="apartments__miniature"
 							/>
 						</figure>
 						<figure class="slide__item">
 							<img
-								src="/img/academ/plan2.svg"
+								src="img/academ/plan2.svg"
 								alt=""
 								class="apartments__miniature"
 							/>
 						</figure>
 						<figure class="slide__item">
 							<img
-								src="/img/academ/plan3.svg"
+								src="img/academ/plan3.svg"
 								alt=""
 								class="apartments__miniature"
 							/>
 						</figure>
 						<figure class="slide__item">
 							<img
-								src="/img/academ/plan4.svg"
+								src="img/academ/plan4.svg"
 								alt=""
 								class="apartments__miniature"
 							/>
 						</figure>
 						<figure class="slide__item">
 							<img
-								src="/img/academ/plan5.svg"
+								src="img/academ/plan5.svg"
 								alt=""
 								class="apartments__miniature"
 							/>
 						</figure>
 						<figure class="slide__item">
 							<img
-								src="/img/academ/plan6.svg"
+								src="img/academ/plan6.svg"
 								alt=""
 								class="apartments__miniature"
 							/>
 						</figure>
 						<figure class="slide__item">
 							<img
-								src="/img/academ/plan7.svg"
+								src="img/academ/plan7.svg"
 								alt=""
 								class="apartments__miniature"
 							/>
 						</figure>
 						<figure class="slide__item">
 							<img
-								src="/img/academ/plan8.svg"
+								src="img/academ/plan8.svg"
 								alt=""
 								class="apartments__miniature"
 							/>
 						</figure>
 						<figure class="slide__item">
 							<img
-								src="/img/academ/plan9.svg"
+								src="img/academ/plan9.svg"
 								alt=""
 								class="apartments__miniature"
 							/>
 						</figure>
 						<figure class="slide__item">
 							<img
-								src="/img/academ/plan10.svg"
+								src="img/academ/plan10.svg"
 								alt=""
 								class="apartments__miniature"
 							/>
@@ -186,7 +186,7 @@
 					</div>
 					<figure class="slide__main">
 						<img
-							src="/img/academ/plan-middle.svg"
+							src="img/academ/plan-middle.svg"
 							alt=""
 							class="apartments__middle"
 						/>
@@ -196,70 +196,70 @@
 					<div class="wrapper">
 						<figure class="slide__item">
 							<img
-								src="/img/academ/plan1.svg"
+								src="img/academ/plan1.svg"
 								alt=""
 								class="apartments__miniature"
 							/>
 						</figure>
 						<figure class="slide__item">
 							<img
-								src="/img/academ/plan2.svg"
+								src="img/academ/plan2.svg"
 								alt=""
 								class="apartments__miniature"
 							/>
 						</figure>
 						<figure class="slide__item">
 							<img
-								src="/img/academ/plan3.svg"
+								src="img/academ/plan3.svg"
 								alt=""
 								class="apartments__miniature"
 							/>
 						</figure>
 						<figure class="slide__item">
 							<img
-								src="/img/academ/plan4.svg"
+								src="img/academ/plan4.svg"
 								alt=""
 								class="apartments__miniature"
 							/>
 						</figure>
 						<figure class="slide__item">
 							<img
-								src="/img/academ/plan5.svg"
+								src="img/academ/plan5.svg"
 								alt=""
 								class="apartments__miniature"
 							/>
 						</figure>
 						<figure class="slide__item">
 							<img
-								src="/img/academ/plan6.svg"
+								src="img/academ/plan6.svg"
 								alt=""
 								class="apartments__miniature"
 							/>
 						</figure>
 						<figure class="slide__item">
 							<img
-								src="/img/academ/plan7.svg"
+								src="img/academ/plan7.svg"
 								alt=""
 								class="apartments__miniature"
 							/>
 						</figure>
 						<figure class="slide__item">
 							<img
-								src="/img/academ/plan8.svg"
+								src="img/academ/plan8.svg"
 								alt=""
 								class="apartments__miniature"
 							/>
 						</figure>
 						<figure class="slide__item">
 							<img
-								src="/img/academ/plan9.svg"
+								src="img/academ/plan9.svg"
 								alt=""
 								class="apartments__miniature"
 							/>
 						</figure>
 						<figure class="slide__item">
 							<img
-								src="/img/academ/plan10.svg"
+								src="img/academ/plan10.svg"
 								alt=""
 								class="apartments__miniature"
 							/>
@@ -267,7 +267,7 @@
 					</div>
 					<figure class="slide__main">
 						<img
-							src="/img/academ/plan-middle.svg"
+							src="img/academ/plan-middle.svg"
 							alt=""
 							class="apartments__middle"
 						/>
