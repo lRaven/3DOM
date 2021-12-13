@@ -6,6 +6,8 @@
 				<Banner />
 				<Statistics />
 				<Apartments />
+				<Location />
+				<Gallery />
 			</main>
 		</div>
 	</transition>
@@ -17,6 +19,8 @@
 	import Banner from "../components/academ/Banner.vue";
 	import Statistics from "../components/academ/Statistics.vue";
 	import Apartments from "../components/academ/Apartments.vue";
+	import Location from "../components/academ/Location.vue";
+	import Gallery from "../components/academ/Gallery.vue";
 
 	export default {
 		components: {
@@ -24,6 +28,8 @@
 			Banner,
 			Statistics,
 			Apartments,
+			Location,
+			Gallery,
 		},
 	};
 </script>
