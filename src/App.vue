@@ -10,6 +10,7 @@
 
 <style lang="scss">
 	@import "./assets/scss/center.scss";
+	@import "./assets/css/variables.css";
 
 	* {
 		scroll-behavior: smooth;

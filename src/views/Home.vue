@@ -53,13 +53,9 @@
 	};
 </script>
 
-<style>
-	@import "../assets/css/variables.css";
+<style lang="scss" scoped>
 	@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap");
-
-	body {
-		font-family: "Montserrat", sans-serif;
+	* {
+		font-family: "Montserrat";
 	}
 </style>
-
-<style lang="scss" scoped></style>
