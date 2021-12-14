@@ -18,7 +18,7 @@
 						:text="'Даю согласие на обработку персональных данных'"
 					>
 					</checkbox>
-					<Btn :text="'Записаться на просмотр'" class="gold"></Btn>
+					<button class="button gold">Записаться на просмотр</button>
 				</form>
 			</div>
 		</div>
@@ -26,14 +26,12 @@
 </template>
 
 <script>
-	import Btn from "./Btn.vue";
 	import Input from "./Input.vue";
 	import Checkbox from "./Checkbox.vue";
 
 	export default {
 		name: "Feedback",
 		components: {
-			Btn,
 			Input,
 			Checkbox,
 		},
@@ -69,6 +67,40 @@
 		&__form {
 			color: var(--white);
 			width: 41rem;
+		}
+	}
+	.button {
+		user-select: none;
+		cursor: pointer;
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		width: 24rem;
+		height: 4.5rem;
+		border: 0.1rem solid var(--gold);
+		padding-left: 2rem;
+		border-radius: 0 2rem 2rem 0;
+		font-size: 1.5rem;
+		font-weight: 600;
+
+		transition: all 0.3s ease;
+		&.gold {
+			background-color: var(--gold);
+			color: var(--dark-green);
+			&:hover {
+				background-color: var(--dark-green);
+				color: var(--gold);
+				transition: all 0.3s ease;
+			}
+		}
+		&.dark {
+			background-color: var(--dark-green);
+			color: var(--gold);
+			&:hover {
+				background-color: var(--gold);
+				color: var(--dark-green);
+				transition: all 0.3s ease;
+			}
 		}
 	}
 </style>
