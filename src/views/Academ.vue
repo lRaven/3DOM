@@ -12,6 +12,7 @@
 				<parking />
 				<pantry />
 				<office />
+				<feedback />
 			</main>
 		</div>
 	</transition>
@@ -29,6 +30,7 @@
 	import Parking from "../components/academ/Parking.vue";
 	import Pantry from "../components/academ/Pantry.vue";
 	import Office from "../components/academ/Office.vue";
+	import Feedback from "../components/academ/Feedback.vue";
 
 	export default {
 		components: {
@@ -42,6 +44,7 @@
 			Parking,
 			Pantry,
 			Office,
+			Feedback,
 		},
 	};
 </script>

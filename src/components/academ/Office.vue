@@ -11,8 +11,16 @@
 		</div>
 		<div class="office__right">
 			<div class="office__title">
-				<img src="img/icon/academ/semicircle.svg" alt="" />
-				<img src="img/icon/academ/office.svg" alt="" />
+				<img
+					src="img/icon/academ/semicircle.svg"
+					class="office__semicircle"
+					alt=""
+				/>
+				<img
+					src="img/icon/academ/office.svg"
+					class="office__text"
+					alt=""
+				/>
 			</div>
 			<img src="img/academ/office-img.png" class="office__img" alt="" />
 			<Btn :text="'Выбрать офис'" class="gold"></Btn>
@@ -48,7 +56,7 @@
 		}
 		&__feature {
 			position: absolute;
-			bottom: 3.8rem;
+			bottom: 3rem;
 			right: 2.5rem;
 			display: flex;
 			align-items: center;
@@ -68,17 +76,30 @@
 		}
 		&__title {
 			position: relative;
-			margin-top: 18.4rem;
-			img {
-			}
+			margin-top: 13rem;
+			margin-bottom: 7rem;
+		}
+		&__semicircle {
+			position: absolute;
+			top: 50%;
+			left: 0;
+			height: 25rem;
+			transform: translateY(-50%) rotate(180deg);
+		}
+		&__text {
+			position: relative;
+			left: -10.5rem;
 		}
 		&__img {
+			margin-bottom: 4.5rem;
 		}
 		.button {
 			min-width: 18rem;
 			width: min-content;
+			margin-bottom: 4.5rem;
 		}
 		&__plan {
+			margin-bottom: 10rem;
 		}
 	}
 </style>
