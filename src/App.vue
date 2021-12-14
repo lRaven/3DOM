@@ -58,6 +58,6 @@
 	.fade-leave-to {
 		opacity: 0;
 		transform: translateY(3rem);
-		transition: all 0.5s ease;
+		transition: all 1s ease;
 	}
 </style>

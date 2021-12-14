@@ -141,6 +141,7 @@
 			display: flex;
 			justify-self: center;
 			gap: 3.7rem;
+			width: auto;
 		}
 		&__social {
 			display: flex;
