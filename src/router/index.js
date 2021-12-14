@@ -6,7 +6,7 @@ const routes = [
 	{
 		path: '/',
 		name: 'Home',
-		component: Academ,
+		component: Home,
 		meta: {
 			title: 'Home',
 		}
@@ -14,7 +14,7 @@ const routes = [
 	{
 		path: '/academ',
 		name: 'Academ',
-		component: Home,
+		component: Academ,
 		meta: {
 			title: 'Academ',
 		}

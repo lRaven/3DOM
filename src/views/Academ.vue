@@ -11,6 +11,7 @@
 				<infrastructure />
 				<parking />
 				<pantry />
+				<office />
 			</main>
 		</div>
 	</transition>
@@ -27,6 +28,7 @@
 	import Infrastructure from "../components/academ/Infrastructure.vue";
 	import Parking from "../components/academ/Parking.vue";
 	import Pantry from "../components/academ/Pantry.vue";
+	import Office from "../components/academ/Office.vue";
 
 	export default {
 		components: {
@@ -39,6 +41,7 @@
 			Infrastructure,
 			Parking,
 			Pantry,
+			Office,
 		},
 	};
 </script>
