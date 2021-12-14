@@ -6,16 +6,16 @@
 					<img src="img/icon/general/logo.svg" alt="logo" />
 				</a>
 				<nav class="header__nav">
-					<a href="#" class="header__link"> Ремонты </a>
+					<a class="header__link"> Ремонты </a>
 					<a class="header__link" @click="scroll('#catalog')">
 						Квартиры
 					</a>
 					<a class="header__link" @click="scroll('#mortgage')">
 						Ипотека
 					</a>
-					<a href="#" class="header__link">Trade-in</a>
-					<a href="#" class="header__link">Услуги</a>
-					<a href="#" class="header__link">Офисы продаж</a>
+					<a class="header__link">Trade-in</a>
+					<a class="header__link">Услуги</a>
+					<a class="header__link">Офисы продаж</a>
 				</nav>
 			</div>
 			<div class="header__right">
@@ -44,7 +44,7 @@
 			},
 		},
 		mounted() {
-			this.scroll("#header");
+			// this.scroll("#header");
 		},
 	};
 </script>

@@ -1,17 +1,15 @@
 <template>
-	<transition>
-		<div class="theme-container">
-			<Header />
-			<main class="main">
-				<banner />
-				<catalog />
-				<mortgage />
-				<layout />
-			</main>
-			<Footer />
-			<Call />
-		</div>
-	</transition>
+	<div class="theme-container">
+		<Header />
+		<main class="main">
+			<banner />
+			<catalog />
+			<mortgage />
+			<layout />
+		</main>
+		<Footer />
+		<Call />
+	</div>
 </template>
 
 <script>

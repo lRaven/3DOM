@@ -1,21 +1,19 @@
 <template>
-	<transition>
-		<div class="theme-container">
-			<Header />
-			<main class="main" id="main">
-				<banner />
-				<statistics />
-				<apartments />
-				<location />
-				<gallery />
-				<infrastructure />
-				<parking />
-				<pantry />
-				<office />
-				<feedback />
-			</main>
-		</div>
-	</transition>
+	<div class="theme-container">
+		<Header />
+		<main class="main" id="main">
+			<banner />
+			<statistics />
+			<apartments />
+			<location />
+			<gallery />
+			<infrastructure />
+			<parking />
+			<pantry />
+			<office />
+			<feedback />
+		</main>
+	</div>
 </template>
 
 <script>

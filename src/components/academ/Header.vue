@@ -33,14 +33,14 @@
 					</div>
 				</a>
 				<nav class="nav">
-					<a href="#" class="link">Главная</a>
+					<a class="link">Главная</a>
 					<a class="link" @click="scroll('#apartments')">Квартиры</a>
 					<a class="link" @click="scroll('#office')">Офисы</a>
 					<a class="link" @click="scroll('#parking')">Парковки</a>
 					<a class="link" @click="scroll('#pantry')">Кладовки</a>
-					<a href="#" class="link">Ипотека</a>
-					<a href="#" class="link">Отделка</a>
-					<a href="#" class="link">Trade-in</a>
+					<a class="link">Ипотека</a>
+					<a class="link">Отделка</a>
+					<a class="link">Trade-in</a>
 				</nav>
 			</div>
 			<div class="header__right">
