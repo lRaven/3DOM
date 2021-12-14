@@ -12,6 +12,7 @@
 			<pantry />
 			<office />
 			<feedback />
+			<Footer />
 		</main>
 	</div>
 </template>
@@ -30,6 +31,8 @@
 	import Office from "../components/academ/Office.vue";
 	import Feedback from "../components/academ/Feedback.vue";
 
+	import Footer from "../components/academ/Footer.vue";
+
 	export default {
 		components: {
 			Header,
@@ -43,6 +46,7 @@
 			Pantry,
 			Office,
 			Feedback,
+			Footer,
 		},
 	};
 </script>
