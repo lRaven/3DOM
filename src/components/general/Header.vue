@@ -7,10 +7,10 @@
 				</a>
 				<nav class="header__nav">
 					<a href="#" class="header__link"> Ремонты </a>
-					<a class="header__link" @click="goto('#catalog')">
+					<a class="header__link" @click="scroll('#catalog')">
 						Квартиры
 					</a>
-					<a class="header__link" @click="goto('#mortgage')">
+					<a class="header__link" @click="scroll('#mortgage')">
 						Ипотека
 					</a>
 					<a href="#" class="header__link">Trade-in</a>
@@ -36,7 +36,7 @@
 	export default {
 		name: "Header",
 		methods: {
-			goto(id) {
+			scroll(id) {
 				const section = document.querySelector(id).offsetTop;
 				const header = document.querySelector("#header").clientHeight;
 
@@ -44,7 +44,7 @@
 			},
 		},
 		mounted() {
-			this.goto("#header");
+			this.scroll("#header");
 		},
 	};
 </script>

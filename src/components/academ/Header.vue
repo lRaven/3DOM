@@ -33,11 +33,11 @@
 					</div>
 				</a>
 				<nav class="nav">
-					<a href="#academ" class="link">Главная</a>
-					<a href="#" class="link">Квартиры</a>
-					<a href="#" class="link">Офисы</a>
-					<a href="#" class="link">Парковки</a>
-					<a href="#" class="link">Кладовки</a>
+					<a href="#" class="link">Главная</a>
+					<a class="link" @click="scroll('#apartments')">Квартиры</a>
+					<a class="link" @click="scroll('#office')">Офисы</a>
+					<a class="link" @click="scroll('#parking')">Парковки</a>
+					<a class="link" @click="scroll('#pantry')">Кладовки</a>
 					<a href="#" class="link">Ипотека</a>
 					<a href="#" class="link">Отделка</a>
 					<a href="#" class="link">Trade-in</a>
@@ -104,16 +104,14 @@
 	export default {
 		name: "Header",
 		methods: {
-			goto(id) {
+			scroll(id) {
 				const section = document.querySelector(id).offsetTop;
 				const header = document.querySelector("#header").clientHeight;
 
 				window.scrollTo(0, section - header, { behavior: "smooth" });
 			},
 		},
-		mounted() {
-			// this.goto("#header");
-		},
+		mounted() {},
 	};
 </script>
 
@@ -156,6 +154,7 @@
 		gap: 3rem;
 	}
 	.link {
+		cursor: pointer;
 		position: relative;
 		user-select: none;
 		font-size: 1.6rem;
