@@ -3,15 +3,16 @@
 		<div class="apartments__container center">
 			<div class="apartments__nav">
 				<h2>ПОДОБРАТЬ КВАРТИРУ</h2>
-				<label class="apartments__item" @click="showApartment(1)">
+				<label class="apartments__item" @click="showApartments(1)">
 					<input
 						type="radio"
 						class="radio__real"
 						name="apartments__item"
+						checked
 					/>
 					<span class="radio__fake">1</span>
 				</label>
-				<label class="apartments__item" @click="showApartment(2)">
+				<label class="apartments__item" @click="showApartments(2)">
 					<input
 						type="radio"
 						class="radio__real"
@@ -19,7 +20,7 @@
 					/>
 					<span class="radio__fake">2</span>
 				</label>
-				<label class="apartments__item" @click="showApartment(3)">
+				<label class="apartments__item" @click="showApartments(3)">
 					<input
 						type="radio"
 						class="radio__real"
@@ -29,222 +30,183 @@
 				</label>
 			</div>
 			<div class="apartments__schematics">
-				<div class="slide">
+				<div class="slide slide__single">
 					<div class="wrapper">
-						<figure class="slide__item">
+						<figure
+							class="slide__item"
+							@click="openApartment('single1')"
+						>
 							<img
-								src="img/academ/plan1.svg"
+								src="img/academ/apartments/single-room1.svg"
 								alt=""
 								class="apartments__miniature"
 							/>
 						</figure>
-						<figure class="slide__item">
+						<figure
+							class="slide__item"
+							@click="openApartment('single2')"
+						>
 							<img
-								src="img/academ/plan2.svg"
+								src="img/academ/apartments/single-room2.svg"
 								alt=""
 								class="apartments__miniature"
 							/>
 						</figure>
-						<figure class="slide__item">
+						<figure
+							class="slide__item"
+							@click="openApartment('single3')"
+						>
 							<img
-								src="img/academ/plan3.svg"
+								src="img/academ/apartments/single-room3.svg"
 								alt=""
 								class="apartments__miniature"
 							/>
 						</figure>
-						<figure class="slide__item">
+						<figure
+							class="slide__item"
+							@click="openApartment('single4')"
+						>
 							<img
-								src="img/academ/plan4.svg"
+								src="img/academ/apartments/single-room4.svg"
 								alt=""
 								class="apartments__miniature"
 							/>
 						</figure>
-						<figure class="slide__item">
+						<figure
+							class="slide__item"
+							@click="openApartment('single5')"
+						>
 							<img
-								src="img/academ/plan5.svg"
+								src="img/academ/apartments/single-room5.svg"
 								alt=""
 								class="apartments__miniature"
 							/>
 						</figure>
-						<figure class="slide__item">
+						<figure
+							class="slide__item"
+							@click="openApartment('single6')"
+						>
 							<img
-								src="img/academ/plan6.svg"
+								src="img/academ/apartments/single-room6.svg"
 								alt=""
 								class="apartments__miniature"
 							/>
 						</figure>
-						<figure class="slide__item">
+						<figure
+							class="slide__item"
+							@click="openApartment('single7')"
+						>
 							<img
-								src="img/academ/plan7.svg"
+								src="img/academ/apartments/single-room7.svg"
 								alt=""
 								class="apartments__miniature"
 							/>
 						</figure>
-						<figure class="slide__item">
+						<figure
+							class="slide__item"
+							@click="openApartment('single8')"
+						>
 							<img
-								src="img/academ/plan8.svg"
+								src="img/academ/apartments/single-room8.svg"
 								alt=""
 								class="apartments__miniature"
 							/>
 						</figure>
-						<figure class="slide__item">
+						<figure
+							class="slide__item"
+							@click="openApartment('single9')"
+						>
 							<img
-								src="img/academ/plan9.svg"
-								alt=""
-								class="apartments__miniature"
-							/>
-						</figure>
-						<figure class="slide__item">
-							<img
-								src="img/academ/plan10.svg"
+								src="img/academ/apartments/single-room9.svg"
 								alt=""
 								class="apartments__miniature"
 							/>
 						</figure>
 					</div>
 				</div>
-				<div class="slide">
+				<div class="slide slide__two">
 					<div class="wrapper">
-						<figure class="slide__item">
+						<figure
+							class="slide__item"
+							@click="openApartment('two1')"
+						>
 							<img
-								src="img/academ/plan1.svg"
+								src="img/academ/apartments/two-room1.svg"
 								alt=""
 								class="apartments__miniature"
 							/>
 						</figure>
-						<figure class="slide__item">
+						<figure
+							class="slide__item"
+							@click="openApartment('two2')"
+						>
 							<img
-								src="img/academ/plan2.svg"
+								src="img/academ/apartments/two-room2.svg"
 								alt=""
 								class="apartments__miniature"
 							/>
 						</figure>
-						<figure class="slide__item">
+						<figure
+							class="slide__item"
+							@click="openApartment('two3')"
+						>
 							<img
-								src="img/academ/plan3.svg"
+								src="img/academ/apartments/two-room3.svg"
 								alt=""
 								class="apartments__miniature"
 							/>
 						</figure>
-						<figure class="slide__item">
+						<figure
+							class="slide__item"
+							@click="openApartment('two4')"
+						>
 							<img
-								src="img/academ/plan4.svg"
+								src="img/academ/apartments/two-room4.svg"
 								alt=""
 								class="apartments__miniature"
 							/>
 						</figure>
-						<figure class="slide__item">
+						<figure
+							class="slide__item"
+							@click="openApartment('two5')"
+						>
 							<img
-								src="img/academ/plan5.svg"
+								src="img/academ/apartments/two-room5.svg"
 								alt=""
 								class="apartments__miniature"
 							/>
 						</figure>
-						<figure class="slide__item">
+						<figure
+							class="slide__item"
+							@click="openApartment('two6')"
+						>
 							<img
-								src="img/academ/plan6.svg"
-								alt=""
-								class="apartments__miniature"
-							/>
-						</figure>
-						<figure class="slide__item">
-							<img
-								src="img/academ/plan7.svg"
-								alt=""
-								class="apartments__miniature"
-							/>
-						</figure>
-						<figure class="slide__item">
-							<img
-								src="img/academ/plan8.svg"
-								alt=""
-								class="apartments__miniature"
-							/>
-						</figure>
-						<figure class="slide__item">
-							<img
-								src="img/academ/plan9.svg"
-								alt=""
-								class="apartments__miniature"
-							/>
-						</figure>
-						<figure class="slide__item">
-							<img
-								src="img/academ/plan10.svg"
+								src="img/academ/apartments/two-room6.svg"
 								alt=""
 								class="apartments__miniature"
 							/>
 						</figure>
 					</div>
 				</div>
-				<div class="slide">
+				<div class="slide slide__three">
 					<div class="wrapper">
 						<figure class="slide__item">
 							<img
-								src="img/academ/plan1.svg"
+								src="img/academ/apartments/three-room1.svg"
 								alt=""
 								class="apartments__miniature"
 							/>
 						</figure>
 						<figure class="slide__item">
 							<img
-								src="img/academ/plan2.svg"
+								src="img/academ/apartments/three-room2.svg"
 								alt=""
 								class="apartments__miniature"
 							/>
 						</figure>
 						<figure class="slide__item">
 							<img
-								src="img/academ/plan3.svg"
-								alt=""
-								class="apartments__miniature"
-							/>
-						</figure>
-						<figure class="slide__item">
-							<img
-								src="img/academ/plan4.svg"
-								alt=""
-								class="apartments__miniature"
-							/>
-						</figure>
-						<figure class="slide__item">
-							<img
-								src="img/academ/plan5.svg"
-								alt=""
-								class="apartments__miniature"
-							/>
-						</figure>
-						<figure class="slide__item">
-							<img
-								src="img/academ/plan6.svg"
-								alt=""
-								class="apartments__miniature"
-							/>
-						</figure>
-						<figure class="slide__item">
-							<img
-								src="img/academ/plan7.svg"
-								alt=""
-								class="apartments__miniature"
-							/>
-						</figure>
-						<figure class="slide__item">
-							<img
-								src="img/academ/plan8.svg"
-								alt=""
-								class="apartments__miniature"
-							/>
-						</figure>
-						<figure class="slide__item">
-							<img
-								src="img/academ/plan9.svg"
-								alt=""
-								class="apartments__miniature"
-							/>
-						</figure>
-						<figure class="slide__item">
-							<img
-								src="img/academ/plan10.svg"
+								src="img/academ/apartments/three-room3.svg"
 								alt=""
 								class="apartments__miniature"
 							/>
@@ -566,7 +528,7 @@
 							clip-rule="evenodd"
 							d="M89.853 267.206h25.994v1.428h19.433l-1.647-19.516h-1.591v-24.319H94.547v10.925h-2.69v8.289h-2.004v23.193z"
 							fill="#CFD0D0"
-							class="apartments__single-room apartment"
+							class="apartments__single-room single-room9 apartment"
 						/>
 						<path
 							d="M132.041 224.799H94.547v1.325h37.494v-1.325z"
@@ -663,7 +625,7 @@
 							clip-rule="evenodd"
 							d="M118.645 265.834h-27.42v-22.508H38.625l-1.883 22.398h8.792v3.843h5.92v18.994h67.192v-22.727z"
 							fill="#CFD0D0"
-							class="apartments__two-room apartment"
+							class="apartments__two-room two-room6 apartment"
 						/>
 						<path
 							d="M54.253 266.768h-7.301v1.372h7.3v-1.372zM75.114 266.768h-4.941v1.372h4.94v-1.372zM117.219 285.323h-4.941v1.92h4.941v-1.92zM77.584 285.323h-4.94v1.92h4.94v-1.92zM57.821 285.338h-4.954v1.892h4.954v-1.892zM78.435 243.326H36.741v1.373h41.694v-1.373zM93.23 243.326h-1.373v1.373h1.373v-1.373z"
@@ -766,7 +728,7 @@
 							clip-rule="evenodd"
 							d="M91.857 183.717h23.99v-1.427h19.433l-1.647 19.515h-1.591V226.124H94.547v-10.877h-2.69v-31.53z"
 							fill="#CFD0D0"
-							class="apartments__single-room apartment"
+							class="apartments__single-room single-room8 apartment"
 						/>
 						<path
 							d="M125.069 183.776h-9.222v1.361h9.222v-1.361zM130.614 202.621h-6.918v1.372h6.918v-1.372zM93.23 183.764h-1.373v23.319h1.373v-23.319z"
@@ -831,7 +793,7 @@
 							clip-rule="evenodd"
 							d="M45.524 162.354h73.12v22.783H93.229v20.311H40.31v-23.111h5.215v-19.983z"
 							fill="#CFD0D0"
-							class="apartments__two-room apartment"
+							class="apartments__two-room two-room5 apartment"
 						/>
 						<path
 							d="M117.219 162.354h-1.372v1.373h1.372v-1.373zM48.325 162.354h-1.373v1.373h1.373v-1.373zM60.676 183.764h-18.94v1.373h18.94v-1.373zM118.646 183.776h-2.799v1.361h2.799v-1.361z"
@@ -930,7 +892,7 @@
 							clip-rule="evenodd"
 							d="M45.524 161.805h73.122v-40.074H40.309v22.947h5.215v17.127z"
 							fill="#CFD0D0"
-							class="apartments__three-room apartment"
+							class="apartments__three-room three-room1 apartment"
 						/>
 						<path
 							fill-rule="evenodd"
@@ -1041,7 +1003,7 @@
 							clip-rule="evenodd"
 							d="M112.169 76.99h22.672v38.208h-8.946v8.728h-9.826v-.823H91.857v-39.25h20.312V76.99z"
 							fill="#CFD0D0"
-							class="apartments__single-room apartment"
+							class="apartments__single-room single-room7 apartment"
 						/>
 						<path
 							d="M134.841 76.99h-1.372v38.208h1.372V76.99z"
@@ -1126,7 +1088,7 @@
 							clip-rule="evenodd"
 							d="M40.31 83.852h38.92v-8.618h20.477V23.96h-41.83v1.648h-5.218L41.956 36.313v5.215H40.31v42.325z"
 							fill="#CFD0D0"
-							class="apartments__three-room apartment"
+							class="apartments__three-room three-room2 apartment"
 						/>
 						<path
 							d="M99.707 27.254h-1.372v36.561h1.372v-36.56z"
@@ -1259,7 +1221,7 @@
 							clip-rule="evenodd"
 							d="M98.335 63.816h11.391v4.94h25.115V27.254h-15.958l-.017-8.234-18.39 1.098v7.136h-2.141v36.561z"
 							fill="#CFD0D0"
-							class="apartments__single-room apartment"
+							class="apartments__single-room single-room6 apartment"
 						/>
 						<path
 							fill-rule="evenodd"
@@ -1372,7 +1334,7 @@
 							clip-rule="evenodd"
 							d="m156.031 33.275 17.292 1.604v80.319h-39.854V27.254h22.562v6.02z"
 							fill="#CFD0D0"
-							class="apartments__three-room apartment"
+							class="apartments__three-room three-room3 apartment"
 						/>
 						<path
 							d="M134.841 28.682h-1.372v1.372h1.372v-1.372zM154.603 28.682h-1.372v1.385h1.372v-1.385zM156.525 110.477h-3.294v3.294h3.294v-3.294zM134.841 112.399h-1.372v1.377h1.372v-1.377zM154.878 59.973h-1.647v4.94h1.647v-4.94zM134.841 65.156h-1.372v1.392h1.372v-1.392z"
@@ -1443,7 +1405,7 @@
 							clip-rule="evenodd"
 							d="M210.269 49.268h-14.438V33.275h-3.055l-18.903 1.604v80.319h39.525V76.99h-3.129V49.268z"
 							fill="#CFD0D0"
-							class="apartments__two-room apartment"
+							class="apartments__two-room two-room4 apartment"
 						/>
 						<path
 							fill-rule="evenodd"
@@ -1560,7 +1522,7 @@
 							clip-rule="evenodd"
 							d="M212.025 76.99h57.905v38.208h-57.191v-7.246h-.714V76.99z"
 							fill="#CFD0D0"
-							class="apartments__two-room apartment"
+							class="apartments__two-room two-room3 apartment"
 						/>
 						<path
 							d="M252.649 110.478h-3.295v3.293h3.295v-3.293zM233.874 105.152h-1.372v8.619h1.372v-8.619zM213.398 105.152h-1.373v1.372h1.373v-1.372zM269.93 76.99h-1.372v38.208h1.372V76.99zM213.398 76.99h-1.373v28.162h1.373V76.99z"
@@ -1619,7 +1581,7 @@
 							clip-rule="evenodd"
 							d="M194.458 27.254h19.709v-6.038l17.622-1.1h.331l-.002 7.138h.768V62.17h-11.364v6.587h-12.626V50.641h-14.438V27.253z"
 							fill="#CFD0D0"
-							class="apartments__single-room apartment"
+							class="apartments__single-room single-room5 apartment"
 						/>
 						<path
 							d="M215.044 28.682h-3.293v3.294h3.293v-3.294zM195.831 28.682h-1.373v1.372h1.373v-1.372zM232.886 28.682h-1.373v1.372h1.373v-1.372zM195.831 30.054h-1.373V50.64h1.373V30.054zM232.886 30.054h-1.373v32.114h1.373V30.054z"
@@ -1704,7 +1666,7 @@
 							clip-rule="evenodd"
 							d="M249.354 27.254h20.576v41.502h-38.417V20.133l17.841-1.113v8.234z"
 							fill="#CFD0D0"
-							class="apartments__single-room apartment"
+							class="apartments__single-room single-room4 apartment"
 						/>
 						<path
 							d="M269.929 27.254h-1.372v38.263h1.372V27.254z"
@@ -1761,7 +1723,7 @@
 							clip-rule="evenodd"
 							d="M268.557 27.254h22.363v-6.038l17.258-1.08h.693v7.118h.328v41.503h-23.997v-3.24h-16.645V27.254z"
 							fill="#CFD0D0"
-							class="apartments__single-room apartment"
+							class="apartments__single-room single-room3 apartment"
 						/>
 						<path
 							d="M294.205 28.682h-3.294v3.294h3.294v-3.294zM269.93 30.054h-1.373v35.463h1.373V30.054zM309.199 30.058h-1.373v38.698h1.373V30.058z"
@@ -1838,7 +1800,7 @@
 							clip-rule="evenodd"
 							d="M307.819 68.756h34.036v-41.5l-15.748-.002V19.02l-17.885 1.116-.01 7.118-.393.003v41.5z"
 							fill="#CFD0D0"
-							class="apartments__single-room apartment"
+							class="apartments__single-room single-room2 apartment"
 						/>
 						<path
 							d="M326.1 28.682h-3.294v3.294h3.294v-3.294zM341.854 28.682h-1.372v1.372h1.372v-1.372zM309.198 30.058h-1.372v38.698h1.372V30.058zM341.855 30.054h-1.372v38.702h1.372V30.054z"
@@ -1903,7 +1865,7 @@
 							clip-rule="evenodd"
 							d="M340.483 68.756h22.782v4.803h41.282V37.136h-.274v-6.727l-20.311-2.074v-1.08h-43.479v41.502z"
 							fill="#CFD0D0"
-							class="apartments__two-room apartment"
+							class="apartments__two-room two-room2 apartment"
 						/>
 						<path
 							d="M341.855 27.256h-1.372v41.5h1.372v-41.5zM404.547 72.187h-41.282v1.373h41.282v-1.373z"
@@ -2000,7 +1962,7 @@
 							clip-rule="evenodd"
 							d="M340.483 76.99h22.782v-4.803h41.282v36.424h-.274v6.727l-20.311 2.074v1.08h-43.479V76.99z"
 							fill="#CFD0D0"
-							class="apartments__two-room apartment"
+							class="apartments__two-room two-room1 apartment"
 						/>
 						<path
 							d="M403.12 101.145h-1.922v6.039h1.922v-6.039zM382.534 113.716h-1.922v3.349h1.922v-3.349zM364.089 113.771h-3.295v3.294h3.295v-3.294zM341.855 115.692h-1.372v1.373h1.372v-1.373zM403.12 72.187h-1.922v28.958h1.922V72.187z"
@@ -2109,7 +2071,7 @@
 							clip-rule="evenodd"
 							d="M307.826 76.99h34.029v41.5H328.57v8.785l-20.744-1.897V76.99z"
 							fill="#CFD0D0"
-							class="apartments__single-room apartment"
+							class="apartments__single-room single-room1 apartment"
 						/>
 						<path
 							d="M341.855 76.99h-1.372v41.502h1.372V76.99z"
@@ -2167,14 +2129,20 @@
 				</div>
 			</div>
 		</div>
+		<popup></popup>
 	</section>
 </template>
 
 <script>
+	import Popup from "./Popup.vue";
+
 	export default {
 		name: "Apartments",
+		components: {
+			Popup,
+		},
 		methods: {
-			showApartment(option) {
+			showApartments(option) {
 				const apartments = document.querySelector(
 					".apartments__schematics"
 				);
@@ -2240,10 +2208,273 @@
 					}
 				}
 			},
+			selectApartment(numberOfRooms) {
+				switch (numberOfRooms) {
+					case 1: {
+						const slide = document.querySelector(".slide__single");
+						const nav = slide.querySelectorAll(".slide__item");
+						nav.forEach((elementNav) => {
+							elementNav.addEventListener("mouseover", () => {
+								if (nav[0] == elementNav) {
+									document
+										.querySelector(".single-room1")
+										.classList.add("selected-one");
+								}
+								if (nav[1] == elementNav) {
+									document
+										.querySelector(".single-room2")
+										.classList.add("selected-one");
+								}
+								if (nav[2] == elementNav) {
+									document
+										.querySelector(".single-room3")
+										.classList.add("selected-one");
+								}
+								if (nav[3] == elementNav) {
+									document
+										.querySelector(".single-room4")
+										.classList.add("selected-one");
+								}
+								if (nav[4] == elementNav) {
+									document
+										.querySelector(".single-room5")
+										.classList.add("selected-one");
+								}
+								if (nav[5] == elementNav) {
+									document
+										.querySelector(".single-room6")
+										.classList.add("selected-one");
+								}
+								if (nav[6] == elementNav) {
+									document
+										.querySelector(".single-room7")
+										.classList.add("selected-one");
+								}
+								if (nav[7] == elementNav) {
+									document
+										.querySelector(".single-room8")
+										.classList.add("selected-one");
+								}
+								if (nav[8] == elementNav) {
+									document
+										.querySelector(".single-room9")
+										.classList.add("selected-one");
+								}
+							});
+							elementNav.addEventListener("mouseout", () => {
+								const apartments =
+									document.querySelectorAll(".apartment");
+								apartments.forEach((apartment) => {
+									apartment.classList.remove("selected-one");
+								});
+							});
+						});
+						break;
+					}
+					case 2: {
+						const slide = document.querySelector(".slide__two");
+						const nav = slide.querySelectorAll(".slide__item");
+						nav.forEach((elementNav) => {
+							elementNav.addEventListener("mouseover", () => {
+								if (nav[0] == elementNav) {
+									document
+										.querySelector(".two-room1")
+										.classList.add("selected-two");
+								}
+								if (nav[1] == elementNav) {
+									document
+										.querySelector(".two-room2")
+										.classList.add("selected-two");
+								}
+								if (nav[2] == elementNav) {
+									document
+										.querySelector(".two-room3")
+										.classList.add("selected-two");
+								}
+								if (nav[3] == elementNav) {
+									document
+										.querySelector(".two-room4")
+										.classList.add("selected-two");
+								}
+								if (nav[4] == elementNav) {
+									document
+										.querySelector(".two-room5")
+										.classList.add("selected-two");
+								}
+								if (nav[5] == elementNav) {
+									document
+										.querySelector(".two-room6")
+										.classList.add("selected-two");
+								}
+							});
+							elementNav.addEventListener("mouseout", () => {
+								const apartments =
+									document.querySelectorAll(".apartment");
+								apartments.forEach((apartment) => {
+									apartment.classList.remove("selected-two");
+								});
+							});
+						});
+						break;
+					}
+					case 3: {
+						const slide = document.querySelector(".slide__three");
+						const nav = slide.querySelectorAll(".slide__item");
+						nav.forEach((elementNav) => {
+							elementNav.addEventListener("mouseover", () => {
+								if (nav[0] == elementNav) {
+									document
+										.querySelector(".three-room1")
+										.classList.add("selected-three");
+								}
+								if (nav[1] == elementNav) {
+									document
+										.querySelector(".three-room2")
+										.classList.add("selected-three");
+								}
+								if (nav[2] == elementNav) {
+									document
+										.querySelector(".three-room3")
+										.classList.add("selected-three");
+								}
+							});
+							elementNav.addEventListener("mouseout", () => {
+								const apartments =
+									document.querySelectorAll(".apartment");
+								apartments.forEach((apartment) => {
+									apartment.classList.remove(
+										"selected-three"
+									);
+								});
+							});
+						});
+						break;
+					}
+				}
+			},
+			openApartment(variant) {
+				const popup = document.querySelector(".popup");
+				const popupImage = popup.querySelector(".popup__image");
+				popup.classList.add("open");
+
+				document
+					.querySelector("body")
+					.setAttribute("style", "overflow: hidden");
+
+				switch (variant) {
+					case "single1": {
+						popupImage.setAttribute(
+							"src",
+							"img/academ/apartments/single-room1.svg"
+						);
+						break;
+					}
+					case "single2": {
+						popupImage.setAttribute(
+							"src",
+							"img/academ/apartments/single-room2.svg"
+						);
+						break;
+					}
+					case "single3": {
+						popupImage.setAttribute(
+							"src",
+							"img/academ/apartments/single-room3.svg"
+						);
+						break;
+					}
+					case "single4": {
+						popupImage.setAttribute(
+							"src",
+							"img/academ/apartments/single-room4.svg"
+						);
+						break;
+					}
+					case "single5": {
+						popupImage.setAttribute(
+							"src",
+							"img/academ/apartments/single-room5.svg"
+						);
+						break;
+					}
+					case "single6": {
+						popupImage.setAttribute(
+							"src",
+							"img/academ/apartments/single-room6.svg"
+						);
+						break;
+					}
+					case "single7": {
+						popupImage.setAttribute(
+							"src",
+							"img/academ/apartments/single-room7.svg"
+						);
+						break;
+					}
+					case "single8": {
+						popupImage.setAttribute(
+							"src",
+							"img/academ/apartments/single-room8.svg"
+						);
+						break;
+					}
+					case "single9": {
+						popupImage.setAttribute(
+							"src",
+							"img/academ/apartments/single-room9.svg"
+						);
+						break;
+					}
+					case "two1": {
+						popupImage.setAttribute(
+							"src",
+							"img/academ/apartments/two-room1.svg"
+						);
+						break;
+					}
+					case "two2": {
+						popupImage.setAttribute(
+							"src",
+							"img/academ/apartments/two-room2.svg"
+						);
+						break;
+					}
+					case "two3": {
+						popupImage.setAttribute(
+							"src",
+							"img/academ/apartments/two-room3.svg"
+						);
+						break;
+					}
+					case "two4": {
+						popupImage.setAttribute(
+							"src",
+							"img/academ/apartments/two-room4.svg"
+						);
+						break;
+					}
+					case "two5": {
+						popupImage.setAttribute(
+							"src",
+							"img/academ/apartments/two-room5.svg"
+						);
+						break;
+					}
+					case "two6": {
+						popupImage.setAttribute(
+							"src",
+							"img/academ/apartments/two-room6.svg"
+						);
+						break;
+					}
+				}
+			},
 		},
 		mounted() {
-			this.showApartment(1);
-			this.selectApartments();
+			this.showApartments(1);
+			this.selectApartment(1);
+			this.selectApartment(2);
+			this.selectApartment(3);
 		},
 	};
 </script>
@@ -2314,7 +2545,9 @@
 				width: calc(100% - 8rem);
 				height: calc(100% - 8rem);
 				transition: all 0.4s ease;
+				z-index: -1;
 				&.open {
+					z-index: 2;
 					opacity: 1;
 					transform: translate(-50%, -50%);
 					transition: all 1s ease;
@@ -2329,6 +2562,9 @@
 							width: 100%;
 						}
 					}
+				}
+				&__item {
+					cursor: pointer;
 				}
 			}
 		}
@@ -2359,6 +2595,15 @@
 
 		&.selected {
 			fill: var(--gold);
+		}
+		&.selected-one {
+			fill: var(--light-gold) !important;
+		}
+		&.selected-two {
+			fill: var(--middle-gold) !important;
+		}
+		&.selected-three {
+			fill: var(--pink) !important;
 		}
 	}
 </style>
