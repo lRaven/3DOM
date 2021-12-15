@@ -5,7 +5,7 @@
 		</div>
 		<img alt="" class="popup__image" />
 	</div>
-	<div class="blur"></div>
+	<div class="blur" @click="closePopup()"></div>
 </template>
 
 <script>
@@ -58,6 +58,7 @@
 		}
 	}
 	.blur {
+		cursor: pointer;
 		position: fixed;
 		left: 0;
 		right: 0;

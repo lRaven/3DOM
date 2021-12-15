@@ -111,7 +111,9 @@
 				window.scrollTo(0, section - header, { behavior: "smooth" });
 			},
 		},
-		mounted() {},
+		mounted() {
+			this.scroll("#header");
+		},
 	};
 </script>
 

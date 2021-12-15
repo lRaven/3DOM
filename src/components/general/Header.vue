@@ -44,7 +44,7 @@
 			},
 		},
 		mounted() {
-			// this.scroll("#header");
+			this.scroll("#header");
 		},
 	};
 </script>

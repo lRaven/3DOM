@@ -190,21 +190,30 @@
 				</div>
 				<div class="slide slide__three">
 					<div class="wrapper">
-						<figure class="slide__item">
+						<figure
+							class="slide__item"
+							@click="openApartment('three1')"
+						>
 							<img
 								src="img/academ/apartments/three-room1.svg"
 								alt=""
 								class="apartments__miniature"
 							/>
 						</figure>
-						<figure class="slide__item">
+						<figure
+							class="slide__item"
+							@click="openApartment('three2')"
+						>
 							<img
 								src="img/academ/apartments/three-room2.svg"
 								alt=""
 								class="apartments__miniature"
 							/>
 						</figure>
-						<figure class="slide__item">
+						<figure
+							class="slide__item"
+							@click="openApartment('three3')"
+						>
 							<img
 								src="img/academ/apartments/three-room3.svg"
 								alt=""
@@ -2464,6 +2473,27 @@
 						popupImage.setAttribute(
 							"src",
 							"img/academ/apartments/two-room6.svg"
+						);
+						break;
+					}
+					case "three1": {
+						popupImage.setAttribute(
+							"src",
+							"img/academ/apartments/three-room1.svg"
+						);
+						break;
+					}
+					case "three2": {
+						popupImage.setAttribute(
+							"src",
+							"img/academ/apartments/three-room2.svg"
+						);
+						break;
+					}
+					case "three3": {
+						popupImage.setAttribute(
+							"src",
+							"img/academ/apartments/three-room3.svg"
 						);
 						break;
 					}
