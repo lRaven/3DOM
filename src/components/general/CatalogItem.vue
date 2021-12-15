@@ -1,5 +1,11 @@
 <template>
-	<div class="catalog__item" v-for="item in items" :key="item.id">
+	<a
+		to
+		class="catalog__item"
+		v-for="item in items"
+		:key="item.id"
+		:href="item.address"
+	>
 		<img :src="item.img" alt="" />
 		<div class="catalog__item-tags">
 			<div
@@ -15,7 +21,7 @@
 			<h3>{{ item.type }}</h3>
 			<h4>{{ item.title }}</h4>
 		</div>
-	</div>
+	</a>
 </template>
 
 <script>
@@ -45,6 +51,7 @@
 						style: `background-color: var(--white); color: var(--blue);`,
 						type: "Жилой комплекс",
 						title: "Dolce vita",
+						address: "#",
 					},
 					{
 						id: 2,
@@ -66,6 +73,7 @@
 						style: `background-color: var(--light-blue); color: var(--white);`,
 						type: "Клубный дом",
 						title: "Академический",
+						address: "#/academ",
 					},
 					{
 						id: 3,
@@ -91,10 +99,12 @@
 						style: `background-color: var(--white); color: var(--blue);`,
 						type: "Жилой комплекс",
 						title: "Андреевский",
+						address: "#",
 					},
 					{
 						id: 4,
 						img: `img/general/catalog-item4.png`,
+						address: "#",
 					},
 				],
 			};
@@ -118,11 +128,13 @@
 
 <style lang="scss" scoped>
 	.catalog__item {
+		display: block;
 		position: relative;
 		border-radius: 2.5rem;
 		padding: 2rem;
 		overflow: hidden;
 		height: 49rem;
+
 		img {
 			position: absolute;
 			left: 0;
