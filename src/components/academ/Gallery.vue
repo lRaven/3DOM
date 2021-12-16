@@ -43,7 +43,6 @@
 		padding-top: 2rem;
 		&__container {
 			width: 100%;
-			padding-left: 10rem;
 		}
 		&__photos {
 			display: flex;
@@ -51,6 +50,15 @@
 			justify-content: space-between;
 			gap: 3rem;
 			margin-bottom: 4rem;
+			height: 45rem;
+			figure{
+				max-height: 100%;
+				img{
+					object-fit:cover;
+					height: 45rem;
+					width: 100%;
+				}
+			}
 		}
 		&__footer {
 			display: flex;
