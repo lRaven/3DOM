@@ -3,10 +3,10 @@
 		<div class="gallery__container center">
 			<div class="gallery__photos">
 				<figure>
-					<img src="/img/academ/apartment-photo1.png" alt="" />
+					<img src="img/academ/apartment-photo1.png" alt="" />
 				</figure>
 				<figure>
-					<img src="/img/academ/apartment-photo2.png" alt="" />
+					<img src="img/academ/apartment-photo2.png" alt="" />
 				</figure>
 			</div>
 			<p>уровень комфорта</p>

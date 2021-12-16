@@ -63,6 +63,7 @@
 			gap: 2rem;
 			&-word {
 				font-size: 5rem;
+				font-weight: 100;
 			}
 			&-description {
 				color: var(--dark-green);
