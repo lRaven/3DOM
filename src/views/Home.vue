@@ -40,15 +40,15 @@
 		},
 		methods: {},
 		mounted() {
-			// const config = {
-			// 	headers: {
-			// 		Authorization: `token f757c9c6c815f6c885d372b9642682dc3d8fd036`,
-			// 	},
-			// };
-			// const axios = require("axios");
-			// axios
-			// 	.get("http://127.0.0.1:8001/auth/users/me", config)
-			// 	.then((responce) => console.log(responce));
+			const config = {
+				headers: {
+					Authorization: `token f757c9c6c815f6c885d372b9642682dc3d8fd036`,
+				},
+			};
+			const axios = require("axios");
+			axios
+				.get("http://127.0.0.1:8001/auth/users/", config)
+				.then((responce) => console.log(responce));
 		},
 	};
 </script>
