@@ -37,7 +37,7 @@
 				</div>
 			</div>
 			<div class="banner__right">
-				<img src="img/general/banner-img1.png" alt="" />
+				<img src="img/general/banner-img1.svg" alt="" />
 				<div class="banner__right-content">
 					<h2>Легко отделались!</h2>
 					<div class="banner__right-text">

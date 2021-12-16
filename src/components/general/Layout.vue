@@ -1,7 +1,7 @@
 <template>
 	<section class="layout center">
 		<div class="layout__item">
-			<img src="img/general/mortgage-bottom.png" alt="" />
+			<img src="img/general/mortgage-bottom.svg" alt="" />
 			<div class="layout__content">
 				<h2>Всё пойдёт по плану!</h2>
 				<p>

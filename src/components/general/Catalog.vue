@@ -8,7 +8,7 @@
 
 					<dropdown></dropdown>
 				</div>
-				<img src="img/general/catalog-img.png" alt="" />
+				<img src="img/general/catalog-img.svg" alt="" />
 				<div class="catalog__price">
 					<div class="catalog__price-range">
 						<range-slider
