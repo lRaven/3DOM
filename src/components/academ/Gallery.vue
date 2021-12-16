@@ -51,10 +51,10 @@
 			gap: 3rem;
 			margin-bottom: 4rem;
 			height: 45rem;
-			figure{
+			figure {
 				max-height: 100%;
-				img{
-					object-fit:cover;
+				img {
+					object-fit: cover;
 					height: 45rem;
 					width: 100%;
 				}
