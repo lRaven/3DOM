@@ -4,7 +4,7 @@
 		<main class="main">
 			<section class="login-wrapper center">
 				<form class="login" @submit="login">
-					<h1>Sign in</h1>
+					<h1 @click="showToken()">Sign in</h1>
 					<label>
 						User name:
 						<input
@@ -35,6 +35,7 @@
 
 <script>
 	import store from "../store";
+	import axios from "axios";
 	import Header from "../components/general/Header.vue";
 	import Footer from "../components/general/Footer.vue";
 
@@ -52,10 +53,10 @@
 				password: "",
 			};
 		},
+
 		methods: {
 			login(event) {
 				event.preventDefault();
-				const axios = require("axios");
 
 				axios
 					.post("http://localhost:8001/auth/token/login/", {
@@ -73,7 +74,8 @@
 					});
 			},
 			setLogined(token) {
-				console.log(token);
+				token = `token ${token}`;
+				store.commit("SET_TOKEN", token);
 			},
 		},
 		mounted() {
@@ -82,10 +84,9 @@
 			// 		Authorization: `token f757c9c6c815f6c885d372b9642682dc3d8fd036`,
 			// 	},
 			// };
-			// const axios = require("axios");
 			// axios
 			// 	.get("http://127.0.0.1:8001/auth/users/", config)
-			// 	.then((responce) => responce.data.users);
+			// 	.then((responce) => console.log(responce.data));
 		},
 	};
 </script>
@@ -94,5 +95,29 @@
 	section {
 		height: calc(100vh - 14rem);
 		min-height: inherit;
+	}
+	.login {
+		&-wrapper {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			h1 {
+				font-size: 4rem;
+				text-align: center;
+				margin-bottom: 2rem;
+			}
+			button {
+				padding: 2rem 3rem;
+			}
+			label {
+				padding: 2rem 3rem;
+				font-size: 2.4rem;
+			}
+			input {
+				border: 1px solid #000;
+				height: 100%;
+				padding: 2rem 3rem;
+			}
+		}
 	}
 </style>
