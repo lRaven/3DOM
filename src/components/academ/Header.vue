@@ -92,7 +92,7 @@
 						stroke-width="2"
 					/>
 				</svg>
-				<a class="link"> Войти в 3D-клуб </a>
+				<a href="#/login" class="link"> Войти в 3D-клуб </a>
 				<span>/</span>
 				<a class="link"> Регистрация </a>
 			</div>
