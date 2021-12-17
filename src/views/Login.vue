@@ -4,7 +4,7 @@
 		<main class="main">
 			<section class="login-wrapper center">
 				<form class="login" @submit="login">
-					<h1 @click="showToken()">Sign in</h1>
+					<h1>Sign in</h1>
 					<label>
 						User name:
 						<input
@@ -64,30 +64,35 @@
 						password: this.password,
 					})
 					.then((response) => {
-						this.setLogined(response.data.auth_token);
+						this.setToken(response.data.auth_token);
 						if (response.status == 200) {
-							this.$router.push("/");
+							// this.$router.push("/");
 						}
 					})
 					.catch((err) => {
 						console.error(err.response.status);
 					});
 			},
-			setLogined(token) {
-				token = `token ${token}`;
+
+			setToken(token) {
 				store.commit("SET_TOKEN", token);
+				this.getUserMe();
+			},
+			getUserMe() {
+				let token = store.getters.TOKEN;
+				axios
+					.get("http://localhost:8001/auth/users/me", {
+						headers: { Authorization: `token ${token}` },
+					})
+					.then((response) => this.setUser(response.data));
+			},
+
+			setUser(user) {
+				store.commit("SET_USER", user);
+				console.log(store.state.user.user);
 			},
 		},
-		mounted() {
-			// const config = {
-			// 	headers: {
-			// 		Authorization: `token f757c9c6c815f6c885d372b9642682dc3d8fd036`,
-			// 	},
-			// };
-			// axios
-			// 	.get("http://127.0.0.1:8001/auth/users/", config)
-			// 	.then((responce) => console.log(responce.data));
-		},
+		mounted() {},
 	};
 </script>
 

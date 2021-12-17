@@ -2,6 +2,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import Home from '../views/Home.vue';
 import Academ from '../views/Academ.vue';
 import Login from '../views/Login.vue';
+import Register from '../views/Register.vue';
 
 const routes = [
 	{
@@ -26,6 +27,14 @@ const routes = [
 		component: Login,
 		meta: {
 			title: 'Login',
+		}
+	},
+	{
+		path: '/register',
+		name: 'Register',
+		component: Register,
+		meta: {
+			title: 'Register',
 		}
 	}
 ]
