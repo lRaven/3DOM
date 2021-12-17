@@ -66,6 +66,7 @@
 					.then((response) => {
 						this.setToken(response.data.auth_token);
 						if (response.status == 200) {
+							//редирект на главную
 							// this.$router.push("/");
 						}
 					})
@@ -76,6 +77,7 @@
 
 			setToken(token) {
 				store.commit("SET_TOKEN", token);
+				localStorage.setItem("token", token);
 				this.getUserMe();
 			},
 			getUserMe() {

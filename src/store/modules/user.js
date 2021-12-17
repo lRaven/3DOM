@@ -1,14 +1,6 @@
 const state = () => ({
 	token: null,
-	user: {
-		username: '',
-		email: '',
-		first_name: '',
-		last_name: '',
-		role: '',
-		is_superuser: '',
-		avatar: '',
-	},
+	user: {},
 })
 const getters = {
 	TOKEN: state => {

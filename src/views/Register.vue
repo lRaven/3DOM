@@ -4,7 +4,7 @@
 		<main class="main">
 			<section class="login-wrapper center">
 				<form class="login" @submit="register()">
-					<h1>Sign in</h1>
+					<h1>Register</h1>
 					<label>
 						User name:
 						<input
@@ -25,7 +25,7 @@
 							id="password"
 						/>
 					</label>
-					<button type="submit">Login</button>
+					<button type="submit">Register</button>
 				</form>
 			</section>
 		</main>
