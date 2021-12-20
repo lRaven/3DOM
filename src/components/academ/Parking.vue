@@ -36,23 +36,33 @@
 				<div></div>
 				<div class="parking__footer-bottom">
 					<Btn :text="'Забронировать место'" class="gold"></Btn>
-					<img src="img/academ/parking.svg" alt="" />
+					<div @click="openPopup()">
+						<img src="img/academ/parking.svg" alt="" />
+					</div>
 				</div>
 			</div>
 		</div>
-		<popup />
 	</section>
 </template>
 
 <script>
 	import Btn from "./Btn.vue";
-	import Popup from "./Popup.vue";
 
 	export default {
 		name: "Parking",
 		components: {
 			Btn,
-			Popup,
+		},
+		methods: {
+			openPopup() {
+				const popup = document.querySelector(".popup");
+				const popupImage = popup.querySelector(".popup__image");
+				popupImage.setAttribute("src", "img/academ/parking.svg");
+				document
+					.querySelector("body")
+					.setAttribute("style", "overflow: hidden");
+				popup.classList.add("open");
+			},
 		},
 	};
 </script>
@@ -64,7 +74,7 @@
 		&__container {
 			display: grid;
 			grid-gap: 4rem;
-			grid-template-columns: 1fr 48.5rem;
+			grid-template-columns: 1fr 53rem;
 		}
 		&__img {
 			max-height: 63rem;
@@ -107,10 +117,11 @@
 				}
 			}
 			&-bottom {
-				img {
-					cursor: pointer;
-					width: 200px;
-					z-index: 3;
+				div {
+					cursor: pointer !important;
+					img {
+						width: 20rem;
+					}
 				}
 			}
 		}

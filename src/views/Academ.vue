@@ -14,6 +14,7 @@
 			<feedback />
 			<Footer />
 		</main>
+		<popup />
 	</div>
 </template>
 
@@ -33,6 +34,8 @@
 
 	import Footer from "../components/academ/Footer.vue";
 
+	import Popup from "../components/academ/Popup.vue";
+
 	export default {
 		components: {
 			Header,
@@ -47,7 +50,9 @@
 			Office,
 			Feedback,
 			Footer,
+			Popup,
 		},
+		methods: {},
 	};
 </script>
 

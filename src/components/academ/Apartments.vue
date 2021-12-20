@@ -2138,18 +2138,12 @@
 				</div>
 			</div>
 		</div>
-		<popup />
 	</section>
 </template>
 
 <script>
-	import Popup from "./Popup.vue";
-
 	export default {
 		name: "Apartments",
-		components: {
-			Popup,
-		},
 		methods: {
 			showApartments(option) {
 				const apartments = document.querySelector(
