@@ -30,16 +30,19 @@
 				alt=""
 			/>
 		</div>
+		<popup />
 	</section>
 </template>
 
 <script>
 	import Btn from "./Btn.vue";
+	import Popup from "./Popup.vue";
 
 	export default {
 		name: "Office",
 		components: {
 			Btn,
+			Popup,
 		},
 	};
 </script>

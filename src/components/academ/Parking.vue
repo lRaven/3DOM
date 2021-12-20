@@ -36,20 +36,23 @@
 				<div></div>
 				<div class="parking__footer-bottom">
 					<Btn :text="'Забронировать место'" class="gold"></Btn>
-					<img src="img/academ/apartment-img-miniature.png" alt="" />
+					<img src="img/academ/parking.svg" alt="" />
 				</div>
 			</div>
 		</div>
+		<popup />
 	</section>
 </template>
 
 <script>
 	import Btn from "./Btn.vue";
+	import Popup from "./Popup.vue";
 
 	export default {
 		name: "Parking",
 		components: {
 			Btn,
+			Popup,
 		},
 	};
 </script>
@@ -101,6 +104,13 @@
 					display: flex;
 					align-items: center;
 					gap: 10rem;
+				}
+			}
+			&-bottom {
+				img {
+					cursor: pointer;
+					width: 200px;
+					z-index: 3;
 				}
 			}
 		}

@@ -2138,7 +2138,7 @@
 				</div>
 			</div>
 		</div>
-		<popup></popup>
+		<popup />
 	</section>
 </template>
 

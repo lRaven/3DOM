@@ -16,6 +16,16 @@
 						/>
 					</label>
 					<label>
+						E-mail:
+						<input
+							required
+							v-model="email"
+							type="text"
+							placeholder="name"
+							id="email"
+						/>
+					</label>
+					<label>
 						Password:
 						<input
 							required
@@ -35,7 +45,7 @@
 
 <script>
 	import store from "../store";
-	// import axios from "axios";
+	import axios from "axios";
 	import Header from "../components/general/Header.vue";
 	import Footer from "../components/general/Footer.vue";
 
@@ -51,11 +61,31 @@
 			return {
 				username: "",
 				password: "",
+				email: "",
 			};
 		},
 
 		methods: {
-			register() {},
+			register(event) {
+				event.preventDefault();
+
+				axios
+					.post("http://localhost:8001/auth/users/", {
+						username: this.username,
+						password: this.password,
+						email: this.email,
+					})
+					.then((response) => {
+						this.setToken(response.data.auth_token);
+						if (response.status == 200) {
+							//редирект на главную
+							// this.$router.push("/");
+						}
+					})
+					.catch((err) => {
+						console.error(err.response.status);
+					});
+			},
 		},
 		mounted() {},
 	};
