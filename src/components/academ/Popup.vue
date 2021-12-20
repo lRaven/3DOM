@@ -34,7 +34,7 @@
 		transform: translate(-50%, -50%) scale(0);
 		z-index: 5;
 		width: max-content;
-		height: calc(100vh - 17rem);
+		height: calc(100vh - 6rem);
 		background-color: var(--white);
 		padding: 5rem;
 		transition: all 0.2s ease;
