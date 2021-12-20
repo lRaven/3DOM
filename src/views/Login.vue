@@ -27,6 +27,17 @@
 					</label>
 					<button type="submit">Login</button>
 				</form>
+				<form @submit="deleteUser">
+					<label>
+						Password to delete user:
+						<input
+							required
+							v-model="current_password"
+							type="password"
+							placeholder="password"
+						/>
+					</label>
+				</form>
 			</section>
 		</main>
 		<Footer />
@@ -51,6 +62,7 @@
 			return {
 				username: "",
 				password: "",
+				current_password: "",
 			};
 		},
 
@@ -78,20 +90,41 @@
 			setToken(token) {
 				store.commit("SET_TOKEN", token);
 				localStorage.setItem("token", token);
-				this.getUserMe();
+				this.getUserMe(token);
 			},
-			getUserMe() {
-				let token = store.getters.TOKEN;
+			getUserMe(token) {
 				axios
-					.get("http://localhost:8001/auth/users/me", {
+					.get("http://localhost:8001/auth/users/", {
 						headers: { Authorization: `token ${token}` },
 					})
-					.then((response) => this.setUser(response.data));
+					.then((response) => console.log(response.data));
 			},
 
-			setUser(user) {
-				store.commit("SET_USER", user);
-				console.log(store.state.user.user);
+			// setUser(user) {
+			// 	store.commit("SET_USER", user);
+			// 	console.log(store.state.user.user);
+			// },
+
+			deleteUser(event) {
+				event.preventDefault();
+
+				axios
+					.delete("http://localhost:8001/auth/users/8/", {
+						headers: {
+							Authorization: `token f757c9c6c815f6c885d372b9642682dc3d8fd036`,
+						},
+						current_password: this.current_password,
+					})
+					.then((response) => {
+						// if (response.status == 204) {
+						// 	//редирект на главную
+						// 	// this.$router.push("/");
+						// }
+						console.log(response);
+					})
+					.catch((err) => {
+						console.error(err.response.status);
+					});
 			},
 		},
 		mounted() {},
@@ -106,6 +139,7 @@
 	.login {
 		&-wrapper {
 			display: flex;
+			flex-direction: column;
 			justify-content: center;
 			align-items: center;
 			h1 {
@@ -126,5 +160,8 @@
 				padding: 2rem 3rem;
 			}
 		}
+	}
+	form + form {
+		margin-top: 20rem;
 	}
 </style>

@@ -3,7 +3,7 @@
 		<Header />
 		<main class="main">
 			<section class="login-wrapper center">
-				<form class="login" @submit="register()">
+				<form class="login" @submit="register">
 					<h1>Register</h1>
 					<label>
 						User name:
@@ -71,19 +71,19 @@
 
 				axios
 					.post("http://localhost:8001/auth/users/", {
+						email: this.email,
 						username: this.username,
 						password: this.password,
-						email: this.email,
 					})
 					.then((response) => {
-						this.setToken(response.data.auth_token);
-						if (response.status == 200) {
+						if (response.status == 201) {
 							//редирект на главную
 							// this.$router.push("/");
+							console.log("norm");
 						}
 					})
 					.catch((err) => {
-						console.error(err.response.status);
+						console.log(err.response.error);
 					});
 			},
 		},
