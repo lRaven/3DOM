@@ -10,25 +10,34 @@
 			</div>
 		</div>
 		<div class="office__right">
-			<div class="office__title">
+			<div class="office__right-container">
+				<div class="office__title">
+					<img
+						src="img/icon/academ/semicircle.svg"
+						class="office__semicircle"
+						alt=""
+					/>
+					<img
+						src="img/icon/academ/office.svg"
+						class="office__text"
+						alt=""
+					/>
+				</div>
 				<img
-					src="img/icon/academ/semicircle.svg"
-					class="office__semicircle"
+					src="img/academ/office-img.png"
+					class="office__img"
 					alt=""
 				/>
-				<img
-					src="img/icon/academ/office.svg"
-					class="office__text"
-					alt=""
-				/>
+				<Btn :text="'Выбрать офис'" class="gold"></Btn>
+				<div class="office__schemes">
+					<div @click="openPopup(1)">
+						<img src="img/academ/office1.svg" alt="" />
+					</div>
+					<div @click="openPopup(2)">
+						<img src="img/academ/office2.svg" alt="" />
+					</div>
+				</div>
 			</div>
-			<img src="img/academ/office-img.png" class="office__img" alt="" />
-			<Btn :text="'Выбрать офис'" class="gold"></Btn>
-			<img
-				src="img/academ/apartment-img-miniature2.png"
-				class="office__plan"
-				alt=""
-			/>
 		</div>
 		<popup />
 	</section>
@@ -43,6 +52,36 @@
 		components: {
 			Btn,
 			Popup,
+		},
+		methods: {
+			openPopup(imageNumber) {
+				const popup = document.querySelector(".popup");
+				const popupImage = popup.querySelector(".popup__image");
+				document
+					.querySelector("body")
+					.setAttribute("style", "overflow: hidden");
+				popup.classList.add("open");
+
+				switch (imageNumber) {
+					case 1: {
+						popupImage.setAttribute(
+							"src",
+							"img/academ/office1.svg"
+						);
+						break;
+					}
+					case 2: {
+						popupImage.setAttribute(
+							"src",
+							"img/academ/office2.svg"
+						);
+						break;
+					}
+					default: {
+						break;
+					}
+				}
+			},
 		},
 	};
 </script>
@@ -77,10 +116,15 @@
 		&__right {
 			background: url("/img/academ/office-bg2.png") center / cover
 				no-repeat;
+			display: flex;
+			align-items: center;
+			padding: 1.5rem 0;
+			&-container {
+				height: fit-content;
+			}
 		}
 		&__title {
 			position: relative;
-			margin-top: 13rem;
 			margin-bottom: 7rem;
 		}
 		&__semicircle {
@@ -102,8 +146,17 @@
 			width: min-content;
 			margin-bottom: 4.5rem;
 		}
-		&__plan {
-			margin-bottom: 10rem;
+		&__schemes {
+			display: flex;
+			gap: 1rem;
+			div {
+				cursor: pointer;
+			}
+			img {
+				cursor: pointer;
+				height: 12rem;
+			}
+			margin-bottom: 1rem;
 		}
 	}
 </style>
