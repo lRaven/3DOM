@@ -171,6 +171,7 @@
 			gap: 5rem;
 		}
 		&__description {
+			margin-top: -3rem;
 			font-size: var(--text-12);
 			line-height: 1.5rem;
 			font-weight: 500;
