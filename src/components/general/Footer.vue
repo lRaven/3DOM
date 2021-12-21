@@ -99,26 +99,16 @@
 		}
 		&__link {
 			a {
+				cursor: pointer;
 				position: relative;
 				display: inline-block;
 				color: var(--dark);
 				height: 100%;
 				padding: 1.2rem 0;
-				&::after {
-					content: "";
-					position: absolute;
-					bottom: 0.7rem;
-					left: 0;
-					width: 0;
-					height: 0.2rem;
-					background-color: var(--dark);
-					transition: all 0.2s ease;
-				}
+				transition: all 0.2s ease;
 				&:hover {
-					&::after {
-						width: 100%;
-						transition: all 0.3s ease;
-					}
+					color: var(--blue);
+					transition: all 0.3s ease;
 				}
 			}
 		}

@@ -21,7 +21,7 @@
 <style lang="scss">
 	@import "./assets/scss/center.scss";
 	@import "./assets/css/variables.css";
-	@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;600;800&display=swap");
+	@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;800&display=swap");
 
 	* {
 		scroll-behavior: smooth;

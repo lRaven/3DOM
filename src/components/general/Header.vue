@@ -91,22 +91,10 @@
 		}
 		&__link {
 			cursor: pointer;
-			position: relative;
-			&::after {
-				content: "";
-				position: absolute;
-				bottom: -0.3rem;
-				left: 0;
-				width: 0;
-				height: 0.2rem;
-				background-color: var(--dark);
-				transition: width 0.3s ease-in-out;
-			}
+			transition: all 0.2s ease;
 			&:hover {
-				&::after {
-					width: 100%;
-					transition: width 0.3s ease-in-out;
-				}
+				color: var(--blue);
+				transition: all 0.3s ease;
 			}
 		}
 
