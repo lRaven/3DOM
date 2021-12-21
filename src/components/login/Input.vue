@@ -5,6 +5,7 @@
 			:type="type"
 			:placeholder="placeholder"
 			class="input"
+			:name="name"
 		/>
 	</label>
 </template>
@@ -16,6 +17,7 @@
 			text: String,
 			type: String,
 			placeholder: String,
+			name: String,
 		},
 	};
 </script>

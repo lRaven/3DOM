@@ -94,7 +94,7 @@
 				</svg>
 				<a href="#/login" class="link"> Войти в 3D-клуб </a>
 				<span>/</span>
-				<a class="link"> Регистрация </a>
+				<a href="#/register" class="link"> Регистрация </a>
 			</div>
 		</div>
 	</header>

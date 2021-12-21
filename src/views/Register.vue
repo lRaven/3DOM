@@ -12,18 +12,21 @@
 							:text="'Логин:'"
 							:type="'text'"
 							:placeholder="'username'"
+							:name="'username'"
 							required
 						></Input>
 						<Input
 							:text="'E-mail:'"
 							:type="'email'"
 							:placeholder="'e-mail'"
+							:name="'email'"
 							required
 						></Input>
 						<Input
 							:text="'Пароль:'"
 							:type="'password'"
 							:placeholder="'password'"
+							:name="'password'"
 							required
 						></Input>
 						<Btn :text="'Зарегистрироваться'"></Btn>
@@ -162,7 +165,7 @@
 			padding: 5.2rem 11.5rem 1.5rem 11.5rem;
 			display: flex;
 			flex-direction: column;
-			gap: 5rem;
+			gap: 4rem;
 		}
 		&__description {
 			margin-top: -3rem;
