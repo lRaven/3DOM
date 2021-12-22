@@ -88,14 +88,14 @@
 			</div>
 
 			<nav class="nav">
-				<a class="link">Главная</a>
+				<router-link to="/" class="link">Главная</router-link>
 				<a class="link" @click="scroll('#apartments')">Квартиры</a>
 				<a class="link" @click="scroll('#office')">Офисы</a>
 				<a class="link" @click="scroll('#parking')">Парковки</a>
 				<a class="link" @click="scroll('#pantry')">Кладовки</a>
 				<a class="link">Ипотека</a>
 				<a class="link">Отделка</a>
-				<a class="link">Trade-in</a>
+				<router-link to="/trade-in" class="link">Trade-in</router-link>
 			</nav>
 		</div>
 		<div class="footer__footer">

@@ -2,7 +2,7 @@
 	<header class="header" id="header">
 		<div class="header__container center">
 			<div class="header__left">
-				<a href="#">
+				<router-link to="/">
 					<div class="header__logo">
 						<svg
 							width="150"
@@ -29,18 +29,19 @@
 								d="M0 34.0278H25.4961C30.6261 34.0278 34.7848 29.8927 34.7848 24.7917C34.7848 21.8279 33.3808 19.19 31.198 17.5C33.3808 15.81 34.7848 13.1722 34.7848 10.2083C34.7848 5.10737 30.6261 0.972222 25.4961 0.972222H19.1935L16.4354 5.72222H25.4961C28.0283 5.72222 30.0348 7.75615 30.0348 10.2083C30.0348 12.6605 28.0283 14.6944 25.4961 14.6944H11.2258L7.9677 20.3056H25.4961C28.0283 20.3056 30.0348 22.3395 30.0348 24.7917C30.0348 27.2439 28.0283 29.2778 25.4961 29.2778H2.75805L0 34.0278Z"
 								fill="#00212D"
 							/>
-						</svg>
-					</div>
-				</a>
+						</svg></div
+				></router-link>
 				<nav class="nav">
-					<a class="link">Главная</a>
+					<router-link to="/" class="link">Главная</router-link>
 					<a class="link" @click="scroll('#apartments')">Квартиры</a>
 					<a class="link" @click="scroll('#office')">Офисы</a>
 					<a class="link" @click="scroll('#parking')">Парковки</a>
 					<a class="link" @click="scroll('#pantry')">Кладовки</a>
 					<a class="link">Ипотека</a>
 					<a class="link">Отделка</a>
-					<a class="link">Trade-in</a>
+					<router-link to="/trade-in" class="link">
+						Trade-in
+					</router-link>
 				</nav>
 			</div>
 			<div class="header__right" v-if="authorized == false">

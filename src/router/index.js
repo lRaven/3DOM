@@ -12,7 +12,7 @@ const routes = [
 		name: 'Home',
 		component: Home,
 		meta: {
-			title: 'Home',
+			title: '3DOM',
 		}
 	},
 	{
