@@ -16,6 +16,7 @@
 
 	import Banner from "../components/trade-in/Banner.vue";
 	import Service from "../components/trade-in/Service.vue";
+	import Steps from "../components/trade-in/Steps.vue";
 
 	import Call from "../components/general/Call.vue";
 
@@ -28,6 +29,7 @@
 
 			Banner,
 			Service,
+			Steps,
 
 			Call,
 
