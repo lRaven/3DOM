@@ -83,9 +83,8 @@
 					})
 					.then((response) => {
 						if (response.status == 201) {
-							//редирект на главную
-							// this.$router.push("/");
-							console.log("norm");
+							//редирект на страницу авторизации
+							this.$router.push("/login");
 						}
 					})
 					.catch((err) => {
@@ -126,6 +125,8 @@
 		mounted() {
 			this.activateBtn();
 			this.setValueInputToVariable();
+			//проверка, авторизован ли пользователь
+			if (localStorage.getItem("token") !== null) this.$router.push("/");
 		},
 	};
 </script>

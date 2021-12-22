@@ -1,6 +1,8 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import Home from '../views/Home.vue';
+import TradeIn from '../views/TradeIn.vue';
 import Academ from '../views/Academ.vue';
+
 import Login from '../views/Login.vue';
 import Register from '../views/Register.vue';
 
@@ -11,6 +13,14 @@ const routes = [
 		component: Home,
 		meta: {
 			title: 'Home',
+		}
+	},
+	{
+		path: '/trade-in',
+		name: 'TradeIn',
+		component: TradeIn,
+		meta: {
+			title: 'Trade-in',
 		}
 	},
 	{
@@ -26,7 +36,7 @@ const routes = [
 		name: 'Login',
 		component: Login,
 		meta: {
-			title: 'Login',
+			title: 'Авторизация',
 		}
 	},
 	{
@@ -34,9 +44,9 @@ const routes = [
 		name: 'Register',
 		component: Register,
 		meta: {
-			title: 'Register',
+			title: 'Регистрация',
 		}
-	}
+	},
 ]
 
 const router = createRouter({

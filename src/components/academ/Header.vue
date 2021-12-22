@@ -43,7 +43,7 @@
 					<a class="link">Trade-in</a>
 				</nav>
 			</div>
-			<div class="header__right">
+			<div class="header__right" v-if="authorized == false">
 				<svg
 					width="46"
 					height="30"
@@ -96,6 +96,9 @@
 				<span>/</span>
 				<a href="#/register" class="link"> Регистрация </a>
 			</div>
+			<div class="header__right">
+				<p>zaregan</p>
+			</div>
 		</div>
 	</header>
 </template>
@@ -103,6 +106,11 @@
 <script>
 	export default {
 		name: "Header",
+		data() {
+			return {
+				authorized: false,
+			};
+		},
 		methods: {
 			scroll(id) {
 				const section = document.querySelector(id).offsetTop;
@@ -110,9 +118,16 @@
 
 				window.scrollTo(0, section - header, { behavior: "smooth" });
 			},
+			checkAuthorized() {
+				if (localStorage.getItem("token") === null) {
+					this.authorized = false;
+				} else this.authorized = true;
+				console.log(localStorage.getItem("token"));
+			},
 		},
 		mounted() {
 			this.scroll("#header");
+			this.checkAuthorized();
 		},
 	};
 </script>

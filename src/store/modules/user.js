@@ -8,7 +8,7 @@ const getters = {
 	},
 	USERS: state => {
 		return state.users;
-	}
+	},
 }
 const mutations = {
 	SET_TOKEN(state, payload) {
@@ -27,20 +27,7 @@ const mutations = {
 	},
 }
 const actions = {
-	SET_TOKEN: (context, payload) => {
-		context.commit('SET_TOKEN', payload)
-	},
-	SET_USER: (state, payload) => {
-		state.users.push({
-			username: payload.username,
-			email: payload.email,
-			first_name: payload.first_name,
-			last_name: payload.last_name,
-			role: payload.role,
-			is_superuser: payload.is_superuser,
-			avatar: payload.avatar,
-		});
-	}
+
 }
 export default {
 	state,

@@ -2,10 +2,7 @@
 	<div class="theme-container">
 		<Header />
 		<main class="main">
-			<banner />
-			<catalog />
-			<mortgage />
-			<layout />
+			<Banner />
 		</main>
 		<Footer />
 		<Call />
@@ -15,33 +12,23 @@
 <script>
 	import Header from "../components/general/Header.vue";
 
-	import Banner from "../components/general/Banner.vue";
-	import Catalog from "../components/general/Catalog.vue";
-	import Mortgage from "../components/general/Mortgage.vue";
-	import Layout from "../components/general/Layout.vue";
+	import Banner from "../components/trade-in/Banner.vue";
+
 	import Call from "../components/general/Call.vue";
 
 	import Footer from "../components/general/Footer.vue";
 
 	export default {
-		name: "Home",
+		name: "TradeIn",
 		components: {
 			Header,
 
 			Banner,
-			Catalog,
-			Mortgage,
-			Layout,
 
 			Call,
 
 			Footer,
 		},
-
-		data() {
-			return {};
-		},
-		methods: {},
 	};
 </script>
 

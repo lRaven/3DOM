@@ -30,7 +30,7 @@
 					<a href="#" target="_blank">Финансы</a>
 				</li>
 				<li class="footer__link">
-					<a href="#" target="_blank">Trade-in</a>
+					<router-link to="/trade-in">Trade-in</router-link>
 				</li>
 				<li class="footer__link">
 					<a href="#" target="_blank">Реквизиты</a>

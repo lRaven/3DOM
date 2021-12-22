@@ -32,6 +32,11 @@
 						</p>
 					</div>
 				</form>
+				<!-- <form class="login" @submit="deleteUser">
+					<div class="login__body">
+						<Btn :text="'Удалить аккаунт'"></Btn>
+					</div>
+				</form> -->
 			</section>
 		</main>
 		<Footer />
@@ -77,20 +82,20 @@
 						this.setToken(response.data.auth_token);
 						if (response.status == 200) {
 							//редирект на главную
-							// this.$router.push("/");
+							this.$router.push("/");
 						}
 					})
 					.catch((err) => {
 						console.error(err.response.status);
 					});
 			},
-			//запись токена в vuex
+			//*запись токена в vuex
 			setToken(token) {
 				store.commit("SET_TOKEN", token);
 				localStorage.setItem("token", token);
 				this.getUserMe(token);
 			},
-			//получение себя
+			//*получение себя
 			getUserMe(token) {
 				axios
 					.get("http://localhost:8001/auth/users/me", {
@@ -98,12 +103,12 @@
 					})
 					.then((response) => this.setUser(response.data));
 			},
-			//запись данных о себе во vuex
+			//*запись данных о себе во vuex
 			setUser(user) {
 				store.commit("SET_USER", user);
 				console.log(store.state.user.user);
 			},
-			//делает кнопку неактивной пока есть пусте поля ввода
+			//*делает кнопку неактивной пока есть пусте поля ввода
 			activateBtn() {
 				const btn = document.querySelector(".button");
 				const inputs = document.querySelectorAll("input");
@@ -115,7 +120,7 @@
 					});
 				});
 			},
-			//запись в переменную значения инпута для передачи на сервер
+			//*запись в переменную значения инпута для передачи на сервер
 			setValueInputToVariable() {
 				const inputs = document.querySelectorAll("input");
 				inputs.forEach((input) => {
@@ -127,10 +132,33 @@
 					});
 				});
 			},
+
+			//*удаление юзера
+			// deleteUser(event) {
+			// 	event.preventDefault();
+
+			// 	axios
+			// 		.delete("http://localhost:8001/auth/users/12/", {
+			// 			headers: {
+			// 				Authorization:
+			// 					"token 135875d453b0bf242f2a0dd1bff35bb72700eff5",
+			// 			},
+			// 		})
+			// 		.then((response) => {
+			// 			if (response.status == 204) {
+			// 				console.log("Аккаунт успешно удалён");
+			// 			}
+			// 		})
+			// 		.catch((err) => {
+			// 			console.error(err.response.status);
+			// 		});
+			// },
 		},
 		mounted() {
 			this.activateBtn();
 			this.setValueInputToVariable();
+			//*проверка, авторизован ли пользователь
+			if (localStorage.getItem("token") !== null) this.$router.push("/");
 		},
 	};
 </script>
