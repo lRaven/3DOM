@@ -38,7 +38,7 @@
 		&__real {
 			display: none;
 			&:checked + .checkbox__fake {
-				background-color: var(--middle-gray);
+				background-color: var(--blue);
 				color: var(--white);
 				transition: all 0.3s ease;
 			}
@@ -55,11 +55,11 @@
 			font-size: var(--text-16);
 			font-weight: 600;
 			background-color: var(--light-gray);
-			transition: all 0.2s ease;
+			transition: all 0.3s ease;
 			&:hover {
-				background-color: var(--middle-gray);
+				background-color: var(--blue);
 				color: var(--white);
-				transition: all 0.3s ease;
+				transition: all 0.5s ease;
 			}
 		}
 	}
