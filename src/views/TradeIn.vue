@@ -3,6 +3,8 @@
 		<Header />
 		<main class="main">
 			<Banner />
+			<Service />
+			<Steps />
 		</main>
 		<Footer />
 		<Call />
@@ -13,6 +15,7 @@
 	import Header from "../components/general/Header.vue";
 
 	import Banner from "../components/trade-in/Banner.vue";
+	import Service from "../components/trade-in/Service.vue";
 
 	import Call from "../components/general/Call.vue";
 
@@ -24,10 +27,32 @@
 			Header,
 
 			Banner,
+			Service,
 
 			Call,
 
 			Footer,
+		},
+		methods: {
+			//*красит ссылку Trade-in на странице
+			setTradeIn() {
+				const linksHeader = document.querySelectorAll(".header__link");
+				linksHeader.forEach((link) => {
+					if (link.textContent.toLowerCase().includes("trade-in")) {
+						link.setAttribute("style", "color: var(--blue);");
+					}
+				});
+				const linksFooter =
+					document.querySelectorAll(".footer__link a");
+				linksFooter.forEach((link) => {
+					if (link.textContent.toLowerCase().includes("trade-in")) {
+						link.setAttribute("style", "color: var(--blue);");
+					}
+				});
+			},
+		},
+		mounted() {
+			this.setTradeIn();
 		},
 	};
 </script>

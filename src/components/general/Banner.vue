@@ -67,10 +67,12 @@
 
 <style lang="scss" scoped>
 	.banner {
+		display: flex;
+		align-items: center;
 		background-color: var(--light-gray);
-		padding-top: 3.5rem;
 		&__container {
 			display: flex;
+			height: fit-content;
 			gap: 2.4rem;
 		}
 		&__left {

@@ -3,34 +3,34 @@
 		<div class="banner__container center">
 			<div class="banner__description">
 				<h1 class="banner__title">Trade-in</h1>
-				<h2 class="banner__subtitle">
+				<h3 class="banner__subtitle">
 					Trade-in — это программа, которая поможет обменять вашу
 					старую квартиру на новую
-				</h2>
+				</h3>
 				<Btn :text="'Оформить заявку'" class="blue"></Btn>
 			</div>
 			<div class="banner__img"></div>
 			<div class="banner__footer">
 				<div class="banner__info">
-					<h3 class="banner__info-title">Услуга страхования</h3>
-					<h4 class="banner__info-subtitle">
+					<h4 class="banner__info-title">Услуга страхования</h4>
+					<h5 class="banner__info-subtitle">
 						Финансовая защита всех<br />
 						участников сделки
-					</h4>
+					</h5>
 				</div>
 				<div class="banner__info">
-					<h3 class="banner__info-title">Независимая оценка жилья</h3>
-					<h4 class="banner__info-subtitle">
+					<h4 class="banner__info-title">Независимая оценка жилья</h4>
+					<h5 class="banner__info-subtitle">
 						Финансовая защита всех<br />
 						участников сделки
-					</h4>
+					</h5>
 				</div>
 				<div class="banner__info">
-					<h3 class="banner__info-title">Собираем документы</h3>
-					<h4 class="banner__info-subtitle">
+					<h4 class="banner__info-title">Собираем документы</h4>
+					<h5 class="banner__info-subtitle">
 						Финансовая защита всех<br />
 						участников сделки
-					</h4>
+					</h5>
 				</div>
 			</div>
 		</div>
