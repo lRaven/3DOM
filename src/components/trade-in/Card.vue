@@ -55,7 +55,9 @@
 					<p>с отделкой</p>
 				</div>
 				<div class="card__address">ул. Калинина, 54, Волгоград</div>
-				<div class="card__more">Подробнее</div>
+				<div class="card__more">
+					<a>Подробнее</a>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -80,11 +82,12 @@
 <style lang="scss" scoped>
 	.card {
 		border-radius: 3rem;
-		height: calc(100% - 5rem);
+
 		&__top {
 			border-radius: 3rem;
 			overflow: hidden;
 			box-shadow: 0 0 2rem rgba(0, 0, 0, 0.2);
+			max-height: 53rem;
 			img {
 				width: 100%;
 				object-fit: cover;
@@ -164,6 +167,41 @@
 		&__three {
 			border-bottom: 0.1rem solid #c4c4c4;
 			padding-bottom: 4rem;
+		}
+		&__bottom {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			grid-gap: 2rem;
+			padding: 0 6rem 4rem 6rem;
+			justify-content: space-between;
+			color: #979797;
+			font-size: var(--text-18);
+		}
+		&__finishing,
+		&__more {
+			text-align: right;
+		}
+		&__more a {
+			cursor: pointer;
+			position: relative;
+			color: var(--blue);
+			font-weight: 600;
+			&::after {
+				content: "";
+				position: absolute;
+				left: 0;
+				bottom: -0.2rem;
+				width: 0;
+				height: 0.2rem;
+				background-color: var(--blue);
+				transition: width 0.2s ease;
+			}
+			&:hover {
+				&::after {
+					width: 100%;
+					transition: width 0.3s ease;
+				}
+			}
 		}
 	}
 </style>

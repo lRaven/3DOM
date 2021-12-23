@@ -24,28 +24,63 @@
 				</div>
 			</div>
 			<div class="catalog__body">
-				<Card
-					:src="'img/trade-in/academ.png'"
-					:subtitle="'Жилой комплекс'"
-					:title="'АКАДЕМИЧЕСКИЙ'"
-					:min="'2,5 млн ₽'"
-					:studios="'2,5 млн ₽'"
-					:singleRoom="'2,5 млн ₽'"
-					:twoRoom="'2,5 млн ₽'"
-					:threeRoom="'2,5 млн ₽'"
-					class="catalog__item"
-				></Card>
-				<Card
-					:src="'img/trade-in/dolce-vita.png'"
-					:subtitle="'Жилой комплекс'"
-					:title="'DOLCE VITA'"
-					:min="'2,5 млн ₽'"
-					:studios="'2,5 млн ₽'"
-					:singleRoom="'2,5 млн ₽'"
-					:twoRoom="'2,5 млн ₽'"
-					:threeRoom="'2,5 млн ₽'"
-					class="catalog__item"
-				></Card>
+				<div class="catalog__el">
+					<div class="catalog__tags">
+						<Tag :text="'Волгоград'"></Tag>
+						<Tag :text="'Бизнес-класс'"></Tag>
+						<Tag :text="'Ворошиловский район'"></Tag>
+					</div>
+					<Card
+						:src="'img/trade-in/academ.png'"
+						:subtitle="'Клубный дом'"
+						:title="'АКАДЕМИЧЕСКИЙ'"
+						:min="'2,5 млн ₽'"
+						:studios="'2,5 млн ₽'"
+						:singleRoom="'2,5 млн ₽'"
+						:twoRoom="'2,5 млн ₽'"
+						:threeRoom="'2,5 млн ₽'"
+						class="catalog__item"
+					>
+					</Card>
+				</div>
+				<div class="catalog__el">
+					<div class="catalog__tags">
+						<Tag :text="'Волгоград'"></Tag>
+						<Tag :text="'Комфорт-класс'"></Tag>
+						<Tag :text="'Ворошиловский район'"></Tag>
+					</div>
+					<Card
+						:src="'img/trade-in/dolce-vita.png'"
+						:subtitle="'Жилой комплекс'"
+						:title="'DOLCE VITA'"
+						:min="'2,5 млн ₽'"
+						:studios="'2,5 млн ₽'"
+						:singleRoom="'2,5 млн ₽'"
+						:twoRoom="'2,5 млн ₽'"
+						:threeRoom="'2,5 млн ₽'"
+						class="catalog__item"
+					></Card>
+				</div>
+				<div class="catalog__el catalog__el-wide">
+					<div class="catalog__tags">
+						<Tag :text="'Ахтубинск'"></Tag>
+						<Tag :text="'Комфорт-класс'"></Tag>
+						<Tag :text="'Уникальное фасадное решение'"></Tag>
+						<Tag :text="'Огороженная территория'"></Tag>
+					</div>
+					<card-wide
+						:src="'img/trade-in/andreevsky.png'"
+						:subtitle="'Жилой комплекс'"
+						:title="'АНДРЕЕВСКИЙ'"
+						:min="'2,5 млн ₽'"
+						:studios="'2,5 млн ₽'"
+						:singleRoom="'2,5 млн ₽'"
+						:twoRoom="'2,5 млн ₽'"
+						:threeRoom="'2,5 млн ₽'"
+						class="catalog__item"
+					>
+					</card-wide>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -56,6 +91,8 @@
 	import RangeSlider from "../general/RangeSlider.vue";
 	import Checkbox from "../general/Checkbox.vue";
 	import Card from "../trade-in/Card.vue";
+	import CardWide from "../trade-in/CardWide.vue";
+	import Tag from "../trade-in/Tag.vue";
 
 	export default {
 		name: "Catalog",
@@ -64,6 +101,8 @@
 			RangeSlider,
 			Checkbox,
 			Card,
+			CardWide,
+			Tag,
 		},
 	};
 </script>
@@ -101,13 +140,26 @@
 		&__body {
 			display: grid;
 			grid-template-columns: repeat(2, 1fr);
+			grid-template-rows: 96rem 1fr;
 			grid-gap: 2rem 2.5rem;
 		}
-		&__item {
+		&__el {
+			position: relative;
+		}
+		&__tags {
+			position: absolute;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: flex-end;
+			gap: 0.7rem;
+			max-width: 30rem;
+			top: 2.8rem;
+			right: 2.8rem;
+			min-height: 2.7rem;
+		}
+		&__el {
 			&-wide {
 				grid-area: auto/1/auto/3;
-				margin-top: -5rem;
-				margin-bottom: -5rem;
 			}
 		}
 	}
