@@ -4,9 +4,7 @@
 			<div class="catalog__header">
 				<div class="catalog__address">
 					<h3 class="catalog__title">Живу красиво!</h3>
-					<p>Выбери своё жилище</p>
-
-					<dropdown></dropdown>
+					<Dropdown :description="'Выбери своё жилище'"></Dropdown>
 				</div>
 				<img src="img/general/catalog-img.svg" alt="" />
 				<div class="catalog__price">

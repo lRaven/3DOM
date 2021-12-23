@@ -9,7 +9,9 @@
 				</h3>
 				<Btn :text="'Оформить заявку'" class="blue"></Btn>
 			</div>
-			<div class="banner__img"></div>
+			<div class="banner__img">
+				<img src="img/trade-in/img.svg" alt="" />
+			</div>
 			<div class="banner__footer">
 				<div class="banner__info">
 					<h4 class="banner__info-title">Услуга страхования</h4>
@@ -65,25 +67,26 @@
 			height: fit-content;
 		}
 		&__description {
+			display: flex;
+			flex-direction: column;
 			.btn {
 				min-width: 24rem;
+				margin-top: auto;
 			}
 		}
 		&__title {
 			font-size: var(--text-80);
 			font-weight: 600;
 			color: var(--blue);
-			margin: 3rem 0 3rem 0;
+			margin: 5rem 0 5rem 0;
 		}
 		&__subtitle {
 			font-size: var(--text-28);
 			line-height: 3.5rem;
 			color: #6f6f6f;
 			max-width: 58rem;
-			margin-bottom: 5rem;
 		}
 		&__img {
-			background-color: var(--white);
 			min-height: 42rem;
 		}
 		&__footer {

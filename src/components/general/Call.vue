@@ -18,6 +18,7 @@
 		width: 8.4rem;
 		height: 8.4rem;
 		pointer-events: none;
+		z-index: 2;
 	}
 	.call {
 		user-select: none;

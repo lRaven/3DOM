@@ -1,0 +1,169 @@
+<template>
+	<div class="card">
+		<div class="card__top">
+			<img :src="src" alt="" />
+		</div>
+		<div class="card__body">
+			<div class="card__title">
+				<div>
+					<h4>{{ subtitle }}</h4>
+					<h3>{{ title }}</h3>
+				</div>
+				<div>
+					<img src="img/icon/trade-in/periscope.svg" alt="" />
+					<div class="card__min">
+						<span>от</span>
+						<span>{{ min }}</span>
+					</div>
+				</div>
+			</div>
+			<div class="card__prices">
+				<div class="card__price card__studios">
+					<p>Студии</p>
+					<div class="card__min">
+						<span>от</span>
+						<span>{{ studios }}</span>
+					</div>
+				</div>
+				<div class="card__price card__single">
+					<p>1-комн. квартиры</p>
+					<div class="card__min">
+						<span>от</span>
+						<span>{{ singleRoom }}</span>
+					</div>
+				</div>
+				<div class="card__price card__two">
+					<p>2-комн. квартиры</p>
+					<div class="card__min">
+						<span>от</span>
+						<span>{{ twoRoom }}</span>
+					</div>
+				</div>
+				<div class="card__price card__three">
+					<p>3-комн. квартиры</p>
+					<div class="card__min">
+						<span>от</span>
+						<span>{{ threeRoom }}</span>
+					</div>
+				</div>
+			</div>
+			<div class="card__bottom">
+				<div class="card__date">
+					<p>Заселение до 30.08.2022</p>
+				</div>
+				<div class="card__finishing">
+					<p>с отделкой</p>
+				</div>
+				<div class="card__address">ул. Калинина, 54, Волгоград</div>
+				<div class="card__more">Подробнее</div>
+			</div>
+		</div>
+	</div>
+</template>
+
+<script>
+	export default {
+		name: "Card",
+		props: {
+			src: String,
+			title: String,
+			subtitle: String,
+			min: String,
+			studios: String,
+			singleRoom: String,
+			twoRoom: String,
+			threeRoom: String,
+		},
+	};
+</script>
+
+<style lang="scss" scoped>
+	.card {
+		border-radius: 3rem;
+		height: calc(100% - 5rem);
+		&__top {
+			border-radius: 3rem;
+			overflow: hidden;
+			box-shadow: 0 0 2rem rgba(0, 0, 0, 0.2);
+			img {
+				width: 100%;
+				object-fit: cover;
+			}
+		}
+		&__body {
+			background-color: var(--white);
+			position: relative;
+			top: -5rem;
+			border-radius: 3rem;
+
+			z-index: 1;
+			box-shadow: 0 0 2rem rgba(0, 0, 0, 0.2);
+		}
+		&__title {
+			display: flex;
+			justify-content: space-between;
+			align-items: flex-end;
+			gap: 1.5rem;
+			color: #52555a;
+			border-bottom: 0.1rem solid #c4c4c4;
+			padding: 3rem 6rem;
+
+			h3 {
+				font-size: var(--text-36);
+				font-weight: 600;
+				text-transform: uppercase;
+			}
+			h4 {
+				font-size: var(--text-24);
+				font-weight: 600;
+				margin-bottom: 1rem;
+				margin-top: 0.2rem;
+			}
+			div:nth-child(2) {
+				display: flex;
+				flex-direction: column;
+				align-items: flex-end;
+				img {
+					height: 4rem;
+					margin-bottom: 1.2rem;
+				}
+			}
+		}
+		&__min {
+			display: flex;
+			width: max-content;
+			flex-direction: row !important;
+			span {
+				font-size: var(--text-18);
+				font-weight: 600;
+				+ span {
+					margin-left: 0.5rem;
+				}
+			}
+			span:nth-child(1) {
+				color: #979797;
+			}
+			span:nth-child(2) {
+				color: var(--blue);
+			}
+		}
+		&__prices {
+			padding: 4rem 6rem;
+		}
+		&__price {
+			display: flex;
+			justify-content: space-between;
+			+ .card__price {
+				margin-top: 2rem;
+			}
+			p {
+				font-size: var(--text-18);
+				color: var(--gray);
+			}
+		}
+		&__three {
+			border-bottom: 0.1rem solid #c4c4c4;
+			padding-bottom: 4rem;
+		}
+	}
+</style>

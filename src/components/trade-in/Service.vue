@@ -7,7 +7,9 @@
 					Быстрое получение финансирования на покупку новой квартиры.
 				</h3>
 			</div>
-			<div class="service__img"></div>
+			<div class="service__img">
+				<img src="img/trade-in/img.svg" alt="" />
+			</div>
 			<div class="service__description">
 				<div class="service__list">
 					<h3 class="service__list-title">Безопасность сделки</h3>
@@ -60,7 +62,7 @@
 		}
 		&__header {
 			grid-area: 1/1/1/3;
-			margin-bottom: 6rem;
+			margin-bottom: 2.5rem;
 		}
 		&__title {
 			font-size: var(--text-40);
@@ -73,9 +75,11 @@
 		&__img {
 			margin-left: 3.6rem;
 			min-height: 42rem;
-			background-color: #edf5fd;
 		}
 		&__description {
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-end;
 		}
 		&__list {
 			+ .service__list {

@@ -5,6 +5,7 @@
 			<Banner />
 			<Service />
 			<Steps />
+			<Catalog />
 		</main>
 		<Footer />
 		<Call />
@@ -17,6 +18,7 @@
 	import Banner from "../components/trade-in/Banner.vue";
 	import Service from "../components/trade-in/Service.vue";
 	import Steps from "../components/trade-in/Steps.vue";
+	import Catalog from "../components/trade-in/Catalog.vue";
 
 	import Call from "../components/general/Call.vue";
 
@@ -30,6 +32,7 @@
 			Banner,
 			Service,
 			Steps,
+			Catalog,
 
 			Call,
 
