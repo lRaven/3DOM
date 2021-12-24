@@ -6,11 +6,7 @@
 				<aside class="cabinet__aside">
 					<Navigation />
 				</aside>
-				<div class="cabinet__main">
-					<Dropdown :selected="'kakojto text'" />
-					<Dropdown  :selected="'kakojto text'"/>
-					<Dropdown  :selected="'kakojto text'"/>
-				</div>
+				<div class="cabinet__main"></div>
 			</section>
 		</main>
 		<Footer />
@@ -21,7 +17,7 @@
 	import Header from "../components/general/Header.vue";
 
 	import Navigation from "../components/cabinet/Navigation.vue";
-	import Dropdown from "../components/general/Dropdown.vue";
+	// import Dropdown from "../components/general/Dropdown.vue";
 
 	import Footer from "../components/general/Footer.vue";
 	export default {
@@ -30,7 +26,7 @@
 			Header,
 
 			Navigation,
-			Dropdown,
+			// Dropdown,
 
 			Footer,
 		},
