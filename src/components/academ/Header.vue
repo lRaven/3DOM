@@ -44,7 +44,7 @@
 					</router-link>
 				</nav>
 			</div>
-			<div class="header__right" v-if="authorized == false">
+			<div class="header__right" v-if="authorized === false">
 				<svg
 					width="46"
 					height="30"
@@ -97,7 +97,7 @@
 				<span>/</span>
 				<a href="#/register" class="link"> Регистрация </a>
 			</div>
-			<div class="header__right">
+			<div class="header__right" v-if="authorized === true">
 				<p>zaregan</p>
 			</div>
 		</div>

@@ -61,9 +61,9 @@
 					<img src="img/icon/general/favorites.svg" alt="" />
 					<span class="header__favorites-sum">3</span>
 				</div>
-				<div class="header__avatar">
+				<router-link to="/cabinet" class="header__avatar">
 					<img src="img/icon/general/avatar.svg" alt="" />
-				</div>
+				</router-link>
 			</div>
 		</div>
 	</header>

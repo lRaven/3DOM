@@ -2,8 +2,8 @@
 	<div class="dropdown">
 		<p class="dropdown__description">{{ description }}</p>
 		<div class="dropdown__selected">
-			<p>Выберите из списка</p>
-			<div class="dropdown__arrow" @click="reverseArrow()">
+			<p>{{ selected }}</p>
+			<div class="dropdown__arrow">
 				<img src="img/icon/general/arrow.svg" alt="" />
 			</div>
 		</div>
@@ -20,18 +20,24 @@
 		name: "Dropdown",
 		props: {
 			description: String,
+			selected: String,
 		},
 		methods: {
 			reverseArrow() {
-				const arrow = document.querySelector(".dropdown__arrow");
-				const dropdownSelected = document.querySelector(
-					".dropdown__selected"
-				);
-				const dropdownContent =
-					document.querySelector(".dropdown__content");
-				arrow.classList.toggle("open");
-				dropdownSelected.classList.toggle("open");
-				dropdownContent.classList.toggle("open");
+				const dropdowns = document.querySelectorAll(".dropdown");
+				dropdowns.forEach((dropdown) => {
+					const arrow = dropdown.querySelector(".dropdown__arrow");
+					arrow.addEventListener("click", () => {
+						const dropdownSelected = dropdown.querySelector(
+							".dropdown__selected"
+						);
+						const dropdownContent =
+							dropdown.querySelector(".dropdown__content");
+						arrow.classList.toggle("open");
+						dropdownSelected.classList.toggle("open");
+						dropdownContent.classList.toggle("open");
+					});
+				});
 			},
 			setOption() {
 				const options = document.querySelectorAll(".dropdown__item");
@@ -51,6 +57,7 @@
 			},
 		},
 		mounted() {
+			this.reverseArrow();
 			this.setOption();
 		},
 	};
@@ -98,7 +105,6 @@
 		&__content {
 			position: absolute;
 			left: 0;
-			top: 8.8rem;
 			width: 100%;
 			height: 0;
 			border-radius: 0 0 2rem 2rem;

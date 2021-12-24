@@ -5,6 +5,7 @@ import Academ from '../views/Academ.vue';
 
 import Login from '../views/Login.vue';
 import Register from '../views/Register.vue';
+import Cabinet from '../views/Cabinet.vue';
 
 const routes = [
 	{
@@ -45,6 +46,14 @@ const routes = [
 		component: Register,
 		meta: {
 			title: 'Регистрация',
+		}
+	},
+	{
+		path: '/cabinet',
+		name: 'Cabinet',
+		component: Cabinet,
+		meta: {
+			title: 'Личный кабинет',
 		}
 	},
 ]
