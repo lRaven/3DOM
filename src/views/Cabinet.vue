@@ -7,9 +7,9 @@
 					<Navigation />
 				</aside>
 				<div class="cabinet__main">
-					<Dropdown />
-					<Dropdown />
-					<Dropdown />
+					<Dropdown :selected="'kakojto text'" />
+					<Dropdown  :selected="'kakojto text'"/>
+					<Dropdown  :selected="'kakojto text'"/>
 				</div>
 			</section>
 		</main>

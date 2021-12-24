@@ -25,33 +25,44 @@
 		methods: {
 			reverseArrow() {
 				const dropdowns = document.querySelectorAll(".dropdown");
+
 				dropdowns.forEach((dropdown) => {
 					const arrow = dropdown.querySelector(".dropdown__arrow");
+					const options = dropdown.querySelectorAll(".dropdown__item");
+					const dropdownSelected = dropdown.querySelector(".dropdown__selected");
+					const dropdownContent = dropdown.querySelector(".dropdown__content");
+
 					arrow.addEventListener("click", () => {
-						const dropdownSelected = dropdown.querySelector(
-							".dropdown__selected"
-						);
-						const dropdownContent =
-							dropdown.querySelector(".dropdown__content");
 						arrow.classList.toggle("open");
 						dropdownSelected.classList.toggle("open");
 						dropdownContent.classList.toggle("open");
 					});
+				
+					options.forEach((option) => {
+						option.addEventListener("click", () => {
+							arrow.classList.remove("open");
+							dropdownSelected.classList.remove("open");
+							dropdownContent.classList.remove("open");
+						});
+					});
 				});
 			},
 			setOption() {
-				const options = document.querySelectorAll(".dropdown__item");
-				const selectedOption = document.querySelector(
-					".dropdown__selected p"
-				);
-				options.forEach((option) => {
-					option.addEventListener("click", () => {
-						selectedOption.textContent = option.textContent;
-						selectedOption.setAttribute(
-							"style",
-							"color: var(--dark);"
-						);
-						this.reverseArrow();
+				const dropdowns = document.querySelectorAll(".dropdown");
+				dropdowns.forEach((dropdown) => {
+					const options =
+						dropdown.querySelectorAll(".dropdown__item");
+					const selectedOption = dropdown.querySelector(
+						".dropdown__selected p"
+					);
+					options.forEach((option) => {
+						option.addEventListener("click", () => {
+							selectedOption.textContent = option.textContent;
+							selectedOption.setAttribute(
+								"style",
+								"color: var(--dark);"
+							);
+						});
 					});
 				});
 			},
