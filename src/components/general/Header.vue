@@ -71,6 +71,7 @@
 
 <script>
 	import store from "../../store";
+
 	export default {
 		name: "Header",
 		store,
@@ -91,31 +92,27 @@
 					});
 				}, 0);
 			},
+
 			checkAuthorized() {
-				if (localStorage.getItem("token") === null) {
+				if (store.getters.TOKEN === false) {
 					this.authorized = false;
-				} else this.authorized = true;
-				console.log(localStorage.getItem("token"));
-			},
-			setCounter() {
-				if (this.authorized === true) {
-					const counter = document.querySelector(
-						".header__favorites-sum"
-					);
-					if (counter.textContent)
-						counter.setAttribute(
-							"style",
-							"width: 2rem; height: 2rem;"
-						);
-					else counter.removeAttribute("style");
+				} else {
+					this.authorized = true;
 				}
 			},
 		},
 		mounted() {
 			this.scroll("#header");
-			this.checkAuthorized();
+
+			let counter = 1;
+			let check = setInterval(() => {
+				this.checkAuthorized();
+				counter = counter + 1;
+				if (counter === 10) {
+					clearInterval(check);
+				}
+			}, 200);
 		},
-		created() {},
 	};
 </script>
 

@@ -32,11 +32,6 @@
 						</p>
 					</div>
 				</form>
-				<!-- <form class="login" @submit="deleteUser">
-					<div class="login__body">
-						<Btn :text="'Удалить аккаунт'"></Btn>
-					</div>
-				</form> -->
 			</section>
 		</main>
 		<Footer />
@@ -60,6 +55,9 @@
 			Btn,
 			Footer,
 		},
+		props: {
+			authorizedio: String,
+		},
 
 		data() {
 			return {
@@ -79,10 +77,8 @@
 						password: this.password,
 					})
 					.then((response) => {
-						this.setToken(response.data.auth_token);
 						if (response.status == 200) {
-							//редирект на главную
-							this.$router.push("/");
+							this.setToken(response.data.auth_token);
 						}
 					})
 					.catch((err) => {
@@ -101,12 +97,18 @@
 					.get("http://localhost:8001/auth/users/me", {
 						headers: { Authorization: `token ${token}` },
 					})
-					.then((response) => this.setUser(response.data));
+					.then((response) => {
+						this.setUser(response.data);
+						this.$router.push("/cabinet");
+					})
+					.catch((err) => {
+						console.error(err);
+					});
 			},
 			//*запись данных о себе во vuex
 			setUser(user) {
 				store.commit("SET_USER", user);
-				console.log(store.state.user.user);
+				console.log(store.getters.USER);
 			},
 			//*делает кнопку неактивной пока есть пусте поля ввода
 			activateBtn() {
@@ -132,33 +134,13 @@
 					});
 				});
 			},
-
-			//*удаление юзера
-			// deleteUser(event) {
-			// 	event.preventDefault();
-
-			// 	axios
-			// 		.delete("http://localhost:8001/auth/users/12/", {
-			// 			headers: {
-			// 				Authorization:
-			// 					"token 135875d453b0bf242f2a0dd1bff35bb72700eff5",
-			// 			},
-			// 		})
-			// 		.then((response) => {
-			// 			if (response.status == 204) {
-			// 				console.log("Аккаунт успешно удалён");
-			// 			}
-			// 		})
-			// 		.catch((err) => {
-			// 			console.error(err.response.status);
-			// 		});
-			// },
 		},
 		mounted() {
 			this.activateBtn();
 			this.setValueInputToVariable();
-			//*проверка, авторизован ли пользователь
-			if (localStorage.getItem("token") !== null) this.$router.push("/");
+
+			//* проверка авторизован ли пользователь
+			this.getUserMe(localStorage.getItem("token"));
 		},
 	};
 </script>

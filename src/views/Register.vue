@@ -72,6 +72,7 @@
 		},
 
 		methods: {
+			//*регистрация нового юзера
 			register(event) {
 				event.preventDefault();
 
@@ -91,7 +92,19 @@
 						console.log(err.response.error);
 					});
 			},
-			//делает кнопку неактивной пока есть пусте поля ввода
+			getUserMe(token) {
+				axios
+					.get("http://localhost:8001/auth/users/me", {
+						headers: { Authorization: `token ${token}` },
+					})
+					.then(() => {
+						this.$router.push("/");
+					})
+					.catch((err) => {
+						console.error(err);
+					});
+			},
+			//*делает кнопку неактивной пока есть пусте поля ввода
 			activateBtn() {
 				const btn = document.querySelector(".button");
 				const inputs = document.querySelectorAll("input");
@@ -107,7 +120,7 @@
 					});
 				});
 			},
-			//запись в переменную значения инпута для передачи на сервер
+			//*запись в переменную значения инпута для передачи на сервер
 			setValueInputToVariable() {
 				const inputs = document.querySelectorAll("input");
 				inputs.forEach((input) => {
@@ -125,8 +138,9 @@
 		mounted() {
 			this.activateBtn();
 			this.setValueInputToVariable();
-			//проверка, авторизован ли пользователь
-			if (localStorage.getItem("token") !== null) this.$router.push("/");
+
+			//* проверка авторизован ли пользователь
+			this.getUserMe(localStorage.getItem("token"));
 		},
 	};
 </script>

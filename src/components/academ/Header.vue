@@ -105,11 +105,14 @@
 </template>
 
 <script>
+	import store from "../../store";
+
 	export default {
 		name: "Header",
+		store,
 		data() {
 			return {
-				authorized: false,
+				authorized: store.getters.AUTHORIZED,
 			};
 		},
 		methods: {
@@ -119,16 +122,15 @@
 
 				window.scrollTo(0, section - header, { behavior: "smooth" });
 			},
-			checkAuthorized() {
-				if (localStorage.getItem("token") === null) {
-					this.authorized = false;
-				} else this.authorized = true;
-				console.log(localStorage.getItem("token"));
-			},
+			// checkAuthorized() {
+			// 	if (localStorage.getItem("token") === null) {
+			// 		this.authorized = false;
+			// 	} else this.authorized = true;
+			// },
 		},
 		mounted() {
 			this.scroll("#header");
-			this.checkAuthorized();
+			// this.checkAuthorized();
 		},
 	};
 </script>

@@ -1,13 +1,13 @@
 const state = () => ({
-	token: null,
+	token: false,
 	user: {},
 })
 const getters = {
 	TOKEN: state => {
 		return state.token;
 	},
-	USERS: state => {
-		return state.users;
+	USER: state => {
+		return state.user;
 	},
 }
 const mutations = {

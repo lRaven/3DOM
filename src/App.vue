@@ -7,14 +7,45 @@
 </template>
 
 <script>
+	import store from "./store";
+	import axios from "axios";
+
 	export default {
+		store,
 		watch: {
 			$route(to) {
 				document.title = to.meta.title || "Default Title";
 			},
 		},
-
-		components: {},
+		data() {
+			return {
+				token: localStorage.getItem("token"),
+			};
+		},
+		methods: {
+			getUserMe(token) {
+				axios
+					.get("http://localhost:8001/auth/users/me", {
+						headers: { Authorization: `token ${token}` },
+					})
+					.then((response) => {
+						this.setUser(response.data, token);
+					})
+					.catch((err) => {
+						console.error(err);
+						console.log(store.getters.TOKEN);
+					});
+			},
+			//*запись данных о себе во vuex
+			setUser(user, token) {
+				store.commit("SET_USER", user);
+				store.commit("SET_TOKEN", token);
+				console.log(store.getters.USER);
+			},
+		},
+		mounted() {
+			this.getUserMe(this.token);
+		},
 	};
 </script>
 
@@ -46,7 +77,8 @@
 <style lang="scss" scoped>
 	#app,
 	.theme-container {
-		height: auto;
+		height: 100%;
+		min-height: 100vh;
 	}
 	.fade-enter-active,
 	.fade-leave-active {
