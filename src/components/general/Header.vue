@@ -2,7 +2,10 @@
 	<header class="header" id="header">
 		<div class="header__container center">
 			<div class="header__left">
-				<router-link to="/" class="header__logo animate__animated animate__fadeIn">
+				<router-link
+					to="/"
+					class="header__logo animate__animated animate__fadeIn"
+				>
 					<img src="img/icon/general/logo.svg" alt="logo" />
 				</router-link>
 
@@ -21,7 +24,10 @@
 					<a class="header__link">Офисы продаж</a>
 				</nav>
 			</div>
-			<div class="header__right animate__animated animate__fadeIn" v-if="authorized == false">
+			<div
+				class="header__right animate__animated animate__fadeIn"
+				v-if="authorized == false"
+			>
 				<svg
 					width="46"
 					height="30"
@@ -56,12 +62,23 @@
 					Регистрация
 				</router-link>
 			</div>
-			<div class="header__right animate__animated animate__fadeIn" v-if="authorized == true">
-				<div class="header__favorites">
+			<div
+				class="header__right animate__animated animate__fadeIn"
+				v-if="authorized == true"
+			>
+				<router-link
+					to="/cabinet"
+					class="header__favorites"
+					@click="moveToFavorites()"
+				>
 					<img src="img/icon/general/favorites.svg" alt="" />
 					<span class="header__favorites-sum">3</span>
-				</div>
-				<router-link to="/cabinet" class="header__avatar">
+				</router-link>
+				<router-link
+					to="/cabinet"
+					class="header__avatar"
+					@click="moveToCabinet()"
+				>
 					<img src="img/icon/general/avatar.svg" alt="" />
 				</router-link>
 			</div>
@@ -99,6 +116,13 @@
 				} else {
 					this.authorized = true;
 				}
+			},
+
+			moveToFavorites() {
+				store.commit("SET_TAB", "favorites");
+			},
+			moveToCabinet() {
+				store.commit("SET_TAB", "profile");
 			},
 		},
 		mounted() {

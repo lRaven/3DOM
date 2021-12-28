@@ -8,298 +8,330 @@
 				class="navigation__item animate__animated animate__fadeInUp wow"
 				@click="selectTab(1)"
 			>
-				<label>
-					<input type="radio" name="tabs-link" checked />
-					<div>
-						<img
-							v-if="tab !== 'profile'"
-							src="img/icon/cabinet/profile.svg"
-							class="navigation__img"
-							alt=""
-						/>
-						<img
-							v-if="tab == 'profile'"
-							src="img/icon/cabinet/profile-selected.svg"
-							class="navigation__img"
-							alt=""
-						/>
-					</div>
-					<p class="navigation__description">Мой профиль</p>
-				</label>
+				<div>
+					<img
+						v-if="tab === 'profile'"
+						src="img/icon/cabinet/profile-selected.svg"
+						class="navigation__img"
+						alt=""
+					/>
+					<img
+						v-else
+						src="img/icon/cabinet/profile.svg"
+						class="navigation__img"
+						alt=""
+					/>
+				</div>
+				<p
+					class="navigation__description-bold"
+					v-if="tab === 'profile'"
+				>
+					Мой профиль
+				</p>
+				<p class="navigation__description" v-else>Мой профиль</p>
 			</li>
 			<li
 				class="navigation__item animate__animated animate__fadeInUp wow"
 				@click="selectTab(2)"
 			>
-				<label>
-					<input type="radio" name="tabs-link" />
-					<div>
-						<img
-							v-if="tab !== 'booking'"
-							src="img/icon/cabinet/booking.svg"
-							class="navigation__img"
-							alt=""
-						/>
-						<img
-							v-if="tab == 'booking'"
-							src="img/icon/cabinet/booking-selected.svg"
-							class="navigation__img"
-							alt=""
-						/>
-					</div>
-					<p class="navigation__description">Бронирование</p>
-				</label>
+				<div>
+					<img
+						v-if="tab === 'booking'"
+						src="img/icon/cabinet/booking-selected.svg"
+						class="navigation__img"
+						alt=""
+					/>
+					<img
+						v-else
+						src="img/icon/cabinet/booking.svg"
+						class="navigation__img"
+						alt=""
+					/>
+				</div>
+				<p
+					class="navigation__description-bold"
+					v-if="tab === 'booking'"
+				>
+					Бронирование
+				</p>
+				<p class="navigation__description" v-else>Бронирование</p>
 			</li>
 			<li
 				class="navigation__item animate__animated animate__fadeInUp wow"
 				@click="selectTab(3)"
 			>
-				<label>
-					<input type="radio" name="tabs-link" />
-					<div>
-						<img
-							v-if="tab !== 'favorites'"
-							src="img/icon/cabinet/favorites.svg"
-							class="navigation__img"
-							alt=""
-						/>
-						<img
-							v-if="tab == 'favorites'"
-							src="img/icon/cabinet/favorites-selected.svg"
-							class="navigation__img"
-							alt=""
-						/>
-					</div>
-					<p class="navigation__description">Избранное</p>
-				</label>
+				<div>
+					<img
+						v-if="tab === 'favorites'"
+						src="img/icon/cabinet/favorites-selected.svg"
+						class="navigation__img"
+						alt=""
+					/>
+					<img
+						v-else
+						src="img/icon/cabinet/favorites.svg"
+						class="navigation__img"
+						alt=""
+					/>
+				</div>
+				<p
+					class="navigation__description-bold"
+					v-if="tab === 'favorites'"
+				>
+					Избранное
+				</p>
+				<p class="navigation__description" v-else>Избранное</p>
 			</li>
 			<li
 				class="navigation__item animate__animated animate__fadeInUp wow"
 				@click="selectTab(4)"
 			>
-				<label>
-					<input type="radio" name="tabs-link" />
-					<div>
-						<img
-							v-if="tab !== 'documents'"
-							src="img/icon/cabinet/documents.svg"
-							class="navigation__img"
-							alt=""
-						/>
-						<img
-							v-if="tab == 'documents'"
-							src="img/icon/cabinet/documents-selected.svg"
-							class="navigation__img"
-							alt=""
-						/>
-					</div>
-					<p class="navigation__description">Документы</p>
-				</label>
+				<div>
+					<img
+						v-if="tab === 'documents'"
+						src="img/icon/cabinet/documents-selected.svg"
+						class="navigation__img"
+						alt=""
+					/>
+					<img
+						v-else
+						src="img/icon/cabinet/documents.svg"
+						class="navigation__img"
+						alt=""
+					/>
+				</div>
+				<p
+					class="navigation__description-bold"
+					v-if="tab === 'documents'"
+				>
+					Документы
+				</p>
+				<p class="navigation__description" v-else>Документы</p>
 			</li>
 			<li
 				class="navigation__item animate__animated animate__fadeInUp wow"
 				@click="selectTab(5)"
 			>
-				<label>
-					<input type="radio" name="tabs-link" />
-					<div>
-						<img
-							v-if="tab !== 'meetings'"
-							src="img/icon/cabinet/meetings.svg"
-							class="navigation__img"
-							alt=""
-						/>
-						<img
-							v-if="tab == 'meetings'"
-							src="img/icon/cabinet/meetings-selected.svg"
-							class="navigation__img"
-							alt=""
-						/>
-					</div>
-					<p class="navigation__description">Встречи</p>
-				</label>
+				<div>
+					<img
+						v-if="tab === 'meetings'"
+						src="img/icon/cabinet/meetings-selected.svg"
+						class="navigation__img"
+						alt=""
+					/>
+					<img
+						v-else
+						src="img/icon/cabinet/meetings.svg"
+						class="navigation__img"
+						alt=""
+					/>
+				</div>
+				<p
+					class="navigation__description-bold"
+					v-if="tab === 'meetings'"
+				>
+					Встречи
+				</p>
+				<p class="navigation__description" v-else>Встречи</p>
 			</li>
 			<li
 				class="navigation__item animate__animated animate__fadeInUp wow"
 				@click="selectTab(6)"
 			>
-				<label>
-					<input type="radio" name="tabs-link" />
-					<div>
-						<img
-							v-if="tab !== 'mortgage'"
-							src="img/icon/cabinet/mortgage.svg"
-							class="navigation__img"
-							alt=""
-						/>
-						<img
-							v-if="tab == 'mortgage'"
-							src="img/icon/cabinet/mortgage-selected.svg"
-							class="navigation__img"
-							alt=""
-						/>
-					</div>
-					<p class="navigation__description">Ипотека</p>
-				</label>
+				<div>
+					<img
+						v-if="tab === 'mortgage'"
+						src="img/icon/cabinet/mortgage-selected.svg"
+						class="navigation__img"
+						alt=""
+					/>
+					<img
+						v-else
+						src="img/icon/cabinet/mortgage.svg"
+						class="navigation__img"
+						alt=""
+					/>
+				</div>
+				<p
+					class="navigation__description-bold"
+					v-if="tab === 'mortgage'"
+				>
+					Ипотека
+				</p>
+				<p class="navigation__description" v-else>Ипотека</p>
 			</li>
 			<li
 				class="navigation__item animate__animated animate__fadeInUp wow"
 				@click="selectTab(7)"
 			>
-				<label>
-					<input type="radio" name="tabs-link" />
-					<div>
-						<img
-							v-if="tab !== 'services'"
-							src="img/icon/cabinet/services.svg"
-							class="navigation__img"
-							alt=""
-						/>
-						<img
-							v-if="tab == 'services'"
-							src="img/icon/cabinet/services-selected.svg"
-							class="navigation__img"
-							alt=""
-						/>
-					</div>
-					<p class="navigation__description">Услуги</p>
-				</label>
+				<div>
+					<img
+						v-if="tab === 'services'"
+						src="img/icon/cabinet/services-selected.svg"
+						class="navigation__img"
+						alt=""
+					/>
+					<img
+						v-else
+						src="img/icon/cabinet/services.svg"
+						class="navigation__img"
+						alt=""
+					/>
+				</div>
+				<p
+					class="navigation__description-bold"
+					v-if="tab === 'services'"
+				>
+					Услуги
+				</p>
+				<p class="navigation__description" v-else>Услуги</p>
 			</li>
 			<li
 				class="navigation__item animate__animated animate__fadeInUp wow"
 				@click="selectTab(8)"
 			>
-				<label>
-					<input type="radio" name="tabs-link" />
-					<div>
-						<img
-							v-if="tab !== 'bonuses'"
-							src="img/icon/cabinet/bonuses.svg"
-							class="navigation__img"
-							alt=""
-						/>
-						<img
-							v-if="tab == 'bonuses'"
-							src="img/icon/cabinet/bonuses-selected.svg"
-							class="navigation__img"
-							alt=""
-						/>
-					</div>
-					<p class="navigation__description">Бонусы</p>
-				</label>
+				<div>
+					<img
+						v-if="tab === 'bonuses'"
+						src="img/icon/cabinet/bonuses-selected.svg"
+						class="navigation__img"
+						alt=""
+					/>
+					<img
+						v-else
+						src="img/icon/cabinet/bonuses.svg"
+						class="navigation__img"
+						alt=""
+					/>
+				</div>
+				<p
+					class="navigation__description-bold"
+					v-if="tab === 'bonuses'"
+				>
+					Бонусы
+				</p>
+				<p class="navigation__description" v-else>Бонусы</p>
 			</li>
 			<li
 				class="navigation__item animate__animated animate__fadeInUp wow"
 				@click="selectTab(9)"
 			>
-				<label>
-					<input type="radio" name="tabs-link" />
-					<div>
-						<img
-							v-if="tab !== 'crm'"
-							src="img/icon/cabinet/crm.svg"
-							class="navigation__img"
-							alt=""
-						/>
-						<img
-							v-if="tab == 'crm'"
-							src="img/icon/cabinet/crm-selected.svg"
-							class="navigation__img"
-							alt=""
-						/>
-					</div>
-					<p class="navigation__description">Кабинет CRM</p>
-				</label>
+				<div>
+					<img
+						v-if="tab === 'crm'"
+						src="img/icon/cabinet/crm-selected.svg"
+						class="navigation__img"
+						alt=""
+					/>
+					<img
+						v-else
+						src="img/icon/cabinet/crm.svg"
+						class="navigation__img"
+						alt=""
+					/>
+				</div>
+				<p class="navigation__description-bold" v-if="tab === 'crm'">
+					Кабинет CRM
+				</p>
+				<p class="navigation__description" v-else>Кабинет CRM</p>
 			</li>
 			<li
 				class="navigation__item animate__animated animate__fadeInUp wow"
 				@click="selectTab(10)"
 			>
-				<label>
-					<input type="radio" name="tabs-link" />
-					<div>
-						<img
-							v-if="tab !== 'feedback'"
-							src="img/icon/cabinet/feedback.svg"
-							class="navigation__img"
-							alt=""
-						/>
-						<img
-							v-if="tab == 'feedback'"
-							src="img/icon/cabinet/feedback-selected.svg"
-							class="navigation__img"
-							alt=""
-						/>
-					</div>
-					<p class="navigation__description">Обратная связь</p>
-				</label>
+				<div>
+					<img
+						v-if="tab === 'feedback'"
+						src="img/icon/cabinet/feedback-selected.svg"
+						class="navigation__img"
+						alt=""
+					/>
+					<img
+						v-else
+						src="img/icon/cabinet/feedback.svg"
+						class="navigation__img"
+						alt=""
+					/>
+				</div>
+				<p
+					class="navigation__description-bold"
+					v-if="tab === 'feedback'"
+				>
+					Обратная связь
+				</p>
+				<p class="navigation__description" v-else>Обратная связь</p>
 			</li>
 		</ul>
 		<div
 			class="navigation__hide animate__animated animate__fadeInRight wow"
 		>
 			<img src="img/icon/cabinet/arrow.svg" alt="" />
-			<p class="">Свернуть</p>
+			<p>Свернуть</p>
 		</div>
 	</div>
 </template>
 
 <script>
+	import store from "../../store";
+
 	export default {
 		name: "Navigation",
+		store,
 		data() {
 			return {
-				tab: "",
+				tab: store.getters.TAB,
 			};
 		},
 		methods: {
 			selectTab(options) {
 				switch (options) {
 					case 1: {
-						this.tab = "profile";
+						store.commit("SET_TAB", "profile");
 						break;
 					}
 					case 2: {
-						this.tab = "booking";
+						store.commit("SET_TAB", "booking");
 						break;
 					}
 					case 3: {
-						this.tab = "favorites";
+						store.commit("SET_TAB", "favorites");
 						break;
 					}
 					case 4: {
-						this.tab = "documents";
+						store.commit("SET_TAB", "documents");
 						break;
 					}
 					case 5: {
-						this.tab = "meetings";
+						store.commit("SET_TAB", "meetings");
 						break;
 					}
 					case 6: {
-						this.tab = "mortgage";
+						store.commit("SET_TAB", "mortgage");
 						break;
 					}
 					case 7: {
-						this.tab = "services";
+						store.commit("SET_TAB", "services");
 						break;
 					}
 					case 8: {
-						this.tab = "bonuses";
+						store.commit("SET_TAB", "bonuses");
 						break;
 					}
 					case 9: {
-						this.tab = "crm";
+						store.commit("SET_TAB", "crm");
 						break;
 					}
 					case 10: {
-						this.tab = "feedback";
+						store.commit("SET_TAB", "feedback");
 						break;
 					}
 				}
 			},
 		},
 		mounted() {
-			this.selectTab(1);
+			document.addEventListener("click", () => {
+				this.tab = store.getters.TAB;
+			});
 		},
 	};
 </script>
@@ -312,7 +344,7 @@
 		color: var(--white);
 		padding: 6rem 3rem;
 		border-radius: 0 0 3rem 0;
-		width: fit-content;
+		width: max-content;
 		&__title {
 			font-size: var(--text-30);
 			font-weight: 600;
@@ -321,33 +353,11 @@
 		&__list {
 		}
 		&__item {
-			&:nth-child(1) {
-				img.selected {
-					background: url("/img/icon/cabinet/profile-selected.svg")
-						center / contain no-repeat;
-				}
-			}
-			&:nth-child(2) {
-				img.selected {
-					background: url("/img/icon/cabinet/booking-selected.svg")
-						center / contain no-repeat;
-				}
-			}
-			label {
-				cursor: pointer;
-				display: flex;
-				align-items: center;
-				gap: 1.9rem;
-				padding: 1.7rem 0;
-			}
-			input {
-				display: none;
-				&:checked {
-					~ p {
-						font-weight: 700;
-					}
-				}
-			}
+			cursor: pointer;
+			display: flex;
+			align-items: center;
+			gap: 1.9rem;
+			padding: 1.7rem 0;
 			&:hover {
 				p {
 					font-weight: 700;
@@ -368,7 +378,10 @@
 			font-size: var(--text-18);
 			font-weight: 500;
 			transition: all 0.1s ease;
-			&.selected {
+			&-bold {
+				font-size: var(--text-18);
+				font-weight: 500;
+				transition: all 0.1s ease;
 				font-weight: 700;
 			}
 		}

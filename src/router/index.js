@@ -51,6 +51,7 @@ const routes = [
 	{
 		path: '/cabinet',
 		name: 'Cabinet',
+		props: true,
 		component: Cabinet,
 		meta: {
 			title: 'Личный кабинет',

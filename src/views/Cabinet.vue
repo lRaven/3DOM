@@ -9,9 +9,12 @@
 						Есть вопросы <br />
 						или предложения?
 					</p>
+					<Btn :text="'Напишите нам'" class="gray"></Btn>
 				</div>
 			</aside>
-			<div class="cabinet__main"></div>
+			<div class="cabinet__main">
+				<Profile />
+			</div>
 		</main>
 		<Footer />
 	</div>
@@ -23,6 +26,8 @@
 	import Header from "../components/general/Header.vue";
 
 	import Navigation from "../components/cabinet/Navigation.vue";
+	import Btn from "../components/general/Btn.vue";
+	import Profile from "../components/cabinet/Profile.vue";
 	// import Dropdown from "../components/general/Dropdown.vue";
 
 	import Footer from "../components/general/Footer.vue";
@@ -33,6 +38,8 @@
 			Header,
 
 			Navigation,
+			Btn,
+			Profile,
 			// Dropdown,
 
 			Footer,
@@ -73,9 +80,20 @@
 		min-height: 100vh;
 	}
 	.cabinet {
+		padding-bottom: 16rem;
+		display: flex;
 		&__hint {
 			margin-top: 9rem;
-			font-size: var(--text-18);
+			padding-left: 2.5rem;
+			p {
+				font-size: var(--text-16);
+				font-weight: 500;
+				margin-bottom: 2rem;
+			}
+		}
+		&__main {
+			padding: 6rem 2rem;
+			width: 100%;
 		}
 	}
 	footer {
