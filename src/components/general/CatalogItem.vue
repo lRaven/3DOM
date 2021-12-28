@@ -1,7 +1,7 @@
 <template>
 	<a
 		to
-		class="catalog__item animate__animated animate__fadeInUp wow"
+		class="catalog__item slideInLeft wow"
 		v-for="item in items"
 		:key="item.id"
 		:href="item.address"
