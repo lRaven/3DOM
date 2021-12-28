@@ -1,8 +1,13 @@
 <template>
 	<div class="navigation">
-		<h1 class="navigation__title">Личный кабинет</h1>
+		<h1 class="navigation__title animate__animated animate__fadeInUp wow">
+			Личный кабинет
+		</h1>
 		<ul class="navigation__list">
-			<li class="navigation__item" @click="selectTab(1)">
+			<li
+				class="navigation__item animate__animated animate__fadeInUp wow"
+				@click="selectTab(1)"
+			>
 				<label>
 					<input type="radio" name="tabs-link" checked />
 					<div>
@@ -22,7 +27,10 @@
 					<p class="navigation__description">Мой профиль</p>
 				</label>
 			</li>
-			<li class="navigation__item" @click="selectTab(2)">
+			<li
+				class="navigation__item animate__animated animate__fadeInUp wow"
+				@click="selectTab(2)"
+			>
 				<label>
 					<input type="radio" name="tabs-link" />
 					<div>
@@ -42,7 +50,10 @@
 					<p class="navigation__description">Бронирование</p>
 				</label>
 			</li>
-			<li class="navigation__item" @click="selectTab(3)">
+			<li
+				class="navigation__item animate__animated animate__fadeInUp wow"
+				@click="selectTab(3)"
+			>
 				<label>
 					<input type="radio" name="tabs-link" />
 					<div>
@@ -62,7 +73,10 @@
 					<p class="navigation__description">Избранное</p>
 				</label>
 			</li>
-			<li class="navigation__item" @click="selectTab(4)">
+			<li
+				class="navigation__item animate__animated animate__fadeInUp wow"
+				@click="selectTab(4)"
+			>
 				<label>
 					<input type="radio" name="tabs-link" />
 					<div>
@@ -82,7 +96,10 @@
 					<p class="navigation__description">Документы</p>
 				</label>
 			</li>
-			<li class="navigation__item" @click="selectTab(5)">
+			<li
+				class="navigation__item animate__animated animate__fadeInUp wow"
+				@click="selectTab(5)"
+			>
 				<label>
 					<input type="radio" name="tabs-link" />
 					<div>
@@ -102,7 +119,10 @@
 					<p class="navigation__description">Встречи</p>
 				</label>
 			</li>
-			<li class="navigation__item" @click="selectTab(6)">
+			<li
+				class="navigation__item animate__animated animate__fadeInUp wow"
+				@click="selectTab(6)"
+			>
 				<label>
 					<input type="radio" name="tabs-link" />
 					<div>
@@ -122,7 +142,10 @@
 					<p class="navigation__description">Ипотека</p>
 				</label>
 			</li>
-			<li class="navigation__item" @click="selectTab(7)">
+			<li
+				class="navigation__item animate__animated animate__fadeInUp wow"
+				@click="selectTab(7)"
+			>
 				<label>
 					<input type="radio" name="tabs-link" />
 					<div>
@@ -142,7 +165,10 @@
 					<p class="navigation__description">Услуги</p>
 				</label>
 			</li>
-			<li class="navigation__item" @click="selectTab(8)">
+			<li
+				class="navigation__item animate__animated animate__fadeInUp wow"
+				@click="selectTab(8)"
+			>
 				<label>
 					<input type="radio" name="tabs-link" />
 					<div>
@@ -162,7 +188,10 @@
 					<p class="navigation__description">Бонусы</p>
 				</label>
 			</li>
-			<li class="navigation__item" @click="selectTab(9)">
+			<li
+				class="navigation__item animate__animated animate__fadeInUp wow"
+				@click="selectTab(9)"
+			>
 				<label>
 					<input type="radio" name="tabs-link" />
 					<div>
@@ -182,7 +211,10 @@
 					<p class="navigation__description">Кабинет CRM</p>
 				</label>
 			</li>
-			<li class="navigation__item" @click="selectTab(10)">
+			<li
+				class="navigation__item animate__animated animate__fadeInUp wow"
+				@click="selectTab(10)"
+			>
 				<label>
 					<input type="radio" name="tabs-link" />
 					<div>
@@ -203,9 +235,11 @@
 				</label>
 			</li>
 		</ul>
-		<div class="navigation__hide">
+		<div
+			class="navigation__hide animate__animated animate__fadeInRight wow"
+		>
 			<img src="img/icon/cabinet/arrow.svg" alt="" />
-			<p>Свернуть</p>
+			<p class="">Свернуть</p>
 		</div>
 	</div>
 </template>
