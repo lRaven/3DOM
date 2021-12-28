@@ -4,6 +4,12 @@
 		<main class="cabinet center">
 			<aside class="cabinet__aside">
 				<Navigation />
+				<div class="cabinet__hint">
+					<p>
+						Есть вопросы <br />
+						или предложения?
+					</p>
+				</div>
 			</aside>
 			<div class="cabinet__main"></div>
 		</main>
@@ -67,6 +73,10 @@
 		min-height: 100vh;
 	}
 	.cabinet {
+		&__hint {
+			margin-top: 9rem;
+			font-size: var(--text-18);
+		}
 	}
 	footer {
 	}

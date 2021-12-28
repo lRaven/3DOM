@@ -4,7 +4,7 @@
 		<ul class="navigation__list">
 			<li class="navigation__item" @click="selectTab(1)">
 				<label>
-					<input type="radio" name="tabs-link" />
+					<input type="radio" name="tabs-link" checked />
 					<div>
 						<img
 							v-if="tab !== 'profile'"
@@ -194,7 +194,7 @@
 						/>
 						<img
 							v-if="tab == 'feedback'"
-							src="img/icon/cabinet/feedback.svg"
+							src="img/icon/cabinet/feedback-selected.svg"
 							class="navigation__img"
 							alt=""
 						/>
@@ -265,7 +265,7 @@
 			},
 		},
 		mounted() {
-			this.selectTab();
+			this.selectTab(1);
 		},
 	};
 </script>
