@@ -1,7 +1,7 @@
 <template>
 	<footer class="footer center" id="footer">
 		<div class="footer__top">
-			<div class="footer__socials">
+			<div class="footer__socials animate__animated animate__fadeInUp wow">
 				<p>Соцсети</p>
 				<a href="#" target="_blank" class="footer__social">
 					<img src="img/icon/general/fb.svg" alt="" />
@@ -19,7 +19,7 @@
 					<img src="img/icon/general/vk.svg" alt="" />
 				</a>
 			</div>
-			<ul class="footer__links">
+			<ul class="footer__links animate__animated animate__fadeInUp wow">
 				<li class="footer__link">
 					<a href="#" target="_blank">О компании</a>
 				</li>
@@ -44,7 +44,7 @@
 			</ul>
 		</div>
 		<div class="footer__bottom">
-			<p>
+			<p class="animate__animated animate__fadeInUp wow">
 				Любая информация, представленная на данном сайте, носит
 				исключительно информационный характер и ни при каких условиях не
 				является публичной офертой, определяемой положениями статьи 437

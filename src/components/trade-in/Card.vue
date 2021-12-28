@@ -6,40 +6,40 @@
 		<div class="card__body">
 			<div class="card__title">
 				<div>
-					<h4>{{ subtitle }}</h4>
-					<h3>{{ title }}</h3>
+					<h4 class="animate__animated animate__fadeInUp wow">{{ subtitle }}</h4>
+					<h3 class="animate__animated animate__fadeInUp wow">{{ title }}</h3>
 				</div>
 				<div>
-					<img src="img/icon/trade-in/periscope.svg" alt="" />
-					<div class="card__min">
+					<img src="img/icon/trade-in/periscope.svg" alt="" class="animate__animated animate__fadeInUp wow" />
+					<div class="card__min animate__animated animate__fadeInUp wow">
 						<span>от</span>
 						<span>{{ min }}</span>
 					</div>
 				</div>
 			</div>
 			<div class="card__prices">
-				<div class="card__price card__studios">
+				<div class="card__price card__studios animate__animated animate__fadeInUp wow">
 					<p>Студии</p>
 					<div class="card__min">
 						<span>от</span>
 						<span>{{ studios }}</span>
 					</div>
 				</div>
-				<div class="card__price card__single">
+				<div class="card__price card__single animate__animated animate__fadeInUp wow">
 					<p>1-комн. квартиры</p>
 					<div class="card__min">
 						<span>от</span>
 						<span>{{ singleRoom }}</span>
 					</div>
 				</div>
-				<div class="card__price card__two">
+				<div class="card__price card__two animate__animated animate__fadeInUp wow">
 					<p>2-комн. квартиры</p>
 					<div class="card__min">
 						<span>от</span>
 						<span>{{ twoRoom }}</span>
 					</div>
 				</div>
-				<div class="card__price card__three">
+				<div class="card__price card__three animate__animated animate__fadeInUp wow">
 					<p>3-комн. квартиры</p>
 					<div class="card__min">
 						<span>от</span>
@@ -47,7 +47,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="card__bottom">
+			<div class="card__bottom animate__animated animate__fadeInUp wow">
 				<div class="card__date">
 					<p>Заселение до 30.08.2022</p>
 				</div>

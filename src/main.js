@@ -5,5 +5,6 @@ import router from './router'
 import Vuex from 'vuex'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import 'animate.css';
 
 createApp(App).use(router, store, Vuex, axios, VueAxios).mount('#app')

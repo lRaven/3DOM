@@ -2,12 +2,13 @@
 	<section class="catalog">
 		<div class="catalog__container center">
 			<div class="catalog__header">
-				<h2 class="catalog__title">
+				<h2 class="catalog__title animate__animated animate__fadeInUp wow">
 					Вам остается выбрать квартиру в одном из наших проектов
 				</h2>
 				<div class="catalog__settings">
 					<Dropdown
 						:description="'Выберите один из наших проектов:'"
+						class="animate__animated animate__fadeInUp wow"
 					></Dropdown>
 					<RangeSlider
 						title="Укажите примерную стоимость, млн руб"
@@ -15,16 +16,16 @@
 						:max="100"
 						:value="22.2"
 						:step="0.2"
-						class="min-max"
+						class="min-max animate__animated animate__fadeInUp wow"
 						:minMax="true"
 					></RangeSlider>
-					<div class="catalog__checkboxes">
+					<div class="catalog__checkboxes animate__animated animate__fadeInUp wow">
 						<Checkbox />
 					</div>
 				</div>
 			</div>
 			<div class="catalog__body">
-				<div class="catalog__el">
+				<div class="catalog__el animate__animated animate__fadeInUp wow">
 					<div class="catalog__tags">
 						<Tag :text="'Волгоград'"></Tag>
 						<Tag :text="'Бизнес-класс'"></Tag>
@@ -43,7 +44,7 @@
 					>
 					</Card>
 				</div>
-				<div class="catalog__el">
+				<div class="catalog__el animate__animated animate__fadeInUp wow">
 					<div class="catalog__tags">
 						<Tag :text="'Волгоград'"></Tag>
 						<Tag :text="'Комфорт-класс'"></Tag>
@@ -61,7 +62,7 @@
 						class="catalog__item"
 					></Card>
 				</div>
-				<div class="catalog__el catalog__el-wide">
+				<div class="catalog__el catalog__el-wide animate__animated animate__fadeInUp wow">
 					<div class="catalog__tags">
 						<Tag :text="'Ахтубинск'"></Tag>
 						<Tag :text="'Комфорт-класс'"></Tag>

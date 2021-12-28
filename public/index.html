@@ -6,7 +6,6 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width,initial-scale=1.0">
 	<link rel="stylesheet" href="css/nullstyle.css">
-	<link rel="stylesheet" href="css/animate.css">
 	<link rel="icon" href="<%= BASE_URL %>favicon.ico">
 	<title>
 		<%= htmlWebpackPlugin.options.title %>
@@ -51,9 +50,16 @@
 		}
 	</style>
 	<!-- built files will be auto injected -->
-	<script src="js/WOW.js"></script>
+	<script src="js/wow.min.js"></script>
 	<script>
-		new WOW().init();
+		let wow = new WOW({
+			boxClass: 'wow',      // класс блока по умолчанию
+			animateClass: 'animated', // класс анимации по умолчанию
+			offset: 0,          // смещение от нижнего края браузера по умолчанию
+			mobile: true,       // поддержка мобильных по умолчанию
+			live: true        // постоянно проверяйте наличие новых WOW-элементов на странице по умолчанию
+		});
+		wow.init();
 	</script>
 </body>
 

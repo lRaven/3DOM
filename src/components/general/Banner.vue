@@ -2,7 +2,7 @@
 	<section class="banner" id="banner">
 		<div class="banner__container center">
 			<div class="banner__left">
-				<div class="banner__order">
+				<div class="banner__order animate__animated animate__fadeInLeft wow">
 					<h2>«Зачётная квартира»</h2>
 					<p>
 						Вам предоставляется уникальная возможность приобрести
@@ -17,7 +17,7 @@
 						/>
 					</div>
 				</div>
-				<div class="banner__watch">
+				<div class="banner__watch  animate__animated animate__fadeInLeft wow">
 					<h2>На всё готовенькое!</h2>
 					<div class="banner__watch-left">
 						<img src="img/general/banner-img2.png" alt="" />
@@ -37,8 +37,8 @@
 				</div>
 			</div>
 			<div class="banner__right">
-				<img src="img/general/banner-img1.svg" alt="" />
-				<div class="banner__right-content">
+				<img src="img/general/banner-img1.svg" alt="" class="animate__animated animate__fadeInRight wow"/>
+				<div class="banner__right-content animate__animated animate__fadeInRight wow">
 					<h2>Легко отделались!</h2>
 					<div class="banner__right-text">
 						<span>Предчистовая отделка</span>

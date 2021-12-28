@@ -2,11 +2,11 @@
 	<header class="header" id="header">
 		<div class="header__container center">
 			<div class="header__left">
-				<router-link to="/" class="header__logo">
+				<router-link to="/" class="header__logo animate__animated animate__fadeIn">
 					<img src="img/icon/general/logo.svg" alt="logo" />
 				</router-link>
 
-				<nav class="header__nav">
+				<nav class="header__nav animate__animated animate__fadeIn">
 					<a class="header__link"> Ремонты </a>
 					<a class="header__link" @click="scroll('#catalog')">
 						Квартиры
@@ -21,7 +21,7 @@
 					<a class="header__link">Офисы продаж</a>
 				</nav>
 			</div>
-			<div class="header__right" v-if="authorized == false">
+			<div class="header__right animate__animated animate__fadeIn" v-if="authorized == false">
 				<svg
 					width="46"
 					height="30"
@@ -56,7 +56,7 @@
 					Регистрация
 				</router-link>
 			</div>
-			<div class="header__right" v-if="authorized == true">
+			<div class="header__right animate__animated animate__fadeIn" v-if="authorized == true">
 				<div class="header__favorites">
 					<img src="img/icon/general/favorites.svg" alt="" />
 					<span class="header__favorites-sum">3</span>

@@ -1,8 +1,8 @@
 <template>
 	<section class="layout center">
 		<div class="layout__item">
-			<img src="img/general/mortgage-bottom.svg" alt="" />
-			<div class="layout__content">
+			<img src="img/general/mortgage-bottom.svg" alt=""  class="animate__animated animate__fadeInLeft wow"/>
+			<div class="layout__content  animate__animated animate__fadeInRight wow">
 				<h2>Всё пойдёт по плану!</h2>
 				<p>
 					Вы можете выбрать планировку квартиры уже сейчас. Отметьте
@@ -31,6 +31,7 @@
 
 <style lang="scss" scoped>
 	.layout {
+		overflow: visible;
 		padding-top: 1.5rem;
 		min-height: calc(100vh - 14rem);
 		&__item {

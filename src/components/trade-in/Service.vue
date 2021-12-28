@@ -2,16 +2,16 @@
 	<section class="service">
 		<div class="service__container center">
 			<div class="service__header">
-				<h2 class="service__title">Удобный сервис</h2>
-				<h3 class="service__subtitle">
+				<h2 class="service__title animate__animated animate__fadeInUp wow">Удобный сервис</h2>
+				<h3 class="service__subtitle animate__animated animate__fadeInUp wow">
 					Быстрое получение финансирования на покупку новой квартиры.
 				</h3>
 			</div>
 			<div class="service__img">
-				<img src="img/trade-in/img.svg" alt="" />
+				<img src="img/trade-in/img.svg" alt="" class="animate__animated animate__fadeIn wow"/>
 			</div>
 			<div class="service__description">
-				<div class="service__list">
+				<div class="service__list animate__animated animate__fadeInUp wow">
 					<h3 class="service__list-title">Безопасность сделки</h3>
 					<p class="service__list-text">
 						Сделка пройдёт с сопровождением экспертов, с
@@ -19,14 +19,14 @@
 						юридической чистоты 3DOM.
 					</p>
 				</div>
-				<div class="service__list">
+				<div class="service__list animate__animated animate__fadeInUp wow">
 					<h3 class="service__list-title">Сопровождение экспертов</h3>
 					<p class="service__list-text">
 						Экспертно оценим вашу квартиру. Предложим подходящую
 						недвижимости из наших проектов.
 					</p>
 				</div>
-				<div class="service__list">
+				<div class="service__list animate__animated animate__fadeInUp wow">
 					<h3 class="service__list-title">Экономия времени</h3>
 					<h4 class="service__list-text">
 						Подготовим документы и проведём сделки. Возможна ипотека

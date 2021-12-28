@@ -2,15 +2,15 @@
 	<section class="catalog center" id="catalog">
 		<form action="#">
 			<div class="catalog__header">
-				<div class="catalog__address">
+				<div class="catalog__address animate__animated animate__fadeInDown wow">
 					<h3 class="catalog__title">Живу красиво!</h3>
 					<Dropdown
 						:description="'Выбери своё жилище'"
 						:selected="'Районы, кварталы, жилые массивы...'"
 					></Dropdown>
 				</div>
-				<img src="img/general/catalog-img.svg" alt="" />
-				<div class="catalog__price">
+				<img src="img/general/catalog-img.svg" alt="" class="animate__animated animate__fadeInDown wow"/>
+				<div class="catalog__price animate__animated animate__fadeInDown wow">
 					<div class="catalog__price-range">
 						<range-slider
 							title="Укажите примерную стоимость, млн руб"
@@ -67,7 +67,6 @@
 				border-radius: 2.5rem;
 				height: 100%;
 				width: 100%;
-
 				overflow: hidden;
 			}
 		}

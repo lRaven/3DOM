@@ -1,7 +1,7 @@
 <template>
 	<section class="steps">
 		<div class="steps__container center">
-			<div class="steps__list">
+			<div class="steps__list  animate__animated animate__fadeInLeft wow">
 				<h2 class="steps__title">Trade-in — это просто</h2>
 				<div class="steps__list-item">
 					<span class="steps__step">1</span>
@@ -34,52 +34,52 @@
 					</p>
 				</div>
 			</div>
-			<div class="steps__img"></div>
+			<div class="steps__img  animate__animated animate__fadeInRight wow"></div>
 			<div class="steps__stages">
-				<div class="steps__benefit">
+				<div class="steps__benefit animate__animated animate__fadeInUp wow">
 					<img
 						src="img/icon/trade-in/tick.svg"
-						class="steps__benefit-icon"
+						class="steps__benefit-icon animate__animated animate__fadeInUp wow"
 						alt=""
 					/>
-					<h3 class="steps__benefit-title">Кураторство</h3>
-					<p class="steps__benefit-text">
+					<h3 class="steps__benefit-title animate__animated animate__fadeInUp wow">Кураторство</h3>
+					<p class="steps__benefit-text animate__animated animate__fadeInUp wow">
 						Поможем решить все вопросы со сделкой<br />
 						и документами
 					</p>
 				</div>
-				<div class="steps__benefit">
+				<div class="steps__benefit animate__animated animate__fadeInUp wow">
 					<img
 						src="img/icon/trade-in/tick.svg"
-						class="steps__benefit-icon"
+						class="steps__benefit-icon animate__animated animate__fadeInUp wow"
 						alt=""
 					/>
-					<h3 class="steps__benefit-title">Быстры сроки</h3>
-					<p class="steps__benefit-text">
+					<h3 class="steps__benefit-title animate__animated animate__fadeInUp wow">Быстры сроки</h3>
+					<p class="steps__benefit-text animate__animated animate__fadeInUp wow">
 						Проведём сделку<br />
 						в быстрые сроки и учтём все детали
 					</p>
 				</div>
-				<div class="steps__benefit">
+				<div class="steps__benefit animate__animated animate__fadeInUp wow">
 					<img
 						src="img/icon/trade-in/tick.svg"
-						class="steps__benefit-icon"
+						class="steps__benefit-icon animate__animated animate__fadeInUp wow"
 						alt=""
 					/>
-					<h3 class="steps__benefit-title">Выберим квартиру</h3>
-					<p class="steps__benefit-text">
+					<h3 class="steps__benefit-title animate__animated animate__fadeInUp wow">Выберим квартиру</h3>
+					<p class="steps__benefit-text animate__animated animate__fadeInUp wow">
 						Предложим квартиры <br />
 						из числа наших проектов
 					</p>
 				</div>
-				<div class="steps__benefit">
+				<div class="steps__benefit animate__animated animate__fadeInUp wow">
 					<img
 						src="img/icon/trade-in/tick.svg"
-						class="steps__benefit-icon"
+						class="steps__benefit-icon animate__animated animate__fadeInUp wow"
 						alt=""
 					/>
-					<h3 class="steps__benefit-title">Ипотека</h3>
-					<p class="steps__benefit-text">
+					<h3 class="steps__benefit-title animate__animated animate__fadeInUp wow">Ипотека</h3>
+					<p class="steps__benefit-text animate__animated animate__fadeInUp wow">
 						Если требуется поможем с оформлением ипотеки
 					</p>
 				</div>

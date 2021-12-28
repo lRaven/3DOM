@@ -1,5 +1,5 @@
 <template>
-	<figure>
+	<figure class="animate__animated animate__bounceInUp wow">
 		<a href="#" class="call">
 			<img src="img/icon/general/call-circle.svg" alt="" />
 		</a>

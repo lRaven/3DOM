@@ -1,7 +1,8 @@
 <template>
 	<a
 		to
-		class="catalog__item slideInLeft wow"
+		class="catalog__item animate__animated animate__fadeInUp wow"
+		data-wow-duration="1s"
 		v-for="item in items"
 		:key="item.id"
 		:href="item.address"

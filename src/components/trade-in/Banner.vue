@@ -1,7 +1,7 @@
 <template>
 	<section class="banner">
 		<div class="banner__container center">
-			<div class="banner__description">
+			<div class="banner__description animate__animated animate__fadeInLeft wow">
 				<h1 class="banner__title">Trade-in</h1>
 				<h3 class="banner__subtitle">
 					Trade-in — это программа, которая поможет обменять вашу
@@ -9,27 +9,27 @@
 				</h3>
 				<Btn :text="'Оформить заявку'" class="blue"></Btn>
 			</div>
-			<div class="banner__img">
+			<div class="banner__img animate__animated animate__fadeInRight wow">
 				<img src="img/trade-in/img.svg" alt="" />
 			</div>
-			<div class="banner__footer">
+			<div class="banner__footer animate__animated animate__fadeInUp wow">
 				<div class="banner__info">
-					<h4 class="banner__info-title">Услуга страхования</h4>
-					<h5 class="banner__info-subtitle">
+					<h4 class="banner__info-title animate__animated animate__fadeInUp wow">Услуга страхования</h4>
+					<h5 class="banner__info-subtitle animate__animated animate__fadeInUp wow">
 						Финансовая защита всех<br />
 						участников сделки
 					</h5>
 				</div>
 				<div class="banner__info">
-					<h4 class="banner__info-title">Независимая оценка жилья</h4>
-					<h5 class="banner__info-subtitle">
+					<h4 class="banner__info-title animate__animated animate__fadeInUp wow">Независимая оценка жилья</h4>
+					<h5 class="banner__info-subtitle animate__animated animate__fadeInUp wow">
 						Финансовая защита всех<br />
 						участников сделки
 					</h5>
 				</div>
 				<div class="banner__info">
-					<h4 class="banner__info-title">Собираем документы</h4>
-					<h5 class="banner__info-subtitle">
+					<h4 class="banner__info-title animate__animated animate__fadeInUp wow">Собираем документы</h4>
+					<h5 class="banner__info-subtitle animate__animated animate__fadeInUp wow">
 						Финансовая защита всех<br />
 						участников сделки
 					</h5>

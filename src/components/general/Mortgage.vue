@@ -1,7 +1,7 @@
 <template>
 	<section class="mortgage center" id="mortgage">
 		<div class="mortgage__header">
-			<div class="mortgage__title">
+			<div class="mortgage__title animate__animated animate__fadeInLeft wow">
 				<h2>Встречайте: Ипотека — 4,2%</h2>
 				<p>
 					Как вы полагаете, оформить ипотеку просто или очень просто?
@@ -9,11 +9,11 @@
 				</p>
 				<h4>Предложение наше — выгода ваша</h4>
 			</div>
-			<img src="img/general/mortgage-top.svg" alt="" />
+			<img src="img/general/mortgage-top.svg" alt="" class="animate__animated animate__fadeInRight wow" />
 		</div>
 		<div class="mortgage__main">
 			<form action="#">
-				<div class="mortgage__calculation">
+				<div class="mortgage__calculation animate__animated animate__fadeInUp wow">
 					<toggle-switch
 						:description="'Семья с детьми'"
 					></toggle-switch>
@@ -49,7 +49,7 @@
 					></range-slider>
 					<btn text="Получить одобрение онлайн" class="blue"></btn>
 				</div>
-				<div class="mortgage__middle">
+				<div class="mortgage__middle animate__animated animate__fadeInUp wow">
 					<h3>Стандартное ипотечное предложение</h3>
 					<div class="mortgage__item">
 						<p>Процентная ставка</p>
@@ -71,7 +71,7 @@
 						<div class="blue">Без экономии</div>
 					</div>
 				</div>
-				<div class="mortgage__last">
+				<div class="mortgage__last  animate__animated animate__fadeInUp wow">
 					<h3>
 						Ипотечное предложение <br />
 						от компании 3DOM
@@ -127,6 +127,7 @@
 <style lang="scss" scoped>
 	.mortgage {
 		margin-bottom: 1.5rem;
+		overflow: visible;
 		&__header {
 			display: grid;
 			grid-template-columns: repeat(2, 1fr);
