@@ -12,13 +12,13 @@
 					<img
 						v-if="tab === 'profile'"
 						src="img/icon/cabinet/profile-selected.svg"
-						class="navigation__img"
+						class="navigation__img animate__animated animate__bounceInLeft wow"
 						alt=""
 					/>
 					<img
 						v-else
 						src="img/icon/cabinet/profile.svg"
-						class="navigation__img"
+						class="navigation__img animate__animated animate__bounceInLeft wow"
 						alt=""
 					/>
 				</div>
@@ -373,16 +373,19 @@
 		}
 		&__img {
 			height: 100%;
+			animation-duration: 0.8s;
 		}
 		&__description {
 			font-size: var(--text-18);
 			font-weight: 500;
 			transition: all 0.1s ease;
+			// animation-delay: 0.37s;
 			&-bold {
 				font-size: var(--text-18);
 				font-weight: 500;
 				transition: all 0.1s ease;
 				font-weight: 700;
+				// animation-delay: 0.37s;
 			}
 		}
 		&__hide {

@@ -13,7 +13,7 @@
 				</div>
 			</aside>
 			<div class="cabinet__main">
-				<Profile />
+				<Profile class="animate__animated animate__fadeInUp wow" />
 			</div>
 		</main>
 		<Footer />

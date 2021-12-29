@@ -33,14 +33,12 @@
 					})
 					.catch((err) => {
 						console.error(err);
-						console.log(store.getters.TOKEN);
 					});
 			},
 			//*запись данных о себе во vuex
 			setUser(user, token) {
 				store.commit("SET_USER", user);
 				store.commit("SET_TOKEN", token);
-				console.log(store.getters.USER);
 			},
 		},
 		mounted() {

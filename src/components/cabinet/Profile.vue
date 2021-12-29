@@ -7,15 +7,7 @@
 				<p class="profile__full-name">Иванов Иван Иванович</p>
 			</div>
 			<div class="profile__logout">
-				<form action="#" @submit="setNames">
-					<label>
-						Имя:
-						<input type="text" v-model="first_name" />
-					</label>
-					<label>
-						Фамилия:
-						<input type="text" v-model="last_name" />
-					</label>
+				<form action="#" @submit="logout">
 					<button type="submit">Выйти</button>
 				</form>
 			</div>
@@ -62,27 +54,55 @@
 			};
 		},
 		methods: {
-			logout() {},
-			setNames(event) {
+			//*выход с аккаунта
+			logout(event) {
 				event.preventDefault();
 
 				axios
-					.put("http://localhost:8001/auth/users/me/", {
-						first_name: this.first_name,
-						last_name: this.last_name,
-						headers: {
-							Authorization: `token ${store.getters.TOKEN}`,
-						},
-					})
+					.post(
+						"http://localhost:8001/auth/token/logout/",
+						{},
+						{
+							headers: {
+								Authorization: `token ${store.getters.TOKEN}`,
+							},
+						}
+					)
 					.then((response) => {
-						if (response.status == 200) {
-							console.log("norm");
-							console.log(store.getters.TOKEN);
+						if (response.status === 204) {
+							location.reload();
+							localStorage.removeItem("token");
+							store.commit("SET_TOKEN", null);
 						}
 					})
 					.catch((err) => {
 						console.error(err.response.status);
-						console.log(store.getters.TOKEN);
+					});
+			},
+
+			//*изменение имени и фамилии
+			setNames(event) {
+				event.preventDefault();
+				axios
+					.put(
+						"http://localhost:8001/auth/users/me/",
+						{
+							first_name: this.first_name,
+							last_name: this.last_name,
+						},
+						{
+							headers: {
+								Authorization: `token ${store.getters.TOKEN}`,
+							},
+						}
+					)
+					.then((response) => {
+						if (response.status == 200) {
+							console.log("norm");
+						}
+					})
+					.catch((err) => {
+						console.error(err.response.status);
 					});
 			},
 		},

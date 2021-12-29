@@ -108,7 +108,6 @@
 			//*запись данных о себе во vuex
 			setUser(user) {
 				store.commit("SET_USER", user);
-				console.log(store.getters.USER);
 			},
 			//*делает кнопку неактивной пока есть пусте поля ввода
 			activateBtn() {
