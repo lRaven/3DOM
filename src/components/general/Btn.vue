@@ -46,6 +46,10 @@
 			background-color: var(--light-gray);
 			box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
 			color: var(--blue);
+			&:active {
+				transform: scale(0.95);
+				transition: all 0.3s ease;
+			}
 		}
 	}
 </style>

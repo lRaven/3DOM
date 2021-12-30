@@ -4,7 +4,9 @@
 		<div class="profile__header">
 			<div class="profile__me">
 				<img src="img/icon/general/avatar.svg" alt="avatar" />
-				<p class="profile__full-name">Иванов Иван Иванович</p>
+				<p class="profile__full-name">
+					{{ last_name }} {{ first_name }}
+				</p>
 			</div>
 			<div class="profile__logout">
 				<form action="#" @submit="logout">
@@ -17,18 +19,24 @@
 				<div class="profile__item-header">
 					<h2 class="profile__item-title">ФИО</h2>
 				</div>
-				<div class="profile__item-row">
-					<p class="profile__item-key">Фамилия:</p>
-					<p class="profile__item-value profile__last-name"></p>
-				</div>
-				<div class="profile__item-row">
-					<p class="profile__item-key">Имя:</p>
-					<p class="profile__item-value profile__name"></p>
-				</div>
-				<div class="profile__item-row">
-					<p class="profile__item-key">Отчество:</p>
-					<p class="profile__item-value profile__patronymic"></p>
-					<span class="profile__item-change">Изменить</span>
+				<div class="profile__item-body">
+					<div class="profile__item-row">
+						<p class="profile__item-key">Фамилия:</p>
+						<p class="profile__item-value profile__last-name">
+							{{ last_name }}
+						</p>
+					</div>
+					<div class="profile__item-row">
+						<p class="profile__item-key">Имя:</p>
+						<p class="profile__item-value profile__name">
+							{{ first_name }}
+						</p>
+					</div>
+					<div class="profile__item-row">
+						<p class="profile__item-key">Отчество:</p>
+						<p class="profile__item-value profile__patronymic"></p>
+						<span class="profile__item-change">Изменить</span>
+					</div>
 				</div>
 			</div>
 			<div class="profile__item"></div>
@@ -49,11 +57,19 @@
 		data() {
 			return {
 				tab: store.getters.TAB,
-				first_name: "",
-				last_name: "",
+				first_name: store.getters.USER.first_name,
+				last_name: store.getters.USER.last_name,
 			};
 		},
 		methods: {
+			//*получение аватарки
+			getAvatar() {
+				console.log(store.getters.USER);
+			},
+			setFullName() {
+				const fullName = document.querySelector(".profile__full-name");
+				fullName.textContent = `${store.getters.USER.last_name} ${store.getters.USER.first_name}`;
+			},
 			//*выход с аккаунта
 			logout(event) {
 				event.preventDefault();
@@ -70,9 +86,9 @@
 					)
 					.then((response) => {
 						if (response.status === 204) {
-							location.reload();
 							localStorage.removeItem("token");
 							store.commit("SET_TOKEN", null);
+							location.reload();
 						}
 					})
 					.catch((err) => {
@@ -110,6 +126,8 @@
 			document.addEventListener("click", () => {
 				this.tab = store.getters.TAB;
 			});
+			this.getAvatar();
+			this.setFullName();
 		},
 	};
 </script>
@@ -148,22 +166,69 @@
 				padding: 1.4rem 3.5rem;
 				border-radius: 1rem;
 				box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+				transition: all 0.2s ease;
+				&:active {
+					transform: scale(0.95);
+					transition: all 0.3s ease;
+				}
 			}
 		}
 		&__main {
 		}
 		&__item {
+			box-shadow: 0 0 1rem rgba(0, 0, 0, 0.25);
+			border-radius: 3rem;
 			&-header {
+				padding: 3rem 7rem;
+				border-bottom: 0.1rem solid #c4c4c4;
 			}
+
 			&-title {
+				color: var(--blue);
+				font-size: var(--text-20);
+				font-weight: 600;
+			}
+			&-body {
+				padding: 4rem 7rem 6rem 7rem;
+				display: flex;
+				flex-direction: column;
+				gap: 2rem;
 			}
 			&-row {
+				display: grid;
+				grid-template-columns: 1fr 1fr 1fr;
+				font-size: var(--text-18);
+				font-weight: 500;
 			}
 			&-key {
+				color: #979797;
 			}
 			&-value {
+				font-size: var(--text-22);
 			}
 			&-change {
+				cursor: pointer;
+				position: relative;
+				justify-self: flex-end;
+				color: var(--blue);
+				width: max-content;
+				font-weight: 600;
+				&::after {
+					content: "";
+					position: absolute;
+					bottom: -0.2rem;
+					left: 0;
+					height: 0.2rem;
+					width: 0;
+					background-color: var(--blue);
+					transition: all 0.2s ease;
+				}
+				&:hover {
+					&::after {
+						width: 100%;
+						transition: all 0.3s ease;
+					}
+				}
 			}
 		}
 		&__name {

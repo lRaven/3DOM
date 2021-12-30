@@ -1,5 +1,5 @@
 const state = () => ({
-	token: false,
+	token: null,
 	user: {},
 })
 const getters = {

@@ -98,6 +98,7 @@
 			};
 		},
 		methods: {
+			//*скролл до секции
 			scroll(id) {
 				setTimeout(() => {
 					const section = document.querySelector(id).offsetTop;
@@ -110,17 +111,21 @@
 				}, 0);
 			},
 
+			//*проверка, авторизован ли юзер
 			checkAuthorized() {
-				if (store.getters.TOKEN === false) {
+				if (store.getters.TOKEN === null) {
 					this.authorized = false;
 				} else {
 					this.authorized = true;
 				}
 			},
 
+			//*переход к вкладке избранного
 			moveToFavorites() {
 				store.commit("SET_TAB", "favorites");
 			},
+
+			//*переход к вкладке профиля
 			moveToCabinet() {
 				store.commit("SET_TAB", "profile");
 			},
@@ -128,14 +133,10 @@
 		mounted() {
 			this.scroll("#header");
 
-			let counter = 1;
-			let check = setInterval(() => {
+			// this.checkAuthorized();
+			window.onload = () => {
 				this.checkAuthorized();
-				counter = counter + 1;
-				if (counter === 10) {
-					clearInterval(check);
-				}
-			}, 200);
+			};
 		},
 	};
 </script>

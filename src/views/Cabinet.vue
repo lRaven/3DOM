@@ -51,7 +51,7 @@
 		},
 		methods: {
 			checkAuthorized() {
-				if (store.getters.TOKEN === false) {
+				if (store.getters.TOKEN === null) {
 					this.authorized = false;
 					this.$router.push("/login");
 				} else {
@@ -60,14 +60,10 @@
 			},
 		},
 		mounted() {
-			let counter = 1;
-			let check = setInterval(() => {
-				this.checkAuthorized();
-				counter = counter + 1;
-				if (counter === 10) {
-					clearInterval(check);
-				}
-			}, 300);
+			// this.checkAuthorized();
+			// window.onload = () => {
+			// 	this.checkAuthorized();
+			// };
 		},
 	};
 </script>
