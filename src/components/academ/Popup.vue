@@ -3,7 +3,7 @@
 		<div class="popup__close" @click="closePopup()">
 			<img src="img/icon/academ/close.svg" alt="" />
 		</div>
-		<img alt="" class="popup__image" />
+		<img alt="" :src="src" class="popup__image" />
 	</div>
 	<div class="blur" @click="closePopup()"></div>
 </template>
@@ -11,6 +11,9 @@
 <script>
 	export default {
 		name: "Popup",
+		props: {
+			src: String,
+		},
 		methods: {
 			closePopup() {
 				const popup = document.querySelector(".popup");
@@ -38,13 +41,18 @@
 		background-color: var(--white);
 		padding: 5rem;
 		transition: all 0.2s ease;
+
 		&.open {
 			transform: translate(-50%, -50%) scale(1);
 			transition: all 0.3s ease;
+
 			+ .blur {
-				z-index: 4;
+				background-color: rgba(0, 0, 0, 0.8);
+				z-index: 3;
+				transition: all 0.3s ease;
 			}
 		}
+
 		&__close {
 			cursor: pointer;
 			position: absolute;
@@ -53,10 +61,12 @@
 			width: 3rem;
 			height: 3rem;
 		}
+
 		img {
 			height: 100%;
 		}
 	}
+
 	.blur {
 		cursor: pointer;
 		position: fixed;
@@ -64,7 +74,8 @@
 		right: 0;
 		top: 0;
 		bottom: 0;
+		background-color: rgba(0, 0, 0, 0);
 		z-index: -1;
-		background-color: rgba(0, 0, 0, 0.8);
+		transition: all 0.3s ease;
 	}
 </style>

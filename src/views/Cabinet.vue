@@ -1,69 +1,138 @@
 <template>
 	<div class="theme-container">
-		<Header />
-		<main class="cabinet center">
+		<the-header />
+		<main class="cabinet">
 			<aside class="cabinet__aside">
-				<Navigation />
+				<the-navigation />
 				<div class="cabinet__hint">
 					<p>
 						Есть вопросы <br />
 						или предложения?
 					</p>
-					<Btn :text="'Напишите нам'" class="gray"></Btn>
+					<v-button
+						:text="'Напишите нам'"
+						:type="'button'"
+						class="gray"
+					></v-button>
 				</div>
 			</aside>
 			<div class="cabinet__main">
-				<Profile class="animate__animated animate__fadeInUp wow" />
+				<the-profile
+					class="animate__animated animate__fadeIn wow"
+					v-if="tab === 'profile'"
+				/>
+				<the-booking
+					class="animate__animated animate__fadeIn wow"
+					v-if="tab === 'booking'"
+				/>
+				<the-favorites
+					class="animate__animated animate__fadeIn wow"
+					v-if="tab === 'favorites'"
+				/>
+				<the-appointments
+					class="animate__animated animate__fadeIn wow"
+					v-if="tab === 'meetings'"
+				/>
+				<the-services
+					class="animate__animated animate__fadeIn wow"
+					v-if="tab === 'services'"
+				/>
+				<the-bonuses
+					class="animate__animated animate__fadeIn wow"
+					v-if="tab === 'bonuses'"
+				></the-bonuses>
+				<the-feedback
+					class="animate__animated animate__fadeIn wow"
+					v-if="tab === 'feedback'"
+				></the-feedback>
 			</div>
 		</main>
-		<Footer />
+		<the-footer />
 	</div>
 </template>
 
 <script>
 	import store from "../store";
 
-	import Header from "../components/general/Header.vue";
+	import TheHeader from "../components/cabinet/TheHeader.vue";
 
-	import Navigation from "../components/cabinet/Navigation.vue";
-	import Btn from "../components/general/Btn.vue";
-	import Profile from "../components/cabinet/Profile.vue";
-	// import Dropdown from "../components/general/Dropdown.vue";
+	import TheNavigation from "../components/cabinet/TheNavigation.vue";
+	import VButton from "../components/general/v-button.vue";
+	import TheProfile from "../components/cabinet/TheProfile.vue";
+	import TheBooking from "../components/cabinet/TheBooking.vue";
+	import TheFavorites from "../components/cabinet/TheFavorites.vue";
+	import TheAppointments from "../components/cabinet/TheAppointments.vue";
+	import TheServices from "../components/cabinet/TheServices.vue";
+	import TheBonuses from "../components/cabinet/TheBonuses.vue";
+	import TheFeedback from "../components/cabinet/TheFeedback.vue";
 
-	import Footer from "../components/general/Footer.vue";
+	import TheFooter from "../components/general/TheFooter.vue";
+
+	import { getFavoriteApartmentNumber } from "../api/favorite";
+
 	export default {
 		name: "Cabinet",
 		store,
 		components: {
-			Header,
+			TheHeader,
 
-			Navigation,
-			Btn,
-			Profile,
-			// Dropdown,
+			TheNavigation,
+			VButton,
 
-			Footer,
+			TheProfile,
+			TheBooking,
+			TheFavorites,
+			TheAppointments,
+			TheServices,
+			TheBonuses,
+			TheFeedback,
+
+			TheFooter,
 		},
 		data() {
-			return {
-				authorized: false,
-			};
+			return {};
 		},
+		computed: {
+			tab: () => {
+				return store.getters.TAB;
+			},
+		},
+
 		methods: {
-			checkAuthorized() {
-				if (store.getters.TOKEN === null) {
-					this.authorized = false;
-					this.$router.push("/login");
-				} else {
-					this.authorized = true;
-				}
+			//* функция скрытия и раскрытия навигационной панели
+			showHideNav() {
+				const aside = document.querySelector(".cabinet__aside");
+				const nav = document.querySelector(".navigation");
+				const arrow = document.querySelector(".navigation__hide");
+				const hint = document.querySelector(".cabinet__hint");
+
+				arrow.addEventListener("click", () => {
+					if (nav.classList.contains("minimize")) {
+						nav.removeAttribute("style");
+
+						setTimeout(() => {
+							nav.classList.remove("minimize");
+							hint.removeAttribute("style");
+							aside.classList.remove("minified");
+						}, 400);
+					} else {
+						nav.classList.add("minimize");
+						hint.setAttribute(
+							"style",
+							"transform: translateX(-20rem)"
+						);
+						setTimeout(() => {
+							nav.setAttribute("style", "padding-top: 6rem");
+							aside.classList.add("minified");
+						}, 300);
+					}
+				});
 			},
 		},
 		mounted() {
-			// this.checkAuthorized();
-			// window.onload = () => {
-			// 	this.checkAuthorized();
-			// };
+			this.showHideNav();
+
+			getFavoriteApartmentNumber();
 		},
 	};
 </script>
@@ -74,26 +143,62 @@
 		grid-template-rows: 1fr 8rem;
 		height: 100%;
 		min-height: 100vh;
+		background-color: #fff;
 	}
+
 	.cabinet {
-		padding-bottom: 16rem;
-		display: flex;
+		padding-top: 8.5rem;
+		padding-bottom: 5rem;
+		display: grid;
+		grid-template-columns: max-content 1fr;
+
+		&__aside {
+			position: sticky;
+			left: 0;
+			top: 8.5rem;
+			transform: translateY(-8.5rem);
+			overflow-y: auto;
+			height: 100vh;
+			width: 34rem;
+			background-color: #fff;
+			z-index: 2;
+			transition: all 0.3s ease;
+			-ms-overflow-style: none;
+			scrollbar-width: none;
+
+			&::-webkit-scrollbar {
+				display: none;
+			}
+
+			&.minified {
+				width: calc(7rem);
+				transition: all 0.3s ease;
+			}
+		}
+
 		&__hint {
+			position: relative;
 			margin-top: 9rem;
-			padding-left: 2.5rem;
+			padding: 0 0 8rem 2.5rem;
+			transition: all 0.3s ease;
+
 			p {
 				font-size: var(--text-16);
 				font-weight: 500;
 				margin-bottom: 2rem;
 			}
 		}
+
 		&__main {
-			padding: 6rem 2rem;
+			padding: 6rem 2rem 17rem 2rem;
 			width: 100%;
+			transition: all 0.3s ease;
 		}
 	}
+
 	footer {
 	}
+
 	section {
 		padding: 0;
 	}

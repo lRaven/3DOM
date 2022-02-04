@@ -1,41 +1,41 @@
 <template>
 	<div class="theme-container">
-		<Header />
+		<the-header />
 		<main class="main">
-			<banner />
-			<catalog />
-			<mortgage />
-			<layout />
+			<the-banner />
+			<the-catalog />
+			<the-mortgage />
+			<the-layout />
 		</main>
-		<Footer />
-		<Call />
+		<the-footer />
+		<v-call />
 	</div>
 </template>
 
 <script>
-	import Header from "../components/general/Header.vue";
+	import TheHeader from "../components/general/TheHeader.vue";
 
-	import Banner from "../components/general/Banner.vue";
-	import Catalog from "../components/general/Catalog.vue";
-	import Mortgage from "../components/general/Mortgage.vue";
-	import Layout from "../components/general/Layout.vue";
-	import Call from "../components/general/Call.vue";
+	import TheBanner from "../components/general/TheBanner.vue";
+	import TheCatalog from "../components/general/TheCatalog.vue";
+	import TheMortgage from "../components/general/TheMortgage.vue";
+	import TheLayout from "../components/general/TheLayout.vue";
+	import VCall from "../components/general/v-call.vue";
 
-	import Footer from "../components/general/Footer.vue";
+	import TheFooter from "../components/general/TheFooter.vue";
 
 	export default {
 		name: "Home",
 		components: {
-			Header,
+			TheHeader,
 
-			Banner,
-			Catalog,
-			Mortgage,
-			Layout,
+			TheBanner,
+			TheCatalog,
+			TheMortgage,
+			TheLayout,
 
-			Call,
+			VCall,
 
-			Footer,
+			TheFooter,
 		},
 
 		data() {

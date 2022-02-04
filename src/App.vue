@@ -8,7 +8,7 @@
 
 <script>
 	import store from "./store";
-	import axios from "axios";
+	import { getFavoriteApartmentNumber } from "./api/favorite";
 
 	export default {
 		store,
@@ -16,33 +16,19 @@
 			$route(to) {
 				document.title = to.meta.title || "Default Title";
 			},
-		},
-		data() {
-			return {
-				token: localStorage.getItem("token"),
-			};
-		},
-		methods: {
-			getUserMe(token) {
-				axios
-					.get("http://localhost:8001/auth/users/me", {
-						headers: { Authorization: `token ${token}` },
-					})
-					.then((response) => {
-						this.setUser(response.data, token);
-					})
-					.catch((err) => {
-						console.error(err);
-					});
+
+			"$route.path"() {
+				//* срабатывает при переходе по router-link
 			},
-			//*запись данных о себе во vuex
-			setUser(user, token) {
-				store.commit("SET_USER", user);
-				store.commit("SET_TOKEN", token);
-			},
+		},
+
+		beforeCreate() {
+			store.dispatch("getUser");
 		},
 		mounted() {
-			this.getUserMe(this.token);
+			if (store.getters.TOKEN !== null) {
+				getFavoriteApartmentNumber();
+			}
 		},
 	};
 </script>
@@ -56,15 +42,16 @@
 		scroll-behavior: smooth;
 		font-family: "Montserrat";
 	}
+
 	section {
-		min-height: calc(100vh - 6rem);
-		padding-left: 1.5rem;
-		padding-right: 1.5rem;
+		padding: 5rem 1.5rem;
 		overflow: hidden;
 	}
+
 	main {
 		padding-top: 6rem;
 	}
+
 	img,
 	svg {
 		user-select: none;
@@ -78,6 +65,7 @@
 		height: 100%;
 		min-height: 100vh;
 	}
+
 	.fade-enter-active,
 	.fade-leave-active {
 		transition: all 0.5s ease;

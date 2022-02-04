@@ -1,11 +1,10 @@
 <template>
-	<a
-		to
+	<router-link
+		:to="item.address"
 		class="catalog__item animate__animated animate__fadeInUp wow"
 		data-wow-duration="1s"
 		v-for="item in items"
 		:key="item.id"
-		:href="item.address"
 	>
 		<img :src="item.img" alt="" />
 		<div class="catalog__item-tags">
@@ -22,7 +21,7 @@
 			<h3>{{ item.type }}</h3>
 			<h4>{{ item.title }}</h4>
 		</div>
-	</a>
+	</router-link>
 </template>
 
 <script>
@@ -52,7 +51,7 @@
 						style: `background-color: var(--white); color: var(--blue);`,
 						type: "Жилой комплекс",
 						title: "Dolce vita",
-						address: "#",
+						address: "/",
 					},
 					{
 						id: 2,
@@ -74,7 +73,7 @@
 						style: `background-color: var(--light-blue); color: var(--white);`,
 						type: "Клубный дом",
 						title: "Академический",
-						address: "#/academ",
+						address: "/academ",
 					},
 					{
 						id: 3,
@@ -100,12 +99,12 @@
 						style: `background-color: var(--white); color: var(--blue);`,
 						type: "Жилой комплекс",
 						title: "Андреевский",
-						address: "#",
+						address: "/",
 					},
 					{
 						id: 4,
 						img: `img/general/catalog-item4.png`,
-						address: "#",
+						address: "/",
 					},
 				],
 			};

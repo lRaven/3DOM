@@ -1,42 +1,42 @@
 <template>
 	<div class="theme-container">
-		<Header />
+		<the-header />
 		<main class="main">
-			<Banner />
-			<Service />
-			<Steps />
-			<Catalog />
+			<the-banner />
+			<the-service />
+			<the-steps />
+			<the-catalog />
 		</main>
-		<Footer />
-		<Call />
+		<the-footer />
+		<v-call />
 	</div>
 </template>
 
 <script>
-	import Header from "../components/general/Header.vue";
+	import TheHeader from "../components/general/TheHeader.vue";
 
-	import Banner from "../components/trade-in/Banner.vue";
-	import Service from "../components/trade-in/Service.vue";
-	import Steps from "../components/trade-in/Steps.vue";
-	import Catalog from "../components/trade-in/Catalog.vue";
+	import TheBanner from "../components/trade-in/TheBanner.vue";
+	import TheService from "../components/trade-in/TheService.vue";
+	import TheSteps from "../components/trade-in/TheSteps.vue";
+	import TheCatalog from "../components/trade-in/TheCatalog.vue";
 
-	import Call from "../components/general/Call.vue";
+	import VCall from "../components/general/v-call.vue";
 
-	import Footer from "../components/general/Footer.vue";
+	import TheFooter from "../components/general/TheFooter.vue";
 
 	export default {
 		name: "TradeIn",
 		components: {
-			Header,
+			TheHeader,
 
-			Banner,
-			Service,
-			Steps,
-			Catalog,
+			TheBanner,
+			TheService,
+			TheSteps,
+			TheCatalog,
 
-			Call,
+			VCall,
 
-			Footer,
+			TheFooter,
 		},
 		methods: {
 			//*красит ссылку Trade-in на странице

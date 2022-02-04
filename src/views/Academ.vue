@@ -1,55 +1,57 @@
 <template>
 	<div class="theme-container">
-		<Header />
+		<the-header />
 		<main class="main" id="main">
-			<banner />
-			<statistics />
-			<apartments />
-			<location />
-			<gallery />
-			<infrastructure />
-			<parking />
-			<pantry />
-			<office />
-			<feedback />
-			<Footer />
+			<the-banner />
+			<the-statistics />
+			<the-apartments />
+			<the-location />
+			<the-gallery />
+			<the-infrastructure />
+			<the-parking />
+			<the-pantry />
+			<the-office />
+			<the-feedback />
+			<the-footer />
 		</main>
 		<popup />
 	</div>
 </template>
 
 <script>
-	import Header from "../components/academ/Header.vue";
+	import TheHeader from "../components/academ/TheHeader.vue";
 
-	import Banner from "../components/academ/Banner.vue";
-	import Statistics from "../components/academ/Statistics.vue";
-	import Apartments from "../components/academ/Apartments.vue";
-	import Location from "../components/academ/Location.vue";
-	import Gallery from "../components/academ/Gallery.vue";
-	import Infrastructure from "../components/academ/Infrastructure.vue";
-	import Parking from "../components/academ/Parking.vue";
-	import Pantry from "../components/academ/Pantry.vue";
-	import Office from "../components/academ/Office.vue";
-	import Feedback from "../components/academ/Feedback.vue";
+	import TheBanner from "../components/academ/TheBanner.vue";
+	import TheStatistics from "../components/academ/TheStatistics.vue";
+	import TheApartments from "../components/academ/TheApartments.vue";
+	import TheLocation from "../components/academ/TheLocation.vue";
+	import TheGallery from "../components/academ/TheGallery.vue";
+	import TheInfrastructure from "../components/academ/TheInfrastructure.vue";
+	import TheParking from "../components/academ/TheParking.vue";
+	import ThePantry from "../components/academ/ThePantry.vue";
+	import TheOffice from "../components/academ/TheOffice.vue";
+	import TheFeedback from "../components/academ/TheFeedback.vue";
 
-	import Footer from "../components/academ/Footer.vue";
+	import TheFooter from "../components/academ/TheFooter.vue";
 
 	import Popup from "../components/academ/Popup.vue";
 
 	export default {
 		components: {
-			Header,
-			Banner,
-			Statistics,
-			Apartments,
-			Location,
-			Gallery,
-			Infrastructure,
-			Parking,
-			Pantry,
-			Office,
-			Feedback,
-			Footer,
+			TheHeader,
+
+			TheBanner,
+			TheStatistics,
+			TheApartments,
+			TheLocation,
+			TheGallery,
+			TheInfrastructure,
+			TheParking,
+			ThePantry,
+			TheOffice,
+			TheFeedback,
+
+			TheFooter,
 			Popup,
 		},
 		methods: {},
@@ -57,6 +59,9 @@
 </script>
 
 <style lang="scss" scoped>
+	main {
+		background-color: var(--dark-green);
+	}
 	section {
 		padding-left: 1.5rem;
 		padding-right: 1.5rem;

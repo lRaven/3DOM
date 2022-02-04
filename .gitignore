@@ -2,6 +2,14 @@
 node_modules
 /dist
 
+transcript.txt
+datepicker-config.txt
+package-lock.json
+package.json
+vue.config.js
+npm-debug.log
+babel.config.js
+jsconfig.json
 
 # local env files
 .env.local
