@@ -1,0 +1,22 @@
+:root {
+	/**3DOM*/
+	--dark: #4b4b4b;
+	--gray: #505c74;
+	--middle-gray: #aeb3bf;
+	--light-gray: #eeeeee;
+	--white: #fefefe;
+	--dark-blue: #2963ad;
+	--blue: #007bfc;
+	--middle-blue: #2e94ff;
+	--light-blue: #64b6fa;
+	--red: #f4364c;
+	--warm-red: #e24522;
+
+	/**Academ*/
+	--gold: #cc9964;
+	--dark-green: #00212d;
+
+	--light-gold: #fff9d0;
+	--middle-gold: #e4cda1;
+	--pink: #f6d6b9;
+}
