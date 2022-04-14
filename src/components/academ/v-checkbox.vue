@@ -3,7 +3,6 @@
 		<input
 			type="checkbox"
 			class="checkbox__real"
-			id="hto"
 			@change="$emit('update:modelValue', $event.target.checked)"
 			required
 		/>
