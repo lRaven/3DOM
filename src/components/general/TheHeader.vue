@@ -1,21 +1,21 @@
 <template>
-	<header class="header animate__animated animate__fadeIn" id="header">
-		<div class="header__container center">
-			<div class="header__col header__left">
-				<div class="header__burger" @click="showHideMenu()">
+	<header class="the-header animate__animated animate__fadeIn" id="header">
+		<div class="the-header__container center">
+			<div class="the-header__col the-header__left">
+				<div class="the-header__burger" @click="showHideMenu()">
 					<img src="img/icon/general/burger.svg" alt="" />
 				</div>
 				<router-link
 					to="/"
-					class="header__logo animate__animated animate__fadeIn"
+					class="the-header__logo animate__animated animate__fadeIn"
 				>
 					<img src="img/icon/general/logo.svg" alt="logo" />
 				</router-link>
 			</div>
-			<div class="header__col">
-				<nav class="header__nav animate__animated animate__fadeIn">
+			<div class="the-header__col">
+				<nav class="the-header__nav animate__animated animate__fadeIn">
 					<router-link
-						class="header__link"
+						class="the-header__link"
 						:to="{
 							name: 'Academ',
 							params: { section: '#apartments' },
@@ -36,7 +36,7 @@
 						</svg>
 					</router-link>
 					<router-link
-						class="header__link"
+						class="the-header__link"
 						:to="{
 							name: 'Academ',
 							params: { section: '#apartments' },
@@ -56,7 +56,7 @@
 							/>
 						</svg>
 					</router-link>
-					<a class="header__link" @click="openMortgageCalculator">
+					<a class="the-header__link" @click="openMortgageCalculator">
 						Ипотека
 						<svg
 							width="7"
@@ -71,7 +71,7 @@
 							/>
 						</svg>
 					</a>
-					<router-link to="/trade-in" class="header__link">
+					<router-link to="/trade-in" class="the-header__link">
 						Trade-in
 						<svg
 							width="7"
@@ -86,7 +86,7 @@
 							/>
 						</svg>
 					</router-link>
-					<a class="header__link" @click="openPopup">
+					<a class="the-header__link" @click="openPopup">
 						Услуги
 						<svg
 							width="7"
@@ -102,7 +102,7 @@
 						</svg>
 					</a>
 					<router-link
-						class="header__link"
+						class="the-header__link"
 						:to="{
 							name: 'Academ',
 							params: { section: '#feedback' },
@@ -123,7 +123,7 @@
 						</svg>
 					</router-link>
 					<a
-						class="header__link header__link-mobile"
+						class="the-header__link the-header__link-mobile"
 						@click="openPopup"
 					>
 						Заказать консультацию
@@ -142,9 +142,9 @@
 					</a>
 				</nav>
 			</div>
-			<div class="header__col">
+			<div class="the-header__col">
 				<div
-					class="header__right animate__animated animate__fadeIn"
+					class="the-header__right animate__animated animate__fadeIn"
 					v-if="authorized === false"
 				>
 					<svg
@@ -173,31 +173,31 @@
 							stroke-width="2"
 						/>
 					</svg>
-					<router-link to="/login" class="header__link">
+					<router-link to="/login" class="the-header__link">
 						Войти <span class="link__full">в 3D-клуб</span>
 					</router-link>
 					<span>/</span>
-					<router-link to="/register" class="header__link">
+					<router-link to="/register" class="the-header__link">
 						Регистрация
 					</router-link>
 				</div>
 				<div
-					class="header__right-auth animate__animated animate__fadeIn"
+					class="the-header__right-auth animate__animated animate__fadeIn"
 					v-if="authorized === true"
 				>
 					<router-link
 						to="/cabinet"
-						class="header__favorites"
+						class="the-header__favorites"
 						@click="moveToFavorites()"
 					>
 						<img src="img/icon/general/favorites.svg" alt="" />
-						<span class="header__favorites-sum">{{
+						<span class="the-header__favorites-sum">{{
 							favorites
 						}}</span>
 					</router-link>
 					<router-link
 						to="/cabinet"
-						class="header__avatar"
+						class="the-header__avatar"
 						@click="moveToCabinet()"
 					>
 						<img :src="avatar" alt="avatar" />
@@ -206,7 +206,7 @@
 				<img
 					src="img/icon/general/call.svg"
 					alt=""
-					class="header__call"
+					class="the-header__call"
 				/>
 			</div>
 		</div>
@@ -259,7 +259,7 @@
 	import vButton from "./v-button.vue";
 
 	export default {
-		name: "Header",
+		name: "TheHeader",
 		store,
 		data() {
 			return {
@@ -307,10 +307,10 @@
 
 			//*скрытие или показ меню в мобилке
 			showHideMenu() {
-				const header = document.querySelector(".header");
-				const nav = header.querySelector(".header__nav");
-				const auth = header.querySelector(".header__right");
-				const cabinet = header.querySelector(".header__right-auth");
+				const header = document.querySelector(".the-header");
+				const nav = header.querySelector(".the-header__nav");
+				const auth = header.querySelector(".the-header__right");
+				const cabinet = header.querySelector(".the-header__right-auth");
 				const blur = document.querySelector(".blur");
 
 				if (nav.classList.contains("open")) {
@@ -359,7 +359,7 @@
 </script>
 
 <style lang="scss" scoped>
-	.header {
+	.the-header {
 		user-select: none;
 		z-index: 4;
 		position: fixed;
@@ -391,7 +391,7 @@
 			display: flex;
 			align-items: center;
 			gap: 10rem;
-			.header__link {
+			.the-header__link {
 				padding: 0 2rem;
 				display: flex;
 				align-items: center;
@@ -523,7 +523,7 @@
 	}
 
 	@media (max-width: 1250px) {
-		.header {
+		.the-header {
 			&__container {
 				gap: 1.5rem;
 			}
@@ -540,7 +540,7 @@
 	}
 
 	@media (max-width: 1050px) {
-		.header {
+		.the-header {
 			&__container {
 				background-color: var(--blue);
 				border-radius: 0;
@@ -568,7 +568,7 @@
 					left: 0;
 				}
 
-				.header__link {
+				.the-header__link {
 					padding: 1.5rem;
 					display: flex;
 					justify-content: space-between;
@@ -658,7 +658,7 @@
 	}
 
 	@media (max-width: 767px) {
-		.header {
+		.the-header {
 			height: 6rem;
 			&__nav,
 			&__right,

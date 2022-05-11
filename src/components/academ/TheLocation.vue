@@ -672,7 +672,7 @@
 
 <script>
 	export default {
-		name: "Location",
+		name: "TheLocation",
 		methods: {
 			//* подсветка групп-строений на карте
 			selectBuilding(option) {

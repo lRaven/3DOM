@@ -1,10 +1,10 @@
 <template>
-	<span class="tag">{{ text }}</span>
+	<span class="v-tag">{{ text }}</span>
 </template>
 
 <script>
 	export default {
-		name: "Tag",
+		name: "vTag",
 		props: {
 			text: String,
 		},
@@ -12,7 +12,7 @@
 </script>
 
 <style lang="scss" scoped>
-	.tag {
+	.v-tag {
 		padding: 1.05rem 2.5rem;
 		border-radius: 2rem;
 		background-color: #47494c;

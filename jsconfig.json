@@ -1,26 +1,19 @@
 {
   "compilerOptions": {
-    "checkJs": false,
-    "resolveJsonModule": true,
+    "target": "es5",
+    "module": "esnext",
+    "baseUrl": "./",
     "moduleResolution": "node",
-    "target": "es2020",
-    "module": "es2015"
-  },
-  "exclude": [
-    "dist",
-    "node_modules",
-    "build",
-    ".vscode",
-    ".nuxt",
-    "coverage",
-    "jspm_packages",
-    "tmp",
-    "temp",
-    "bower_components",
-    ".npm",
-    ".yarn"
-  ],
-  "typeAcquisition": {
-    "enable": true
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    },
+    "lib": [
+      "esnext",
+      "dom",
+      "dom.iterable",
+      "scripthost"
+    ]
   }
 }

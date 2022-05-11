@@ -15,9 +15,9 @@
 </template>
 
 <script>
-	import SectionColumns from "./SectionColumns.vue";
-	import ApartmentItem from "./ApartmentItem.vue";
-	import store from "../../../store";
+	import SectionColumns from "@/components/academ/ApartmentsPage/SectionColumns";
+	import ApartmentItem from "@/components/academ/ApartmentsPage/ApartmentItem";
+	import store from "@/store";
 
 	export default {
 		components: { SectionColumns, ApartmentItem },

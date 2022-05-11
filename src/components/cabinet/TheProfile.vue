@@ -1,6 +1,7 @@
 <template>
 	<div class="profile">
 		<h1 class="profile__title">Мой профиль</h1>
+
 		<div class="profile__header">
 			<div class="profile__me">
 				<img :src="avatar" alt="avatar" />
@@ -18,6 +19,7 @@
 				</form>
 			</div>
 		</div>
+
 		<div class="profile__main">
 			<div class="profile__item">
 				<div class="profile__item-header">
@@ -45,6 +47,7 @@
 					</div>
 				</div>
 			</div>
+
 			<div class="profile__item">
 				<div class="profile__item-body">
 					<div class="profile__item-row">
@@ -56,6 +59,7 @@
 					</div>
 				</div>
 			</div>
+
 			<div class="profile__item">
 				<div class="profile__item-body">
 					<div class="profile__item-row">
@@ -67,6 +71,7 @@
 					</div>
 				</div>
 			</div>
+
 			<div class="profile__item">
 				<div class="profile__item-body">
 					<div class="profile__item-row">
@@ -83,40 +88,25 @@
 </template>
 
 <script>
-	import store from "../../store";
+	import store from "@/store";
+	import { mapState } from "vuex";
 	import axios from "axios";
-	import vButton from "../general/v-button.vue";
+	import vButton from "@/components/general/v-button";
 
 	export default {
-		name: "Profile",
+		name: "TheProfile",
 		store,
-		components: {
-			vButton,
-		},
-		data() {
-			return {
-				password: localStorage.getItem("pw"),
-			};
-		},
+		components: { vButton },
+		data: () => ({ password: localStorage.getItem("pw") }),
 		computed: {
-			avatar: () => {
-				return store.getters.USER.avatar;
-			},
-			last_name: () => {
-				return store.getters.USER.last_name;
-			},
-			first_name: () => {
-				return store.getters.USER.first_name;
-			},
-			patronymic: () => {
-				return store.getters.USER.patronymic;
-			},
-			phone_number: () => {
-				return store.getters.USER.phone_number;
-			},
-			email: () => {
-				return store.getters.USER.email;
-			},
+			...mapState({
+				avatar: (state) => state.cabinet.user.avatar,
+				last_name: (state) => state.cabinet.user.last_name,
+				first_name: (state) => state.cabinet.user.first_name,
+				patronymic: (state) => state.cabinet.user.patronymic,
+				phone_number: (state) => state.cabinet.user.phone_number,
+				email: (state) => state.cabinet.user.email,
+			}),
 		},
 		methods: {
 			//*выход с аккаунта
@@ -170,7 +160,7 @@
 						}
 					)
 					.then((response) => {
-						if (response.status == 200) {
+						if (response.status === 200) {
 							console.log("norm");
 						}
 					})
@@ -179,7 +169,6 @@
 					});
 			},
 		},
-		mounted() {},
 	};
 </script>
 

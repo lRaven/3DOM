@@ -1,15 +1,15 @@
 <template>
-	<div class="dropdown">
-		<p class="dropdown__description">{{ description }}</p>
-		<div class="dropdown__selected">
+	<div class="v-dropdown">
+		<p class="v-dropdown__description">{{ description }}</p>
+		<div class="v-dropdown__selected">
 			<p>{{ selected }}</p>
-			<div class="dropdown__arrow">
+			<div class="v-dropdown__arrow">
 				<img src="img/icon/general/arrow.svg" alt="" />
 			</div>
 		</div>
-		<div class="dropdown__content">
+		<div class="v-dropdown__content">
 			<div
-				class="dropdown__item"
+				class="v-dropdown__item"
 				v-for="item in options"
 				:key="item.id"
 				@click="$emit('update:modelValue', item.id)"
@@ -22,7 +22,7 @@
 
 <script>
 	export default {
-		name: "dropdown",
+		name: "vDropdown",
 		props: {
 			description: String,
 			selected: String,
@@ -31,28 +31,30 @@
 		methods: {
 			//* функция выпадающего меню
 			dropdown() {
-				const dropdowns = document.querySelectorAll(".dropdown");
+				const dropdowns = document.querySelectorAll(".v-dropdown");
 
 				dropdowns.forEach((dropdown) => {
-					const arrow = dropdown.querySelector(".dropdown__arrow");
+					const arrow = dropdown.querySelector(".v-dropdown__arrow");
 					const options =
-						dropdown.querySelectorAll(".dropdown__item");
+						dropdown.querySelectorAll(".v-dropdown__item");
 					const dropdownSelected = dropdown.querySelector(
-						".dropdown__selected"
+						".v-dropdown__selected"
 					);
-					const dropdownContent =
-						dropdown.querySelector(".dropdown__content");
+					const dropdownContent = dropdown.querySelector(
+						".v-dropdown__content"
+					);
 
 					dropdownSelected.addEventListener("click", () => {
 						//*выборать все dropdown'ы и закрыть их
 						dropdowns.forEach((dropdown) => {
 							const arrow =
-								dropdown.querySelector(".dropdown__arrow");
+								dropdown.querySelector(".v-dropdown__arrow");
 							const dropdownSelected = dropdown.querySelector(
-								".dropdown__selected"
+								".v-dropdown__selected"
 							);
-							const dropdownContent =
-								dropdown.querySelector(".dropdown__content");
+							const dropdownContent = dropdown.querySelector(
+								".v-dropdown__content"
+							);
 
 							arrow.classList.remove("open");
 							dropdownSelected.classList.remove("open");
@@ -77,7 +79,7 @@
 					//*скрытие выпадающего списка при клике вне элемента
 					window.addEventListener("click", (e) => {
 						const target = e.target;
-						if (!target.closest(".dropdown__selected")) {
+						if (!target.closest(".v-dropdown__selected")) {
 							arrow.classList.remove("open");
 							dropdownContent.removeAttribute("style");
 							dropdownSelected.classList.remove("open");
@@ -98,12 +100,12 @@
 
 			//* запись в selected значения выбранного элемента
 			setOption() {
-				const dropdowns = document.querySelectorAll(".dropdown");
+				const dropdowns = document.querySelectorAll(".v-dropdown");
 				dropdowns.forEach((dropdown) => {
 					const options =
-						dropdown.querySelectorAll(".dropdown__item");
+						dropdown.querySelectorAll(".v-dropdown__item");
 					const selectedOption = dropdown.querySelector(
-						".dropdown__selected p"
+						".v-dropdown__selected p"
 					);
 					options.forEach((option) => {
 						option.addEventListener("click", () => {
@@ -125,7 +127,7 @@
 </script>
 
 <style lang="scss" scoped>
-	.dropdown {
+	.v-dropdown {
 		user-select: none;
 		position: relative;
 

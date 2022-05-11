@@ -1,5 +1,5 @@
 <template>
-	<div class="theme-container">
+	<div class="page-login theme-container">
 		<the-header />
 		<main class="main">
 			<section class="login-wrapper center">
@@ -37,15 +37,15 @@
 </template>
 
 <script>
-	import store from "../store";
+	import store from "@/store";
 	import axios from "axios";
-	import TheHeader from "../components/cabinet/TheHeader.vue";
-	import vInput from "../components/cabinet/v-input.vue";
-	import vButton from "../components/general/v-button.vue";
-	import TheFooter from "../components/general/TheFooter.vue";
+	import TheHeader from "@/components/cabinet/TheHeader";
+	import vInput from "@/components/cabinet/v-input";
+	import vButton from "@/components/general/v-button";
+	import TheFooter from "@/components/general/TheFooter";
 
 	export default {
-		name: "login",
+		name: "PageLogin",
 		store,
 		components: {
 			TheHeader,

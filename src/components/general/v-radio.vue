@@ -1,28 +1,25 @@
 <template>
-	<label class="radio" v-for="item in items" :key="item.id">
-		<input type="radio" class="radio__real" :name="name" />
-		<span class="radio__fake">{{ item.text }}</span>
+	<label class="v-radio" v-for="item in items" :key="item.id">
+		<input type="radio" class="v-radio__real" :name="name" />
+		<span class="v-radio__fake">{{ item.text }}</span>
 	</label>
 </template>
 
 <script>
 	export default {
-		name: "RadioButton",
+		name: "vRadio",
 		props: {
 			items: Array,
 			name: String,
-		},
-		data() {
-			return {};
 		},
 	};
 </script>
 
 <style lang="scss" scoped>
-	.radio {
+	.v-radio {
 		&__real {
 			display: none;
-			&:checked + .radio__fake {
+			&:checked + .v-radio__fake {
 				background-color: var(--blue);
 				color: var(--white);
 				transition: all 0.3s ease;

@@ -1,7 +1,7 @@
 <template>
-	<footer class="footer" id="footer">
-		<div class="footer__container center">
-			<div class="footer__social">
+	<footer class="the-footer" id="footer">
+		<div class="the-footer__container center">
+			<div class="the-footer__social">
 				<span>Соцсети</span>
 
 				<a href="https://wa.me/79616670163" target="_blank">
@@ -18,7 +18,7 @@
 				<a
 					href="https://t.me/tridom_vlg"
 					target="_blank"
-					class="footer__tg"
+					class="the-footer__tg"
 				>
 					<img src="img/icon/academ/tg.svg" alt="" />
 				</a>
@@ -33,7 +33,7 @@
 				<a class="link">Ремонт</a>
 			</nav>
 		</div>
-		<div class="footer__disclaimer">
+		<div class="the-footer__disclaimer">
 			Любая информация, представленная на данном сайте, носит
 			исключительно информационный характер и ни при каких условиях не
 			является публичной офертой, определяемой положениями статьи 437 ГК
@@ -49,7 +49,7 @@
 
 <script>
 	export default {
-		name: "Footer",
+		name: "TheFooter",
 		methods: {
 			scroll(id) {
 				const section = document.querySelector(id).offsetTop;
@@ -70,7 +70,7 @@
 </script>
 
 <style lang="scss" scoped>
-	.footer {
+	.the-footer {
 		user-select: none;
 		padding-left: 1.5rem;
 		padding-right: 1.5rem;
@@ -140,7 +140,7 @@
 	}
 
 	@media (max-width: 1050px) {
-		.footer {
+		.the-footer {
 			&__container {
 				gap: 5rem;
 			}
@@ -148,7 +148,7 @@
 	}
 
 	@media (max-width: 1023px) {
-		.footer {
+		.the-footer {
 			height: 25rem;
 			&__container {
 				gap: 1.5rem;
@@ -207,7 +207,7 @@
 	}
 
 	@media (max-width: 787px) {
-		.footer {
+		.the-footer {
 			height: 11rem;
 			a {
 				padding: 0;

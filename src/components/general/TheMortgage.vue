@@ -1,7 +1,7 @@
 <template>
-	<section class="mortgage" id="mortgage">
-		<div class="mortgage__container center">
-			<div class="mortgage__header">
+	<section class="the-mortgage" id="mortgage">
+		<div class="the-mortgage__container center">
+			<div class="the-mortgage__header">
 				<h2 class="animate__animated animate__fadeInUp wow">
 					Встречайте: Ипотека — 4,2%
 				</h2>
@@ -13,10 +13,10 @@
 				</p>
 			</div>
 
-			<div class="mortgage__main">
+			<div class="the-mortgage__main">
 				<form action="#">
 					<div
-						class="mortgage__calculation animate__animated animate__fadeInUp wow"
+						class="the-mortgage__calculation animate__animated animate__fadeInUp wow"
 					>
 						<v-toggle :description="'Семья с детьми'"></v-toggle>
 						<v-slider
@@ -57,59 +57,59 @@
 						></v-button>
 					</div>
 					<div
-						class="mortgage__middle animate__animated animate__fadeInUp wow"
+						class="the-mortgage__middle animate__animated animate__fadeInUp wow"
 					>
 						<h3>Стандартное ипотечное предложение</h3>
-						<div class="mortgage__item">
+						<div class="the-mortgage__item">
 							<p>Процентная ставка</p>
 							<span>8,75%</span>
 						</div>
-						<div class="mortgage__item">
+						<div class="the-mortgage__item">
 							<p>Ежемесячный платёж</p>
 							<span>32 880</span>
 							<span>руб.</span>
 						</div>
-						<div class="mortgage__item">
+						<div class="the-mortgage__item">
 							<p>Переплата</p>
 							<span>3 274 000</span>
 							<span>руб.</span>
 						</div>
-						<div class="mortgage__item-result">
+						<div class="the-mortgage__item-result">
 							<span>0</span>
 							<span>руб.</span>
 							<div class="blue">Без экономии</div>
 						</div>
 					</div>
 					<div
-						class="mortgage__last animate__animated animate__fadeInUp wow"
+						class="the-mortgage__last animate__animated animate__fadeInUp wow"
 					>
 						<h3>
 							Ипотечное предложение <br />
 							от компании 3DOM
 						</h3>
-						<div class="mortgage__item">
+						<div class="the-mortgage__item">
 							<p>Процентная ставка</p>
 							<span>4,25%</span>
 						</div>
-						<div class="mortgage__item">
+						<div class="the-mortgage__item">
 							<p>Ежемесячный платёж</p>
 							<span>22 330</span>
 							<span>руб.</span>
-							<div class="mortgage__item-description">
-								<div class="mortgage__item-circle"></div>
+							<div class="the-mortgage__item-description">
+								<div class="the-mortgage__item-circle"></div>
 								<p>Меньше на 8 777 руб.</p>
 							</div>
 						</div>
-						<div class="mortgage__item">
+						<div class="the-mortgage__item">
 							<p>Переплата</p>
 							<span>1 220 550</span>
 							<span>руб.</span>
-							<div class="mortgage__item-description">
-								<div class="mortgage__item-circle"></div>
+							<div class="the-mortgage__item-description">
+								<div class="the-mortgage__item-circle"></div>
 								<p>Меньше на 2 555 руб.</p>
 							</div>
 						</div>
-						<div class="mortgage__item-result">
+						<div class="the-mortgage__item-result">
 							<span>2 127 412</span>
 							<span>руб.</span>
 							<div class="white">Экономия</div>
@@ -167,7 +167,7 @@
 	import vCheckbox from "../academ/v-checkbox.vue";
 
 	export default {
-		name: "Mortgage",
+		name: "TheMortgage",
 		components: {
 			vToggle,
 			vSlider,
@@ -200,7 +200,7 @@
 </script>
 
 <style lang="scss" scoped>
-	.mortgage {
+	.the-mortgage {
 		padding: 1.5rem 1.5rem 3rem 1.5rem;
 		&__header {
 			margin-bottom: 5rem;
@@ -253,7 +253,7 @@
 					margin-bottom: 0;
 				}
 			}
-			+ .mortgage__item {
+			+ .the-mortgage__item {
 				margin-top: 2.4rem;
 			}
 			p {
@@ -265,7 +265,7 @@
 				+ span {
 					margin-left: 0.6rem;
 				}
-				+ .mortgage__item-description {
+				+ .the-mortgage__item-description {
 					margin-top: 1rem;
 				}
 			}
@@ -344,7 +344,7 @@
 	}
 
 	@media (max-width: 1427px) {
-		.mortgage {
+		.the-mortgage {
 			&__header {
 				width: max-content;
 				margin: auto;
@@ -353,7 +353,7 @@
 		}
 	}
 	@media (max-width: 1440px) {
-		.mortgage {
+		.the-mortgage {
 			&__main {
 				form {
 					display: flex;
@@ -365,7 +365,7 @@
 	}
 
 	@media (max-width: 1023px) {
-		.mortgage {
+		.the-mortgage {
 			display: none;
 		}
 	}

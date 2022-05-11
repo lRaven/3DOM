@@ -32,7 +32,7 @@
 	import { getBookingList } from "../../api/booking";
 
 	export default {
-		name: "Booking",
+		name: "TheBooking",
 		components: {
 			BookingApartment,
 		},

@@ -3222,7 +3222,7 @@
 
 <script>
 	export default {
-		name: "Third section scheme",
+		name: "ThirdSectionScheme",
 	};
 </script>
 

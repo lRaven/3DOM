@@ -1,12 +1,12 @@
 <template>
-	<label class="checkbox" :class="dark">
+	<label class="v-checkbox" :class="dark">
 		<input
 			type="checkbox"
-			class="checkbox__real"
+			class="v-checkbox__real"
 			@change="$emit('update:modelValue', $event.target.checked)"
 			required
 		/>
-		<div class="checkbox__fake" :class="academ">
+		<div class="v-checkbox__fake" :class="academ">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				viewBox="0 0 1024 1024"
@@ -17,7 +17,7 @@
 				/>
 			</svg>
 		</div>
-		<span class="checkbox__text">
+		<span class="v-checkbox__text">
 			{{ text }}
 		</span>
 	</label>
@@ -25,22 +25,17 @@
 
 <script>
 	export default {
-		name: "Checkbox",
+		name: "vCheckbox",
 		props: {
 			text: String,
 			dark: String,
 			academ: String,
 		},
-		data() {
-			return {};
-		},
-		methods: {},
-		mounted() {},
 	};
 </script>
 
 <style lang="scss" scoped>
-	.checkbox {
+	.v-checkbox {
 		user-select: none;
 		display: flex;
 		align-items: center;
@@ -48,7 +43,7 @@
 
 		&__real {
 			display: none;
-			&:checked + .checkbox__fake {
+			&:checked + .v-checkbox__fake {
 				svg {
 					fill: var(--white);
 				}
@@ -74,9 +69,9 @@
 		}
 
 		&.dark {
-			.checkbox {
+			.v-checkbox {
 				&__real {
-					&:checked + .checkbox__fake {
+					&:checked + .v-checkbox__fake {
 						svg {
 							fill: var(--gray);
 						}
@@ -94,7 +89,7 @@
 
 	@media (max-width: 1023px) and (min-width: 768px) {
 		.academ {
-			.checkbox {
+			.v-checkbox {
 				&__text {
 					font-size: 4rem;
 				}
@@ -110,7 +105,7 @@
 			}
 		}
 		.dark {
-			.checkbox {
+			.v-checkbox {
 				&__text {
 					font-size: 1.3rem;
 				}

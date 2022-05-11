@@ -40,7 +40,7 @@
 	import ServicesItem from "./ServicesItem.vue";
 
 	export default {
-		name: "Services",
+		name: "TheServices",
 		components: {
 			ServicesItem,
 		},

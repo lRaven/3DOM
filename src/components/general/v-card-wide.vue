@@ -1,11 +1,11 @@
 <template>
 	<router-link :to="link">
-		<div class="card">
-			<div class="card__top">
+		<div class="v-card">
+			<div class="v-card__top">
 				<img :src="src" alt="" />
 			</div>
-			<div class="card__body">
-				<div class="card__title">
+			<div class="v-card__body">
+				<div class="v-card__title">
 					<div>
 						<h4>
 							{{ subtitle }}
@@ -14,57 +14,57 @@
 							{{ title }}
 						</h3>
 					</div>
-					<div class="card__title-middle">
-						<div class="card__address">
+					<div class="v-card__title-middle">
+						<div class="v-card__address">
 							ул. Калинина, 54, Волгоград
 						</div>
-						<div class="card__min">
+						<div class="v-card__min">
 							<span>от</span>
 							<span>{{ min }}</span>
 						</div>
 					</div>
-					<div class="card__title-right">
+					<div class="v-card__title-right">
 						<img src="img/icon/trade-in/periscope.svg" alt="" />
 					</div>
 				</div>
-				<div class="card__prices">
-					<div class="card__price card__studios">
+				<div class="v-card__prices">
+					<div class="v-card__price v-card__studios">
 						<p>Студии</p>
-						<div class="card__min">
+						<div class="v-card__min">
 							<span>от</span>
 							<span>{{ studios }}</span>
 						</div>
 					</div>
-					<div class="card__price card__single">
+					<div class="v-card__price v-card__single">
 						<p>1-комн. квартиры</p>
-						<div class="card__min">
+						<div class="v-card__min">
 							<span>от</span>
 							<span>{{ singleRoom }}</span>
 						</div>
 					</div>
-					<div class="card__price card__two">
+					<div class="v-card__price v-card__two">
 						<p>2-комн. квартиры</p>
-						<div class="card__min">
+						<div class="v-card__min">
 							<span>от</span>
 							<span>{{ twoRoom }}</span>
 						</div>
 					</div>
-					<div class="card__price card__three">
+					<div class="v-card__price v-card__three">
 						<p>3-комн. квартиры</p>
-						<div class="card__min">
+						<div class="v-card__min">
 							<span>от</span>
 							<span>{{ threeRoom }}</span>
 						</div>
 					</div>
 				</div>
-				<div class="card__bottom">
-					<div class="card__date">
+				<div class="v-card__bottom">
+					<div class="v-card__date">
 						<p>Заселение до 30.08.2022</p>
 					</div>
-					<div class="card__finishing">
+					<div class="v-card__finishing">
 						<p>с отделкой</p>
 					</div>
-					<div class="card__more">
+					<div class="v-card__more">
 						<router-link :to="link">Подробнее</router-link>
 					</div>
 				</div>
@@ -75,7 +75,7 @@
 
 <script>
 	export default {
-		name: "CardWide",
+		name: "vCardWide",
 		props: {
 			src: String,
 			title: String,
@@ -92,7 +92,7 @@
 </script>
 
 <style lang="scss" scoped>
-	.card {
+	.v-card {
 		border-radius: 3rem;
 		height: 100%;
 
@@ -187,7 +187,7 @@
 			display: grid;
 			grid-template-columns: 1fr 30rem 1fr;
 			justify-content: space-between;
-			+ .card__price {
+			+ .v-card__price {
 				margin-top: 2rem;
 			}
 			p {

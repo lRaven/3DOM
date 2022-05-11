@@ -20,19 +20,18 @@
 </template>
 
 <script>
-	import store from "../../store";
+	import store from "@/store";
 
 	// import Swiper core and required modules
-	import { Pagination, Scrollbar, A11y } from "swiper";
+	import { Pagination } from "swiper";
 
 	// Import Swiper Vue.js components
-	import { Swiper, SwiperSlide } from "swiper/vue/swiper-vue";
+	import { Swiper, SwiperSlide } from "swiper/vue";
 
 	// Import Swiper styles
-	import "swiper/swiper.scss";
-	import "swiper/modules/navigation/navigation.scss";
-	import "swiper/modules/pagination/pagination.scss";
-	import "swiper/modules/scrollbar/scrollbar.scss";
+	import "swiper/css";
+	import "swiper/css/navigation";
+	import "swiper/css/pagination";
 
 	// Import Swiper styles
 	export default {
@@ -57,7 +56,7 @@
 			return {
 				onSwiper,
 				onSlideChange,
-				modules: [Pagination, Scrollbar, A11y],
+				modules: [Pagination],
 			};
 		},
 	};

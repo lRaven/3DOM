@@ -57,7 +57,7 @@
 
 <script>
 	export default {
-		name: "Service",
+		name: "TheService",
 	};
 </script>
 

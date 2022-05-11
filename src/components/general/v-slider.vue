@@ -1,5 +1,5 @@
 <template>
-	<div :class="customClass">
+	<div class="v-slider" :class="customClass">
 		<p>{{ title }}</p>
 		<div class="slider">
 			<div class="slider__values" v-if="minMax">
@@ -35,7 +35,7 @@
 
 <script>
 	export default {
-		name: "slider",
+		name: "vSlider",
 		props: {
 			title: String,
 			text: String,
@@ -47,7 +47,6 @@
 
 			customClass: String,
 		},
-		setup() {},
 		methods: {
 			setMaxValue() {
 				const sliders = document.querySelectorAll(".min-max");

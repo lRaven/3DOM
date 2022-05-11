@@ -1,9 +1,9 @@
 <template>
-	<button class="button" :type="type">{{ text }}</button>
+	<button class="v-button" :type="type">{{ text }}</button>
 </template>
 <script>
 	export default {
-		name: "Button",
+		name: "vButton",
 		props: {
 			text: String,
 			type: String,
@@ -11,7 +11,7 @@
 	};
 </script>
 <style lang="scss" scoped>
-	.button {
+	.v-button {
 		cursor: pointer;
 		color: var(--dark);
 		user-select: none;

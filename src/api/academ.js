@@ -1,5 +1,5 @@
 import axios from "axios";
-import store from '../store';
+import store from '@/store';
 
 async function getApartments() {
 	await axios.get(`${store.getters.BASEURL}/academ/apartment/`, {})
@@ -14,7 +14,6 @@ async function getApartments() {
 
 async function getApartmentsOnTheFloor(floor) {
 	try {
-		//* получение всех квартир 4 этажа
 		const response = await axios.get(`${store.getters.BASEURL}/academ/apartment`);
 
 		let apartments = [];

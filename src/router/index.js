@@ -1,26 +1,26 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import Home from '../views/Home.vue';
-import TradeIn from '../views/TradeIn.vue';
-import Academ from '../views/Academ.vue';
-import CRM from "../views/CRM";
-import FixClient from '../views/FixClient.vue';
+import PageHome from '@/views/PageHome';
+import PageTradeIn from '@/views/PageTradeIn';
+import PageAcadem from '@/views/PageAcadem';
+import PageCRM from "@/views/PageCRM";
+import PageFixClient from '@/views/PageFixClient';
 
-import Login from '../views/Login.vue';
-import Register from '../views/Register.vue';
-import Cabinet from '../views/Cabinet.vue';
+import PageLogin from '@/views/PageLogin';
+import PageRegistration from '@/views/PageRegistration';
+import PageCabinet from '@/views/PageCabinet';
 
-import NotFound from '../views/NotFound.vue';
+import PageNotFound from '@/views/PageNotFound';
 
-import { getApartments, getApartmentsOnTheFloor } from "../api/academ";
-import { getFavoriteApartmentNumber } from "../api/favorite";
+import { getApartments, getApartmentsOnTheFloor } from "@/api/academ";
+import { getFavoriteApartmentNumber } from "@/api/favorite";
 
-import store from '../store';
+import store from '@/store';
 
 const routes = [
 	{
 		path: '/',
 		name: 'Home',
-		component: Home,
+		component: PageHome,
 		meta: {
 			title: '3DOM',
 		}
@@ -28,7 +28,7 @@ const routes = [
 	{
 		path: '/trade-in',
 		name: 'TradeIn',
-		component: TradeIn,
+		component: PageTradeIn,
 		meta: {
 			title: 'Trade-in',
 		}
@@ -36,7 +36,7 @@ const routes = [
 	{
 		path: '/academ',
 		name: 'Academ',
-		component: Academ,
+		component: PageAcadem,
 		meta: {
 			title: 'Академический',
 		},
@@ -51,7 +51,7 @@ const routes = [
 	{
 		path: '/crm',
 		name: 'CRM',
-		component: CRM,
+		component: PageCRM,
 
 
 		beforeEnter(from, to, next) {
@@ -82,7 +82,7 @@ const routes = [
 	{
 		path: '/fix-client',
 		name: 'Fix Client',
-		component: FixClient,
+		component: PageFixClient,
 		props: true,
 
 		beforeEnter(from, to, next) {
@@ -111,7 +111,7 @@ const routes = [
 	{
 		path: '/login',
 		name: 'Login',
-		component: Login,
+		component: PageLogin,
 
 		beforeEnter(from, to, next) {
 			if (store.getters.TOKEN === null) {
@@ -128,7 +128,7 @@ const routes = [
 	{
 		path: '/register',
 		name: 'Register',
-		component: Register,
+		component: PageRegistration,
 
 		beforeEnter(from, to, next) {
 			if (store.getters.TOKEN === null) {
@@ -146,7 +146,7 @@ const routes = [
 		path: '/cabinet',
 		name: 'Cabinet',
 		props: true,
-		component: Cabinet,
+		component: PageCabinet,
 
 		beforeEnter(from, to, next) {
 			if (store.getters.TOKEN !== null) {
@@ -165,7 +165,7 @@ const routes = [
 	{
 		path: '/404',
 		name: '404',
-		component: NotFound,
+		component: PageNotFound,
 		meta: {
 			title: '404',
 		}

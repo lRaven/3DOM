@@ -1,14 +1,14 @@
 <template>
-	<section class="layout">
-		<div class="layout__container center">
-			<h2 class="layout__title">Всё пойдёт по плану!</h2>
+	<section class="the-layout">
+		<div class="the-layout__container center">
+			<h2 class="the-layout__title">Всё пойдёт по плану!</h2>
 			<img
 				src="img/general/layout-img.svg"
 				alt=""
-				class="layout__img animate__animated animate__fadeInLeft wow"
+				class="the-layout__img animate__animated animate__fadeInLeft wow"
 			/>
 			<div
-				class="layout__content animate__animated animate__fadeInRight wow"
+				class="the-layout__content animate__animated animate__fadeInRight wow"
 			>
 				<h2>Всё пойдёт по плану!</h2>
 				<h3>Вы можете выбрать планировку квартиры уже сейчас.</h3>
@@ -42,7 +42,7 @@
 	import vButton from "./v-button.vue";
 
 	export default {
-		name: "Layout",
+		name: "TheLayout",
 		components: {
 			vButton,
 		},
@@ -50,7 +50,7 @@
 </script>
 
 <style lang="scss" scoped>
-	.layout {
+	.the-layout {
 		padding: 1.5rem;
 		&__container {
 			display: flex;
@@ -97,7 +97,7 @@
 	}
 
 	@media (max-width: 1200px) {
-		.layout {
+		.the-layout {
 			&__container {
 				padding: 3rem;
 			}
@@ -105,7 +105,7 @@
 	}
 
 	@media (max-width: 1023px) {
-		.layout {
+		.the-layout {
 			&__container {
 				flex-direction: column;
 			}
@@ -129,7 +129,7 @@
 	}
 
 	@media (max-width: 540px) {
-		.layout {
+		.the-layout {
 			padding: 1rem;
 			&__container {
 				padding: 2rem;

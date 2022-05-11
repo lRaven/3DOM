@@ -107,13 +107,13 @@
 </template>
 
 <script>
-	import AcademInput from "./academ-input";
-	import vCheckbox from "./v-checkbox";
-	import vButton from "./v-button";
-	import vNotification from "./v-notification.vue";
+	import AcademInput from "@/components/academ/academ-input";
+	import vCheckbox from "@/components/academ/v-checkbox";
+	import vButton from "@/components/academ/v-button";
+	import vNotification from "@/components/academ/v-notification";
 
 	export default {
-		name: "Feedback",
+		name: "TheFeedback",
 		components: {
 			AcademInput,
 			vCheckbox,

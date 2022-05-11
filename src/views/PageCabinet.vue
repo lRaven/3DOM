@@ -1,10 +1,14 @@
 <template>
-	<div class="theme-container">
+	<div class="page-cabinet theme-container">
 		<the-header />
-		<main class="cabinet">
-			<aside class="cabinet__aside">
-				<the-navigation />
-				<div class="cabinet__hint">
+		<main class="page-cabinet__wrapper">
+			<aside class="page-cabinet__aside" ref="aside">
+				<the-navigation
+					@openPopup="openPopup"
+					@minimizeNav="minimizeNav"
+					@maximizeNav="maximizeNav"
+				></the-navigation>
+				<div class="page-cabinet__hint" v-if="isHintVisible">
 					<p>
 						Есть вопросы <br />
 						или предложения?
@@ -16,7 +20,7 @@
 					></v-button>
 				</div>
 			</aside>
-			<div class="cabinet__main">
+			<div class="page-cabinet__main">
 				<the-profile
 					class="animate__animated animate__fadeIn wow"
 					v-if="tab === 'profile'"
@@ -48,31 +52,37 @@
 			</div>
 		</main>
 		<the-footer />
+		<transition>
+			<popup-kolotok
+				v-if="isPopupVisible"
+				@closePopup="closePopup"
+			></popup-kolotok>
+		</transition>
 	</div>
 </template>
 
 <script>
-	import store from "../store";
+	import { mapState } from "vuex";
 
-	import TheHeader from "../components/cabinet/TheHeader.vue";
+	import TheHeader from "@/components/cabinet/TheHeader";
 
-	import TheNavigation from "../components/cabinet/TheNavigation.vue";
-	import vButton from "../components/general/v-button.vue";
-	import TheProfile from "../components/cabinet/TheProfile.vue";
-	import TheBooking from "../components/cabinet/TheBooking.vue";
-	import TheFavorites from "../components/cabinet/TheFavorites.vue";
-	import TheAppointments from "../components/cabinet/TheAppointments.vue";
-	import TheServices from "../components/cabinet/TheServices.vue";
-	import TheBonuses from "../components/cabinet/TheBonuses.vue";
-	import TheFeedback from "../components/cabinet/TheFeedback.vue";
+	import TheNavigation from "@/components/cabinet/TheNavigation";
+	import vButton from "@/components/general/v-button";
+	import TheProfile from "@/components/cabinet/TheProfile";
+	import TheBooking from "@/components/cabinet/TheBooking";
+	import TheFavorites from "@/components/cabinet/TheFavorites";
+	import TheAppointments from "@/components/cabinet/TheAppointments";
+	import TheServices from "@/components/cabinet/TheServices";
+	import TheBonuses from "@/components/cabinet/TheBonuses";
+	import TheFeedback from "@/components/cabinet/TheFeedback";
+	import PopupKolotok from "@/components/general/PopupKolotok";
 
-	import TheFooter from "../components/general/TheFooter.vue";
+	import TheFooter from "@/components/general/TheFooter";
 
-	import { getFavoriteApartmentNumber } from "../api/favorite";
+	import { getFavoriteApartmentNumber } from "@/api/favorite";
 
 	export default {
-		name: "Cabinet",
-		store,
+		name: "PageCabinet",
 		components: {
 			TheHeader,
 
@@ -86,25 +96,24 @@
 			TheServices,
 			TheBonuses,
 			TheFeedback,
+			PopupKolotok,
 
 			TheFooter,
 		},
-		data() {
-			return {};
-		},
-		computed: {
-			tab: () => {
-				return store.getters.TAB;
-			},
-		},
+
+		data: () => ({
+			isPopupVisible: false,
+			isHintVisible: true,
+		}),
+		computed: { ...mapState({ tab: (state) => state.cabinet.tab }) },
 
 		methods: {
 			//* функция скрытия и раскрытия навигационной панели
 			showHideNav() {
-				const aside = document.querySelector(".cabinet__aside");
+				const aside = document.querySelector(".page-cabinet__aside");
 				const nav = document.querySelector(".navigation");
 				const arrow = document.querySelector(".navigation__hide");
-				const hint = document.querySelector(".cabinet__hint");
+				const hint = document.querySelector(".page-cabinet__hint");
 
 				arrow.addEventListener("click", () => {
 					if (nav.classList.contains("minimize")) {
@@ -128,10 +137,29 @@
 					}
 				});
 			},
+
+			minimizeNav() {
+				setTimeout(() => {
+					this.$refs.aside.classList.add("minimize");
+					this.isHintVisible = false;
+				}, 300);
+			},
+
+			maximizeNav() {
+				this.$refs.aside.classList.remove("minimize");
+				this.isHintVisible = true;
+			},
+
+			openPopup() {
+				this.isPopupVisible = true;
+				document.body.classList.add("locked");
+			},
+			closePopup() {
+				this.isPopupVisible = false;
+				document.body.classList.remove("locked");
+			},
 		},
 		mounted() {
-			this.showHideNav();
-
 			getFavoriteApartmentNumber();
 		},
 	};
@@ -146,11 +174,13 @@
 		background-color: #fff;
 	}
 
-	.cabinet {
-		padding-top: 8.5rem;
-		padding-bottom: 5rem;
-		display: grid;
-		grid-template-columns: max-content 1fr;
+	.page-cabinet {
+		&__wrapper {
+			padding-top: 8.5rem;
+			padding-bottom: 5rem;
+			display: grid;
+			grid-template-columns: max-content 1fr;
+		}
 
 		&__aside {
 			position: sticky;
@@ -170,7 +200,7 @@
 				display: none;
 			}
 
-			&.minified {
+			&.minimize {
 				width: calc(7rem);
 				transition: all 0.3s ease;
 			}
@@ -194,12 +224,5 @@
 			width: 100%;
 			transition: all 0.3s ease;
 		}
-	}
-
-	footer {
-	}
-
-	section {
-		padding: 0;
 	}
 </style>

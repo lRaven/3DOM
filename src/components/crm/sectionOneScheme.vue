@@ -1706,7 +1706,7 @@
 
 <script>
 	export default {
-		name: "First section scheme",
+		name: "FirstSectionScheme",
 	};
 </script>
 

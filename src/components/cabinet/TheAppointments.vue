@@ -1,18 +1,18 @@
 <template>
-	<div class="appointments">
-		<div class="appointments__header">
-			<h1 class="appointments__title">Встречи</h1>
-			<div class="appointments__notification">
+	<div class="the-appointments">
+		<div class="the-appointments__header">
+			<h1 class="the-appointments__title">Встречи</h1>
+			<div class="the-appointments__notification">
 				<div>
 					<img src="img/icon/cabinet/notifications.svg" alt="" />
 				</div>
-				<h3 class="appointments__notification-desc">
+				<h3 class="the-appointments__notification-desc">
 					Для записи на встречу воспользуйтесь формой. У вас нет
 					прошедших встреч.
 				</h3>
 			</div>
 		</div>
-		<div class="appointments__body">
+		<div class="the-appointments__body">
 			<appointment-form />
 		</div>
 	</div>
@@ -22,15 +22,13 @@
 	import AppointmentForm from "./AppointmentForm.vue";
 
 	export default {
-		name: "Appointments",
-		components: {
-			AppointmentForm,
-		},
+		name: "TheAppointments",
+		components: { AppointmentForm },
 	};
 </script>
 
 <style lang="scss" scoped>
-	.appointments {
+	.the-appointments {
 		color: var(--dark);
 		&__header {
 			margin-bottom: 3rem;

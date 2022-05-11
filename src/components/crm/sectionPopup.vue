@@ -187,7 +187,7 @@
 	import { getApartmentsOnTheFloor } from "../../api/academ";
 
 	export default {
-		name: "Section popup",
+		name: "SectionPopup",
 		store,
 		components: {
 			sectionSvg,

@@ -1,15 +1,19 @@
 <template>
-	<textarea name="" class="textarea"></textarea>
+	<textarea
+		name=""
+		class="v-textarea"
+		@input="$emit('update:modelValue', $event.target.value)"
+	></textarea>
 </template>
 
 <script>
 	export default {
-		name: "Textarea",
+		name: "vTextarea",
 	};
 </script>
 
 <style lang="scss" scoped>
-	.textarea {
+	.v-textarea {
 		border: 0.1rem solid #979797;
 		border-radius: 1rem;
 		padding: 3rem 1.5rem;

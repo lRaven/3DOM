@@ -127,8 +127,8 @@
 					margin-left: 0.4rem;
 					width: 1.6rem;
 					height: 1.6rem;
-					background: url(/img/icon/crm/scheme.svg) no-repeat top
-						right;
+					background: url(/public/img/icon/crm/scheme.svg) no-repeat
+						top right;
 				}
 			}
 		}
@@ -204,7 +204,8 @@
 				.img {
 					width: 1.6rem;
 					height: 1.6rem;
-					background: url(/img/icon/crm/scheme.svg) no-repeat center;
+					background: url(/public/img/icon/crm/scheme.svg) no-repeat
+						center;
 				}
 			}
 		}

@@ -22,14 +22,14 @@
 
 <script>
 	export default {
-		name: "Broadcast",
+		name: "TheBroadcast",
 	};
 </script>
 
 <style lang="scss" scoped>
 	.broadcast {
-		background: url(/img/academ/broadcast__img.png) center right / auto 100%
-			no-repeat;
+		background: url(/public/img/academ/broadcast__img.png) center right /
+			auto 100% no-repeat;
 		&__container {
 			display: flex;
 			flex-direction: column;

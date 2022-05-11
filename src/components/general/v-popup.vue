@@ -16,7 +16,7 @@
 
 <script>
 	export default {
-		name: "Popup",
+		name: "vPopup",
 		props: {
 			title: String,
 		},
@@ -77,7 +77,6 @@
 				});
 			},
 		},
-		mounted() {},
 	};
 </script>
 
@@ -132,13 +131,13 @@
 			padding: 5rem 9.5rem;
 			height: 100%;
 			color: var(--gray);
-			.button {
+			.v-button {
 				align-self: center;
 				margin-top: 5rem;
 				padding: 2rem 5rem;
 				border-radius: 4.5rem;
 			}
-			.checkbox {
+			.v-checkbox {
 				margin-top: 2.8rem;
 			}
 		}
@@ -175,7 +174,7 @@
 			}
 			&__body {
 				padding: 1.7rem 1rem 3rem 1rem;
-				.button {
+				.v-button {
 					margin-top: 3rem;
 				}
 			}

@@ -1979,7 +1979,7 @@ m231.513 20.133 17.841-1.113v8.234h-.658v-7.533l-16.579 1.035v6.498h-.604v-7.12z
 </template>
 
 <script>
-	import store from "../../store";
+	import store from "@/store";
 	import axios from "axios";
 	export default {
 		store,

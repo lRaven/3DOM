@@ -39,7 +39,7 @@
 
 <script>
 	export default {
-		name: "Notification",
+		name: "vNotification",
 		props: {
 			color: String,
 			image: String,

@@ -67,7 +67,7 @@
 	import vButton from "../general/v-button.vue";
 
 	export default {
-		name: "Favorite",
+		name: "TheFavorite",
 		store,
 		components: {
 			vButton,

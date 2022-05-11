@@ -1,25 +1,27 @@
 <template>
-	<section class="insurance" id="insurance">
-		<div class="insurance__container center">
-			<div class="insurance__header">
+	<section class="the-insurance" id="insurance">
+		<div class="the-insurance__container center">
+			<div class="the-insurance__header">
 				<h2
-					class="insurance__title animate__animated animate__fadeInUp wow"
+					class="the-insurance__title animate__animated animate__fadeInUp wow"
 				>
 					Страхование недвижимости
 				</h2>
 				<h3
-					class="insurance__subtitle animate__animated animate__fadeInUp wow"
+					class="the-insurance__subtitle animate__animated animate__fadeInUp wow"
 				>
 					При оформлении ипотеки страхование недвижимости является
 					требованием закона.
 				</h3>
 			</div>
-			<div class="insurance__body">
+			<div class="the-insurance__body">
 				<form
-					class="insurance__form animate__animated animate__fadeInLeft wow"
+					class="the-insurance__form animate__animated animate__fadeInLeft wow"
 				>
-					<h4 class="insurance__form-title">Оформить страхование</h4>
-					<p class="insurance__form-text">
+					<h4 class="the-insurance__form-title">
+						Оформить страхование
+					</h4>
+					<p class="the-insurance__form-text">
 						Приведенные расчеты актуальны<br />
 						при полученом праве собственности.
 					</p>
@@ -27,19 +29,19 @@
 						:description="'Тип страхования'"
 						:selected="'Выберите из списка'"
 						:options="['1', '2', '3', '4']"
-						:customClass="'dropdown-thin'"
+						:customClass="'v-dropdown-thin'"
 					></v-dropdown>
 					<v-dropdown
 						:description="'Банк кредитора'"
 						:selected="'Выберите из списка'"
 						:options="['1', '2', '3', '4']"
-						:customClass="'dropdown-thin'"
+						:customClass="'v-dropdown-thin'"
 					></v-dropdown>
 					<v-dropdown
 						:description="'Выберите пол'"
 						:selected="'Женский'"
 						:options="['Мужской', 'Женский']"
-						:customClass="'dropdown-thin'"
+						:customClass="'v-dropdown-thin'"
 					></v-dropdown>
 					<v-input
 						:type="'number'"
@@ -57,7 +59,7 @@
 					></v-button>
 				</form>
 				<p
-					class="insurance__subtitle-mobile animate__animated animate__fadeInUp wow"
+					class="the-insurance__subtitle-mobile animate__animated animate__fadeInUp wow"
 				>
 					При оформлении ипотеки страхование недвижимости является
 					требованием закона.
@@ -65,7 +67,7 @@
 				<img
 					src="img/general/insurance-img.png"
 					alt=""
-					class="insurance__img animate__animated animate__fadeInRight wow"
+					class="the-insurance__img animate__animated animate__fadeInRight wow"
 				/>
 			</div>
 		</div>
@@ -118,7 +120,7 @@
 	import vCheckbox from "../academ/v-checkbox.vue";
 
 	export default {
-		name: "Insurance",
+		name: "TheInsurance",
 		components: {
 			vDropdown,
 			vInput,
@@ -151,7 +153,7 @@
 </script>
 
 <style lang="scss" scoped>
-	.insurance {
+	.the-insurance {
 		color: var(--dark);
 		padding: 5rem 1.5rem;
 		&__container {
@@ -201,15 +203,13 @@
 				line-height: 1.4;
 				margin-bottom: 2rem;
 			}
-			.dropdown {
+			.v-dropdown {
 				grid-column: 1/3;
 				&:nth-child(5) {
 					grid-column: 1/2;
 				}
 			}
 
-			.input {
-			}
 			.blue {
 				width: 16rem;
 			}
@@ -224,7 +224,7 @@
 	}
 
 	@media (max-width: 1023px) {
-		.insurance {
+		.the-insurance {
 			&__container {
 			}
 			&__header {
@@ -245,28 +245,11 @@
 				display: flex;
 				flex-direction: column-reverse;
 			}
-			&__form {
-				&-title {
-				}
-				&-text {
-				}
-				.dropdown {
-					&:nth-child(5) {
-					}
-				}
-
-				.input {
-				}
-				.blue {
-				}
-			}
-			&__img {
-			}
 		}
 	}
 
 	@media (max-width: 540px) {
-		.insurance {
+		.the-insurance {
 			padding: 1rem;
 			&__title {
 				font-size: 3rem;
@@ -278,7 +261,7 @@
 					text-align: center;
 				}
 			}
-			.button {
+			.v-button {
 				justify-self: center;
 				grid-column: 1/3;
 			}
@@ -286,11 +269,11 @@
 	}
 
 	@media (max-width: 490px) {
-		.insurance {
+		.the-insurance {
 			&__form {
 				min-width: inherit;
 			}
-			.dropdown {
+			.v-dropdown {
 				&:nth-child(n) {
 					grid-column: 1/3;
 				}
@@ -301,7 +284,7 @@
 			.input-wrapper {
 				width: 18rem;
 			}
-			.button {
+			.v-button {
 				font-size: 1.6rem;
 			}
 		}

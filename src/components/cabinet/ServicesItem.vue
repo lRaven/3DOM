@@ -11,7 +11,7 @@
 	import vButton from "../general/v-button.vue";
 
 	export default {
-		name: "Service",
+		name: "TheService",
 		components: {
 			vButton,
 		},

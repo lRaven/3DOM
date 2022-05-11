@@ -101,7 +101,7 @@
 	import vCheckbox from "../academ/v-checkbox.vue";
 
 	export default {
-		name: "Price",
+		name: "ThePrice",
 		components: {
 			vRadio,
 			vInput,
@@ -171,12 +171,12 @@
 			padding: 8rem 6rem 10rem 6rem;
 			width: max-content;
 			color: #979797;
-			.dropdown,
+			.v-dropdown,
 			.min-max {
 				grid-column: 1/3;
 				margin-top: 5rem;
 			}
-			.button {
+			.v-button {
 				margin-top: 5rem;
 				padding: 2rem 8rem;
 				border-radius: 3rem;

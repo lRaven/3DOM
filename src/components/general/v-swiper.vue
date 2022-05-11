@@ -12,8 +12,6 @@
 			delay: 5000,
 			disableOnInteraction: false,
 		}"
-		@swiper="onSwiper"
-		@slideChange="onSlideChange"
 	>
 		<swiper-slide v-for="img in gallery" :key="img.id">
 			<div class="swiper-slide-content">
@@ -27,23 +25,23 @@
 </template>
 
 <script>
-	import store from "../../store";
+	import store from "@/store";
 
 	//* import Swiper core and required modules
-	import { Autoplay, Pagination, Scrollbar } from "swiper";
+	import { Autoplay, Pagination } from "swiper";
 
 	//* import Swiper Vue.js components
-	import { Swiper, SwiperSlide } from "swiper/vue/swiper-vue";
+	import { Swiper, SwiperSlide } from "swiper/vue";
 
 	//* import Swiper styles
-	import "swiper/swiper.scss";
-	import "swiper/modules/navigation/navigation.scss";
-	import "swiper/modules/pagination/pagination.scss";
-	import "swiper/modules/scrollbar/scrollbar.scss";
+	import "swiper/css";
+	import "swiper/css/pagination";
 
 	// Import Swiper styles
 	export default {
 		store,
+		name: "vSwiper",
+
 		props: {
 			price: Boolean,
 			gallery: Object,
@@ -54,15 +52,7 @@
 			SwiperSlide,
 		},
 		setup() {
-			const onSwiper = (swiper) => {
-				console.log(swiper);
-			};
-			const onSlideChange = () => {
-				console.log("slide change");
-			};
 			return {
-				onSwiper,
-				onSlideChange,
 				pagination: {
 					renderBullet: function (index, className) {
 						return (
@@ -74,11 +64,9 @@
 						);
 					},
 				},
-				modules: [Autoplay, Pagination, Scrollbar],
+				modules: [Autoplay, Pagination],
 			};
 		},
-		methods: {},
-		mounted() {},
 	};
 </script>
 

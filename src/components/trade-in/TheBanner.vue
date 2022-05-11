@@ -108,7 +108,7 @@
 	import vCheckbox from "../academ/v-checkbox.vue";
 
 	export default {
-		name: "Banner",
+		name: "TheBanner",
 		components: {
 			vButton,
 			vPopup,

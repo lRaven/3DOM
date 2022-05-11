@@ -6,7 +6,7 @@
 </template>
 
 <script>
-	import ApartmentPool from "./ApartmentPool";
+	import ApartmentPool from "@/components/academ/ApartmentsPage/ApartmentPool";
 	export default {
 		components: { ApartmentPool },
 	};

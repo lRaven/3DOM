@@ -1,13 +1,13 @@
 <template>
-	<div class="theme-container">
+	<div class="page-registration theme-container">
 		<the-header />
 		<main class="main">
-			<section class="register-wrapper center">
-				<form class="register" @submit="register">
-					<div class="register__header">
+			<section class="registration-wrapper center">
+				<form class="registration" @submit="registration">
+					<div class="registration__header">
 						<h1>Регистрация</h1>
 					</div>
-					<div class="register__body">
+					<div class="registration__body">
 						<v-input
 							:text="'Логин:'"
 							:type="'text'"
@@ -33,7 +33,7 @@
 							:text="'Зарегистрироваться'"
 							:type="'button'"
 						></v-button>
-						<p class="register__description">
+						<p class="registration__description">
 							Нажимая кнопку «Зарегистрироваться», вы
 							подтверждаете своё согласие на
 							<a> обработку персональных данных </a>
@@ -47,15 +47,15 @@
 </template>
 
 <script>
-	import store from "../store";
+	import store from "@/store";
 	import axios from "axios";
-	import TheHeader from "../components/cabinet/TheHeader.vue";
-	import vInput from "../components/cabinet/v-input.vue";
-	import vButton from "../components/general/v-button.vue";
-	import TheFooter from "../components/general/TheFooter.vue";
+	import TheHeader from "@/components/cabinet/TheHeader";
+	import vInput from "@/components/cabinet/v-input";
+	import vButton from "@/components/general/v-button";
+	import TheFooter from "@/components/general/TheFooter";
 
 	export default {
-		name: "Register",
+		name: "PageRegistration",
 		store,
 		components: {
 			TheHeader,
@@ -97,7 +97,7 @@
 			},
 
 			//*регистрация нового юзера
-			register(event) {
+			registration(event) {
 				event.preventDefault();
 
 				axios
@@ -134,7 +134,7 @@
 		padding-top: 8.5rem;
 	}
 
-	.register {
+	.registration {
 		border-radius: 3rem;
 		background-color: var(--white);
 		width: 61rem;

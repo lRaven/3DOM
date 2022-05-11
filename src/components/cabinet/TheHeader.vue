@@ -81,7 +81,7 @@
 	import store from "../../store";
 
 	export default {
-		name: "Header",
+		name: "TheHeader",
 		store,
 		data() {
 			return {

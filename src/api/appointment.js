@@ -1,5 +1,5 @@
 import axios from "axios";
-import store from '../store';
+import store from '@/store';
 
 function postAppointment(client, tel, date, time, building, apartment) {
 	axios.post(`${store.getters.BASEURL}/academ/appointment/`, {

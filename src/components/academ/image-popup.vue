@@ -28,7 +28,7 @@
 
 <script>
 	export default {
-		name: "Apartment Popup",
+		name: "ImagePopup",
 		props: {
 			src: String,
 		},

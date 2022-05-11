@@ -1,5 +1,5 @@
 <template>
-	<div class="theme-container">
+	<div class="page-academ theme-container">
 		<the-header />
 		<main class="main" id="main">
 			<the-banner />
@@ -22,25 +22,26 @@
 </template>
 
 <script>
-	import TheHeader from "../components/academ/TheHeader.vue";
+	import TheHeader from "@/components/academ/TheHeader";
 
-	import TheBanner from "../components/academ/TheBanner.vue";
-	import TheApartments from "../components/academ/TheApartments.vue";
-	import TheLocation from "../components/academ/TheLocation.vue";
-	import TheGallery from "../components/academ/TheGallery.vue";
-	import TheInfrastructure from "../components/academ/TheInfrastructure.vue";
-	import TheBroadcast from "../components/academ/TheBroadcast.vue";
-	import TheParking from "../components/academ/TheParking.vue";
-	import ThePantry from "../components/academ/ThePantry.vue";
-	import TheOffice from "../components/academ/TheOffice.vue";
-	import TheFeedback from "../components/academ/TheFeedback.vue";
+	import TheBanner from "@/components/academ/TheBanner";
+	import TheApartments from "@/components/academ/TheApartments";
+	import TheLocation from "@/components/academ/TheLocation";
+	import TheGallery from "@/components/academ/TheGallery";
+	import TheInfrastructure from "@/components/academ/TheInfrastructure";
+	import TheBroadcast from "@/components/academ/TheBroadcast";
+	import TheParking from "@/components/academ/TheParking";
+	import ThePantry from "@/components/academ/ThePantry";
+	import TheOffice from "@/components/academ/TheOffice";
+	import TheFeedback from "@/components/academ/TheFeedback";
 
-	import TheFooter from "../components/academ/TheFooter.vue";
+	import TheFooter from "@/components/academ/TheFooter";
 
-	import imagePopup from "../components/academ/image-popup.vue";
-	import MortgageCalculator from "../components/academ/MortgageCalculator.vue";
+	import imagePopup from "@/components/academ/image-popup";
+	import MortgageCalculator from "@/components/academ/MortgageCalculator";
 
 	export default {
+		name: "PageAcadem",
 		components: {
 			TheHeader,
 
@@ -60,7 +61,6 @@
 			imagePopup,
 			MortgageCalculator,
 		},
-		methods: {},
 	};
 </script>
 

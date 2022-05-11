@@ -2,16 +2,10 @@
 node_modules
 /dist
 
-transcript.txt
-datepicker-config.txt
-datepicker.esm (rus).js
-npm-debug.log
 
 # local env files
 .env.local
 .env.*.local
-.package.json
-.package-lock.json
 
 # Log files
 npm-debug.log*

@@ -10,7 +10,7 @@
 
 <script>
 	export default {
-		name: "Textarea",
+		name: "vTextarea",
 		props: {
 			description: String,
 		},

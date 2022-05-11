@@ -1,13 +1,13 @@
 <template>
-	<button class="button" :type="type" :class="color">
-		<img :src="icon" alt="icon" class="button__icon" />
-		<p class="button__text">{{ text }}</p>
+	<button class="v-button" :type="type" :class="color">
+		<img :src="icon" alt="icon" class="v-button__icon" />
+		<p class="v-button__text">{{ text }}</p>
 	</button>
 </template>
 
 <script>
 	export default {
-		name: "Button",
+		name: "vButton",
 		props: {
 			color: String,
 			icon: String,
@@ -18,7 +18,7 @@
 </script>
 
 <style lang="scss" scoped>
-	.button {
+	.v-button {
 		user-select: none;
 		display: flex;
 		align-items: center;

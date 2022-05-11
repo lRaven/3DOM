@@ -59,14 +59,14 @@
 </template>
 
 <script>
-	import vButton from "./v-button.vue";
-	import academSwiperFull from "./academ-swiper-full.vue";
-	import academInput from "./academ-input.vue";
-	import vCheckbox from "./v-checkbox.vue";
-	import vPopup from "./v-popup.vue";
+	import vButton from "@/components/academ/v-button";
+	import academSwiperFull from "@/components/academ/academ-swiper-full";
+	import academInput from "@/components/academ/academ-input";
+	import vCheckbox from "@/components/academ/v-checkbox";
+	import vPopup from "@/components/academ/v-popup";
 
 	export default {
-		name: "Gallery",
+		name: "TheGallery",
 		components: {
 			vButton,
 			academSwiperFull,

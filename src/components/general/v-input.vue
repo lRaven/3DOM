@@ -1,5 +1,5 @@
 <template>
-	<div class="input-wrapper" :class="customClass">
+	<div class="v-input input-wrapper" :class="customClass">
 		<p class="input__description">{{ text }}</p>
 		<input
 			:type="type"
@@ -14,7 +14,7 @@
 
 <script>
 	export default {
-		name: "Input",
+		name: "vInput",
 		props: {
 			type: String,
 			text: String,

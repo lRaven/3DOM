@@ -43,7 +43,7 @@
 
 <script>
 	export default {
-		name: "Infrastructure",
+		name: "TheInfrastructure",
 	};
 </script>
 

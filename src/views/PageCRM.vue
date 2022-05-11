@@ -1,5 +1,5 @@
 <template>
-	<div class="theme-container">
+	<div class="page-crm theme-container">
 		<the-header />
 		<main class="main">
 			<div class="apartments">
@@ -98,24 +98,25 @@
 </template>
 
 <script>
-	import store from "../store";
+	import store from "@/store";
 
-	import TheHeader from "../components/academ/TheHeader.vue";
+	import TheHeader from "@/components/academ/TheHeader";
 
-	import SectionOne from "../components/academ/ApartmentsPage/SectionOne";
-	import SectionTwo from "../components/academ/ApartmentsPage/SectionTwo";
-	import SectionThree from "../components/academ/ApartmentsPage/SectionThree";
-	import SectionFloor from "../components/academ/ApartmentsPage/SectionFloor";
-	import TypeList from "../components/academ/ApartmentsPage/TypeList";
-	import sectionPopup from "../components/crm/sectionPopup";
-	import apartmentPopup from "../components/crm/apartmentPopup";
+	import SectionOne from "@/components/academ/ApartmentsPage/SectionOne";
+	import SectionTwo from "@/components/academ/ApartmentsPage/SectionTwo";
+	import SectionThree from "@/components/academ/ApartmentsPage/SectionThree";
+	import SectionFloor from "@/components/academ/ApartmentsPage/SectionFloor";
+	import TypeList from "@/components/academ/ApartmentsPage/TypeList";
+	import sectionPopup from "@/components/crm/sectionPopup";
+	import apartmentPopup from "@/components/crm/apartmentPopup";
 
-	import MortgageCalculator from "../components/academ/MortgageCalculator.vue";
+	import MortgageCalculator from "@/components/academ/MortgageCalculator";
 
-	import TheFooter from "../components/academ/TheFooter";
+	import TheFooter from "@/components/academ/TheFooter";
 
 	export default {
 		store,
+		name: "PageCRM",
 		components: {
 			TheHeader,
 
@@ -131,15 +132,13 @@
 
 			TheFooter,
 		},
-		data() {
-			return {
-				floor: 4,
-				section: null,
-				apartment: null,
-				isSectionReview: false,
-				isApartmentReview: false,
-			};
-		},
+		data: () => ({
+			floor: 4,
+			section: null,
+			apartment: null,
+			isSectionReview: false,
+			isApartmentReview: false,
+		}),
 
 		methods: {
 			selectFloor(floor) {
@@ -172,7 +171,6 @@
 				this.isSectionReview = false;
 			},
 		},
-		mounted() {},
 	};
 </script>
 

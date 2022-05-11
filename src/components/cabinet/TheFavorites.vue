@@ -50,7 +50,7 @@
 
 	export default {
 		store,
-		name: "Favorites",
+		name: "TheFavorites",
 		data() {
 			return {};
 		},

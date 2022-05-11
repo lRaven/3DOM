@@ -20,7 +20,7 @@
 
 <script>
 	export default {
-		name: "Popup",
+		name: "vPopup",
 		props: {
 			closeIcon: String,
 			light: String,

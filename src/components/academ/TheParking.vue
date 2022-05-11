@@ -71,13 +71,13 @@
 </template>
 
 <script>
-	import vButton from "./v-button.vue";
-	import vPopup from "./v-popup.vue";
-	import academInput from "./academ-input.vue";
-	import vCheckbox from "./v-checkbox.vue";
+	import vButton from "@/components/academ/v-button";
+	import vPopup from "@/components/academ/v-popup";
+	import academInput from "@/components/academ/academ-input";
+	import vCheckbox from "@/components/academ/v-checkbox";
 
 	export default {
-		name: "Parking",
+		name: "TheParking",
 		components: {
 			vButton,
 			vPopup,
@@ -155,7 +155,7 @@
 		}
 		&__footer {
 			min-height: 34rem;
-			background: url(/img/academ/reserve-seat.png) center / cover
+			background: url(/public/img/academ/reserve-seat.png) center / cover
 				no-repeat;
 			.parking__container {
 				div {

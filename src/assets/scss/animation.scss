@@ -1,0 +1,50 @@
+//*opacity animation
+.v-enter-active,
+.v-leave-active {
+	transition: opacity 0.3s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+	opacity: 0;
+}
+
+//*page animation
+.page-enter-active,
+.page-leave-active {
+	transition: all 0.5s ease;
+	transform: translateY(0);
+}
+
+.page-enter-from,
+.page-leave-to {
+	opacity: 0;
+	transform: translateY(3rem);
+	transition: all 1s ease;
+}
+
+.fade-up-enter-active,
+.fade-up-leave-active {
+	transition: all 0.5s ease;
+	transform: translateY(0);
+}
+
+.fade-up-enter-from,
+.fade-up-leave-to {
+	opacity: 0;
+	transform: translateY(3rem);
+	transition: all 0.5s ease;
+}
+
+.fade-down-enter-active,
+.fade-down-leave-active {
+	transition: all 0.5s ease;
+	transform: translateY(0);
+}
+
+.fade-down-enter-from,
+.fade-down-leave-to {
+	opacity: 0;
+	transform: translateY(-3rem);
+	transition: all 0.5s ease;
+}

@@ -1,5 +1,5 @@
 import axios from "axios";
-import store from '../store';
+import store from '@/store';
 
 
 //* получение списка квартир избранных юзером и передача в функцию выборки

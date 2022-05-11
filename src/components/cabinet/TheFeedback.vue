@@ -1,12 +1,12 @@
 <template>
-	<div class="feedback">
-		<div class="feedback-form">
-			<div class="feedback-form__header">
-				<h1 class="feedback-form__title">Обратная связь</h1>
+	<div class="the-feedback">
+		<div class="the-feedback-form">
+			<div class="the-feedback-form__header">
+				<h1 class="the-feedback-form__title">Обратная связь</h1>
 			</div>
-			<div class="feedback-form__body">
-				<form @submit="postSupportMessage">
-					<div class="feedback-form__description">
+			<div class="the-feedback-form__body">
+				<form @submit.prevent="postSupportMessage">
+					<div class="the-feedback-form__description">
 						<p>ФИО:</p>
 					</div>
 					<v-input
@@ -15,7 +15,7 @@
 						v-model="name"
 					></v-input>
 
-					<div class="feedback-form__description">
+					<div class="the-feedback-form__description">
 						<p>Номер телефона:</p>
 					</div>
 					<v-input
@@ -24,15 +24,15 @@
 						pattern="[\+]*[7-8]{1}\s?[\(]*9[0-9]{2}[\)]*\s?\d{3}[-]*\d{2}[-]*\d{2}"
 					></v-input>
 
-					<div class="feedback-form__description">
+					<div class="the-feedback-form__description">
 						<p>Email:</p>
 					</div>
 					<v-input reqiured :type="'email'" v-model="email"></v-input>
 
-					<div class="feedback-form__description">
+					<div class="the-feedback-form__description">
 						<p>Тема обращения:</p>
 					</div>
-					<cabinet-dropdown
+					<v-dropdown
 						:selected="'Выберите тему*'"
 						:options="[
 							{ id: 1, value: 'Вопрос по покупке' },
@@ -45,17 +45,22 @@
 							{ id: 8, value: 'Другое' },
 						]"
 						v-model="topic"
-					></cabinet-dropdown>
+					></v-dropdown>
 
-					<cabinet-textarea
+					<v-textarea
 						placeholder="Напишите сообщение..."
 						maxlength="1000"
 						v-model="message"
-					></cabinet-textarea>
+					></v-textarea>
 
-					<v-button :text="'Отправить'" :type="'button'"></v-button>
+					<v-button
+						:text="'Отправить'"
+						:class="buttonColor"
+						type="button"
+						ref="submit"
+					></v-button>
 
-					<div class="feedback-form__bottom">
+					<div class="the-feedback-form__bottom">
 						<p>
 							Нажимая кнопку «Отправить», вы подтверждаете своё
 							согласие <br />
@@ -69,129 +74,48 @@
 </template>
 
 <script>
-	import vInput from "./v-input.vue";
-	import CabinetDropdown from "./CabinetDropdown.vue";
-	import CabinetTextarea from "./CabinetTextarea.vue";
-	import vButton from "../general/v-button.vue";
-	import store from "../../store";
+	import store from "@/store";
 	import axios from "axios";
+	import { mapState } from "vuex";
+
+	import vInput from "./v-input";
+	import vDropdown from "./v-dropdown";
+	import vTextarea from "./v-textarea";
+	import vButton from "@/components/general/v-button";
 
 	export default {
-		name: "Feedback",
+		name: "TheFeedback",
 		store,
 		components: {
 			vInput,
-			CabinetDropdown,
-			CabinetTextarea,
+			vDropdown,
+			vTextarea,
 			vButton,
 		},
-		data() {
-			return {
-				name: "",
-				tel: "",
-				email: "",
-				topic: "",
-				message: "",
-			};
+		watch: {
+			// name() {
+			// 	if (this.name.length > 0) {
+			// 		this.buttonColor = "blue";
+			// 	} else this.buttonColor = "gray";
+			// },
 		},
+		data: () => ({
+			name: "",
+			tel: "",
+			email: "",
+			topic: "",
+			message: "",
+
+			buttonColor: "gray",
+		}),
 		computed: {
-			user: () => {
-				return store.getters.USER.id;
-			},
+			...mapState({
+				user_id: (state) => state.cabinet.user.id,
+			}),
 		},
 		methods: {
-			//*запись в переменную значения инпута для передачи на сервер
-			setValueInputToVariable() {
-				const inputs = document.querySelectorAll(".input");
-				inputs.forEach((input) => {
-					if (input.getAttribute("type") == "text")
-						this.name = input.value;
-					if (input.getAttribute("type") == "tel")
-						this.tel = input.value;
-					if (input.getAttribute("type") == "email")
-						this.mail = input.value;
-
-					input.addEventListener("input", () => {
-						if (input.getAttribute("type") == "text")
-							this.name = input.value;
-						if (input.getAttribute("type") == "tel")
-							this.tel = input.value;
-						if (input.getAttribute("type") == "email")
-							this.mail = input.value;
-					});
-				});
-			},
-
-			//*запись в переменную значения textarea для передачи на сервер
-			setValueTextareaToVariable() {
-				const textarea = document.querySelector(".textarea");
-				this.message = textarea.value;
-
-				textarea.addEventListener("input", () => {
-					this.message = textarea.value;
-				});
-			},
-
-			//*запись в переменную значения dropdown'а для передачи на сервер
-			setTopic() {
-				const dropdown = document.querySelector(".dropdown");
-				const dropdown__item =
-					dropdown.querySelectorAll(".dropdown__item");
-				dropdown__item.forEach((item) => {
-					item.addEventListener("click", () => {
-						if (
-							item.textContent.toLowerCase() ===
-							"вопрос по покупке"
-						) {
-							this.topic = 1;
-						}
-						if (
-							item.textContent.toLowerCase() ===
-							"вопрос по заселению"
-						) {
-							this.topic = 2;
-						}
-						if (
-							item.textContent.toLowerCase() ===
-							"вопрос по стройке"
-						) {
-							this.topic = 3;
-						}
-						if (
-							item.textContent.toLowerCase() ===
-							"вопрос по проживанию"
-						) {
-							this.topic = 4;
-						}
-						if (
-							item.textContent.toLowerCase() ===
-							"обращение в службу безопасности"
-						) {
-							this.topic = 5;
-						}
-						if (
-							item.textContent.toLowerCase() ===
-							"предложение о сотрудничестве"
-						) {
-							this.topic = 6;
-						}
-						if (
-							item.textContent.toLowerCase() ===
-							"сообщить об ошибке на сайте"
-						) {
-							this.topic = 7;
-						}
-						if (item.textContent.toLowerCase() === "другое") {
-							this.topic = 8;
-						}
-					});
-				});
-			},
-
 			//*отправка сообщения в поддержку (на сервер)
-			postSupportMessage(event) {
-				event.preventDefault();
-
+			postSupportMessage() {
 				axios
 					.post(`${store.getters.BASEURL}/academ/support/`, {
 						name: this.name,
@@ -199,7 +123,7 @@
 						email: this.mail,
 						topic_type: this.topic,
 						message: this.message,
-						user: this.user,
+						user: this.user_id,
 					})
 					.then((response) => {
 						if (response.status === 201) {
@@ -210,60 +134,18 @@
 						console.error(err);
 					});
 			},
-
+			// *TODO: Сделать валидацию формы
 			//*делает кнопку неактивной пока есть пустые поля ввода
-			activateBtn() {
-				const form = document.querySelector(".feedback-form");
-				const btn = form.querySelector(".button");
-				const dropdownItems = form.querySelectorAll(".dropdown__item");
-
-				dropdownItems.forEach((dropdownItem) => {
-					dropdownItem.addEventListener("click", () => {
-						if (
-							this.name.length > 0 &&
-							this.tel.length > 0 &&
-							this.email.length > 0 &&
-							this.topic !== "" &&
-							this.message !== ""
-						) {
-							btn.setAttribute("type", "submit");
-							btn.classList.add("blue");
-						} else {
-							btn.setAttribute("type", "button");
-							btn.classList.remove("blue");
-						}
-					});
-				});
-
-				document.addEventListener("keydown", () => {
-					if (
-						this.name.length > 0 &&
-						this.tel.length > 0 &&
-						this.email.length > 0 &&
-						this.topic !== "" &&
-						this.message !== ""
-					) {
-						btn.setAttribute("type", "submit");
-						btn.classList.add("blue");
-					} else {
-						btn.setAttribute("type", "button");
-						btn.classList.remove("blue");
-					}
-				});
-			},
+			validateForm() {},
 		},
 		mounted() {
-			this.activateBtn();
-
-			this.setValueInputToVariable();
-			this.setTopic();
-			this.setValueTextareaToVariable();
+			this.validateForm();
 		},
 	};
 </script>
 
 <style lang="scss" scoped>
-	.feedback-form {
+	.the-feedback-form {
 		border-radius: 3rem;
 		box-shadow: 0 0 1rem rgba(0, 0, 0, 0.25);
 		&__header {
@@ -289,17 +171,17 @@
 			font-size: 1.8rem;
 			font-weight: 500;
 		}
-		.input {
+		.v-input {
 			grid-column: 2/4;
 			&:invalid {
 				border-color: var(--red);
 			}
 		}
-		.dropdown {
+		.v-dropdown {
 			grid-column: 2/4;
 			font-size: 1.8rem;
 		}
-		.textarea {
+		.v-textarea {
 			grid-column: 2/4;
 			font-size: 1.8rem;
 			font-weight: 500;
@@ -326,7 +208,7 @@
 	select {
 		display: none;
 	}
-	.button {
+	.v-button {
 		border-radius: 1rem;
 		width: 100%;
 		height: 5.5rem;

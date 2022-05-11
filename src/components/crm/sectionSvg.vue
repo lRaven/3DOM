@@ -8660,6 +8660,7 @@
 
 	export default {
 		store,
+		name: "SectionScheme",
 		props: {
 			section: Number,
 		},

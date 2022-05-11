@@ -151,7 +151,7 @@
 	import vButton from "../general/v-button.vue";
 
 	export default {
-		name: "Steps",
+		name: "TheSteps",
 		components: {
 			vButton,
 		},

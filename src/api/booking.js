@@ -1,7 +1,7 @@
 import axios from "axios";
-import store from '../store';
+import store from '@/store';
 
-import { getApartments } from './academ';
+import { getApartments } from '@/api/academ';
 
 //* получение инфы по резервациям
 function getBookingList() {

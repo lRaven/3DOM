@@ -68,7 +68,7 @@
 	import vSwiper from "./v-swiper.vue";
 
 	export default {
-		name: "Banner",
+		name: "TheBanner",
 		components: {
 			vButton,
 			vSwiper,

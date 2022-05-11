@@ -141,7 +141,7 @@
 	import vButton from "./v-button.vue";
 
 	export default {
-		name: "Catalog",
+		name: "TheCatalog",
 		props: {
 			title: String,
 		},

@@ -1,8 +1,8 @@
 <template>
-	<div class="toggle">
+	<div class="v-toggle">
 		<label>
-			<input type="checkbox" class="toggle__real" />
-			<span class="toggle__fake"></span>
+			<input type="checkbox" class="v-toggle__real" />
+			<span class="v-toggle__fake"></span>
 		</label>
 		<p>{{ description }}</p>
 	</div>
@@ -10,7 +10,7 @@
 
 <script>
 	export default {
-		name: "toggle",
+		name: "vToggle",
 		props: {
 			description: String,
 		},
@@ -18,7 +18,7 @@
 </script>
 
 <style lang="scss" scoped>
-	.toggle {
+	.v-toggle {
 		display: flex;
 		align-items: center;
 		gap: 4.4rem;
@@ -27,7 +27,7 @@
 		padding: 1.4rem 1.5rem;
 		&__real {
 			display: none;
-			&:checked + .toggle__fake {
+			&:checked + .v-toggle__fake {
 				background-color: var(--blue);
 				&::before {
 					left: 3.5rem;

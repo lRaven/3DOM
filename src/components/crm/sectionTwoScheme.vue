@@ -2342,7 +2342,7 @@
 
 <script>
 	export default {
-		name: "Secont section scheme",
+		name: "SecontSectionScheme",
 	};
 </script>
 <style lang="scss" scoped>

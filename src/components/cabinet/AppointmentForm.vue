@@ -25,20 +25,20 @@
 				<div class="appointment-form__description">
 					<p>Проект:</p>
 				</div>
-				<cabinet-dropdown
+				<v-dropdown
 					:selected="'Выберите проект*'"
-					:options="[{ value: 'АКАДЕМИЧЕСКИЙ', id: 1 }]"
+					:options="[{ id: 1, value: 'АКАДЕМИЧЕСКИЙ' }]"
 					v-model="project"
-				></cabinet-dropdown>
+				></v-dropdown>
 
 				<div class="appointment-form__description">
 					<p>Квартира:</p>
 				</div>
-				<apartments-dropdown
+				<v-dropdown
 					:selected="'Выберите квартиру'"
 					v-model="apartment"
-					:options="options"
-				></apartments-dropdown>
+					:options="apartments"
+				></v-dropdown>
 
 				<div class="appointment-form__description">
 					<p>Дата и время:</p>
@@ -88,31 +88,30 @@
 </template>
 
 <script>
-	import store from "../../store";
+	import store from "@/store";
+	import { mapState } from "vuex";
 
-	import vInput from "./v-input.vue";
-	import CabinetDropdown from "./CabinetDropdown.vue";
-	import ApartmentsDropdown from "./ApartmentsDropdown.vue";
-	import vButton from "../general/v-button.vue";
-	import DatePicker from "./DatePicker.vue";
-	import TimePicker from "./TimePicker.vue";
-	import { postAppointment } from "../../api/appointment";
+	import vInput from "./v-input";
+	import vDropdown from "@/components/cabinet/v-dropdown";
+	import vButton from "@/components/general/v-button";
+	import DatePicker from "@/components/cabinet/DatePicker";
+	import TimePicker from "@/components/cabinet/TimePicker";
+	import { postAppointment } from "@/api/appointment";
 
 	export default {
 		name: "AppointmentForm",
 		store,
 		components: {
 			vInput,
-			CabinetDropdown,
-			ApartmentsDropdown,
+			vDropdown,
 			vButton,
 			DatePicker,
 			TimePicker,
 		},
 		computed: {
-			options: () => {
-				return store.getters.APARTMENTS;
-			},
+			...mapState({
+				apartments: (state) => state.academ.apartments,
+			}),
 		},
 		data() {
 			return {
@@ -128,7 +127,7 @@
 			//* функция проверки заполнения всех полей
 			validateForm() {
 				const form = document.querySelector(".appointment-form");
-				const btn = form.querySelector(".button");
+				const btn = form.querySelector(".v-button");
 				if (
 					this.tel !== "" &&
 					this.full_name !== "" &&
@@ -175,7 +174,7 @@
 
 			//* проверки заполнения всех полей при клике в пределах формы
 			document
-				.querySelector(".appointments")
+				.querySelector(".the-appointments")
 				.addEventListener("click", () => {
 					this.validateForm();
 				});
@@ -210,7 +209,7 @@
 			font-size: 1.8rem;
 			font-weight: 500;
 		}
-		.input {
+		.v-input {
 			grid-column: 2/4;
 		}
 		&__bottom {
@@ -224,7 +223,7 @@
 			}
 		}
 	}
-	.dropdown {
+	.v-dropdown {
 		&:nth-child(6) {
 			grid-column: 2/4;
 		}

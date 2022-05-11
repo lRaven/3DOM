@@ -1,9 +1,13 @@
 <template>
 	<div
-		class="call animate__animated animate__bounceInUp"
+		class="v-call animate__animated animate__bounceInUp"
 		@click="openPopup()"
 	>
-		<img src="img/icon/general/call-circle.svg" class="call__img" alt="" />
+		<img
+			src="img/icon/general/call-circle.svg"
+			class="v-call__img"
+			alt=""
+		/>
 	</div>
 	<transition>
 		<v-popup
@@ -51,7 +55,7 @@
 	import vButton from "./v-button.vue";
 
 	export default {
-		name: "Call",
+		name: "vCall",
 		data() {
 			return {
 				isPopupVisible: false,
@@ -76,7 +80,7 @@
 </script>
 
 <style lang="scss" scoped>
-	.call {
+	.v-call {
 		cursor: pointer;
 		user-select: none;
 		border-radius: 50%;
@@ -95,7 +99,7 @@
 		}
 	}
 	@media (max-width: 1050px) {
-		.call {
+		.v-call {
 			display: none;
 		}
 	}

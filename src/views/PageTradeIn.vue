@@ -1,12 +1,12 @@
 <template>
-	<div class="theme-container">
+	<div class="page-trade-in theme-container">
 		<the-header />
 		<main class="main">
 			<the-banner />
 			<the-service />
 			<the-steps />
 			<the-catalog
-				:title="'Выбрать квартиру в одном из наших проектов'"
+				title="Выбрать квартиру в одном из наших проектов"
 			></the-catalog>
 			<the-price />
 		</main>
@@ -16,20 +16,20 @@
 </template>
 
 <script>
-	import TheHeader from "../components/general/TheHeader.vue";
+	import TheHeader from "@/components/general/TheHeader";
 
-	import TheBanner from "../components/trade-in/TheBanner.vue";
-	import TheService from "../components/trade-in/TheService.vue";
-	import TheSteps from "../components/trade-in/TheSteps.vue";
-	import TheCatalog from "../components/general/TheCatalog.vue";
-	import ThePrice from "../components/trade-in/ThePrice.vue";
+	import TheBanner from "@/components/trade-in/TheBanner";
+	import TheService from "@/components/trade-in/TheService";
+	import TheSteps from "@/components/trade-in/TheSteps";
+	import TheCatalog from "@/components/general/TheCatalog";
+	import ThePrice from "@/components/trade-in/ThePrice";
 
-	import vCall from "../components/general/v-call.vue";
+	import vCall from "@/components/general/v-call";
 
-	import TheFooter from "../components/general/TheFooter.vue";
+	import TheFooter from "@/components/general/TheFooter";
 
 	export default {
-		name: "TradeIn",
+		name: "PageTradeIn",
 		components: {
 			TheHeader,
 

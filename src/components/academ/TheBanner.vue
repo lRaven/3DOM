@@ -69,11 +69,11 @@
 </template>
 
 <script>
-	import vButton from "./v-button.vue";
-	import { scroll } from "../../js/scroll";
+	import vButton from "@/components/academ/v-button";
+	import { scroll } from "@/js/scroll";
 
 	export default {
-		name: "Banner",
+		name: "TheBanner",
 		components: {
 			vButton,
 		},

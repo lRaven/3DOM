@@ -1,70 +1,72 @@
 <template>
 	<router-link :to="link">
-		<div class="card">
-			<div class="card__top">
+		<div class="v-card">
+			<div class="v-card__top">
 				<img :src="src" alt="" />
 			</div>
-			<div class="card__body">
-				<div class="card__title">
-					<h4 class="card__project-description">
+			<div class="v-card__body">
+				<div class="v-card__title">
+					<h4 class="v-card__project-description">
 						{{ subtitle }}
 					</h4>
 					<img
 						src="img/icon/trade-in/periscope.svg"
 						alt=""
-						class="card__icon"
+						class="v-card__icon"
 					/>
-					<h3 class="card__project">
+					<h3 class="v-card__project">
 						{{ title }}
 					</h3>
 
-					<div class="card__min">
+					<div class="v-card__min">
 						<span>от</span>
 						<span>{{ min }}</span>
 					</div>
 				</div>
-				<div class="card__prices">
-					<div class="card__price card__studios">
+				<div class="v-card__prices">
+					<div class="v-card__price v-card__studios">
 						<p>Студии</p>
-						<div class="card__min">
+						<div class="v-card__min">
 							<span>от</span>
 							<span>{{ studios }}</span>
 						</div>
 					</div>
-					<div class="card__price card__single">
-						<p class="card__price-pc">1-комн. квартиры</p>
-						<p class="card__price-mobile">1-комн. кв.</p>
-						<div class="card__min">
+					<div class="v-card__price v-card__single">
+						<p class="v-card__price-pc">1-комн. квартиры</p>
+						<p class="v-card__price-mobile">1-комн. кв.</p>
+						<div class="v-card__min">
 							<span>от</span>
 							<span>{{ singleRoom }}</span>
 						</div>
 					</div>
-					<div class="card__price card__two">
-						<p class="card__price-pc">2-комн. квартиры</p>
-						<p class="card__price-mobile">2-комн. кв.</p>
-						<div class="card__min">
+					<div class="v-card__price v-card__two">
+						<p class="v-card__price-pc">2-комн. квартиры</p>
+						<p class="v-card__price-mobile">2-комн. кв.</p>
+						<div class="v-card__min">
 							<span>от</span>
 							<span>{{ twoRoom }}</span>
 						</div>
 					</div>
-					<div class="card__price card__three">
-						<p class="card__price-pc">3-комн. квартиры</p>
-						<p class="card__price-mobile">3-комн. кв.</p>
-						<div class="card__min">
+					<div class="v-card__price v-card__three">
+						<p class="v-card__price-pc">3-комн. квартиры</p>
+						<p class="v-card__price-mobile">3-комн. кв.</p>
+						<div class="v-card__min">
 							<span>от</span>
 							<span>{{ threeRoom }}</span>
 						</div>
 					</div>
 				</div>
-				<div class="card__bottom">
-					<div class="card__date">
+				<div class="v-card__bottom">
+					<div class="v-card__date">
 						<p>Заселение до 30.08.2022</p>
 					</div>
-					<div class="card__finishing">
+					<div class="v-card__finishing">
 						<p>с отделкой</p>
 					</div>
-					<div class="card__address">ул. Калинина, 54, Волгоград</div>
-					<div class="card__more">
+					<div class="v-card__address">
+						ул. Калинина, 54, Волгоград
+					</div>
+					<div class="v-card__more">
 						<router-link :to="link">Подробнее</router-link>
 					</div>
 				</div>
@@ -75,7 +77,7 @@
 
 <script>
 	export default {
-		name: "Card",
+		name: "vCard",
 		props: {
 			src: String,
 			title: String,
@@ -92,7 +94,7 @@
 </script>
 
 <style lang="scss" scoped>
-	.card {
+	.v-card {
 		border-radius: 3rem;
 		height: 100%;
 
@@ -169,7 +171,7 @@
 			&-mobile {
 				display: none;
 			}
-			+ .card__price {
+			+ .v-card__price {
 				margin-top: 2rem;
 			}
 			p {
@@ -219,7 +221,7 @@
 	}
 
 	@media (max-width: 650px) {
-		.card {
+		.v-card {
 			&__top {
 				img {
 				}
@@ -227,7 +229,7 @@
 			&__body {
 			}
 			&__title {
-				.card__min {
+				.v-card__min {
 					grid-column: 1/3;
 					justify-self: flex-end;
 				}
@@ -259,7 +261,7 @@
 			&__prices {
 			}
 			&__price {
-				+ .card__price {
+				+ .v-card__price {
 				}
 				p {
 				}
@@ -283,7 +285,7 @@
 	}
 
 	@media (max-width: 540px) {
-		.card {
+		.v-card {
 			display: grid;
 			grid-template-rows: repeat(2, 1fr);
 			&__top {
@@ -294,7 +296,7 @@
 			}
 			&__title {
 				padding: 1rem 2rem 2rem 2rem;
-				.card__min {
+				.v-card__min {
 				}
 			}
 			&__project {
@@ -329,7 +331,7 @@
 				}
 			}
 			&__price {
-				+ .card__price {
+				+ .v-card__price {
 				}
 				p {
 				}
@@ -366,7 +368,7 @@
 	}
 
 	@media (max-width: 470px) {
-		.card {
+		.v-card {
 			&__top {
 				// min-height: 40rem;
 				img {
@@ -375,8 +377,6 @@
 			&__body {
 			}
 			&__title {
-				.card__min {
-				}
 			}
 			&__project {
 				font-size: 2.6rem;
@@ -405,8 +405,7 @@
 				&-pc {
 					display: none;
 				}
-				+ .card__price {
-				}
+
 				p {
 				}
 			}

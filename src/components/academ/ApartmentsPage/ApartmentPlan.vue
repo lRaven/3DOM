@@ -8662,9 +8662,9 @@
 </template>
 
 <script>
-	import store from "../../../store";
-	import ApartmentsSelectedPlanS from "./ApartmentsSelectedPlanS.vue";
-	import svgWork from "../../../js/svgWork";
+	import store from "@/store";
+	import ApartmentsSelectedPlanS from "@/components/academ/ApartmentsPage/ApartmentsSelectedPlanS";
+	import svgWork from "@/js/svgWork";
 
 	export default {
 		store,

@@ -3,8 +3,8 @@
 </template>
 
 <script>
-	import store from "../../../store";
-	import svgWork from "../../../js/svgWork";
+	import store from "@/store";
+	import svgWork from "@/js/svgWork";
 
 	export default {
 		store,

@@ -1,38 +1,39 @@
 <template>
-	<div class="navigation">
-		<h1 class="navigation__title animate__animated animate__fadeInUp wow">
-			Личный кабинет
-		</h1>
-		<ul class="navigation__list">
+	<div class="the-navigation" ref="nav">
+		<h1 class="the-navigation__title" ref="title">Личный кабинет</h1>
+		<ul class="the-navigation__list">
 			<li
-				class="navigation__item animate__animated animate__fadeInUp wow"
-				@click="selectTab(1)"
+				class="the-navigation__item animate__animated animate__fadeInUp"
+				@click="
+					selectTab(1);
+					scrollTop();
+				"
 				title="Профиль"
 			>
 				<div>
 					<img
 						v-if="tab === 'profile'"
 						src="img/icon/cabinet/profile-selected.svg"
-						class="navigation__img"
+						class="the-navigation__img"
 						alt=""
 					/>
 					<img
 						v-else
 						src="img/icon/cabinet/profile.svg"
-						class="navigation__img"
+						class="the-navigation__img"
 						alt=""
 					/>
 				</div>
 				<p
-					class="navigation__description-bold"
+					class="the-navigation__description-bold"
 					v-if="tab === 'profile'"
 				>
 					Мой профиль
 				</p>
-				<p class="navigation__description" v-else>Мой профиль</p>
+				<p class="the-navigation__description" v-else>Мой профиль</p>
 			</li>
 			<li
-				class="navigation__item animate__animated animate__fadeInUp wow"
+				class="the-navigation__item animate__animated animate__fadeInUp"
 				@click="selectTab(2)"
 				title="Бронирование"
 				v-if="role === 'AdminCRM' || is_superuser === true"
@@ -41,26 +42,26 @@
 					<img
 						v-if="tab === 'booking'"
 						src="img/icon/cabinet/booking-selected.svg"
-						class="navigation__img"
+						class="the-navigation__img"
 						alt=""
 					/>
 					<img
 						v-else
 						src="img/icon/cabinet/booking.svg"
-						class="navigation__img"
+						class="the-navigation__img"
 						alt=""
 					/>
 				</div>
 				<p
-					class="navigation__description-bold"
+					class="the-navigation__description-bold"
 					v-if="tab === 'booking'"
 				>
 					Бронирование
 				</p>
-				<p class="navigation__description" v-else>Бронирование</p>
+				<p class="the-navigation__description" v-else>Бронирование</p>
 			</li>
 			<li
-				class="navigation__item animate__animated animate__fadeInUp wow"
+				class="the-navigation__item animate__animated animate__fadeInUp"
 				@click="selectTab(3)"
 				title="Избранное"
 			>
@@ -68,26 +69,26 @@
 					<img
 						v-if="tab === 'favorites'"
 						src="img/icon/cabinet/favorites-selected.svg"
-						class="navigation__img"
+						class="the-navigation__img"
 						alt=""
 					/>
 					<img
 						v-else
 						src="img/icon/cabinet/favorites.svg"
-						class="navigation__img"
+						class="the-navigation__img"
 						alt=""
 					/>
 				</div>
 				<p
-					class="navigation__description-bold"
+					class="the-navigation__description-bold"
 					v-if="tab === 'favorites'"
 				>
 					Избранное
 				</p>
-				<p class="navigation__description" v-else>Избранное</p>
+				<p class="the-navigation__description" v-else>Избранное</p>
 			</li>
 			<li
-				class="navigation__item animate__animated animate__fadeInUp wow"
+				class="the-navigation__item animate__animated animate__fadeInUp"
 				@click="selectTab(4)"
 				title="Документы"
 				v-if="role === 'AdminCRM' || is_superuser === true"
@@ -96,26 +97,26 @@
 					<img
 						v-if="tab === 'documents'"
 						src="img/icon/cabinet/documents-selected.svg"
-						class="navigation__img"
+						class="the-navigation__img"
 						alt=""
 					/>
 					<img
 						v-else
 						src="img/icon/cabinet/documents.svg"
-						class="navigation__img"
+						class="the-navigation__img"
 						alt=""
 					/>
 				</div>
 				<p
-					class="navigation__description-bold"
+					class="the-navigation__description-bold"
 					v-if="tab === 'documents'"
 				>
 					Документы
 				</p>
-				<p class="navigation__description" v-else>Документы</p>
+				<p class="the-navigation__description" v-else>Документы</p>
 			</li>
 			<li
-				class="navigation__item animate__animated animate__fadeInUp wow"
+				class="the-navigation__item animate__animated animate__fadeInUp"
 				@click="selectTab(5)"
 				title="Встречи"
 			>
@@ -123,26 +124,26 @@
 					<img
 						v-if="tab === 'meetings'"
 						src="img/icon/cabinet/meetings-selected.svg"
-						class="navigation__img"
+						class="the-navigation__img"
 						alt=""
 					/>
 					<img
 						v-else
 						src="img/icon/cabinet/meetings.svg"
-						class="navigation__img"
+						class="the-navigation__img"
 						alt=""
 					/>
 				</div>
 				<p
-					class="navigation__description-bold"
+					class="the-navigation__description-bold"
 					v-if="tab === 'meetings'"
 				>
 					Встречи
 				</p>
-				<p class="navigation__description" v-else>Встречи</p>
+				<p class="the-navigation__description" v-else>Встречи</p>
 			</li>
 			<li
-				class="navigation__item animate__animated animate__fadeInUp wow"
+				class="the-navigation__item animate__animated animate__fadeInUp"
 				@click="selectTab(6)"
 				title="Ипотека"
 			>
@@ -150,26 +151,26 @@
 					<img
 						v-if="tab === 'mortgage'"
 						src="img/icon/cabinet/mortgage-selected.svg"
-						class="navigation__img"
+						class="the-navigation__img"
 						alt=""
 					/>
 					<img
 						v-else
 						src="img/icon/cabinet/mortgage.svg"
-						class="navigation__img"
+						class="the-navigation__img"
 						alt=""
 					/>
 				</div>
 				<p
-					class="navigation__description-bold"
+					class="the-navigation__description-bold"
 					v-if="tab === 'mortgage'"
 				>
 					Ипотека
 				</p>
-				<p class="navigation__description" v-else>Ипотека</p>
+				<p class="the-navigation__description" v-else>Ипотека</p>
 			</li>
 			<li
-				class="navigation__item animate__animated animate__fadeInUp wow"
+				class="the-navigation__item animate__animated animate__fadeInUp"
 				@click="selectTab(7)"
 				title="Услуги"
 			>
@@ -177,26 +178,26 @@
 					<img
 						v-if="tab === 'services'"
 						src="img/icon/cabinet/services-selected.svg"
-						class="navigation__img"
+						class="the-navigation__img"
 						alt=""
 					/>
 					<img
 						v-else
 						src="img/icon/cabinet/services.svg"
-						class="navigation__img"
+						class="the-navigation__img"
 						alt=""
 					/>
 				</div>
 				<p
-					class="navigation__description-bold"
+					class="the-navigation__description-bold"
 					v-if="tab === 'services'"
 				>
 					Услуги
 				</p>
-				<p class="navigation__description" v-else>Услуги</p>
+				<p class="the-navigation__description" v-else>Услуги</p>
 			</li>
 			<li
-				class="navigation__item animate__animated animate__fadeInUp wow"
+				class="the-navigation__item animate__animated animate__fadeInUp"
 				@click="selectTab(8)"
 				title="Бонусы"
 			>
@@ -204,26 +205,26 @@
 					<img
 						v-if="tab === 'bonuses'"
 						src="img/icon/cabinet/bonuses-selected.svg"
-						class="navigation__img"
+						class="the-navigation__img"
 						alt=""
 					/>
 					<img
 						v-else
 						src="img/icon/cabinet/bonuses.svg"
-						class="navigation__img"
+						class="the-navigation__img"
 						alt=""
 					/>
 				</div>
 				<p
-					class="navigation__description-bold"
+					class="the-navigation__description-bold"
 					v-if="tab === 'bonuses'"
 				>
 					Бонусы
 				</p>
-				<p class="navigation__description" v-else>Бонусы</p>
+				<p class="the-navigation__description" v-else>Бонусы</p>
 			</li>
 			<li
-				class="navigation__item animate__animated animate__fadeInUp wow"
+				class="the-navigation__item animate__animated animate__fadeInUp"
 				@click="selectTab(9)"
 				title="Кабинет CRM"
 				v-if="role === 'AdminCRM' || is_superuser === true"
@@ -232,39 +233,41 @@
 					<img
 						v-if="tab === 'crm'"
 						src="img/icon/cabinet/crm-selected.svg"
-						class="navigation__img"
+						class="the-navigation__img"
 						alt=""
 					/>
 					<img
 						v-else
 						src="img/icon/cabinet/crm.svg"
-						class="navigation__img"
+						class="the-navigation__img"
 						alt=""
 					/>
 				</div>
-				<p class="navigation__description-bold" v-if="tab === 'crm'">
+				<p
+					class="the-navigation__description-bold"
+					v-if="tab === 'crm'"
+				>
 					Кабинет CRM
 				</p>
-				<p class="navigation__description" v-else>Кабинет CRM</p>
+				<p class="the-navigation__description" v-else>Кабинет CRM</p>
 			</li>
 			<li
-				class="navigation__item animate__animated animate__fadeInUp wow"
+				class="the-navigation__item animate__animated animate__fadeInUp"
 				title="Колоток"
 				v-if="role === 'DefaultUser' || is_superuser === true"
+				@click="openPopup"
 			>
-				<router-link to="/">
-					<div>
-						<img
-							src="img/icon/cabinet/beater.svg"
-							class="navigation__img"
-							alt=""
-						/>
-					</div>
-					<p class="navigation__description">Колоток</p>
-				</router-link>
+				<div>
+					<img
+						src="img/icon/cabinet/beater.svg"
+						class="the-navigation__img"
+						alt=""
+					/>
+				</div>
+				<p class="the-navigation__description">Колоток</p>
 			</li>
 			<li
-				class="navigation__item animate__animated animate__fadeInUp wow"
+				class="the-navigation__item animate__animated animate__fadeInUp"
 				@click="selectTab(10)"
 				title="Обратная связь"
 			>
@@ -272,27 +275,33 @@
 					<img
 						v-if="tab === 'feedback'"
 						src="img/icon/cabinet/feedback-selected.svg"
-						class="navigation__img"
+						class="the-navigation__img"
 						alt=""
 					/>
 					<img
 						v-else
 						src="img/icon/cabinet/feedback.svg"
-						class="navigation__img"
+						class="the-navigation__img"
 						alt=""
 					/>
 				</div>
 				<p
-					class="navigation__description-bold"
+					class="the-navigation__description-bold"
 					v-if="tab === 'feedback'"
 				>
 					Обратная связь
 				</p>
-				<p class="navigation__description" v-else>Обратная связь</p>
+				<p class="the-navigation__description" v-else>Обратная связь</p>
 			</li>
 		</ul>
 		<div
-			class="navigation__hide animate__animated animate__fadeInRight wow"
+			class="the-navigation__hide animate__animated animate__fadeInRight"
+			ref="arrow"
+			@click="
+				isNavMinimized === true
+					? (isNavMinimized = false)
+					: (isNavMinimized = true)
+			"
 		>
 			<img src="img/icon/cabinet/arrow.svg" alt="" />
 			<p>Свернуть</p>
@@ -301,88 +310,93 @@
 </template>
 
 <script>
-	import store from "../../store";
+	import { mapState, mapMutations } from "vuex";
 
 	export default {
-		name: "Navigation",
-		store,
-		data() {
-			return {};
+		name: "TheNavigation",
+		data: () => ({ isNavMinimized: false }),
+		watch: {
+			isNavMinimized() {
+				if (this.isNavMinimized === true) this.minimizeNav();
+				else if (this.isNavMinimized === false) this.maximizeNav();
+			},
 		},
 		computed: {
-			tab: () => {
-				return store.getters.TAB;
-			},
-			role: () => {
-				return store.getters.USER.role;
-			},
-			is_superuser: () => {
-				return store.getters.USER.is_superuser;
-			},
+			...mapState({
+				tab: (state) => state.cabinet.tab,
+				role: (state) => state.cabinet.user.role,
+				is_superuser: (state) => state.cabinet.user.is_superuser,
+			}),
 		},
 		methods: {
+			...mapMutations(["SET_TAB"]),
+
 			selectTab(options) {
 				switch (options) {
 					case 1: {
-						store.commit("SET_TAB", "profile");
+						this.SET_TAB("profile");
 						break;
 					}
 					case 2: {
-						store.commit("SET_TAB", "booking");
+						this.SET_TAB("booking");
 						break;
 					}
 					case 3: {
-						store.commit("SET_TAB", "favorites");
+						this.SET_TAB("favorites");
 						break;
 					}
 					case 4: {
-						store.commit("SET_TAB", "documents");
+						this.SET_TAB("documents");
 						break;
 					}
 					case 5: {
-						store.commit("SET_TAB", "meetings");
+						this.SET_TAB("meetings");
 						break;
 					}
 					case 6: {
-						store.commit("SET_TAB", "mortgage");
+						this.SET_TAB("mortgage");
 						break;
 					}
 					case 7: {
-						store.commit("SET_TAB", "services");
+						this.SET_TAB("services");
 						break;
 					}
 					case 8: {
-						store.commit("SET_TAB", "bonuses");
+						this.SET_TAB("bonuses");
 						break;
 					}
 					case 9: {
-						store.commit("SET_TAB", "crm");
+						this.$router.push("/crm");
 						break;
 					}
 					case 10: {
-						store.commit("SET_TAB", "feedback");
+						this.SET_TAB("feedback");
 						break;
 					}
 				}
 			},
 
-			scrollTop() {
-				const items = document.querySelectorAll(".navigation__item");
-				items.forEach((item) => {
-					item.addEventListener("click", () => {
-						window.scrollTo(0, 0);
-					});
-				});
+			scrollTop: () => window.scrollTo(0, 0),
+
+			minimizeNav() {
+				this.$refs.nav.classList.add("minimize");
+				this.$emit("minimizeNav");
 			},
-		},
-		mounted() {
-			this.scrollTop();
+
+			maximizeNav() {
+				this.$refs.nav.classList.remove("minimize");
+				this.$emit("maximizeNav");
+			},
+
+			openPopup() {
+				this.$emit("openPopup");
+			},
 		},
 	};
 </script>
 
 <style lang="scss" scoped>
-	.navigation {
+	.the-navigation {
 		display: flex;
 		flex-direction: column;
 		background-color: var(--blue);
@@ -400,13 +414,13 @@
 			transition: all 0.3s ease;
 			transition-delay: 0.3s;
 
-			h1 {
-				opacity: 0;
-				width: max-content;
-				transition: all 0.3s ease;
-			}
-
-			.navigation {
+			.the-navigation {
+				&__title {
+					opacity: 0;
+					// visibility: hidden;
+					width: max-content;
+					transition: all 0.3s ease;
+				}
 				&__list {
 					align-items: center;
 					transition: all 0.3s ease;

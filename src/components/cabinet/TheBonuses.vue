@@ -95,7 +95,7 @@
 	import ServicesItem from "./ServicesItem.vue";
 
 	export default {
-		name: "Bonuses",
+		name: "TheBonuses",
 		components: {
 			ServicesItem,
 		},

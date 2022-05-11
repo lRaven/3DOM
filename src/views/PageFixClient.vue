@@ -1,5 +1,5 @@
 <template>
-	<div class="theme-container">
+	<div class="page-fix-client theme-container">
 		<the-header />
 		<main class="main">
 			<form class="fix" @submit="sendFixForm">
@@ -82,20 +82,20 @@
 </template>
 
 <script>
-	import TheHeader from "../components/academ/TheHeader.vue";
+	import TheHeader from "@/components/academ/TheHeader";
 
-	import vInput from "../components/crm/v-input.vue";
-	import vTextarea from "../components/crm/v-textarea.vue";
-	import vNotification from "../components/academ/v-notification.vue";
+	import vInput from "@/components/crm/v-input";
+	import vTextarea from "@/components/crm/v-textarea";
+	import vNotification from "@/components/academ/v-notification";
 
-	import TheFooter from "../components/academ/TheFooter.vue";
+	import TheFooter from "@/components/academ/TheFooter";
 
-	import { fixClient } from "../api/fix-client";
+	import { fixClient } from "@/api/fix-client";
 
-	import store from "../store";
+	import store from "@/store";
 
 	export default {
-		name: "Fix Client",
+		name: "PageFixClient",
 		store,
 		components: {
 			TheHeader,

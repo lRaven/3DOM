@@ -1,37 +1,37 @@
 <template>
-	<section class="kolotok">
-		<div class="kolotok__container center">
-			<div class="kolotok__column">
+	<section class="the-kolotok">
+		<div class="the-kolotok__container center">
+			<div class="the-kolotok__column">
 				<h2
-					class="kolotok__title animate__animated animate__fadeInUp wow"
+					class="the-kolotok__title animate__animated animate__fadeInUp wow"
 				>
 					Всё для ремонта
 				</h2>
 				<h3
-					class="kolotok__subtitle animate__animated animate__fadeInUp wow"
+					class="the-kolotok__subtitle animate__animated animate__fadeInUp wow"
 				>
 					Удобный интернет-магазин<br />
 					от застройщика
 				</h3>
-				<div class="kolotok__tags">
+				<div class="the-kolotok__tags">
 					<span
-						class="kolotok__tag animate__animated animate__fadeInUp wow"
+						class="the-kolotok__tag animate__animated animate__fadeInUp wow"
 						>Дизайн интерьера</span
 					>
 					<span
-						class="kolotok__tag animate__animated animate__fadeInUp wow"
+						class="the-kolotok__tag animate__animated animate__fadeInUp wow"
 						>Черновые работы</span
 					>
 					<span
-						class="kolotok__tag animate__animated animate__fadeInUp wow"
+						class="the-kolotok__tag animate__animated animate__fadeInUp wow"
 						>Материалы для ремонта</span
 					>
 					<span
-						class="kolotok__tag animate__animated animate__fadeInUp wow"
+						class="the-kolotok__tag animate__animated animate__fadeInUp wow"
 						>Ремонт под ключ</span
 					>
 				</div>
-				<div class="kolotok__link" @click="openPopup">
+				<div class="the-kolotok__link" @click="openPopup">
 					<img
 						src="img/icon/general/arrow-long.svg"
 						alt=""
@@ -40,66 +40,75 @@
 					<p>Перейти в магазин</p>
 				</div>
 			</div>
-			<div class="kolotok__column">
+			<div class="the-kolotok__column">
 				<img
 					src="img/icon/kolotok/logo.svg"
 					alt=""
-					class="kolotok__logo"
+					class="the-kolotok__logo"
 				/>
-				<div class="kolotok__logo-text">
-					<p class="kolotok__logo-title">КОЛОТОК</p>
-					<p class="kolotok__logo-subtitle">
+				<div class="the-kolotok__logo-text">
+					<p class="the-kolotok__logo-title">КОЛОТОК</p>
+					<p class="the-kolotok__logo-subtitle">
 						магазин для тех, кто строит
 					</p>
 				</div>
 			</div>
 		</div>
-		<div class="kolotok__tags-mobile">
+		<div class="the-kolotok__tags-mobile">
 			<p>Всё для ремонта</p>
-			<span class="kolotok__tag animate__animated animate__fadeInUp wow">
+			<span
+				class="the-kolotok__tag animate__animated animate__fadeInUp wow"
+			>
 				Ремонт под ключ
 			</span>
-			<span class="kolotok__tag animate__animated animate__fadeInUp wow">
+			<span
+				class="the-kolotok__tag animate__animated animate__fadeInUp wow"
+			>
 				Материалы для ремонта
 			</span>
-			<span class="kolotok__tag animate__animated animate__fadeInUp wow">
+			<span
+				class="the-kolotok__tag animate__animated animate__fadeInUp wow"
+			>
 				Дизайн интерьера
 			</span>
-			<span class="kolotok__tag animate__animated animate__fadeInUp wow">
+			<span
+				class="the-kolotok__tag animate__animated animate__fadeInUp wow"
+			>
 				Черновые работы
 			</span>
 		</div>
-		<kolotok-popup></kolotok-popup>
+		<transition>
+			<popup-kolotok
+				v-if="isPopupVisible"
+				@closePopup="closePopup"
+			></popup-kolotok>
+		</transition>
 	</section>
 </template>
 
 <script>
-	import KolotokPopup from "./KolotokPopup.vue";
+	import PopupKolotok from "@/components/general/PopupKolotok";
 
 	export default {
-		name: "Kolotok",
-		components: {
-			KolotokPopup,
-		},
+		name: "TheKolotok",
+		components: { PopupKolotok },
+		data: () => ({ isPopupVisible: false }),
 		methods: {
 			openPopup() {
-				const popup = document.querySelector(".popup-kolotok");
-				const body = document.querySelector("body");
-				const blur = document.querySelector(".blur.kolotok");
-
-				blur.classList.add("open");
-				body.classList.add("locked");
-				popup.classList.add("open");
+				this.isPopupVisible = true;
+			},
+			closePopup() {
+				this.isPopupVisible = false;
 			},
 		},
 	};
 </script>
 
 <style lang="scss" scoped>
-	.kolotok {
+	.the-kolotok {
 		padding: 2rem 1.5rem;
 		&__container {
-			background: url(/img/general/kolotok-bg.png) center / cover
+			background: url(/public/img/general/kolotok-bg.png) center / cover
 				no-repeat;
 			display: flex;
 			justify-content: space-between;
@@ -182,7 +191,7 @@
 	}
 
 	@media (max-width: 1050px) {
-		.kolotok {
+		.the-kolotok {
 			&__container {
 				flex-direction: column-reverse;
 			}
@@ -190,7 +199,7 @@
 	}
 
 	@media (max-width: 540px) {
-		.kolotok {
+		.the-kolotok {
 			padding: 1rem;
 			padding-bottom: 0;
 			&__container {
@@ -237,7 +246,7 @@
 						font-weight: 600;
 						margin-bottom: 1rem;
 					}
-					.kolotok__tag {
+					.the-kolotok__tag {
 						display: block;
 						width: max-content;
 						background-color: #efba1c;
@@ -253,7 +262,7 @@
 							align-self: flex-end;
 						}
 
-						+ .kolotok__tag {
+						+ .the-kolotok__tag {
 							margin-top: 1rem;
 						}
 					}
@@ -276,7 +285,7 @@
 	}
 
 	@media (max-width: 425px) {
-		.kolotok {
+		.the-kolotok {
 			padding-bottom: 0;
 			&__container {
 				max-height: 37rem;
@@ -298,7 +307,7 @@
 			}
 			&__tags {
 				&-mobile {
-					.kolotok__tag {
+					.the-kolotok__tag {
 						&:nth-child(4) {
 							transform: translateX(2rem);
 						}

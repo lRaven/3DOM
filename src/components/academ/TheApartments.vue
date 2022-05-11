@@ -2220,12 +2220,12 @@
 </template>
 
 <script>
-	import store from "../../store";
+	import store from "@/store";
 
-	import AcademSwiper from "./academ-swiper.vue";
+	import AcademSwiper from "@/components/academ/academ-swiper";
 
 	export default {
-		name: "Apartments",
+		name: "TheApartments",
 		components: {
 			AcademSwiper,
 		},

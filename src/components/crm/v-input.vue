@@ -13,7 +13,7 @@
 
 <script>
 	export default {
-		name: "Input",
+		name: "vInput",
 		props: {
 			type: String,
 			text: String,

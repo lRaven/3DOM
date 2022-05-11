@@ -143,11 +143,11 @@
 </template>
 
 <script>
-	import store from "../../store";
-	import { scroll } from "../../js/scroll";
+	import store from "@/store";
+	import { scroll } from "@/js/scroll";
 
 	export default {
-		name: "Header",
+		name: "TheHeader",
 		store,
 		data() {
 			return {

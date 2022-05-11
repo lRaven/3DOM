@@ -269,7 +269,7 @@
 	import { addFavorite } from "../../api/favorite";
 
 	export default {
-		name: "Apartment review",
+		name: "apartmentPopup",
 		store,
 		components: {
 			vButton,

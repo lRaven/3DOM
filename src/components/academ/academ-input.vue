@@ -10,7 +10,7 @@
 
 <script>
 	export default {
-		name: "Input",
+		name: "vInput",
 		props: {
 			placeholder: String,
 			type: String,
