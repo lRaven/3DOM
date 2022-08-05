@@ -3,7 +3,7 @@
 		<the-header />
 		<main class="main">
 			<section class="login-wrapper center">
-				<form class="login" @submit="login">
+				<form class="login" @submit.prevent="auth">
 					<div class="login__header">
 						<h1>Вход в личный кабинет</h1>
 					</div>
@@ -42,15 +42,16 @@
 </template>
 
 <script>
-	import store from "@/store";
 	import TheHeader from "@/components/cabinet/TheHeader";
 	import vInput from "@/components/cabinet/v-input";
 	import vButton from "@/components/general/v-button";
 	import TheFooter from "@/components/general/TheFooter";
 
+	import { login } from "@/api/user";
+	import { mapMutations, mapActions } from "vuex";
+
 	export default {
 		name: "PageLogin",
-		store,
 		components: {
 			TheHeader,
 			vInput,
@@ -59,7 +60,14 @@
 		},
 		computed: {
 			isFormValid() {
-				return false;
+				if (
+					this.user_data.username.length > 0 &&
+					this.user_data.password.length >= 8
+				) {
+					return true;
+				} else {
+					return false;
+				}
 			},
 		},
 		data: () => ({
@@ -70,46 +78,31 @@
 		}),
 
 		methods: {
+			...mapMutations(["SET_TAB", "SET_TOKEN"]),
+			...mapActions(["getUser"]),
 			//*логин
-			login() {
-				console.log("some text");
-				// axios
-				// 	.post(`${store.getters.BASEURL}/auth/token/login/`, {
-				// 		username: this.username,
-				// 		password: this.password,
-				// 	})
-				// 	.then((response) => {
-				// 		if (response.status === 200) {
-				// 			this.saveUserData(response.data.auth_token);
-				// 			this.$router.push("/cabinet");
-				// 		}
-				// 	})
-				// 	.catch((err) => {
-				// 		console.error(err);
-				// 	});
+			async auth() {
+				try {
+					const response = await login(
+						this.user_data.username,
+						this.user_data.password
+					);
+					if (response.status === 200) {
+						this.saveUserData(response.data.auth_token);
+						this.$router.push("/cabinet");
+					}
+				} catch (err) {
+					throw new Error(err);
+				}
 			},
 
-			//*запись данных в vuex
+			//* запись данных в vuex
 			saveUserData(token) {
-				localStorage.setItem("at", token);
+				this.$cookies.set("auth_token", token);
 
-				store.commit("SET_TAB", "profile");
-				store.commit("SET_TOKEN", localStorage.getItem("at"));
-				store.dispatch("getUser");
-
-				this.encryptPassword(this.password);
-			},
-
-			//* сохранить пароль звёздами '*'
-			encryptPassword(pass) {
-				pass = this.password.split("");
-
-				pass.forEach((index, array, item) => {
-					item[array] = "*";
-				});
-
-				pass = pass.join("");
-				localStorage.setItem("pw", pass);
+				this.SET_TAB("profile");
+				this.SET_TOKEN(this.$cookies.get("auth_token"));
+				this.getUser();
 			},
 		},
 	};
@@ -159,10 +152,10 @@
 			display: flex;
 			flex-direction: column;
 			gap: 4rem;
-			.input {
+			.v-input {
 				font-size: 1.8rem;
 			}
-			.button {
+			.v-button {
 				width: 100%;
 				border-radius: 1rem;
 				padding-top: 2rem;
@@ -178,7 +171,7 @@
 
 			a {
 				cursor: pointer;
-				color:$blue;
+				color: $blue;
 			}
 		}
 	}

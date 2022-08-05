@@ -77,7 +77,7 @@
 					<div class="profile__item-row">
 						<p class="profile__item-key">Пароль:</p>
 						<p class="profile__item-value profile__password">
-							{{ password }}
+							********
 						</p>
 						<span class="profile__item-change">Изменить</span>
 					</div>
@@ -97,7 +97,6 @@
 		name: "TheProfile",
 		store,
 		components: { vButton },
-		data: () => ({ password: localStorage.getItem("pw") }),
 		computed: {
 			...mapState({
 				avatar: (state) => state.cabinet.user.avatar,
@@ -125,8 +124,8 @@
 					)
 					.then((response) => {
 						if (response.status === 204) {
-							//*стереть из vuex, localstorage данные юзера и редирект на страницу авторизации
-							localStorage.clear();
+							//*стереть из vuex,cookies данные юзера и редирект на страницу авторизации
+							this.$cookies.remove("auth_token");
 
 							store.commit("SET_TOKEN", null);
 							store.commit("SET_ID", null);

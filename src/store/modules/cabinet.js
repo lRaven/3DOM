@@ -1,5 +1,6 @@
 import axios from 'axios';
 import store from '@/store';
+import cookie from 'vue-cookies';
 
 const state = () => ({
 	//*main
@@ -11,7 +12,7 @@ const state = () => ({
 	sort: 'price',
 
 	//*user
-	token: localStorage.getItem('at') || null,
+	token: cookie.get('auth_token') || null,
 	user: {},
 })
 const getters = {
@@ -98,8 +99,9 @@ const actions = {
 				context.commit("SET_USER", response.data);
 				context.dispatch('getUserId');
 			} else if (response.status >= 400) {
-				//*стереть из vuex, localstorage данные юзера и редирект на главную
-				localStorage.clear();
+				//*стереть из vuex,cookies данные юзера и редирект на главную
+
+				cookie.remove('auth_token');
 
 				context.commit("SET_TOKEN", null);
 				context.commit("SET_ID", null);
@@ -111,10 +113,8 @@ const actions = {
 				this.$router.push("/");
 			}
 		}).catch(err => {
-			//*стереть из vuex, localstorage данные юзера и редирект на главную
-			console.error(err);
-
-			localStorage.clear();
+			//*стереть из vuex,cookies данные юзера и редирект на главную
+			cookie.remove('auth_token');
 
 			context.commit("SET_TOKEN", null);
 			context.commit("SET_ID", null);
@@ -124,6 +124,7 @@ const actions = {
 			context.commit("SET_FAVORITES", null);
 
 			this.$router.push("/");
+			throw new Error(err);
 		})
 	},
 }

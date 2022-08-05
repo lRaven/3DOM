@@ -6,7 +6,7 @@
 		:style="{
 			'--swiper-pagination-color': '#fefefe',
 		}"
-		:speed="1500"
+		:speed="1000"
 		:loop="true"
 		:autoplay="{
 			delay: 5000,

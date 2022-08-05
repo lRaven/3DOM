@@ -3,35 +3,36 @@
 		<the-header />
 		<main class="main">
 			<section class="registration-wrapper center">
-				<form class="registration" @submit="registration">
+				<form class="registration" @submit.prevent="registration">
 					<div class="registration__header">
 						<h1>Регистрация</h1>
 					</div>
 					<div class="registration__body">
 						<v-input
-							:text="'Логин:'"
-							:type="'text'"
-							:placeholder="'username'"
-							:name="'username'"
-							v-model="username"
+							text="Логин:"
+							type="text"
+							placeholder="username"
+							name="username"
+							v-model="user_data.username"
 						></v-input>
 						<v-input
-							:text="'E-mail:'"
-							:type="'email'"
-							:placeholder="'e-mail'"
-							:name="'email'"
-							v-model="email"
+							text="E-mail:"
+							type="email"
+							placeholder="e-mail"
+							name="email"
+							v-model="user_data.email"
 						></v-input>
 						<v-input
-							:text="'Пароль:'"
-							:type="'password'"
-							:placeholder="'password'"
-							:name="'password'"
-							v-model="password"
+							text="Пароль:"
+							type="password"
+							placeholder="'password"
+							name="password"
+							v-model="user_data.password"
 						></v-input>
 						<v-button
-							:text="'Зарегистрироваться'"
-							:type="'button'"
+							text="Зарегистрироваться"
+							type="submit"
+							:disabled="!isFormValid"
 						></v-button>
 						<p class="registration__description">
 							Нажимая кнопку «Зарегистрироваться», вы
@@ -63,48 +64,39 @@
 			vButton,
 			TheFooter,
 		},
-
+		computed: {
+			isFormValid() {
+				if (
+					this.user_data.username.length > 0 &&
+					this.user_data.email.length > 0 &&
+					this.user_data.password.length >= 8
+				) {
+					return true;
+				} else {
+					return false;
+				}
+			},
+		},
 		data() {
 			return {
-				username: "",
-				password: "",
-				email: "",
+				user_data: {
+					username: "",
+					password: "",
+					email: "",
+				},
 			};
 		},
 
 		methods: {
-			//*делает кнопку неактивной пока есть пустые поля ввода
-			activateBtn() {
-				const btn = document.querySelector(".button");
-				const inputs = document.querySelectorAll("input");
-				inputs.forEach((input) => {
-					input.addEventListener("input", () => {
-						if (
-							this.username !== "" &&
-							this.email !== "" &&
-							this.password !== ""
-						) {
-							btn.setAttribute("type", "submit");
-							btn.classList.add("blue");
-							btn.classList.remove("gray");
-						} else {
-							btn.setAttribute("type", "button");
-							btn.classList.remove("blue");
-							btn.classList.add("gray");
-						}
-					});
-				});
-			},
-
-			//*регистрация нового юзера
+			//* регистрация нового юзера
 			registration(event) {
 				event.preventDefault();
 
 				axios
 					.post(`${store.getters.BASEURL}/auth/users/`, {
-						email: this.email,
-						username: this.username,
-						password: this.password,
+						email: this.user_data.email,
+						username: this.user_data.username,
+						password: this.user_data.password,
 					})
 					.then((response) => {
 						if (response.status === 201) {
@@ -116,9 +108,6 @@
 						console.error(err);
 					});
 			},
-		},
-		mounted() {
-			this.activateBtn();
 		},
 	};
 </script>
@@ -168,10 +157,10 @@
 			display: flex;
 			flex-direction: column;
 			gap: 4rem;
-			.input {
+			.v-input {
 				font-size: 1.8rem;
 			}
-			.button {
+			.v-button {
 				width: 100%;
 				border-radius: 1rem;
 				padding-top: 2rem;

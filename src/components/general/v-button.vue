@@ -31,7 +31,7 @@
 		padding: 1.4rem 2.4rem;
 		border-radius: 2.5rem;
 		min-width: 13.8rem;
-		width: 100%;
+		width: max-content;
 		font-size: 1.5rem;
 		font-weight: 600;
 		box-shadow: 0 0 2rem rgb(0 0 0 / 20%);

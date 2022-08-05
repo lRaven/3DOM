@@ -3,10 +3,10 @@ import store from '@/store';
 
 const baseURL = store.state.baseURL;
 
-const login = async (login, password) => {
+const login = async (username, password) => {
 	try {
 		const response = await axios.post(`${baseURL}/auth/token/login/`, {
-			login,
+			username,
 			password,
 		});
 		return response;
