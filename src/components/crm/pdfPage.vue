@@ -380,9 +380,9 @@
 </template>
 
 <script>
-	import store from "../../store";
+	import store from "@/store";
 
-	import { getApartmentsOnTheFloor } from "../../api/academ";
+	import { getApartmentsOnTheFloor } from "@/api/academ";
 
 	export default {
 		name: "PDF Page",
@@ -390,12 +390,10 @@
 		props: {
 			apartment: Object,
 		},
-		data() {
-			return {
-				number: 0,
-				section: [],
-			};
-		},
+		data: () => ({
+			number: 0,
+			section: [],
+		}),
 		computed: {
 			apartmentsOnFloor: () => {
 				return store.getters.APARTMENTS_ON_FLOOR;

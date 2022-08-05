@@ -38,37 +38,37 @@
 						<p>Планировки квартир</p>
 					</div>
 					<div class="popup__full-scheme">
-						<div
-							class="popup__section2"
-							@click="selectSection(2)"
-							@mouseenter="paintSections(2)"
-							@mouseleave="paintSections"
-						>
-							<section-two-scheme></section-two-scheme>
-						</div>
-						<div
-							class="popup__section3"
-							@click="selectSection(3)"
-							@mouseenter="paintSections(3)"
-							@mouseleave="paintSections"
-						>
-							<section-three-scheme></section-three-scheme>
-						</div>
-						<div
-							class="popup__section1"
-							@click="selectSection(1)"
-							@mouseenter="paintSections(1)"
-							@mouseleave="paintSections"
-						>
-							<section-one-scheme></section-one-scheme>
-						</div>
+						<section-two-scheme
+							@select_section="selectSection"
+						></section-two-scheme>
+
+						<section-three-scheme
+							@select_section="selectSection"
+						></section-three-scheme>
+
+						<section-one-scheme
+							@select_section="selectSection"
+						></section-one-scheme>
 					</div>
 				</div>
 				<div class="popup__col popup__section">
-					<section-svg
-						:section="sectionCustom"
-						@openApartment="openApartment"
-					></section-svg>
+					<transition-group>
+						<section-one-scheme
+							v-if="sectionCustom === 1"
+							:isSingleMode="true"
+							@openApartment="openApartment"
+						></section-one-scheme>
+						<section-two-scheme
+							v-else-if="sectionCustom === 2"
+							:isSingleMode="true"
+							@openApartment="openApartment"
+						></section-two-scheme>
+						<section-three-scheme
+							v-else-if="sectionCustom === 3"
+							:isSingleMode="true"
+							@openApartment="openApartment"
+						></section-three-scheme>
+					</transition-group>
 				</div>
 				<div class="popup__col">
 					<svg
@@ -179,7 +179,6 @@
 <script>
 	import store from "../../store";
 
-	import sectionSvg from "./sectionSvg";
 	import sectionOneScheme from "./sectionOneScheme";
 	import sectionTwoScheme from "./sectionTwoScheme";
 	import sectionThreeScheme from "./sectionThreeScheme";
@@ -190,8 +189,6 @@
 		name: "SectionPopup",
 		store,
 		components: {
-			sectionSvg,
-
 			sectionOneScheme,
 			sectionTwoScheme,
 			sectionThreeScheme,
@@ -204,6 +201,7 @@
 				fullscreen: false,
 				sectionCustom: this.section,
 				apartmentsInSection: [],
+				sectionHeight: 0,
 			};
 		},
 		computed: {
@@ -297,74 +295,6 @@
 				}
 			},
 
-			//*покраска секции при наведении
-			paintSections(variation) {
-				switch (variation) {
-					case 1: {
-						const section =
-							document.querySelector(".popup__section1");
-						const svgs = section.querySelectorAll(
-							".popup__section1-apartment"
-						);
-						svgs.forEach((svg) => {
-							svg.classList.add("colored");
-						});
-						break;
-					}
-					case 2: {
-						const section =
-							document.querySelector(".popup__section2");
-						const svgs = section.querySelectorAll(
-							".popup__section2-apartment"
-						);
-						svgs.forEach((svg) => {
-							svg.classList.add("colored");
-						});
-						break;
-					}
-					case 3: {
-						const section =
-							document.querySelector(".popup__section3");
-						const svgs = section.querySelectorAll(
-							".popup__section3-apartment"
-						);
-						svgs.forEach((svg) => {
-							svg.classList.add("colored");
-						});
-						break;
-					}
-					default: {
-						const section1 =
-							document.querySelector(".popup__section1");
-						const svgs1 = section1.querySelectorAll(
-							".popup__section1-apartment"
-						);
-						svgs1.forEach((svg) => {
-							svg.classList.remove("colored");
-						});
-
-						const section2 =
-							document.querySelector(".popup__section2");
-						const svgs2 = section2.querySelectorAll(
-							".popup__section2-apartment"
-						);
-						svgs2.forEach((svg) => {
-							svg.classList.remove("colored");
-						});
-
-						const section3 =
-							document.querySelector(".popup__section3");
-						const svgs3 = section3.querySelectorAll(
-							".popup__section3-apartment"
-						);
-						svgs3.forEach((svg) => {
-							svg.classList.remove("colored");
-						});
-						break;
-					}
-				}
-			},
-
 			//*декортивная перекраска иконки компаса
 			paintCompass(variation) {
 				const compass = document.querySelector(".compass");
@@ -406,7 +336,6 @@
 				);
 			},
 		},
-
 		mounted() {
 			this.selectSection(this.section);
 		},
@@ -503,36 +432,25 @@
 			display: grid;
 			grid-template-columns: 15rem 23rem;
 			width: 38rem;
+			.section-one-scheme {
+				transform: translate(-1.75rem, -0.2rem);
+			}
 		}
 		&__section {
-			display: flex;
+			display: grid;
+			grid-template-columns: 1fr;
 			align-items: center;
 			justify-content: center;
 			overflow: hidden;
-			&1 {
-				cursor: pointer;
-				position: relative;
-				top: -0.5rem;
-				left: 0.1rem;
-
-				svg {
-					width: 11.3rem;
-				}
-			}
-			&2 {
-				cursor: pointer;
-				position: relative;
-				left: 0.1rem;
-
-				svg {
-					width: 15rem;
-				}
-			}
-			&3 {
-				cursor: pointer;
-
-				svg {
-					width: 23rem;
+			.section {
+				&-one-scheme,
+				&-two-scheme,
+				&-three-scheme {
+					grid-area: 1/1;
+					max-width: calc(90vw - 90rem);
+					max-height: calc(100vh - 22rem);
+					margin: auto;
+					width: 100%;
 				}
 			}
 		}
