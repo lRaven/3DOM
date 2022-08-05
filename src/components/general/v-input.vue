@@ -30,15 +30,17 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.input {
-		background-color: var(--light-gray);
+		background-color: $light-gray;
 		padding: 2rem;
 		border-radius: 2rem;
 		font-size: 1.8rem;
 		width: 100%;
 		font-weight: 500;
 		&:invalid {
-			outline: 0.1rem solid var(--red);
+			outline: 0.1rem solid $red;
 			transition: all 0.2s ease;
 		}
 		&__description {

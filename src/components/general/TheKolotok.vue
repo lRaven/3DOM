@@ -105,6 +105,8 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.the-kolotok {
 		padding: 2rem 1.5rem;
 		&__container {
@@ -114,7 +116,7 @@
 			justify-content: space-between;
 			padding: 6rem;
 			box-shadow: 0 0 2rem rgba(0, 0, 0, 0.2);
-			color: var(--white);
+			color: $white;
 			border-radius: 3rem;
 			overflow: hidden;
 			height: 70rem;
@@ -160,8 +162,8 @@
 			}
 		}
 		&__tag {
-			background-color: var(--white);
-			color: var(--dark);
+			background-color: $white;
+			color: $dark;
 			font-size: 1.6rem;
 			font-weight: 600;
 			border-radius: 2.5rem;
@@ -185,7 +187,7 @@
 			p {
 				font-size: 1.8rem;
 				font-weight: 600;
-				color: var(--white);
+				color: $white;
 			}
 		}
 	}
@@ -242,7 +244,7 @@
 					p {
 						text-align: center;
 						font-size: 3rem;
-						color: var(--white);
+						color: $white;
 						font-weight: 600;
 						margin-bottom: 1rem;
 					}

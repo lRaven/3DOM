@@ -83,6 +83,8 @@
 </style>
 
 <style lang="scss">
+	@import "@/assets/scss/variables";
+
 	.academ-swiper {
 		.swiper {
 			&-slide {
@@ -107,7 +109,7 @@
 					padding: 2.5rem 0;
 					&::after {
 						font-size: 1rem;
-						color: var(--light-gold);
+						color: $light-gold;
 						font-weight: 700;
 					}
 				}
@@ -121,11 +123,11 @@
 			&-pagination {
 				margin: 0.1rem;
 				&-bullet {
-					background-color: var(--light-gold);
+					background-color: $light-gold;
 					opacity: 1;
 					&-active {
 						position: relative;
-						background-color: var(--gold);
+						background-color: $gold;
 						&::after {
 							content: "";
 							position: absolute;
@@ -134,7 +136,7 @@
 							transform: translate(-50%, -50%);
 							width: 1.5rem;
 							height: 1.5rem;
-							border: 0.1rem solid var(--gold);
+							border: 0.1rem solid $gold;
 							border-radius: 50%;
 						}
 					}

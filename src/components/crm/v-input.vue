@@ -24,28 +24,30 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.input {
-		background-color: var(--white);
+		background-color: $white;
 		padding: 1.5rem;
 		font-size: 1.4rem;
 		width: 100%;
 		font-weight: 500;
-		border: 0.1rem solid var(--middle-gray);
+		border: 0.1rem solid $middle-gray;
 		transition: all 0.2s ease;
 		&:hover {
-			border-color: var(--gray);
+			border-color: $gray;
 		}
 		&:focus {
-			border-color: var(--dark);
+			border-color: $dark;
 		}
 		&:invalid {
-			border-color: var(--red);
+			border-color: $red;
 			transition: all 0.2s ease;
 		}
 		&__description {
 			margin-bottom: 0.8rem;
 			font-size: 1.3rem;
-			color: var(--middle-gray);
+			color: $middle-gray;
 		}
 	}
 </style>

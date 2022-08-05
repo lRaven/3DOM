@@ -20,13 +20,15 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.floor {
 		font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
 		font-weight: bold;
 		font-size: 1.4rem;
 		color: #d5bfa8;
 		background: #634b32;
-		border: 0.1rem solid var(--light-gray);
+		border: 0.1rem solid $light-gray;
 		display: flex;
 		justify-content: center;
 		align-items: center;

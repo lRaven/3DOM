@@ -49,14 +49,14 @@
 				const linksHeader = document.querySelectorAll(".header__link");
 				linksHeader.forEach((link) => {
 					if (link.textContent.toLowerCase().includes("trade-in")) {
-						link.setAttribute("style", "color: var(--blue);");
+						link.setAttribute("style", "color: #007bfc;");
 					}
 				});
 				const linksFooter =
 					document.querySelectorAll(".footer__link a");
 				linksFooter.forEach((link) => {
 					if (link.textContent.toLowerCase().includes("trade-in")) {
-						link.setAttribute("style", "color: var(--blue);");
+						link.setAttribute("style", "color: #007bfc;");
 					}
 				});
 			},

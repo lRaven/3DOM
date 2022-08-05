@@ -48,8 +48,10 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.services {
-		color: var(--dark);
+		color: $dark;
 		&__header {
 			margin-bottom: 3rem;
 			padding: 0 2.4rem;
@@ -67,7 +69,7 @@
 				display: flex;
 				justify-content: center;
 				align-items: center;
-				background-color: var(--blue);
+				background-color: $blue;
 				width: 5.2rem;
 				height: 5.2rem;
 				border-radius: 50%;

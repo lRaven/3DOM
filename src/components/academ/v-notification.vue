@@ -54,6 +54,8 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.notification {
 		position: fixed;
 		top: 7rem;
@@ -70,27 +72,27 @@
 		border: 0.1rem solid transparent;
 		border-radius: 1rem;
 		z-index: 4;
-		background-color: var(--dark-green);
+		background-color: $dark-green;
 		&.green {
-			border-color: #00ff00;
+			border-color: $green;
 
 			.notification {
 				&__close line {
-					stroke: #00ff00;
+					stroke: $green;
 				}
 				&__message {
-					color: #00ff00;
+					color: $green;
 				}
 			}
 		}
 		&.blue {
-			border-color: var(--middle-blue);
+			border-color: $middle-blue;
 			.notification {
 				&__close line {
-					stroke: var(--middle-blue);
+					stroke: $middle-blue;
 				}
 				&__message {
-					color: var(--middle-blue);
+					color: $middle-blue;
 				}
 			}
 		}
@@ -106,13 +108,13 @@
 			}
 		}
 		&.red {
-			border-color: var(--red);
+			border-color: $red;
 			.notification {
 				&__close line {
-					stroke: var(--red);
+					stroke: $red;
 				}
 				&__message {
-					color: var(--red);
+					color: $red;
 				}
 			}
 		}

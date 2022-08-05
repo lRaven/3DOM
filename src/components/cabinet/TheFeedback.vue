@@ -145,6 +145,8 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.the-feedback-form {
 		border-radius: 3rem;
 		box-shadow: 0 0 1rem rgba(0, 0, 0, 0.25);
@@ -174,7 +176,7 @@
 		.v-input {
 			grid-column: 2/4;
 			&:invalid {
-				border-color: var(--red);
+				border-color: $red;
 			}
 		}
 		.v-dropdown {
@@ -187,10 +189,10 @@
 			font-weight: 500;
 			border: 0.1rem solid #c4c4c4;
 			&:hover {
-				border-color: var(--dark);
+				border-color: $dark;
 			}
 			&:invalid {
-				border-color: var(--red);
+				border-color: $red;
 			}
 		}
 		&__bottom {
@@ -201,7 +203,7 @@
 			color: #979797;
 			a {
 				cursor: pointer;
-				color: var(--blue);
+				color: $blue;
 			}
 		}
 	}
@@ -214,12 +216,12 @@
 		height: 5.5rem;
 		grid-column: 2/4;
 		&:disabled {
-			color: var(--dark);
-			background-color: var(--light-gray);
-			border-color: var(--light-gray);
+			color: $dark;
+			background-color: $light-gray;
+			border-color: $light-gray;
 			&:hover {
-				background-color: var(--light-gray);
-				border-color: var(--light-gray);
+				background-color: $light-gray;
+				border-color: $light-gray;
 				box-shadow: none;
 			}
 		}

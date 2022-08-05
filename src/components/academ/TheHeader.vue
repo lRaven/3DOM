@@ -286,11 +286,13 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.header {
 		position: fixed;
 		height: 6rem;
 		width: 100%;
-		background-color: var(--gold);
+		background-color: $gold;
 		user-select: none;
 		padding-left: 1.5rem;
 		padding-right: 1.5rem;
@@ -361,7 +363,7 @@
 		position: relative;
 		user-select: none;
 		font-size: 1.6rem;
-		color: var(--dark-green);
+		color: $dark-green;
 		font-weight: 600;
 		svg {
 			display: none;
@@ -374,7 +376,7 @@
 			bottom: -0.3rem;
 			width: 0;
 			height: 0.2rem;
-			background-color: var(--dark-green);
+			background-color: $dark-green;
 			transition: all 0.3s ease;
 		}
 
@@ -424,7 +426,7 @@
 			}
 			&__auth {
 				position: absolute;
-				background-color: var(--gold);
+				background-color: $gold;
 				padding-left: 2.5rem;
 				left: -100%;
 				top: 6rem;
@@ -443,7 +445,7 @@
 				top: 6rem;
 				display: flex;
 				align-items: center;
-				background-color: var(--gold);
+				background-color: $gold;
 				padding-left: 2.5rem;
 				width: 66rem;
 				height: 6rem;
@@ -480,20 +482,20 @@
 				align-items: center;
 				justify-content: space-between;
 				width: 100%;
-				background-color: var(--gold);
-				border-top: 0.1rem solid var(--dark);
+				background-color: $gold;
+				border-top: 0.1rem solid $dark;
 				padding: 1.5rem 2.4rem;
 				transition: all 0.1s ease;
 				svg {
 					display: block;
 				}
 				&:hover {
-					background-color: var(--dark-green);
-					color: var(--gold);
+					background-color: $dark-green;
+					color: $gold;
 					transition: all 0.2s ease;
 					svg {
 						path {
-							fill: var(--gold);
+							fill: $gold;
 							transition: all 0.2s ease;
 						}
 					}

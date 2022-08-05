@@ -159,19 +159,21 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.steps {
 		display: flex;
 		align-items: center;
 		padding: 1.5rem;
 		&__container {
-			color: var(--dark);
+			color: $dark;
 		}
 		&__top {
 			display: grid;
 			grid-template-columns: repeat(2, 1fr);
 			align-items: center;
 			margin-bottom: 6rem;
-			background-color: var(--white);
+			background-color:$white;
 			box-shadow: 0 0 2rem rgba(0, 0, 0, 0.2);
 			border-radius: 3rem;
 			padding: 6rem;
@@ -211,12 +213,12 @@
 			align-items: center;
 			font-size: 3.5rem;
 			font-weight: 500;
-			color: var(--blue);
+			color: $blue;
 			width: 5.5rem;
 			min-width: 5.5rem;
 			height: 5.5rem;
 			border-radius: 50%;
-			background-color: var(--light-gray);
+			background-color:$light-gray;
 		}
 		&__description {
 			font-size: 1.8rem;
@@ -229,7 +231,7 @@
 		}
 		&__benefit {
 			box-shadow: 0 0 2rem rgba(0, 0, 0, 0.2);
-			background-color: var(--white);
+			background-color: $white;
 			border-radius: 3rem;
 			padding: 3.4rem 3.6rem 4rem 3.6rem;
 			min-height: 27rem;
@@ -238,13 +240,13 @@
 				margin-bottom: 2.3rem;
 			}
 			&-title {
-				color: var(--blue);
+				color: $blue;
 				font-size: 2.5rem;
 				font-weight: 600;
 				margin-bottom: 1.6rem;
 			}
 			&-text {
-				color: var(--dark);
+				color: $dark;
 				font-size: 1.8rem;
 				line-height: 2.2rem;
 			}

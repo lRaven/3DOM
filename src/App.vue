@@ -7,10 +7,7 @@
 </template>
 
 <script>
-	import store from "@/store";
-
 	export default {
-		store,
 		watch: {
 			$route(to) {
 				document.title = to.meta.title || "Default Title";
@@ -27,7 +24,6 @@
 <style lang="scss">
 	@import "@/assets/scss/center";
 	@import "@/assets/scss/animation";
-	@import "@/assets/css/variables";
 
 	body {
 		&.locked {

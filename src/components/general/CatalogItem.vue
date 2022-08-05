@@ -48,7 +48,7 @@
 								tag: "Ворошиловский район",
 							},
 						],
-						style: `background-color: var(--white); color: var(--blue);`,
+						style: `background-color: #fefefe; color: #007bfc;`,
 						type: "Жилой комплекс",
 						title: "Dolce vita",
 						address: "/",
@@ -70,7 +70,7 @@
 								tag: "Ворошиловский район",
 							},
 						],
-						style: `background-color: var(--light-blue); color: var(--white);`,
+						style: `background-color: #64b6fa; color: #fefefe;`,
 						type: "Клубный дом",
 						title: "Академический",
 						address: "/academ",
@@ -96,7 +96,7 @@
 								tag: "Огороженная территория",
 							},
 						],
-						style: `background-color: var(--white); color: var(--blue);`,
+						style: `background-color: #fefefe; color: #007bfc;`,
 						type: "Жилой комплекс",
 						title: "Андреевский",
 						address: "/",
@@ -127,6 +127,8 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.catalog__item {
 		display: block;
 		position: relative;
@@ -183,7 +185,7 @@
 			h3,
 			h4 {
 				font-weight: 800;
-				color: var(--white);
+				color: $white;
 			}
 			h3 {
 				font-size: 2.4rem;

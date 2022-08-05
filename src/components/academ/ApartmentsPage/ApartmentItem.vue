@@ -105,12 +105,14 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.flatItem {
-		border: 0.1rem solid var(--light-gray);
+		border: 0.1rem solid $light-gray;
 		display: flex;
 		height: 4rem;
 		.item {
-			border: 0.1rem solid var(--light-gray);
+			border: 0.1rem solid $light-gray;
 			display: flex;
 			justify-content: center;
 			align-items: center;
@@ -139,7 +141,7 @@
 			line-height: 14px;
 			color: #fefefe;
 			background: #d5bfa8;
-			border: 0.1rem solid var(--light-gray);
+			border: 0.1rem solid $light-gray;
 			width: 20px;
 			height: 40px;
 			display: flex;
@@ -155,7 +157,7 @@
 			padding: 0.5rem;
 			justify-content: space-between;
 			position: relative;
-			border: 0.1rem solid var(--light-gray);
+			border: 0.1rem solid $light-gray;
 			width: 8.5rem;
 			height: 4rem;
 			text-align: center;
@@ -173,19 +175,19 @@
 			}
 		}
 		.whiteSpaceLong {
-			border: 0.1rem solid var(--light-gray);
+			border: 0.1rem solid $light-gray;
 			width: 4rem;
 			height: 4rem;
 		}
 	}
 	.flatItemLong {
-		border: 0.1rem solid var(--light-gray);
+		border: 0.1rem solid $light-gray;
 		column-count: 2;
 		display: flex;
 		height: 4rem;
 		background: #00212d;
 		.itemLong {
-			border: 0.1rem solid var(--light-gray);
+			border: 0.1rem solid $light-gray;
 			display: flex;
 			justify-content: center;
 			align-items: center;
@@ -213,9 +215,9 @@
 			font-style: normal;
 			font-weight: bold;
 			font-size: 1.2rem;
-			color: #fefefe;
+			color: $white;
 			background: #00212d;
-			border: 0.1rem solid var(--light-gray);
+			border: 0.1rem solid $light-gray;
 			width: 2rem;
 			height: 4rem;
 			display: flex;
@@ -227,7 +229,7 @@
 		}
 		.dataLong {
 			position: relative;
-			border: 0.1rem solid var(--light-gray);
+			border: 0.1rem solid $light-gray;
 			width: 27.1rem;
 			height: 4rem;
 			text-align: center;
@@ -263,10 +265,10 @@
 			}
 		}
 		.whiteSpaceLong {
-			border: 0.1rem solid var(--light-gray);
+			border: 0.1rem solid $light-gray;
 			width: 4rem;
 			height: 4rem;
-			background: var(--white);
+			background: $white;
 		}
 	}
 </style>

@@ -4,8 +4,8 @@
 			<img src="img/icon/general/arrow.svg" alt="" />
 		</div>
 		<datepicker
-			:format="'dd.MM.yyyy'"
-			:icon-color="'var(--blue)'"
+			format="dd.MM.yyyy"
+			icon-color="#007bfc"
 			placeholder="Выберите дату*"
 			:monday-first="true"
 			:disabled-dates="{
@@ -20,14 +20,8 @@
 
 	export default {
 		name: "DatePicker",
-		components: {
-			Datepicker,
-		},
-		data() {
-			return {
-				date: "",
-			};
-		},
+		components: { Datepicker },
+		data: () => ({ date: "" }),
 		methods: {
 			//* поворот стрелки при открытии календаря
 			reverseArrow() {
@@ -82,12 +76,14 @@
 </script>
 
 <style lang="scss">
+	@import "@/assets/scss/variables";
+
 	.vuejs3-datepicker {
 		border: 0.1rem solid #c4c4c4;
 		border-radius: 1rem;
 		transition: all 0.1s ease;
 		&:hover {
-			border-color: var(--dark);
+			border-color: $dark;
 			transition: all 0.2s ease;
 		}
 		div {
@@ -96,10 +92,9 @@
 			}
 		}
 		&__calendar {
-			// width: auto;
 			margin-top: 0.7rem;
 			&-topbar {
-				background-color: var(--blue);
+				background-color: $blue;
 				&-year {
 					cursor: pointer;
 				}
@@ -110,9 +105,9 @@
 			font-weight: 500;
 			font-size: 1.4rem;
 			&.selected {
-				background-color: var(--blue);
+				background-color: $blue;
 				&:hover {
-					background-color: var(--blue);
+					background-color: $blue;
 				}
 			}
 			&.day {
@@ -128,8 +123,8 @@
 				}
 			}
 			&.today {
-				background-color: var(--light-gray);
-				color: var(--dark);
+				background-color: $light-gray;
+				color: $dark;
 			}
 			&.disabled {
 				cursor: not-allowed;
@@ -138,7 +133,7 @@
 			&:not(.blank):not(.disabled).month:hover,
 			&:not(.blank):not(.disabled).day:hover,
 			&:not(.blank):not(.disabled).year:hover {
-				border-color: var(--blue);
+				border-color: $blue;
 			}
 		}
 

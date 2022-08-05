@@ -92,6 +92,8 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.favorite {
 		display: grid;
 		grid-template-columns: 19rem repeat(5, max-content);
@@ -142,7 +144,7 @@
 				font-weight: 500;
 			}
 			p {
-				color: var(--blue);
+				color: $blue;
 				font-weight: 700;
 				font-size: 1.8rem;
 			}
@@ -153,7 +155,7 @@
 				font-size: 2.5rem;
 			}
 			p:nth-child(2) {
-				color: var(--blue);
+				color: $blue;
 			}
 		}
 		&__rooms,
@@ -186,7 +188,7 @@
 
 		&__link {
 			cursor: pointer;
-			background-color: var(--blue);
+			background-color: $blue;
 			width: 4.5rem;
 			height: 4.5rem;
 			border-radius: 1rem;
@@ -197,7 +199,7 @@
 			transition: all 0.3s ease;
 
 			&:hover {
-				background-color: var(--middle-blue);
+				background-color: $middle-blue;
 				box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.25);
 				transition: all 0.3s ease;
 			}

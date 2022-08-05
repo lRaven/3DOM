@@ -136,9 +136,11 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.header {
 		user-select: none;
-		background-color: var(--white);
+		background-color: $white;
 		z-index: 3;
 		position: fixed;
 		width: 100%;
@@ -150,7 +152,7 @@
 		overflow: hidden;
 
 		* {
-			color: var(--dark);
+			color: $dark;
 		}
 
 		&__container {
@@ -193,7 +195,7 @@
 
 			height: 100%;
 			&:hover {
-				color: var(--blue);
+				color: $blue;
 				transition: all 0.3s ease;
 			}
 		}
@@ -208,12 +210,12 @@
 				transform: translateX(2rem);
 
 				path:nth-child(1) {
-					fill: var(--dark);
+					fill: $dark;
 				}
 
 				path,
 				rect {
-					stroke: var(--dark);
+					stroke: $dark;
 				}
 			}
 		}
@@ -233,8 +235,8 @@
 				display: flex;
 				justify-content: center;
 				align-items: center;
-				color: var(--white);
-				background-color: var(--blue);
+				color: $white;
+				background-color: $blue;
 				font-size: 1.4rem;
 				border-radius: 50%;
 				position: absolute;

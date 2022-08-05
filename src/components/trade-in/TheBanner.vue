@@ -139,6 +139,8 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.banner {
 		background: linear-gradient(
 			0deg,
@@ -166,7 +168,7 @@
 		&__title {
 			font-size: 8rem;
 			font-weight: 600;
-			color: var(--blue);
+			color: $blue;
 			margin: 5rem 0 5rem 0;
 		}
 		&__subtitle {
@@ -184,7 +186,7 @@
 			justify-content: space-between;
 			gap: 2rem;
 			grid-area: 2/1/2/3;
-			background-color: var(--white);
+			background-color: $white;
 			border-radius: 3rem;
 			padding: 4.4rem 9rem 5rem 9rem;
 			box-shadow: 0 0 2rem rgba(0, 0, 0, 0.2);
@@ -192,13 +194,13 @@
 		&__info {
 			text-align: center;
 			&-title {
-				color: var(--blue);
+				color: $blue;
 				font-weight: 600;
 				font-size: 2.5rem;
 				margin-bottom: 1.5rem;
 			}
 			&-subtitle {
-				color: var(--dark);
+				color: $dark;
 				font-size: 1.8rem;
 				line-height: 2.2rem;
 			}

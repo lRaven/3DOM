@@ -108,7 +108,7 @@
 							selectedOption.textContent = option.textContent;
 							selectedOption.setAttribute(
 								"style",
-								"color: var(--dark);"
+								"color: #4b4b4b;"
 							);
 						});
 					});
@@ -123,13 +123,15 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.v-dropdown {
 		user-select: none;
 		position: relative;
 
 		&__description {
 			font-size: 1.5rem;
-			color: var(--gray);
+			color: $gray;
 			font-weight: 600;
 			margin-bottom: 1.3rem;
 		}
@@ -140,8 +142,8 @@
 			justify-content: space-between;
 			border-radius: 2rem;
 			padding: 1.6rem 2rem;
-			background-color: var(--light-gray);
-			color: var(--middle-gray);
+			background-color: $light-gray;
+			color: $middle-gray;
 			font-size: 1.8rem;
 			font-weight: 600;
 			transition: all 0.7s ease;
@@ -178,15 +180,15 @@
 			cursor: pointer;
 			display: block;
 			padding: 2rem;
-			background-color: var(--light-gray);
-			color: var(--dark);
+			background-color: $light-gray;
+			color: $dark;
 			font-size: 1.8rem;
 			font-weight: 600;
 			transition: all 0.2s ease;
 			&:hover {
 				transition: all 0.3s ease;
-				background-color: var(--middle-gray);
-				color: var(--white);
+				background-color: $middle-gray;
+				color: $white;
 			}
 		}
 		&-thin {

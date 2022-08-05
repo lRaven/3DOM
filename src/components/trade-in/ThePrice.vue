@@ -136,6 +136,8 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.price {
 		background: linear-gradient(
 			180deg,
@@ -166,7 +168,7 @@
 			grid-template-columns: repeat(2, 1fr);
 			grid-template-rows: repeat(5, max-content) max-content;
 			grid-column-gap: 2.7rem;
-			background-color: var(--white);
+			background-color: $white;
 			border-radius: 3rem;
 			padding: 8rem 6rem 10rem 6rem;
 			width: max-content;

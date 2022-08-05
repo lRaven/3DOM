@@ -376,22 +376,22 @@
 				switch (variation) {
 					case "north": {
 						const north = compass.querySelector(".compass__north");
-						north.setAttribute("fill", "var(--gold)");
+						north.setAttribute("fill", "#cc9964");
 						break;
 					}
 					case "west": {
 						const west = compass.querySelector(".compass__west");
-						west.setAttribute("fill", "var(--gold)");
+						west.setAttribute("fill", "#cc9964");
 						break;
 					}
 					case "east": {
 						const east = compass.querySelector(".compass__east");
-						east.setAttribute("fill", "var(--gold)");
+						east.setAttribute("fill", "#cc9964");
 						break;
 					}
 					case "south": {
 						const south = compass.querySelector(".compass__south");
-						south.setAttribute("fill", "var(--gold)");
+						south.setAttribute("fill", "#cc9964");
 						break;
 					}
 				}
@@ -414,6 +414,8 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.popup {
 		display: flex;
 		flex-direction: column;
@@ -425,7 +427,7 @@
 		z-index: 1;
 		height: calc(100vh - 10rem);
 		width: 90vw;
-		background-color: var(--white);
+		background-color: $white;
 		transition: all 0.2s ease;
 		overflow: hidden;
 		&.fullscreen {
@@ -453,7 +455,7 @@
 			justify-content: space-between;
 			align-items: center;
 			padding: 1rem;
-			background-color: var(--dark-green);
+			background-color: $dark-green;
 			max-height: 5rem;
 		}
 		&__title {
@@ -490,7 +492,7 @@
 		&__description {
 			p {
 				font-size: 3.6rem;
-				color: var(--gold);
+				color: $gold;
 				font-weight: 900;
 				+ p {
 					margin-top: 3rem;

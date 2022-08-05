@@ -115,6 +115,8 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.parking {
 		display: block;
 		padding: 0;
@@ -137,12 +139,12 @@
 			h2 {
 				text-transform: uppercase;
 				font-size: 4.8rem;
-				color: var(--gold);
+				color: $gold;
 				font-weight: 300;
 				margin-bottom: 5rem;
 			}
 			p {
-				color: var(--white);
+				color: $white;
 				font-size: 1.8rem;
 				line-height: 2.2rem;
 				+ p {

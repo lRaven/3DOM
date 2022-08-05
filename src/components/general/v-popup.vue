@@ -81,6 +81,8 @@
 </script>
 
 <style lang="scss">
+	@import "@/assets/scss/variables";
+
 	.v-popup {
 		display: flex;
 		flex-direction: column;
@@ -92,7 +94,7 @@
 		max-width: 60rem;
 		height: 100%;
 		max-height: 60rem;
-		background-color: var(--white);
+		background-color: $white;
 		transition: all 0.2s ease;
 		border-radius: 3rem;
 		overflow: hidden;
@@ -120,7 +122,7 @@
 		&__title {
 			display: block;
 			font-size: 3rem;
-			color: var(--dark);
+			color: $dark;
 			font-weight: 600;
 		}
 
@@ -130,7 +132,7 @@
 			position: relative;
 			padding: 5rem 9.5rem;
 			height: 100%;
-			color: var(--gray);
+			color: $gray;
 			.v-button {
 				align-self: center;
 				margin-top: 5rem;

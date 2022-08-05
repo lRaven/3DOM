@@ -120,9 +120,11 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	p {
 		font-size: 1.5rem;
-		color: var(--gray);
+		color: $gray;
 		font-weight: 600;
 		margin-left: 1.5rem;
 		margin-bottom: 1.3rem;
@@ -131,7 +133,7 @@
 		position: relative;
 		padding: 2.2rem 1.5rem;
 		border-radius: 2rem;
-		background-color: var(--light-gray);
+		background-color: $light-gray;
 		filter: drop-shadow(0 0 2rem rgba(0, 0, 0, 0.07));
 		&__values {
 			font-size: 1.6rem;
@@ -143,31 +145,31 @@
 		&__sum {
 			font-size: 1.6rem;
 			font-weight: 600;
-			color: var(--gray);
+			color: $gray;
 			span + span {
 				margin-left: 0.6rem;
 			}
 		}
 		&__min {
 			span {
-				color: var(--middle-gray);
+				color: $middle-gray;
 				+ span {
 					margin-left: 0.5rem;
 				}
 			}
 			&-value {
-				color: var(--gray) !important;
+				color: $gray !important;
 			}
 		}
 		&__max {
 			span {
-				color: var(--middle-gray);
+				color: $middle-gray;
 				+ span {
 					margin-left: 0.5rem;
 				}
 			}
 			&-value {
-				color: var(--gray) !important;
+				color: $gray !important;
 			}
 		}
 		&__range {
@@ -192,7 +194,7 @@
 					border-radius: 50%;
 					height: 1.2rem;
 					width: 1.2rem;
-					background-color: var(--middle-gray);
+					background-color: $middle-gray;
 				}
 			}
 			&-circle1 {

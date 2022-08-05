@@ -132,6 +132,8 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.apartment {
 		box-shadow: 0 0 1rem rgba(0, 0, 0, 0.25);
 		border-radius: 3rem;
@@ -188,7 +190,7 @@
 				position: relative;
 				top: -0.4rem;
 				max-width: 18rem;
-				color: var(--blue);
+				color: $blue;
 				line-height: 2rem;
 			}
 		}
@@ -241,7 +243,7 @@
 			}
 
 			p {
-				color: var(--blue);
+				color: $blue;
 				font-weight: 700;
 				font-size: 1.8rem;
 			}

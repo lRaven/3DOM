@@ -18,6 +18,8 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.v-button {
 		user-select: none;
 		display: flex;
@@ -40,14 +42,14 @@
 			transform: scale(0.95);
 		}
 		&.gold {
-			color: var(--white);
-			background-color: var(--gold);
-			border-color: var(--gold);
+			color: $white;
+			background-color: $gold;
+			border-color: $gold;
 		}
 		&.gray {
-			color: var(--middle-gray);
-			background-color: var(--white);
-			border-color: var(--middle-gray);
+			color: $middle-gray;
+			background-color: $white;
+			border-color: $middle-gray;
 		}
 	}
 </style>

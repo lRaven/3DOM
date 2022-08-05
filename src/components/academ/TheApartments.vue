@@ -36,7 +36,7 @@
 					<academ-swiper
 						:gallery="single_room"
 						:price="true"
-						:textColor="'color: var(--light-gold)'"
+						textColor="color: #fff9d0"
 						v-if="bodyWidth < 1024"
 					></academ-swiper>
 					<figure
@@ -57,7 +57,7 @@
 					<academ-swiper
 						:gallery="two_room"
 						:price="true"
-						:textColor="'color: var(--middle-gold)'"
+						textColor="color: #e4cda1"
 						v-if="bodyWidth < 1024"
 					></academ-swiper>
 					<figure
@@ -78,7 +78,7 @@
 					<academ-swiper
 						:gallery="three_room"
 						:price="true"
-						:textColor="'color: var(--pink)'"
+						textColor="color: #f6d6b9"
 						v-if="bodyWidth < 1024"
 					></academ-swiper>
 					<figure
@@ -2503,6 +2503,8 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.apartments {
 		padding-bottom: 5rem;
 		min-height: inherit;
@@ -2510,7 +2512,7 @@
 		h2 {
 			font-size: 4.8rem;
 			font-weight: 300;
-			color: var(--gold);
+			color: $gold;
 			margin: 2rem 0 3.5rem 0;
 		}
 
@@ -2544,10 +2546,10 @@
 				display: block;
 				width: 100%;
 				height: 100%;
-				color: var(--gold);
+				color: $gold;
 				font-size: 12rem;
 				font-weight: 100;
-				border: 0.2rem solid var(--gold);
+				border: 0.2rem solid $gold;
 				border-radius: 0 0 0 100%;
 
 				&:hover {
@@ -2624,7 +2626,7 @@
 				right: 3rem;
 				bottom: 1rem;
 				p {
-					color: var(--light-gold);
+					color: $light-gold;
 					width: max-content;
 				}
 				p:first-child {
@@ -2648,15 +2650,15 @@
 	}
 	.selected {
 		&-one {
-			fill: var(--light-gold);
+			fill: $light-gold;
 			transition: all 0.2s ease;
 		}
 		&-two {
-			fill: var(--middle-gold);
+			fill: $middle-gold;
 			transition: all 0.2s ease;
 		}
 		&-three {
-			fill: var(--pink);
+			fill: $pink;
 			transition: all 0.2s ease;
 		}
 	}

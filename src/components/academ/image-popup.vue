@@ -69,6 +69,8 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.popup {
 		display: flex;
 		flex-direction: column;
@@ -81,7 +83,7 @@
 		width: 100%;
 		height: calc(100vh - 10rem);
 		max-width: 90vh;
-		background-color: var(--white);
+		background-color: $white;
 		transition: all 0.2s ease;
 		overflow: hidden;
 		&.fullscreen {
@@ -109,7 +111,7 @@
 			justify-content: flex-end;
 			align-items: center;
 			padding: 1rem;
-			background-color: var(--dark-green);
+			background-color: $dark-green;
 			max-height: 5rem;
 		}
 		&__body {

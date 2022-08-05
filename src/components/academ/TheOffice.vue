@@ -189,6 +189,8 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.office {
 		padding: 0;
 		display: grid;
@@ -210,7 +212,7 @@
 				font-weight: 100;
 			}
 			&-description {
-				color: var(--dark-green);
+				color: $dark-green;
 				font-size: 1.3rem;
 				font-weight: 600;
 			}
@@ -219,7 +221,7 @@
 			text-transform: uppercase;
 			font-weight: 300;
 			font-size: 4.8rem;
-			color: var(--gold);
+			color: $gold;
 			margin-bottom: 2.5rem;
 		}
 		&__right {
@@ -227,7 +229,7 @@
 				no-repeat;
 			display: flex;
 
-			color: var(--white);
+			color: $white;
 			font-size: 1.8rem;
 			&-container {
 				height: fit-content;
@@ -299,7 +301,7 @@
 			p {
 				font-weight: 600;
 				text-align: center;
-				color: var(--light-gold);
+				color: $light-gold;
 			}
 			div {
 				cursor: pointer;

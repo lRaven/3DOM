@@ -117,6 +117,8 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.pantry {
 		display: block;
 		padding-bottom: 5rem;
@@ -135,12 +137,12 @@
 			h2 {
 				text-transform: uppercase;
 				font-size: 4.8rem;
-				color: var(--gold);
+				color: $gold;
 				font-weight: 300;
 				margin-bottom: 3rem;
 			}
 			p {
-				color: var(--white);
+				color: $white;
 				line-height: 2.2rem;
 				font-size: 1.8rem;
 				+ p {

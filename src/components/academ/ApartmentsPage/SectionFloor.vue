@@ -13,6 +13,8 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.floor {
 		display: grid;
 		grid-template-rows: 4rem 4rem;
@@ -29,7 +31,7 @@
 			justify-content: center;
 			align-items: center;
 			text-align: center;
-			border: 0.1rem solid var(--light-gray);
+			border: 0.1rem solid $light-gray;
 		}
 	}
 </style>

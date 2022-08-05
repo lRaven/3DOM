@@ -192,6 +192,8 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.fix {
 		max-width: 90rem;
 		width: 100%;
@@ -199,9 +201,9 @@
 		margin-top: 5rem;
 		margin-bottom: 5rem;
 		padding: 5rem 14rem 3.5rem 9rem;
-		background-color: var(--white);
+		background-color:$white;
 		box-shadow: 0 0 1rem rgba(0, 0, 0, 0.25);
-		color: var(--dark);
+		color: $dark;
 		&__title {
 			font-size: 2.4rem;
 			font-weight: 700;
@@ -218,7 +220,7 @@
 				display: grid;
 				grid-template-columns: repeat(2, 1fr);
 				grid-gap: 2.5rem 6rem;
-				background-color: var(--light-gray);
+				background-color: $light-gray;
 				padding: 1.5rem;
 			}
 			+ .fix__row {
@@ -236,43 +238,43 @@
 			align-items: center;
 			font-size: 1.3rem;
 			font-weight: 500;
-			background-color: var(--white);
+			background-color: $white;
 			height: 5rem;
 			padding: 1.5rem;
 		}
 		&__link {
 			cursor: pointer;
-			color: var(--blue);
+			color: $blue;
 			font-size: 1.3rem;
 			font-weight: 600;
 		}
 		&__hint {
 			display: block;
-			color: var(--warm-red);
+			color: $warm-red;
 			font-size: 1.3rem;
 			font-weight: 500;
 			margin-top: 2.7rem;
 		}
 		&__button {
 			padding: 1.5rem;
-			background-color: var(--white);
-			border: 0.1rem solid var(--middle-gray);
-			color: var(--dark);
+			background-color: $white;
+			border: 0.1rem solid $middle-gray;
+			color: $dark;
 			margin-top: 2rem;
 			transition: all 0.2s ease;
 			font-size: 1.8rem;
 			font-weight: 600;
 			&:hover {
 				transform: translateY(-0.3rem);
-				background-color: var(--middle-gray);
-				color: var(--white);
+				background-color: $middle-gray;
+				color: $white;
 			}
 			&:active {
 				transform: translateY(-0.1rem);
 			}
 			&:disabled {
-				background-color: var(--middle-gray);
-				color: var(--gray);
+				background-color: $middle-gray;
+				color: $gray;
 			}
 		}
 		.textarea-wrapper {

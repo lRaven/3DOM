@@ -124,6 +124,8 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.main {
 		background: linear-gradient(
 			0deg,
@@ -136,7 +138,7 @@
 
 	.registration {
 		border-radius: 3rem;
-		background-color: var(--white);
+		background-color: $white;
 		width: 61rem;
 		min-height: 74rem;
 		box-shadow: 0 0.2rem 1.5rem rgb(0 0 0 / 10%);
@@ -153,7 +155,7 @@
 
 			h1 {
 				text-align: center;
-				color: var(--dark);
+				color: $dark;
 				font-size: 3rem;
 				font-weight: 600;
 			}
@@ -185,7 +187,7 @@
 
 			a {
 				cursor: pointer;
-				color: var(--blue);
+				color: $blue;
 			}
 		}
 	}

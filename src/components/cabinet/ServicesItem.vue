@@ -26,10 +26,12 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.service {
 		padding: 3.5rem 7rem 5.2rem 7rem;
 		border-radius: 3rem;
-		box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+		box-shadow: 0 0 2rem rgba(0, 0, 0, 0.1);
 		overflow: hidden;
 		+ .service {
 			margin-top: 2.3rem;
@@ -49,18 +51,16 @@
 		}
 		.button {
 			width: 17rem;
-			// background-color: var(--blue);
-			// color: var(--white);
 		}
 		&.blue {
-			background-color: var(--blue);
-			color: var(--white);
+			background-color: $blue;
+			color: $white;
 			.button {
-				color: var(--blue);
+				color: $blue;
 			}
 		}
 		&.gray {
-			background-color: var(--light-gray);
+			background-color: $light-gray;
 		}
 	}
 </style>

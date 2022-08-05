@@ -18,20 +18,22 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.v-toggle {
 		display: flex;
 		align-items: center;
 		gap: 4.4rem;
 		border-radius: 2rem;
-		background-color: var(--light-gray);
+		background-color: $light-gray;
 		padding: 1.4rem 1.5rem;
 		&__real {
 			display: none;
 			&:checked + .v-toggle__fake {
-				background-color: var(--blue);
+				background-color: $blue;
 				&::before {
 					left: 3.5rem;
-					background-color: var(--white);
+					background-color: $white;
 				}
 			}
 		}
@@ -41,7 +43,7 @@
 			display: inline-block;
 			height: 3rem;
 			width: 6rem;
-			background-color: var(--middle-gray);
+			background-color: $middle-gray;
 			border-radius: 2.5rem;
 			transition: all 0.2s ease;
 			&::before {
@@ -52,13 +54,13 @@
 				transform: translateY(-50%);
 				height: 2rem;
 				width: 2rem;
-				background-color: var(--blue);
+				background-color: $blue;
 				border-radius: 50%;
 				transition: all 0.3s ease;
 			}
 		}
 		p {
-			color: var(--dark);
+			color: $dark;
 			font-size: 1.6rem;
 			font-weight: 600;
 		}

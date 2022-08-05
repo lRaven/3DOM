@@ -110,8 +110,10 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.favorites {
-		color: var(--dark);
+		color: $dark;
 		&__title {
 			font-size: 3rem;
 			font-weight: 600;
@@ -152,7 +154,7 @@
 			&-real {
 				display: none;
 				&:checked + .favorites__radio-fake {
-					color: var(--blue);
+					color: $blue;
 				}
 			}
 			&-fake {

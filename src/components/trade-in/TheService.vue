@@ -62,18 +62,20 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.service {
 		display: flex;
 		align-items: center;
 		padding: 2rem 1.5rem;
 		&__container {
-			color: var(--dark);
+			color: $dark;
 			display: grid;
 			grid-template-columns: repeat(2, 1fr);
 			grid-column-gap: 9rem;
 			height: fit-content;
 			padding: 6rem 6rem 7rem 6rem;
-			background-color: var(--white);
+			background-color: $white;
 			box-shadow: 0 0 2rem rgba(0, 0, 0, 0.2);
 			border-radius: 3rem;
 		}
@@ -104,7 +106,7 @@
 				margin-top: 5rem;
 			}
 			&-title {
-				color: var(--blue);
+				color: $blue;
 				font-size: 2.5rem;
 				font-weight: 600;
 				margin-bottom: 2rem;

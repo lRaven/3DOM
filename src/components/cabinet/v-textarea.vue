@@ -13,6 +13,8 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.v-textarea {
 		border: 0.1rem solid #979797;
 		border-radius: 1rem;
@@ -30,11 +32,11 @@
 		}
 
 		&:hover {
-			border-color: var(--dark);
+			border-color: $dark;
 			transition: all 0.3s ease;
 		}
 		&:focus {
-			border-color: var(--dark);
+			border-color: $dark;
 			transition: all 0.3s ease;
 		}
 	}

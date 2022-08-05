@@ -50,6 +50,8 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.the-layout {
 		padding: 1.5rem;
 		&__container {
@@ -57,7 +59,7 @@
 			gap: 1.5rem;
 			align-items: center;
 			justify-content: space-between;
-			background-color: var(--white);
+			background-color: $white;
 			box-shadow: 0 0 2rem rgba(0, 0, 0, 0.2);
 			border-radius: 3rem;
 			overflow: hidden;
@@ -76,12 +78,12 @@
 			h2 {
 				font-size: 4.2rem;
 				font-weight: 600;
-				color: var(--dark);
+				color: $dark;
 				margin-bottom: 1.5rem;
 			}
 			h3 {
 				font-weight: 600;
-				color: var(--gray);
+				color: $gray;
 				font-size: 2.5rem;
 				margin-bottom: 4.5rem;
 			}
@@ -89,7 +91,7 @@
 				font-size: 1.7rem;
 				font-weight: 600;
 				line-height: 2rem;
-				color: var(--gray);
+				color: $gray;
 				max-width: 53rem;
 				margin-bottom: 4rem;
 			}

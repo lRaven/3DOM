@@ -142,7 +142,7 @@
 					btn.setAttribute("type", "button");
 					btn.setAttribute(
 						"style",
-						"background-color: var(--light-gray); color: var(--dark); box-shadow: inherit"
+						"background-color: #eee; color: #4b4b4b; box-shadow: inherit"
 					);
 				}
 			},
@@ -183,6 +183,8 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.appointment-form {
 		border-radius: 3rem;
 		box-shadow: 0 0 1rem rgba(0, 0, 0, 0.25);
@@ -219,7 +221,7 @@
 			line-height: 2.2rem;
 			a {
 				cursor: pointer;
-				color: var(--blue);
+				color: $blue;
 			}
 		}
 	}

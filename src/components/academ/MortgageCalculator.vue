@@ -37,6 +37,8 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.popup {
 		display: flex;
 		flex-direction: column;
@@ -47,7 +49,7 @@
 		z-index: 5;
 		height: 100vh;
 		width: 100vw;
-		background-color: var(--white);
+		background-color: $white;
 		transition: all 0.2s ease;
 		overflow: hidden;
 		&__header {
@@ -55,10 +57,10 @@
 			justify-content: flex-end;
 			align-items: center;
 			padding: 1rem;
-			background-color: var(--dark-green);
+			background-color: $dark-green;
 			max-height: 5rem;
 			&.light {
-				background-color: var(--white);
+				background-color: $white;
 			}
 		}
 		&__body {

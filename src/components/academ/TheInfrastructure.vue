@@ -48,6 +48,8 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.infrastructure {
 		display: block;
 		padding-bottom: 3rem;
@@ -66,7 +68,7 @@
 				text-transform: uppercase;
 				font-size: 4.8rem;
 				font-weight: 300;
-				color: var(--gold);
+				color: $gold;
 				line-height: 6rem;
 			}
 			h2 + h2 {
@@ -75,7 +77,7 @@
 		}
 		&__middle {
 			max-width: 25.7rem;
-			color: var(--white);
+			color: $white;
 			font-size: 1.8rem;
 			line-height: 2.2rem;
 			p + p {

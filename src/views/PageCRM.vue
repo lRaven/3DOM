@@ -64,7 +64,7 @@
 					<div class="colorsTypeObject-Type8">
 						<TypeList
 							v-bind:text="'Не подходит под запрос'"
-							colors="var(--light-gray)"
+							colors="#eee"
 						/>
 					</div>
 				</div>
@@ -175,6 +175,8 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	main {
 		display: flex;
 		flex-direction: column;
@@ -185,7 +187,7 @@
 		.apartments {
 			height: 100%;
 			flex: 1 0 auto;
-			border: 0.1rem solid var(--light-gray);
+			border: 0.1rem solid $light-gray;
 			min-width: 100%;
 			min-height: 20rem;
 			overflow-x: hidden;
@@ -222,7 +224,7 @@
 			grid-template-columns: repeat(3, max-content);
 			width: 88.5rem;
 			height: 12.8rem;
-			border: 0.1rem solid var(--dark);
+			border: 0.1rem solid $dark;
 			margin-left: 4.1rem;
 			margin-bottom: 5rem;
 			&-name {

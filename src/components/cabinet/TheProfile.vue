@@ -173,8 +173,10 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.profile {
-		color: var(--dark);
+		color: $dark;
 
 		&__title {
 			margin-bottom: 1rem;
@@ -234,7 +236,7 @@
 			}
 
 			&-title {
-				color: var(--blue);
+				color: $blue;
 				font-size: 2rem;
 				font-weight: 600;
 			}
@@ -267,7 +269,7 @@
 				cursor: pointer;
 				position: relative;
 				justify-self: flex-end;
-				color: var(--blue);
+				color: $blue;
 				width: max-content;
 				font-weight: 600;
 
@@ -278,7 +280,7 @@
 					left: 0;
 					height: 0.2rem;
 					width: 0;
-					background-color: var(--blue);
+					background-color: $blue;
 					transition: all 0.2s ease;
 				}
 

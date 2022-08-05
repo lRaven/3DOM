@@ -359,19 +359,21 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.the-header {
 		user-select: none;
 		z-index: 4;
 		position: fixed;
 		width: 100%;
 		height: 8.5rem;
-		background-color: var(--white);
+		background-color: $white;
 		font-weight: 600;
 		font-size: 1.6rem;
 		border-radius: 0 0 3rem 3rem;
 		box-shadow: 0 0 1.5rem 0 rgb(130, 130, 130);
 		* {
-			color: var(--dark);
+			color: $dark;
 		}
 
 		&__container {
@@ -428,10 +430,10 @@
 				display: none;
 			}
 			&:hover {
-				color: var(--blue);
+				color: $blue;
 
 				.link__full {
-					color: var(--blue);
+					color: $blue;
 				}
 			}
 		}
@@ -452,12 +454,12 @@
 
 			svg {
 				path:nth-child(1) {
-					fill: var(--dark);
+					fill: $dark;
 				}
 
 				path,
 				rect {
-					stroke: var(--dark);
+					stroke: $dark;
 				}
 			}
 		}
@@ -477,8 +479,8 @@
 				display: flex;
 				justify-content: center;
 				align-items: center;
-				color: var(--white);
-				background-color: var(--blue);
+				color: $white;
+				background-color: $blue;
 				font-size: 1.4rem;
 				border-radius: 50%;
 				position: absolute;
@@ -542,7 +544,7 @@
 	@media (max-width: 1050px) {
 		.the-header {
 			&__container {
-				background-color: var(--blue);
+				background-color: $blue;
 				border-radius: 0;
 			}
 
@@ -574,13 +576,13 @@
 					justify-content: space-between;
 					width: 100%;
 					transition: all 0.2s ease;
-					border-top: 0.1rem solid var(--blue);
+					border-top: 0.1rem solid $blue;
 					&:hover {
-						background-color: var(--blue);
-						color: var(--white);
+						background-color: $blue;
+						color: $white;
 						svg {
 							path {
-								fill: var(--white);
+								fill: $white;
 							}
 						}
 					}
@@ -607,7 +609,7 @@
 				width: 66rem;
 				padding: 1.5rem;
 				height: 6rem;
-				background-color: var(--white);
+				background-color: $white;
 				z-index: -1;
 				transition: all 0.2s ease;
 
@@ -621,7 +623,7 @@
 					width: 66rem;
 					padding: 1.5rem;
 					height: 6rem;
-					background-color: var(--white);
+					background-color: $white;
 					z-index: -1;
 					transition: all 0.2s ease;
 					&.open {
@@ -632,16 +634,16 @@
 				svg {
 					display: block;
 					path:nth-child(1) {
-						fill: var(--blue);
-						stroke: var(--blue);
+						fill: $blue;
+						stroke: $blue;
 					}
 
 					path {
-						fill: var(--blue);
-						stroke: var(--blue);
+						fill: $blue;
+						stroke: $blue;
 					}
 					rect {
-						stroke: var(--blue);
+						stroke: $blue;
 					}
 				}
 			}

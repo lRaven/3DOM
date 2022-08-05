@@ -27,6 +27,8 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.broadcast {
 		background: url(/public/img/academ/broadcast__img.png) center right /
 			auto 100% no-repeat;
@@ -34,7 +36,7 @@
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
-			color: var(--gold);
+			color: $gold;
 			text-transform: uppercase;
 			h2 {
 				padding-left: 7rem;

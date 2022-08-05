@@ -128,6 +128,8 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.the-footer {
 		height: 8rem;
 		overflow: hidden;
@@ -137,7 +139,7 @@
 			justify-content: center;
 			gap: 5rem;
 			font-size: 1.6rem;
-			color: var(--dark);
+			color: $dark;
 			height: 4rem;
 
 			p {
@@ -177,13 +179,13 @@
 				cursor: pointer;
 				position: relative;
 				display: inline-block;
-				color: var(--dark);
+				color: $dark;
 				height: 100%;
 				width: max-content;
 				padding: 1.2rem 0;
 				transition: all 0.2s ease;
 				&:hover {
-					color: var(--blue);
+					color: $blue;
 					transition: all 0.3s ease;
 				}
 			}
@@ -192,7 +194,7 @@
 			padding: 0.8rem 0;
 			text-align: center;
 			height: 4rem;
-			color: var(--middle-gray);
+			color: $middle-gray;
 		}
 	}
 
@@ -219,8 +221,8 @@
 
 	@media (max-width: 720px) {
 		.the-footer {
-			background-color: var(--blue);
-			color: var(--white);
+			background-color: $blue;
+			color: $white;
 			height: 11rem;
 			&__links {
 				display: none;
@@ -231,7 +233,7 @@
 				max-height: inherit;
 
 				p {
-					color: var(--white);
+					color: $white;
 					grid-column: 1/3;
 					margin-right: 0;
 				}
@@ -263,7 +265,7 @@
 						height: 5rem;
 						width: 5rem;
 						path {
-							fill: var(--white);
+							fill: $white;
 						}
 					}
 				}

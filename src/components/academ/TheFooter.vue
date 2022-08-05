@@ -70,6 +70,8 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.the-footer {
 		user-select: none;
 		padding-left: 1.5rem;
@@ -79,7 +81,7 @@
 		align-items: center;
 		justify-content: center;
 		height: 11rem;
-		background-color: var(--gold);
+		background-color: $gold;
 		&__container {
 			display: flex;
 			justify-self: center;
@@ -118,7 +120,7 @@
 		position: relative;
 		user-select: none;
 		font-size: 1.6rem;
-		color: var(--dark-green);
+		color: $dark-green;
 		width: max-content;
 		font-weight: 600;
 		&::after {
@@ -128,7 +130,7 @@
 			bottom: -0.3rem;
 			width: 0;
 			height: 0.2rem;
-			background-color: var(--dark-green);
+			background-color: $dark-green;
 			transition: all 0.3s ease;
 		}
 		&:hover {
@@ -189,13 +191,10 @@
 							top: 0;
 							height: 100%;
 							width: 0.1rem;
-							background-color: var(--dark-green);
+							background-color: $dark-green;
 						}
 					}
 				}
-			}
-			&__tg {
-				// display: none !important;
 			}
 			&__disclaimer {
 				display: none;

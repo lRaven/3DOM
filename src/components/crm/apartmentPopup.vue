@@ -164,7 +164,7 @@
 							<div class="apartment-popup__action">
 								<p class="apartment-popup__action-description">
 									<router-link
-										style="color: var(--gold)"
+										style="color: #cc9964"
 										:to="{
 											name: 'Fix Client',
 											params: {
@@ -331,6 +331,8 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.apartment-popup {
 		display: flex;
 		flex-direction: column;
@@ -342,7 +344,7 @@
 		height: 100%;
 		max-width: 90rem;
 		max-height: 80rem;
-		background-color: var(--white);
+		background-color: $white;
 		transition: all 0.2s ease;
 		overflow: hidden;
 		z-index: 1;
@@ -356,7 +358,7 @@
 			background-color: #d5bfa8;
 			font-size: 1.8rem;
 			font-weight: 700;
-			color: var(--dark);
+			color: $dark;
 			&-decorative {
 				display: block;
 				background-color: #bdbdbd;
@@ -421,7 +423,7 @@
 			}
 			&-value {
 				&:nth-child(n + 7) {
-					color: var(--gold);
+					color: $gold;
 					font-weight: 700;
 				}
 			}
@@ -446,7 +448,7 @@
 			justify-content: space-between;
 
 			&-description {
-				color: var(--gold);
+				color: $gold;
 				font-weight: 700;
 				font-size: 1.3rem;
 			}

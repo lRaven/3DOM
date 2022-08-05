@@ -68,12 +68,14 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.v-dropdown {
 		user-select: none;
 		position: relative;
 		&__description {
 			font-size: 1.5rem;
-			color: var(--gray);
+			color: $gray;
 			font-weight: 500;
 			margin-bottom: 1.3rem;
 		}
@@ -84,14 +86,14 @@
 			justify-content: space-between;
 			border-radius: 1rem;
 			padding: 1.6rem 2rem;
-			background-color: var(--white);
+			background-color: $white;
 			border: 0.1rem solid #c4c4c4;
 			color: #979797;
 			font-size: 1.8rem;
 			font-weight: 500;
 			transition: all 0.1s ease;
 			&:hover {
-				border-color: var(--dark);
+				border-color: $dark;
 				transition: all 0.2s ease;
 			}
 			&.open {
@@ -121,7 +123,7 @@
 			width: 100%;
 			border-radius: 0.5rem;
 			overflow-y: auto;
-			background-color: var(--white);
+			background-color: $white;
 			box-shadow: 0 0.4rem 1.5rem rgba(0, 0, 0, 0.25);
 			transition: all 0.1s ease;
 			z-index: 2;
@@ -130,7 +132,7 @@
 			cursor: pointer;
 			display: block;
 			padding: 2rem;
-			color: var(--dark);
+			color: $dark;
 			font-size: 1.8rem;
 			font-weight: 500;
 			transition: all 0.1s ease;

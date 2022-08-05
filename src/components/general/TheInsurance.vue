@@ -153,8 +153,10 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.the-insurance {
-		color: var(--dark);
+		color: $dark;
 		padding: 5rem 1.5rem;
 		&__container {
 		}
@@ -238,7 +240,7 @@
 					display: block;
 					font-size: 1.8rem;
 					line-height: 2.2rem;
-					color: var(--gray);
+					color: $gray;
 				}
 			}
 			&__body {

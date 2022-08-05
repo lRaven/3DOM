@@ -200,6 +200,8 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.the-mortgage {
 		padding: 1.5rem 1.5rem 3rem 1.5rem;
 		&__header {
@@ -207,14 +209,14 @@
 			h2 {
 				margin-top: 10rem;
 				font-size: 4.2rem;
-				color: var(--dark);
+				color: $dark;
 				font-weight: 600;
 				margin-bottom: 1.5rem;
 			}
 			p {
 				font-size: 2.5rem;
 				font-weight: 600;
-				color: var(--gray);
+				color: $gray;
 			}
 		}
 		&__title {
@@ -277,7 +279,7 @@
 			&-circle {
 				width: 2.4rem;
 				height: 2.4rem;
-				background-color: var(--white);
+				background-color: $white;
 				border-radius: 50%;
 			}
 			&-result {
@@ -303,12 +305,12 @@
 					padding: 1rem 1.5rem;
 					text-align: center;
 					&.white {
-						background-color: var(--white);
-						color: var(--blue);
+						background-color: $white;
+						color: $blue;
 					}
 					&.blue {
-						background-color: var(--blue);
-						color: var(--white);
+						background-color: $blue;
+						color: $white;
 					}
 				}
 			}
@@ -331,15 +333,15 @@
 			}
 		}
 		&__middle {
-			background-color: var(--light-gray);
-			color: var(--gray);
+			background-color: $light-gray;
+			color: $gray;
 			h3 {
-				color: var(--dark);
+				color: $dark;
 			}
 		}
 		&__last {
-			background-color: var(--blue);
-			color: var(--white);
+			background-color: $blue;
+			color: $white;
 		}
 	}
 

@@ -8682,7 +8682,7 @@
 
 				apartments.forEach((apartment) => {
 					apartment.addEventListener("mouseenter", () => {
-						apartment.setAttribute("fill", "var(--middle-gold)");
+						apartment.setAttribute("fill", "#e4cda1");
 					});
 
 					apartment.addEventListener("mouseleave", () => {

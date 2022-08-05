@@ -4,7 +4,7 @@
 			<div class="swiper" v-if="bodyWidth < 1024">
 				<academ-swiper-full
 					:gallery="gallery"
-					:textColor="'color: var(--light-gold)'"
+					textColor="color: #fff9d0"
 				></academ-swiper-full>
 			</div>
 			<div class="gallery__photos" v-else>
@@ -111,6 +111,8 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.gallery {
 		padding-bottom: 5rem;
 		padding-top: 2rem;
@@ -141,7 +143,7 @@
 				margin-top: 1rem;
 			}
 			&:nth-child(4) {
-				color: var(--white);
+				color: $white;
 			}
 			.dark {
 				text-align: left;
@@ -149,14 +151,14 @@
 		}
 		&__mobile-text {
 			display: none;
-			color: var(--white);
+			color: $white;
 		}
 		p {
 			text-transform: uppercase;
 			font-size: 7.2rem;
 			font-weight: 300;
 			&:nth-child(2) {
-				color: var(--gold);
+				color: $gold;
 			}
 		}
 	}

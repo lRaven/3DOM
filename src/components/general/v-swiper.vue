@@ -95,13 +95,15 @@
 </style>
 
 <style lang="scss">
+	@import "@/assets/scss/variables";
+
 	.v-swiper {
 		.swiper-pagination {
 			bottom: 5rem;
 			&-bullet {
 				width: 2.2rem;
 				height: 2.2rem;
-				background: var(--white);
+				background: $white;
 				&-active {
 					position: relative;
 					&::after {
@@ -111,7 +113,7 @@
 						left: 50%;
 						width: 1.6rem;
 						height: 1.6rem;
-						border: 1px solid var(--white);
+						border: 0.1rem solid $white;
 						border-radius: 50%;
 						transform: translate(-50%, -50%);
 					}
@@ -136,7 +138,7 @@
 							left: 50%;
 							width: 1.6rem;
 							height: 1.6rem;
-							border: 1px solid var(--white);
+							border: 0.1rem solid $white;
 							border-radius: 50%;
 							transform: translate(-50%, -50%);
 						}

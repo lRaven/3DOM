@@ -29,6 +29,8 @@
 </script>
 
 <style lang="scss">
+	@import "@/assets/scss/variables";
+
 	.academ-popup {
 		display: flex;
 		flex-direction: column;
@@ -40,7 +42,7 @@
 		max-width: 60rem;
 		height: 100%;
 		max-height: 60rem;
-		background-color: var(--dark-green);
+		background-color: $dark-green;
 		transition: all 0.2s ease;
 		border-radius: 3rem;
 		overflow: hidden;
@@ -68,7 +70,7 @@
 		&__title {
 			display: block;
 			font-size: 3rem;
-			color: var(--white);
+			color: $white;
 			font-weight: 600;
 			h2 {
 				font-size: 1.6rem;
@@ -91,7 +93,7 @@
 			position: relative;
 			padding: 5rem 9.5rem;
 			height: 100%;
-			color: var(--gray);
+			color: $gray;
 			.button {
 				align-self: center;
 				margin-top: 5rem;
@@ -105,7 +107,7 @@
 		&__description {
 			text-transform: inherit !important;
 			font-size: 1.8rem !important;
-			color: var(--white);
+			color: $white;
 			font-weight: 500;
 			line-height: 1.3;
 			margin-bottom: 6rem;

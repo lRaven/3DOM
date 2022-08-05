@@ -80,12 +80,14 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.v-call {
 		cursor: pointer;
 		user-select: none;
 		border-radius: 50%;
 		overflow: hidden;
-		box-shadow: 0 0 1rem 0.3rem var(--white);
+		box-shadow: 0 0 1rem 0.3rem $white;
 		position: fixed;
 		bottom: 5rem;
 		right: 5rem;

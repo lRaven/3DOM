@@ -94,6 +94,8 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.v-card {
 		border-radius: 3rem;
 		height: 100%;
@@ -111,7 +113,7 @@
 			}
 		}
 		&__body {
-			background-color: var(--white);
+			background-color: $white;
 			transform: translateY(-5rem);
 			border-radius: 3rem;
 			z-index: 1;
@@ -159,7 +161,7 @@
 				color: #979797;
 			}
 			span:nth-child(2) {
-				color: var(--blue);
+				color: $blue;
 			}
 		}
 		&__prices {
@@ -176,7 +178,7 @@
 			}
 			p {
 				font-size: 1.8rem;
-				color: var(--gray);
+				color:$gray;
 			}
 		}
 		&__three {
@@ -199,7 +201,7 @@
 		&__more a {
 			cursor: pointer;
 			position: relative;
-			color: var(--blue);
+			color: $blue;
 			font-weight: 600;
 			&::after {
 				content: "";
@@ -208,7 +210,7 @@
 				bottom: -0.2rem;
 				width: 0;
 				height: 0.2rem;
-				background-color: var(--blue);
+				background-color: $blue;
 				transition: width 0.2s ease;
 			}
 			&:hover {

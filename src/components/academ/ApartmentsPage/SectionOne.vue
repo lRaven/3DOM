@@ -69,40 +69,41 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.sectionOne {
 		display: grid;
 		grid-column: 2;
-		grid-template-rows: 40px 40px auto;
+		grid-template-rows: 4rem 4rem auto;
 		grid-template-columns: auto auto auto auto;
 		.flat4k {
 			display: grid;
 			grid-template-columns: repeat(4, auto);
-			grid-template-rows: repeat(2, 40px);
+			grid-template-rows: repeat(2, 4rem);
 		}
 		.name {
-			border: 0.1rem solid var(--light-gray);
+			border: 0.1rem solid $light-gray;
 			position: relative;
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			color: white;
+			color: #fff;
 			background: #a3794e;
-			font-style: normal;
 			font-weight: 900;
-			font-size: 18px;
-			line-height: 18px;
+			font-size: 1.8rem;
+			line-height: 1.8rem;
 			grid-row: 1;
-			grid-column: 1 / 5;
+			grid-column: 1/5;
 			&:hover {
 				cursor: pointer;
 			}
 			&__btn {
 				position: absolute;
-				top: 15px;
-				left: 10px;
-				background: white;
-				width: 9px;
-				height: 9px;
+				top: 1.5rem;
+				left: 1rem;
+				background: #fff;
+				width: 0.9rem;
+				height: 0.9rem;
 			}
 		}
 	}

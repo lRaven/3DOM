@@ -86,6 +86,8 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.swiper-slide {
 		background-color: #fff;
 		padding: 5rem;
@@ -93,7 +95,7 @@
 	.banner {
 		padding-top: 5rem;
 		padding-bottom: 5rem;
-		background-color: var(--dark-green);
+		background-color: $dark-green;
 		&__container {
 			position: relative;
 			display: grid;
@@ -121,7 +123,7 @@
 			&-text {
 				p {
 					font-size: 1.8rem;
-					color: var(--white);
+					color: $white;
 				}
 				p + p {
 					margin-top: 2rem;
@@ -140,7 +142,7 @@
 				align-items: center;
 				gap: 2rem;
 				text-align: center;
-				color: var(--white);
+				color: $white;
 
 				h2 {
 					font-size: 7.7rem;
@@ -157,7 +159,7 @@
 				}
 				span {
 					text-transform: uppercase;
-					color: var(--gold);
+					color: $gold;
 					font-size: 1.8rem;
 					font-weight: 300;
 				}

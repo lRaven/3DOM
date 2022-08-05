@@ -35,6 +35,8 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.v-checkbox {
 		user-select: none;
 		display: flex;
@@ -45,7 +47,7 @@
 			display: none;
 			&:checked + .v-checkbox__fake {
 				svg {
-					fill: var(--white);
+					fill: $white;
 				}
 			}
 		}
@@ -57,7 +59,7 @@
 			align-items: center;
 			width: 1.6rem;
 			height: 1.6rem;
-			border: 0.1rem solid var(--white);
+			border: 0.1rem solid $white;
 			svg {
 				fill: transparent;
 			}
@@ -65,7 +67,7 @@
 		&__text {
 			font-size: 1.3rem;
 			width: 100%;
-			color: var(--white);
+			color: $white;
 		}
 
 		&.dark {
@@ -73,15 +75,15 @@
 				&__real {
 					&:checked + .v-checkbox__fake {
 						svg {
-							fill: var(--gray);
+							fill: $gray;
 						}
 					}
 				}
 				&__fake {
-					border-color: var(--gray);
+					border-color: $gray;
 				}
 				&__text {
-					color: var(--gray);
+					color: $gray;
 				}
 			}
 		}

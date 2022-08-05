@@ -79,8 +79,10 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.booking {
-		color: var(--dark);
+		color: $dark;
 
 		&__header {
 			margin-bottom: 3rem;
@@ -102,7 +104,7 @@
 				display: flex;
 				justify-content: center;
 				align-items: center;
-				background-color: var(--blue);
+				background-color: $blue;
 				width: 5.2rem;
 				height: 5.2rem;
 				border-radius: 50%;

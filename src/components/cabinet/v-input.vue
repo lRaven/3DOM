@@ -18,6 +18,8 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.v-input {
 		height: 6.1rem;
 		border: 0.1rem solid #979797;
@@ -27,18 +29,18 @@
 		transition: all 0.2s ease;
 
 		&:invalid {
-			border-color: var(--red);
+			border-color: $red;
 			&:hover,
 			&:focus {
-				border-color: var(--red);
+				border-color: $red;
 			}
 		}
 		&:hover {
-			border-color: var(--dark);
+			border-color: $dark;
 			transition: all 0.3s ease;
 		}
 		&:focus {
-			border-color: var(--dark);
+			border-color: $dark;
 			transition: all 0.3s ease;
 		}
 	}

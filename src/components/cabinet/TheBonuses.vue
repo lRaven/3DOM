@@ -123,8 +123,10 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.bonuses {
-		color: var(--dark);
+		color: $dark;
 		&__header {
 			margin-bottom: 3rem;
 			padding: 0 2.4rem;
@@ -152,7 +154,7 @@
 					display: none;
 					&:checked {
 						+ .radio__fake {
-							color: var(--blue);
+							color: $blue;
 							transition: all 0.3s ease;
 						}
 					}
@@ -168,7 +170,7 @@
 			bottom: -0.1rem;
 			height: 0.2rem;
 			width: 23rem;
-			background-color: var(--blue);
+			background-color: $blue;
 			transition: all 0.3s ease;
 			&.moved {
 				left: 24.3rem;

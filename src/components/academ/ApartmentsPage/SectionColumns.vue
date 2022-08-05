@@ -29,6 +29,8 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.sectionColumns {
 		background: #d5bfa8;
 		grid-row: 2;
@@ -36,7 +38,7 @@
 		grid-template-columns: 4rem 2rem 8.5rem 4rem;
 		grid-template-rows: 4rem;
 		.subsection1 {
-			border: 0.1rem solid var(--light-gray);
+			border: 0.1rem solid $light-gray;
 			text-transform: uppercase;
 			font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
 			font-style: normal;
@@ -50,11 +52,11 @@
 			grid-column: 1;
 		}
 		.subsection2 {
-			border: 0.1rem solid var(--light-gray);
+			border: 0.1rem solid $light-gray;
 			grid-column: 2;
 		}
 		.subsection3 {
-			border: 0.1rem solid var(--light-gray);
+			border: 0.1rem solid $light-gray;
 			grid-column: 3;
 			display: grid;
 			grid-template-columns: repeat(2, 1fr);
@@ -69,7 +71,7 @@
 				text-align: center;
 				font-size: 1rem;
 				line-height: 1.25;
-				color: var(--dark);
+				color: $dark;
 				.param {
 					font-weight: bold;
 				}
@@ -87,7 +89,7 @@
 			}
 		}
 		.subsection4 {
-			border: 0.1rem solid var(--light-gray);
+			border: 0.1rem solid $light-gray;
 			grid-column: 4;
 		}
 	}

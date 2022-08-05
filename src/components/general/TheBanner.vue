@@ -77,11 +77,13 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.banner {
 		display: grid;
 		grid-template-columns: 1fr;
 		align-items: center;
-		background-color: var(--light-gray);
+		background-color: $light-gray;
 		min-height: calc(100vh - 6rem);
 		padding: 0;
 
@@ -120,15 +122,15 @@
 		}
 		&__watch {
 			background-color: rgba(255, 255, 255, 0.2);
-			color: var(--dark);
+			color: $dark;
 			backdrop-filter: blur(2rem);
 			@-moz-document url-prefix() {
 				background-color: rgba(255, 255, 255, 0.85);
 			}
 		}
 		&__order {
-			background-color: var(--blue);
-			color: var(--white);
+			background-color: $blue;
+			color: $white;
 			&-img {
 				display: none;
 			}
@@ -166,13 +168,13 @@
 				}
 			}
 			&__watch {
-				background-color: var(--white);
+				background-color: $white;
 				margin-bottom: 0;
 				&-wrapper {
 					display: flex;
 					justify-content: center;
 					align-items: center;
-					background-color: var(--blue);
+					background-color: $blue;
 					width: 100%;
 					padding: 2rem 1.5rem;
 				}

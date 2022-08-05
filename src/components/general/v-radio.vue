@@ -16,12 +16,14 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.v-radio {
 		&__real {
 			display: none;
 			&:checked + .v-radio__fake {
-				background-color: var(--blue);
-				color: var(--white);
+				background-color: $blue;
+				color: $white;
 				transition: all 0.3s ease;
 			}
 		}
@@ -31,15 +33,15 @@
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			background-color: var(--light-gray);
-			color: var(--dark);
+			background-color: $light-gray;
+			color: $dark;
 			border-radius: 50%;
 			width: 4.5rem;
 			height: 4.5rem;
 			transition: all 0.3s ease;
 			&:hover {
-				background-color: var(--blue);
-				color: var(--white);
+				background-color: $blue;
+				color: $white;
 				transition: all 0.5s ease;
 			}
 		}

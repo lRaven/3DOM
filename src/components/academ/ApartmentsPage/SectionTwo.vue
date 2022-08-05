@@ -70,13 +70,15 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.sectionTwo {
 		display: grid;
 		grid-column: 2;
 		grid-template-rows: 40px 40px auto;
 		grid-template-columns: auto auto auto auto;
 		.name {
-			border: 0.1rem solid var(--light-gray);
+			border: 0.1rem solid $light-gray;
 			position: relative;
 			display: flex;
 			justify-content: center;

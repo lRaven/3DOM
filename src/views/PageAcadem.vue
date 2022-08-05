@@ -65,20 +65,22 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	main {
-		background-color: var(--dark-green);
+		background-color: $dark-green;
 	}
 	section {
 		min-height: calc(100vh - 6rem);
 		overflow: hidden;
-		background: var(--dark-green);
+		background: $dark-green;
 		display: flex;
 	}
 
 	a {
 		user-select: none;
 		font-size: 1.6rem;
-		color: var(--dark-green);
+		color: $dark-green;
 		font-weight: 600;
 	}
 
@@ -103,7 +105,7 @@
 			bottom: -0.3rem;
 			width: 0;
 			height: 0.2rem;
-			background-color: var(--dark-green);
+			background-color: $dark-green;
 			transition: all 0.3s ease;
 		}
 		&:hover {

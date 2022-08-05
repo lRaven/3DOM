@@ -9,20 +9,25 @@
 					</div>
 					<div class="login__body">
 						<v-input
-							:text="'Логин:'"
-							:type="'text'"
-							:placeholder="'Логин'"
-							:name="'username'"
-							v-model="username"
+							text="Логин:"
+							type="text"
+							placeholder="Логин"
+							name="username"
+							v-model="user_data.username"
 						></v-input>
 						<v-input
-							:text="'Пароль:'"
-							:type="'password'"
-							:placeholder="'Пароль'"
-							:name="'password'"
-							v-model="password"
+							text="Пароль:"
+							type="password"
+							placeholder="Пароль"
+							name="password"
+							v-model="user_data.password"
 						></v-input>
-						<v-button :text="'Войти'" :type="'button'"> </v-button>
+						<v-button
+							text="Войти"
+							color="blue"
+							:disabled="!isFormValid"
+							type="submit"
+						></v-button>
 						<p class="login__description">
 							Нажимая кнопку «Войти», вы подтверждаете своё
 							согласие на
@@ -38,7 +43,6 @@
 
 <script>
 	import store from "@/store";
-	import axios from "axios";
 	import TheHeader from "@/components/cabinet/TheHeader";
 	import vInput from "@/components/cabinet/v-input";
 	import vButton from "@/components/general/v-button";
@@ -53,33 +57,36 @@
 			vButton,
 			TheFooter,
 		},
-
-		data() {
-			return {
+		computed: {
+			isFormValid() {
+				return false;
+			},
+		},
+		data: () => ({
+			user_data: {
 				username: "",
 				password: "",
-			};
-		},
+			},
+		}),
 
 		methods: {
 			//*логин
-			login(event) {
-				event.preventDefault();
-
-				axios
-					.post(`${store.getters.BASEURL}/auth/token/login/`, {
-						username: this.username,
-						password: this.password,
-					})
-					.then((response) => {
-						if (response.status === 200) {
-							this.saveUserData(response.data.auth_token);
-							this.$router.push("/cabinet");
-						}
-					})
-					.catch((err) => {
-						console.error(err);
-					});
+			login() {
+				console.log("some text");
+				// axios
+				// 	.post(`${store.getters.BASEURL}/auth/token/login/`, {
+				// 		username: this.username,
+				// 		password: this.password,
+				// 	})
+				// 	.then((response) => {
+				// 		if (response.status === 200) {
+				// 			this.saveUserData(response.data.auth_token);
+				// 			this.$router.push("/cabinet");
+				// 		}
+				// 	})
+				// 	.catch((err) => {
+				// 		console.error(err);
+				// 	});
 			},
 
 			//*запись данных в vuex
@@ -93,7 +100,7 @@
 				this.encryptPassword(this.password);
 			},
 
-			//*сохранить пароль звёздами '*'
+			//* сохранить пароль звёздами '*'
 			encryptPassword(pass) {
 				pass = this.password.split("");
 
@@ -104,34 +111,13 @@
 				pass = pass.join("");
 				localStorage.setItem("pw", pass);
 			},
-
-			//*делает кнопку неактивной пока есть пусте поля ввода
-			activateBtn() {
-				const btn = document.querySelector(".button");
-				const inputs = document.querySelectorAll("input");
-
-				inputs.forEach((input) => {
-					input.addEventListener("input", () => {
-						if (this.username !== "" && this.password !== "") {
-							btn.setAttribute("type", "submit");
-							btn.classList.add("blue");
-							btn.classList.remove("gray");
-						} else {
-							btn.setAttribute("type", "button");
-							btn.classList.remove("blue");
-							btn.classList.add("gray");
-						}
-					});
-				});
-			},
-		},
-		mounted() {
-			this.activateBtn();
 		},
 	};
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.main {
 		background: linear-gradient(
 			0deg,
@@ -144,7 +130,7 @@
 
 	.login {
 		border-radius: 3rem;
-		background-color: var(--white);
+		background-color: $white;
 		width: 61rem;
 		min-height: 65rem;
 		box-shadow: 0 0.2rem 1.5rem rgb(0 0 0 / 10%);
@@ -160,7 +146,7 @@
 
 			h1 {
 				text-align: center;
-				color: var(--dark);
+				color: $dark;
 				font-size: 3rem;
 				font-weight: 600;
 			}
@@ -192,7 +178,7 @@
 
 			a {
 				cursor: pointer;
-				color: var(--blue);
+				color:$blue;
 			}
 		}
 	}

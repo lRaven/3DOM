@@ -685,10 +685,7 @@
 						const educationList =
 							document.querySelectorAll(".education");
 						educationList.forEach((education) => {
-							education.setAttribute(
-								"style",
-								"fill: var(--gold)"
-							);
+							education.setAttribute("style", "fill: #cc9964");
 						});
 						break;
 					}
@@ -696,14 +693,14 @@
 						const medicineList =
 							document.querySelectorAll(".medicine");
 						medicineList.forEach((medicine) => {
-							medicine.setAttribute("style", "fill: var(--gold)");
+							medicine.setAttribute("style", "fill: #cc9964");
 						});
 						break;
 					}
 					case 3: {
 						const storeList = document.querySelectorAll(".store");
 						storeList.forEach((store) => {
-							store.setAttribute("style", "fill: var(--gold)");
+							store.setAttribute("style", "fill: #cc9964");
 						});
 						break;
 					}
@@ -713,7 +710,7 @@
 						entertainmentList.forEach((entertainment) => {
 							entertainment.setAttribute(
 								"style",
-								"fill: var(--gold)"
+								"fill: #cc9964"
 							);
 						});
 						break;
@@ -724,7 +721,7 @@
 						cafesRestaurantsList.forEach((cafeRestaurant) => {
 							cafeRestaurant.setAttribute(
 								"style",
-								"fill: var(--gold)"
+								"fill: #cc9964"
 							);
 						});
 						break;
@@ -733,7 +730,7 @@
 						const bankAtmList =
 							document.querySelectorAll(".bank-atm");
 						bankAtmList.forEach((bankAtm) => {
-							bankAtm.setAttribute("style", "fill: var(--gold)");
+							bankAtm.setAttribute("style", "fill: #cc9964");
 						});
 						break;
 					}
@@ -783,8 +780,10 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.location {
-		color: var(--white);
+		color: $white;
 		padding-top: 4rem;
 		padding-bottom: 4rem;
 		&__container {
@@ -794,12 +793,11 @@
 		}
 		h2 {
 			grid-area: 1/1/1/1;
-			color: var(--gold);
+			color: $gold;
 			font-size: 4.8rem;
 			width: 22rem;
 			font-weight: 300;
 			z-index: 1;
-			// margin-bottom: 4rem;
 		}
 		&__nav {
 			display: flex;
@@ -818,14 +816,14 @@
 			z-index: 1;
 			&:hover {
 				.radio__fake {
-					color: var(--gold);
+					color: $gold;
 					transition: all 0.2s ease;
 				}
 			}
 			.radio__real {
 				display: none;
 				&:checked + .radio__fake {
-					color: var(--gold);
+					color: $gold;
 					transition: all 0.2s ease;
 				}
 			}
@@ -855,7 +853,7 @@
 			}
 		}
 		h1 {
-			color: var(--gold);
+			color: $gold;
 			font-weight: 300;
 			font-size: 7.7rem;
 			width: 45rem;
@@ -912,13 +910,13 @@
 			&__item {
 				display: flex;
 				align-items: center;
-				border-top: 1px solid var(--light-gold);
+				border-top: 0.1rem solid $light-gold;
 				padding-left: 0;
 				height: 10rem;
 				font-size: 3.6rem;
 				line-height: inherit;
 				&:last-child {
-					border-bottom: 1px solid var(--light-gold);
+					border-bottom: 0.1rem solid $light-gold;
 				}
 				&:hover {
 					.radio__fake {
@@ -975,7 +973,7 @@
 			display: block;
 
 			path {
-				fill: var(--light-gold);
+				fill: $light-gold;
 			}
 			&-top,
 			&-left,

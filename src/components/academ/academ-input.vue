@@ -20,31 +20,33 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.text-input {
 		width: 100%;
 		background-color: transparent;
 		padding: 1rem 0;
-		border-bottom: 1px solid var(--white);
-		color: var(--white);
+		border-bottom: 0.1rem solid $white;
+		color: $white;
 		font-size: 1.8rem;
 		&:invalid {
-			border-color: var(--red);
+			border-color: $red;
 		}
 		&::placeholder {
-			color: var(--white);
+			color: $white;
 			font-size: 1.8rem;
 		}
 		+ .text-input {
 			margin-top: 2rem;
 		}
 		&.dark {
-			color: var(--gray);
-			border-color: var(--gray);
+			color: $gray;
+			border-color: $gray;
 			&:invalid {
-				border-color: var(--red);
+				border-color: $red;
 			}
 			&::placeholder {
-				color: var(--gray);
+				color: $gray;
 			}
 		}
 	}

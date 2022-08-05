@@ -33,13 +33,15 @@
 
 <script>
 	export default {
-		name: "Statistics",
+		name: "TheStatistics",
 	};
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.statistics {
-		color: var(--gold);
+		color: $gold;
 		height: calc(100vh - 6rem);
 		overflow: hidden;
 		&__container {

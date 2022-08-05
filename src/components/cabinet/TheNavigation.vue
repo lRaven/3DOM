@@ -396,11 +396,13 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.the-navigation {
 		display: flex;
 		flex-direction: column;
-		background-color: var(--blue);
-		color: var(--white);
+		background-color: $blue;
+		color: $white;
 		padding: 14.5rem 3rem 6rem 3rem;
 		border-radius: 0 0 3rem 0;
 		width: 34rem;
@@ -500,7 +502,7 @@
 			}
 
 			a {
-				color: var(--white);
+				color: $white;
 			}
 		}
 

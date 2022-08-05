@@ -197,6 +197,8 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.feedback {
 		min-height: calc(100vh - 17rem);
 		&__container {
@@ -211,7 +213,7 @@
 		h2 {
 			text-transform: uppercase;
 			font-size: 4.8rem;
-			color: var(--gold);
+			color: $gold;
 			font-weight: 300;
 		}
 		p {
@@ -221,7 +223,7 @@
 		}
 		&__form {
 			align-self: center;
-			color: var(--white);
+			color: $white;
 			width: 41rem;
 			form {
 				margin-bottom: 7rem;
@@ -237,7 +239,7 @@
 			display: none;
 		}
 		&__address {
-			color: var(--gold);
+			color: $gold;
 			h3 {
 				font-weight: 600;
 				font-size: 2.4rem;
@@ -257,11 +259,11 @@
 				width: 4rem;
 				height: 5rem;
 				border-radius: 0.6rem;
-				border: 1px solid #fff;
+				border: 0.1rem solid #fff;
 			}
 			&-inner {
 				p {
-					color: var(--white);
+					color: $white;
 					font-weight: 300;
 					margin-bottom: 0;
 				}
@@ -326,7 +328,7 @@
 			}
 			&__disclaimer {
 				display: block;
-				color: var(--white);
+				color: $white;
 				margin-bottom: 1rem;
 				p {
 					text-align: center;

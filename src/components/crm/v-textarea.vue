@@ -18,6 +18,8 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.textarea {
 		border: 0.1rem solid #979797;
 		padding: 1.5rem;
@@ -35,17 +37,17 @@
 		}
 
 		&:hover {
-			border-color: var(--dark);
+			border-color: $dark;
 			transition: all 0.3s ease;
 		}
 		&:focus {
-			border-color: var(--dark);
+			border-color: $dark;
 			transition: all 0.3s ease;
 		}
 		&__description {
 			margin-bottom: 0.8rem;
 			font-size: 1.3rem;
-			color: var(--middle-gray);
+			color: $middle-gray;
 			font-weight: 600;
 		}
 	}

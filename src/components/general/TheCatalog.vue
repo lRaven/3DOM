@@ -158,6 +158,8 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.catalog {
 		display: flex;
 		align-items: center;
@@ -172,7 +174,7 @@
 		&__title {
 			font-size: 4rem;
 			font-weight: 600;
-			color: var(--dark);
+			color: $dark;
 			margin-bottom: 8rem;
 		}
 		&__settings {
@@ -198,7 +200,7 @@
 				display: block;
 				height: 0.2rem;
 				width: 100%;
-				background-color: var(--blue);
+				background-color: $blue;
 			}
 			.button {
 				padding: 1.2rem 7rem;

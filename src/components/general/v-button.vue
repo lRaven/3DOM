@@ -1,19 +1,29 @@
 <template>
-	<button class="v-button" :type="type">{{ text }}</button>
+	<button class="v-button" :class="color">{{ text }}</button>
 </template>
+
 <script>
 	export default {
 		name: "vButton",
 		props: {
-			text: String,
-			type: String,
+			color: {
+				value: String,
+				default: "blue",
+			},
+			text: {
+				value: String,
+				default: "button",
+			},
 		},
 	};
 </script>
+
 <style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
 	.v-button {
 		cursor: pointer;
-		color: var(--dark);
+		color: $dark;
 		user-select: none;
 		display: flex;
 		justify-content: center;
@@ -21,8 +31,7 @@
 		padding: 1.4rem 2.4rem;
 		border-radius: 2.5rem;
 		min-width: 13.8rem;
-		width: fit-content;
-		height: fit-content;
+		width: 100%;
 		font-size: 1.5rem;
 		font-weight: 600;
 		box-shadow: 0 0 2rem rgb(0 0 0 / 20%);
@@ -32,27 +41,39 @@
 			transform: scale(0.97);
 			transition: all 0.3s ease;
 		}
+		&:disabled {
+			cursor: default;
+			box-shadow: none;
+			color: $middle-gray !important;
+			background-color: $light-gray !important;
+			border-color: $light-gray;
+			&:hover {
+				background-color: $light-gray;
+				border-color: $light-gray;
+				box-shadow: none !important;
+			}
+		}
 
 		&.blue {
-			background-color: var(--blue);
-			color: var(--white);
+			background-color: $blue;
+			color: $white;
 
 			&:hover {
 				box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.25);
-				background-color: var(--middle-blue);
+				background-color: $middle-blue;
 				transition: all 0.2s ease;
 			}
 		}
 
 		&.white {
-			background-color: var(--white);
-			color: var(--blue);
+			background-color: $white;
+			color: $blue;
 		}
 
 		&.gray {
-			background-color: var(--light-gray);
+			background-color: $light-gray;
 			box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
-			color: var(--blue);
+			color: $blue;
 
 			&:hover {
 				background-color: #e3e3e3;
