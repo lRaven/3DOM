@@ -465,7 +465,7 @@
 				d="M228.703 1114.65L637.051 1114.65V1321.68V1519.89H202.144V1317.49H130.643L130.643 1129.68L228.703 1129.68V1114.65Z"
 				fill="#CFD0D0"
 				class="section-two-scheme__apartment"
-				@click.stop="openApartment(3)"
+				@click.stop="openApartment(6)"
 			/>
 			<path
 				d="M232.017 1260.61H204.062V1377.53H232.017V1260.61Z"
@@ -683,7 +683,7 @@
 				d="M1031.02 1114.65L637.002 1114.65V1321.68V1519.89H1105.8V1321.68H1031.02L1031.02 1160.46L1031.02 1114.65Z"
 				fill="#CFD0D0"
 				class="section-two-scheme__apartment"
-				@click.stop="openApartment(1)"
+				@click.stop="openApartment(5)"
 			/>
 			<path
 				d="M1000.46 1308.03H1028.42V1386.51H1000.46V1308.03Z"
@@ -909,7 +909,7 @@
 				d="M767.892 622.252V899.266V1097.47H1029.93V1197.64H1074.1L1213.62 1054.28L1213.62 1013.96L1207.65 622.252H767.892Z"
 				fill="#CFD0D0"
 				class="section-two-scheme__apartment"
-				@click.stop="openApartment(2)"
+				@click.stop="openApartment(4)"
 			/>
 			<path
 				d="M1076.47 983.551L1076.47 1011.5L980.858 1011.5L980.858 983.551L1076.47 983.551Z"
@@ -1709,7 +1709,7 @@
 				d="M830.064 474.195H952.157V527.537H1221.34V474.195V373.975V79.4731V2.42589L1022.4 2.42589V79.4731H853.015H830.064V474.195Z"
 				fill="#CFD0D0"
 				class="section-two-scheme__apartment"
-				@click.stop="openApartment(4)"
+				@click.stop="openApartment(1)"
 			/>
 			<path
 				d="M886.583 87.1787H842.518V109.701H886.583V87.1787Z"
@@ -1951,7 +1951,7 @@
 				d="M1645.33 80.5151H1410.27V3.0294L1221.44 2.60742V80.0932H1214.04L1213.62 300.483V527.757H1347.05V618.837H1645.33L1645.33 80.5151Z"
 				fill="#CFD0D0"
 				class="section-two-scheme__apartment"
-				@click.stop="openApartment(5)"
+				@click.stop="openApartment(2)"
 			/>
 			<path
 				d="M1630.15 79.8848H1645.33V618.839H1630.15V79.8848Z"
@@ -2179,7 +2179,7 @@
 				d="M1645.64 1101.17H1449.47V1030.8L1208.75 1029.95L1208.33 922.785V615.895H1346.38V604.432H1645.64V1101.17Z"
 				fill="#CFD0D0"
 				class="section-two-scheme__apartment"
-				@click.stop="openApartment(6)"
+				@click.stop="openApartment(3)"
 			/>
 			<path
 				d="M1630.47 1030.5H1645.64V604.436H1630.47V1030.5Z"

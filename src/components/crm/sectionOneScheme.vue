@@ -465,7 +465,7 @@
 				d="M773.989 1363.14H1165.72H1197.03V1074.56H1264.27V887.58H1068.1H970.488H775.256H773.989V1363.14Z"
 				fill="#CFD0D0"
 				class="section-one-scheme__apartment"
-				@click.stop="openApartment(0)"
+				@click.stop="openApartment(3)"
 			/>
 			<path
 				d="M773.989 1055.34H761.694V1363.76H773.989V1055.34Z"
@@ -765,7 +765,7 @@
 				d="M761.603 1091.26L657.945 1092.47V890.963L236.173 890.963V907.964H131.65V1102.29H236.173V1244.65V1363.6H322.225H761.603V1091.26Z"
 				fill="#CFD0D0"
 				class="section-one-scheme__apartment"
-				@click.stop="openApartment(1)"
+				@click.stop="openApartment(4)"
 			/>
 			<path
 				d="M655.643 874.969H101.63V889.955H655.643V874.969Z"
@@ -1421,7 +1421,7 @@
 				d="M206.39 1.04199H540.466H647.313V249.286H674.424V466.293H135.123L135.123 247.007H206.39V1.04199Z"
 				fill="#CFD0D0"
 				class="section-one-scheme__apartment"
-				@click.stop="openApartment(3)"
+				@click.stop="openApartment(0)"
 			/>
 			<path
 				d="M526.155 247.008H217.458V261.828H526.155V247.008Z"
@@ -1663,7 +1663,7 @@
 				d="M1121.13 0.773438H787.277H633.928V249.018H761.145V413.172L1192.35 410.093L1192.35 197.636H1121.13V0.773438Z"
 				fill="#CFD0D0"
 				class="section-one-scheme__apartment"
-				@click.stop="openApartment(4)"
+				@click.stop="openApartment(1)"
 			/>
 			<path
 				d="M859.653 247.008H1108.02V255.282H859.653V247.008Z"
