@@ -191,9 +191,12 @@
 						@click="moveToFavorites()"
 					>
 						<img src="img/icon/general/favorites.svg" alt="" />
-						<span class="the-header__favorites-sum">{{
-							favorites
-						}}</span>
+						<span
+							class="the-header__favorites-sum"
+							v-if="favorites > 0"
+						>
+							{{ favorites }}
+						</span>
 					</router-link>
 					<router-link
 						to="/cabinet"

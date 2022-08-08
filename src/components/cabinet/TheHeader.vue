@@ -67,7 +67,9 @@
 			>
 				<a class="header__favorites" @click="moveToFavorites()">
 					<img src="img/icon/general/favorites.svg" alt="" />
-					<span class="header__favorites-sum">{{ favorites }}</span>
+					<span class="header__favorites-sum" v-if="favorites > 0">
+						{{ favorites }}
+					</span>
 				</a>
 				<a class="header__avatar" @click="moveToCabinet()">
 					<img :src="avatar" alt="avatar" />
