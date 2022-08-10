@@ -230,7 +230,7 @@
 				input:nth-child(3) {
 					margin-bottom: 2.8rem;
 				}
-				.checkbox {
+				.v-checkbox {
 					margin-bottom: 5rem;
 				}
 			}
@@ -319,7 +319,7 @@
 						}
 					}
 				}
-				.checkbox {
+				.v-checkbox {
 					margin-bottom: 5rem;
 					&__text {
 						font-size: 4rem !important;
@@ -397,8 +397,6 @@
 						&:nth-child(3) {
 						}
 					}
-				}
-				.checkbox {
 				}
 			}
 			&__disclaimer {

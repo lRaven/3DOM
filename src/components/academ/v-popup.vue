@@ -100,7 +100,7 @@
 				padding: 2rem 5rem;
 				border-radius: 4.5rem;
 			}
-			.checkbox {
+			.v-checkbox {
 				margin-top: 2.8rem;
 			}
 		}
