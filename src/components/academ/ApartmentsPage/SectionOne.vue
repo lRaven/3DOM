@@ -1,10 +1,11 @@
 <template>
 	<div class="sectionOne">
 		<div class="name" @click="showDialog(this.section)">Секция 1</div>
-		<SectionColumns :parameters="'2-К'" />
-		<SectionColumns :parameters="'1-К'" />
-		<SectionColumns :parameters="'1-К'" />
-		<SectionColumns :parameters="'2-К'" />
+		<SectionColumns parameters="1-К" />
+		<SectionColumns parameters="2-К" />
+		<SectionColumns parameters="2-К" />
+		<SectionColumns parameters="2-К" />
+		<SectionColumns parameters="3-К" />
 		<div v-for="apart in apartments" :key="apart.number">
 			<ApartmentItem
 				@showDialog="showDialogApartment"
@@ -21,12 +22,10 @@
 
 	export default {
 		components: { SectionColumns, ApartmentItem },
-		data() {
-			return {
-				section: 1,
-				isApartmentReview: false,
-			};
-		},
+		data: () => ({
+			section: 1,
+			isApartmentReview: false,
+		}),
 		computed: {
 			apartments: () => {
 				const apartments = store.getters.APARTMENTS;
@@ -42,7 +41,7 @@
 				//* переворот по оси x
 				let subarray = [];
 				while (sectionFilter.length)
-					subarray.push(sectionFilter.splice(0, 4).slice().reverse());
+					subarray.push(sectionFilter.splice(0, 5).slice().reverse());
 				sectionFilter.length = 0;
 				for (let i of subarray) {
 					for (let j of i) {
@@ -93,7 +92,7 @@
 			font-size: 1.8rem;
 			line-height: 1.8rem;
 			grid-row: 1;
-			grid-column: 1/5;
+			grid-column: 1/6;
 			&:hover {
 				cursor: pointer;
 			}

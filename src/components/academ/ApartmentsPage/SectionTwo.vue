@@ -1,11 +1,13 @@
 <template>
 	<div class="sectionTwo">
 		<div class="name" @click="showDialog(this.section)">Секция 2</div>
-		<SectionColumns :parameters="'3-К'" />
-		<SectionColumns :parameters="'1-К'" />
-		<SectionColumns :parameters="'3-К'" />
-		<SectionColumns :parameters="'1-К'" />
-		<SectionColumns :parameters="'3-К'" />
+		<SectionColumns parameters="3-К" />
+		<SectionColumns parameters="1-К" />
+		<SectionColumns parameters="2-К" />
+		<SectionColumns parameters="1-К" />
+		<SectionColumns parameters="2-К" />
+		<SectionColumns parameters="1-К" />
+		<SectionColumns parameters="1-К" />
 
 		<div v-for="apart in apartments" :key="apart.number">
 			<ApartmentItem
@@ -43,7 +45,7 @@
 				//* переворот по оси x
 				let subarray = [];
 				while (sectionFilter.length)
-					subarray.push(sectionFilter.splice(0, 5).slice().reverse());
+					subarray.push(sectionFilter.splice(0, 7).slice().reverse());
 				sectionFilter.length = 0;
 				for (let i of subarray) {
 					for (let j of i) {
@@ -91,7 +93,7 @@
 			font-size: 18px;
 			line-height: 18px;
 			grid-row: 1;
-			grid-column: 1 / 6;
+			grid-column: 1/8;
 			&:hover {
 				cursor: pointer;
 			}
