@@ -23,7 +23,7 @@
 				</div>
 				<div class="pantry__image">
 					<figure class="pantry__img">
-						<img src="img/academ/advantage-img1.png" alt="" />
+						<img src="/img/academ/advantage-img1.png" alt="" />
 					</figure>
 				</div>
 				<v-button
@@ -35,7 +35,7 @@
 
 				<div class="pantry__scheme" @click="openImage">
 					<figure>
-						<img src="img/academ/parking.svg" alt="" />
+						<img src="/img/academ/parking.svg" alt="" />
 					</figure>
 				</div>
 			</div>

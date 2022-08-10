@@ -36,7 +36,7 @@
 							mask="url(#path-1-inside-1_2328_21211)"
 						/>
 					</svg>
-					<img src="img/academ/circle-img.png" alt="" />
+					<img src="/img/academ/circle-img.png" alt="" />
 				</div>
 				<div class="banner__left-text">
 					<p>Добро пожаловать!</p>
@@ -61,7 +61,7 @@
 						14 этажей • 74 машиноместа • 218 квартир • 1000 кв.м.
 						жилья
 					</span>
-					<img src="img/academ/banner-bg.png" alt="" />
+					<img src="/img/academ/banner-bg.png" alt="" />
 				</div>
 			</div>
 		</div>

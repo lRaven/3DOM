@@ -9,7 +9,7 @@
 					</p>
 				</div>
 				<div class="popup__close" @click="closePopup()">
-					<img src="img/icon/academ/close.svg" alt="" />
+					<img src="/img/icon/academ/close.svg" alt="" />
 				</div>
 			</div>
 			<div class="popup__body">
@@ -18,14 +18,14 @@
 					v-if="fullscreen === false"
 					@click="fullscreenPopup(1)"
 				>
-					<img src="img/icon/academ/fullscreen.svg" alt="" />
+					<img src="/img/icon/academ/fullscreen.svg" alt="" />
 				</div>
 				<div
 					class="popup__button popup__default"
 					v-if="fullscreen === true"
 					@click="fullscreenPopup(2)"
 				>
-					<img src="img/icon/academ/minimize.svg" alt="" />
+					<img src="/img/icon/academ/minimize.svg" alt="" />
 				</div>
 				<div class="popup__col">
 					<div class="popup__description">

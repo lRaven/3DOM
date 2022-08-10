@@ -13,7 +13,7 @@
 		<the-footer />
 		<v-call />
 		<mortgage-calculator
-			closeIcon="img/icon/cabinet/close.svg"
+			closeIcon="/img/icon/cabinet/close.svg"
 			light="light"
 		></mortgage-calculator>
 	</div>

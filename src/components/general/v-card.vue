@@ -10,7 +10,7 @@
 						{{ subtitle }}
 					</h4>
 					<img
-						src="img/icon/trade-in/periscope.svg"
+						src="/img/icon/trade-in/periscope.svg"
 						alt=""
 						class="v-card__icon"
 					/>
@@ -178,7 +178,7 @@
 			}
 			p {
 				font-size: 1.8rem;
-				color:$gray;
+				color: $gray;
 			}
 		}
 		&__three {

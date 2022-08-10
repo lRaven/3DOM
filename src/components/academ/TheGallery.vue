@@ -9,10 +9,10 @@
 			</div>
 			<div class="gallery__photos" v-else>
 				<figure>
-					<img src="img/academ/apartment-photo1.png" alt="" />
+					<img src="/img/academ/apartment-photo1.png" alt="" />
 				</figure>
 				<figure>
-					<img src="img/academ/apartment-photo2.png" alt="" />
+					<img src="/img/academ/apartment-photo2.png" alt="" />
 				</figure>
 			</div>
 			<p>уровень комфорта</p>
@@ -78,8 +78,8 @@
 			return {
 				bodyWidth: document.body.clientWidth,
 				gallery: [
-					{ id: 1, image: "img/academ/apartment-photo1.png" },
-					{ id: 2, image: "img/academ/apartment-photo2.png" },
+					{ id: 1, image: "/img/academ/apartment-photo1.png" },
+					{ id: 2, image: "/img/academ/apartment-photo2.png" },
 				],
 				isPopupVisible: false,
 

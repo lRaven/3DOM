@@ -4,7 +4,7 @@
 			<div class="v-popup__header">
 				<div class="v-popup__title">{{ title }}</div>
 				<div class="v-popup__close" @click="closePopup">
-					<img src="img/icon/cabinet/close.svg" alt="close" />
+					<img src="/img/icon/cabinet/close.svg" alt="close" />
 				</div>
 			</div>
 			<div class="v-popup__body">

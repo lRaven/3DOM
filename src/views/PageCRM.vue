@@ -92,7 +92,7 @@
 			<the-footer />
 		</div>
 		<mortgage-calculator
-			closeIcon="img/icon/academ/close.svg"
+			closeIcon="/img/icon/academ/close.svg"
 		></mortgage-calculator>
 	</div>
 </template>

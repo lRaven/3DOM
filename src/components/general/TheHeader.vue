@@ -3,13 +3,13 @@
 		<div class="the-header__container center">
 			<div class="the-header__col the-header__left">
 				<div class="the-header__burger" @click="showHideMenu()">
-					<img src="img/icon/general/burger.svg" alt="" />
+					<img src="/img/icon/general/burger.svg" alt="" />
 				</div>
 				<router-link
 					to="/"
 					class="the-header__logo animate__animated animate__fadeIn"
 				>
-					<img src="img/icon/general/logo.svg" alt="logo" />
+					<img src="/img/icon/general/logo.svg" alt="logo" />
 				</router-link>
 			</div>
 			<div class="the-header__col">
@@ -190,7 +190,7 @@
 						class="the-header__favorites"
 						@click="moveToFavorites()"
 					>
-						<img src="img/icon/general/favorites.svg" alt="" />
+						<img src="/img/icon/general/favorites.svg" alt="" />
 						<span
 							class="the-header__favorites-sum"
 							v-if="favorites > 0"
@@ -207,7 +207,7 @@
 					</router-link>
 				</div>
 				<img
-					src="img/icon/general/call.svg"
+					src="/img/icon/general/call.svg"
 					alt=""
 					class="the-header__call"
 				/>

@@ -4,7 +4,7 @@
 			<h1 class="booking__title">Бронирование</h1>
 			<div class="booking__notification">
 				<div>
-					<img src="img/icon/cabinet/notifications.svg" alt="" />
+					<img src="/img/icon/cabinet/notifications.svg" alt="" />
 				</div>
 				<h3
 					class="booking__notification-desc"

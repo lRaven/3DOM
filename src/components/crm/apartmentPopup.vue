@@ -32,7 +32,7 @@
 						class="apartment-popup__close"
 						@click="closeDialogApartment()"
 					>
-						<img src="img/icon/academ/close2.svg" alt="" />
+						<img src="/img/icon/academ/close2.svg" alt="" />
 					</div>
 				</div>
 			</div>
@@ -108,12 +108,12 @@
 						</div>
 						<div class="apartment-popup__buttons">
 							<v-button
-								icon="img/icon/crm/registration.svg"
+								icon="/img/icon/crm/registration.svg"
 								color="gold"
 								text="Оформить ипотеку"
 							></v-button>
 							<v-button
-								icon="img/icon/crm/calc.svg"
+								icon="/img/icon/crm/calc.svg"
 								color="gray"
 								text="Калькулятор ипотеки"
 							></v-button>
@@ -131,7 +131,7 @@
 								</p>
 
 								<img
-									src="img/icon/crm/lock.svg"
+									src="/img/icon/crm/lock.svg"
 									alt="icon"
 									class="apartment-popup__action-icon"
 								/>
@@ -145,7 +145,7 @@
 									Забронирована
 								</p>
 								<img
-									src="img/icon/crm/lock.svg"
+									src="/img/icon/crm/lock.svg"
 									alt="icon"
 									class="apartment-popup__action-icon"
 								/>
@@ -156,7 +156,7 @@
 									Запись на просмотр
 								</p>
 								<img
-									src="img/icon/crm/eye.svg"
+									src="/img/icon/crm/eye.svg"
 									alt="icon"
 									class="apartment-popup__action-icon"
 								/>
@@ -181,7 +181,7 @@
 									</router-link>
 								</p>
 								<img
-									src="img/icon/crm/fix.svg"
+									src="/img/icon/crm/fix.svg"
 									alt="icon"
 									class="apartment-popup__action-icon"
 								/>
@@ -194,7 +194,7 @@
 									Презентация квартиры
 								</p>
 								<img
-									src="img/icon/crm/presentation.svg"
+									src="/img/icon/crm/presentation.svg"
 									alt="icon"
 									class="apartment-popup__action-icon"
 								/>
@@ -210,7 +210,7 @@
 								</p>
 
 								<img
-									src="img/icon/crm/favorite.svg"
+									src="/img/icon/crm/favorite.svg"
 									alt="icon"
 									class="apartment-popup__action-icon"
 								/>
@@ -224,7 +224,7 @@
 									В избранном
 								</p>
 								<img
-									src="img/icon/crm/favorite.svg"
+									src="/img/icon/crm/favorite.svg"
 									alt="icon"
 									class="apartment-popup__action-icon"
 								/>
@@ -235,7 +235,7 @@
 									Условия бронирования, оплаты, рассрочки
 								</p>
 								<img
-									src="img/icon/crm/document.svg"
+									src="/img/icon/crm/document.svg"
 									alt="icon"
 									class="apartment-popup__action-icon"
 								/>

@@ -48,7 +48,7 @@
 					@click="openPopup"
 				></v-button>
 			</div>
-			<img src="img/trade-in/price-img.svg" alt="" />
+			<img src="/img/trade-in/price-img.svg" alt="" />
 		</div>
 		<transition>
 			<v-popup

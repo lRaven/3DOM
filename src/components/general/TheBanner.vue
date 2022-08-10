@@ -28,7 +28,7 @@
 			</div>
 			<div class="banner__order-wrapper">
 				<img
-					src="img/trade-in/banner-img.svg"
+					src="/img/trade-in/banner-img.svg"
 					alt=""
 					class="banner__order-img animate__animated animate__fadeInRight wow"
 				/>
@@ -53,11 +53,11 @@
 		</div>
 		<v-swiper
 			:gallery="[
-				{ image: 'img/general/banner-bg1.png' },
-				{ image: 'img/general/banner-bg1.png' },
-				{ image: 'img/general/banner-bg1.png' },
-				{ image: 'img/general/banner-bg1.png' },
-				{ image: 'img/general/banner-bg1.png' },
+				{ image: '/img/general/banner-bg1.png' },
+				{ image: '/img/general/banner-bg1.png' },
+				{ image: '/img/general/banner-bg1.png' },
+				{ image: '/img/general/banner-bg1.png' },
+				{ image: '/img/general/banner-bg1.png' },
 			]"
 		></v-swiper>
 	</section>

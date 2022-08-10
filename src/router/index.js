@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 import PageHome from '@/views/PageHome';
 import PageTradeIn from '@/views/PageTradeIn';
 import PageAcadem from '@/views/PageAcadem';
@@ -177,7 +177,7 @@ const routes = [
 ]
 
 const router = createRouter({
-	history: createWebHashHistory(process.env.BASE_URL),
+	history: createWebHistory(process.env.BASE_URL),
 	routes,
 })
 

@@ -24,7 +24,7 @@
 						</div>
 					</div>
 					<div class="v-card__title-right">
-						<img src="img/icon/trade-in/periscope.svg" alt="" />
+						<img src="/img/icon/trade-in/periscope.svg" alt="" />
 					</div>
 				</div>
 				<div class="v-card__prices">

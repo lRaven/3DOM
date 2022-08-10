@@ -8,7 +8,7 @@
 		>
 			<p ref="selected">{{ selected }}</p>
 			<div class="v-dropdown__arrow" ref="arrow">
-				<img src="img/icon/general/arrow.svg" alt="arrow" />
+				<img src="/img/icon/general/arrow.svg" alt="arrow" />
 			</div>
 		</div>
 		<transition name="fade-up" mode="out-in">

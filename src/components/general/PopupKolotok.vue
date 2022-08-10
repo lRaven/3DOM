@@ -1,7 +1,7 @@
 <template>
 	<div class="popup-kolotok" @click="closePopup($event.target)">
 		<img
-			src="img/general/kolotok-coming-soon.svg"
+			src="/img/general/kolotok-coming-soon.svg"
 			alt=""
 			class="popup-kolotok__img"
 			ref="image"

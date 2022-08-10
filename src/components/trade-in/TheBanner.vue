@@ -17,7 +17,7 @@
 				></v-button>
 			</div>
 			<div class="banner__img animate__animated animate__fadeInRight wow">
-				<img src="img/trade-in/banner-img.svg" alt="" />
+				<img src="/img/trade-in/banner-img.svg" alt="" />
 			</div>
 			<div class="banner__footer animate__animated animate__fadeInUp wow">
 				<div class="banner__info">

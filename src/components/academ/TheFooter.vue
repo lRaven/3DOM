@@ -5,14 +5,14 @@
 				<span>Соцсети</span>
 
 				<a href="https://wa.me/79616670163" target="_blank">
-					<img src="img/icon/academ/wa.svg" alt="" />
+					<img src="/img/icon/academ/wa.svg" alt="" />
 				</a>
 
 				<a
 					href="https://instagram.com/3dom_vlg?utm_medium=copy_link"
 					target="_blank"
 				>
-					<img src="img/icon/academ/ig.svg" alt="" />
+					<img src="/img/icon/academ/ig.svg" alt="" />
 				</a>
 
 				<a
@@ -20,7 +20,7 @@
 					target="_blank"
 					class="the-footer__tg"
 				>
-					<img src="img/icon/academ/tg.svg" alt="" />
+					<img src="/img/icon/academ/tg.svg" alt="" />
 				</a>
 			</div>
 			<nav class="nav">

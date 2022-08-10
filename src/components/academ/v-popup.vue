@@ -7,7 +7,7 @@
 					<h3>АКАДЕМИЧЕСКИЙ</h3>
 				</div>
 				<div class="academ-popup__close" @click="closePopup">
-					<img src="img/icon/academ/close.svg" alt="close" />
+					<img src="/img/icon/academ/close.svg" alt="close" />
 				</div>
 			</div>
 			<div class="academ-popup__body">

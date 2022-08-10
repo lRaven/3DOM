@@ -63,7 +63,7 @@
 		<transition>
 			<v-notification
 				color="green"
-				image="img/icon/academ/check.svg"
+				image="/img/icon/academ/check.svg"
 				message="Клиент успешно зафиксирован"
 				v-if="isNotificationVisible && status === 'success'"
 				@closeNotification="closeNotification"
@@ -72,7 +72,7 @@
 		<transition>
 			<v-notification
 				color="red"
-				image="img/icon/academ/error.svg"
+				image="/img/icon/academ/error.svg"
 				message="Клиент с таким номером телефона уже зафиксирован"
 				v-if="isNotificationVisible && status === 'failed'"
 				@closeNotification="closeNotification"

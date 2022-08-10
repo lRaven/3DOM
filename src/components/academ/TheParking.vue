@@ -2,7 +2,7 @@
 	<section class="parking" id="parking">
 		<div class="parking__container center">
 			<figure class="parking__img">
-				<img src="img/academ/advantage-img2.png" alt="" />
+				<img src="/img/academ/advantage-img2.png" alt="" />
 			</figure>
 			<div class="parking__content">
 				<h2>
@@ -40,7 +40,7 @@
 		<div class="parking__footer">
 			<div class="parking__container center">
 				<div @click="openImage()" class="parking__footer-bottom">
-					<img src="img/academ/parking.svg" alt="" />
+					<img src="/img/academ/parking.svg" alt="" />
 				</div>
 			</div>
 		</div>
@@ -97,7 +97,7 @@
 			openImage() {
 				const popup = document.querySelector(".popup");
 				const popupImage = popup.querySelector(".popup__image");
-				popupImage.setAttribute("src", "img/academ/parking.svg");
+				popupImage.setAttribute("src", "/img/academ/parking.svg");
 				document.querySelector("body").classList.add("locked");
 				popup.classList.add("open");
 			},

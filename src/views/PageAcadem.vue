@@ -16,7 +16,7 @@
 		<the-footer />
 		<image-popup />
 		<mortgage-calculator
-			closeIcon="img/icon/academ/close.svg"
+			closeIcon="/img/icon/academ/close.svg"
 		></mortgage-calculator>
 	</div>
 </template>

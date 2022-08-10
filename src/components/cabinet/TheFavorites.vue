@@ -2,7 +2,7 @@
 	<div class="favorites">
 		<h1 class="favorites__title">Избранное</h1>
 		<div class="favorites__empty" v-if="favorites === 0">
-			<img src="img/cabinet/empty.svg" alt="" />
+			<img src="/img/cabinet/empty.svg" alt="" />
 			<div class="favorites__empty-text">
 				<p>Вы пока ничего не добавили в избранное</p>
 				<v-button

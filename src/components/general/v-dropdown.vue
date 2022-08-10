@@ -4,7 +4,7 @@
 		<div class="v-dropdown__selected">
 			<p>{{ selected }}</p>
 			<div class="v-dropdown__arrow">
-				<img src="img/icon/general/arrow.svg" alt="" />
+				<img src="/img/icon/general/arrow.svg" alt="" />
 			</div>
 		</div>
 		<div class="v-dropdown__content">

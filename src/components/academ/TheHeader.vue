@@ -3,7 +3,7 @@
 		<div class="header__container center">
 			<div class="header__left">
 				<div class="header__burger" @click="showHideMenu">
-					<img src="img/icon/academ/burger.svg" alt="" />
+					<img src="/img/icon/academ/burger.svg" alt="" />
 				</div>
 				<nav class="nav">
 					<router-link to="/" class="link">
@@ -114,7 +114,7 @@
 			</div>
 			<div class="header__right" v-if="authorized === false">
 				<div class="header__auth">
-					<img src="img/icon/academ/person.svg" alt="" />
+					<img src="/img/icon/academ/person.svg" alt="" />
 					<router-link to="/login" class="link">
 						Войти <span class="link__full">в 3D-клуб</span>
 					</router-link>
@@ -124,7 +124,7 @@
 					</router-link>
 				</div>
 				<div class="header__call">
-					<img src="img/icon/academ/call.svg" alt="" />
+					<img src="/img/icon/academ/call.svg" alt="" />
 					<span>+7 (8442) 60-05-51</span>
 				</div>
 			</div>

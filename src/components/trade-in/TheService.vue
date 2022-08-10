@@ -15,7 +15,7 @@
 			</div>
 
 			<img
-				src="img/trade-in/service-img.svg"
+				src="/img/trade-in/service-img.svg"
 				alt=""
 				class="service__img animate__animated animate__fadeIn wow"
 			/>

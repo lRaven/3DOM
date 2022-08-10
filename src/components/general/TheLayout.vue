@@ -3,7 +3,7 @@
 		<div class="the-layout__container center">
 			<h2 class="the-layout__title">Всё пойдёт по плану!</h2>
 			<img
-				src="img/general/layout-img.svg"
+				src="/img/general/layout-img.svg"
 				alt=""
 				class="the-layout__img animate__animated animate__fadeInLeft wow"
 			/>

@@ -4,7 +4,7 @@
 			<h1 class="the-appointments__title">Встречи</h1>
 			<div class="the-appointments__notification">
 				<div>
-					<img src="img/icon/cabinet/notifications.svg" alt="" />
+					<img src="/img/icon/cabinet/notifications.svg" alt="" />
 				</div>
 				<h3 class="the-appointments__notification-desc">
 					Для записи на встречу воспользуйтесь формой. У вас нет

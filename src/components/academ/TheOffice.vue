@@ -29,7 +29,7 @@
 					</div>
 					<div class="office__right-top-right">
 						<img
-							src="img/academ/office-img.png"
+							src="/img/academ/office-img.png"
 							class="office__img"
 							alt=""
 						/>
@@ -68,11 +68,11 @@
 				<div class="office__right-bottom">
 					<div class="office__schemes">
 						<div @click="openImage(1)">
-							<img src="img/academ/office1.svg" alt="" />
+							<img src="/img/academ/office1.svg" alt="" />
 							<p>1-й этаж</p>
 						</div>
 						<div @click="openImage(2)">
-							<img src="img/academ/office2.svg" alt="" />
+							<img src="/img/academ/office2.svg" alt="" />
 							<p>
 								2-й и 3-й<br />
 								этажи
@@ -92,7 +92,7 @@
 				</div>
 			</div>
 			<img
-				src="img/academ/office-img.png"
+				src="/img/academ/office-img.png"
 				alt=""
 				class="office__mobile-img"
 			/>
@@ -159,14 +159,14 @@
 					case 1: {
 						popupImage.setAttribute(
 							"src",
-							"img/academ/office1.svg"
+							"/img/academ/office1.svg"
 						);
 						break;
 					}
 					case 2: {
 						popupImage.setAttribute(
 							"src",
-							"img/academ/office2.svg"
+							"/img/academ/office2.svg"
 						);
 						break;
 					}

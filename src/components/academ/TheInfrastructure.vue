@@ -3,7 +3,7 @@
 		<div class="infrastructure__container center">
 			<figure>
 				<img
-					src="img/academ/infrastructure-img.png"
+					src="/img/academ/infrastructure-img.png"
 					alt=""
 					class="infrastructure__img"
 				/>
@@ -33,8 +33,8 @@
 					<p>Посторонних не будет, только свои.</p>
 				</div>
 				<div class="infrastructure__right">
-					<img src="img/academ/circle-img2.png" alt="" />
-					<img src="img/icon/academ/semicircle.svg" alt="" />
+					<img src="/img/academ/circle-img2.png" alt="" />
+					<img src="/img/icon/academ/semicircle.svg" alt="" />
 				</div>
 			</div>
 		</div>

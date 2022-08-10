@@ -3,7 +3,7 @@
 		<div class="time-picker__selected">
 			<p>{{ selected }}</p>
 			<div class="time-picker__arrow">
-				<img src="img/icon/general/arrow.svg" alt="" />
+				<img src="/img/icon/general/arrow.svg" alt="" />
 			</div>
 		</div>
 		<div class="time-picker__content">

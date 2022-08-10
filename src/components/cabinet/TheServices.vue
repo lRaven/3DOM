@@ -4,7 +4,7 @@
 			<h1 class="services__title">Услуги</h1>
 			<div class="services__notification">
 				<div>
-					<img src="img/icon/cabinet/notifications.svg" alt="" />
+					<img src="/img/icon/cabinet/notifications.svg" alt="" />
 				</div>
 				<h3 class="services__notification-desc">
 					У вас нет подключенных услуг

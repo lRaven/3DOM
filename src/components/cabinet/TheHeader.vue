@@ -6,7 +6,7 @@
 					to="/"
 					class="header__logo animate__animated animate__fadeIn"
 				>
-					<img src="img/icon/general/logo.svg" alt="logo" />
+					<img src="/img/icon/general/logo.svg" alt="logo" />
 				</router-link>
 			</div>
 			<nav class="header__nav">
@@ -66,7 +66,7 @@
 				v-if="auth === true"
 			>
 				<a class="header__favorites" @click="moveToFavorites()">
-					<img src="img/icon/general/favorites.svg" alt="" />
+					<img src="/img/icon/general/favorites.svg" alt="" />
 					<span class="header__favorites-sum" v-if="favorites > 0">
 						{{ favorites }}
 					</span>

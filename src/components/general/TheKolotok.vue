@@ -33,7 +33,7 @@
 				</div>
 				<div class="the-kolotok__link" @click="openPopup">
 					<img
-						src="img/icon/general/arrow-long.svg"
+						src="/img/icon/general/arrow-long.svg"
 						alt=""
 						class="animate__animated animate__fadeInLeft wow"
 					/>
@@ -42,7 +42,7 @@
 			</div>
 			<div class="the-kolotok__column">
 				<img
-					src="img/icon/kolotok/logo.svg"
+					src="/img/icon/kolotok/logo.svg"
 					alt=""
 					class="the-kolotok__logo"
 				/>

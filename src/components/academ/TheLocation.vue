@@ -58,8 +58,8 @@
 				</label>
 			</div>
 			<div class="location__img">
-				<img src="img/icon/academ/semicircle.svg" alt="" />
-				<img src="img/academ/circle-img2.png" alt="" />
+				<img src="/img/icon/academ/semicircle.svg" alt="" />
+				<img src="/img/academ/circle-img2.png" alt="" />
 			</div>
 			<h1>ВСЁ РЯДОМ</h1>
 			<div class="location__map">

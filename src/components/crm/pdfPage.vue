@@ -37,7 +37,7 @@
 					"
 				>
 					<img
-						src="img/icon/general/logo.svg"
+						src="/img/icon/general/logo.svg"
 						alt="logo"
 						class="pdf__logo"
 						style="width: 100%; vertical-align: top"
@@ -64,7 +64,7 @@
 						Клубный дом «АКАДЕМИЧЕСКИЙ»
 					</h1>
 					<img
-						:src="`img/crm/full-section${apartment.section}.png`"
+						:src="`/img/crm/full-section${apartment.section}.png`"
 						alt=""
 						class="pdf__full-scheme"
 						style="width: 5cm; vertical-align: top"
@@ -140,7 +140,7 @@
 			>
 				<div class="pdf__section">
 					<img
-						:src="`img/crm/section${apartment.section}-${this.number}.png`"
+						:src="`/img/crm/section${apartment.section}-${this.number}.png`"
 						alt="section"
 						style="
 							vertical-align: top;

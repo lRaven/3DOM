@@ -33,7 +33,7 @@
 				items: [
 					{
 						id: 1,
-						img: `img/general/catalog-item1.png`,
+						img: `/img/general/catalog-item1.png`,
 						tags: [
 							{
 								id: 1,
@@ -55,7 +55,7 @@
 					},
 					{
 						id: 2,
-						img: `img/general/catalog-item2.png`,
+						img: `/img/general/catalog-item2.png`,
 						tags: [
 							{
 								id: 1,
@@ -77,7 +77,7 @@
 					},
 					{
 						id: 3,
-						img: `img/general/catalog-item3.png`,
+						img: `/img/general/catalog-item3.png`,
 						tags: [
 							{
 								id: 1,
@@ -103,7 +103,7 @@
 					},
 					{
 						id: 4,
-						img: `img/general/catalog-item4.png`,
+						img: `/img/general/catalog-item4.png`,
 						address: "/",
 					},
 				],

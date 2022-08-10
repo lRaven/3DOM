@@ -7,7 +7,7 @@
 	>
 		<div class="apartment__header">
 			<div class="apartment__close" @click="remove(apartment.booking_id)">
-				<img src="img/icon/cabinet/close.svg" alt="" />
+				<img src="/img/icon/cabinet/close.svg" alt="" />
 			</div>
 			<div class="apartment__layout">
 				<img :src="apartment.image" alt="" />
@@ -61,7 +61,7 @@
 						<span>из</span>
 						<span>95</span>
 					</div>
-					<img src="img/cabinet/apartment__photos1.jpg" alt="" />
+					<img src="/img/cabinet/apartment__photos1.jpg" alt="" />
 					<div class="apartment__date">12.12.2012</div>
 				</div>
 				<div class="apartment__photos">
@@ -70,7 +70,7 @@
 						<span>из</span>
 						<span>95</span>
 					</div>
-					<img src="img/cabinet/apartment__photos2.jpg" alt="" />
+					<img src="/img/cabinet/apartment__photos2.jpg" alt="" />
 					<div class="apartment__date">12.12.2012</div>
 				</div>
 				<div class="apartment__photos">
@@ -79,7 +79,7 @@
 						<span>из</span>
 						<span>95</span>
 					</div>
-					<img src="img/cabinet/apartment__photos3.jpg" alt="" />
+					<img src="/img/cabinet/apartment__photos3.jpg" alt="" />
 					<div class="apartment__date">12.12.2012</div>
 				</div>
 				<div class="apartment__photos">
@@ -88,7 +88,7 @@
 						<span>из</span>
 						<span>95</span>
 					</div>
-					<img src="img/cabinet/apartment__photos4.jpg" alt="" />
+					<img src="/img/cabinet/apartment__photos4.jpg" alt="" />
 					<div class="apartment__date">12.12.2012</div>
 				</div>
 			</div>

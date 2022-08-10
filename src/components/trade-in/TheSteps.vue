@@ -52,7 +52,7 @@
 				<div
 					class="steps__img animate__animated animate__fadeInRight wow"
 				>
-					<img src="img/trade-in/steps-img.svg" alt="" />
+					<img src="/img/trade-in/steps-img.svg" alt="" />
 					<router-link to="/trade-in">
 						<v-button
 							:text="'Оформить заявку'"
@@ -67,7 +67,7 @@
 					class="steps__benefit animate__animated animate__fadeInUp wow"
 				>
 					<img
-						src="img/icon/trade-in/tick.svg"
+						src="/img/icon/trade-in/tick.svg"
 						class="steps__benefit-icon animate__animated animate__fadeInUp wow"
 						alt=""
 					/>
@@ -87,7 +87,7 @@
 					class="steps__benefit animate__animated animate__fadeInUp wow"
 				>
 					<img
-						src="img/icon/trade-in/tick.svg"
+						src="/img/icon/trade-in/tick.svg"
 						class="steps__benefit-icon animate__animated animate__fadeInUp wow"
 						alt=""
 					/>
@@ -107,7 +107,7 @@
 					class="steps__benefit animate__animated animate__fadeInUp wow"
 				>
 					<img
-						src="img/icon/trade-in/tick.svg"
+						src="/img/icon/trade-in/tick.svg"
 						class="steps__benefit-icon animate__animated animate__fadeInUp wow"
 						alt=""
 					/>
@@ -127,7 +127,7 @@
 					class="steps__benefit animate__animated animate__fadeInUp wow"
 				>
 					<img
-						src="img/icon/trade-in/tick.svg"
+						src="/img/icon/trade-in/tick.svg"
 						class="steps__benefit-icon animate__animated animate__fadeInUp wow"
 						alt=""
 					/>
@@ -173,7 +173,7 @@
 			grid-template-columns: repeat(2, 1fr);
 			align-items: center;
 			margin-bottom: 6rem;
-			background-color:$white;
+			background-color: $white;
 			box-shadow: 0 0 2rem rgba(0, 0, 0, 0.2);
 			border-radius: 3rem;
 			padding: 6rem;
@@ -218,7 +218,7 @@
 			min-width: 5.5rem;
 			height: 5.5rem;
 			border-radius: 50%;
-			background-color:$light-gray;
+			background-color: $light-gray;
 		}
 		&__description {
 			font-size: 1.8rem;

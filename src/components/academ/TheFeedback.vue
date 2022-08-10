@@ -55,11 +55,11 @@
 			<div class="feedback__more">
 				<div class="feedback__more-inner">
 					<a
-						href="img/icon/academ/paperclip.svg"
+						href="/img/icon/academ/paperclip.svg"
 						download
 						class="feedback__more-icon"
 					>
-						<img src="img/icon/academ/paperclip.svg" alt="" />
+						<img src="/img/icon/academ/paperclip.svg" alt="" />
 					</a>
 					<p>
 						Разрешение<br />
@@ -68,11 +68,11 @@
 				</div>
 				<div class="feedback__more-inner">
 					<a
-						href="img/icon/academ/paperclip.svg"
+						href="/img/icon/academ/paperclip.svg"
 						download
 						class="feedback__more-icon"
 					>
-						<img src="img/icon/academ/paperclip.svg" alt="" />
+						<img src="/img/icon/academ/paperclip.svg" alt="" />
 					</a>
 					<p>
 						Проектная<br />
@@ -81,11 +81,11 @@
 				</div>
 				<div class="feedback__more-inner">
 					<a
-						href="img/icon/academ/paperclip.svg"
+						href="/img/icon/academ/paperclip.svg"
 						download
 						class="feedback__more-icon"
 					>
-						<img src="img/icon/academ/paperclip.svg" alt="" />
+						<img src="/img/icon/academ/paperclip.svg" alt="" />
 					</a>
 					<p>
 						Договор аренды<br />
@@ -97,7 +97,7 @@
 		<transition>
 			<v-notification
 				color="green"
-				image="img/icon/academ/check.svg"
+				image="/img/icon/academ/check.svg"
 				message="Спасибо за обращение, с вами скоро свяжутся"
 				v-if="isNotificationVisible"
 				@closeNotification="closeNotification"

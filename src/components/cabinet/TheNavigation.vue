@@ -13,13 +13,13 @@
 				<div>
 					<img
 						v-if="tab === 'profile'"
-						src="img/icon/cabinet/profile-selected.svg"
+						src="/img/icon/cabinet/profile-selected.svg"
 						class="the-navigation__img"
 						alt=""
 					/>
 					<img
 						v-else
-						src="img/icon/cabinet/profile.svg"
+						src="/img/icon/cabinet/profile.svg"
 						class="the-navigation__img"
 						alt=""
 					/>
@@ -41,13 +41,13 @@
 				<div>
 					<img
 						v-if="tab === 'booking'"
-						src="img/icon/cabinet/booking-selected.svg"
+						src="/img/icon/cabinet/booking-selected.svg"
 						class="the-navigation__img"
 						alt=""
 					/>
 					<img
 						v-else
-						src="img/icon/cabinet/booking.svg"
+						src="/img/icon/cabinet/booking.svg"
 						class="the-navigation__img"
 						alt=""
 					/>
@@ -68,13 +68,13 @@
 				<div>
 					<img
 						v-if="tab === 'favorites'"
-						src="img/icon/cabinet/favorites-selected.svg"
+						src="/img/icon/cabinet/favorites-selected.svg"
 						class="the-navigation__img"
 						alt=""
 					/>
 					<img
 						v-else
-						src="img/icon/cabinet/favorites.svg"
+						src="/img/icon/cabinet/favorites.svg"
 						class="the-navigation__img"
 						alt=""
 					/>
@@ -96,13 +96,13 @@
 				<div>
 					<img
 						v-if="tab === 'documents'"
-						src="img/icon/cabinet/documents-selected.svg"
+						src="/img/icon/cabinet/documents-selected.svg"
 						class="the-navigation__img"
 						alt=""
 					/>
 					<img
 						v-else
-						src="img/icon/cabinet/documents.svg"
+						src="/img/icon/cabinet/documents.svg"
 						class="the-navigation__img"
 						alt=""
 					/>
@@ -123,13 +123,13 @@
 				<div>
 					<img
 						v-if="tab === 'meetings'"
-						src="img/icon/cabinet/meetings-selected.svg"
+						src="/img/icon/cabinet/meetings-selected.svg"
 						class="the-navigation__img"
 						alt=""
 					/>
 					<img
 						v-else
-						src="img/icon/cabinet/meetings.svg"
+						src="/img/icon/cabinet/meetings.svg"
 						class="the-navigation__img"
 						alt=""
 					/>
@@ -150,13 +150,13 @@
 				<div>
 					<img
 						v-if="tab === 'mortgage'"
-						src="img/icon/cabinet/mortgage-selected.svg"
+						src="/img/icon/cabinet/mortgage-selected.svg"
 						class="the-navigation__img"
 						alt=""
 					/>
 					<img
 						v-else
-						src="img/icon/cabinet/mortgage.svg"
+						src="/img/icon/cabinet/mortgage.svg"
 						class="the-navigation__img"
 						alt=""
 					/>
@@ -177,13 +177,13 @@
 				<div>
 					<img
 						v-if="tab === 'services'"
-						src="img/icon/cabinet/services-selected.svg"
+						src="/img/icon/cabinet/services-selected.svg"
 						class="the-navigation__img"
 						alt=""
 					/>
 					<img
 						v-else
-						src="img/icon/cabinet/services.svg"
+						src="/img/icon/cabinet/services.svg"
 						class="the-navigation__img"
 						alt=""
 					/>
@@ -204,13 +204,13 @@
 				<div>
 					<img
 						v-if="tab === 'bonuses'"
-						src="img/icon/cabinet/bonuses-selected.svg"
+						src="/img/icon/cabinet/bonuses-selected.svg"
 						class="the-navigation__img"
 						alt=""
 					/>
 					<img
 						v-else
-						src="img/icon/cabinet/bonuses.svg"
+						src="/img/icon/cabinet/bonuses.svg"
 						class="the-navigation__img"
 						alt=""
 					/>
@@ -232,13 +232,13 @@
 				<div>
 					<img
 						v-if="tab === 'crm'"
-						src="img/icon/cabinet/crm-selected.svg"
+						src="/img/icon/cabinet/crm-selected.svg"
 						class="the-navigation__img"
 						alt=""
 					/>
 					<img
 						v-else
-						src="img/icon/cabinet/crm.svg"
+						src="/img/icon/cabinet/crm.svg"
 						class="the-navigation__img"
 						alt=""
 					/>
@@ -259,7 +259,7 @@
 			>
 				<div>
 					<img
-						src="img/icon/cabinet/beater.svg"
+						src="/img/icon/cabinet/beater.svg"
 						class="the-navigation__img"
 						alt=""
 					/>
@@ -274,13 +274,13 @@
 				<div>
 					<img
 						v-if="tab === 'feedback'"
-						src="img/icon/cabinet/feedback-selected.svg"
+						src="/img/icon/cabinet/feedback-selected.svg"
 						class="the-navigation__img"
 						alt=""
 					/>
 					<img
 						v-else
-						src="img/icon/cabinet/feedback.svg"
+						src="/img/icon/cabinet/feedback.svg"
 						class="the-navigation__img"
 						alt=""
 					/>
@@ -303,7 +303,7 @@
 					: (isNavMinimized = true)
 			"
 		>
-			<img src="img/icon/cabinet/arrow.svg" alt="" />
+			<img src="/img/icon/cabinet/arrow.svg" alt="" />
 			<p>Свернуть</p>
 		</div>
 	</div>

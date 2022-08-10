@@ -8,7 +8,7 @@
 			class="favorite__close"
 			@click="remove(favorite.favorite_id, this.sorted)"
 		>
-			<img src="img/icon/cabinet/close.svg" alt="" />
+			<img src="/img/icon/cabinet/close.svg" alt="" />
 		</div>
 		<div class="favorite__layout">
 			<img :src="favorite.image" alt="" />
@@ -55,7 +55,7 @@
 		></v-button>
 
 		<div class="favorite__link">
-			<img src="img/icon/cabinet/link.svg" alt="" />
+			<img src="/img/icon/cabinet/link.svg" alt="" />
 		</div>
 	</div>
 </template>

@@ -4,7 +4,7 @@
 		@click="openPopup()"
 	>
 		<img
-			src="img/icon/general/call-circle.svg"
+			src="/img/icon/general/call-circle.svg"
 			class="v-call__img"
 			alt=""
 		/>

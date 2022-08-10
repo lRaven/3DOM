@@ -1,7 +1,7 @@
 <template>
 	<div class="date-picker">
 		<div class="date-picker__arrow">
-			<img src="img/icon/general/arrow.svg" alt="" />
+			<img src="/img/icon/general/arrow.svg" alt="" />
 		</div>
 		<datepicker
 			format="dd.MM.yyyy"

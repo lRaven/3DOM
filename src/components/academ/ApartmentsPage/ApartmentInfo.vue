@@ -9,7 +9,7 @@
 					<span class="bold">{{ building.floors }}</span> этажей.
 				</p>
 				<button class="close_button" @click="hideModal">
-					<img src="../../../public/img/icon/Close.svg" />
+					<img src="/img/icon/Close.svg" />
 				</button>
 			</div>
 			<div class="apartment__body">
@@ -1971,7 +1971,7 @@ m231.513 20.133 17.841-1.113v8.234h-.658v-7.533l-16.579 1.035v6.498h-.604v-7.12z
 					v-if="this.image"
 				></div>
 				<div class="apartment__body-logo">
-					<img src="../../../public/img/icon/Logo.svg" alt="" />
+					<img src="/img/icon/Logo.svg" alt="" />
 				</div>
 			</div>
 		</div>

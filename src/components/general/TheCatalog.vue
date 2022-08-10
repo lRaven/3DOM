@@ -65,7 +65,7 @@
 						<v-card-tag :text="'Ворошиловский район'"></v-card-tag>
 					</div>
 					<v-card
-						:src="'img/general/academ.png'"
+						:src="'/img/general/academ.png'"
 						:subtitle="'Жилой комплекс'"
 						:title="'АКАДЕМИЧЕСКИЙ'"
 						:min="'1,5 млн ₽'"
@@ -87,7 +87,7 @@
 						<v-card-tag :text="'Ворошиловский район'"></v-card-tag>
 					</div>
 					<v-card
-						:src="'img/general/dolce-vita.png'"
+						:src="'/img/general/dolce-vita.png'"
 						:subtitle="'Жилой комплекс'"
 						:title="''"
 						:min="'2,5 млн ₽'"
@@ -113,7 +113,7 @@
 						></v-card-tag>
 					</div>
 					<v-card-wide
-						:src="'img/general/andreevsky.png'"
+						:src="'/img/general/andreevsky.png'"
 						:subtitle="'Жилой комплекс'"
 						:title="''"
 						:min="'2,5 млн ₽'"

@@ -65,7 +65,7 @@
 					требованием закона.
 				</p>
 				<img
-					src="img/general/insurance-img.png"
+					src="/img/general/insurance-img.png"
 					alt=""
 					class="the-insurance__img animate__animated animate__fadeInRight wow"
 				/>
