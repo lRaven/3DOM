@@ -290,7 +290,7 @@
 			}
 		}
 
-		.button {
+		.academ-button {
 			min-width: 18rem;
 			width: min-content;
 		}

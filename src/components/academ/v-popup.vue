@@ -94,7 +94,7 @@
 			padding: 5rem 9.5rem;
 			height: 100%;
 			color: $gray;
-			.button {
+			.academ-button {
 				align-self: center;
 				margin-top: 5rem;
 				padding: 2rem 5rem;
@@ -152,7 +152,7 @@
 			}
 			&__body {
 				padding: 1.7rem 1rem 3rem 1rem;
-				.button {
+				.academ-button {
 					margin-top: 3rem;
 				}
 			}
