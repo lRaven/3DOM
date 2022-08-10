@@ -5,7 +5,7 @@
 				<p class="office__feature-word">ቢሮ</p>
 				<p class="office__feature-description">
 					А вот так пишется «ОФИС»<br />
-					на ахмарском языке.
+					на амхарском языке.
 				</p>
 			</div>
 		</div>
