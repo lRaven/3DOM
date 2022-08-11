@@ -1,7 +1,10 @@
 <template>
 	<header class="the-header animate__animated animate__fadeIn" id="header">
-		<div class="the-header__container center">
-			<div class="the-header__col the-header__left">
+		<div
+			class="the-header__container"
+			:class="{ center: !isCabinetVersion }"
+		>
+			<div class="the-header__col">
 				<div class="the-header__burger" @click="showHideMenu()">
 					<img src="/img/icon/general/burger.svg" alt="" />
 				</div>
@@ -145,35 +148,35 @@
 			<div class="the-header__col">
 				<div
 					class="the-header__right animate__animated animate__fadeIn"
-					v-if="authorized === false"
+					v-if="!isAuth"
 				>
-					<svg
-						width="46"
-						height="30"
-						fill="none"
-						xmlns="http://www.w3.org/2000/svg"
-					>
-						<path
-							d="M8.719 18.156c1.844-.75 3.61-1.125 5.297-1.125 1.687 0 3.437.375 5.25 1.125 1.843.719 2.765 1.672 2.765 2.86v2.015H6v-2.015c0-1.188.906-2.141 2.719-2.86zm8.11-4.312c-.782.781-1.72 1.172-2.813 1.172-1.094 0-2.032-.391-2.813-1.172-.781-.781-1.172-1.719-1.172-2.813S10.421 9 11.203 8.22C11.984 7.406 12.922 7 14.016 7c1.093 0 2.03.406 2.812 1.219C17.61 9 18 9.938 18 11.03c0 1.094-.39 2.031-1.172 2.813z"
-							fill="#00212D"
-						/>
-						<path
-							stroke="#00212D"
-							stroke-width="2"
-							stroke-linecap="round"
-							d="M27 10h12M27 15h12M27 20h12"
-						/>
-						<rect
-							x="1"
-							y="1"
-							width="44"
-							height="28"
-							rx="4"
-							stroke="#00212D"
-							stroke-width="2"
-						/>
-					</svg>
 					<router-link to="/login" class="the-header__link">
+						<svg
+							width="46"
+							height="30"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								d="M8.719 18.156c1.844-.75 3.61-1.125 5.297-1.125 1.687 0 3.437.375 5.25 1.125 1.843.719 2.765 1.672 2.765 2.86v2.015H6v-2.015c0-1.188.906-2.141 2.719-2.86zm8.11-4.312c-.782.781-1.72 1.172-2.813 1.172-1.094 0-2.032-.391-2.813-1.172-.781-.781-1.172-1.719-1.172-2.813S10.421 9 11.203 8.22C11.984 7.406 12.922 7 14.016 7c1.093 0 2.03.406 2.812 1.219C17.61 9 18 9.938 18 11.03c0 1.094-.39 2.031-1.172 2.813z"
+								fill="currentColor"
+							/>
+							<path
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								d="M27 10h12M27 15h12M27 20h12"
+							/>
+							<rect
+								x="1"
+								y="1"
+								width="44"
+								height="28"
+								rx="4"
+								stroke="currentColor"
+								stroke-width="2"
+							/>
+						</svg>
 						Войти <span class="link__full">в 3D-клуб</span>
 					</router-link>
 					<span>/</span>
@@ -183,7 +186,7 @@
 				</div>
 				<div
 					class="the-header__right-auth animate__animated animate__fadeIn"
-					v-if="authorized === true"
+					v-if="isAuth"
 				>
 					<router-link
 						to="/cabinet"
@@ -214,6 +217,7 @@
 			</div>
 		</div>
 	</header>
+
 	<div class="blur" @click="showHideMenu()"></div>
 	<transition>
 		<v-popup
@@ -226,54 +230,57 @@
 				для получения консультации
 			</p>
 			<academ-input
-				:placeholder="'Имя'"
-				:type="'text'"
-				:dark="'dark'"
+				placeholder="Имя"
+				type="text"
+				dark="dark"
 				v-model="name"
 				pattern="^[А-Яа-яЁё\s]+$"
 			></academ-input>
 			<academ-input
-				:placeholder="'Телефон'"
-				:type="'tel'"
-				:dark="'dark'"
+				placeholder="Телефон"
+				type="tel"
+				dark="dark"
 				v-model="tel"
 				pattern="[\+]*[7-8]{1}\s?[\(]*9[0-9]{2}[\)]*\s?\d{3}[-]*\d{2}[-]*\d{2}"
 			></academ-input>
 			<v-checkbox
 				v-model="privacyPolicy"
 				text="Даю согласие на обработку персональных данных"
-				:dark="'dark'"
+				dark="dark"
 			></v-checkbox>
 			<v-button
 				class="blue"
-				:text="'Отправить заявку'"
-				:type="'button'"
+				text="Отправить заявку"
+				type="button"
 			></v-button>
 		</v-popup>
 	</transition>
 </template>
 
 <script>
-	import store from "../../store";
-	import vPopup from "./v-popup.vue";
+	import vPopup from "@/components/UI/general/v-popup.vue";
 
-	import AcademInput from "../academ/academ-input.vue";
-	import vCheckbox from "../academ/v-checkbox.vue";
-	import vButton from "./v-button.vue";
+	import AcademInput from "@/components/academ/academ-input.vue";
+	import vCheckbox from "@/components/academ/v-checkbox.vue";
+	import vButton from "@/components/UI/general/v-button.vue";
+
+	import { mapState, mapMutations } from "vuex";
 
 	export default {
 		name: "TheHeader",
-		store,
-		data() {
-			return {
-				authorized: false,
-				isPopupVisible: false,
-
-				name: "",
-				tel: "",
-				privacyPolicy: false,
-			};
+		props: {
+			isCabinetVersion: {
+				value: Boolean,
+				default: false,
+			},
 		},
+		data: () => ({
+			isPopupVisible: false,
+
+			name: "",
+			tel: "",
+			privacyPolicy: false,
+		}),
 		components: {
 			vPopup,
 			AcademInput,
@@ -281,34 +288,33 @@
 			vButton,
 		},
 		computed: {
-			avatar: () => {
-				return store.getters.USER.avatar;
-			},
-			favorites: () => {
-				return store.getters.FAVORITES.length;
+			...mapState({
+				avatar: (state) => state.cabinet.user.avatar,
+				favorites: (state) => state.cabinet.favorites.length,
+			}),
+
+			isAuth() {
+				if (this.$cookies.get("auth_token")) {
+					return true;
+				} else {
+					return false;
+				}
 			},
 		},
 		methods: {
-			//*проверка, авторизован ли юзер
-			checkAuthorized() {
-				if (store.getters.TOKEN !== null) {
-					this.authorized = true;
-				} else {
-					this.authorized = false;
-				}
-			},
+			...mapMutations(["SET_TAB"]),
 
-			//*переход к вкладке избранного
+			//* переход к вкладке избранного
 			moveToFavorites() {
-				store.commit("SET_TAB", "favorites");
+				this.SET_TAB("favorites");
 			},
 
-			//*переход к вкладке профиля
+			//* переход к вкладке профиля
 			moveToCabinet() {
-				store.commit("SET_TAB", "profile");
+				this.SET_TAB("profile");
 			},
 
-			//*скрытие или показ меню в мобилке
+			//* скрытие или показ меню в мобилке
 			showHideMenu() {
 				const header = document.querySelector(".the-header");
 				const nav = header.querySelector(".the-header__nav");
@@ -317,18 +323,18 @@
 				const blur = document.querySelector(".blur");
 
 				if (nav.classList.contains("open")) {
-					if (this.authorized === false) {
+					if (!this.isAuth) {
 						auth.classList.remove("open");
-					} else if (this.authorized === true) {
+					} else if (this.isAuth) {
 						cabinet.classList.remove("open");
 					}
 					nav.classList.remove("open");
 					document.querySelector("body").classList.remove("locked");
 					blur.classList.remove("open");
 				} else {
-					if (this.authorized === false) {
+					if (!this.isAuth) {
 						auth.classList.add("open");
-					} else if (this.authorized === true) {
+					} else if (this.isAuth) {
 						cabinet.classList.add("open");
 					}
 					document.querySelector("body").classList.add("locked");
@@ -355,9 +361,6 @@
 				popup.classList.add("open");
 			},
 		},
-		mounted() {
-			this.checkAuthorized();
-		},
 	};
 </script>
 
@@ -375,7 +378,8 @@
 		font-size: 1.6rem;
 		border-radius: 0 0 3rem 3rem;
 		box-shadow: 0 0 1.5rem 0 rgb(130, 130, 130);
-		* {
+		a,
+		span {
 			color: $dark;
 		}
 
@@ -389,19 +393,7 @@
 			border-radius: 0 0 3rem 3rem;
 			overflow: hidden;
 		}
-		&__col {
-		}
 
-		&__left {
-			display: flex;
-			align-items: center;
-			gap: 10rem;
-			.the-header__link {
-				padding: 0 2rem;
-				display: flex;
-				align-items: center;
-			}
-		}
 		&__burger {
 			display: none;
 		}
@@ -420,18 +412,25 @@
 			align-items: center;
 			height: 100%;
 			gap: 4rem;
+			.the-header__link svg {
+				display: none;
+				@media (max-width: 1050px) {
+					display: block;
+				}
+			}
 		}
 
 		&__link {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
 			cursor: pointer;
 			width: max-content;
 			transition: all 0.2s ease;
 			&-mobile {
 				display: none;
 			}
-			svg {
-				display: none;
-			}
+
 			&:hover {
 				color: $blue;
 
@@ -453,17 +452,6 @@
 				align-items: center;
 				height: 5rem;
 				gap: 3rem;
-			}
-
-			svg {
-				path:nth-child(1) {
-					fill: $dark;
-				}
-
-				path,
-				rect {
-					stroke: $dark;
-				}
 			}
 		}
 

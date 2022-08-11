@@ -90,12 +90,12 @@
 </template>
 
 <script>
-	import vRadio from "../general/v-radio.vue";
-	import vInput from "../general/v-input.vue";
-	import vDropdown from "../general/v-dropdown.vue";
-	import vSlider from "../general/v-slider.vue";
-	import vButton from "../general/v-button.vue";
-	import vPopup from "../general/v-popup.vue";
+	import vRadio from "@/components/UI/general/v-radio.vue";
+	import vInput from "@/components/UI/general/v-input.vue";
+	import vDropdown from "@/components/UI/general/v-dropdown.vue";
+	import vSlider from "@/components/UI/general/v-slider.vue";
+	import vButton from "@/components/UI/general/v-button.vue";
+	import vPopup from "@/components/UI/general/v-popup.vue";
 
 	import AcademInput from "../academ/academ-input.vue";
 	import vCheckbox from "../academ/v-checkbox.vue";

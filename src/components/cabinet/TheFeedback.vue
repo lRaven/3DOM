@@ -81,7 +81,7 @@
 	import vInput from "./v-input";
 	import vDropdown from "./v-dropdown";
 	import vTextarea from "./v-textarea";
-	import vButton from "@/components/general/v-button";
+	import vButton from "@/components/UI/general/v-button";
 
 	export default {
 		name: "TheFeedback",

@@ -91,7 +91,7 @@
 	import store from "@/store";
 	import { mapState } from "vuex";
 	import axios from "axios";
-	import vButton from "@/components/general/v-button";
+	import vButton from "@/components/UI/general/v-button";
 
 	export default {
 		name: "TheProfile",

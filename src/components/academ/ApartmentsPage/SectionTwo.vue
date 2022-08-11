@@ -77,7 +77,7 @@
 	.sectionTwo {
 		display: grid;
 		grid-column: 2;
-		grid-template-rows: 40px 40px auto;
+		grid-template-rows: 4rem 4rem auto;
 		grid-template-columns: auto auto auto auto;
 		.name {
 			border: 0.1rem solid $light-gray;
@@ -85,10 +85,9 @@
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			color: white;
+			color: #fff;
 			background: #a3794e;
 			font-family: Montserrat;
-			font-style: normal;
 			font-weight: 900;
 			font-size: 18px;
 			line-height: 18px;

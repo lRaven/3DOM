@@ -148,7 +148,7 @@
 </template>
 
 <script>
-	import vButton from "../general/v-button.vue";
+	import vButton from "@/components/UI/general/v-button.vue";
 
 	export default {
 		name: "TheSteps",

@@ -64,7 +64,7 @@
 </template>
 
 <script>
-	import vButton from "./v-button.vue";
+	import vButton from "@/components/UI/general/v-button.vue";
 	import vSwiper from "./v-swiper.vue";
 
 	export default {

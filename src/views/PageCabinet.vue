@@ -1,6 +1,6 @@
 <template>
 	<div class="page-cabinet theme-container">
-		<the-header />
+		<the-header :isCabinetVersion="true"></the-header>
 		<main class="page-cabinet__wrapper">
 			<aside class="page-cabinet__aside" ref="aside">
 				<the-navigation
@@ -64,10 +64,10 @@
 <script>
 	import { mapState } from "vuex";
 
-	import TheHeader from "@/components/cabinet/TheHeader";
+	import TheHeader from "@/components/general/TheHeader";
 
 	import TheNavigation from "@/components/cabinet/TheNavigation";
-	import vButton from "@/components/general/v-button";
+	import vButton from "@/components/UI/general/v-button";
 	import TheProfile from "@/components/cabinet/TheProfile";
 	import TheBooking from "@/components/cabinet/TheBooking";
 	import TheFavorites from "@/components/cabinet/TheFavorites";

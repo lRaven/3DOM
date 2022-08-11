@@ -1,95 +1,90 @@
 <template>
-	<router-link :to="link">
-		<div class="v-card">
-			<div class="v-card__top">
-				<img :src="src" alt="" />
-			</div>
-			<div class="v-card__body">
-				<div class="v-card__title">
-					<h4 class="v-card__project-description">
-						{{ subtitle }}
-					</h4>
-					<img
-						src="/img/icon/trade-in/periscope.svg"
-						alt=""
-						class="v-card__icon"
-					/>
-					<h3 class="v-card__project">
-						{{ title }}
-					</h3>
+	<div class="v-card" @click="this.$router.push(data.link)">
+		<div class="v-card__tags">
+			<v-card-tag
+				v-for="item in data.tags"
+				:key="item.id"
+				:text="item.text"
+			></v-card-tag>
+		</div>
+		<div class="v-card__top">
+			<img :src="data.image" alt="image" />
+		</div>
+		<div class="v-card__body">
+			<div class="v-card__title">
+				<h4 class="v-card__project-description">
+					{{ data.subtitle }}
+				</h4>
+				<img
+					src="/img/icon/trade-in/periscope.svg"
+					alt=""
+					class="v-card__icon"
+				/>
+				<h3 class="v-card__project">
+					{{ data.title }}
+				</h3>
 
+				<div class="v-card__min">
+					<span>от</span>
+					<span>{{ data.min }}</span>
+				</div>
+			</div>
+			<div class="v-card__prices">
+				<div class="v-card__price v-card__studios">
+					<p>Студии</p>
 					<div class="v-card__min">
 						<span>от</span>
-						<span>{{ min }}</span>
+						<span>{{ data.prices.studios }}</span>
 					</div>
 				</div>
-				<div class="v-card__prices">
-					<div class="v-card__price v-card__studios">
-						<p>Студии</p>
-						<div class="v-card__min">
-							<span>от</span>
-							<span>{{ studios }}</span>
-						</div>
-					</div>
-					<div class="v-card__price v-card__single">
-						<p class="v-card__price-pc">1-комн. квартиры</p>
-						<p class="v-card__price-mobile">1-комн. кв.</p>
-						<div class="v-card__min">
-							<span>от</span>
-							<span>{{ singleRoom }}</span>
-						</div>
-					</div>
-					<div class="v-card__price v-card__two">
-						<p class="v-card__price-pc">2-комн. квартиры</p>
-						<p class="v-card__price-mobile">2-комн. кв.</p>
-						<div class="v-card__min">
-							<span>от</span>
-							<span>{{ twoRoom }}</span>
-						</div>
-					</div>
-					<div class="v-card__price v-card__three">
-						<p class="v-card__price-pc">3-комн. квартиры</p>
-						<p class="v-card__price-mobile">3-комн. кв.</p>
-						<div class="v-card__min">
-							<span>от</span>
-							<span>{{ threeRoom }}</span>
-						</div>
+				<div class="v-card__price v-card__single">
+					<p class="v-card__price-pc">1-комн. квартиры</p>
+					<p class="v-card__price-mobile">1-комн. кв.</p>
+					<div class="v-card__min">
+						<span>от</span>
+						<span>{{ data.prices.single_room }}</span>
 					</div>
 				</div>
-				<div class="v-card__bottom">
-					<div class="v-card__date">
-						<p>Заселение до 30.08.2022</p>
+				<div class="v-card__price v-card__two">
+					<p class="v-card__price-pc">2-комн. квартиры</p>
+					<p class="v-card__price-mobile">2-комн. кв.</p>
+					<div class="v-card__min">
+						<span>от</span>
+						<span>{{ data.prices.two_room }}</span>
 					</div>
-					<div class="v-card__finishing">
-						<p>с отделкой</p>
+				</div>
+				<div class="v-card__price v-card__three">
+					<p class="v-card__price-pc">3-комн. квартиры</p>
+					<p class="v-card__price-mobile">3-комн. кв.</p>
+					<div class="v-card__min">
+						<span>от</span>
+						<span>{{ data.prices.three_room }}</span>
 					</div>
-					<div class="v-card__address">
-						ул. Калинина, 54, Волгоград
-					</div>
-					<div class="v-card__more">
-						<router-link :to="link">Подробнее</router-link>
-					</div>
+				</div>
+			</div>
+			<div class="v-card__bottom">
+				<div class="v-card__date">
+					<p>Заселение до 30.08.2022</p>
+				</div>
+				<div class="v-card__finishing">
+					<p>с отделкой</p>
+				</div>
+				<div class="v-card__address">ул. Калинина, 54, Волгоград</div>
+				<div class="v-card__more">
+					<router-link :to="data.link">Подробнее</router-link>
 				</div>
 			</div>
 		</div>
-	</router-link>
+	</div>
 </template>
 
 <script>
+	import vCardTag from "@/components/general/catalog/v-card-tag.vue";
+
 	export default {
 		name: "vCard",
-		props: {
-			src: String,
-			title: String,
-			subtitle: String,
-			min: String,
-			studios: String,
-			singleRoom: String,
-			twoRoom: String,
-			threeRoom: String,
-
-			link: String,
-		},
+		components: { vCardTag },
+		props: { data: Object },
 	};
 </script>
 
@@ -97,9 +92,21 @@
 	@import "@/assets/scss/variables";
 
 	.v-card {
+		cursor: pointer;
+		position: relative;
 		border-radius: 3rem;
+		margin-bottom: -5rem;
 		height: 100%;
-
+		&__tags {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: flex-end;
+			gap: 0.7rem;
+			position: absolute;
+			top: 2.8rem;
+			right: 2.8rem;
+			max-width: 30rem;
+		}
 		&__top {
 			overflow: hidden;
 			max-height: 53rem;
@@ -372,7 +379,6 @@
 	@media (max-width: 470px) {
 		.v-card {
 			&__top {
-				// min-height: 40rem;
 				img {
 				}
 			}

@@ -93,7 +93,7 @@
 
 	import vInput from "./v-input";
 	import vDropdown from "@/components/cabinet/v-dropdown";
-	import vButton from "@/components/general/v-button";
+	import vButton from "@/components/UI/general/v-button";
 	import DatePicker from "@/components/cabinet/DatePicker";
 	import TimePicker from "@/components/cabinet/TimePicker";
 	import { postAppointment } from "@/api/appointment";

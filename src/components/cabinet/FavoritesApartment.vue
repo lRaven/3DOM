@@ -61,23 +61,16 @@
 </template>
 
 <script>
-	import store from "../../store";
-	import { removeFavorite } from "../../api/favorite";
+	import store from "@/store";
+	import { removeFavorite } from "@/api/favorite";
 
-	import vButton from "../general/v-button.vue";
+	import vButton from "@/components/UI/general/v-button.vue";
 
 	export default {
 		name: "TheFavorite",
 		store,
-		components: {
-			vButton,
-		},
-		data() {
-			return {};
-		},
-		props: {
-			sorted: String,
-		},
+		components: { vButton },
+		props: { sorted: String },
 		computed: {
 			favorites: () => {
 				return store.getters.FAVORITES;

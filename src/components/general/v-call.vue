@@ -48,11 +48,11 @@
 </template>
 
 <script>
-	import vPopup from "./v-popup.vue";
+	import vPopup from "@/components/UI/general/v-popup.vue";
 
 	import AcademInput from "../academ/academ-input.vue";
 	import vCheckbox from "../academ/v-checkbox.vue";
-	import vButton from "./v-button.vue";
+	import vButton from "@/components/UI/general/v-button.vue";
 
 	export default {
 		name: "vCall",

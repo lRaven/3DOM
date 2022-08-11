@@ -158,10 +158,10 @@
 </template>
 
 <script>
-	import vToggle from "./v-toggle.vue";
-	import vSlider from "./v-slider.vue";
-	import vButton from "./v-button.vue";
-	import vPopup from "./v-popup.vue";
+	import vToggle from "@/components/UI/general/v-toggle.vue";
+	import vSlider from "@/components/UI/general/v-slider.vue";
+	import vButton from "@/components/UI/general/v-button.vue";
+	import vPopup from "@/components/UI/general/v-popup.vue";
 
 	import AcademInput from "../academ/academ-input.vue";
 	import vCheckbox from "../academ/v-checkbox.vue";

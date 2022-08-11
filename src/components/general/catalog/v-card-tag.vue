@@ -13,6 +13,7 @@
 
 <style lang="scss" scoped>
 	.v-tag {
+		display: inline-block;
 		padding: 1.05rem 2.5rem;
 		border-radius: 2rem;
 		background-color: #47494c;

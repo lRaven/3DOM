@@ -3,7 +3,7 @@ import store from '@/store';
 import cookie from 'vue-cookies';
 
 const state = () => ({
-	//*main
+	//* main
 	tab: 'profile',
 
 	booking: [],
@@ -11,12 +11,12 @@ const state = () => ({
 	favorites: [],
 	sort: 'price',
 
-	//*user
+	//* user
 	token: cookie.get('auth_token') || null,
 	user: {},
 })
 const getters = {
-	//*main
+	//* main
 	TAB: state => {
 		return state.tab;
 	},
@@ -32,7 +32,7 @@ const getters = {
 		return state.sort;
 	},
 
-	//*user
+	//* user
 	TOKEN: state => {
 		return state.token;
 	},
@@ -41,35 +41,21 @@ const getters = {
 	},
 }
 const mutations = {
-	//*main
-	SET_TAB(state, payload) {
-		state.tab = payload;
-	},
+	//* main
+	SET_TAB(state, payload) { state.tab = payload; },
 
-	SET_BOOKING(state, payload) {
-		state.booking = payload;
-	},
+	SET_BOOKING(state, payload) { state.booking = payload; },
 
-	SET_FAVORITES(state, payload) {
-		state.favorites = payload;
-	},
-	SET_SORT(state, payload) {
-		state.sort = payload;
-	},
+	SET_FAVORITES(state, payload) { state.favorites = payload; },
+	SET_SORT(state, payload) { state.sort = payload; },
 
-	//*user
-	SET_TOKEN(state, payload) {
-		state.token = payload;
-	},
-	SET_ID(state, payload) {
-		state.user.id = payload;
-	},
-	SET_USER(state, payload) {
-		state.user = payload;
-	},
+	//* user
+	SET_TOKEN(state, payload) { state.token = payload; },
+	SET_ID(state, payload) { state.user.id = payload; },
+	SET_USER(state, payload) { state.user = payload; },
 }
 const actions = {
-	//*user
+	//* user
 	getUserId: async (context) => {
 		let request = await axios
 			.get(`${store.getters.BASEURL}/auth/users/`, {

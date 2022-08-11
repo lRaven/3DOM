@@ -42,9 +42,9 @@
 </template>
 
 <script>
-	import TheHeader from "@/components/cabinet/TheHeader";
+	import TheHeader from "@/components/general/TheHeader";
 	import vInput from "@/components/cabinet/v-input";
-	import vButton from "@/components/general/v-button";
+	import vButton from "@/components/UI/general/v-button";
 	import TheFooter from "@/components/general/TheFooter";
 
 	import { login } from "@/api/user";

@@ -102,8 +102,8 @@
 </template>
 
 <script>
-	import store from "../../store";
-	import vButton from "../general/v-button.vue";
+	import store from "@/store";
+	import vButton from "@/components/UI/general/v-button.vue";
 	import { removeReservation } from "../../api/booking";
 
 	export default {

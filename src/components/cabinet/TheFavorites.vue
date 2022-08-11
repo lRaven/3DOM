@@ -40,7 +40,7 @@
 
 <script>
 	import store from "../../store";
-	import vButton from "../general/v-button.vue";
+	import vButton from "@/components/UI/general/v-button.vue";
 	import FavoritesApartment from "./FavoritesApartment.vue";
 
 	import {
