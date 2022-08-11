@@ -1,12 +1,12 @@
 <template>
 	<div class="sectionOne">
 		<div class="name" @click="showDialog(this.section)">Секция 1</div>
-		<SectionColumns parameters="1-К" />
-		<SectionColumns parameters="2-К" />
-		<SectionColumns parameters="2-К" />
-		<SectionColumns parameters="2-К" />
-		<SectionColumns parameters="3-К" />
-		<div v-for="apart in apartments" :key="apart.number">
+		<section-columns
+			:parameters="column.type"
+			v-for="column in apartment_columns"
+			:key="column.id"
+		></section-columns>
+		<div v-for="apart in apartments_in_section" :key="apart.number">
 			<ApartmentItem
 				@showDialog="showDialogApartment"
 				:apartment="apart"
@@ -16,28 +16,37 @@
 </template>
 
 <script>
-	import SectionColumns from "@/components/academ/ApartmentsPage/SectionColumns";
+	import sectionColumns from "@/components/academ/ApartmentsPage/SectionColumns";
 	import ApartmentItem from "@/components/academ/ApartmentsPage/ApartmentItem";
-	import store from "@/store";
+	import { mapState } from "vuex";
 
 	export default {
-		components: { SectionColumns, ApartmentItem },
+		components: {
+			sectionColumns,
+			ApartmentItem,
+		},
 		data: () => ({
 			section: 1,
 			isApartmentReview: false,
+			apartment_columns: [
+				{ id: 1, type: "1-К" },
+				{ id: 2, type: "2-К" },
+				{ id: 3, type: "2-К" },
+				{ id: 4, type: "2-К" },
+				{ id: 5, type: "3-К" },
+			],
 		}),
 		computed: {
-			apartments: () => {
-				const apartments = store.getters.APARTMENTS;
+			...mapState({ apartments: (state) => state.academ.apartments }),
 
+			apartments_in_section() {
+				const apartments = [...this.apartments];
 				//* получение секции
 				let sectionFilter = apartments.filter(
 					(apart) => apart.section === 1
 				);
-
 				//* переворот по оси y
 				sectionFilter = sectionFilter.slice().reverse();
-
 				//* переворот по оси x
 				let subarray = [];
 				while (sectionFilter.length)
@@ -48,12 +57,8 @@
 						sectionFilter.push(j);
 					}
 				}
-
 				return sectionFilter;
 			},
-		},
-		watch: {
-			apartments: function () {},
 		},
 		methods: {
 			showDialog() {
@@ -63,7 +68,6 @@
 				this.$emit("showDialogApartment", id);
 			},
 		},
-		mounted() {},
 	};
 </script>
 

@@ -2,15 +2,11 @@
 	<div>
 		<div class="sectionThree">
 			<div class="name" @click="showDialog(this.section)">Секция 3</div>
-			<SectionColumns :parameters="'2-К'" />
-			<SectionColumns :parameters="'2-К'" />
-			<SectionColumns :parameters="'1-К.СТ'" />
-			<SectionColumns :parameters="'1-К'" />
-			<SectionColumns :parameters="'1-К'" />
-			<SectionColumns :parameters="'1-К'" />
-			<SectionColumns :parameters="'2-К'" />
-			<SectionColumns :parameters="'2-К'" />
-			<SectionColumns :parameters="'1-К'" />
+			<section-columns
+				:parameters="column.type"
+				v-for="column in apartment_columns"
+				:key="column.id"
+			></section-columns>
 		</div>
 		<div class="flat4k">
 			<div v-for="apart in flat4k" :key="apart.number">
@@ -21,7 +17,7 @@
 			</div>
 		</div>
 		<div class="flat">
-			<div v-for="apart in apartments" :key="apart.number">
+			<div v-for="apart in apartments_in_section" :key="apart.number">
 				<ApartmentItem
 					@showDialog="showDialogApartment"
 					:apartment="apart"
@@ -32,24 +28,38 @@
 </template>
 
 <script>
-	import SectionColumns from "../../../components/academ/ApartmentsPage/SectionColumns";
-	import ApartmentItem from "../../../components/academ/ApartmentsPage/ApartmentItem";
-	import store from "../../../store";
+	import sectionColumns from "@/components/academ/ApartmentsPage/SectionColumns";
+	import ApartmentItem from "@/components/academ/ApartmentsPage/ApartmentItem";
+	import { mapState } from "vuex";
 
 	export default {
-		components: { SectionColumns, ApartmentItem },
-		data() {
-			return {
-				section: 3,
-			};
+		components: {
+			sectionColumns,
+			ApartmentItem,
 		},
+		data: () => ({
+			section: 3,
+			apartment_columns: [
+				{ id: 1, type: "2-К" },
+				{ id: 2, type: "2-К" },
+				{ id: 3, type: "1-К.СТ" },
+				{ id: 4, type: "1-К" },
+				{ id: 5, type: "1-К" },
+				{ id: 6, type: "1-К" },
+				{ id: 7, type: "2-К" },
+				{ id: 8, type: "2-К" },
+				{ id: 9, type: "1-К" },
+			],
+		}),
 		computed: {
-			apartments: () => {
-				const apartments = store.getters.APARTMENTS;
+			...mapState({ apartments: (state) => state.academ.apartments }),
+
+			apartments_in_section() {
+				const apartments = [...this.apartments];
 
 				//* получение 3 секции, кроме 4-комнатных квартир
 				let sectionFilter = apartments.filter(
-					(apart) => apart.section === 3 && apart.number < 208
+					(apart) => apart.section === 3 && apart.number < 241
 				);
 
 				//* переворот по оси y
@@ -68,16 +78,16 @@
 
 				return sectionFilter;
 			},
-			flat4k: () => {
-				const apartments = store.getters.APARTMENTS;
+
+			flat4k() {
+				const apartments = [...this.apartments];
 				//* получение 4-комнатных квартир
 				return apartments.filter(
-					(apart) => apart.section === 3 && apart.number >= 208
+					(apart) =>
+						apart.section === 3 &&
+						(apart.number >= 241) & (apart.number <= 247)
 				);
 			},
-		},
-		watch: {
-			apartments: function () {},
 		},
 		methods: {
 			showDialog() {
@@ -87,7 +97,6 @@
 				this.$emit("showDialogApartment", id);
 			},
 		},
-		mounted() {},
 	};
 </script>
 

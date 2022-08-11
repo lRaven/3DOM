@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<div
-			v-if="apartment.number === 213 || apartment.number === 212"
+			v-if="apartment.number === 245 || apartment.number === 246"
 			class="dataLong"
 		>
 			<div class="flatItemLong">
@@ -38,7 +38,7 @@
 				>
 					<div class="img"></div>
 				</button>
-				<!-- //*остальные этажи, резервированые -->
+				<!-- //*остальные этажи, резервированные -->
 				<button
 					class="item-btn reserved"
 					v-if="apartment.floor !== 14 && apartment.reserved === true"
@@ -80,9 +80,7 @@
 <script>
 	export default {
 		props: {
-			apartment: {
-				type: Object,
-			},
+			apartment: Object,
 			style() {
 				if (
 					this.apartment.number === 212 ||

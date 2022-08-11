@@ -44,7 +44,7 @@
 			<div class="the-apartments__schematics">
 				<div class="slide slide__single" v-show="tab === 1">
 					<academ-swiper
-						:gallery="single_room"
+						:gallery="SINGLE_ROOM"
 						:price="true"
 						textColor="color: #fff9d0"
 						v-if="bodyWidth < 1024"
@@ -52,7 +52,7 @@
 					<figure
 						v-else
 						class="slide__item"
-						v-for="(apartment, index) in single_room"
+						v-for="(apartment, index) in SINGLE_ROOM"
 						:key="apartment.id"
 						@click="openApartment(apartment.image)"
 						@mouseover="selectApartment(apartment.type, index)"
@@ -67,7 +67,7 @@
 				</div>
 				<div class="slide slide__two" v-show="tab === 2">
 					<academ-swiper
-						:gallery="two_room"
+						:gallery="TWO_ROOM"
 						:price="true"
 						textColor="color: #e4cda1"
 						v-if="bodyWidth < 1024"
@@ -75,7 +75,7 @@
 					<figure
 						v-else
 						class="slide__item"
-						v-for="(apartment, index) in two_room"
+						v-for="(apartment, index) in TWO_ROOM"
 						:key="apartment.id"
 						@click="openApartment(apartment.image)"
 						@mouseover="selectApartment(apartment.type, index)"
@@ -90,7 +90,7 @@
 				</div>
 				<div class="slide slide__three" v-show="tab === 3">
 					<academ-swiper
-						:gallery="three_room"
+						:gallery="THREE_ROOM"
 						:price="true"
 						textColor="color: #f6d6b9"
 						v-if="bodyWidth < 1024"
@@ -98,7 +98,7 @@
 					<figure
 						v-else
 						class="slide__item"
-						v-for="(apartment, index) in three_room"
+						v-for="(apartment, index) in THREE_ROOM"
 						:key="apartment.id"
 						@click="openApartment(apartment.image)"
 						@mouseover="selectApartment(apartment.type, index)"
@@ -7714,7 +7714,7 @@
 
 <script>
 	import AcademSwiper from "@/components/academ/academ-swiper";
-	import { mapState } from "vuex";
+	import { mapGetters } from "vuex";
 
 	export default {
 		name: "TheApartments",
@@ -7728,11 +7728,7 @@
 			},
 		}),
 		computed: {
-			...mapState({
-				single_room: (state) => state.academ.single_room,
-				two_room: (state) => state.academ.two_room,
-				three_room: (state) => state.academ.three_room,
-			}),
+			...mapGetters(["SINGLE_ROOM", "TWO_ROOM", "THREE_ROOM"]),
 		},
 		methods: {
 			//* выбор вкладки с  группами квартир
@@ -7985,15 +7981,15 @@
 		mounted() {
 			this.showApartments(1);
 
-			const interval = setInterval(() => {
-				if (this.single_room.length > 0) {
-					// this.selectApartment(1);
-					// this.selectApartment(2);
-					// this.selectApartment(3);
-					this.openApartmentFromSlider();
-					clearInterval(interval);
-				}
-			}, 100);
+			// const interval = setInterval(() => {
+			// 	if (this.single_room.length > 0) {
+			// 		// this.selectApartment(1);
+			// 		// this.selectApartment(2);
+			// 		// this.selectApartment(3);
+			this.openApartmentFromSlider();
+			// 		clearInterval(interval);
+			// 	}
+			// }, 100);
 			this.checkPageWidth();
 		},
 	};

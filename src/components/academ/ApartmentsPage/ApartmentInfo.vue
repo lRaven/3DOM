@@ -1980,9 +1980,16 @@ m231.513 20.133 17.841-1.113v8.234h-.658v-7.533l-16.579 1.035v6.498h-.604v-7.12z
 
 <script>
 	import store from "@/store";
+	import { mapState } from "vuex";
 	import axios from "axios";
+
 	export default {
 		store,
+		computed: {
+			...mapState({
+				apartments: (state) => state.academ.apartments,
+			}),
+		},
 		data() {
 			return {
 				building: {
@@ -1996,7 +2003,6 @@ m231.513 20.133 17.841-1.113v8.234h-.658v-7.533l-16.579 1.035v6.498h-.604v-7.12z
 				},
 			};
 		},
-		components: {},
 		props: {
 			section: {
 				type: Number,
@@ -2036,7 +2042,7 @@ m231.513 20.133 17.841-1.113v8.234h-.658v-7.533l-16.579 1.035v6.498h-.604v-7.12z
 		mounted() {
 			this.buildingSelect();
 			this.Build(store.getters.TOKEN);
-			this.Apartment = store.getters.APARTMENTS[0];
+			this.Apartment = this.apartments[0];
 			document.querySelector(".apartment__body-selectedPlan").innerHTML =
 				this.image.toString();
 			document

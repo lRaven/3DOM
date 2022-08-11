@@ -1,10 +1,4 @@
-const state = () => ({
-	apartments: [],
-
-	single_room: {},
-	two_room: {},
-	three_room: {},
-})
+const state = () => ({ apartments: [], })
 
 const getters = {
 	APARTMENTS: state => {
@@ -12,13 +6,19 @@ const getters = {
 	},
 
 	SINGLE_ROOM: state => {
-		return state.single_room;
+		return state.apartments.filter(el => {
+			return el.floor === 4 & (el.type === 1 || el.type === 5)
+		})
 	},
 	TWO_ROOM: state => {
-		return state.two_room;
+		return state.apartments.filter(el => {
+			return el.floor === 4 & el.type === 2
+		})
 	},
 	THREE_ROOM: state => {
-		return state.three_room;
+		return state.apartments.filter(el => {
+			return el.floor === 4 & el.type === 3
+		})
 	},
 }
 
