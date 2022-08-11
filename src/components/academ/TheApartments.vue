@@ -1829,7 +1829,7 @@
 							:class="{
 								selected:
 									selectedApartment.type === 3 &&
-									selectedApartment.ordinalNumber === 2,
+									selectedApartment.ordinalNumber === 0,
 							}"
 						/>
 						<path
@@ -2494,7 +2494,7 @@
 								selected:
 									(selectedApartment.type === 1 ||
 										selectedApartment.type === 5) &&
-									selectedApartment.ordinalNumber === 1,
+									selectedApartment.ordinalNumber === 0,
 							}"
 						/>
 						<path
@@ -2740,7 +2740,7 @@
 							:class="{
 								selected:
 									selectedApartment.type === 2 &&
-									selectedApartment.ordinalNumber === 3,
+									selectedApartment.ordinalNumber === 2,
 							}"
 						/>
 						<path
@@ -2973,7 +2973,7 @@
 								selected:
 									(selectedApartment.type === 1 ||
 										selectedApartment.type === 5) &&
-									selectedApartment.ordinalNumber === 0,
+									selectedApartment.ordinalNumber === 1,
 							}"
 						/>
 						<path
@@ -3426,7 +3426,7 @@
 							:class="{
 								selected:
 									selectedApartment.type === 2 &&
-									selectedApartment.ordinalNumber === 2,
+									selectedApartment.ordinalNumber === 3,
 							}"
 						/>
 						<path
@@ -3678,7 +3678,7 @@
 							:class="{
 								selected:
 									selectedApartment.type === 3 &&
-									selectedApartment.ordinalNumber === 0,
+									selectedApartment.ordinalNumber === 1,
 							}"
 						/>
 						<path
@@ -4920,7 +4920,7 @@
 							:class="{
 								selected:
 									selectedApartment.type === 3 &&
-									selectedApartment.ordinalNumber === 1,
+									selectedApartment.ordinalNumber === 2,
 							}"
 						/>
 						<path
