@@ -34,16 +34,22 @@
 	export default {
 		name: "TheBooking",
 		components: { BookingApartment },
-		computed: {
-			...mapState({
-				booking: (state) => state.cabinet.booking,
-			}),
-			apartments: () => {
-				if (this.booking.length > 0) {
-					return true;
-				} else return false;
+		watch: {
+			booking: {
+				handler() {
+					if (this.booking.length > 0) {
+						this.apartments = true;
+					} else this.apartments = false;
+				},
+				deep: true,
 			},
 		},
+		computed: {
+			...mapState({ booking: (state) => state.cabinet.booking }),
+		},
+		data: () => ({
+			apartments: false,
+		}),
 		methods: {
 			openPopup() {
 				const images = document.querySelectorAll(".apartment__layout");
@@ -68,6 +74,12 @@
 			this.openPopup();
 
 			getBookingList();
+
+			if (this.booking) {
+				if (this.booking.length > 0) {
+					this.apartments = true;
+				} else this.apartments = false;
+			}
 
 			setInterval(() => {
 				getBookingList();

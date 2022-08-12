@@ -50,14 +50,22 @@
 
 	export default {
 		name: "TheFavorites",
+		watch: {
+			favorites: {
+				handler() {
+					this.favorites_length = this.favorites.length;
+				},
+				deep: true,
+			},
+		},
 		computed: {
 			...mapState({
 				favorites: (state) => state.cabinet.favorites,
 			}),
-			favorites_length: () => {
-				return this.favorites.length;
-			},
 		},
+		data: () => ({
+			favorites_length: 0,
+		}),
 		components: {
 			vButton,
 			FavoritesApartment,
@@ -105,6 +113,10 @@
 		mounted() {
 			this.openPopup();
 			getFavoriteApartmentNumber();
+
+			if (this.favorites) {
+				this.favorites_length = this.favorites.length;
+			}
 		},
 	};
 </script>
