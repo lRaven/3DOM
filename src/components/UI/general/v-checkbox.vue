@@ -33,9 +33,9 @@
 			user-select: none;
 			display: block;
 			text-align: center;
-			width: 9.5rem;
 			border-radius: 2rem;
-			padding: 2.2rem 1.3rem;
+			padding: 1.5rem 2rem;
+			min-width: 7rem;
 			color: $gray;
 			font-size: 1.6rem;
 			font-weight: 600;

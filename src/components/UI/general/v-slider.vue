@@ -134,7 +134,6 @@
 		padding: 2.2rem 1.5rem;
 		border-radius: 2rem;
 		background-color: $light-gray;
-		filter: drop-shadow(0 0 2rem rgba(0, 0, 0, 0.07));
 		&__values {
 			font-size: 1.6rem;
 			font-weight: 600;

@@ -1,60 +1,11 @@
 <template>
 	<section class="the-catalog">
 		<div class="the-catalog__container center">
-			<div class="the-catalog__header">
-				<h2
-					class="the-catalog__title animate__animated animate__fadeInUp wow"
-				>
-					{{ title }}
-				</h2>
-				<div class="the-catalog__settings">
-					<v-dropdown
-						description="Выберите один из наших проектов:"
-						selected="Выберите из списка"
-						:options="['АКАДЕМИЧЕСКИЙ']"
-						class="animate__animated animate__fadeInUp wow"
-					></v-dropdown>
-					<v-slider
-						title="Укажите примерную стоимость, млн руб"
-						:min="2.2"
-						:max="100"
-						:value="22.2"
-						:step="0.2"
-						class="min-max animate__animated animate__fadeInUp wow"
-						:minMax="true"
-					></v-slider>
-					<div
-						class="the-catalog__checkboxes animate__animated animate__fadeInUp wow"
-					>
-						<v-checkbox
-							:items="[
-								{ id: 1, text: 'Заселён' },
-								{ id: 2, text: '2022' },
-								{ id: 3, text: '2023' },
-								{ id: 4, text: '2024' },
-							]"
-							name="dates"
-						></v-checkbox>
-					</div>
-				</div>
-				<div class="the-catalog__submit">
-					<span
-						class="animate__animated animate__fadeInLeft wow"
-					></span>
-					<router-link
-						class="animate__animated animate__fadeInUp wow"
-						:to="{
-							name: 'Academ',
-							params: { section: '#apartments' },
-						}"
-					>
-						<v-button text="Посмотреть" class="blue"></v-button>
-					</router-link>
-					<span
-						class="animate__animated animate__fadeInRight wow"
-					></span>
-				</div>
-			</div>
+			<h2
+				class="the-catalog__title animate__animated animate__fadeInUp wow"
+			>
+				{{ title }}
+			</h2>
 			<div class="the-catalog__body">
 				<v-card
 					v-for="project in projects"
@@ -64,43 +15,33 @@
 				>
 				</v-card>
 
+				<catalog-filters
+					@action_btn="this.$router.push({ name: 'Catalog' })"
+				></catalog-filters>
+
 				<v-card-min
 					class="animate__animated animate__fadeInUp wow"
 					v-for="apartment in secondary_housing"
 					:key="apartment.id"
 					:data="apartment"
 				></v-card-min>
-
-				<v-button
-					text="Посмотреть ещё"
-					@click="this.$router.push('/')"
-					class="animate__animated animate__fadeInUp wow"
-				></v-button>
 			</div>
 		</div>
 	</section>
 </template>
 
 <script>
-	import vDropdown from "@/components/UI/general/v-dropdown.vue";
-	import vSlider from "@/components/UI/general/v-slider.vue";
-	import vCheckbox from "@/components/UI/general/v-checkbox.vue";
 	import vCard from "@/components/general/catalog/v-card.vue";
 	import vCardMin from "@/components/general/catalog/v-card-min.vue";
-	import vButton from "@/components/UI/general/v-button.vue";
+	import CatalogFilters from "@/components/general/catalog/CatalogFilters.vue";
 
 	export default {
 		name: "TheCatalog",
-		props: {
-			title: String,
-		},
+		props: { title: String },
 		components: {
-			vDropdown,
-			vSlider,
-			vCheckbox,
 			vCard,
 			vCardMin,
-			vButton,
+			CatalogFilters,
 		},
 		data: () => ({
 			projects: [
@@ -237,47 +178,20 @@
 		align-items: center;
 		padding: 2rem 1.5rem;
 
-		&__header {
-			margin-bottom: 4rem;
-			@media (max-width: 1240px) {
-			}
+		@media (max-width: 540px) {
+			padding: 2rem 1rem;
 		}
+
 		&__title {
 			font-size: 4rem;
 			font-weight: 600;
 			color: $dark;
 			margin-bottom: 8rem;
 		}
-		&__settings {
-			display: flex;
-			justify-content: space-between;
-			align-items: flex-end;
-			gap: 2.3rem;
-			margin-bottom: 5rem;
-			div {
-				width: 100%;
-			}
-		}
-		&__checkboxes {
-			display: flex;
-			justify-content: space-between;
-			gap: 1.8rem;
-		}
-		&__submit {
-			display: flex;
-			align-items: center;
-			gap: 5rem;
-			@media (max-width: 1240px) {
-			}
-			span {
-				display: block;
-				height: 0.2rem;
-				width: 100%;
-				background-color: $blue;
-			}
-			.v-button {
-				padding: 1.2rem 7rem;
-			}
+
+		.catalog-filters {
+			grid-column: 1/5;
+			margin: 4rem 0;
 		}
 
 		&__body {
@@ -318,24 +232,6 @@
 					grid-column: 1/1;
 				}
 			}
-		}
-	}
-
-	// @media (max-width: 1260px) {
-	// 	.the-catalog {
-	// 		&__header,
-	// 		&__submit {
-	// 			display: none;
-	// 		}
-	// 		&__body {
-	// 			display: block;
-	// 		}
-	// 	}
-	// }
-
-	@media (max-width: 540px) {
-		.the-catalog {
-			padding: 2rem 1rem;
 		}
 	}
 </style>

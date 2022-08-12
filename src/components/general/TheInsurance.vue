@@ -29,19 +29,16 @@
 						:description="'Тип страхования'"
 						:selected="'Выберите из списка'"
 						:options="['1', '2', '3', '4']"
-						:customClass="'v-dropdown-thin'"
 					></v-dropdown>
 					<v-dropdown
 						:description="'Банк кредитора'"
 						:selected="'Выберите из списка'"
 						:options="['1', '2', '3', '4']"
-						:customClass="'v-dropdown-thin'"
 					></v-dropdown>
 					<v-dropdown
 						:description="'Выберите пол'"
 						:selected="'Женский'"
 						:options="['Мужской', 'Женский']"
-						:customClass="'v-dropdown-thin'"
 					></v-dropdown>
 					<v-input
 						:type="'number'"
@@ -49,7 +46,6 @@
 						:max="100"
 						:min="18"
 						:text="'Укажите возраст'"
-						:customClass="'thin'"
 					></v-input>
 					<v-button
 						:text="'Оформить'"

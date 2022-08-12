@@ -30,7 +30,6 @@
 					:description="'Выберите один из наших проектов:'"
 					:selected="'Выберите из списка'"
 					:options="['АКАДЕМИЧЕСКИЙ']"
-					:customClass="'dropdown-pale'"
 				></v-dropdown>
 				<v-slider
 					title="Укажите примерную стоимость, млн руб"

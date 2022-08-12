@@ -1,8 +1,9 @@
 import { createStore } from 'vuex'
 
-import Cabinet from './modules/cabinet'
-import Academ from './modules/academ'
-import CRM from './modules/crm'
+import Cabinet from '@/store/modules/cabinet'
+import Academ from '@/store/modules/academ'
+import CRM from '@/store/modules/crm'
+import Catalog from '@/store/modules/catalog';
 
 export default createStore({
 	state: { baseURL: `http://localhost:8001`, },
@@ -17,6 +18,7 @@ export default createStore({
 		cabinet: Cabinet,
 		academ: Academ,
 		crm: CRM,
+		catalog: Catalog,
 	},
 	plugins: [],
 });
