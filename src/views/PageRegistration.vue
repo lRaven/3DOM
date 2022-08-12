@@ -48,8 +48,9 @@
 </template>
 
 <script>
-	import store from "@/store";
 	import axios from "axios";
+	import { mapState } from "vuex";
+
 	import TheHeader from "@/components/general/TheHeader";
 	import vInput from "@/components/cabinet/v-input";
 	import vButton from "@/components/UI/general/v-button";
@@ -57,7 +58,6 @@
 
 	export default {
 		name: "PageRegistration",
-		store,
 		components: {
 			TheHeader,
 			vInput,
@@ -65,6 +65,10 @@
 			TheFooter,
 		},
 		computed: {
+			...mapState({
+				baseURL: (state) => state.baseURL,
+			}),
+
 			isFormValid() {
 				if (
 					this.user_data.username.length > 0 &&
@@ -77,23 +81,19 @@
 				}
 			},
 		},
-		data() {
-			return {
-				user_data: {
-					username: "",
-					password: "",
-					email: "",
-				},
-			};
-		},
+		data: () => ({
+			user_data: {
+				username: "",
+				password: "",
+				email: "",
+			},
+		}),
 
 		methods: {
 			//* регистрация нового юзера
-			registration(event) {
-				event.preventDefault();
-
+			registration() {
 				axios
-					.post(`${store.getters.BASEURL}/auth/users/`, {
+					.post(`${this.baseURL}/auth/users/`, {
 						email: this.user_data.email,
 						username: this.user_data.username,
 						password: this.user_data.password,

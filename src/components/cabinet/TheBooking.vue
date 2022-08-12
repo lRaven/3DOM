@@ -28,20 +28,18 @@
 
 <script>
 	import BookingApartment from "./BookingApartment.vue";
-	import store from "../../store";
-	import { getBookingList } from "../../api/booking";
+	import { getBookingList } from "@/api/booking";
+	import { mapState } from "vuex";
 
 	export default {
 		name: "TheBooking",
-		components: {
-			BookingApartment,
-		},
-		data() {
-			return {};
-		},
+		components: { BookingApartment },
 		computed: {
+			...mapState({
+				booking: (state) => state.cabinet.booking,
+			}),
 			apartments: () => {
-				if (store.getters.BOOKING.length > 0) {
+				if (this.booking.length > 0) {
 					return true;
 				} else return false;
 			},

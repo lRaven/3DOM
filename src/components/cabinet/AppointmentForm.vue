@@ -4,7 +4,7 @@
 			<h1 class="appointment-form__title">Запись на встречу</h1>
 		</div>
 		<div class="appointment-form__body">
-			<form @submit="sendForm">
+			<form @submit.prevent="sendForm">
 				<div class="appointment-form__description">
 					<p>ФИО:</p>
 				</div>
@@ -88,7 +88,6 @@
 </template>
 
 <script>
-	import store from "@/store";
 	import { mapState } from "vuex";
 
 	import vInput from "./v-input";
@@ -100,7 +99,6 @@
 
 	export default {
 		name: "AppointmentForm",
-		store,
 		components: {
 			vInput,
 			vDropdown,
@@ -147,9 +145,7 @@
 				}
 			},
 
-			sendForm(event) {
-				event.preventDefault();
-
+			sendForm() {
 				postAppointment(
 					this.full_name,
 					this.tel,

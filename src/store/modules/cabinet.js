@@ -15,31 +15,9 @@ const state = () => ({
 	token: cookie.get('auth_token') || null,
 	user: {},
 })
-const getters = {
-	//* main
-	TAB: state => {
-		return state.tab;
-	},
 
-	BOOKING: state => {
-		return state.booking;
-	},
+const getters = {}
 
-	FAVORITES: state => {
-		return state.favorites;
-	},
-	SORT: state => {
-		return state.sort;
-	},
-
-	//* user
-	TOKEN: state => {
-		return state.token;
-	},
-	USER: state => {
-		return state.user;
-	},
-}
 const mutations = {
 	//* main
 	SET_TAB(state, payload) { state.tab = payload; },
@@ -54,20 +32,21 @@ const mutations = {
 	SET_ID(state, payload) { state.user.id = payload; },
 	SET_USER(state, payload) { state.user = payload; },
 }
+
 const actions = {
 	//* user
 	getUserId: async (context) => {
 		let request = await axios
-			.get(`${store.getters.BASEURL}/auth/users/`, {
-				headers: { Authorization: `token ${context.getters.TOKEN}` },
+			.get(`${cookie.get('auth_token')}/auth/users/`, {
+				headers: { Authorization: `token ${cookie.get('auth_token')}` },
 			})
 
 		if (request.status === 200) {
-			if (context.getters.USER.username !== null) {
+			if (context.state.cabinet.user.username !== null) {
 				for (const key in request.data) {
 					if (
 						request.data[key].username ===
-						context.getters.USER.username
+						context.state.cabinet.user.username
 					) {
 						let id = request.data[key].id;
 						context.commit("SET_ID", id);
@@ -78,8 +57,8 @@ const actions = {
 	},
 
 	getUser: async (context) => {
-		await axios.get(`${store.getters.BASEURL}/auth/users/me`, {
-			headers: { Authorization: `token ${context.getters.TOKEN}` },
+		await axios.get(`${store.state.baseURL}/auth/users/me`, {
+			headers: { Authorization: `token ${cookie.get('auth_token')}` },
 		}).then(response => {
 			if (response.status === 200) {
 				context.commit("SET_USER", response.data);
@@ -114,6 +93,7 @@ const actions = {
 		})
 	},
 }
+
 export default {
 	state,
 	getters,

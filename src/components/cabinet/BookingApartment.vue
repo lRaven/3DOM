@@ -102,25 +102,18 @@
 </template>
 
 <script>
-	import store from "@/store";
 	import vButton from "@/components/UI/general/v-button.vue";
-	import { removeReservation } from "../../api/booking";
+	import { removeReservation } from "@/api/booking";
+	import { mapState } from "vuex";
 
 	export default {
 		name: "BookingApartment",
-		store,
-		components: {
-			vButton,
-		},
-		data() {
-			return {
-				id: null,
-			};
-		},
+		components: { vButton },
+		data: () => ({ id: null }),
 		computed: {
-			apartments: () => {
-				return store.getters.BOOKING;
-			},
+			...mapState({
+				apartments: (state) => state.cabinet.booking,
+			}),
 		},
 		methods: {
 			//* отмена бронирования

@@ -1,7 +1,7 @@
 <template>
 	<div class="favorites">
 		<h1 class="favorites__title">Избранное</h1>
-		<div class="favorites__empty" v-if="favorites === 0">
+		<div class="favorites__empty" v-if="favorites_length === 0">
 			<img src="/img/cabinet/empty.svg" alt="" />
 			<div class="favorites__empty-text">
 				<p>Вы пока ничего не добавили в избранное</p>
@@ -12,7 +12,7 @@
 				></v-button>
 			</div>
 		</div>
-		<div class="favorites__header" v-if="favorites !== 0">
+		<div class="favorites__header" v-if="favorites_length !== 0">
 			<p>Сортировать по:</p>
 			<label class="favorites__sort">
 				<input
@@ -32,31 +32,30 @@
 				>
 			</label>
 		</div>
-		<div class="favorites__body" v-if="favorites !== 0">
+		<div class="favorites__body" v-if="favorites_length !== 0">
 			<favorites-apartment />
 		</div>
 	</div>
 </template>
 
 <script>
-	import store from "../../store";
 	import vButton from "@/components/UI/general/v-button.vue";
 	import FavoritesApartment from "./FavoritesApartment.vue";
+	import { mapState, mapMutations } from "vuex";
 
 	import {
 		getFavoriteApartmentNumber,
 		sortFavoriteList,
-	} from "../../api/favorite";
+	} from "@/api/favorite";
 
 	export default {
-		store,
 		name: "TheFavorites",
-		data() {
-			return {};
-		},
 		computed: {
-			favorites: () => {
-				return store.getters.FAVORITES.length;
+			...mapState({
+				favorites: (state) => state.cabinet.favorites,
+			}),
+			favorites_length: () => {
+				return this.favorites.length;
 			},
 		},
 		components: {
@@ -64,6 +63,7 @@
 			FavoritesApartment,
 		},
 		methods: {
+			...mapMutations(["SET_SORT"]),
 			//* функция для открытия всплывающего окна
 			openPopup() {
 				const images = document.querySelectorAll(".favorite__layout");
@@ -88,11 +88,11 @@
 			sort(way) {
 				switch (way) {
 					case "price": {
-						store.commit("SET_SORT", "price");
+						this.SET_SORT("price");
 						break;
 					}
 					case "area": {
-						store.commit("SET_SORT", "area");
+						this.SET_SORT("area");
 						break;
 					}
 				}

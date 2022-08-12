@@ -10,7 +10,7 @@
 				</p>
 			</div>
 			<div class="profile__logout">
-				<form action="#" @submit="logout">
+				<form action="#" @submit.prevent="logout">
 					<v-button
 						:text="'Выйти'"
 						:type="'submit'"
@@ -88,17 +88,16 @@
 </template>
 
 <script>
-	import store from "@/store";
-	import { mapState } from "vuex";
+	import { mapState, mapMutations } from "vuex";
 	import axios from "axios";
 	import vButton from "@/components/UI/general/v-button";
 
 	export default {
 		name: "TheProfile",
-		store,
 		components: { vButton },
 		computed: {
 			...mapState({
+				baseURL: (state) => state.baseURL,
 				avatar: (state) => state.cabinet.user.avatar,
 				last_name: (state) => state.cabinet.user.last_name,
 				first_name: (state) => state.cabinet.user.first_name,
@@ -108,17 +107,25 @@
 			}),
 		},
 		methods: {
-			//*выход с аккаунта
-			logout(event) {
-				event.preventDefault();
-
+			...mapMutations([
+				"SET_TOKEN",
+				"SET_ID",
+				"SET_USER",
+				"SET_TAB",
+				"SET_BOOKING",
+				"SET_FAVORITES",
+			]),
+			//* выход с аккаунта
+			logout() {
 				axios
 					.post(
-						`${store.getters.BASEURL}/auth/token/logout/`,
+						`${this.baseURL}/auth/token/logout/`,
 						{},
 						{
 							headers: {
-								Authorization: `token ${store.getters.TOKEN}`,
+								Authorization: `token ${this.$cookies.get(
+									"auth_token"
+								)}`,
 							},
 						}
 					)
@@ -127,12 +134,12 @@
 							//*стереть из vuex,cookies данные юзера и редирект на страницу авторизации
 							this.$cookies.remove("auth_token");
 
-							store.commit("SET_TOKEN", null);
-							store.commit("SET_ID", null);
-							store.commit("SET_USER", {});
-							store.commit("SET_TAB", null);
-							store.commit("SET_BOOKING", []);
-							store.commit("SET_FAVORITES", null);
+							this.SET_TOKEN(null);
+							this.SET_ID(null);
+							this.SET_USER({});
+							this.SET_TAB(null);
+							this.SET_BOOKING([]);
+							this.SET_FAVORITES(null);
 
 							this.$router.push("/login");
 						}
@@ -143,18 +150,19 @@
 			},
 
 			//*изменение имени и фамилии
-			setNames(event) {
-				event.preventDefault();
+			setNames() {
 				axios
 					.put(
-						`${store.getters.BASEURL}/auth/users/me/`,
+						`${this.baseURL}/auth/users/me/`,
 						{
 							first_name: this.first_name,
 							last_name: this.last_name,
 						},
 						{
 							headers: {
-								Authorization: `token ${store.getters.TOKEN}`,
+								Authorization: `token ${this.$cookies.get(
+									"auth_token"
+								)}`,
 							},
 						}
 					)

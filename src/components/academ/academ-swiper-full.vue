@@ -18,8 +18,6 @@
 </template>
 
 <script>
-	import store from "@/store";
-
 	// import Swiper core and required modules
 	import { Pagination } from "swiper";
 
@@ -34,7 +32,6 @@
 	// Import Swiper styles
 	export default {
 		name: "AcademSwiperFull",
-		store,
 		props: {
 			price: Boolean,
 			gallery: Object,

@@ -7,7 +7,7 @@
 				увидеть!
 			</h2>
 			<div class="feedback__form">
-				<form action="#" @submit="bookConsultation">
+				<form action="#" @submit.prevent="bookConsultation">
 					<p>
 						Оставьте контактные данные,<br />
 						и мы свяжемся с вами в ближайшее время
@@ -129,9 +129,7 @@
 			};
 		},
 		methods: {
-			bookConsultation(e) {
-				e.preventDefault();
-
+			bookConsultation() {
 				this.isNotificationVisible = true;
 
 				setTimeout(() => {

@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import PageHome from '@/views/PageHome';
+import PageCatalog from '@/views/PageCatalog';
 import PageTradeIn from '@/views/PageTradeIn';
 import PageAcadem from '@/views/PageAcadem';
 import PageCRM from "@/views/PageCRM";
@@ -15,6 +16,7 @@ import { getApartments, getApartmentsOnTheFloor } from "@/api/academ";
 import { getFavoriteApartmentNumber } from "@/api/favorite";
 
 import store from '@/store';
+import cookie from 'vue-cookies';
 
 const routes = [
 	{
@@ -24,6 +26,14 @@ const routes = [
 		meta: {
 			title: '3DOM',
 		}
+	},
+	{
+		path: '/catalog',
+		name: 'Catalog',
+		component: PageCatalog,
+		meta: {
+			title: 'Каталог',
+		},
 	},
 	{
 		path: '/trade-in',
@@ -55,15 +65,15 @@ const routes = [
 
 
 		beforeEnter(from, to, next) {
-			if (store.getters.TOKEN === null) {
+			if (cookie.get('auth_token') === null) {
 				router.push('/login');
 			}
 			else {
 				const interval = setInterval(() => {
-					if (store.getters.USER.is_superuser !== undefined) {
+					if (store.state.cabinet.user.is_superuser !== undefined) {
 						clearInterval(interval);
 
-						if (store.getters.USER.is_superuser === true || store.getters.USER.role === 'AdminCRM') {
+						if (store.state.cabinet.user.is_superuser === true || store.state.cabinet.user.role === 'AdminCRM') {
 							getApartments();
 							getApartmentsOnTheFloor(4);
 							next();
@@ -86,15 +96,15 @@ const routes = [
 		props: true,
 
 		beforeEnter(from, to, next) {
-			if (store.getters.TOKEN === null) {
+			if (cookie.get('auth_token') === null) {
 				router.push('/login');
 			}
 			else {
 				const interval = setInterval(() => {
-					if (store.getters.USER.is_superuser !== undefined) {
+					if (store.state.cabinet.user.is_superuser !== undefined) {
 						clearInterval(interval);
 
-						if (store.getters.USER.is_superuser === true || store.getters.USER.role === 'AdminCRM') {
+						if (store.state.cabinet.user.is_superuser === true || store.state.cabinet.user.role === 'AdminCRM') {
 							next();
 						} else {
 							router.push('/');
@@ -114,7 +124,7 @@ const routes = [
 		component: PageLogin,
 
 		beforeEnter(from, to, next) {
-			if (store.getters.TOKEN === null) {
+			if (cookie.get('auth_token') === null) {
 				next()
 			} else {
 				next("/cabinet")
@@ -131,7 +141,7 @@ const routes = [
 		component: PageRegistration,
 
 		beforeEnter(from, to, next) {
-			if (store.getters.TOKEN === null) {
+			if (cookie.get('auth_token') === null) {
 				next()
 			} else {
 				next("/cabinet")
@@ -149,7 +159,7 @@ const routes = [
 		component: PageCabinet,
 
 		beforeEnter(from, to, next) {
-			if (store.getters.TOKEN !== null) {
+			if (cookie.get('auth_token') !== null) {
 				getApartments();
 				next();
 			} else {

@@ -177,25 +177,22 @@
 </template>
 
 <script>
-	import store from "../../store";
+	import { mapState } from "vuex";
 
 	import sectionOneScheme from "./sectionOneScheme";
 	import sectionTwoScheme from "./sectionTwoScheme";
 	import sectionThreeScheme from "./sectionThreeScheme";
 
-	import { getApartmentsOnTheFloor } from "../../api/academ";
+	import { getApartmentsOnTheFloor } from "@/api/academ";
 
 	export default {
 		name: "SectionPopup",
-		store,
 		components: {
 			sectionOneScheme,
 			sectionTwoScheme,
 			sectionThreeScheme,
 		},
-		props: {
-			section: Number,
-		},
+		props: { section: Number },
 		data() {
 			return {
 				fullscreen: false,
@@ -205,12 +202,9 @@
 			};
 		},
 		computed: {
-			rooms: () => {
-				return store.getters.APARTMENT_TYPE;
-			},
-			apartmentsOnFloor: () => {
-				return store.getters.APARTMENTS_ON_FLOOR;
-			},
+			...mapState({
+				apartmentsOnFloor: (state) => state.crm.apartments_on_floor,
+			}),
 		},
 		methods: {
 			//* открытие и закрытие этой модалки
@@ -250,13 +244,11 @@
 					case 1: {
 						this.sectionCustom = 1;
 						let apartments = [];
-						store.getters.APARTMENTS_ON_FLOOR.forEach(
-							(apartment) => {
-								if (apartment.section === 1) {
-									apartments.push(apartment);
-								}
+						this.apartmentsOnFloor.forEach((apartment) => {
+							if (apartment.section === 1) {
+								apartments.push(apartment);
 							}
-						);
+						});
 						this.apartmentsInSection = apartments;
 
 						this.paintCompass("west");
@@ -265,13 +257,11 @@
 					case 2: {
 						this.sectionCustom = 2;
 						let apartments = [];
-						store.getters.APARTMENTS_ON_FLOOR.forEach(
-							(apartment) => {
-								if (apartment.section === 2) {
-									apartments.push(apartment);
-								}
+						this.apartmentsOnFloor.forEach((apartment) => {
+							if (apartment.section === 2) {
+								apartments.push(apartment);
 							}
-						);
+						});
 						this.apartmentsInSection = apartments;
 
 						this.paintCompass("north");
@@ -280,13 +270,11 @@
 					case 3: {
 						this.sectionCustom = 3;
 						let apartments = [];
-						store.getters.APARTMENTS_ON_FLOOR.forEach(
-							(apartment) => {
-								if (apartment.section === 3) {
-									apartments.push(apartment);
-								}
+						this.apartmentsOnFloor.forEach((apartment) => {
+							if (apartment.section === 3) {
+								apartments.push(apartment);
 							}
-						);
+						});
 						this.apartmentsInSection = apartments;
 
 						this.paintCompass("east");

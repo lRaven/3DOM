@@ -1,44 +1,47 @@
 import axios from "axios";
 import store from '@/store';
 
+import { sortArrayByNumberKey } from "@/js/sortArray";
+
+const baseURL = store.state.baseURL;
+
 async function getApartments() {
-	await axios.get(`${store.getters.BASEURL}/academ/apartment/`, {})
-		.then(response => {
-			if (response.status === 200) {
-				sortApartments(response.data, 'SET_APARTMENTS');
-			}
-		}).catch(err => { throw new Error(err) })
+	try {
+		const response = await axios.get(`${baseURL}/academ/apartment/`, {})
+
+		if (response.status === 200) {
+			const sort_result = sortArrayByNumberKey({
+				array: response.data,
+				key: 'number',
+				direction: 'ascending',
+			});
+			store.commit('SET_APARTMENTS', sort_result);
+		}
+	}
+	catch (err) { throw new Error(err) }
 }
 
 async function getApartmentsOnTheFloor(floor) {
 	try {
-		const response = await axios.get(`${store.getters.BASEURL}/academ/apartment`);
-
-		let apartments = [];
+		const response = await axios.get(`${baseURL}/academ/apartment/`);
 
 
-		response.data.forEach(element => {
-			if (element.floor === floor) {
-				apartments.push(element);
-			}
-		});
+		if (response.status === 200) {
+			const apartments = response.data.reduce((acc, current) => {
+				if (current.floor === floor) {
+					acc.push(current)
+				}
+				return acc
+			}, [])
 
-		sortApartments(apartments, 'SET_APARTMENTS_ON_FLOOR');
-	} catch { e => { throw new Error(e) } }
-
-}
-
-async function sortApartments(array, place) {
-	for (let index = 0; index < array.length - 1; index++) {
-		for (let i = 0; i < array.length - 1; i++) {
-			if (array[i].number > array[i + 1].number) {
-				let item = array[i];
-				array[i] = array[i + 1];
-				array[i + 1] = item;
-			}
+			const sort_result = sortArrayByNumberKey({
+				array: apartments,
+				key: 'number',
+				direction: 'ascending',
+			});
+			store.commit('SET_APARTMENTS_ON_FLOOR', sort_result);
 		}
-	}
-	store.commit(place, array);
+	} catch { e => { throw new Error(e) } }
 }
 
-export { getApartments, getApartmentsOnTheFloor, sortApartments }
+export { getApartments, getApartmentsOnTheFloor }

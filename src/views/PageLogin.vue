@@ -89,7 +89,6 @@
 					);
 					if (response.status === 200) {
 						this.saveUserData(response.data.auth_token);
-						this.$router.push("/cabinet");
 					}
 				} catch (err) {
 					throw new Error(err);
@@ -99,10 +98,11 @@
 			//* запись данных в vuex
 			saveUserData(token) {
 				this.$cookies.set("auth_token", token);
+				this.SET_TOKEN(this.$cookies.get("auth_token"));
 
 				this.SET_TAB("profile");
-				this.SET_TOKEN(this.$cookies.get("auth_token"));
 				this.getUser();
+				this.$router.push("/cabinet");
 			},
 		},
 	};

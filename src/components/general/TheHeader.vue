@@ -470,7 +470,7 @@
 				display: flex;
 				justify-content: center;
 				align-items: center;
-				color: $white;
+				color: $white !important;
 				background-color: $blue;
 				font-size: 1.4rem;
 				border-radius: 50%;

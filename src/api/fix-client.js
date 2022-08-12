@@ -1,10 +1,12 @@
 import store from '@/store';
+import axios from "axios";
+import cookie from 'vue-cookies';
 
-import axios from "axios"
+const baseURL = store.state.baseURL;
 
 
 function fixClient(first_name, last_name, patronymic, tel, info, apartment) {
-	axios.post(`${store.getters.BASEURL}/academ/client/`, {
+	axios.post(`${baseURL}/academ/client/`, {
 		name: first_name,
 		surname: last_name,
 		patronymic: patronymic,
@@ -12,7 +14,7 @@ function fixClient(first_name, last_name, patronymic, tel, info, apartment) {
 		info: info,
 		apartment: apartment,
 	}, {
-		headers: { Authorization: `token ${store.getters.TOKEN}` }
+		headers: { Authorization: `token ${cookie.get('auth_token')}` }
 	}).then(response => {
 		if (response.status === 201) {
 			console.log(response.data);

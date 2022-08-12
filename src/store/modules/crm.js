@@ -4,17 +4,7 @@ const state = () => ({
 	fix_status: '',
 })
 
-const getters = {
-	APARTMENT: state => {
-		return state.apartment;
-	},
-	APARTMENTS_ON_FLOOR: state => {
-		return state.apartments_on_floor;
-	},
-	FIX_STATUS: state => {
-		return state.fix_status;
-	}
-}
+const getters = {}
 
 const mutations = {
 	SET_APARTMENT(state, payload) {

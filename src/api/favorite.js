@@ -1,11 +1,14 @@
 import axios from "axios";
 import store from '@/store';
+import cookie from 'vue-cookies';
+
+const baseURL = store.state.baseURL;
 
 
 //* получение списка квартир избранных юзером и передача в функцию выборки
 function getFavoriteApartmentNumber() {
-	axios.get(`${store.getters.BASEURL}/academ/favorite/`, {
-		headers: { Authorization: `token ${store.getters.TOKEN}` }
+	axios.get(`${baseURL}/academ/favorite/`, {
+		headers: { Authorization: `token ${cookie.get('auth_token')}` }
 	})
 		.then(response => {
 			let apartments = [];
@@ -24,8 +27,8 @@ function getFavoriteApartmentNumber() {
 
 //* получение всех данных о квартирах
 function getFavoriteApartments(favorites) {
-	axios.get(`${store.getters.BASEURL}/academ/apartment/`, {
-		headers: { Authorization: `token ${store.getters.TOKEN}` }
+	axios.get(`${baseURL}/academ/apartment/`, {
+		headers: { Authorization: `token ${cookie.get('auth_token')}` }
 	})
 		.then(response => {
 			for (let i = 0; i < response.data.length; i++) {
@@ -47,8 +50,8 @@ function getFavoriteApartments(favorites) {
 
 //* удаление из избранного
 function removeFavorite(id) {
-	axios.delete(`${store.getters.BASEURL}/academ/favorite/${id}/`, {
-		headers: { Authorization: `token ${store.getters.TOKEN}` }
+	axios.delete(`${baseURL}/academ/favorite/${id}/`, {
+		headers: { Authorization: `token ${cookie.get('auth_token')}` }
 	})
 		.then(response => {
 			if (response.status === 204) {
@@ -63,11 +66,11 @@ function removeFavorite(id) {
 
 //* добавить в избранное
 function addFavorite(user, apartment) {
-	axios.post(`${store.getters.BASEURL}/academ/favorite/`,
+	axios.post(`${baseURL}/academ/favorite/`,
 		{
 			user: user,
 			apartment: apartment,
-		}, { headers: { Authorization: `token ${store.getters.TOKEN}` } },
+		}, { headers: { Authorization: `token ${cookie.get('auth_token')}` } },
 	)
 		.then(response => {
 			if (response.status === 201) {
@@ -79,8 +82,8 @@ function addFavorite(user, apartment) {
 }
 
 //*сортировка по-возрастанию (по цене или по площади)
-function sortFavoriteList(way = store.getters.SORT) {
-	let favoriteList = store.getters.FAVORITES;
+function sortFavoriteList(way = store.state.cabinet.sort) {
+	let favoriteList = store.state.cabinet.favorites;
 	switch (way) {
 		//* сортировка по цене (по-возрастанию)
 		case 'price': {

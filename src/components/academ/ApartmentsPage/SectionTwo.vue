@@ -62,31 +62,6 @@
 
 				return sectionFilter;
 			},
-
-			// apartments: () => {
-			// 	const apartments = store.getters.APARTMENTS;
-
-			// 	//* получение секции
-			// 	let sectionFilter = apartments.filter(
-			// 		(apart) => apart.section === 2
-			// 	);
-
-			// 	//* переворот по оси y
-			// 	sectionFilter = sectionFilter.slice().reverse();
-
-			// 	//* переворот по оси x
-			// 	let subarray = [];
-			// 	while (sectionFilter.length)
-			// 		subarray.push(sectionFilter.splice(0, 7).slice().reverse());
-			// 	sectionFilter.length = 0;
-			// 	for (let i of subarray) {
-			// 		for (let j of i) {
-			// 			sectionFilter.push(j);
-			// 		}
-			// 	}
-
-			// 	return sectionFilter;
-			// },
 		},
 		methods: {
 			showDialog() {

@@ -98,8 +98,6 @@
 </template>
 
 <script>
-	import store from "@/store";
-
 	import TheHeader from "@/components/academ/TheHeader";
 
 	import SectionOne from "@/components/academ/ApartmentsPage/SectionOne";
@@ -114,8 +112,9 @@
 
 	import TheFooter from "@/components/academ/TheFooter";
 
+	import { mapState } from "vuex";
+
 	export default {
-		store,
 		name: "PageCRM",
 		components: {
 			TheHeader,
@@ -131,6 +130,11 @@
 			MortgageCalculator,
 
 			TheFooter,
+		},
+		computed: {
+			...mapState({
+				apartments: (state) => state.academ.apartments,
+			}),
 		},
 		data: () => ({
 			floor: 4,
@@ -148,9 +152,9 @@
 			async showDialogApartment(id, section) {
 				document.querySelector("body").classList.add("locked");
 				this.isApartmentReview = true;
-				for (let i of store.getters.APARTMENTS) {
-					if (i.id === id) {
-						this.apartment = i;
+				for (let apartment of this.apartments) {
+					if (apartment.id === id) {
+						this.apartment = apartment;
 						this.section = section;
 					}
 				}

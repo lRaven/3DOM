@@ -74,7 +74,6 @@
 </template>
 
 <script>
-	import store from "@/store";
 	import axios from "axios";
 	import { mapState } from "vuex";
 
@@ -85,7 +84,6 @@
 
 	export default {
 		name: "TheFeedback",
-		store,
 		components: {
 			vInput,
 			vDropdown,
@@ -111,13 +109,14 @@
 		computed: {
 			...mapState({
 				user_id: (state) => state.cabinet.user.id,
+				baseURL: (state) => state.baseURL,
 			}),
 		},
 		methods: {
 			//*отправка сообщения в поддержку (на сервер)
 			postSupportMessage() {
 				axios
-					.post(`${store.getters.BASEURL}/academ/support/`, {
+					.post(`${this.baseURL}/academ/support/`, {
 						name: this.name,
 						phone_number: this.tel,
 						email: this.mail,

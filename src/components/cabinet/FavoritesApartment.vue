@@ -61,20 +61,19 @@
 </template>
 
 <script>
-	import store from "@/store";
 	import { removeFavorite } from "@/api/favorite";
+	import { mapState } from "vuex";
 
 	import vButton from "@/components/UI/general/v-button.vue";
 
 	export default {
 		name: "TheFavorite",
-		store,
 		components: { vButton },
 		props: { sorted: String },
 		computed: {
-			favorites: () => {
-				return store.getters.FAVORITES;
-			},
+			...mapState({
+				favorites: (state) => state.cabinet.favorites,
+			}),
 		},
 		methods: {
 			remove(id, sort) {

@@ -2,7 +2,7 @@
 	<div class="page-fix-client theme-container">
 		<the-header />
 		<main class="main">
-			<form class="fix" @submit="sendFixForm">
+			<form class="fix" @submit.prevent="sendFixForm">
 				<h1 class="fix__title">Зафиксировать клиента</h1>
 
 				<fieldset class="fix__row">
@@ -92,11 +92,10 @@
 
 	import { fixClient } from "@/api/fix-client";
 
-	import store from "@/store";
+	import { mapState } from "vuex";
 
 	export default {
 		name: "PageFixClient",
-		store,
 		components: {
 			TheHeader,
 
@@ -114,21 +113,19 @@
 			apartmentArea: String,
 		},
 		computed: {
-			status: () => {
-				return store.getters.FIX_STATUS;
-			},
+			...mapState({
+				status: (state) => state.crm.fix_status,
+			}),
 		},
-		data() {
-			return {
-				last_name: "",
-				first_name: "",
-				patronymic: "",
-				tel: "",
-				info: "",
+		data: () => ({
+			last_name: "",
+			first_name: "",
+			patronymic: "",
+			tel: "",
+			info: "",
 
-				isNotificationVisible: false,
-			};
-		},
+			isNotificationVisible: false,
+		}),
 		methods: {
 			checkRequiredInputs() {
 				const fixForm = document.querySelector(".fix");
@@ -158,9 +155,7 @@
 				});
 			},
 
-			sendFixForm(e) {
-				e.preventDefault();
-
+			sendFixForm() {
 				fixClient(
 					this.first_name,
 					this.last_name,
@@ -201,7 +196,7 @@
 		margin-top: 5rem;
 		margin-bottom: 5rem;
 		padding: 5rem 14rem 3.5rem 9rem;
-		background-color:$white;
+		background-color: $white;
 		box-shadow: 0 0 1rem rgba(0, 0, 0, 0.25);
 		color: $dark;
 		&__title {

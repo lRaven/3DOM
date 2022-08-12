@@ -1,10 +1,6 @@
 const state = () => ({ apartments: [], })
 
 const getters = {
-	APARTMENTS: state => {
-		return state.apartments;
-	},
-
 	SINGLE_ROOM: state => {
 		return state.apartments.filter(el => {
 			return el.floor === 4 & (el.type === 1 || el.type === 5)

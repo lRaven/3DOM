@@ -380,24 +380,21 @@
 </template>
 
 <script>
-	import store from "@/store";
+	import { mapState } from "vuex";
 
 	import { getApartmentsOnTheFloor } from "@/api/academ";
 
 	export default {
-		name: "PDF Page",
-		store,
-		props: {
-			apartment: Object,
-		},
+		name: "pdfPage",
+		props: { apartment: Object },
 		data: () => ({
 			number: 0,
 			section: [],
 		}),
 		computed: {
-			apartmentsOnFloor: () => {
-				return store.getters.APARTMENTS_ON_FLOOR;
-			},
+			...mapState({
+				apartmentsOnFloor: (state) => state.crm.apartments_on_floor,
+			}),
 		},
 		methods: {
 			//* проверка этажа

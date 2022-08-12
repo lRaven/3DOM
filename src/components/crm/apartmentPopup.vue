@@ -124,7 +124,12 @@
 							<div
 								class="apartment-popup__action"
 								v-if="isReserved === false"
-								@click="addReservation"
+								@click="
+									addReservation(
+										this.userID,
+										this.apartment.id
+									)
+								"
 							>
 								<p class="apartment-popup__action-description">
 									Забронировать
@@ -260,38 +265,37 @@
 </template>
 
 <script>
-	import store from "../../store";
-
 	import vButton from "./v-button.vue";
 	import pdfPage from "./pdfPage";
 
-	import { addReservation } from "../../api/booking";
-	import { addFavorite } from "../../api/favorite";
+	import { addReservation } from "@/api/booking";
+	import { addFavorite } from "@/api/favorite";
+
+	import { mapState } from "vuex";
 
 	export default {
 		name: "apartmentPopup",
-		store,
 		components: {
 			vButton,
 			pdfPage,
 		},
-		props: {
-			apartment: Object,
-		},
+		props: { apartment: Object },
 		computed: {
-			userID: () => {
-				return store.getters.USER.id;
-			},
+			...mapState({
+				userID: (state) => state.cabinet.user.id,
+				favorites: (state) => state.cabinet.favorites,
+				apartments: (state) => state.academ.apartments,
+			}),
 			isFavorite() {
 				let result = false;
-				store.getters.FAVORITES.forEach((favorite) => {
+				this.favorites.forEach((favorite) => {
 					if (this.apartment.id === favorite.id) result = true;
 				});
 				return result;
 			},
 			isReserved() {
 				let reserved;
-				store.getters.APARTMENTS.forEach((apartment) => {
+				this.apartments.forEach((apartment) => {
 					if (this.apartment.id === apartment.id) {
 						reserved = apartment.reserved;
 					}
@@ -299,14 +303,10 @@
 				return reserved;
 			},
 		},
-		watch: {},
-		data() {
-			return {
-				fullscreen: false,
-			};
-		},
+		data: () => ({ fullscreen: false }),
 
 		methods: {
+			addReservation,
 			closeDialogApartment() {
 				document.querySelector("body").classList.remove("locked");
 				this.$emit("closeDialogApartment");
@@ -319,12 +319,8 @@
 				w.print();
 			},
 
-			async addReservation() {
-				await addReservation(this.userID, this.apartment.id);
-			},
-
 			async addFavorite() {
-				await addFavorite(store.getters.USER.id, this.apartment.id);
+				await addFavorite(this.userID, this.apartment.id);
 			},
 		},
 	};

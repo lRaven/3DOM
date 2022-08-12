@@ -132,7 +132,7 @@
 				<router-link
 					to="/cabinet"
 					class="header__avatar"
-					@click="moveToCabinet()"
+					@click="SET_TAB('profile')"
 				>
 					<img :src="avatar" alt="avatar" />
 				</router-link>
@@ -143,36 +143,24 @@
 </template>
 
 <script>
-	import store from "@/store";
+	import { mapState, mapMutations } from "vuex";
 	import { scroll } from "@/js/scroll";
 
 	export default {
 		name: "TheHeader",
-		store,
-		data() {
-			return {
-				authorized: false,
-			};
-		},
+		data: () => ({ authorized: false }),
 		computed: {
-			avatar: () => {
-				return store.getters.USER.avatar;
-			},
+			...mapState({
+				avatar: (state) => state.cabinet.user.avatar,
+			}),
 		},
 		methods: {
-			//*переход к вкладке профиля
-			moveToCabinet() {
-				store.commit("SET_TAB", "profile");
-			},
-
-			//*скролл к элементу пл id
-			scroll(id) {
-				scroll(id);
-			},
+			...mapMutations(["SET_TAB"]),
+			scroll,
 
 			//*проверка, авторизован ли юзер
 			checkAuthorized() {
-				if (store.getters.TOKEN !== null) {
+				if (this.$cookies.get("auth_token") !== null) {
 					this.authorized = true;
 				} else {
 					this.authorized = false;
