@@ -6,6 +6,7 @@
 			<section class="page-catalog__list">
 				<catalog-filters />
 				<v-card-min
+					class="animate__animated animate__fadeInUp wow"
 					v-for="apartment in apartments"
 					:key="apartment.id"
 					:data="apartment"
