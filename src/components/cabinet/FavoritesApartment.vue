@@ -44,15 +44,11 @@
 			<p>{{ favorite.section }}</p>
 		</div>
 		<v-button
-			:text="'Получить консультацию'"
-			:type="'button'"
-			class="gray"
+			text="Получить консультацию"
+			type="button"
+			color="gray"
 		></v-button>
-		<v-button
-			:text="'Забронировать'"
-			:type="'button'"
-			class="blue"
-		></v-button>
+		<v-button text="Забронировать" type="button"></v-button>
 
 		<div class="favorite__link">
 			<img src="/img/icon/cabinet/link.svg" alt="" />
@@ -197,7 +193,7 @@
 			}
 		}
 	}
-	.button {
+	.v-button {
 		align-self: center;
 		border-radius: 1rem;
 		font-weight: 500;
