@@ -14,6 +14,4 @@ const login = async (username, password) => {
 	catch (err) { throw new Error(err) }
 }
 
-export {
-	login
-}
+export { login }

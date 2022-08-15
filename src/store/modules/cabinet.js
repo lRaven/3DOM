@@ -36,21 +36,18 @@ const mutations = {
 const actions = {
 	//* user
 	getUserId: async (context) => {
-		let request = await axios
-			.get(`${cookie.get('auth_token')}/auth/users/`, {
+		let response = await axios
+			.get(`${store.state.baseURL}/auth/users/`, {
 				headers: { Authorization: `token ${cookie.get('auth_token')}` },
 			})
-
-		if (request.status === 200) {
-			if (context.state.cabinet.user.username !== null) {
-				for (const key in request.data) {
-					if (
-						request.data[key].username ===
-						context.state.cabinet.user.username
-					) {
-						let id = request.data[key].id;
-						context.commit("SET_ID", id);
-					}
+		if (response.status === 200) {
+			for (const key in response.data) {
+				if (
+					response.data[key].username ===
+					store.state.cabinet.user.username
+				) {
+					const id = response.data[key].id;
+					context.commit("SET_ID", id);
 				}
 			}
 		}

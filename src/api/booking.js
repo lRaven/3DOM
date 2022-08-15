@@ -80,6 +80,7 @@ async function removeReservation(id) {
 
 async function addReservation(user, apartment) {
 	try {
+		console.log(user, apartment);
 		const response = axios.post(`${baseURL}/academ/reservation/`,
 			{ user: user, apartment: apartment, },
 			{ headers: { Authorization: `token ${cookie.get('auth_token')}` } })
