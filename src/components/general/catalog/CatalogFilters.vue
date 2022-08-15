@@ -56,16 +56,18 @@
 					v-if="tab === 'secondary'"
 				>
 					<p class="catalog-filters__apartments-title">Комнатность</p>
-					<v-checkbox
-						:items="[
-							{ id: 1, text: 'Студия' },
-							{ id: 2, text: '1' },
-							{ id: 3, text: '2' },
-							{ id: 4, text: '3' },
-							{ id: 5, text: '4+' },
-						]"
-						name="dates"
-					></v-checkbox>
+					<div class="catalog-filters__apartments-list">
+						<v-checkbox
+							:items="[
+								{ id: 1, text: 'Студия' },
+								{ id: 2, text: '1' },
+								{ id: 3, text: '2' },
+								{ id: 4, text: '3' },
+								{ id: 5, text: '4+' },
+							]"
+							name="dates"
+						></v-checkbox>
+					</div>
 				</div>
 
 				<div class="catalog-filters__areas">
@@ -125,6 +127,9 @@
 		&__type {
 			display: flex;
 			margin-bottom: 2rem;
+			@media (max-width: 767px) {
+				flex-direction: column;
+			}
 		}
 		&__tab {
 			&-btn {
@@ -135,6 +140,12 @@
 				font-size: 2.4rem;
 				border-bottom: 0.2rem solid $light-gray;
 				transition: border 0.3s ease;
+				@media (max-width: 767px) {
+					padding: 1rem 2rem;
+				}
+				@media (max-width: 540px) {
+					padding: 1rem;
+				}
 				&:hover {
 					border-color: rgba($blue, 0.6);
 				}
@@ -149,6 +160,15 @@
 			grid-template-columns: repeat(3, 1fr);
 			grid-gap: 2rem;
 			padding: 2rem;
+			@media (max-width: 1140px) {
+				grid-template-columns: repeat(2, 1fr);
+			}
+			@media (max-width: 767px) {
+				grid-template-columns: 1fr;
+			}
+			@media (max-width: 540px) {
+				padding: 1rem;
+			}
 		}
 		&__areas,
 		&__prices {
@@ -169,14 +189,18 @@
 			}
 		}
 		&__apartments {
-			display: grid;
-			grid-template-columns: repeat(5, max-content);
-			gap: 1.3rem 1.8rem;
 			&-title {
 				font-size: 1.5rem;
 				color: $gray;
 				font-weight: 600;
 				grid-column: 1/6;
+				margin-bottom: 1.8rem;
+			}
+			&-list {
+				display: flex;
+				align-items: center;
+				flex-wrap: wrap;
+				gap: 1.3rem;
 			}
 		}
 		&__submit {
@@ -184,15 +208,22 @@
 			align-items: center;
 			gap: 5rem;
 			padding: 2rem 0;
-			@media (max-width: 1240px) {
+			@media (max-width: 540px) {
+				padding: 1rem;
 			}
 			hr {
 				height: 0.2rem;
 				width: 100%;
 				background-color: $blue;
+				@media (max-width: 540px) {
+					display: none;
+				}
 			}
 			.v-button {
 				padding: 1.2rem 7rem;
+				@media (max-width: 767px) {
+					width: 100%;
+				}
 			}
 		}
 	}
