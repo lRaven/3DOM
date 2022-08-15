@@ -20,6 +20,18 @@
 
 			<div class="catalog-filters__filters">
 				<v-dropdown
+					description="Тип недвижимости"
+					selected="Выберите из списка"
+					v-if="tab === 'commercial'"
+					:options="[
+						'Торговые',
+						'Офисные',
+						'Индустриальные',
+						'Социальные',
+					]"
+				></v-dropdown>
+
+				<v-dropdown
 					description="Район"
 					selected="Выберите из списка"
 					:options="[
@@ -40,7 +52,8 @@
 				></v-input>
 
 				<div
-					class="catalog-filters__apartments animate__animated animate__fadeInUp wow"
+					class="catalog-filters__apartments"
+					v-if="tab === 'secondary'"
 				>
 					<p class="catalog-filters__apartments-title">Комнатность</p>
 					<v-checkbox

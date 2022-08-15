@@ -37,20 +37,6 @@
 			CatalogFilters,
 			vCardMin,
 		},
-		methods: {
-			incremento() {
-				let i = 0;
-
-				return function () {
-					return i++;
-				};
-			},
-		},
-		mounted() {
-			setInterval(() => {
-				// const res = this.incremento();
-			}, 500);
-		},
 	};
 </script>
 
