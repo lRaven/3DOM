@@ -16,7 +16,7 @@
 			>
 				{{ new_option === null ? selected : new_option }}
 			</p>
-			<div class="v-dropdown__arrow">
+			<div class="v-dropdown__arrow" :class="{ open: isDropdownOpen }">
 				<img src="/img/icon/general/arrow.svg" alt="" />
 			</div>
 		</div>
