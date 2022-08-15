@@ -119,7 +119,7 @@
 	@import "@/assets/scss/variables";
 
 	.catalog-filters {
-		box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.15);
+		box-shadow: $shadow;
 		border-radius: 1rem;
 		background-color: #fff;
 		&__type {

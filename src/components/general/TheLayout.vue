@@ -60,7 +60,7 @@
 			align-items: center;
 			justify-content: space-between;
 			background-color: $white;
-			box-shadow: 0 0 2rem rgba(0, 0, 0, 0.2);
+			box-shadow: $shadow;
 			border-radius: 3rem;
 			overflow: hidden;
 			padding: 8rem;

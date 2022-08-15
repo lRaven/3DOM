@@ -221,7 +221,7 @@
 
 		&__logout {
 			.button {
-				box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+				box-shadow: $shadow;
 				border-radius: 1rem;
 				width: 12.2rem;
 			}
@@ -234,7 +234,7 @@
 		}
 
 		&__item {
-			box-shadow: 0 0 1rem rgba(0, 0, 0, 0.25);
+			box-shadow: $shadow;
 			border-radius: 3rem;
 
 			&-header {

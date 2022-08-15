@@ -134,7 +134,7 @@
 		&__empty {
 			display: flex;
 			gap: 4rem;
-			box-shadow: 0 0 1rem rgba(0, 0, 0, 0.25);
+			box-shadow: $shadow;
 			border-radius: 3rem;
 			padding: 6rem;
 			&-text {

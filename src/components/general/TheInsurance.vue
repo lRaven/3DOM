@@ -183,7 +183,7 @@
 			grid-template-columns: repeat(2, 1fr);
 			grid-column-gap: 1.7rem;
 			grid-row-gap: 1rem;
-			box-shadow: 0 0 2rem rgba(0, 0, 0, 0.2);
+			box-shadow: $shadow;
 			border-radius: 3rem;
 			padding: 5rem 4rem 4rem 4rem;
 			min-width: 45rem;
@@ -217,7 +217,7 @@
 			height: 100%;
 			object-fit: cover;
 			border-radius: 3rem;
-			box-shadow: 0 0 2rem rgba(0, 0, 0, 0.2);
+			box-shadow: $shadow;
 		}
 	}
 

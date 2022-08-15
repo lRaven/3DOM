@@ -124,7 +124,7 @@
 			border-radius: 0.5rem;
 			overflow-y: auto;
 			background-color: $white;
-			box-shadow: 0 0.4rem 1.5rem rgba(0, 0, 0, 0.25);
+			box-shadow: $shadow;
 			transition: all 0.1s ease;
 			z-index: 2;
 		}

@@ -197,7 +197,7 @@
 		margin-bottom: 5rem;
 		padding: 5rem 14rem 3.5rem 9rem;
 		background-color: $white;
-		box-shadow: 0 0 1rem rgba(0, 0, 0, 0.25);
+		box-shadow: $shadow;
 		color: $dark;
 		&__title {
 			font-size: 2.4rem;

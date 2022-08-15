@@ -104,7 +104,7 @@
 			position: relative;
 			padding: 3rem 6rem 3rem 3rem;
 			border-radius: 2rem;
-			box-shadow: 0 0 2rem rgba(0, 0, 0, 0.25);
+			box-shadow: $shadow;
 			margin-bottom: 4.2rem;
 			max-width: 69rem;
 			z-index: 2;

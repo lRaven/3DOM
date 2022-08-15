@@ -145,7 +145,7 @@
 			font-weight: 500;
 			transition: all 0.1s ease;
 			&:hover {
-				border-color:$dark;
+				border-color: $dark;
 				transition: all 0.2s ease;
 			}
 			&.open {
@@ -178,7 +178,7 @@
 			border-radius: 0.5rem;
 			overflow: hidden;
 			background-color: $white;
-			box-shadow: 0 0.4rem 1.5rem rgba(0, 0, 0, 0.25);
+			box-shadow: $shadow;
 			transition: all 0.1s ease;
 
 			&.open {

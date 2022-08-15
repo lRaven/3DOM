@@ -91,7 +91,7 @@
 		position: relative;
 		padding: 4rem 7.4rem 4.5rem 7.4rem;
 		border-radius: 3rem;
-		box-shadow: 0 0 1rem rgba(0, 0, 0, 0.25);
+		box-shadow: $shadow;
 		+ .favorite {
 			margin-top: 2.3rem;
 		}
@@ -188,7 +188,7 @@
 
 			&:hover {
 				background-color: $middle-blue;
-				box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.25);
+				box-shadow: $shadow;
 				transition: all 0.3s ease;
 			}
 		}

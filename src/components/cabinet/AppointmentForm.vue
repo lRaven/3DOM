@@ -183,7 +183,7 @@
 
 	.appointment-form {
 		border-radius: 3rem;
-		box-shadow: 0 0 1rem rgba(0, 0, 0, 0.25);
+		box-shadow: $shadow;
 		&__header {
 			padding: 5.5rem 7.4rem;
 			border-bottom: 0.1rem solid #c4c4c4;

@@ -115,7 +115,7 @@
 			display: flex;
 			justify-content: space-between;
 			padding: 6rem;
-			box-shadow: 0 0 2rem rgba(0, 0, 0, 0.2);
+			box-shadow: $shadow;
 			color: $white;
 			border-radius: 3rem;
 			overflow: hidden;
@@ -252,7 +252,7 @@
 						display: block;
 						width: max-content;
 						background-color: #efba1c;
-						box-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.25);
+						box-shadow: $shadow;
 						&:nth-child(3) {
 							align-self: flex-end;
 							transform: translateX(-2rem);

@@ -31,7 +31,7 @@
 	.service {
 		padding: 3.5rem 7rem 5.2rem 7rem;
 		border-radius: 3rem;
-		box-shadow: 0 0 2rem rgba(0, 0, 0, 0.1);
+		box-shadow: $shadow;
 		overflow: hidden;
 		+ .service {
 			margin-top: 2.3rem;

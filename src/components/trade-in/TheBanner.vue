@@ -189,7 +189,7 @@
 			background-color: $white;
 			border-radius: 3rem;
 			padding: 4.4rem 9rem 5rem 9rem;
-			box-shadow: 0 0 2rem rgba(0, 0, 0, 0.2);
+			box-shadow:$shadow;
 		}
 		&__info {
 			text-align: center;

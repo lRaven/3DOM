@@ -322,7 +322,7 @@
 			border-radius: 2rem;
 			padding: 3rem 5rem 8.5rem 3.5rem;
 			width: 45rem;
-			box-shadow: 0 0 2rem rgb(0 0 0 / 20%);
+			box-shadow: $shadow;
 			* {
 				font-weight: 600;
 			}

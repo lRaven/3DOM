@@ -377,7 +377,7 @@
 		font-weight: 600;
 		font-size: 1.6rem;
 		border-radius: 0 0 3rem 3rem;
-		box-shadow: 0 0 1.5rem 0 rgb(130, 130, 130);
+		box-shadow: $shadow;
 		a,
 		span {
 			color: $dark;

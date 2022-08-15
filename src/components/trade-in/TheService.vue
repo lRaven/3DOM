@@ -76,7 +76,7 @@
 			height: fit-content;
 			padding: 6rem 6rem 7rem 6rem;
 			background-color: $white;
-			box-shadow: 0 0 2rem rgba(0, 0, 0, 0.2);
+			box-shadow: $shadow;
 			border-radius: 3rem;
 		}
 		&__header {

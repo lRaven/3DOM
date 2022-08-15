@@ -34,7 +34,7 @@
 		width: max-content;
 		font-size: 1.5rem;
 		font-weight: 600;
-		box-shadow: 0 0 2rem rgb(0 0 0 / 20%);
+		box-shadow: $shadow;
 		transition: all 0.2s ease;
 
 		&:active {
@@ -59,7 +59,7 @@
 			color: $white;
 
 			&:hover {
-				box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.25);
+				box-shadow: $shadow;
 				background-color: $middle-blue;
 				transition: all 0.2s ease;
 			}
@@ -72,7 +72,7 @@
 
 		&.gray {
 			background-color: $light-gray;
-			box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+			box-shadow: $shadow;
 			color: $blue;
 
 			&:hover {

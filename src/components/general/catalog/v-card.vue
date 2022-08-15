@@ -111,7 +111,7 @@
 			overflow: hidden;
 			max-height: 53rem;
 			border-radius: 4rem 4rem 0 0;
-			box-shadow: 0 0 2rem rgba(0, 0, 0, 0.2);
+			box-shadow: $shadow;
 			img {
 				border-radius: 3rem 3rem 0 0;
 				width: 100%;
@@ -124,7 +124,7 @@
 			transform: translateY(-5rem);
 			border-radius: 3rem;
 			z-index: 1;
-			box-shadow: 0 0 2rem rgba(0, 0, 0, 0.2);
+			box-shadow: $shadow;
 		}
 		&__title {
 			display: grid;

@@ -174,7 +174,7 @@
 			align-items: center;
 			margin-bottom: 6rem;
 			background-color: $white;
-			box-shadow: 0 0 2rem rgba(0, 0, 0, 0.2);
+			box-shadow: $shadow;
 			border-radius: 3rem;
 			padding: 6rem;
 		}
@@ -230,7 +230,7 @@
 			grid-area: 2/1/2/3;
 		}
 		&__benefit {
-			box-shadow: 0 0 2rem rgba(0, 0, 0, 0.2);
+			box-shadow: $shadow;
 			background-color: $white;
 			border-radius: 3rem;
 			padding: 3.4rem 3.6rem 4rem 3.6rem;

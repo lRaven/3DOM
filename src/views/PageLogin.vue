@@ -126,7 +126,7 @@
 		background-color: $white;
 		width: 61rem;
 		min-height: 65rem;
-		box-shadow: 0 0.2rem 1.5rem rgb(0 0 0 / 10%);
+		box-shadow: $shadow;
 
 		&-wrapper {
 			display: flex;
