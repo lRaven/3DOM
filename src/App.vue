@@ -7,6 +7,9 @@
 </template>
 
 <script>
+	import { mapActions } from "vuex";
+	import { getFavoriteApartmentNumber } from "@/api/favorite";
+
 	export default {
 		watch: {
 			$route(to) {
@@ -17,6 +20,17 @@
 				//* срабатывает при переходе по router-link
 				document.querySelector("body").classList.remove("locked");
 			},
+		},
+		methods: {
+			...mapActions(["getUser"]),
+			getFavoriteApartmentNumber,
+		},
+		mounted() {
+			this.getUser();
+
+			if (this.$cookies.get("auth_token")) {
+				getFavoriteApartmentNumber();
+			}
 		},
 	};
 </script>

@@ -27,7 +27,7 @@
 </template>
 
 <script>
-	import BookingApartment from "./BookingApartment.vue";
+	import BookingApartment from "@/components/cabinet/BookingApartment.vue";
 	import { getBookingList } from "@/api/booking";
 	import { mapState } from "vuex";
 

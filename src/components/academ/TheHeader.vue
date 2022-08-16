@@ -115,11 +115,11 @@
 			<div class="header__right" v-if="authorized === false">
 				<div class="header__auth">
 					<img src="/img/icon/academ/person.svg" alt="" />
-					<router-link to="/login" class="link">
+					<router-link :to="{ name: 'Login' }" class="link">
 						Войти <span class="link__full">в 3D-клуб</span>
 					</router-link>
 					<span>/</span>
-					<router-link to="/register" class="link">
+					<router-link :to="{ name: 'Registration' }" class="link">
 						Регистрация
 					</router-link>
 				</div>
@@ -129,11 +129,7 @@
 				</div>
 			</div>
 			<div class="header__right" v-if="authorized === true">
-				<router-link
-					to="/cabinet"
-					class="header__avatar"
-					@click="SET_TAB('profile')"
-				>
+				<router-link :to="{ name: 'Cabinet' }" class="header__avatar">
 					<img :src="avatar" alt="avatar" />
 				</router-link>
 			</div>

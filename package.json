@@ -15,6 +15,7 @@
     "vue": "^3.2.13",
     "vue-cookies": "^1.8.1",
     "vue-router": "^4.0.3",
+    "vue-toastification": "^2.0.0-rc.5",
     "vue3-click-away": "^1.2.4",
     "vuejs3-datepicker": "^1.0.5",
     "vuex": "^4.0.0"

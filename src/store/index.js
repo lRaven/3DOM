@@ -6,13 +6,9 @@ import CRM from '@/store/modules/crm'
 import Catalog from '@/store/modules/catalog';
 
 export default createStore({
-	state: { baseURL: `http://localhost:8001`, },
+	state: { baseURL: process.env.VUE_APP_BACKEND_BASEURL, },
 	getters: {},
-	mutations: {
-		SET_BASEURL(state, payload) {
-			state.baseURL = payload;
-		}
-	},
+	mutations: {},
 	actions: {},
 	modules: {
 		cabinet: Cabinet,

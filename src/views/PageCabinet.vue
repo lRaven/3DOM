@@ -2,13 +2,16 @@
 	<div class="page-cabinet theme-container">
 		<the-header :isCabinetVersion="true"></the-header>
 		<main class="page-cabinet__wrapper">
-			<aside class="page-cabinet__aside" ref="aside">
+			<aside
+				class="page-cabinet__aside"
+				:class="{ minimized: isNavMinimized }"
+			>
 				<the-navigation
 					@openPopup="openPopup"
-					@minimizeNav="minimizeNav"
-					@maximizeNav="maximizeNav"
+					:selectedTab="tab"
+					v-model="isNavMinimized"
 				></the-navigation>
-				<div class="page-cabinet__hint" v-if="isHintVisible">
+				<div class="page-cabinet__hint" v-if="!isNavMinimized">
 					<p>
 						Есть вопросы <br />
 						или предложения?
@@ -20,12 +23,16 @@
 					></v-button>
 				</div>
 			</aside>
-			<div class="page-cabinet__main">
-				<the-profile
-					class="animate__animated animate__fadeIn wow"
-					v-if="tab === 'profile'"
-				/>
-				<the-booking
+			<div
+				class="page-cabinet__main"
+				:class="{ maximized: isNavMinimized }"
+			>
+				<router-view v-slot="{ Component }">
+					<transition name="fade-up" mode="out-in">
+						<component :is="Component" />
+					</transition>
+				</router-view>
+				<!-- <the-booking
 					class="animate__animated animate__fadeIn wow"
 					v-if="tab === 'booking'"
 				/>
@@ -48,7 +55,7 @@
 				<the-feedback
 					class="animate__animated animate__fadeIn wow"
 					v-if="tab === 'feedback'"
-				></the-feedback>
+				></the-feedback> -->
 			</div>
 		</main>
 		<the-footer />
@@ -68,18 +75,16 @@
 
 	import TheNavigation from "@/components/cabinet/TheNavigation";
 	import vButton from "@/components/UI/general/v-button";
-	import TheProfile from "@/components/cabinet/TheProfile";
-	import TheBooking from "@/components/cabinet/TheBooking";
-	import TheFavorites from "@/components/cabinet/TheFavorites";
-	import TheAppointments from "@/components/cabinet/TheAppointments";
-	import TheServices from "@/components/cabinet/TheServices";
-	import TheBonuses from "@/components/cabinet/TheBonuses";
-	import TheFeedback from "@/components/cabinet/TheFeedback";
+	// import TheProfile from "@/components/cabinet/TheProfile";
+	// import TheBooking from "@/components/cabinet/TheBooking";
+	// import TheFavorites from "@/components/cabinet/TheFavorites";
+	// import TheAppointments from "@/components/cabinet/TheAppointments";
+	// import TheServices from "@/components/cabinet/TheServices";
+	// import TheBonuses from "@/components/cabinet/TheBonuses";
+	// import TheFeedback from "@/components/cabinet/TheFeedback";
 	import PopupKolotok from "@/components/general/PopupKolotok";
 
 	import TheFooter from "@/components/general/TheFooter";
-
-	import { getFavoriteApartmentNumber } from "@/api/favorite";
 
 	export default {
 		name: "PageCabinet",
@@ -89,67 +94,35 @@
 			TheNavigation,
 			vButton,
 
-			TheProfile,
-			TheBooking,
-			TheFavorites,
-			TheAppointments,
-			TheServices,
-			TheBonuses,
-			TheFeedback,
+			// TheProfile,
+			// TheBooking,
+			// TheFavorites,
+			// TheAppointments,
+			// TheServices,
+			// TheBonuses,
+			// TheFeedback,
 			PopupKolotok,
 
 			TheFooter,
 		},
-
+		watch: {
+			user_auth() {
+				if (this.user_auth === false)
+					this.$router.push({ name: "Login" });
+			},
+		},
 		data: () => ({
 			isPopupVisible: false,
-			isHintVisible: true,
+			isNavMinimized: false,
 		}),
-		computed: { ...mapState({ tab: (state) => state.cabinet.tab }) },
+		computed: {
+			...mapState({
+				tab: (state) => state.cabinet.tab,
+				user_auth: (state) => state.cabinet.user_auth,
+			}),
+		},
 
 		methods: {
-			//* функция скрытия и раскрытия навигационной панели
-			showHideNav() {
-				const aside = document.querySelector(".page-cabinet__aside");
-				const nav = document.querySelector(".navigation");
-				const arrow = document.querySelector(".navigation__hide");
-				const hint = document.querySelector(".page-cabinet__hint");
-
-				arrow.addEventListener("click", () => {
-					if (nav.classList.contains("minimize")) {
-						nav.removeAttribute("style");
-
-						setTimeout(() => {
-							nav.classList.remove("minimize");
-							hint.removeAttribute("style");
-							aside.classList.remove("minified");
-						}, 400);
-					} else {
-						nav.classList.add("minimize");
-						hint.setAttribute(
-							"style",
-							"transform: translateX(-20rem)"
-						);
-						setTimeout(() => {
-							nav.setAttribute("style", "padding-top: 6rem");
-							aside.classList.add("minified");
-						}, 300);
-					}
-				});
-			},
-
-			minimizeNav() {
-				setTimeout(() => {
-					this.$refs.aside.classList.add("minimize");
-					this.isHintVisible = false;
-				}, 300);
-			},
-
-			maximizeNav() {
-				this.$refs.aside.classList.remove("minimize");
-				this.isHintVisible = true;
-			},
-
 			openPopup() {
 				this.isPopupVisible = true;
 				document.body.classList.add("locked");
@@ -158,9 +131,6 @@
 				this.isPopupVisible = false;
 				document.body.classList.remove("locked");
 			},
-		},
-		mounted() {
-			getFavoriteApartmentNumber();
 		},
 	};
 </script>
@@ -179,7 +149,7 @@
 			padding-top: 8.5rem;
 			padding-bottom: 5rem;
 			display: grid;
-			grid-template-columns: max-content 1fr;
+			grid-template-columns: 1fr;
 		}
 
 		&__aside {
@@ -195,12 +165,13 @@
 			transition: all 0.3s ease;
 			-ms-overflow-style: none;
 			scrollbar-width: none;
+			grid-area: 1/1;
 
 			&::-webkit-scrollbar {
 				display: none;
 			}
 
-			&.minimize {
+			&.minimized {
 				width: calc(7rem);
 				transition: all 0.3s ease;
 			}
@@ -220,9 +191,14 @@
 		}
 
 		&__main {
-			padding: 6rem 2rem 17rem 2rem;
+			padding: 6rem 2rem 17rem 36rem;
 			width: 100%;
+			grid-area: 1/1;
 			transition: all 0.3s ease;
+
+			&.maximized {
+				padding-left: 9rem;
+			}
 		}
 	}
 </style>

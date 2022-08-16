@@ -40,13 +40,10 @@
 
 <script>
 	import vButton from "@/components/UI/general/v-button.vue";
-	import FavoritesApartment from "./FavoritesApartment.vue";
+	import FavoritesApartment from "@/components/cabinet/FavoritesApartment.vue";
 	import { mapState, mapMutations } from "vuex";
 
-	import {
-		getFavoriteApartmentNumber,
-		sortFavoriteList,
-	} from "@/api/favorite";
+	import { sortFavoriteList } from "@/api/favorite";
 
 	export default {
 		name: "TheFavorites",
@@ -71,7 +68,7 @@
 			FavoritesApartment,
 		},
 		methods: {
-			...mapMutations(["SET_SORT"]),
+			...mapMutations(["SET_SORT", "SET_TAB"]),
 			//* функция для открытия всплывающего окна
 			openPopup() {
 				const images = document.querySelectorAll(".favorite__layout");
@@ -110,9 +107,11 @@
 		beforeMount() {
 			sortFavoriteList("price");
 		},
+		created() {
+			this.SET_TAB("favorites");
+		},
 		mounted() {
 			this.openPopup();
-			getFavoriteApartmentNumber();
 
 			if (this.favorites) {
 				this.favorites_length = this.favorites.length;

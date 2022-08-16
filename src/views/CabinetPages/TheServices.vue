@@ -37,13 +37,11 @@
 </template>
 
 <script>
-	import ServicesItem from "./ServicesItem.vue";
+	import ServicesItem from "@/components/cabinet/ServicesItem.vue";
 
 	export default {
 		name: "TheServices",
-		components: {
-			ServicesItem,
-		},
+		components: { ServicesItem },
 	};
 </script>
 

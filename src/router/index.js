@@ -8,12 +8,17 @@ import PageFixClient from '@/views/PageFixClient';
 
 import PageLogin from '@/views/PageLogin';
 import PageRegistration from '@/views/PageRegistration';
+
 import PageCabinet from '@/views/PageCabinet';
+//* cabinet pages
+import TheProfile from '@/views/CabinetPages/TheProfile';
+import TheBooking from '@/views/CabinetPages/TheBooking';
+import TheFavorites from '@/views/CabinetPages/TheFavorites';
+
 
 import PageNotFound from '@/views/PageNotFound';
 
 import { getApartments, getApartmentsOnTheFloor } from "@/api/academ";
-import { getFavoriteApartmentNumber } from "@/api/favorite";
 
 import store from '@/store';
 import cookie from 'vue-cookies';
@@ -64,29 +69,26 @@ const routes = [
 		component: PageCRM,
 
 
-		beforeEnter(from, to, next) {
-			if (cookie.get('auth_token') === null) {
-				router.push('/login');
-			}
-			else {
-				const interval = setInterval(() => {
-					if (store.state.cabinet.user.is_superuser !== undefined) {
-						clearInterval(interval);
+		async beforeEnter(to, from, next) {
+			if (cookie.get('auth_token')) {
+				try {
+					const response = await store.dispatch('getUser');
 
-						if (store.state.cabinet.user.is_superuser === true || store.state.cabinet.user.role === 'AdminCRM') {
+					if (response.status === 200) {
+						if (response.data.is_superuser === true || response.data.role === 'AdminCRM') {
 							getApartments();
 							getApartmentsOnTheFloor(4);
 							next();
-						} else {
-							router.push('/');
 						}
 					}
-				}, 0);
+				}
+				catch (err) { throw new Error(err) }
 			}
 		},
 
 		meta: {
 			title: 'CRM',
+			requiresAuth: true,
 		},
 	},
 	{
@@ -95,22 +97,20 @@ const routes = [
 		component: PageFixClient,
 		props: true,
 
-		beforeEnter(from, to, next) {
-			if (cookie.get('auth_token') === null) {
-				router.push('/login');
-			}
-			else {
-				const interval = setInterval(() => {
-					if (store.state.cabinet.user.is_superuser !== undefined) {
-						clearInterval(interval);
+		async beforeEnter(to, from, next) {
+			if (cookie.get('auth_token')) {
+				try {
+					const response = await store.dispatch('getUser');
 
-						if (store.state.cabinet.user.is_superuser === true || store.state.cabinet.user.role === 'AdminCRM') {
+					if (response.status === 200) {
+						if (response.data.is_superuser === true || response.data.role === 'AdminCRM') {
+							getApartments();
+							getApartmentsOnTheFloor(4);
 							next();
-						} else {
-							router.push('/');
 						}
 					}
-				}, 0);
+				}
+				catch (err) { throw new Error(err) }
 			}
 		},
 
@@ -123,30 +123,14 @@ const routes = [
 		name: 'Login',
 		component: PageLogin,
 
-		beforeEnter(from, to, next) {
-			if (cookie.get('auth_token') === null) {
-				next()
-			} else {
-				next("/cabinet")
-			}
-		},
-
 		meta: {
 			title: 'Авторизация',
 		}
 	},
 	{
-		path: '/register',
-		name: 'Register',
+		path: '/registration',
+		name: 'Registration',
 		component: PageRegistration,
-
-		beforeEnter(from, to, next) {
-			if (cookie.get('auth_token') === null) {
-				next()
-			} else {
-				next("/cabinet")
-			}
-		},
 
 		meta: {
 			title: 'Регистрация',
@@ -157,19 +141,42 @@ const routes = [
 		name: 'Cabinet',
 		props: true,
 		component: PageCabinet,
-
-		beforeEnter(from, to, next) {
-			if (cookie.get('auth_token') !== null) {
-				getApartments();
-				next();
-			} else {
-				next("/login")
-			}
-		},
+		redirect: { name: 'Profile', requiresAuth: true, },
 
 		meta: {
 			title: 'Личный кабинет',
-		}
+		},
+
+		children: [
+			{
+				path: 'profile',
+				name: 'Profile',
+				component: TheProfile,
+				meta: {
+					title: 'Мой профиль',
+					requiresAuth: true,
+				},
+			},
+			{
+				path: 'booking',
+				name: 'Booking',
+				component: TheBooking,
+				meta: {
+					title: 'Бронирование',
+					requiresAuth: true,
+				},
+			},
+			{
+				path: 'favorites',
+				name: 'Favorites',
+				component: TheFavorites,
+				meta: {
+					title: 'Избранное',
+					requiresAuth: true,
+				},
+			},
+
+		],
 	},
 
 	{
@@ -191,11 +198,13 @@ const router = createRouter({
 	routes,
 })
 
-//* переход к странице с координатами x: 0, y: 0
-router.beforeEach(() => {
+router.beforeEach((to) => {
 	window.scrollTo(0, 0);
-	store.dispatch('getUser');
-	getFavoriteApartmentNumber();
+
+	if (to.meta.requiresAuth === true) {
+		if (cookie.get('auth_token')) { return true }
+		else { return { name: 'Login' } }
+	}
 })
 
 export default router

@@ -180,7 +180,10 @@
 						Войти <span class="link__full">в 3D-клуб</span>
 					</router-link>
 					<span>/</span>
-					<router-link to="/register" class="the-header__link">
+					<router-link
+						:to="{ name: 'Registration' }"
+						class="the-header__link"
+					>
 						Регистрация
 					</router-link>
 				</div>
@@ -189,9 +192,8 @@
 					v-if="isAuth"
 				>
 					<router-link
-						to="/cabinet"
+						:to="{ name: 'Favorites' }"
 						class="the-header__favorites"
-						@click="moveToFavorites()"
 					>
 						<img src="/img/icon/general/favorites.svg" alt="" />
 						<span
@@ -202,9 +204,8 @@
 						</span>
 					</router-link>
 					<router-link
-						to="/cabinet"
+						:to="{ name: 'Cabinet' }"
 						class="the-header__avatar"
-						@click="moveToCabinet()"
 					>
 						<img :src="avatar" alt="avatar" />
 					</router-link>
@@ -264,7 +265,7 @@
 	import vCheckbox from "@/components/academ/v-checkbox.vue";
 	import vButton from "@/components/UI/general/v-button.vue";
 
-	import { mapState, mapMutations } from "vuex";
+	import { mapState } from "vuex";
 
 	export default {
 		name: "TheHeader",
@@ -291,29 +292,10 @@
 			...mapState({
 				avatar: (state) => state.cabinet.user.avatar,
 				favorites: (state) => state.cabinet.favorites.length,
+				isAuth: (state) => state.cabinet.user_auth,
 			}),
-
-			isAuth() {
-				if (this.$cookies.get("auth_token")) {
-					return true;
-				} else {
-					return false;
-				}
-			},
 		},
 		methods: {
-			...mapMutations(["SET_TAB"]),
-
-			//* переход к вкладке избранного
-			moveToFavorites() {
-				this.SET_TAB("favorites");
-			},
-
-			//* переход к вкладке профиля
-			moveToCabinet() {
-				this.SET_TAB("profile");
-			},
-
 			//* скрытие или показ меню в мобилке
 			showHideMenu() {
 				const header = document.querySelector(".the-header");

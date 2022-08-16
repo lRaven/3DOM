@@ -48,7 +48,11 @@
 	import TheFooter from "@/components/general/TheFooter";
 
 	import { login } from "@/api/user";
-	import { mapMutations, mapActions } from "vuex";
+	import { getFavoriteApartmentNumber } from "@/api/favorite";
+	import { returnErrorMessages } from "@/js/returnErrorMessages";
+	import { mapActions } from "vuex";
+
+	import { useToast } from "vue-toastification";
 
 	export default {
 		name: "PageLogin",
@@ -78,9 +82,9 @@
 		}),
 
 		methods: {
-			...mapMutations(["SET_TAB", "SET_TOKEN"]),
 			...mapActions(["getUser"]),
-			//*логин
+
+			//* логин
 			async auth() {
 				try {
 					const response = await login(
@@ -89,6 +93,14 @@
 					);
 					if (response.status === 200) {
 						this.saveUserData(response.data.auth_token);
+						this.toast.success("Вход выполнен успешно");
+						console.log("Login successfully");
+					}
+					if (response.status === 400) {
+						const error_list = returnErrorMessages(response.data);
+						error_list.forEach((el) => {
+							this.toast.error(el);
+						});
 					}
 				} catch (err) {
 					throw new Error(err);
@@ -98,12 +110,15 @@
 			//* запись данных в vuex
 			saveUserData(token) {
 				this.$cookies.set("auth_token", token);
-				this.SET_TOKEN(this.$cookies.get("auth_token"));
 
-				this.SET_TAB("profile");
 				this.getUser();
-				this.$router.push("/cabinet");
+				getFavoriteApartmentNumber();
+				this.$router.push({ name: "Profile" });
 			},
+		},
+		setup() {
+			const toast = useToast();
+			return { toast };
 		},
 	};
 </script>

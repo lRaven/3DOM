@@ -3,7 +3,7 @@
 		<the-header />
 		<main class="main">
 			<section class="registration-wrapper center">
-				<form class="registration" @submit.prevent="registration">
+				<form class="registration" @submit.prevent="create_user">
 					<div class="registration__header">
 						<h1>Регистрация</h1>
 					</div>
@@ -48,13 +48,16 @@
 </template>
 
 <script>
-	import axios from "axios";
 	import { mapState } from "vuex";
+	import { registration } from "@/api/user";
+	import { returnErrorMessages } from "@/js/returnErrorMessages";
 
 	import TheHeader from "@/components/general/TheHeader";
 	import vInput from "@/components/cabinet/v-input";
 	import vButton from "@/components/UI/general/v-button";
 	import TheFooter from "@/components/general/TheFooter";
+
+	import { useToast } from "vue-toastification";
 
 	export default {
 		name: "PageRegistration",
@@ -90,24 +93,29 @@
 		}),
 
 		methods: {
-			//* регистрация нового юзера
-			registration() {
-				axios
-					.post(`${this.baseURL}/auth/users/`, {
-						email: this.user_data.email,
-						username: this.user_data.username,
-						password: this.user_data.password,
-					})
-					.then((response) => {
-						if (response.status === 201) {
-							//* редирект на страницу авторизации
-							this.$router.push("/login");
-						}
-					})
-					.catch((err) => {
-						console.error(err);
-					});
+			async create_user() {
+				try {
+					const response = await registration(this.user_data);
+					if (response.status === 201) {
+						this.$router.push({ name: "Login" });
+						this.toast.success(
+							"Вы успешно зарегистрировали свой аккаунт"
+						);
+					}
+					if (response.status === 400) {
+						const error_list = returnErrorMessages(response.data);
+						error_list.forEach((el) => {
+							this.toast.error(el);
+						});
+					}
+				} catch (err) {
+					throw new Error(err);
+				}
 			},
+		},
+		setup() {
+			const toast = useToast();
+			return { toast };
 		},
 	};
 </script>

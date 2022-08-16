@@ -10,10 +10,10 @@
 				</p>
 			</div>
 			<div class="profile__logout">
-				<form action="#" @submit.prevent="logout">
+				<form @submit.prevent="logging_out">
 					<v-button
-						:text="'Выйти'"
-						:type="'submit'"
+						text="Выйти"
+						type="submit"
 						class="gray"
 					></v-button>
 				</form>
@@ -89,7 +89,8 @@
 
 <script>
 	import { mapState, mapMutations } from "vuex";
-	import axios from "axios";
+	import { logout } from "@/api/user";
+
 	import vButton from "@/components/UI/general/v-button";
 
 	export default {
@@ -108,73 +109,37 @@
 		},
 		methods: {
 			...mapMutations([
-				"SET_TOKEN",
 				"SET_ID",
 				"SET_USER",
+				"SET_USER_AUTH",
 				"SET_TAB",
 				"SET_BOOKING",
 				"SET_FAVORITES",
 			]),
 			//* выход с аккаунта
-			logout() {
-				axios
-					.post(
-						`${this.baseURL}/auth/token/logout/`,
-						{},
-						{
-							headers: {
-								Authorization: `token ${this.$cookies.get(
-									"auth_token"
-								)}`,
-							},
-						}
-					)
-					.then((response) => {
-						if (response.status === 204) {
-							//*стереть из vuex,cookies данные юзера и редирект на страницу авторизации
-							this.$cookies.remove("auth_token");
+			async logging_out() {
+				try {
+					const response = await logout();
 
-							this.SET_TOKEN(null);
-							this.SET_ID(null);
-							this.SET_USER({});
-							this.SET_TAB(null);
-							this.SET_BOOKING([]);
-							this.SET_FAVORITES(null);
+					if (response.status === 204) {
+						//* стереть из vuex,cookies данные юзера
+						this.$cookies.remove("auth_token");
 
-							this.$router.push("/login");
-						}
-					})
-					.catch((err) => {
-						console.error(err);
-					});
+						this.SET_USER_AUTH(false);
+						this.SET_ID(null);
+						this.SET_USER({});
+						this.SET_TAB(null);
+						this.SET_BOOKING([]);
+						this.SET_FAVORITES(null);
+						console.log("Logout successfully");
+					}
+				} catch (err) {
+					throw new Error(err);
+				}
 			},
-
-			//*изменение имени и фамилии
-			setNames() {
-				axios
-					.put(
-						`${this.baseURL}/auth/users/me/`,
-						{
-							first_name: this.first_name,
-							last_name: this.last_name,
-						},
-						{
-							headers: {
-								Authorization: `token ${this.$cookies.get(
-									"auth_token"
-								)}`,
-							},
-						}
-					)
-					.then((response) => {
-						if (response.status === 200) {
-							console.log("norm");
-						}
-					})
-					.catch((err) => {
-						console.error(err.response.status);
-					});
-			},
+		},
+		created() {
+			this.SET_TAB("profile");
 		},
 	};
 </script>

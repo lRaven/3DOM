@@ -6,11 +6,12 @@ const baseURL = store.state.baseURL;
 
 
 //* получение списка квартир избранных юзером и передача в функцию выборки
-function getFavoriteApartmentNumber() {
-	axios.get(`${baseURL}/academ/favorite/`, {
-		headers: { Authorization: `token ${cookie.get('auth_token')}` }
-	})
-		.then(response => {
+async function getFavoriteApartmentNumber() {
+	try {
+		const response = await axios.get(`${baseURL}/academ/favorite/`, {
+			headers: { Authorization: `token ${cookie.get('auth_token')}` }
+		})
+		if (response.status === 200) {
 			let apartments = [];
 			for (const key in response.data) {
 				if (Object.hasOwnProperty.call(response.data, key)) {
@@ -19,18 +20,19 @@ function getFavoriteApartmentNumber() {
 				}
 			}
 			getFavoriteApartments(apartments);
-		})
-		.catch(err => {
-			console.log(err);
-		});
+		}
+	}
+	catch (err) { throw new Error(err) }
 }
 
 //* получение всех данных о квартирах
-function getFavoriteApartments(favorites) {
-	axios.get(`${baseURL}/academ/apartment/`, {
-		headers: { Authorization: `token ${cookie.get('auth_token')}` }
-	})
-		.then(response => {
+async function getFavoriteApartments(favorites) {
+	try {
+		const response = await axios.get(`${baseURL}/academ/apartment/`, {
+			headers: { Authorization: `token ${cookie.get('auth_token')}` }
+		})
+
+		if (response.status === 200) {
 			for (let i = 0; i < response.data.length; i++) {
 				for (let index = 0; index < favorites.length; index++) {
 					if (response.data[i].id === favorites[index].apartment) {
@@ -42,46 +44,41 @@ function getFavoriteApartments(favorites) {
 			}
 			store.commit('SET_FAVORITES', favorites);
 			sortFavoriteList();
-		})
-		.catch(err => {
-			console.log(err);
-		});
+		}
+	}
+	catch (err) { throw new Error(err) }
 }
 
 //* удаление из избранного
-function removeFavorite(id) {
-	axios.delete(`${baseURL}/academ/favorite/${id}/`, {
-		headers: { Authorization: `token ${cookie.get('auth_token')}` }
-	})
-		.then(response => {
-			if (response.status === 204) {
-				console.log(`Квартира под номером ${id} удалена из Избранного`);
-				getFavoriteApartmentNumber();
-			}
+async function removeFavorite(id) {
+	try {
+		const response = axios.delete(`${baseURL}/academ/favorite/${id}/`, {
+			headers: { Authorization: `token ${cookie.get('auth_token')}` }
 		})
-		.catch(err => {
-			console.log(err);
-		});
+
+		if (response.status === 204) {
+			console.log(`Квартира под номером ${id} удалена из Избранного`);
+			getFavoriteApartmentNumber();
+		}
+	}
+	catch (err) { throw new Error(err) }
 }
 
 //* добавить в избранное
-function addFavorite(user, apartment) {
-	axios.post(`${baseURL}/academ/favorite/`,
-		{
-			user: user,
-			apartment: apartment,
-		}, { headers: { Authorization: `token ${cookie.get('auth_token')}` } },
-	)
-		.then(response => {
-			if (response.status === 201) {
-				getFavoriteApartmentNumber();
-			}
-		}).catch(err => {
-			console.error(err);
-		})
+async function addFavorite(user, apartment) {
+	try {
+		const response = axios.post(`${baseURL}/academ/favorite/`,
+			{ user: user, apartment: apartment, },
+			{ headers: { Authorization: `token ${cookie.get('auth_token')}` } },
+		)
+		if (response.status === 201) {
+			getFavoriteApartmentNumber();
+		}
+	}
+	catch (err) { throw new Error(err) }
 }
 
-//*сортировка по-возрастанию (по цене или по площади)
+//* сортировка по-возрастанию (по цене или по площади)
 function sortFavoriteList(way = store.state.cabinet.sort) {
 	let favoriteList = store.state.cabinet.favorites;
 	switch (way) {

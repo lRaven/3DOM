@@ -19,7 +19,7 @@
 </template>
 
 <script>
-	import AppointmentForm from "./AppointmentForm.vue";
+	import AppointmentForm from "@/components/cabinet/AppointmentForm.vue";
 
 	export default {
 		name: "TheAppointments",
