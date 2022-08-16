@@ -1,26 +1,26 @@
 <template>
-	<div class="booking">
-		<div class="booking__header">
-			<h1 class="booking__title">Бронирование</h1>
-			<div class="booking__notification">
+	<div class="the-booking">
+		<div class="the-booking__header">
+			<h1 class="the-booking__title">Бронирование</h1>
+			<div class="the-booking__notification">
 				<div>
 					<img src="/img/icon/cabinet/notifications.svg" alt="" />
 				</div>
 				<h3
-					class="booking__notification-desc"
+					class="the-booking__notification-desc"
 					v-if="apartments === true"
 				>
 					У вас есть предварительное бронирование
 				</h3>
 				<h3
-					class="booking__notification-desc"
+					class="the-booking__notification-desc"
 					v-if="apartments === false"
 				>
 					У вас нет предварительных бронирований
 				</h3>
 			</div>
 		</div>
-		<div class="booking__body">
+		<div class="the-booking__body">
 			<booking-apartment></booking-apartment>
 		</div>
 	</div>
@@ -29,7 +29,7 @@
 <script>
 	import BookingApartment from "@/components/cabinet/BookingApartment.vue";
 	import { getBookingList } from "@/api/booking";
-	import { mapState } from "vuex";
+	import { mapState, mapMutations } from "vuex";
 
 	export default {
 		name: "TheBooking",
@@ -51,6 +51,8 @@
 			apartments: false,
 		}),
 		methods: {
+			...mapMutations(["SET_TAB"]),
+
 			openPopup() {
 				const images = document.querySelectorAll(".apartment__layout");
 				images.forEach((image) => {
@@ -69,6 +71,9 @@
 					});
 				});
 			},
+		},
+		created() {
+			this.SET_TAB("booking");
 		},
 		mounted() {
 			this.openPopup();
@@ -91,7 +96,7 @@
 <style lang="scss" scoped>
 	@import "@/assets/scss/variables";
 
-	.booking {
+	.the-booking {
 		color: $dark;
 
 		&__header {

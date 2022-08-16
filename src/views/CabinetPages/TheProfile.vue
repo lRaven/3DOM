@@ -1,15 +1,15 @@
 <template>
-	<div class="profile">
-		<h1 class="profile__title">Мой профиль</h1>
+	<div class="the-profile">
+		<h1 class="the-profile__title">Мой профиль</h1>
 
-		<div class="profile__header">
-			<div class="profile__me">
+		<div class="the-profile__header">
+			<div class="the-profile__me">
 				<img :src="avatar" alt="avatar" />
-				<p class="profile__full-name">
+				<p class="the-profile__full-name">
 					{{ last_name }} {{ first_name }}
 				</p>
 			</div>
-			<div class="profile__logout">
+			<div class="the-profile__logout">
 				<form @submit.prevent="logging_out">
 					<v-button
 						text="Выйти"
@@ -20,66 +20,72 @@
 			</div>
 		</div>
 
-		<div class="profile__main">
-			<div class="profile__item">
-				<div class="profile__item-header">
-					<h2 class="profile__item-title">ФИО</h2>
+		<div class="the-profile__main">
+			<div class="the-profile__item">
+				<div class="the-profile__item-header">
+					<h2 class="the-profile__item-title">ФИО</h2>
 				</div>
-				<div class="profile__item-body">
-					<div class="profile__item-row">
-						<p class="profile__item-key">Фамилия:</p>
-						<p class="profile__item-value profile__last-name">
+				<div class="the-profile__item-body">
+					<div class="the-profile__item-row">
+						<p class="the-profile__item-key">Фамилия:</p>
+						<p
+							class="the-profile__item-value the-profile__last-name"
+						>
 							{{ last_name }}
 						</p>
 					</div>
-					<div class="profile__item-row">
-						<p class="profile__item-key">Имя:</p>
-						<p class="profile__item-value profile__name">
+					<div class="the-profile__item-row">
+						<p class="the-profile__item-key">Имя:</p>
+						<p class="the-profile__item-value the-profile__name">
 							{{ first_name }}
 						</p>
 					</div>
-					<div class="profile__item-row">
-						<p class="profile__item-key">Отчество:</p>
-						<p class="profile__item-value profile__patronymic">
+					<div class="the-profile__item-row">
+						<p class="the-profile__item-key">Отчество:</p>
+						<p
+							class="the-profile__item-value the-profile__patronymic"
+						>
 							{{ patronymic }}
 						</p>
-						<span class="profile__item-change">Изменить</span>
+						<span class="the-profile__item-change">Изменить</span>
 					</div>
 				</div>
 			</div>
 
-			<div class="profile__item">
-				<div class="profile__item-body">
-					<div class="profile__item-row">
-						<p class="profile__item-key">Номер телефона:</p>
-						<p class="profile__item-value profile__tel">
+			<div class="the-profile__item">
+				<div class="the-profile__item-body">
+					<div class="the-profile__item-row">
+						<p class="the-profile__item-key">Номер телефона:</p>
+						<p class="the-profile__item-value the-profile__tel">
 							{{ phone_number }}
 						</p>
-						<span class="profile__item-change">Изменить</span>
+						<span class="the-profile__item-change">Изменить</span>
 					</div>
 				</div>
 			</div>
 
-			<div class="profile__item">
-				<div class="profile__item-body">
-					<div class="profile__item-row">
-						<p class="profile__item-key">Email:</p>
-						<p class="profile__item-value profile__email">
+			<div class="the-profile__item">
+				<div class="the-profile__item-body">
+					<div class="the-profile__item-row">
+						<p class="the-profile__item-key">Email:</p>
+						<p class="the-profile__item-value the-profile__email">
 							{{ email }}
 						</p>
-						<span class="profile__item-change">Изменить</span>
+						<span class="the-profile__item-change">Изменить</span>
 					</div>
 				</div>
 			</div>
 
-			<div class="profile__item">
-				<div class="profile__item-body">
-					<div class="profile__item-row">
-						<p class="profile__item-key">Пароль:</p>
-						<p class="profile__item-value profile__password">
+			<div class="the-profile__item">
+				<div class="the-profile__item-body">
+					<div class="the-profile__item-row">
+						<p class="the-profile__item-key">Пароль:</p>
+						<p
+							class="the-profile__item-value the-profile__password"
+						>
 							********
 						</p>
-						<span class="profile__item-change">Изменить</span>
+						<span class="the-profile__item-change">Изменить</span>
 					</div>
 				</div>
 			</div>
@@ -147,7 +153,7 @@
 <style lang="scss" scoped>
 	@import "@/assets/scss/variables";
 
-	.profile {
+	.the-profile {
 		color: $dark;
 
 		&__title {

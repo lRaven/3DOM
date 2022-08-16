@@ -36,6 +36,20 @@
 	transition: all 0.5s ease;
 }
 
+//* other animations
+.fade-up-fast-enter-active,
+.fade-up-fast-leave-active {
+	transition: all 0.2s ease;
+	transform: translateY(0);
+}
+
+.fade-up-fast-enter-from,
+.fade-up-fast-leave-to {
+	opacity: 0;
+	transform: translateY(3rem);
+	transition: all 0.2s ease;
+}
+
 .fade-down-enter-active,
 .fade-down-leave-active {
 	transition: all 0.5s ease;

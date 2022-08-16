@@ -21,9 +21,17 @@
 <script>
 	import AppointmentForm from "@/components/cabinet/AppointmentForm.vue";
 
+	import { mapMutations } from "vuex";
+
 	export default {
 		name: "TheAppointments",
 		components: { AppointmentForm },
+		methods: {
+			...mapMutations(["SET_TAB"]),
+		},
+		created() {
+			this.SET_TAB("appointments");
+		},
 	};
 </script>
 

@@ -1,17 +1,17 @@
 <template>
-	<div class="services">
-		<div class="services__header">
-			<h1 class="services__title">Услуги</h1>
-			<div class="services__notification">
+	<div class="the-services">
+		<div class="the-services__header">
+			<h1 class="the-services__title">Услуги</h1>
+			<div class="the-services__notification">
 				<div>
 					<img src="/img/icon/cabinet/notifications.svg" alt="" />
 				</div>
-				<h3 class="services__notification-desc">
+				<h3 class="the-services__notification-desc">
 					У вас нет подключенных услуг
 				</h3>
 			</div>
 		</div>
-		<div class="services__body">
+		<div class="the-services__body">
 			<services-item
 				:bg="'blue'"
 				:title="'Trade-in'"
@@ -39,16 +39,24 @@
 <script>
 	import ServicesItem from "@/components/cabinet/ServicesItem.vue";
 
+	import { mapMutations } from "vuex";
+
 	export default {
 		name: "TheServices",
 		components: { ServicesItem },
+		methods: {
+			...mapMutations(["SET_TAB"]),
+		},
+		created() {
+			this.SET_TAB("services");
+		},
 	};
 </script>
 
 <style lang="scss" scoped>
 	@import "@/assets/scss/variables";
 
-	.services {
+	.the-services {
 		color: $dark;
 		&__header {
 			margin-bottom: 3rem;

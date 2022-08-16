@@ -1,9 +1,9 @@
 <template>
-	<div class="bonuses">
-		<div class="bonuses__header">
-			<h1 class="bonuses__title">Бонусы</h1>
+	<div class="the-bonuses">
+		<div class="the-bonuses__header">
+			<h1 class="the-bonuses__title">Бонусы</h1>
 
-			<div class="bonuses__tabs">
+			<div class="the-bonuses__tabs">
 				<label
 					@click="
 						this.tab = 1;
@@ -27,10 +27,10 @@
 					<input type="radio" name="tabs" class="radio__real" />
 					<span class="radio__fake"> Персональные бонусы </span>
 				</label>
-				<span class="bonuses__line"></span>
+				<span class="the-bonuses__line"></span>
 			</div>
 		</div>
-		<div class="bonuses__body" v-if="tab === 1">
+		<div class="the-bonuses__body" v-if="tab === 1">
 			<services-item
 				class="animate__animated animate__fadeInUpBig animate__fast wow"
 				:bg="'blue'"
@@ -40,26 +40,26 @@
 				:btn="'white'"
 			></services-item>
 			<services-item
-				class="animate__animated animate__fadeInUpBig animate__fast wow bonuses__2"
+				class="animate__animated animate__fadeInUpBig animate__fast wow the-bonuses__2"
 				:bg="'gray'"
 				:title="'«Скидка до 110 000 рублей для онлайн-покупателей'"
 				:btn="'blue'"
 			></services-item>
 			<services-item
-				class="animate__animated animate__fadeInUpBig animate__fast wow bonuses__3"
+				class="animate__animated animate__fadeInUpBig animate__fast wow the-bonuses__3"
 				:bg="'blue'"
 				:title="'«Скидка до 110 000 рублей для онлайн-покупателей'"
 				:btn="'white'"
 			></services-item>
 			<services-item
-				class="animate__animated animate__fadeInUpBig animate__fast wow bonuses__4"
+				class="animate__animated animate__fadeInUpBig animate__fast wow the-bonuses__4"
 				:title="'«Госпрограмма 2020»: ипотека со ставкой 0,1%'"
 				:description1="`Программа позволяет приобрести недвижимость, не перегружая`"
 				:description2="`личный бюджет на выплату процентов!`"
 				:btn="'blue'"
 			></services-item>
 		</div>
-		<div class="bonuses__body" v-if="tab === 2">
+		<div class="the-bonuses__body" v-if="tab === 2">
 			<services-item
 				class="animate__animated animate__fadeInUpBig animate__fast wow"
 				:bg="'blue'"
@@ -69,19 +69,19 @@
 				:btn="'white'"
 			></services-item>
 			<services-item
-				class="animate__animated animate__fadeInUpBig animate__fast wow bonuses__2"
+				class="animate__animated animate__fadeInUpBig animate__fast wow the-bonuses__2"
 				:bg="'gray'"
 				:title="'«Скидка до 110 000 рублей для онлайн-покупателей'"
 				:btn="'blue'"
 			></services-item>
 			<services-item
-				class="animate__animated animate__fadeInUpBig animate__fast wow bonuses__3"
+				class="animate__animated animate__fadeInUpBig animate__fast wow the-bonuses__3"
 				:bg="'blue'"
 				:title="'«Скидка до 110 000 рублей для онлайн-покупателей'"
 				:btn="'white'"
 			></services-item>
 			<services-item
-				class="animate__animated animate__fadeInUpBig animate__fast wow bonuses__4"
+				class="animate__animated animate__fadeInUpBig animate__fast wow the-bonuses__4"
 				:title="'«Госпрограмма 2020»: ипотека со ставкой 0,1%'"
 				:description1="`Программа позволяет приобрести недвижимость, не перегружая`"
 				:description2="`личный бюджет на выплату процентов!`"
@@ -94,19 +94,16 @@
 <script>
 	import ServicesItem from "@/components/cabinet/ServicesItem.vue";
 
+	import { mapMutations } from "vuex";
+
 	export default {
 		name: "TheBonuses",
-		components: {
-			ServicesItem,
-		},
-		data() {
-			return {
-				tab: 1,
-			};
-		},
+		components: { ServicesItem },
+		data: () => ({ tab: 1 }),
 		methods: {
+			...mapMutations(["SET_TAB"]),
 			moveLine(way) {
-				const line = document.querySelector(".bonuses__line");
+				const line = document.querySelector(".the-bonuses__line");
 				switch (way) {
 					case 1: {
 						line.classList.remove("moved");
@@ -119,13 +116,16 @@
 				}
 			},
 		},
+		created() {
+			this.SET_TAB("bonuses");
+		},
 	};
 </script>
 
 <style lang="scss" scoped>
 	@import "@/assets/scss/variables";
 
-	.bonuses {
+	.the-bonuses {
 		color: $dark;
 		&__header {
 			margin-bottom: 3rem;

@@ -28,34 +28,10 @@
 				:class="{ maximized: isNavMinimized }"
 			>
 				<router-view v-slot="{ Component }">
-					<transition name="fade-up" mode="out-in">
+					<transition name="fade-up-fast" mode="out-in">
 						<component :is="Component" />
 					</transition>
 				</router-view>
-				<!-- <the-booking
-					class="animate__animated animate__fadeIn wow"
-					v-if="tab === 'booking'"
-				/>
-				<the-favorites
-					class="animate__animated animate__fadeIn wow"
-					v-if="tab === 'favorites'"
-				/>
-				<the-appointments
-					class="animate__animated animate__fadeIn wow"
-					v-if="tab === 'meetings'"
-				/>
-				<the-services
-					class="animate__animated animate__fadeIn wow"
-					v-if="tab === 'services'"
-				/>
-				<the-bonuses
-					class="animate__animated animate__fadeIn wow"
-					v-if="tab === 'bonuses'"
-				></the-bonuses>
-				<the-feedback
-					class="animate__animated animate__fadeIn wow"
-					v-if="tab === 'feedback'"
-				></the-feedback> -->
 			</div>
 		</main>
 		<the-footer />
@@ -75,13 +51,6 @@
 
 	import TheNavigation from "@/components/cabinet/TheNavigation";
 	import vButton from "@/components/UI/general/v-button";
-	// import TheProfile from "@/components/cabinet/TheProfile";
-	// import TheBooking from "@/components/cabinet/TheBooking";
-	// import TheFavorites from "@/components/cabinet/TheFavorites";
-	// import TheAppointments from "@/components/cabinet/TheAppointments";
-	// import TheServices from "@/components/cabinet/TheServices";
-	// import TheBonuses from "@/components/cabinet/TheBonuses";
-	// import TheFeedback from "@/components/cabinet/TheFeedback";
 	import PopupKolotok from "@/components/general/PopupKolotok";
 
 	import TheFooter from "@/components/general/TheFooter";
@@ -94,13 +63,6 @@
 			TheNavigation,
 			vButton,
 
-			// TheProfile,
-			// TheBooking,
-			// TheFavorites,
-			// TheAppointments,
-			// TheServices,
-			// TheBonuses,
-			// TheFeedback,
 			PopupKolotok,
 
 			TheFooter,

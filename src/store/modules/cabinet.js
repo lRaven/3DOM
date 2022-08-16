@@ -8,7 +8,7 @@ const state = () => ({
 	tabs_user: [
 		{ id: 1, icon: '/img/icon/cabinet/profile.svg', icon_selected: '/img/icon/cabinet/profile-selected.svg', description: 'Мой профиль', tab: 'profile', link: { name: 'Profile' } },
 		{ id: 2, icon: '/img/icon/cabinet/favorites.svg', icon_selected: '/img/icon/cabinet/favorites-selected.svg', description: 'Избранное', tab: 'favorites', link: { name: 'Favorites' } },
-		{ id: 3, icon: '/img/icon/cabinet/meetings.svg', icon_selected: '/img/icon/cabinet/meetings-selected.svg', description: 'Встречи', tab: 'meetings', link: { name: 'Meetings' } },
+		{ id: 3, icon: '/img/icon/cabinet/appointments.svg', icon_selected: '/img/icon/cabinet/appointments-selected.svg', description: 'Встречи', tab: 'appointments', link: { name: 'Appointments' } },
 		{ id: 4, icon: '/img/icon/cabinet/mortgage.svg', icon_selected: '/img/icon/cabinet/mortgage-selected.svg', description: 'Ипотека', tab: 'mortgage', link: { name: 'Mortgage' } },
 		{ id: 5, icon: '/img/icon/cabinet/services.svg', icon_selected: '/img/icon/cabinet/services-selected.svg', description: 'Услуги', tab: 'services', link: { name: 'Services' } },
 		{ id: 6, icon: '/img/icon/cabinet/bonuses.svg', icon_selected: '/img/icon/cabinet/bonuses-selected.svg', description: 'Бонусы', tab: 'bonuses', link: { name: 'Bonuses' } },
@@ -20,7 +20,7 @@ const state = () => ({
 		{ id: 2, icon: '/img/icon/cabinet/booking.svg', icon_selected: '/img/icon/cabinet/booking-selected.svg', description: 'Бронирование', tab: 'booking', link: { name: 'Booking' } },
 		{ id: 3, icon: '/img/icon/cabinet/favorites.svg', icon_selected: '/img/icon/cabinet/favorites-selected.svg', description: 'Избранное', tab: 'favorites', link: { name: 'Favorites' } },
 		{ id: 4, icon: '/img/icon/cabinet/documents.svg', icon_selected: '/img/icon/cabinet/documents-selected.svg', description: 'Документы', tab: 'documents', link: { name: 'Documents' } },
-		{ id: 5, icon: '/img/icon/cabinet/meetings.svg', icon_selected: '/img/icon/cabinet/meetings-selected.svg', description: 'Встречи', tab: 'meetings', link: { name: 'Meetings' } },
+		{ id: 5, icon: '/img/icon/cabinet/appointments.svg', icon_selected: '/img/icon/cabinet/appointments-selected.svg', description: 'Встречи', tab: 'appointments', link: { name: 'Appointments' } },
 		{ id: 6, icon: '/img/icon/cabinet/mortgage.svg', icon_selected: '/img/icon/cabinet/mortgage-selected.svg', description: 'Ипотека', tab: 'mortgage', link: { name: 'Mortgage' } },
 		{ id: 7, icon: '/img/icon/cabinet/services.svg', icon_selected: '/img/icon/cabinet/services-selected.svg', description: 'Услуги', tab: 'services', link: { name: 'Services' } },
 		{ id: 8, icon: '/img/icon/cabinet/bonuses.svg', icon_selected: '/img/icon/cabinet/bonuses-selected.svg', description: 'Бонусы', tab: 'bonuses', link: { name: 'Bonuses' } },

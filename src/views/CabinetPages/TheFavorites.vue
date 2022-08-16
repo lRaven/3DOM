@@ -1,9 +1,9 @@
 <template>
-	<div class="favorites">
-		<h1 class="favorites__title">Избранное</h1>
-		<div class="favorites__empty" v-if="favorites_length === 0">
+	<div class="the-favorites">
+		<h1 class="the-favorites__title">Избранное</h1>
+		<div class="the-favorites__empty" v-if="favorites_length === 0">
 			<img src="/img/cabinet/empty.svg" alt="" />
-			<div class="favorites__empty-text">
+			<div class="the-favorites__empty-text">
 				<p>Вы пока ничего не добавили в избранное</p>
 				<v-button
 					:text="'Выбрать планировку'"
@@ -12,27 +12,31 @@
 				></v-button>
 			</div>
 		</div>
-		<div class="favorites__header" v-if="favorites_length !== 0">
+		<div class="the-favorites__header" v-if="favorites_length !== 0">
 			<p>Сортировать по:</p>
-			<label class="favorites__sort">
+			<label class="the-favorites__sort">
 				<input
 					type="radio"
 					name="sort"
-					class="favorites__radio-real"
+					class="the-favorites__radio-real"
 					checked
 				/>
-				<span class="favorites__radio-fake" @click="sort('price')"
+				<span class="the-favorites__radio-fake" @click="sort('price')"
 					>Цене</span
 				>
 			</label>
-			<label class="favorites__sort">
-				<input type="radio" name="sort" class="favorites__radio-real" />
-				<span class="favorites__radio-fake" @click="sort('area')"
+			<label class="the-favorites__sort">
+				<input
+					type="radio"
+					name="sort"
+					class="the-favorites__radio-real"
+				/>
+				<span class="the-favorites__radio-fake" @click="sort('area')"
 					>Площади</span
 				>
 			</label>
 		</div>
-		<div class="favorites__body" v-if="favorites_length !== 0">
+		<div class="the-favorites__body" v-if="favorites_length !== 0">
 			<favorites-apartment />
 		</div>
 	</div>
@@ -123,7 +127,7 @@
 <style lang="scss" scoped>
 	@import "@/assets/scss/variables";
 
-	.favorites {
+	.the-favorites {
 		color: $dark;
 		&__title {
 			font-size: 3rem;
@@ -164,7 +168,7 @@
 		&__radio {
 			&-real {
 				display: none;
-				&:checked + .favorites__radio-fake {
+				&:checked + .the-favorites__radio-fake {
 					color: $blue;
 				}
 			}

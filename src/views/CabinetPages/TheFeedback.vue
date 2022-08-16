@@ -75,11 +75,11 @@
 
 <script>
 	import axios from "axios";
-	import { mapState } from "vuex";
+	import { mapState, mapMutations } from "vuex";
 
-	import vInput from "./v-input";
-	import vDropdown from "./v-dropdown";
-	import vTextarea from "./v-textarea";
+	import vInput from "@/components/UI/cabinet/v-input";
+	import vDropdown from "@/components/UI/cabinet/v-dropdown";
+	import vTextarea from "@/components/UI/cabinet/v-textarea";
 	import vButton from "@/components/UI/general/v-button";
 
 	export default {
@@ -113,6 +113,8 @@
 			}),
 		},
 		methods: {
+			...mapMutations(["SET_TAB"]),
+
 			//*отправка сообщения в поддержку (на сервер)
 			postSupportMessage() {
 				axios
@@ -136,6 +138,9 @@
 			// *TODO: Сделать валидацию формы
 			//*делает кнопку неактивной пока есть пустые поля ввода
 			validateForm() {},
+		},
+		created() {
+			this.SET_TAB("feedback");
 		},
 		mounted() {
 			this.validateForm();

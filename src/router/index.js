@@ -1,20 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import PageHome from '@/views/PageHome';
-import PageCatalog from '@/views/PageCatalog';
-import PageTradeIn from '@/views/PageTradeIn';
-import PageAcadem from '@/views/PageAcadem';
-import PageCRM from "@/views/PageCRM";
-import PageFixClient from '@/views/PageFixClient';
 
 import PageLogin from '@/views/PageLogin';
 import PageRegistration from '@/views/PageRegistration';
-
-import PageCabinet from '@/views/PageCabinet';
-//* cabinet pages
-import TheProfile from '@/views/CabinetPages/TheProfile';
-import TheBooking from '@/views/CabinetPages/TheBooking';
-import TheFavorites from '@/views/CabinetPages/TheFavorites';
-
 
 import PageNotFound from '@/views/PageNotFound';
 
@@ -35,7 +23,7 @@ const routes = [
 	{
 		path: '/catalog',
 		name: 'Catalog',
-		component: PageCatalog,
+		component: () => import(/* webpackChunkName: "catalog" */ '@/views/PageCatalog.vue'),
 		meta: {
 			title: 'Каталог',
 		},
@@ -43,7 +31,7 @@ const routes = [
 	{
 		path: '/trade-in',
 		name: 'TradeIn',
-		component: PageTradeIn,
+		component: () => import(/* webpackChunkName: "tradein" */ '@/views/PageTradeIn.vue'),
 		meta: {
 			title: 'Trade-in',
 		}
@@ -51,7 +39,7 @@ const routes = [
 	{
 		path: '/academ',
 		name: 'Academ',
-		component: PageAcadem,
+		component: () => import(/* webpackChunkName: "academ" */ '@/views/PageAcadem.vue'),
 		meta: {
 			title: 'Академический',
 		},
@@ -66,8 +54,7 @@ const routes = [
 	{
 		path: '/crm',
 		name: 'CRM',
-		component: PageCRM,
-
+		component: () => import(/* webpackChunkName: "crm" */ '@/views/PageCRM.vue'),
 
 		async beforeEnter(to, from, next) {
 			if (cookie.get('auth_token')) {
@@ -94,7 +81,7 @@ const routes = [
 	{
 		path: '/fix-client',
 		name: 'Fix Client',
-		component: PageFixClient,
+		component: () => import(/* webpackChunkName: "fixclient" */ '@/views/PageFixClient.vue'),
 		props: true,
 
 		async beforeEnter(to, from, next) {
@@ -139,8 +126,7 @@ const routes = [
 	{
 		path: '/cabinet',
 		name: 'Cabinet',
-		props: true,
-		component: PageCabinet,
+		component: () => import(/* webpackChunkName: "cabinet" */ '@/views/PageCabinet.vue'),
 		redirect: { name: 'Profile', requiresAuth: true, },
 
 		meta: {
@@ -151,7 +137,7 @@ const routes = [
 			{
 				path: 'profile',
 				name: 'Profile',
-				component: TheProfile,
+				component: () => import(/* webpackChunkName: "profile" */ '@/views/CabinetPages/TheProfile.vue'),
 				meta: {
 					title: 'Мой профиль',
 					requiresAuth: true,
@@ -160,7 +146,7 @@ const routes = [
 			{
 				path: 'booking',
 				name: 'Booking',
-				component: TheBooking,
+				component: () => import(/* webpackChunkName: "booking" */ '@/views/CabinetPages/TheBooking.vue'),
 				meta: {
 					title: 'Бронирование',
 					requiresAuth: true,
@@ -169,13 +155,66 @@ const routes = [
 			{
 				path: 'favorites',
 				name: 'Favorites',
-				component: TheFavorites,
+				component: () => import(/* webpackChunkName: "favorites" */ '@/views/CabinetPages/TheFavorites.vue'),
 				meta: {
 					title: 'Избранное',
 					requiresAuth: true,
 				},
 			},
-
+			{
+				path: 'appointments',
+				name: 'Appointments',
+				component: () => import(/* webpackChunkName: "appointments" */ '@/views/CabinetPages/TheAppointments.vue'),
+				meta: {
+					title: 'Встречи',
+					requiresAuth: true,
+				},
+			},
+			{
+				path: 'mortgage',
+				name: 'Mortgage',
+				component: () => import(/* webpackChunkName: "mortgage" */ '@/views/CabinetPages/TheMortgage.vue'),
+				meta: {
+					title: 'Ипотека',
+					requiresAuth: true,
+				},
+			},
+			{
+				path: 'services',
+				name: 'Services',
+				component: () => import(/* webpackChunkName: "services" */ '@/views/CabinetPages/TheServices.vue'),
+				meta: {
+					title: 'Услуги',
+					requiresAuth: true,
+				}
+			},
+			{
+				path: 'bonuses',
+				name: 'Bonuses',
+				component: () => import(/* webpackChunkName: "bonuses" */ '@/views/CabinetPages/TheBonuses.vue'),
+				meta: {
+					title: 'Бонусы',
+					requiresAuth: true,
+				}
+			},
+			{
+				path: 'feedback',
+				name: 'Feedback',
+				component: () => import(/* webpackChunkName: "feedback" */ '@/views/CabinetPages/TheFeedback.vue'),
+				meta: {
+					title: 'Обратная связь',
+					requiresAuth: true,
+				}
+			},
+			{
+				path: 'documents',
+				name: 'Documents',
+				component: () => import(/* webpackChunkName: "feedback" */ '@/views/CabinetPages/TheDocuments.vue'),
+				meta: {
+					title: 'Документы',
+					requiresAuth: true,
+				}
+			},
 		],
 	},
 

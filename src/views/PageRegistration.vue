@@ -53,7 +53,7 @@
 	import { returnErrorMessages } from "@/js/returnErrorMessages";
 
 	import TheHeader from "@/components/general/TheHeader";
-	import vInput from "@/components/cabinet/v-input";
+	import vInput from "@/components/UI/cabinet/v-input";
 	import vButton from "@/components/UI/general/v-button";
 	import TheFooter from "@/components/general/TheFooter";
 
