@@ -36,7 +36,7 @@ const logout = async () => {
 const change_user_data = async (new_data) => {
 	try {
 		const response =
-			await axios.put(`${this.baseURL}/auth/users/me/`,
+			await axios.put(`${baseURL}/auth/users/me/`,
 				{ ...new_data },
 				{ headers: { Authorization: `token ${this.$cookies.get("auth_token")}`, }, }
 			)

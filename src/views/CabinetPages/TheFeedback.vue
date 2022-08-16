@@ -5,68 +5,49 @@
 				<h1 class="the-feedback-form__title">Обратная связь</h1>
 			</div>
 			<div class="the-feedback-form__body">
-				<form @submit.prevent="postSupportMessage">
-					<div class="the-feedback-form__description">
-						<p>ФИО:</p>
-					</div>
+				<form @submit.prevent="send_message">
+					<p class="the-feedback-form__description">ФИО:</p>
+					<v-input type="text" v-model="form_data.name"></v-input>
+
+					<p class="the-feedback-form__description">
+						Номер телефона:
+					</p>
+
 					<v-input
-						:type="'text'"
-						pattern="^[А-Яа-яЁё\s]+$"
-						v-model="name"
+						type="tel"
+						v-model="form_data.phone_number"
 					></v-input>
 
-					<div class="the-feedback-form__description">
-						<p>Номер телефона:</p>
-					</div>
-					<v-input
-						:type="'tel'"
-						v-model="tel"
-						pattern="[\+]*[7-8]{1}\s?[\(]*9[0-9]{2}[\)]*\s?\d{3}[-]*\d{2}[-]*\d{2}"
-					></v-input>
+					<p class="the-feedback-form__description">Email:</p>
+					<v-input type="email" v-model="form_data.email"></v-input>
 
-					<div class="the-feedback-form__description">
-						<p>Email:</p>
-					</div>
-					<v-input reqiured :type="'email'" v-model="email"></v-input>
-
-					<div class="the-feedback-form__description">
-						<p>Тема обращения:</p>
-					</div>
+					<p class="the-feedback-form__description">
+						Тема обращения:
+					</p>
 					<v-dropdown
-						:selected="'Выберите тему*'"
-						:options="[
-							{ id: 1, value: 'Вопрос по покупке' },
-							{ id: 2, value: 'Вопрос по заселению' },
-							{ id: 3, value: 'Вопрос по стройке' },
-							{ id: 4, value: 'Вопрос по проживанию' },
-							{ id: 5, value: 'Обращение в службу безопасности' },
-							{ id: 6, value: 'Предложение о сотрудничестве' },
-							{ id: 7, value: 'Сообщить об ошибке на сайте' },
-							{ id: 8, value: 'Другое' },
-						]"
-						v-model="topic"
+						selected="Выберите тему*"
+						:options="topic_list"
+						v-model="form_data.topic_type"
 					></v-dropdown>
 
 					<v-textarea
 						placeholder="Напишите сообщение..."
 						maxlength="1000"
-						v-model="message"
+						v-model="form_data.message"
 					></v-textarea>
 
 					<v-button
-						:text="'Отправить'"
-						:class="buttonColor"
-						type="button"
+						text="Отправить"
+						type="submit"
 						ref="submit"
+						:disabled="!isFormValid"
 					></v-button>
 
-					<div class="the-feedback-form__bottom">
-						<p>
-							Нажимая кнопку «Отправить», вы подтверждаете своё
-							согласие <br />
-							на обработку <a>персональных данных</a>.
-						</p>
-					</div>
+					<p class="the-feedback-form__bottom">
+						Нажимая кнопку «Отправить», вы подтверждаете своё
+						согласие <br />
+						на обработку <a>персональных данных</a>.
+					</p>
 				</form>
 			</div>
 		</div>
@@ -74,13 +55,16 @@
 </template>
 
 <script>
-	import axios from "axios";
 	import { mapState, mapMutations } from "vuex";
+	import { send_support_message } from "@/api/support";
+	import { returnErrorMessages } from "@/js/returnErrorMessages";
 
 	import vInput from "@/components/UI/cabinet/v-input";
 	import vDropdown from "@/components/UI/cabinet/v-dropdown";
 	import vTextarea from "@/components/UI/cabinet/v-textarea";
 	import vButton from "@/components/UI/general/v-button";
+
+	import { useToast } from "vue-toastification";
 
 	export default {
 		name: "TheFeedback",
@@ -90,60 +74,78 @@
 			vTextarea,
 			vButton,
 		},
-		watch: {
-			// name() {
-			// 	if (this.name.length > 0) {
-			// 		this.buttonColor = "blue";
-			// 	} else this.buttonColor = "gray";
-			// },
-		},
 		data: () => ({
-			name: "",
-			tel: "",
-			email: "",
-			topic: "",
-			message: "",
-
-			buttonColor: "gray",
+			form_data: {
+				name: "",
+				phone_number: "",
+				email: "",
+				topic_type: "",
+				message: "",
+			},
+			topic_list: [
+				{ id: 1, value: "Вопрос по покупке" },
+				{ id: 2, value: "Вопрос по заселению" },
+				{ id: 3, value: "Вопрос по стройке" },
+				{ id: 4, value: "Вопрос по проживанию" },
+				{ id: 5, value: "Обращение в службу безопасности" },
+				{ id: 6, value: "Предложение о сотрудничестве" },
+				{ id: 7, value: "Сообщить об ошибке на сайте" },
+				{ id: 8, value: "Другое" },
+			],
 		}),
 		computed: {
 			...mapState({
 				user_id: (state) => state.cabinet.user.id,
 				baseURL: (state) => state.baseURL,
 			}),
+
+			isFormValid() {
+				if (
+					this.form_data.name.length > 0 &&
+					this.form_data.phone_number.length > 0 &&
+					this.form_data.email.length > 0 &&
+					this.form_data.topic_type !== "" &&
+					this.form_data.message.length > 0
+				) {
+					return true;
+				} else {
+					return false;
+				}
+			},
 		},
 		methods: {
 			...mapMutations(["SET_TAB"]),
 
-			//*отправка сообщения в поддержку (на сервер)
-			postSupportMessage() {
-				axios
-					.post(`${this.baseURL}/academ/support/`, {
-						name: this.name,
-						phone_number: this.tel,
-						email: this.mail,
-						topic_type: this.topic,
-						message: this.message,
+			//* отправка сообщения в поддержку
+			async send_message() {
+				try {
+					const response = await send_support_message({
+						...this.form_data,
 						user: this.user_id,
-					})
-					.then((response) => {
-						if (response.status === 201) {
-							console.log(response);
-						}
-					})
-					.catch((err) => {
-						console.error(err);
 					});
+					if (response.status === 201) {
+						this.toast.success(
+							"Спасибо за обращение, с вами скоро свяжутся"
+						);
+						console.log("support message send");
+					}
+					if (response.status === 400) {
+						const error_list = returnErrorMessages(response.data);
+						error_list.forEach((el) => {
+							this.toast.error(el);
+						});
+					}
+				} catch (err) {
+					throw new Error(err);
+				}
 			},
-			// *TODO: Сделать валидацию формы
-			//*делает кнопку неактивной пока есть пустые поля ввода
-			validateForm() {},
 		},
 		created() {
 			this.SET_TAB("feedback");
 		},
-		mounted() {
-			this.validateForm();
+		setup() {
+			const toast = useToast();
+			return { toast };
 		},
 	};
 </script>
@@ -166,7 +168,7 @@
 			padding: 4rem 6.5rem 10.5rem 7.4rem;
 			form {
 				display: grid;
-				grid-template-columns: 20rem 1fr 1fr;
+				grid-template-columns: 20rem 1fr;
 				grid-gap: 2rem;
 			}
 		}
@@ -178,20 +180,21 @@
 			font-weight: 500;
 		}
 		.v-input {
-			grid-column: 2/4;
+			grid-column: 2/3;
 			&:invalid {
 				border-color: $red;
 			}
 		}
 		.v-dropdown {
-			grid-column: 2/4;
+			grid-column: 2/3;
 			font-size: 1.8rem;
 		}
 		.v-textarea {
-			grid-column: 2/4;
+			grid-column: 2/3;
 			font-size: 1.8rem;
 			font-weight: 500;
 			border: 0.1rem solid #c4c4c4;
+			resize: none;
 			&:hover {
 				border-color: $dark;
 			}
@@ -200,7 +203,7 @@
 			}
 		}
 		&__bottom {
-			grid-column: 2/4;
+			grid-column: 2/3;
 			font-size: 1.8rem;
 			font-weight: 500;
 			line-height: 2.2rem;
@@ -218,7 +221,7 @@
 		border-radius: 1rem;
 		width: 100%;
 		height: 5.5rem;
-		grid-column: 2/4;
+		grid-column: 2/3;
 		&:disabled {
 			color: $dark;
 			background-color: $light-gray;
