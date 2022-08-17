@@ -9,24 +9,22 @@
 					<p>ФИО:</p>
 				</div>
 				<v-input
-					:type="'text'"
+					type="text"
 					v-model="full_name"
-					pattern="^[А-Яа-яЁё\s]+$"
 				></v-input>
 
 				<div class="appointment-form__description">
 					<p>Номер телефона:</p>
 				</div>
 				<v-input
-					:type="'tel'"
+					type="tel"
 					v-model="tel"
-					pattern="[\+]*[7-8]{1}\s?[\(]*9[0-9]{2}[\)]*\s?\d{3}[-]*\d{2}[-]*\d{2}"
 				></v-input>
 				<div class="appointment-form__description">
 					<p>Проект:</p>
 				</div>
 				<v-dropdown
-					:selected="'Выберите проект*'"
+					selected="Выберите проект*"
 					:options="[{ id: 1, value: 'АКАДЕМИЧЕСКИЙ' }]"
 					v-model="project"
 				></v-dropdown>

@@ -9,25 +9,21 @@
 					<legend class="fix__row-title">Данные клиента</legend>
 					<v-input
 						text="Фамилия *"
-						pattern="^[А-Яа-яЁё\s]+$"
 						type="text"
 						v-model="last_name"
 					></v-input>
 					<v-input
 						text="Имя *"
-						pattern="^[А-Яа-яЁё\s]+$"
 						type="text"
 						v-model="first_name"
 					></v-input>
 					<v-input
 						text="Отчество *"
-						pattern="^[А-Яа-яЁё\s]+$"
 						type="text"
 						v-model="patronymic"
 					></v-input>
 					<v-input
 						text="Номер телефона *"
-						pattern="[\+]*[7-8]{1}\s?[\(]*9[0-9]{2}[\)]*\s?\d{3}[-]*\d{2}[-]*\d{2}"
 						type="tel"
 						v-model="tel"
 					></v-input>

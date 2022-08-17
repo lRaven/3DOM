@@ -41,6 +41,7 @@
 	@import "@/assets/scss/animation";
 
 	body {
+		height: inherit;
 		&.locked {
 			overflow: hidden;
 		}
@@ -77,7 +78,6 @@
 	.theme-container {
 		display: flex;
 		flex-direction: column;
-		height: 100%;
 		min-height: 100vh;
 	}
 </style>

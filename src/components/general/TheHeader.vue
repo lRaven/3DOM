@@ -9,7 +9,7 @@
 					<img src="/img/icon/general/burger.svg" alt="" />
 				</div>
 				<router-link
-					to="/"
+					:to="{ name: 'Home' }"
 					class="the-header__logo animate__animated animate__fadeIn"
 				>
 					<img src="/img/icon/general/logo.svg" alt="logo" />
@@ -219,7 +219,11 @@
 		</div>
 	</header>
 
-	<div class="blur" @click="showHideMenu()"></div>
+	<div
+		class="blur"
+		:class="{ open: isPopupVisible }"
+		@click="showHideMenu()"
+	></div>
 	<transition>
 		<v-popup
 			v-if="isPopupVisible"

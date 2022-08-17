@@ -38,11 +38,23 @@ const change_user_data = async (new_data) => {
 		const response =
 			await axios.put(`${baseURL}/auth/users/me/`,
 				{ ...new_data },
-				{ headers: { Authorization: `token ${this.$cookies.get("auth_token")}`, }, }
+				{ headers: { Authorization: `token ${cookie.get("auth_token")}`, }, }
 			)
 		return response;
 	}
-	catch (err) { throw new Error(err) }
+	catch (err) { return err.response }
 }
 
-export { login, registration, logout, change_user_data }
+const change_password = async (new_password, current_password) => {
+	try {
+		const response =
+			await axios.post(`${baseURL}/auth/users/set_password/`,
+				{ new_password, current_password },
+				{ headers: { Authorization: `token ${cookie.get("auth_token")}`, }, }
+			)
+		return response;
+	}
+	catch (err) { return err.response }
+}
+
+export { login, registration, logout, change_user_data, change_password }
