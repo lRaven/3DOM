@@ -3,6 +3,7 @@
 		:type="type"
 		class="text-input"
 		:class="dark"
+		:value="modelValue"
 		:placeholder="placeholder"
 		@input="$emit('update:modelValue', $event.target.value)"
 	/>
@@ -12,6 +13,7 @@
 	export default {
 		name: "vInput",
 		props: {
+			modelValue: String,
 			placeholder: String,
 			type: String,
 			dark: String,

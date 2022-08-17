@@ -3,6 +3,8 @@
 		:type="type"
 		:placeholder="placeholder"
 		class="v-input"
+		:value="modelValue"
+		:class="{ transparent: isTransparent }"
 		@input="$emit('update:modelValue', $event.target.value)"
 	/>
 </template>
@@ -11,6 +13,11 @@
 	export default {
 		name: "vInput",
 		props: {
+			isTransparent: {
+				value: Boolean,
+				default: false,
+			},
+			modelValue: String,
 			type: String,
 			placeholder: String,
 		},
@@ -21,13 +28,19 @@
 	@import "@/assets/scss/variables";
 
 	.v-input {
-		height: 6.1rem;
-		border: 0.1rem solid #979797;
+		border: 0.1rem solid $middle-gray;
 		border-radius: 1rem;
-		padding: 1.5rem 3rem;
+		padding: 1.5rem 2rem;
 		font-size: 2.2rem;
 		transition: all 0.2s ease;
-
+		&.transparent {
+			border-color: transparent;
+			background-color: transparent;
+			padding: 0 2rem;
+			&:hover {
+				border-color: transparent;
+			}
+		}
 		&:invalid {
 			border-color: $red;
 			&:hover,

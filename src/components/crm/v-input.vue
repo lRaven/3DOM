@@ -4,8 +4,8 @@
 		<input
 			:type="type"
 			:placeholder="placeholder"
-			:pattern="pattern"
 			class="input"
+			:value="modelValue"
 			@input="$emit('update:modelValue', $event.target.value)"
 		/>
 	</div>
@@ -15,10 +15,10 @@
 	export default {
 		name: "vInput",
 		props: {
+			modelValue: String,
 			type: String,
 			text: String,
 			placeholder: String,
-			pattern: String,
 		},
 	};
 </script>

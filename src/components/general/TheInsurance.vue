@@ -78,18 +78,16 @@
 					для получения консультации
 				</p>
 				<academ-input
-					:placeholder="'Имя'"
-					:type="'text'"
-					:dark="'dark'"
+					placeholder="Имя"
+					type="text"
+					dark="dark"
 					v-model="name"
-					pattern="^[А-Яа-яЁё\s]+$"
 				></academ-input>
 				<academ-input
-					:placeholder="'Телефон'"
-					:type="'tel'"
-					:dark="'dark'"
+					placeholder="Телефон"
+					type="tel"
+					dark="dark"
 					v-model="tel"
-					pattern="[\+]*[7-8]{1}\s?[\(]*9[0-9]{2}[\)]*\s?\d{3}[-]*\d{2}[-]*\d{2}"
 				></academ-input>
 				<v-checkbox
 					v-model="privacyPolicy"

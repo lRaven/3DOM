@@ -13,13 +13,13 @@
 						и мы свяжемся с вами в ближайшее время
 					</p>
 					<academ-input
-						:type="'text'"
-						:placeholder="'Имя'"
+						type="text"
+						placeholder="Имя"
 						v-model="name"
 					></academ-input>
 					<academ-input
-						:type="'tel'"
-						:placeholder="'Телефон'"
+						type="tel"
+						placeholder="Телефон"
 						v-model="tel"
 					></academ-input>
 					<v-checkbox

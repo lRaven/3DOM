@@ -72,28 +72,26 @@
 					для получения консультации
 				</p>
 				<academ-input
-					:placeholder="'Имя'"
-					:type="'text'"
-					:dark="'dark'"
+					placeholder="Имя"
+					type="text"
+					dark="dark"
 					v-model="name"
-					pattern="^[А-Яа-яЁё\s]+$"
 				></academ-input>
 				<academ-input
-					:placeholder="'Телефон'"
-					:type="'tel'"
-					:dark="'dark'"
+					placeholder="Телефон"
+					type="tel"
+					dark="dark"
 					v-model="tel"
-					pattern="[\+]*[7-8]{1}\s?[\(]*9[0-9]{2}[\)]*\s?\d{3}[-]*\d{2}[-]*\d{2}"
 				></academ-input>
 				<v-checkbox
 					v-model="privacyPolicy"
 					text="Даю согласие на обработку персональных данных"
-					:dark="'dark'"
+					dark="dark"
 				></v-checkbox>
 				<v-button
 					class="blue"
-					:text="'Отправить заявку'"
-					:type="'button'"
+					text="Отправить заявку"
+					type="button"
 				></v-button>
 			</v-popup>
 		</transition>
@@ -189,7 +187,7 @@
 			background-color: $white;
 			border-radius: 3rem;
 			padding: 4.4rem 9rem 5rem 9rem;
-			box-shadow:$shadow;
+			box-shadow: $shadow;
 		}
 		&__info {
 			text-align: center;

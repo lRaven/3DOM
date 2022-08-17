@@ -51,12 +51,12 @@
 					и мы свяжемся с вами в ближайшее время.
 				</p>
 				<academ-input
-					:placeholder="'Имя'"
+					placeholder="Имя"
 					type="text"
 					v-model="name"
 				></academ-input>
 				<academ-input
-					:placeholder="'Телефон'"
+					placeholder="Телефон"
 					type="tel"
 					v-model="tel"
 				></academ-input>

@@ -3,6 +3,7 @@
 		<p class="textarea__description">{{ description }}</p>
 		<textarea
 			class="textarea"
+			:value="modelValue"
 			@input="$emit('update:modelValue', $event.target.value)"
 		></textarea>
 	</div>
@@ -12,6 +13,7 @@
 	export default {
 		name: "vTextarea",
 		props: {
+			modelValue: String,
 			description: String,
 		},
 	};

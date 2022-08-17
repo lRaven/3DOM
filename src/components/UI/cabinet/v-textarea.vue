@@ -1,7 +1,7 @@
 <template>
 	<textarea
-		name=""
 		class="v-textarea"
+		:value="modelValue"
 		@input="$emit('update:modelValue', $event.target.value)"
 	></textarea>
 </template>
@@ -9,6 +9,7 @@
 <script>
 	export default {
 		name: "vTextarea",
+		props: { modelValue: String },
 	};
 </script>
 

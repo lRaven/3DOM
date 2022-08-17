@@ -4,9 +4,9 @@
 
 		<div class="the-profile__header">
 			<div class="the-profile__me">
-				<img :src="avatar" alt="avatar" />
+				<img :src="userData.avatar" alt="avatar" />
 				<p class="the-profile__full-name">
-					{{ last_name }} {{ first_name }}
+					{{ userData.last_name }} {{ userData.first_name }}
 				</p>
 			</div>
 			<div class="the-profile__logout">
@@ -25,59 +25,81 @@
 				<div class="the-profile__item-header">
 					<h2 class="the-profile__item-title">ФИО</h2>
 				</div>
-				<div class="the-profile__item-body">
+				<form class="the-profile__item-body">
 					<div class="the-profile__item-row">
 						<p class="the-profile__item-key">Фамилия:</p>
-						<p
-							class="the-profile__item-value the-profile__last-name"
-						>
-							{{ last_name }}
-						</p>
+
+						<v-input
+							type="text"
+							:disabled="isNameFormDisabled"
+							v-model="userData.last_name"
+							:isTransparent="isNameFormDisabled"
+						></v-input>
 					</div>
 					<div class="the-profile__item-row">
 						<p class="the-profile__item-key">Имя:</p>
-						<p class="the-profile__item-value the-profile__name">
-							{{ first_name }}
-						</p>
+
+						<v-input
+							type="text"
+							:disabled="isNameFormDisabled"
+							v-model="userData.first_name"
+							:isTransparent="isNameFormDisabled"
+						></v-input>
 					</div>
 					<div class="the-profile__item-row">
 						<p class="the-profile__item-key">Отчество:</p>
-						<p
-							class="the-profile__item-value the-profile__patronymic"
+
+						<v-input
+							type="text"
+							:disabled="isNameFormDisabled"
+							v-model="userData.patronymic"
+							:isTransparent="isNameFormDisabled"
+						></v-input>
+						<button
+							type="button"
+							class="the-profile__item-change"
+							@click="
+								isNameFormDisabled
+									? (isNameFormDisabled = false)
+									: (isNameFormDisabled = true)
+							"
 						>
-							{{ patronymic }}
-						</p>
-						<span class="the-profile__item-change">Изменить</span>
+							{{ isNameFormDisabled ? "Изменить" : "Применить" }}
+						</button>
 					</div>
-				</div>
+				</form>
 			</div>
 
 			<div class="the-profile__item">
-				<div class="the-profile__item-body">
+				<form class="the-profile__item-body">
 					<div class="the-profile__item-row">
 						<p class="the-profile__item-key">Номер телефона:</p>
-						<p class="the-profile__item-value the-profile__tel">
-							{{ phone_number }}
-						</p>
+
+						<v-input
+							type="text"
+							:disabled="isNameFormDisabled"
+							v-model="userData.phone_number"
+							:isTransparent="isNameFormDisabled"
+						></v-input>
 						<span class="the-profile__item-change">Изменить</span>
 					</div>
-				</div>
+				</form>
 			</div>
 
 			<div class="the-profile__item">
-				<div class="the-profile__item-body">
+				<form class="the-profile__item-body">
 					<div class="the-profile__item-row">
 						<p class="the-profile__item-key">Email:</p>
 						<p class="the-profile__item-value the-profile__email">
-							{{ email }}
+							{{ user.email }}
 						</p>
 						<span class="the-profile__item-change">Изменить</span>
 					</div>
-				</div>
+				</form>
 			</div>
 
 			<div class="the-profile__item">
-				<div class="the-profile__item-body">
+				<form class="the-profile__item-body">
 					<div class="the-profile__item-row">
 						<p class="the-profile__item-key">Пароль:</p>
 						<p
@@ -87,7 +109,7 @@
 						</p>
 						<span class="the-profile__item-change">Изменить</span>
 					</div>
-				</div>
+				</form>
 			</div>
 		</div>
 	</div>
@@ -98,21 +120,33 @@
 	import { logout } from "@/api/user";
 
 	import vButton from "@/components/UI/general/v-button";
+	import vInput from "@/components/UI/cabinet/v-input.vue";
 
 	export default {
 		name: "TheProfile",
-		components: { vButton },
+		components: { vButton, vInput },
+		watch: {
+			user: {
+				handler() {
+					this.userData = { ...this.user };
+				},
+				deep: true,
+			},
+		},
 		computed: {
 			...mapState({
 				baseURL: (state) => state.baseURL,
-				avatar: (state) => state.cabinet.user.avatar,
-				last_name: (state) => state.cabinet.user.last_name,
-				first_name: (state) => state.cabinet.user.first_name,
-				patronymic: (state) => state.cabinet.user.patronymic,
-				phone_number: (state) => state.cabinet.user.phone_number,
-				email: (state) => state.cabinet.user.email,
+				user: (state) => state.cabinet.user,
 			}),
 		},
+		data: () => ({
+			isNameFormDisabled: true,
+			isPhoneFormDisabled: true,
+			isEmailFormDisabled: true,
+			isPasswordFormDisabled: true,
+
+			userData: {},
+		}),
 		methods: {
 			...mapMutations([
 				"SET_ID",
@@ -122,6 +156,7 @@
 				"SET_BOOKING",
 				"SET_FAVORITES",
 			]),
+
 			//* выход с аккаунта
 			async logging_out() {
 				try {
@@ -146,6 +181,7 @@
 		},
 		created() {
 			this.SET_TAB("profile");
+			this.userData = { ...this.user };
 		},
 	};
 </script>
@@ -229,7 +265,8 @@
 
 			&-row {
 				display: grid;
-				grid-template-columns: 1fr 1fr 1fr;
+				grid-template-columns: repeat(3, 1fr);
+				align-items: center;
 				font-size: 1.8rem;
 				font-weight: 500;
 				min-height: 2.2rem;
@@ -250,6 +287,8 @@
 				color: $blue;
 				width: max-content;
 				font-weight: 600;
+				background-color: transparent;
+				font-size: inherit;
 
 				&::after {
 					content: "";
@@ -271,16 +310,15 @@
 			}
 		}
 
-		&__name {
-		}
-
-		&__patronymic {
-		}
-
-		&__last-name {
-		}
-
-		&__tel {
+		&__input {
+			background-color: transparent;
+			border: 0.1rem solid $middle-gray;
+			border-radius: 0.6rem;
+			padding: 1rem 2rem;
+			font-size: inherit;
+			&:disabled {
+				// border: none;
+			}
 		}
 	}
 </style>

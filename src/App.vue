@@ -25,9 +25,10 @@
 			...mapActions(["getUser"]),
 			getFavoriteApartmentNumber,
 		},
-		mounted() {
+		created() {
 			this.getUser();
-
+		},
+		mounted() {
 			if (this.$cookies.get("auth_token")) {
 				getFavoriteApartmentNumber();
 			}
