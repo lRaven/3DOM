@@ -41,7 +41,7 @@
 	@import "@/assets/scss/animation";
 
 	body {
-		height: inherit;
+		height: max-content;
 		&.locked {
 			overflow: hidden;
 		}

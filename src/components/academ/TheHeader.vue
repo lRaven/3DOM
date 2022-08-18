@@ -112,7 +112,7 @@
 					</a>
 				</nav>
 			</div>
-			<div class="header__right" v-if="authorized === false">
+			<div class="header__right" v-show="authorized === false">
 				<div class="header__auth">
 					<img src="/img/icon/academ/person.svg" alt="" />
 					<router-link :to="{ name: 'Login' }" class="link">
@@ -128,7 +128,7 @@
 					<span>+7 (8442) 60-05-51</span>
 				</div>
 			</div>
-			<div class="header__right" v-if="authorized === true">
+			<div class="header__right" v-show="authorized === true">
 				<router-link :to="{ name: 'Cabinet' }" class="header__avatar">
 					<img :src="avatar" alt="avatar" />
 				</router-link>

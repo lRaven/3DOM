@@ -1,7 +1,7 @@
 <template>
 	<div class="the-favorites">
 		<h1 class="the-favorites__title">Избранное</h1>
-		<div class="the-favorites__empty" v-if="favorites_length === 0">
+		<div class="the-favorites__empty" v-show="favorites_length === 0">
 			<img src="/img/cabinet/empty.svg" alt="" />
 			<div class="the-favorites__empty-text">
 				<p>Вы пока ничего не добавили в избранное</p>
@@ -12,7 +12,7 @@
 				></v-button>
 			</div>
 		</div>
-		<div class="the-favorites__header" v-if="favorites_length !== 0">
+		<div class="the-favorites__header" v-show="favorites_length !== 0">
 			<p>Сортировать по:</p>
 			<label class="the-favorites__sort">
 				<input
@@ -36,7 +36,7 @@
 				>
 			</label>
 		</div>
-		<div class="the-favorites__body" v-if="favorites_length !== 0">
+		<div class="the-favorites__body" v-show="favorites_length !== 0">
 			<favorites-apartment />
 		</div>
 	</div>

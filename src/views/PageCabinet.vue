@@ -2,8 +2,8 @@
 	<div class="page-cabinet theme-container">
 		<the-header :isCabinetVersion="true"></the-header>
 		<main class="page-cabinet__wrapper">
-			<aside
-				class="page-cabinet__aside"
+			<div
+				class="page-cabinet__left-panel"
 				:class="{ minimized: isNavMinimized }"
 			>
 				<the-navigation
@@ -11,7 +11,7 @@
 					:selectedTab="tab"
 					v-model="isNavMinimized"
 				></the-navigation>
-				<div class="page-cabinet__hint" v-if="!isNavMinimized">
+				<div class="page-cabinet__hint" v-show="!isNavMinimized">
 					<p>
 						Есть вопросы <br />
 						или предложения?
@@ -22,7 +22,7 @@
 						class="gray"
 					></v-button>
 				</div>
-			</aside>
+			</div>
 			<div
 				class="page-cabinet__main"
 				:class="{ maximized: isNavMinimized }"
@@ -114,7 +114,7 @@
 			grid-template-columns: 1fr;
 		}
 
-		&__aside {
+		&__left-panel {
 			position: sticky;
 			left: 0;
 			top: 8.5rem;

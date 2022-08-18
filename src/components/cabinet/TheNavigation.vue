@@ -1,6 +1,6 @@
 <template>
 	<div class="the-navigation" :class="{ minimized: isNavMinimized }">
-		<h1 class="the-navigation__title" v-if="!isNavMinimized">
+		<h1 class="the-navigation__title" v-show="!isNavMinimized">
 			Личный кабинет
 		</h1>
 		<ul class="the-navigation__list" v-if="currentTabs === 'admin'">
@@ -62,7 +62,7 @@
 					/>
 				</div>
 				<p
-					v-if="!isNavMinimized"
+					v-show="!isNavMinimized"
 					:class="`the-navigation__description${
 						selectedTab === tab.tab ? '-bold' : ''
 					}`"

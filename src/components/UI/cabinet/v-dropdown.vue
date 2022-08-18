@@ -1,30 +1,52 @@
 <template>
-	<div class="v-dropdown" v-click-away="closeDropdown">
+	<div
+		class="v-dropdown"
+		v-click-away="closeDropdown"
+		:class="options.length === 0 || isDisabled ? 'disabled' : ''"
+	>
 		<div
 			class="v-dropdown__selected"
 			@click="
-				isDropdownOpened === false ? openDropdown() : closeDropdown()
+				isDropdownOpen === false
+					? (isDropdownOpen = true)
+					: (isDropdownOpen = false)
 			"
 		>
-			<p ref="selected">{{ selected }}</p>
-			<div class="v-dropdown__arrow" ref="arrow">
+			<p
+				class="v-dropdown__selected-text"
+				:class="{ selected: selectedText }"
+			>
+				{{ selectedText === null ? placeholder : selectedText }}
+			</p>
+			<div class="v-dropdown__arrow" :class="{ open: isDropdownOpen }">
 				<img src="/img/icon/general/arrow.svg" alt="arrow" />
 			</div>
 		</div>
 		<transition name="fade-up" mode="out-in">
-			<div class="v-dropdown__content" v-if="isDropdownOpened">
-				<div
+			<ul class="v-dropdown__content" v-show="isDropdownOpen">
+				<li
 					class="v-dropdown__item"
 					v-for="item in options"
 					:key="item.id"
 					@click="
-						$emit('update:modelValue', item.id);
-						setOption(item);
+						selectValue(
+							item,
+							`${showedValuePrefix ? showedValuePrefix : ''}${
+								item[showedValue]
+							}`
+						)
 					"
+					:title="`${showedValuePrefix ? showedValuePrefix : ''}${
+						item[showedValue]
+					}`"
 				>
-					{{ item.value || item.number }}
-				</div>
-			</div>
+					{{
+						`${showedValuePrefix ? showedValuePrefix : ""}${
+							item[showedValue]
+						}`
+					}}
+				</li>
+			</ul>
 		</transition>
 	</div>
 </template>
@@ -35,31 +57,51 @@
 	export default {
 		name: "vDropdown",
 		props: {
-			selected: String,
+			isDisabled: {
+				value: Boolean,
+				default: false,
+			},
+			placeholder: String,
 			options: Array,
+
+			sendValue: {
+				value: [String, Number],
+				default: "id",
+			},
+			getValue: [String, Number, Object],
+
+			showedValue: {
+				value: String,
+				default: "description",
+			},
+			showedValuePrefix: String,
 		},
-		data() {
-			return {
-				isDropdownOpened: false,
-				textValue: this.selected,
-				value: null,
-			};
+		watch: {
+			getValue: {
+				handler() {
+					if (Boolean(this.getValue) === false) {
+						this.selectedEl = null;
+						this.selectedText = null;
+					}
+				},
+				deep: true,
+			},
 		},
+		data: () => ({
+			isDropdownOpen: false,
+			selectedText: null,
+			selectedEl: null,
+		}),
 		methods: {
-			openDropdown() {
-				this.isDropdownOpened = true;
-				this.$refs.arrow.classList.add("open");
-			},
-
 			closeDropdown() {
-				this.isDropdownOpened = false;
-				this.$refs.arrow.classList.remove("open");
+				this.isDropdownOpen = false;
 			},
 
-			//* запись в selected значения выбранного элемента
-			setOption(value) {
-				this.$refs.selected.textContent = value.value || value.number;
-				this.value = value.id;
+			selectValue(sendValue, text) {
+				this.selectedText = text;
+				this.selectedEl = { ...sendValue };
+
+				this.$emit("update:modelValue", sendValue);
 				this.closeDropdown();
 			},
 		},
@@ -98,6 +140,11 @@
 			}
 			&.open {
 				transition: all 0.2s ease;
+			}
+			&-text {
+				&.selected {
+					color: $dark;
+				}
 			}
 		}
 		&__arrow {

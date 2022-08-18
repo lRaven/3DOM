@@ -8,42 +8,47 @@
 				<div class="appointment-form__description">
 					<p>ФИО:</p>
 				</div>
-				<v-input
-					type="text"
-					v-model="full_name"
-				></v-input>
+				<v-input type="text" v-model="appointmentForm.client"></v-input>
 
 				<div class="appointment-form__description">
 					<p>Номер телефона:</p>
 				</div>
 				<v-input
 					type="tel"
-					v-model="tel"
+					v-model="appointmentForm.phone_number"
 				></v-input>
 				<div class="appointment-form__description">
 					<p>Проект:</p>
 				</div>
 				<v-dropdown
-					selected="Выберите проект*"
-					:options="[{ id: 1, value: 'АКАДЕМИЧЕСКИЙ' }]"
-					v-model="project"
+					placeholder="Выберите проект*"
+					showedValue="value"
+					:getValue="appointmentForm.building"
+					:options="buildings"
+					v-model="appointmentForm.building"
 				></v-dropdown>
 
 				<div class="appointment-form__description">
 					<p>Квартира:</p>
 				</div>
 				<v-dropdown
-					:selected="'Выберите квартиру'"
-					v-model="apartment"
+					placeholder="Выберите квартиру"
+					showedValue="number"
+					showedValuePrefix="Квартира №"
+					:getValue="appointmentForm.apartment"
+					v-model="appointmentForm.apartment"
 					:options="apartments"
 				></v-dropdown>
 
 				<div class="appointment-form__description">
 					<p>Дата и время:</p>
 				</div>
-				<date-picker v-model="date"></date-picker>
+				<date-picker
+					v-model="appointmentForm.date"
+					:getDate="appointmentForm.date"
+				></date-picker>
 				<time-picker
-					:selected="'Выберите время*'"
+					placeholder="Выберите время*"
 					:options="[
 						'9:00',
 						'9:30',
@@ -64,13 +69,14 @@
 						'17:00',
 						'17:30',
 					]"
-					v-model="time"
+					:getValue="appointmentForm.time"
+					v-model="appointmentForm.time"
 				></time-picker>
 
 				<v-button
-					:text="'Отправить'"
-					:type="'button'"
-					class="blue"
+					:disabled="!isFormValid"
+					text="Отправить"
+					type="submit"
 				></v-button>
 
 				<div class="appointment-form__bottom">
@@ -93,7 +99,11 @@
 	import vButton from "@/components/UI/general/v-button";
 	import DatePicker from "@/components/UI/cabinet/DatePicker";
 	import TimePicker from "@/components/cabinet/TimePicker";
+
 	import { postAppointment } from "@/api/appointment";
+	import { returnErrorMessages } from "@/js/returnErrorMessages";
+
+	import { useToast } from "vue-toastification";
 
 	export default {
 		name: "AppointmentForm",
@@ -105,73 +115,79 @@
 			TimePicker,
 		},
 		computed: {
-			...mapState({
-				apartments: (state) => state.academ.apartments,
-			}),
+			...mapState({ apartments: (state) => state.academ.apartments }),
+
+			isFormValid() {
+				if (
+					this.appointmentForm.client.length > 0 &&
+					this.appointmentForm.phone_number.length > 0 &&
+					this.appointmentForm.building !== "" &&
+					this.appointmentForm.apartment !== "" &&
+					this.appointmentForm.date !== "" &&
+					this.appointmentForm.time !== ""
+				) {
+					return true;
+				} else {
+					return false;
+				}
+			},
 		},
-		data() {
-			return {
-				tel: "",
-				full_name: "",
-				project: "",
-				apartment: "",
+		data: () => ({
+			appointmentForm: {
+				client: "",
+				phone_number: "",
 				date: "",
 				time: "",
-			};
-		},
+				manager: 1,
+				building: "",
+				apartment: "",
+			},
+			buildings: [{ id: 1, value: "АКАДЕМИЧЕСКИЙ" }],
+		}),
 		methods: {
-			//* функция проверки заполнения всех полей
-			validateForm() {
-				const form = document.querySelector(".appointment-form");
-				const btn = form.querySelector(".v-button");
-				if (
-					this.tel !== "" &&
-					this.full_name !== "" &&
-					this.project !== "" &&
-					this.apartment !== "" &&
-					this.date !== "" &&
-					this.time !== ""
-				) {
-					btn.setAttribute("type", "submit");
-					btn.removeAttribute("style");
-				} else {
-					btn.setAttribute("type", "button");
-					btn.setAttribute(
-						"style",
-						"background-color: #eee; color: #4b4b4b; box-shadow: inherit"
-					);
+			async sendForm(event) {
+				try {
+					const response = await postAppointment({
+						client: this.appointmentForm.client,
+						phone_number: this.appointmentForm.phone_number,
+						date: this.appointmentForm.date,
+						time: this.appointmentForm.time,
+						manager: this.appointmentForm.manager,
+						building: this.appointmentForm.building.id,
+						apartment: this.appointmentForm.apartment.id,
+					});
+					if (response.status === 201) {
+						this.toast.success(
+							"Спасибо! Вы записаны на просмотр квартиры.\nОжидайте звонка Вашего менеджера."
+						);
+						console.log("Appeal created");
+						event.target.reset();
+						this.resetForm();
+					}
+					if (response.status === 400) {
+						const error_list = returnErrorMessages(response.data);
+						error_list.forEach((el) => {
+							this.toast.error(el);
+						});
+					}
+				} catch (err) {
+					throw new Error(err);
 				}
 			},
 
-			sendForm() {
-				postAppointment(
-					this.full_name,
-					this.tel,
-					this.date,
-					this.time,
-					this.project,
-					this.apartment
-				);
+			resetForm() {
+				for (const key in this.appointmentForm) {
+					if (Object.hasOwnProperty.call(this.appointmentForm, key)) {
+						key === "manager"
+							? (this.appointmentForm[key] = 1)
+							: (this.appointmentForm[key] = "");
+					}
+				}
 			},
 		},
-		mounted() {
-			//* проверки заполнения всех полей
-			this.validateForm();
-
-			//* проверки заполнения всех полей при инпуте
-			const inputs = document.querySelectorAll(".input");
-			inputs.forEach((input) => {
-				input.addEventListener("input", () => {
-					this.validateForm();
-				});
-			});
-
-			//* проверки заполнения всех полей при клике в пределах формы
-			document
-				.querySelector(".the-appointments")
-				.addEventListener("click", () => {
-					this.validateForm();
-				});
+		setup() {
+			const toast = useToast();
+			return { toast };
 		},
 	};
 </script>
@@ -230,10 +246,12 @@
 	.date-picker {
 		grid-column: 2/3;
 	}
-	.blue {
+	.v-button {
 		grid-column: 2/4;
 		border-radius: 1rem;
 		width: 100%;
 		height: 5.5rem;
+		display: flex;
+		align-items: center;
 	}
 </style>

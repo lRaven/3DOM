@@ -1,121 +1,69 @@
 <template>
-	<div class="time-picker">
-		<div class="time-picker__selected">
-			<p>{{ selected }}</p>
-			<div class="time-picker__arrow">
+	<div class="time-picker" v-click-away="closeDropdown">
+		<div
+			class="time-picker__selected"
+			@click="
+				isDropdownOpen
+					? (isDropdownOpen = false)
+					: (isDropdownOpen = true)
+			"
+		>
+			<p
+				class="time-picker__selected-text"
+				:class="{ selected: selectedOption }"
+			>
+				{{ selectedOption ? selectedOption : placeholder }}
+			</p>
+			<div class="time-picker__arrow" :class="{ open: isDropdownOpen }">
 				<img src="/img/icon/general/arrow.svg" alt="" />
 			</div>
 		</div>
-		<div class="time-picker__content">
-			<div class="time-picker__item" v-for="item in options" :key="item">
-				{{ item }}
-			</div>
-		</div>
+		<transition mode="out-in" name="fade-up">
+			<ul class="time-picker__content" v-show="isDropdownOpen">
+				<li
+					class="time-picker__item"
+					:class="{ selected: selectedOption === item }"
+					v-for="item in options"
+					:key="item"
+					@click="selectValue(item)"
+				>
+					{{ item }}
+				</li>
+			</ul>
+		</transition>
 	</div>
 </template>
 
 <script>
+	import { directive } from "vue3-click-away";
+
 	export default {
 		name: "TimePicker",
 		props: {
-			selected: String,
+			placeholder: String,
 			options: Array,
+			getValue: String,
 		},
+		watch: {
+			getValue() {
+				if (Boolean(this.getValue) === false) {
+					this.selectedOption = null;
+				}
+			},
+		},
+		data: () => ({ isDropdownOpen: false, selectedOption: null }),
 		methods: {
-			//* функция выпадающего меню
-			dropdown() {
-				const dropdowns = document.querySelectorAll(".time-picker");
+			selectValue(el) {
+				this.selectedOption = el;
+				this.$emit("update:modelValue", this.selectedOption);
 
-				dropdowns.forEach((dropdown) => {
-					const arrow = dropdown.querySelector(".time-picker__arrow");
-					const options =
-						dropdown.querySelectorAll(".time-picker__item");
-					const dropdownSelected = dropdown.querySelector(
-						".time-picker__selected"
-					);
-					const dropdownContent = dropdown.querySelector(
-						".time-picker__content"
-					);
-					const height = dropdownContent.scrollHeight + 60;
-
-					//*скрытие или показ выпадающего списка при клике на блок со стрелкой
-					dropdownSelected.addEventListener("click", () => {
-						if (dropdownContent.clientHeight === 0) {
-							arrow.classList.add("open");
-							dropdownContent.classList.add("open");
-							dropdownContent.setAttribute(
-								"style",
-								`height: ${height}px`
-							);
-						} else {
-							arrow.classList.remove("open");
-							dropdownContent.classList.remove("open");
-							dropdownContent.removeAttribute("style");
-						}
-
-						//*скрытие выпадающего списка при клике вне элемента
-						window.addEventListener("click", (e) => {
-							const target = e.target;
-							if (!target.closest(".time-picker__selected")) {
-								arrow.classList.remove("open");
-								dropdownContent.classList.remove("open");
-								dropdownContent.removeAttribute("style");
-							}
-						});
-					});
-
-					//*скрытие выпадающего списка при клике на элемент из этого списка
-					options.forEach((option) => {
-						option.addEventListener("click", () => {
-							arrow.classList.remove("open");
-							dropdownSelected.classList.remove("open");
-							dropdownContent.classList.remove("open");
-						});
-					});
-				});
+				this.closeDropdown();
 			},
-
-			//* выбор значения элемента и запись его в поле
-			setOption() {
-				const dropdowns = document.querySelectorAll(".time-picker");
-				dropdowns.forEach((dropdown) => {
-					const options =
-						dropdown.querySelectorAll(".time-picker__item");
-					const selectedOption = dropdown.querySelector(
-						".time-picker__selected p"
-					);
-					options.forEach((option) => {
-						option.addEventListener("click", () => {
-							options.forEach((option) => {
-								option.classList.remove("selected");
-							});
-
-							option.classList.add("selected");
-							selectedOption.textContent = option.textContent;
-							selectedOption.setAttribute(
-								"style",
-								"color: #4b4b4b"
-							);
-						});
-					});
-				});
-			},
-
-			saveTime() {
-				const timeItems =
-					document.querySelectorAll(".time-picker__item");
-				timeItems.forEach((timeItem) => {
-					timeItem.addEventListener("click", () => {
-						this.$emit("update:modelValue", timeItem.textContent);
-					});
-				});
+			closeDropdown() {
+				this.isDropdownOpen = false;
 			},
 		},
-		mounted() {
-			this.dropdown();
-			this.setOption();
-			this.saveTime();
-		},
+		directives: { ClickAway: directive },
 	};
 </script>
 
@@ -151,6 +99,11 @@
 			&.open {
 				transition: all 0.2s ease;
 			}
+			&-text {
+				&.selected {
+					color: $dark;
+				}
+			}
 		}
 		&__arrow {
 			user-select: none;
@@ -167,26 +120,20 @@
 		}
 		&__content {
 			display: grid;
-			grid-template-columns: repeat(3, 9rem);
+			grid-template-columns: repeat(3, 1fr);
 			grid-gap: 1rem;
+			padding: 3rem;
 			align-items: center;
 			justify-content: center;
 			position: absolute;
 			left: 0;
-			height: 0;
 			width: 100%;
+			top: calc(100% + 1rem);
 			border-radius: 0.5rem;
 			overflow: hidden;
 			background-color: $white;
 			box-shadow: $shadow;
-			transition: all 0.1s ease;
-
-			&.open {
-				padding: 3rem 0;
-				transform: translateY(1rem);
-				transition: all 0.2s ease;
-				z-index: 3;
-			}
+			transition: all 0.2s ease;
 		}
 		&__item {
 			cursor: pointer;

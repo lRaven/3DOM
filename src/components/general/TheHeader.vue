@@ -148,7 +148,7 @@
 			<div class="the-header__col">
 				<div
 					class="the-header__right animate__animated animate__fadeIn"
-					v-if="!isAuth"
+					v-show="!isAuth"
 				>
 					<router-link to="/login" class="the-header__link">
 						<svg
@@ -189,7 +189,7 @@
 				</div>
 				<div
 					class="the-header__right-auth animate__animated animate__fadeIn"
-					v-if="isAuth"
+					v-show="isAuth"
 				>
 					<router-link
 						:to="{ name: 'Favorites' }"
@@ -198,7 +198,7 @@
 						<img src="/img/icon/general/favorites.svg" alt="" />
 						<span
 							class="the-header__favorites-sum"
-							v-if="favorites > 0"
+							v-show="favorites > 0"
 						>
 							{{ favorites }}
 						</span>

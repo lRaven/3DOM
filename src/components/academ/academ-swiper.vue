@@ -9,7 +9,7 @@
 	>
 		<swiper-slide v-for="img in gallery" :key="img.id">
 			<div class="swiper-slide-content">
-				<p :style="textColor" v-if="price === true">
+				<p :style="textColor" v-show="price === true">
 					{{ img.cost }} руб.
 				</p>
 				<img :src="img.image" alt="" class="swiper-img" />

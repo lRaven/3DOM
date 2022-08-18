@@ -4,24 +4,18 @@ import cookie from 'vue-cookies';
 
 const baseURL = store.state.baseURL;
 
-async function postAppointment(client, tel, date, time, building, apartment) {
+async function postAppointment(data) {
 	try {
-		const response = axios.post(`${baseURL}/academ/appointment/`, {
-			client: client,
-			phone_number: tel,
-			date: date,
-			time: time,
-			manager: 1,
-			building: building,
-			apartment: apartment,
-		}, {
-			headers: { Authorization: `token ${cookie.get('auth_token')}` }
-		})
-		if (response.status === 201) {
-			console.log(`Запись на встречу успешно создана`);
-		}
+		const response = await axios.post(`${baseURL}/academ/appointment/`,
+			{ ...data },
+			{ headers: { Authorization: `token ${cookie.get('auth_token')}` } })
+
+		return response;
+		// if (response.status === 201) {
+		// 	console.log(`Запись на встречу успешно создана`);
+		// }
 	}
-	catch (err) { throw new Error(err) }
+	catch (err) { return err.response }
 }
 
 export { postAppointment }

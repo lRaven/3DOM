@@ -52,6 +52,9 @@
 				border-color: $light-gray;
 				box-shadow: none !important;
 			}
+			&:active {
+				transform: none;
+			}
 		}
 
 		&.blue {

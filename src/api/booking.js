@@ -9,7 +9,7 @@ import { getApartments } from '@/api/academ';
 //* получение инфы по резервациям
 async function getBookingList() {
 	try {
-		const response = axios.get(`${baseURL}/academ/reservation/`,
+		const response = await axios.get(`${baseURL}/academ/reservation/`,
 			{
 				headers: { Authorization: `token ${cookie.get('auth_token')}` },
 			}
@@ -42,7 +42,7 @@ async function getBookingList() {
 //* получение всей инфы по зарезирвированным квартирам юзера
 async function apartmentsInfo(apartmentsId, bookingsId, dates) {
 	try {
-		const response = axios.get(`${baseURL}/academ/apartment/`,
+		const response = await axios.get(`${baseURL}/academ/apartment/`,
 			{ headers: { Authorization: `token ${cookie.get('auth_token')}` }, })
 
 		if (response.status === 200) {
@@ -66,7 +66,7 @@ async function apartmentsInfo(apartmentsId, bookingsId, dates) {
 //* отменить резервацию квартиры по id резервации
 async function removeReservation(id) {
 	try {
-		const response = axios.delete(`${baseURL}/academ/reservation/${id}/`, {
+		const response = await axios.delete(`${baseURL}/academ/reservation/${id}/`, {
 			headers: { Authorization: `token ${cookie.get('auth_token')}` }
 		})
 
@@ -80,8 +80,7 @@ async function removeReservation(id) {
 
 async function addReservation(user, apartment) {
 	try {
-		console.log(user, apartment);
-		const response = axios.post(`${baseURL}/academ/reservation/`,
+		const response = await axios.post(`${baseURL}/academ/reservation/`,
 			{ user: user, apartment: apartment, },
 			{ headers: { Authorization: `token ${cookie.get('auth_token')}` } })
 

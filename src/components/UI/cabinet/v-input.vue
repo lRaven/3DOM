@@ -74,8 +74,8 @@
 		&__input {
 			border: 0.1rem solid $middle-gray;
 			border-radius: 1rem;
-			padding: 1.5rem 2rem;
-			font-size: 2.2rem;
+			padding: 2rem;
+			font-size: 1.8rem;
 			transition: all 0.2s ease;
 			width: 100%;
 			&.transparent {

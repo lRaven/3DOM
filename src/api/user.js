@@ -24,7 +24,7 @@ const registration = async (user_data) => {
 
 const logout = async () => {
 	try {
-		const response = axios.post(`${process.env.VUE_APP_BACKEND_BASEURL}/auth/token/logout/`, {},
+		const response = await axios.post(`${process.env.VUE_APP_BACKEND_BASEURL}/auth/token/logout/`, {},
 			{ headers: { Authorization: `token ${cookie.get("auth_token")}`, }, }
 		)
 

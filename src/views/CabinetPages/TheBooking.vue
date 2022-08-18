@@ -8,13 +8,13 @@
 				</div>
 				<h3
 					class="the-booking__notification-desc"
-					v-if="apartments === true"
+					v-show="apartments === true"
 				>
 					У вас есть предварительное бронирование
 				</h3>
 				<h3
 					class="the-booking__notification-desc"
-					v-if="apartments === false"
+					v-show="apartments === false"
 				>
 					У вас нет предварительных бронирований
 				</h3>

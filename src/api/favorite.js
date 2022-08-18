@@ -52,7 +52,7 @@ async function getFavoriteApartments(favorites) {
 //* удаление из избранного
 async function removeFavorite(id) {
 	try {
-		const response = axios.delete(`${baseURL}/academ/favorite/${id}/`, {
+		const response = await axios.delete(`${baseURL}/academ/favorite/${id}/`, {
 			headers: { Authorization: `token ${cookie.get('auth_token')}` }
 		})
 
@@ -67,7 +67,7 @@ async function removeFavorite(id) {
 //* добавить в избранное
 async function addFavorite(user, apartment) {
 	try {
-		const response = axios.post(`${baseURL}/academ/favorite/`,
+		const response = await axios.post(`${baseURL}/academ/favorite/`,
 			{ user: user, apartment: apartment, },
 			{ headers: { Authorization: `token ${cookie.get('auth_token')}` } },
 		)

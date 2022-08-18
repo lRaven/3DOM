@@ -15,14 +15,14 @@
 			<div class="popup__body">
 				<div
 					class="popup__button popup__fullscreen"
-					v-if="fullscreen === false"
+					v-show="fullscreen === false"
 					@click="fullscreenPopup(1)"
 				>
 					<img src="/img/icon/academ/fullscreen.svg" alt="" />
 				</div>
 				<div
 					class="popup__button popup__default"
-					v-if="fullscreen === true"
+					v-show="fullscreen === true"
 					@click="fullscreenPopup(2)"
 				>
 					<img src="/img/icon/academ/minimize.svg" alt="" />

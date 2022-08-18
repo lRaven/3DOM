@@ -22,6 +22,7 @@
 	import AppointmentForm from "@/components/cabinet/AppointmentForm.vue";
 
 	import { mapMutations } from "vuex";
+	import { getApartments } from "@/api/academ";
 
 	export default {
 		name: "TheAppointments",
@@ -31,6 +32,7 @@
 		},
 		created() {
 			this.SET_TAB("appointments");
+			getApartments();
 		},
 	};
 </script>

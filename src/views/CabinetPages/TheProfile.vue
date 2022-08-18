@@ -222,10 +222,10 @@
 			user: {
 				handler() {
 					this.userData = {
-						...this.user,
 						password: "",
 						password_new: "",
 						password_repeat: "",
+						...this.user,
 					};
 				},
 				deep: true,
@@ -358,10 +358,10 @@
 		created() {
 			this.SET_TAB("profile");
 			this.userData = {
-				...this.user,
 				password: "",
 				password_new: "",
 				password_repeat: "",
+				...this.user,
 			};
 		},
 		setup() {

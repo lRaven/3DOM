@@ -22,7 +22,7 @@
 				<v-dropdown
 					description="Тип недвижимости"
 					selected="Выберите из списка"
-					v-if="tab === 'commercial'"
+					v-show="tab === 'commercial'"
 					:options="[
 						'Торговые',
 						'Офисные',
@@ -53,7 +53,7 @@
 
 				<div
 					class="catalog-filters__apartments"
-					v-if="tab === 'secondary'"
+					v-show="tab === 'secondary'"
 				>
 					<p class="catalog-filters__apartments-title">Комнатность</p>
 					<div class="catalog-filters__apartments-list">

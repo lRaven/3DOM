@@ -25,7 +25,7 @@
 						Тема обращения:
 					</p>
 					<v-dropdown
-						selected="Выберите тему*"
+						placeholder="Выберите тему*"
 						:options="topic_list"
 						v-model="form_data.topic_type"
 					></v-dropdown>
@@ -120,8 +120,8 @@
 			async send_message() {
 				try {
 					const response = await send_support_message({
-						...this.form_data,
 						user: this.user_id,
+						...this.form_data,
 					});
 					if (response.status === 201) {
 						this.toast.success(
@@ -214,23 +214,12 @@
 			}
 		}
 	}
-	select {
-		display: none;
-	}
 	.v-button {
 		border-radius: 1rem;
 		width: 100%;
-		height: 5.5rem;
 		grid-column: 2/3;
-		&:disabled {
-			color: $dark;
-			background-color: $light-gray;
-			border-color: $light-gray;
-			&:hover {
-				background-color: $light-gray;
-				border-color: $light-gray;
-				box-shadow: none;
-			}
-		}
+		height: 5.5rem;
+		display: flex;
+		align-items: center;
 	}
 </style>

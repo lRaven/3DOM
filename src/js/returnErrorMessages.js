@@ -7,7 +7,11 @@ function returnErrorMessages(data) {
 		password: 'Пароль',
 		phone_number: 'Телефон',
 		avatar: 'Изображение профиля',
-		name: 'Имя',
+		apartment: 'Квартира',
+		building: 'Проект',
+		client: 'ФИО',
+		date: 'Дата',
+		time: 'Время',
 	}
 	for (let prop in data) {
 		let key = '';
