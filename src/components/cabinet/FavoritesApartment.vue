@@ -60,11 +60,8 @@
 	import { removeFavorite } from "@/api/favorite";
 	import { mapState } from "vuex";
 
-	import vButton from "@/components/UI/general/v-button.vue";
-
 	export default {
 		name: "TheFavorite",
-		components: { vButton },
 		props: { sorted: String },
 		computed: {
 			...mapState({

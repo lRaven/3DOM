@@ -44,7 +44,6 @@
 <script>
 	import TheHeader from "@/components/general/TheHeader";
 	import vInput from "@/components/UI/cabinet/v-input";
-	import vButton from "@/components/UI/general/v-button";
 	import TheFooter from "@/components/general/TheFooter";
 
 	import { login } from "@/api/user";
@@ -59,7 +58,6 @@
 		components: {
 			TheHeader,
 			vInput,
-			vButton,
 			TheFooter,
 		},
 		computed: {
@@ -103,6 +101,7 @@
 						});
 					}
 				} catch (err) {
+					this.toast.error(err);
 					throw new Error(err);
 				}
 			},

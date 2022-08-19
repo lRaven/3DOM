@@ -41,11 +41,7 @@
 					:customClass="'pale'"
 					:minMax="true"
 				></v-slider>
-				<v-button
-					:text="'Узнать цену'"
-					class="blue"
-					@click="openPopup"
-				></v-button>
+				<v-button text="Узнать цену" @click="openPopup"></v-button>
 			</div>
 			<img src="/img/trade-in/price-img.svg" alt="" />
 		</div>
@@ -76,23 +72,14 @@
 					text="Даю согласие на обработку персональных данных"
 					dark="dark"
 				></v-checkbox>
-				<v-button
-					class="blue"
-					:text="'Отправить заявку'"
-					:type="'button'"
-				></v-button>
+				<v-button text="Отправить заявку" type="button"></v-button>
 			</v-popup>
 		</transition>
 	</section>
 </template>
 
 <script>
-	import vRadio from "@/components/UI/general/v-radio.vue";
 	import vInput from "@/components/UI/general/v-input.vue";
-	import vDropdown from "@/components/UI/general/v-dropdown.vue";
-	import vSlider from "@/components/UI/general/v-slider.vue";
-	import vButton from "@/components/UI/general/v-button.vue";
-	import vPopup from "@/components/UI/general/v-popup.vue";
 
 	import AcademInput from "../academ/academ-input.vue";
 	import vCheckbox from "../academ/v-checkbox.vue";
@@ -100,12 +87,7 @@
 	export default {
 		name: "ThePrice",
 		components: {
-			vRadio,
 			vInput,
-			vDropdown,
-			vSlider,
-			vButton,
-			vPopup,
 
 			AcademInput,
 			vCheckbox,
@@ -194,6 +176,19 @@
 			font-size: 2.5rem;
 			font-weight: 500;
 			margin-bottom: 5rem;
+		}
+
+		.v-popup {
+			&__description {
+				font-size: 1.8rem;
+				margin-bottom: 2rem;
+			}
+			.v-checkbox {
+				margin: 2rem 0;
+			}
+			.v-button {
+				width: 100%;
+			}
 		}
 	}
 </style>

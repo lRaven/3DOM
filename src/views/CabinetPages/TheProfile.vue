@@ -210,14 +210,13 @@
 	import { logout, change_user_data, change_password } from "@/api/user";
 	import { returnErrorMessages } from "@/js/returnErrorMessages";
 
-	import vButton from "@/components/UI/general/v-button.vue";
 	import vInput from "@/components/UI/cabinet/v-input.vue";
 
 	import { useToast } from "vue-toastification";
 
 	export default {
 		name: "TheProfile",
-		components: { vButton, vInput },
+		components: { vInput },
 		watch: {
 			user: {
 				handler() {

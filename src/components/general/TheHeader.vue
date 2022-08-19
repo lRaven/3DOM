@@ -148,7 +148,7 @@
 			<div class="the-header__col">
 				<div
 					class="the-header__right animate__animated animate__fadeIn"
-					v-show="!isAuth"
+					v-if="!isAuth"
 				>
 					<router-link to="/login" class="the-header__link">
 						<svg
@@ -189,7 +189,7 @@
 				</div>
 				<div
 					class="the-header__right-auth animate__animated animate__fadeIn"
-					v-show="isAuth"
+					v-if="isAuth"
 				>
 					<router-link
 						:to="{ name: 'Favorites' }"
@@ -198,7 +198,7 @@
 						<img src="/img/icon/general/favorites.svg" alt="" />
 						<span
 							class="the-header__favorites-sum"
-							v-show="favorites > 0"
+							v-if="favorites > 0"
 						>
 							{{ favorites }}
 						</span>
@@ -217,6 +217,37 @@
 				/>
 			</div>
 		</div>
+
+		<transition>
+			<v-popup
+				v-if="isPopupVisible"
+				@closePopup="closePopup"
+				title="3DOM консультация"
+			>
+				<p class="v-popup__description">
+					Отправьте заявку<br />
+					для получения консультации
+				</p>
+				<academ-input
+					placeholder="Имя"
+					type="text"
+					dark="dark"
+					v-model="name"
+				></academ-input>
+				<academ-input
+					placeholder="Телефон"
+					type="tel"
+					dark="dark"
+					v-model="tel"
+				></academ-input>
+				<v-checkbox
+					v-model="privacyPolicy"
+					text="Даю согласие на обработку персональных данных"
+					dark="dark"
+				></v-checkbox>
+				<v-button text="Отправить заявку" type="button"></v-button>
+			</v-popup>
+		</transition>
 	</header>
 
 	<div
@@ -224,48 +255,11 @@
 		:class="{ open: isPopupVisible }"
 		@click="showHideMenu()"
 	></div>
-	<transition>
-		<v-popup
-			v-if="isPopupVisible"
-			@closePopup="closePopup"
-			title="3DOM консультация"
-		>
-			<p class="v-popup__description">
-				Отправьте заявку<br />
-				для получения консультации
-			</p>
-			<academ-input
-				placeholder="Имя"
-				type="text"
-				dark="dark"
-				v-model="name"
-			></academ-input>
-			<academ-input
-				placeholder="Телефон"
-				type="tel"
-				dark="dark"
-				v-model="tel"
-			></academ-input>
-			<v-checkbox
-				v-model="privacyPolicy"
-				text="Даю согласие на обработку персональных данных"
-				dark="dark"
-			></v-checkbox>
-			<v-button
-				class="blue"
-				text="Отправить заявку"
-				type="button"
-			></v-button>
-		</v-popup>
-	</transition>
 </template>
 
 <script>
-	import vPopup from "@/components/UI/general/v-popup.vue";
-
 	import AcademInput from "@/components/academ/academ-input.vue";
 	import vCheckbox from "@/components/academ/v-checkbox.vue";
-	import vButton from "@/components/UI/general/v-button.vue";
 
 	import { mapState } from "vuex";
 
@@ -285,10 +279,8 @@
 			privacyPolicy: false,
 		}),
 		components: {
-			vPopup,
 			AcademInput,
 			vCheckbox,
-			vButton,
 		},
 		computed: {
 			...mapState({
@@ -481,6 +473,19 @@
 
 		&__call {
 			display: none;
+		}
+
+		.v-popup {
+			&__description {
+				font-size: 1.8rem;
+				margin-bottom: 2rem;
+			}
+			.v-checkbox {
+				margin: 2rem 0;
+			}
+			.v-button {
+				width: 100%;
+			}
 		}
 	}
 

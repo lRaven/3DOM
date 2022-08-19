@@ -96,7 +96,6 @@
 
 	import vInput from "@/components/UI/cabinet/v-input";
 	import vDropdown from "@/components/UI/cabinet/v-dropdown";
-	import vButton from "@/components/UI/general/v-button";
 	import DatePicker from "@/components/UI/cabinet/DatePicker";
 	import TimePicker from "@/components/cabinet/TimePicker";
 
@@ -110,7 +109,6 @@
 		components: {
 			vInput,
 			vDropdown,
-			vButton,
 			DatePicker,
 			TimePicker,
 		},

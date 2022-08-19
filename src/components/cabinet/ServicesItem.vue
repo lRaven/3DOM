@@ -8,13 +8,8 @@
 </template>
 
 <script>
-	import vButton from "@/components/UI/general/v-button.vue";
-
 	export default {
 		name: "TheService",
-		components: {
-			vButton,
-		},
 		props: {
 			bg: String,
 			title: String,

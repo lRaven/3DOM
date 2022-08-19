@@ -55,9 +55,8 @@
 					<img src="/img/trade-in/steps-img.svg" alt="" />
 					<router-link to="/trade-in">
 						<v-button
-							:text="'Оформить заявку'"
-							class="blue"
-							:type="'button'"
+							text="Оформить заявку"
+							type="button"
 						></v-button
 					></router-link>
 				</div>
@@ -148,14 +147,7 @@
 </template>
 
 <script>
-	import vButton from "@/components/UI/general/v-button.vue";
-
-	export default {
-		name: "TheSteps",
-		components: {
-			vButton,
-		},
-	};
+	export default { name: "TheSteps" };
 </script>
 
 <style lang="scss" scoped>

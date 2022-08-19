@@ -22,7 +22,8 @@
 		padding: 3rem 1.5rem;
 		font-size: 2.2rem;
 		min-height: 24rem;
-		resize: vertical;
+		width: 100%;
+		resize: none;
 		transition: all 0.2s ease;
 
 		-ms-overflow-style: none;

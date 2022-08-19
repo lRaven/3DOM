@@ -36,21 +36,14 @@
 				text="Даю согласие на обработку персональных данных"
 				dark="dark"
 			></v-checkbox>
-			<v-button
-				class="blue"
-				:text="'Отправить заявку'"
-				:type="'button'"
-			></v-button>
+			<v-button text="Отправить заявку" type="button"></v-button>
 		</v-popup>
 	</transition>
 </template>
 
 <script>
-	import vPopup from "@/components/UI/general/v-popup.vue";
-
 	import AcademInput from "../academ/academ-input.vue";
 	import vCheckbox from "../academ/v-checkbox.vue";
-	import vButton from "@/components/UI/general/v-button.vue";
 
 	export default {
 		name: "vCall",
@@ -63,7 +56,7 @@
 				privacyPolicy: false,
 			};
 		},
-		components: { AcademInput, vCheckbox, vButton, vPopup },
+		components: { AcademInput, vCheckbox },
 		methods: {
 			closePopup() {
 				this.isPopupVisible = false;
@@ -97,10 +90,42 @@
 			height: 100%;
 			object-fit: contain;
 		}
+
+		.v-popup {
+			&__description {
+				font-size: 1.8rem;
+				margin-bottom: 2rem;
+			}
+			.v-checkbox {
+				margin: 2rem 0;
+			}
+			.v-button {
+				width: 100%;
+			}
+		}
 	}
 	@media (max-width: 1050px) {
 		.v-call {
 			display: none;
+		}
+	}
+</style>
+
+<style lang="scss">
+	.v-call {
+		+ .v-popup-wrapper {
+			.v-popup {
+				&__description {
+					font-size: 1.8rem;
+					margin-bottom: 2rem;
+				}
+				.v-checkbox {
+					margin: 2rem 0;
+				}
+				.v-button {
+					width: 100%;
+				}
+			}
 		}
 	}
 </style>

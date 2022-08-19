@@ -88,7 +88,6 @@
 			<hr />
 			<v-button
 				text="Посмотреть"
-				class="blue"
 				@click="this.$emit('action_btn')"
 			></v-button>
 			<hr />
@@ -97,10 +96,7 @@
 </template>
 
 <script>
-	import vDropdown from "@/components/UI/general/v-dropdown.vue";
 	import vInput from "@/components/UI/general/v-input.vue";
-	import vCheckbox from "@/components/UI/general/v-checkbox.vue";
-	import vButton from "@/components/UI/general/v-button.vue";
 
 	export default {
 		name: "CatalogFilters",
@@ -108,12 +104,7 @@
 			tab: "secondary",
 			filters: [],
 		}),
-		components: {
-			vDropdown,
-			vInput,
-			vCheckbox,
-			vButton,
-		},
+		components: { vInput },
 	};
 </script>
 
@@ -194,7 +185,7 @@
 				color: $gray;
 				font-weight: 600;
 				grid-column: 1/6;
-				margin-bottom: 1.8rem;
+				margin-bottom: 1.3rem;
 			}
 			&-list {
 				display: flex;

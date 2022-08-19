@@ -28,8 +28,7 @@
 					}"
 				>
 					<v-button
-						class="blue"
-						:type="'button'"
+						type="button"
 						text="Смотреть планировки"
 					></v-button>
 				</router-link>
@@ -39,14 +38,7 @@
 </template>
 
 <script>
-	import vButton from "@/components/UI/general/v-button.vue";
-
-	export default {
-		name: "TheLayout",
-		components: {
-			vButton,
-		},
-	};
+	export default { name: "TheLayout" };
 </script>
 
 <style lang="scss" scoped>

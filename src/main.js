@@ -7,7 +7,15 @@ import Toast, { POSITION } from "vue-toastification"
 import "vue-toastification/dist/index.css"
 import VueCookies from 'vue-cookies'
 
+import components from '@/components/UI'
+
 const app = createApp(App)
+
+for (const key in components) {
+	if (Object.hasOwnProperty.call(components, key)) {
+		app.component(key, components[key]);
+	}
+}
 
 app.use(router)
 app.use(store)

@@ -42,11 +42,7 @@
 				<div><p>Секция</p></div>
 				<p>{{ apartment.section }}</p>
 			</div>
-			<v-button
-				:text="'Платное бронирование'"
-				:type="'button'"
-				class="blue"
-			></v-button>
+			<v-button text="Платное бронирование" type="button"></v-button>
 			<div class="apartment__price">
 				<span>Стоимость:</span>
 				<p>4 014 433 руб.</p>
@@ -92,23 +88,17 @@
 					<div class="apartment__date">12.12.2012</div>
 				</div>
 			</div>
-			<v-button
-				:text="'Подробнее'"
-				:type="'button'"
-				class="blue"
-			></v-button>
+			<v-button text="Подробнее" type="button"></v-button>
 		</div>
 	</div>
 </template>
 
 <script>
-	import vButton from "@/components/UI/general/v-button.vue";
 	import { removeReservation } from "@/api/booking";
 	import { mapState } from "vuex";
 
 	export default {
 		name: "BookingApartment",
-		components: { vButton },
 		data: () => ({ id: null }),
 		computed: {
 			...mapState({

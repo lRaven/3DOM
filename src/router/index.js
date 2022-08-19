@@ -67,6 +67,9 @@ const routes = [
 							getApartmentsOnTheFloor(4);
 							next();
 						}
+						else {
+							next({ name: 'Home' })
+						}
 					}
 				}
 				catch (err) { throw new Error(err) }
@@ -94,6 +97,9 @@ const routes = [
 							getApartments();
 							getApartmentsOnTheFloor(4);
 							next();
+						}
+						else {
+							next({ name: 'Home' })
 						}
 					}
 				}

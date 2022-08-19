@@ -19,9 +19,8 @@
 						style="display: inline-block"
 					>
 						<v-button
-							:text="'Смотреть планировки'"
-							:type="'button'"
-							class="blue"
+							text="Смотреть планировки"
+							type="button"
 						></v-button>
 					</router-link>
 				</div>
@@ -44,8 +43,8 @@
 					<router-link to="/trade-in" style="display: inline-block">
 						<v-button
 							text="Оформить заявку"
-							:type="'button'"
-							class="white"
+							type="button"
+							color="white"
 						></v-button>
 					</router-link>
 				</div>
@@ -64,15 +63,11 @@
 </template>
 
 <script>
-	import vButton from "@/components/UI/general/v-button.vue";
 	import vSwiper from "./v-swiper.vue";
 
 	export default {
 		name: "TheBanner",
-		components: {
-			vButton,
-			vSwiper,
-		},
+		components: { vSwiper },
 	};
 </script>
 

@@ -2,15 +2,17 @@
 	<div class="page-catalog">
 		<the-header />
 
-		<main class="page-catalog__main main center">
+		<main class="page-catalog__main main">
 			<section class="page-catalog__list">
-				<catalog-filters />
-				<v-card-min
-					class="animate__animated animate__fadeInUp wow"
-					v-for="apartment in apartments"
-					:key="apartment.id"
-					:data="apartment"
-				></v-card-min>
+				<div class="page-catalog__list-wrapper center">
+					<catalog-filters />
+					<v-card-min
+						class="animate__animated animate__fadeInUp wow"
+						v-for="apartment in apartments"
+						:key="apartment.id"
+						:data="apartment"
+					></v-card-min>
+				</div>
 			</section>
 		</main>
 	</div>
@@ -56,18 +58,20 @@
 			}
 		}
 		&__list {
-			display: grid;
-			grid-template-columns: repeat(4, 1fr);
-			min-height: 100vh;
-			grid-gap: 2rem 2.5rem;
-			@media (max-width: 1140px) {
-				grid-template-columns: repeat(3, 1fr);
-			}
-			@media (max-width: 1023px) {
-				grid-template-columns: repeat(2, 1fr);
-			}
-			@media (max-width: 570px) {
-				grid-template-columns: 1fr;
+			&-wrapper {
+				display: grid;
+				grid-template-columns: repeat(4, 1fr);
+				min-height: 100vh;
+				grid-gap: 2rem 2.5rem;
+				@media (max-width: 1140px) {
+					grid-template-columns: repeat(3, 1fr);
+				}
+				@media (max-width: 1023px) {
+					grid-template-columns: repeat(2, 1fr);
+				}
+				@media (max-width: 570px) {
+					grid-template-columns: 1fr;
+				}
 			}
 		}
 		&__main {

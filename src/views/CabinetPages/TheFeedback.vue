@@ -62,7 +62,6 @@
 	import vInput from "@/components/UI/cabinet/v-input";
 	import vDropdown from "@/components/UI/cabinet/v-dropdown";
 	import vTextarea from "@/components/UI/cabinet/v-textarea";
-	import vButton from "@/components/UI/general/v-button";
 
 	import { useToast } from "vue-toastification";
 
@@ -72,7 +71,6 @@
 			vInput,
 			vDropdown,
 			vTextarea,
-			vButton,
 		},
 		data: () => ({
 			form_data: {

@@ -7,7 +7,7 @@
 				:class="{ minimized: isNavMinimized }"
 			>
 				<the-navigation
-					@openPopup="openPopup"
+					@openPopup="openPopupKolotok"
 					:selectedTab="tab"
 					v-model="isNavMinimized"
 				></the-navigation>
@@ -17,9 +17,10 @@
 						или предложения?
 					</p>
 					<v-button
-						:text="'Напишите нам'"
-						:type="'button'"
-						class="gray"
+						text="Напишите нам"
+						type="button"
+						color="gray"
+						@click="isPopupOpen = true"
 					></v-button>
 				</div>
 			</div>
@@ -35,11 +36,40 @@
 			</div>
 		</main>
 		<the-footer />
-		<transition>
+		<transition mode="out-in">
 			<popup-kolotok
 				v-if="isPopupVisible"
-				@closePopup="closePopup"
+				@closePopup="closePopupKolotok"
 			></popup-kolotok>
+		</transition>
+
+		<transition mode="out-in">
+			<v-popup
+				v-if="isPopupOpen"
+				@closePopup="closePopup"
+				title="Вопросы и предложения"
+			>
+				<template v-slot>
+					<form class="page-cabinet__questions-suggestions">
+						<p class="page-cabinet__questions-suggestions-key">
+							ФИО:
+						</p>
+						<v-input type="text"></v-input>
+
+						<p class="page-cabinet__questions-suggestions-key">
+							Телефон:
+						</p>
+						<v-input type="tel"></v-input>
+
+						<p class="page-cabinet__questions-suggestions-key">
+							some desc:
+						</p>
+						<v-textarea></v-textarea>
+
+						<v-button text="hui"></v-button>
+					</form>
+				</template>
+			</v-popup>
 		</transition>
 	</div>
 </template>
@@ -50,8 +80,9 @@
 	import TheHeader from "@/components/general/TheHeader";
 
 	import TheNavigation from "@/components/cabinet/TheNavigation";
-	import vButton from "@/components/UI/general/v-button";
 	import PopupKolotok from "@/components/general/PopupKolotok";
+	import vInput from "@/components/UI/cabinet/v-input.vue";
+	import vTextarea from "@/components/UI/cabinet/v-textarea.vue";
 
 	import TheFooter from "@/components/general/TheFooter";
 
@@ -61,9 +92,9 @@
 			TheHeader,
 
 			TheNavigation,
-			vButton,
-
 			PopupKolotok,
+			vInput,
+			vTextarea,
 
 			TheFooter,
 		},
@@ -75,6 +106,8 @@
 		},
 		data: () => ({
 			isPopupVisible: false,
+			isPopupOpen: false,
+
 			isNavMinimized: false,
 		}),
 		computed: {
@@ -85,12 +118,17 @@
 		},
 
 		methods: {
-			openPopup() {
+			openPopupKolotok() {
 				this.isPopupVisible = true;
 				document.body.classList.add("locked");
 			},
-			closePopup() {
+			closePopupKolotok() {
 				this.isPopupVisible = false;
+				document.body.classList.remove("locked");
+			},
+
+			closePopup() {
+				this.isPopupOpen = false;
 				document.body.classList.remove("locked");
 			},
 		},
@@ -160,6 +198,20 @@
 
 			&.maximized {
 				padding-left: 9rem;
+			}
+		}
+
+		&__questions-suggestions {
+			display: grid;
+			grid-template-columns: max-content 1fr;
+			grid-gap: 2rem 1.5rem;
+			width: 70rem;
+			&-key {
+				font-size: 1.6rem;
+			}
+			.v-button {
+				grid-column: 2/3;
+				width: 100%;
 			}
 		}
 	}

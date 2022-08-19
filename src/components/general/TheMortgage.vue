@@ -51,8 +51,7 @@
 						></v-slider>
 						<v-button
 							text="Отправить"
-							class="blue"
-							:type="'button'"
+							type="button"
 							@click="openPopup"
 						></v-button>
 					</div>
@@ -145,33 +144,19 @@
 					text="Даю согласие на обработку персональных данных"
 					:dark="'dark'"
 				></v-checkbox>
-				<v-button
-					class="blue"
-					:text="'Отправить заявку'"
-					:type="'button'"
-				></v-button>
+				<v-button text="Отправить заявку" type="button"></v-button>
 			</v-popup>
 		</transition>
 	</section>
 </template>
 
 <script>
-	import vToggle from "@/components/UI/general/v-toggle.vue";
-	import vSlider from "@/components/UI/general/v-slider.vue";
-	import vButton from "@/components/UI/general/v-button.vue";
-	import vPopup from "@/components/UI/general/v-popup.vue";
-
 	import AcademInput from "../academ/academ-input.vue";
 	import vCheckbox from "../academ/v-checkbox.vue";
 
 	export default {
 		name: "TheMortgage",
 		components: {
-			vToggle,
-			vSlider,
-			vButton,
-			vPopup,
-
 			AcademInput,
 			vCheckbox,
 		},
@@ -340,6 +325,19 @@
 		&__last {
 			background-color: $blue;
 			color: $white;
+		}
+
+		.v-popup {
+			&__description {
+				font-size: 1.8rem;
+				margin-bottom: 2rem;
+			}
+			.v-checkbox {
+				margin: 2rem 0;
+			}
+			.v-button {
+				width: 100%;
+			}
 		}
 	}
 

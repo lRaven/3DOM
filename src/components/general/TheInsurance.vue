@@ -48,9 +48,8 @@
 						:text="'Укажите возраст'"
 					></v-input>
 					<v-button
-						:text="'Оформить'"
-						:type="'button'"
-						class="blue"
+						text="Оформить"
+						type="button"
 						@click="openPopup"
 					></v-button>
 				</form>
@@ -94,21 +93,14 @@
 					text="Даю согласие на обработку персональных данных"
 					:dark="'dark'"
 				></v-checkbox>
-				<v-button
-					class="blue"
-					:text="'Отправить заявку'"
-					:type="'button'"
-				></v-button>
+				<v-button text="Отправить заявку" type="button"></v-button>
 			</v-popup>
 		</transition>
 	</section>
 </template>
 
 <script>
-	import vDropdown from "@/components/UI/general/v-dropdown.vue";
 	import vInput from "@/components/UI/general/v-input.vue";
-	import vButton from "@/components/UI/general/v-button.vue";
-	import vPopup from "@/components/UI/general/v-popup.vue";
 
 	import AcademInput from "../academ/academ-input.vue";
 	import vCheckbox from "../academ/v-checkbox.vue";
@@ -116,10 +108,7 @@
 	export default {
 		name: "TheInsurance",
 		components: {
-			vDropdown,
 			vInput,
-			vButton,
-			vPopup,
 
 			AcademInput,
 			vCheckbox,
@@ -216,6 +205,19 @@
 			object-fit: cover;
 			border-radius: 3rem;
 			box-shadow: $shadow;
+		}
+
+		.v-popup {
+			&__description {
+				font-size: 1.8rem;
+				margin-bottom: 2rem;
+			}
+			.v-checkbox {
+				margin: 2rem 0;
+			}
+			.v-button {
+				width: 100%;
+			}
 		}
 	}
 

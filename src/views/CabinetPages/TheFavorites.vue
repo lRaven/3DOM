@@ -5,11 +5,7 @@
 			<img src="/img/cabinet/empty.svg" alt="" />
 			<div class="the-favorites__empty-text">
 				<p>Вы пока ничего не добавили в избранное</p>
-				<v-button
-					:text="'Выбрать планировку'"
-					:type="'button'"
-					class="blue"
-				></v-button>
+				<v-button text="Выбрать планировку" type="button"></v-button>
 			</div>
 		</div>
 		<div class="the-favorites__header" v-show="favorites_length !== 0">
@@ -43,7 +39,6 @@
 </template>
 
 <script>
-	import vButton from "@/components/UI/general/v-button.vue";
 	import FavoritesApartment from "@/components/cabinet/FavoritesApartment.vue";
 	import { mapState, mapMutations } from "vuex";
 
@@ -67,10 +62,7 @@
 		data: () => ({
 			favorites_length: 0,
 		}),
-		components: {
-			vButton,
-			FavoritesApartment,
-		},
+		components: { FavoritesApartment },
 		methods: {
 			...mapMutations(["SET_SORT", "SET_TAB"]),
 			//* функция для открытия всплывающего окна

@@ -10,9 +10,8 @@
 					старую квартиру на новую
 				</h3>
 				<v-button
-					:text="'Оформить заявку'"
-					:type="'button'"
-					class="blue"
+					text="Оформить заявку"
+					type="button"
 					@click="openPopup"
 				></v-button>
 			</div>
@@ -88,29 +87,19 @@
 					text="Даю согласие на обработку персональных данных"
 					dark="dark"
 				></v-checkbox>
-				<v-button
-					class="blue"
-					text="Отправить заявку"
-					type="button"
-				></v-button>
+				<v-button text="Отправить заявку" type="button"></v-button>
 			</v-popup>
 		</transition>
 	</section>
 </template>
 
 <script>
-	import vButton from "@/components/UI/general/v-button.vue";
-	import vPopup from "@/components/UI/general/v-popup.vue";
-
 	import AcademInput from "../academ/academ-input.vue";
 	import vCheckbox from "../academ/v-checkbox.vue";
 
 	export default {
 		name: "TheBanner",
 		components: {
-			vButton,
-			vPopup,
-
 			AcademInput,
 			vCheckbox,
 		},
@@ -201,6 +190,19 @@
 				color: $dark;
 				font-size: 1.8rem;
 				line-height: 2.2rem;
+			}
+		}
+
+		.v-popup {
+			&__description {
+				font-size: 1.8rem;
+				margin-bottom: 2rem;
+			}
+			.v-checkbox {
+				margin: 2rem 0;
+			}
+			.v-button {
+				width: 100%;
 			}
 		}
 	}
