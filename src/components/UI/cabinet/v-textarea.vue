@@ -17,11 +17,11 @@
 	@import "@/assets/scss/variables";
 
 	.v-textarea {
-		border: 0.1rem solid #979797;
+		border: 0.1rem solid #c4c4c4;
 		border-radius: 1rem;
 		padding: 3rem 1.5rem;
-		font-size: 2.2rem;
-		min-height: 24rem;
+		font-size: 1.8rem;
+		font-weight: 500;
 		width: 100%;
 		resize: none;
 		transition: all 0.2s ease;
@@ -36,6 +36,9 @@
 		&:hover {
 			border-color: $dark;
 			transition: all 0.3s ease;
+		}
+		&:invalid {
+			border-color: $red;
 		}
 		&:focus {
 			border-color: $dark;

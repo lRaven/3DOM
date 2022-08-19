@@ -38,7 +38,7 @@
 		<the-footer />
 		<transition mode="out-in">
 			<popup-kolotok
-				v-if="isPopupVisible"
+				v-if="isPopupKolotokOpen"
 				@closePopup="closePopupKolotok"
 			></popup-kolotok>
 		</transition>
@@ -52,29 +52,51 @@
 				<template v-slot>
 					<form
 						class="page-cabinet__questions-suggestions"
-						@submit.prevent=""
+						@submit.prevent="send_message"
 					>
 						<p class="page-cabinet__questions-suggestions-key">
 							ФИО:
 						</p>
-						<v-input type="text"></v-input>
+						<v-input type="text" v-model="form_data.name"></v-input>
 
 						<p class="page-cabinet__questions-suggestions-key">
 							Телефон:
 						</p>
-						<v-input type="tel"></v-input>
+						<v-input
+							type="tel"
+							v-model="form_data.phone_number"
+						></v-input>
 
 						<p class="page-cabinet__questions-suggestions-key">
 							E-mail:
 						</p>
-						<v-input type="email"></v-input>
+						<v-input
+							type="email"
+							v-model="form_data.email"
+						></v-input>
 
 						<p class="page-cabinet__questions-suggestions-key">
-							Описание:
+							Тема обращения:
 						</p>
-						<v-textarea></v-textarea>
+						<v-dropdown
+							:options="topic_list"
+							showedValue="value"
+							placeholder="Выберите тему*"
+							:getValue="form_data.topic_type"
+							v-model="form_data.topic_type"
+						></v-dropdown>
 
-						<v-button text="hui"></v-button>
+						<v-textarea
+							placeholder="Напишите сообщение..."
+							maxlength="1000"
+							v-model="form_data.message"
+						></v-textarea>
+
+						<v-button
+							type="submit"
+							text="Отправить"
+							:disabled="!isFormValid"
+						></v-button>
 					</form>
 				</template>
 			</v-popup>
@@ -84,6 +106,7 @@
 
 <script>
 	import { mapState } from "vuex";
+	import { supportForm } from "@/mixins/support";
 
 	import TheHeader from "@/components/general/TheHeader";
 
@@ -91,11 +114,15 @@
 	import PopupKolotok from "@/components/general/PopupKolotok";
 	import vInput from "@/components/UI/cabinet/v-input.vue";
 	import vTextarea from "@/components/UI/cabinet/v-textarea.vue";
+	import vDropdown from "@/components/UI/cabinet/v-dropdown.vue";
 
 	import TheFooter from "@/components/general/TheFooter";
 
+	import { useToast } from "vue-toastification";
+
 	export default {
 		name: "PageCabinet",
+		mixins: [supportForm],
 		components: {
 			TheHeader,
 
@@ -103,6 +130,7 @@
 			PopupKolotok,
 			vInput,
 			vTextarea,
+			vDropdown,
 
 			TheFooter,
 		},
@@ -113,7 +141,7 @@
 			},
 		},
 		data: () => ({
-			isPopupVisible: false,
+			isPopupKolotokOpen: false,
 			isPopupOpen: false,
 
 			isNavMinimized: false,
@@ -124,14 +152,13 @@
 				user_auth: (state) => state.cabinet.user_auth,
 			}),
 		},
-
 		methods: {
 			openPopupKolotok() {
-				this.isPopupVisible = true;
+				this.isPopupKolotokOpen = true;
 				document.body.classList.add("locked");
 			},
 			closePopupKolotok() {
-				this.isPopupVisible = false;
+				this.isPopupKolotokOpen = false;
 				document.body.classList.remove("locked");
 			},
 
@@ -139,6 +166,10 @@
 				this.isPopupOpen = false;
 				document.body.classList.remove("locked");
 			},
+		},
+		setup() {
+			const toast = useToast();
+			return { toast };
 		},
 	};
 </script>
@@ -211,15 +242,44 @@
 
 		&__questions-suggestions {
 			display: grid;
-			grid-template-columns: max-content 1fr;
-			grid-gap: 2rem 1.5rem;
-			width: 70rem;
+			grid-template-columns: 20rem 1fr;
+			grid-gap: 2rem;
+			align-items: center;
+			width: 90rem;
+			@media (max-width: 1300px) {
+				width: calc(100vw - 35rem);
+			}
+			@media (max-width: 1023px) {
+				grid-template-columns: 1fr;
+			}
+			@media (max-width: 767px) {
+				width: calc(100vw - 6rem);
+			}
+			@media (max-width: 600px) {
+				width: 100%;
+			}
 			&-key {
-				font-size: 1.6rem;
+				font-size: 1.8rem;
+				font-weight: 500;
+				color: #979797;
 			}
 			.v-button {
 				grid-column: 2/3;
 				width: 100%;
+				border-radius: 1rem;
+				height: 5.5rem;
+				display: flex;
+				align-items: center;
+				@media (max-width: 1023px) {
+					grid-column: inherit;
+				}
+			}
+			.v-textarea {
+				grid-column: 2/3;
+				height: 24rem;
+				@media (max-width: 1023px) {
+					grid-column: inherit;
+				}
 			}
 		}
 	}

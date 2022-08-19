@@ -53,10 +53,11 @@
 	.v-popup {
 		display: flex;
 		flex-direction: column;
-		max-height: 90vh;
+		max-height: calc(100vh - 12rem);
 		background-color: $white;
 		transition: all 0.2s ease;
 		border-radius: 3rem;
+		margin-top: 3.5rem 0;
 		@media (max-width: 540px) {
 			max-height: inherit;
 			height: 100%;
@@ -114,6 +115,8 @@
 			padding: 5rem 9.5rem;
 			height: 100%;
 			color: $gray;
+			overflow-y: auto;
+			overflow-x: hidden;
 			@media (max-width: 767px) {
 				padding: 2rem;
 			}

@@ -62,7 +62,10 @@
 				default: false,
 			},
 			placeholder: String,
-			options: Array,
+			options: {
+				value: Array,
+				default: [],
+			},
 
 			sendValue: {
 				value: [String, Number],
@@ -74,7 +77,10 @@
 				value: String,
 				default: "description",
 			},
-			showedValuePrefix: String,
+			showedValuePrefix: {
+				value: String,
+				default: "",
+			},
 		},
 		watch: {
 			getValue: {
@@ -82,6 +88,9 @@
 					if (Boolean(this.getValue) === false) {
 						this.selectedEl = null;
 						this.selectedText = null;
+					} else {
+						this.selectedEl = this.getValue;
+						this.selectedText = this.getValue[this.showedValue];
 					}
 				},
 				deep: true,

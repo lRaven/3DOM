@@ -25,9 +25,11 @@
 						Тема обращения:
 					</p>
 					<v-dropdown
+						showedValue="value"
 						placeholder="Выберите тему*"
 						:options="topic_list"
 						v-model="form_data.topic_type"
+						:getValue="form_data.topic_type"
 					></v-dropdown>
 
 					<v-textarea
@@ -55,9 +57,8 @@
 </template>
 
 <script>
-	import { mapState, mapMutations } from "vuex";
-	import { send_support_message } from "@/api/support";
-	import { returnErrorMessages } from "@/js/returnErrorMessages";
+	import { mapMutations } from "vuex";
+	import { supportForm } from "@/mixins/support";
 
 	import vInput from "@/components/UI/cabinet/v-input";
 	import vDropdown from "@/components/UI/cabinet/v-dropdown";
@@ -67,76 +68,14 @@
 
 	export default {
 		name: "TheFeedback",
+		mixins: [supportForm],
 		components: {
 			vInput,
 			vDropdown,
 			vTextarea,
 		},
-		data: () => ({
-			form_data: {
-				name: "",
-				phone_number: "",
-				email: "",
-				topic_type: "",
-				message: "",
-			},
-			topic_list: [
-				{ id: 1, value: "Вопрос по покупке" },
-				{ id: 2, value: "Вопрос по заселению" },
-				{ id: 3, value: "Вопрос по стройке" },
-				{ id: 4, value: "Вопрос по проживанию" },
-				{ id: 5, value: "Обращение в службу безопасности" },
-				{ id: 6, value: "Предложение о сотрудничестве" },
-				{ id: 7, value: "Сообщить об ошибке на сайте" },
-				{ id: 8, value: "Другое" },
-			],
-		}),
-		computed: {
-			...mapState({
-				user_id: (state) => state.cabinet.user.id,
-				baseURL: (state) => state.baseURL,
-			}),
-
-			isFormValid() {
-				if (
-					this.form_data.name.length > 0 &&
-					this.form_data.phone_number.length > 0 &&
-					this.form_data.email.length > 0 &&
-					this.form_data.topic_type !== "" &&
-					this.form_data.message.length > 0
-				) {
-					return true;
-				} else {
-					return false;
-				}
-			},
-		},
 		methods: {
 			...mapMutations(["SET_TAB"]),
-
-			//* отправка сообщения в поддержку
-			async send_message() {
-				try {
-					const response = await send_support_message({
-						user: this.user_id,
-						...this.form_data,
-					});
-					if (response.status === 201) {
-						this.toast.success(
-							"Спасибо за обращение, с вами скоро свяжутся"
-						);
-						console.log("support message send");
-					}
-					if (response.status === 400) {
-						const error_list = returnErrorMessages(response.data);
-						error_list.forEach((el) => {
-							this.toast.error(el);
-						});
-					}
-				} catch (err) {
-					throw new Error(err);
-				}
-			},
 		},
 		created() {
 			this.SET_TAB("feedback");
@@ -189,16 +128,7 @@
 		}
 		.v-textarea {
 			grid-column: 2/3;
-			font-size: 1.8rem;
-			font-weight: 500;
-			border: 0.1rem solid #c4c4c4;
-			resize: none;
-			&:hover {
-				border-color: $dark;
-			}
-			&:invalid {
-				border-color: $red;
-			}
+			height: 24rem;
 		}
 		&__bottom {
 			grid-column: 2/3;
