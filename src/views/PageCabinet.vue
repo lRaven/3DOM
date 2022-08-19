@@ -50,7 +50,10 @@
 				title="Вопросы и предложения"
 			>
 				<template v-slot>
-					<form class="page-cabinet__questions-suggestions">
+					<form
+						class="page-cabinet__questions-suggestions"
+						@submit.prevent=""
+					>
 						<p class="page-cabinet__questions-suggestions-key">
 							ФИО:
 						</p>
@@ -62,7 +65,12 @@
 						<v-input type="tel"></v-input>
 
 						<p class="page-cabinet__questions-suggestions-key">
-							some desc:
+							E-mail:
+						</p>
+						<v-input type="email"></v-input>
+
+						<p class="page-cabinet__questions-suggestions-key">
+							Описание:
 						</p>
 						<v-textarea></v-textarea>
 
