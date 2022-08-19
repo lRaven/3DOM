@@ -3,7 +3,7 @@
 		<transition name="fade-up" mode="out-in">
 			<div class="v-popup" v-if="isPopupContentVisible">
 				<div class="v-popup__header">
-					<div class="v-popup__title">{{ title }}</div>
+					<h3 class="v-popup__title">{{ title }}</h3>
 					<div class="v-popup__close" @click="closePopup">
 						<img src="/img/icon/cabinet/close.svg" alt="close" />
 					</div>
@@ -66,12 +66,14 @@
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			padding: 6rem;
-			max-height: 5rem;
+			padding: 3rem 6rem;
 			border-bottom: 0.1rem solid #c4c4c4;
+			@media (max-width: 767px) {
+				padding: 2rem;
+			}
 		}
 		&__title {
-			display: block;
+			// display: block;
 			font-size: 3rem;
 			color: $dark;
 			font-weight: 600;
@@ -93,26 +95,6 @@
 			cursor: pointer;
 			width: 3rem;
 			height: 3rem;
-		}
-	}
-
-	@media (max-width: 620px) {
-		.v-popup {
-			width: 95%;
-			&__body {
-				padding: 5rem;
-			}
-		}
-	}
-	@media (max-width: 480px) {
-		.v-popup {
-			height: auto;
-			&__title {
-				text-align: center;
-			}
-			&__body {
-				padding: 1.7rem 1rem 3rem 1rem;
-			}
 		}
 	}
 </style>

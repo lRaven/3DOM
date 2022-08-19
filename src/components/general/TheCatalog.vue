@@ -192,44 +192,44 @@
 		.catalog-filters {
 			grid-column: 1/5;
 			margin: 4rem 0;
+
+			@media (max-width: 1300px) {
+				grid-column: 1/3;
+			}
+			@media (max-width: 630px) {
+				grid-column: 1/2;
+			}
 		}
 
 		&__body {
 			display: grid;
 			grid-template-columns: repeat(4, 1fr);
 			grid-gap: 2rem 2.5rem;
-			@media (max-width: 1240px) {
+			@media (max-width: 1300px) {
 				grid-template-columns: repeat(2, 1fr);
 			}
-			@media (max-width: 640px) {
+			@media (max-width: 630px) {
 				grid-template-columns: 1fr;
 			}
 
 			.v-card {
-				@media (max-width: 1320px) {
-					grid-column: 1/5 !important;
-				}
-				@media (max-width: 1240px) {
-					grid-column: 1/3 !important;
-				}
-				@media (max-width: 640px) {
-					grid-column: 1/1 !important;
-				}
 				&:first-child {
 					grid-column: 1/3;
+					@media (max-width: 1300px) {
+						grid-column: 1/3;
+					}
+					@media (max-width: 630px) {
+						grid-column: 1/2;
+					}
 				}
 				&:nth-child(2) {
 					grid-column: 3/5;
-				}
-			}
-			.v-button {
-				grid-column: 1/5;
-				margin: auto;
-				@media (max-width: 1240px) {
-					grid-column: 1/3;
-				}
-				@media (max-width: 640px) {
-					grid-column: 1/1;
+					@media (max-width: 1300px) {
+						grid-column: 1/3;
+					}
+					@media (max-width: 630px) {
+						grid-column: 1/2;
+					}
 				}
 			}
 		}
