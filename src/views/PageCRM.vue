@@ -1,6 +1,8 @@
 <template>
 	<div class="page-crm theme-container">
-		<the-header />
+		<the-header
+			@openMortgageCalculator="openMortgageCalculator"
+		></the-header>
 		<main class="main">
 			<div class="apartments">
 				<div class="apartments-floor">
@@ -91,9 +93,13 @@
 		<div class="footer">
 			<the-footer />
 		</div>
-		<mortgage-calculator
-			closeIcon="/img/icon/academ/close.svg"
-		></mortgage-calculator>
+		<transition mode="out-in" name="fade-up">
+			<mortgage-calculator
+				v-if="isMortgageCalculatorOpen"
+				closeIcon="/img/icon/academ/close.svg"
+				@closeMortgageCalculator="closeMortgageCalculator"
+			></mortgage-calculator>
+		</transition>
 	</div>
 </template>
 
@@ -132,9 +138,7 @@
 			TheFooter,
 		},
 		computed: {
-			...mapState({
-				apartments: (state) => state.academ.apartments,
-			}),
+			...mapState({ apartments: (state) => state.academ.apartments }),
 		},
 		data: () => ({
 			floor: 4,
@@ -142,6 +146,7 @@
 			apartment: null,
 			isSectionReview: false,
 			isApartmentReview: false,
+			isMortgageCalculatorOpen: false,
 		}),
 
 		methods: {
@@ -173,6 +178,16 @@
 			},
 			closeDialog() {
 				this.isSectionReview = false;
+			},
+
+			openMortgageCalculator() {
+				this.isMortgageCalculatorOpen = true;
+				document.body.classList.add("locked");
+			},
+
+			closeMortgageCalculator() {
+				this.isMortgageCalculatorOpen = false;
+				document.body.classList.remove("locked");
 			},
 		},
 	};

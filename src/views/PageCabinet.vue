@@ -1,6 +1,9 @@
 <template>
 	<div class="page-cabinet theme-container">
-		<the-header :isCabinetVersion="true"></the-header>
+		<the-header
+			:isCabinetVersion="true"
+			@openMortgageCalculator="openMortgageCalculator"
+		></the-header>
 		<main class="page-cabinet__wrapper">
 			<div
 				class="page-cabinet__left-panel"
@@ -36,6 +39,7 @@
 			</div>
 		</main>
 		<the-footer />
+
 		<transition mode="out-in">
 			<popup-kolotok
 				v-if="isPopupKolotokOpen"
@@ -101,6 +105,15 @@
 				</template>
 			</v-popup>
 		</transition>
+
+		<transition mode="out-in" name="fade-up">
+			<mortgage-calculator
+				v-if="isMortgageCalculatorOpen"
+				closeIcon="/img/icon/cabinet/close.svg"
+				light="light"
+				@closeMortgageCalculator="closeMortgageCalculator"
+			></mortgage-calculator>
+		</transition>
 	</div>
 </template>
 
@@ -118,6 +131,8 @@
 
 	import TheFooter from "@/components/general/TheFooter";
 
+	import mortgageCalculator from "@/components/academ/MortgageCalculator";
+
 	import { useToast } from "vue-toastification";
 
 	export default {
@@ -133,6 +148,8 @@
 			vDropdown,
 
 			TheFooter,
+
+			mortgageCalculator,
 		},
 		watch: {
 			user_auth() {
@@ -143,6 +160,7 @@
 		data: () => ({
 			isPopupKolotokOpen: false,
 			isPopupOpen: false,
+			isMortgageCalculatorOpen: false,
 
 			isNavMinimized: false,
 		}),
@@ -164,6 +182,16 @@
 
 			closePopup() {
 				this.isPopupOpen = false;
+				document.body.classList.remove("locked");
+			},
+
+			openMortgageCalculator() {
+				this.isMortgageCalculatorOpen = true;
+				document.body.classList.add("locked");
+			},
+
+			closeMortgageCalculator() {
+				this.isMortgageCalculatorOpen = false;
 				document.body.classList.remove("locked");
 			},
 		},

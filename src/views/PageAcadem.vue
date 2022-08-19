@@ -1,6 +1,8 @@
 <template>
 	<div class="page-academ theme-container">
-		<the-header />
+		<the-header
+			@openMortgageCalculator="openMortgageCalculator"
+		></the-header>
 		<main class="main" id="main">
 			<the-banner />
 			<the-apartments />
@@ -15,9 +17,13 @@
 		</main>
 		<the-footer />
 		<image-popup />
-		<mortgage-calculator
-			closeIcon="/img/icon/academ/close.svg"
-		></mortgage-calculator>
+		<transition mode="out-in" name="fade-up">
+			<mortgage-calculator
+				v-if="isMortgageCalculatorOpen"
+				closeIcon="/img/icon/academ/close.svg"
+				@closeMortgageCalculator="closeMortgageCalculator"
+			></mortgage-calculator>
+		</transition>
 	</div>
 </template>
 
@@ -60,6 +66,18 @@
 
 			imagePopup,
 			MortgageCalculator,
+		},
+		data: () => ({ isMortgageCalculatorOpen: false }),
+		methods: {
+			openMortgageCalculator() {
+				this.isMortgageCalculatorOpen = true;
+				document.body.classList.add("locked");
+			},
+
+			closeMortgageCalculator() {
+				this.isMortgageCalculatorOpen = false;
+				document.body.classList.remove("locked");
+			},
 		},
 	};
 </script>

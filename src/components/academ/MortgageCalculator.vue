@@ -1,11 +1,11 @@
 <template>
-	<div class="popup popup-full">
-		<div class="popup__header" :class="light">
-			<div class="popup__close" @click="closePopup()">
+	<div class="mortgage-calculator">
+		<div class="mortgage-calculator__header" :class="light">
+			<button class="mortgage-calculator__close" @click="closePopup">
 				<img :src="closeIcon" alt="" />
-			</div>
+			</button>
 		</div>
-		<div class="popup__body">
+		<div class="mortgage-calculator__body">
 			<iframe
 				src="https://ipoteka.domclick.ru/calc-reg/calculator.html"
 				frameborder="0"
@@ -27,28 +27,25 @@
 		},
 		methods: {
 			closePopup() {
-				const popup = document.querySelector(".popup-full");
-				popup.classList.remove("open");
+				this.$emit("closeMortgageCalculator");
 				document.querySelector("body").classList.remove("locked");
 			},
 		},
-		mounted() {},
 	};
 </script>
 
 <style lang="scss" scoped>
 	@import "@/assets/scss/variables";
 
-	.popup {
+	.mortgage-calculator {
 		display: flex;
 		flex-direction: column;
 		position: fixed;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -150%);
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
 		z-index: 5;
-		height: 100vh;
-		width: 100vw;
 		background-color: $white;
 		transition: all 0.2s ease;
 		overflow: hidden;
@@ -67,12 +64,9 @@
 			position: relative;
 			height: 100%;
 		}
-		&.open {
-			transform: translate(-50%, -50%);
-			transition: all 0.3s ease;
-		}
 
 		&__close {
+			background-color: transparent;
 			cursor: pointer;
 			width: 3rem;
 			height: 3rem;

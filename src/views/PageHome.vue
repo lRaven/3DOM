@@ -1,6 +1,8 @@
 <template>
 	<div class="page-home theme-container">
-		<the-header />
+		<the-header
+			@openMortgageCalculator="openMortgageCalculator"
+		></the-header>
 		<main class="main">
 			<the-banner />
 			<the-catalog />
@@ -12,10 +14,14 @@
 		</main>
 		<the-footer />
 		<v-call />
-		<mortgage-calculator
-			closeIcon="/img/icon/cabinet/close.svg"
-			light="light"
-		></mortgage-calculator>
+		<transition mode="out-in" name="fade-up">
+			<mortgage-calculator
+				v-if="isMortgageCalculatorOpen"
+				closeIcon="/img/icon/cabinet/close.svg"
+				light="light"
+				@closeMortgageCalculator="closeMortgageCalculator"
+			></mortgage-calculator>
+		</transition>
 	</div>
 </template>
 
@@ -52,6 +58,18 @@
 			mortgageCalculator,
 
 			TheFooter,
+		},
+		data: () => ({ isMortgageCalculatorOpen: false }),
+		methods: {
+			openMortgageCalculator() {
+				this.isMortgageCalculatorOpen = true;
+				document.body.classList.add("locked");
+			},
+
+			closeMortgageCalculator() {
+				this.isMortgageCalculatorOpen = false;
+				document.body.classList.remove("locked");
+			},
 		},
 	};
 </script>

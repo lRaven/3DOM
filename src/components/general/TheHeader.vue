@@ -59,7 +59,10 @@
 							/>
 						</svg>
 					</router-link>
-					<a class="the-header__link" @click="openMortgageCalculator">
+					<a
+						class="the-header__link"
+						@click="this.$emit('openMortgageCalculator')"
+					>
 						Ипотека
 						<svg
 							width="7"
@@ -327,14 +330,6 @@
 			openPopup() {
 				this.isPopupVisible = true;
 				document.body.classList.add("locked");
-			},
-
-			openMortgageCalculator() {
-				const popup = document.querySelector(".popup-full");
-				const body = document.querySelector("body");
-
-				body.classList.add("locked");
-				popup.classList.add("open");
 			},
 		},
 	};
