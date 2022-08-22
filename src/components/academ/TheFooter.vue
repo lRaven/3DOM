@@ -5,30 +5,34 @@
 				<span>Соцсети</span>
 
 				<a href="https://wa.me/79616670163" target="_blank">
-					<img src="/img/icon/academ/wa.svg" alt="" />
+					<img src="/img/icon/academ/wa.svg" alt="WhatsApp" />
 				</a>
 
-				<a
+				<!-- <a
 					href="https://instagram.com/3dom_vlg?utm_medium=copy_link"
 					target="_blank"
 				>
 					<img src="/img/icon/academ/ig.svg" alt="" />
-				</a>
+				</a> -->
 
 				<a
 					href="https://t.me/tridom_vlg"
 					target="_blank"
 					class="the-footer__tg"
 				>
-					<img src="/img/icon/academ/tg.svg" alt="" />
+					<img src="/img/icon/academ/tg.svg" alt="telegram" />
 				</a>
 			</div>
 			<nav class="nav">
-				<router-link to="/" class="link">Главная</router-link>
+				<router-link :to="{ name: 'Home' }" class="link">
+					Главная
+				</router-link>
 				<a class="link" @click="scroll('#apartments')">Квартиры</a>
 				<a class="link" @click="scroll('#office')">Офисы</a>
 				<a class="link" @click="scroll('#parking')">Парковки</a>
-				<a class="link" @click="openPopup">Ипотека</a>
+				<a class="link" @click="this.$emit('openMortgageCalculator')">
+					Ипотека
+				</a>
 				<router-link to="/trade-in" class="link">Trade-in</router-link>
 				<a class="link">Ремонт</a>
 			</nav>
@@ -48,24 +52,11 @@
 </template>
 
 <script>
+	import { scroll } from "@/js/scroll";
+
 	export default {
 		name: "TheFooter",
-		methods: {
-			scroll(id) {
-				const section = document.querySelector(id).offsetTop;
-				const header = document.querySelector("#header").clientHeight;
-
-				window.scrollTo(0, section - header, { behavior: "smooth" });
-			},
-
-			openPopup() {
-				const popup = document.querySelector(".popup-full");
-				const body = document.querySelector("body");
-
-				body.classList.add("locked");
-				popup.classList.add("open");
-			},
-		},
+		methods: { scroll },
 	};
 </script>
 

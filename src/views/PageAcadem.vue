@@ -16,7 +16,9 @@
 			<the-office />
 			<the-feedback />
 		</main>
-		<the-footer />
+		<the-footer
+			@openMortgageCalculator="openMortgageCalculator"
+		></the-footer>
 		<image-popup />
 		<transition mode="out-in" name="fade-up">
 			<mortgage-calculator
