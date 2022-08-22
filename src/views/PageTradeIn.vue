@@ -1,6 +1,8 @@
 <template>
 	<div class="page-trade-in theme-container">
-		<the-header />
+		<the-header
+			@openMortgageCalculator="openMortgageCalculator"
+		></the-header>
 		<main class="main">
 			<the-banner />
 			<the-service />
@@ -12,6 +14,15 @@
 		</main>
 		<the-footer />
 		<v-call />
+
+		<transition mode="out-in" name="fade-up">
+			<mortgage-calculator
+				v-if="isMortgageCalculatorOpen"
+				light="light"
+				closeIcon="/img/icon/cabinet/close.svg"
+				@closeMortgageCalculator="closeMortgageCalculator"
+			></mortgage-calculator>
+		</transition>
 	</div>
 </template>
 
@@ -28,8 +39,11 @@
 
 	import TheFooter from "@/components/general/TheFooter";
 
+	import MortgageCalculator from "@/components/academ/MortgageCalculator.vue";
+
 	export default {
 		name: "PageTradeIn",
+		data: () => ({ isMortgageCalculatorOpen: false }),
 		components: {
 			TheHeader,
 
@@ -42,29 +56,29 @@
 			vCall,
 
 			TheFooter,
+
+			MortgageCalculator,
 		},
 		methods: {
-			//*красит ссылку Trade-in на странице
-			setTradeIn() {
-				const linksHeader = document.querySelectorAll(".header__link");
-				linksHeader.forEach((link) => {
-					if (link.textContent.toLowerCase().includes("trade-in")) {
-						link.setAttribute("style", "color: #007bfc;");
-					}
-				});
-				const linksFooter =
-					document.querySelectorAll(".footer__link a");
-				linksFooter.forEach((link) => {
-					if (link.textContent.toLowerCase().includes("trade-in")) {
-						link.setAttribute("style", "color: #007bfc;");
-					}
-				});
+			openMortgageCalculator() {
+				this.isMortgageCalculatorOpen = true;
+				document.body.classList.add("locked");
 			},
-		},
-		mounted() {
-			this.setTradeIn();
+
+			closeMortgageCalculator() {
+				this.isMortgageCalculatorOpen = false;
+				document.body.classList.remove("locked");
+			},
 		},
 	};
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss">
+	@import "@/assets/scss/variables";
+
+	.page-trade-in {
+		.router-link-active {
+			color: $blue !important;
+		}
+	}
+</style>

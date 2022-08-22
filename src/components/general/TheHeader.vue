@@ -268,6 +268,7 @@
 
 	export default {
 		name: "TheHeader",
+		emits: ["openMortgageCalculator"],
 		props: {
 			isCabinetVersion: {
 				value: Boolean,

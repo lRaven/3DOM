@@ -147,6 +147,7 @@
 
 	export default {
 		name: "TheHeader",
+		emits: ["openMortgageCalculator"],
 		data: () => ({ authorized: false }),
 		computed: {
 			...mapState({
