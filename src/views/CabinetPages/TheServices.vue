@@ -13,39 +13,92 @@
 		</div>
 		<div class="the-services__body">
 			<services-item
-				:bg="'blue'"
-				:title="'Trade-in'"
-				:description1="`Trade-in — это программа, которая поможет обменять вашу старую`"
-				:description2="`квартиру на новую.`"
-				:btn="'white'"
+				title="Trade-in"
+				:description="`Trade-in — это программа, которая поможет обменять вашу\nстарую квартиру на новую.`"
+				buttonColor="white"
+				@buttonAction="openPopup"
 			></services-item>
 			<services-item
-				:bg="'gray'"
-				:title="'Страхование'"
-				:description1="`Страхование ипотеки — финансовая защита всех участников сделки,`"
-				:description2="`позволяющая сделать процесс безопасным, удобным, быстрым.`"
-				:btn="'blue'"
+				color="gray"
+				title="Страхование"
+				:description="`Страхование ипотеки — финансовая защита всех участников сделки,\nпозволяющая сделать процесс безопасным, удобным, быстрым.`"
+				@buttonAction="openPopup"
 			></services-item>
 			<services-item
-				:title="'Оценка квартиры'"
-				:description1="`Определяем стоимость объекта недвижимости или отдельных прав`"
-				:description2="`в отношении объекта — права собственности, аренды, пользования.`"
-				:btn="'blue'"
+				color="white"
+				title="Оценка квартиры"
+				:description="`Определяем стоимость объекта недвижимости или отдельных прав\nв отношении объекта — права собственности, аренды, пользования.`"
+				@buttonAction="openPopup"
 			></services-item>
 		</div>
+
+		<transition mode="out-in">
+			<v-popup
+				v-if="isPopupVisible"
+				@closePopup="closePopup"
+				title="3DOM консультация"
+			>
+				<form
+					@submit.prevent=""
+					class="the-services__consultation-request"
+				>
+					<p class="the-services__consultation-request-description">
+						Отправьте заявку<br />
+						для получения консультации
+					</p>
+					<academ-input
+						placeholder="Имя"
+						type="text"
+						dark="dark"
+						v-model="request_support_form_data.name"
+					></academ-input>
+					<academ-input
+						placeholder="Телефон"
+						type="tel"
+						dark="dark"
+						v-model="request_support_form_data.phone_number"
+					></academ-input>
+					<v-checkbox
+						v-model="request_support_form_data.privacyPolicy"
+						text="Даю согласие на обработку персональных данных"
+						dark="dark"
+					></v-checkbox>
+					<v-button
+						text="Отправить заявку"
+						type="submit"
+						:disabled="!isRequestSupportFormValid"
+					></v-button>
+				</form>
+			</v-popup>
+		</transition>
 	</div>
 </template>
 
 <script>
 	import ServicesItem from "@/components/cabinet/ServicesItem.vue";
+	import AcademInput from "@/components/academ/academ-input.vue";
+	import vCheckbox from "@/components/academ/v-checkbox.vue";
 
 	import { mapMutations } from "vuex";
 
+	import { requestSupportForm } from "@/mixins/support";
+
 	export default {
 		name: "TheServices",
-		components: { ServicesItem },
+		mixins: [requestSupportForm],
+		components: { ServicesItem, AcademInput, vCheckbox },
+		data: () => ({ isPopupVisible: false }),
 		methods: {
 			...mapMutations(["SET_TAB"]),
+
+			closePopup() {
+				this.isPopupVisible = false;
+				document.body.classList.remove("locked");
+			},
+			openPopup() {
+				this.isPopupVisible = true;
+				document.body.classList.add("locked");
+			},
 		},
 		created() {
 			this.SET_TAB("services");
@@ -83,6 +136,23 @@
 			&-desc {
 				font-size: 2rem;
 				font-weight: 600;
+			}
+		}
+
+		&__consultation-request {
+			display: flex;
+			flex-direction: column;
+			&-description {
+				font-size: 1.8rem;
+				margin-bottom: 6rem;
+				line-height: 1.3;
+			}
+			.v-checkbox {
+				margin: 2rem 0 4rem 0;
+			}
+			.v-button {
+				margin: auto;
+				padding: 1.8rem 5rem;
 			}
 		}
 	}

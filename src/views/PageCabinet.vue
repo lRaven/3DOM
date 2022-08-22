@@ -61,14 +61,17 @@
 						<p class="page-cabinet__questions-suggestions-key">
 							ФИО:
 						</p>
-						<v-input type="text" v-model="form_data.name"></v-input>
+						<v-input
+							type="text"
+							v-model="support_form_data.name"
+						></v-input>
 
 						<p class="page-cabinet__questions-suggestions-key">
 							Телефон:
 						</p>
 						<v-input
 							type="tel"
-							v-model="form_data.phone_number"
+							v-model="support_form_data.phone_number"
 						></v-input>
 
 						<p class="page-cabinet__questions-suggestions-key">
@@ -76,7 +79,7 @@
 						</p>
 						<v-input
 							type="email"
-							v-model="form_data.email"
+							v-model="support_form_data.email"
 						></v-input>
 
 						<p class="page-cabinet__questions-suggestions-key">
@@ -86,20 +89,20 @@
 							:options="topic_list"
 							showedValue="value"
 							placeholder="Выберите тему*"
-							:getValue="form_data.topic_type"
-							v-model="form_data.topic_type"
+							:getValue="support_form_data.topic_type"
+							v-model="support_form_data.topic_type"
 						></v-dropdown>
 
 						<v-textarea
 							placeholder="Напишите сообщение..."
 							maxlength="1000"
-							v-model="form_data.message"
+							v-model="support_form_data.message"
 						></v-textarea>
 
 						<v-button
 							type="submit"
 							text="Отправить"
-							:disabled="!isFormValid"
+							:disabled="!isSupportFormValid"
 						></v-button>
 					</form>
 				</template>

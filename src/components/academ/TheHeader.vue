@@ -1,11 +1,21 @@
 <template>
-	<header class="header animate__animated animate__fadeInDown" id="header">
-		<div class="header__container center">
-			<div class="header__left">
-				<div class="header__burger" @click="showHideMenu">
+	<header
+		class="the-header animate__animated animate__fadeInDown"
+		id="header"
+	>
+		<div class="the-header__container center">
+			<div class="the-header__left">
+				<button
+					class="the-header__burger"
+					@click="
+						isMobileMenuOpen
+							? (isMobileMenuOpen = false)
+							: (isMobileMenuOpen = true)
+					"
+				>
 					<img src="/img/icon/academ/burger.svg" alt="" />
-				</div>
-				<nav class="nav">
+				</button>
+				<nav class="nav" :class="{ open: isMobileMenuOpen }">
 					<router-link to="/" class="link">
 						Главная
 						<svg
@@ -20,7 +30,13 @@
 								fill="#021921"
 							/></svg
 					></router-link>
-					<a class="link" @click="scroll('#apartments')">
+					<a
+						class="link"
+						@click="
+							isMobileMenuOpen = false;
+							scroll('#apartments');
+						"
+					>
 						Квартиры
 						<svg
 							width="7"
@@ -35,7 +51,13 @@
 							/>
 						</svg>
 					</a>
-					<a class="link" @click="scroll('#office')">
+					<a
+						class="link"
+						@click="
+							isMobileMenuOpen = false;
+							scroll('#office');
+						"
+					>
 						Офисы
 						<svg
 							width="7"
@@ -50,7 +72,13 @@
 							/>
 						</svg>
 					</a>
-					<a class="link" @click="scroll('#parking')">
+					<a
+						class="link"
+						@click="
+							isMobileMenuOpen = false;
+							scroll('#parking');
+						"
+					>
 						Парковки
 						<svg
 							width="7"
@@ -67,7 +95,10 @@
 					</a>
 					<a
 						class="link"
-						@click="this.$emit('openMortgageCalculator')"
+						@click="
+							isMobileMenuOpen = false;
+							this.$emit('openMortgageCalculator');
+						"
 					>
 						Ипотека
 						<svg
@@ -98,7 +129,7 @@
 							/>
 						</svg>
 					</router-link>
-					<a class="link">
+					<a class="link" @click="isMobileMenuOpen = false">
 						Ремонт
 						<svg
 							width="7"
@@ -115,8 +146,11 @@
 					</a>
 				</nav>
 			</div>
-			<div class="header__right" v-show="authorized === false">
-				<div class="header__auth">
+			<div class="the-header__right" v-if="isAuth === false">
+				<div
+					class="the-header__auth"
+					:class="{ open: isMobileMenuOpen }"
+				>
 					<img src="/img/icon/academ/person.svg" alt="" />
 					<router-link :to="{ name: 'Login' }" class="link">
 						Войти <span class="link__full">в 3D-клуб</span>
@@ -126,19 +160,26 @@
 						Регистрация
 					</router-link>
 				</div>
-				<div class="header__call">
+				<div class="the-header__call">
 					<img src="/img/icon/academ/call.svg" alt="" />
 					<span>+7 (8442) 60-05-51</span>
 				</div>
 			</div>
-			<div class="header__right" v-show="authorized === true">
-				<router-link :to="{ name: 'Cabinet' }" class="header__avatar">
+			<div class="the-header__right" v-else-if="isAuth === true">
+				<router-link
+					:to="{ name: 'Cabinet' }"
+					class="the-header__avatar"
+					:class="{ open: isMobileMenuOpen }"
+				>
 					<img :src="avatar" alt="avatar" />
 				</router-link>
 			</div>
 		</div>
 	</header>
-	<div class="blur" @click="hideMenu"></div>
+
+	<transition mode="out-in">
+		<div class="blur" v-show="isMobileMenuOpen"></div>
+	</transition>
 </template>
 
 <script>
@@ -148,118 +189,32 @@
 	export default {
 		name: "TheHeader",
 		emits: ["openMortgageCalculator"],
-		data: () => ({ authorized: false }),
+		props: { section: String },
 		computed: {
 			...mapState({
 				avatar: (state) => state.cabinet.user.avatar,
+				isAuth: (state) => state.cabinet.user_auth,
 			}),
 		},
-		methods: {
-			...mapMutations(["SET_TAB"]),
-			scroll,
-
-			//*проверка, авторизован ли юзер
-			checkAuthorized() {
-				if (this.$cookies.get("auth_token") !== null) {
-					this.authorized = true;
-				} else {
-					this.authorized = false;
-				}
-			},
-
-			//*показ меню в мобилке
-			showHideMenu() {
-				const header = document.querySelector(".header");
-				const nav = header.querySelector(".nav");
-				const auth = header.querySelector(".header__auth");
-				const avatar = header.querySelector(".header__avatar");
-				const blur = document.querySelector(".blur");
-
-				if (nav.classList.contains("open")) {
-					if (this.authorized === false) {
-						auth.classList.remove("open");
-					} else if (this.authorized === true) {
-						avatar.classList.remove("open");
-					}
-					nav.classList.remove("open");
-					document.body.classList.remove("locked");
-					blur.classList.remove("open");
-				} else {
-					if (this.authorized === false) {
-						auth.classList.add("open");
-					} else if (this.authorized === true) {
-						avatar.classList.add("open");
-					}
-					document.body.classList.add("locked");
-					nav.classList.add("open");
-					blur.classList.add("open");
-				}
-			},
-
-			//*скрытие меню в мобилке
-			hideMenu() {
-				const header = document.querySelector(".header");
-				const nav = header.querySelector(".nav");
-				const auth = header.querySelector(".header__auth");
-				const avatar = header.querySelector(".header__avatar");
-				const blur = document.querySelector(".blur");
-
-				if (this.authorized === false) {
-					auth.classList.remove("open");
-				} else if (this.authorized === true) {
-					avatar.classList.remove("open");
-				}
-				nav.classList.remove("open");
-				document.body.classList.remove("locked");
-				blur.classList.remove("open");
+		watch: {
+			isMobileMenuOpen() {
+				this.isMobileMenuOpen
+					? document.body.classList.add("locked")
+					: document.body.classList.remove("locked");
 			},
 		},
+		data: () => ({ isMobileMenuOpen: false }),
+		methods: {
+			scroll,
+			...mapMutations(["SET_TAB"]),
 
+			closeMobileMenu() {
+				this.isMobileMenuOpen = false;
+			},
+		},
 		mounted() {
-			this.checkAuthorized();
-
-			const links = document.querySelectorAll(".link");
-			links.forEach((link) => {
-				link.addEventListener("click", () => {
-					this.hideMenu();
-				});
-			});
-
-			//*скрытие выпадающего списка при клике вне элемента
-			window.addEventListener("click", (e) => {
-				const target = e.target;
-				if (!target.closest(".header__burger")) {
-					const header = document.querySelector(".header");
-					const nav = header.querySelector(".nav");
-					const auth = header.querySelector(".header__auth");
-					const avatar = header.querySelector(".header__avatar");
-					const blur = document.querySelector(".blur");
-
-					if (this.authorized === false) {
-						auth.classList.remove("open");
-					} else if (this.authorized === true) {
-						avatar.classList.remove("open");
-					}
-					nav.classList.remove("open");
-					blur.classList.remove("open");
-				}
-			});
-
-			//*скролл к секции если через пропсы была передана переменная по router-link
-			const propsSection = document
-				.querySelector(".theme-container")
-				.getAttribute("section");
-
-			if (propsSection !== null) {
-				setTimeout(() => {
-					const section =
-						document.querySelector(propsSection).offsetTop;
-					const header =
-						document.querySelector("#header").clientHeight;
-					window.scrollTo(0, section - header, {
-						behavior: "smooth",
-					});
-				}, 500);
+			if (this.section) {
+				scroll(this.section);
 			}
 		},
 	};
@@ -268,7 +223,7 @@
 <style lang="scss" scoped>
 	@import "@/assets/scss/variables";
 
-	.header {
+	.the-header {
 		position: fixed;
 		height: 6rem;
 		width: 100%;
@@ -374,17 +329,15 @@
 		right: 0;
 		top: 0;
 		bottom: 0;
-		background-color: rgba(0, 0, 0, 0);
-		z-index: -1;
+		z-index: 3;
+		background-color: rgba(0, 0, 0, 0.5);
 		transition: all 0.2s ease;
 		&.open {
-			z-index: 3;
-			background-color: rgba(0, 0, 0, 0.5);
 		}
 	}
 
 	@media (max-width: 1260px) {
-		.header {
+		.the-header {
 			&__right {
 				gap: 2rem;
 			}
@@ -396,10 +349,11 @@
 		}
 	}
 	@media (max-width: 1023px) {
-		.header {
+		.the-header {
 			&__left {
 			}
 			&__burger {
+				background-color: transparent;
 				cursor: pointer;
 				display: block;
 				padding: 1rem;
@@ -491,7 +445,7 @@
 	}
 
 	@media (max-width: 767px) {
-		.header {
+		.the-header {
 			&__auth,
 			&__avatar,
 			.nav {

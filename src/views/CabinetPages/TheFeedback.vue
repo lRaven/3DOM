@@ -7,7 +7,10 @@
 			<div class="the-feedback-form__body">
 				<form @submit.prevent="send_message">
 					<p class="the-feedback-form__description">ФИО:</p>
-					<v-input type="text" v-model="form_data.name"></v-input>
+					<v-input
+						type="text"
+						v-model="support_form_data.name"
+					></v-input>
 
 					<p class="the-feedback-form__description">
 						Номер телефона:
@@ -15,11 +18,14 @@
 
 					<v-input
 						type="tel"
-						v-model="form_data.phone_number"
+						v-model="support_form_data.phone_number"
 					></v-input>
 
 					<p class="the-feedback-form__description">Email:</p>
-					<v-input type="email" v-model="form_data.email"></v-input>
+					<v-input
+						type="email"
+						v-model="support_form_data.email"
+					></v-input>
 
 					<p class="the-feedback-form__description">
 						Тема обращения:
@@ -28,21 +34,21 @@
 						showedValue="value"
 						placeholder="Выберите тему*"
 						:options="topic_list"
-						v-model="form_data.topic_type"
-						:getValue="form_data.topic_type"
+						v-model="support_form_data.topic_type"
+						:getValue="support_form_data.topic_type"
 					></v-dropdown>
 
 					<v-textarea
 						placeholder="Напишите сообщение..."
 						maxlength="1000"
-						v-model="form_data.message"
+						v-model="support_form_data.message"
 					></v-textarea>
 
 					<v-button
 						text="Отправить"
 						type="submit"
 						ref="submit"
-						:disabled="!isFormValid"
+						:disabled="!isSupportFormValid"
 					></v-button>
 
 					<p class="the-feedback-form__bottom">

@@ -33,7 +33,11 @@
 			</label>
 		</div>
 		<div class="the-favorites__body" v-show="favorites_length !== 0">
-			<favorites-apartment />
+			<favorites-apartment
+				v-for="apartment in favorites"
+				:key="apartment.id"
+				:apartment="apartment"
+			></favorites-apartment>
 		</div>
 	</div>
 </template>
@@ -42,6 +46,7 @@
 	import FavoritesApartment from "@/components/cabinet/FavoritesApartment.vue";
 	import { mapState, mapMutations } from "vuex";
 
+	import { getApartments } from "@/api/academ";
 	import { sortFavoriteList } from "@/api/favorite";
 
 	export default {
@@ -57,6 +62,7 @@
 		computed: {
 			...mapState({
 				favorites: (state) => state.cabinet.favorites,
+				apartments: (state) => state.academ.apartments,
 			}),
 		},
 		data: () => ({
@@ -105,6 +111,7 @@
 		},
 		created() {
 			this.SET_TAB("favorites");
+			getApartments();
 		},
 		mounted() {
 			this.openPopup();

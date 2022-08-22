@@ -1,58 +1,62 @@
 <template>
-	<section class="banner">
-		<div class="banner__container center">
+	<section class="the-banner">
+		<div class="the-banner__container center">
 			<div
-				class="banner__description animate__animated animate__fadeInLeft wow"
+				class="the-banner__description animate__animated animate__fadeInLeft wow"
 			>
-				<h1 class="banner__title">Trade-in</h1>
-				<h3 class="banner__subtitle">
+				<h1 class="the-banner__title">Trade-in</h1>
+				<h3 class="the-banner__subtitle">
 					Trade-in — это программа, которая поможет обменять вашу
 					старую квартиру на новую
 				</h3>
 				<v-button
 					text="Оформить заявку"
 					type="button"
-					@click="openPopup"
+					@click="this.$emit('openPopup')"
 				></v-button>
 			</div>
-			<div class="banner__img animate__animated animate__fadeInRight wow">
+			<div
+				class="the-banner__img animate__animated animate__fadeInRight wow"
+			>
 				<img src="/img/trade-in/banner-img.svg" alt="" />
 			</div>
-			<div class="banner__footer animate__animated animate__fadeInUp wow">
-				<div class="banner__info">
+			<div
+				class="the-banner__footer animate__animated animate__fadeInUp wow"
+			>
+				<div class="the-banner__info">
 					<h4
-						class="banner__info-title animate__animated animate__fadeInUp wow"
+						class="the-banner__info-title animate__animated animate__fadeInUp wow"
 					>
 						Услуга страхования
 					</h4>
 					<h5
-						class="banner__info-subtitle animate__animated animate__fadeInUp wow"
+						class="the-banner__info-subtitle animate__animated animate__fadeInUp wow"
 					>
 						Финансовая защита всех<br />
 						участников сделки
 					</h5>
 				</div>
-				<div class="banner__info">
+				<div class="the-banner__info">
 					<h4
-						class="banner__info-title animate__animated animate__fadeInUp wow"
+						class="the-banner__info-title animate__animated animate__fadeInUp wow"
 					>
 						Независимая оценка жилья
 					</h4>
 					<h5
-						class="banner__info-subtitle animate__animated animate__fadeInUp wow"
+						class="the-banner__info-subtitle animate__animated animate__fadeInUp wow"
 					>
 						Финансовая защита всех<br />
 						участников сделки
 					</h5>
 				</div>
-				<div class="banner__info">
+				<div class="the-banner__info">
 					<h4
-						class="banner__info-title animate__animated animate__fadeInUp wow"
+						class="the-banner__info-title animate__animated animate__fadeInUp wow"
 					>
 						Собираем документы
 					</h4>
 					<h5
-						class="banner__info-subtitle animate__animated animate__fadeInUp wow"
+						class="the-banner__info-subtitle animate__animated animate__fadeInUp wow"
 					>
 						Финансовая защита всех<br />
 						участников сделки
@@ -60,75 +64,19 @@
 				</div>
 			</div>
 		</div>
-		<transition>
-			<v-popup
-				title="3DOM консультация"
-				v-if="isPopupVisible"
-				@closePopup="closePopup"
-			>
-				<p class="v-popup__description">
-					Отправьте заявку<br />
-					для получения консультации
-				</p>
-				<academ-input
-					placeholder="Имя"
-					type="text"
-					dark="dark"
-					v-model="name"
-				></academ-input>
-				<academ-input
-					placeholder="Телефон"
-					type="tel"
-					dark="dark"
-					v-model="tel"
-				></academ-input>
-				<v-checkbox
-					v-model="privacyPolicy"
-					text="Даю согласие на обработку персональных данных"
-					dark="dark"
-				></v-checkbox>
-				<v-button text="Отправить заявку" type="button"></v-button>
-			</v-popup>
-		</transition>
 	</section>
 </template>
 
 <script>
-	import AcademInput from "../academ/academ-input.vue";
-	import vCheckbox from "../academ/v-checkbox.vue";
-
 	export default {
 		name: "TheBanner",
-		components: {
-			AcademInput,
-			vCheckbox,
-		},
-		data() {
-			return {
-				isPopupVisible: false,
-
-				name: "",
-				tel: "",
-				privacyPolicy: false,
-			};
-		},
-		methods: {
-			closePopup() {
-				this.isPopupVisible = false;
-				document.body.classList.remove("locked");
-			},
-			openPopup() {
-				this.isPopupVisible = true;
-				document.body.classList.add("locked");
-			},
-		},
 	};
 </script>
 
 <style lang="scss" scoped>
 	@import "@/assets/scss/variables";
 
-	.banner {
+	.the-banner {
 		background: linear-gradient(
 			0deg,
 			rgba(255, 255, 255, 0) 0%,
@@ -190,19 +138,6 @@
 				color: $dark;
 				font-size: 1.8rem;
 				line-height: 2.2rem;
-			}
-		}
-
-		.v-popup {
-			&__description {
-				font-size: 1.8rem;
-				margin-bottom: 2rem;
-			}
-			.v-checkbox {
-				margin: 2rem 0;
-			}
-			.v-button {
-				width: 100%;
 			}
 		}
 	}

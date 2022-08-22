@@ -1,47 +1,46 @@
 <template>
-	<div
-		class="favorite"
-		v-for="favorite in favorites"
-		:key="favorite.favorite_id"
-	>
+	<div class="favorites-apartment">
 		<div
-			class="favorite__close"
-			@click="remove(favorite.favorite_id, this.sorted)"
+			class="favorites-apartment__close"
+			@click="removeFavorite(apartment.favorite_id, this.sorted)"
 		>
 			<img src="/img/icon/cabinet/close.svg" alt="" />
 		</div>
-		<div class="favorite__layout">
-			<img :src="favorite.image" alt="" />
+		<div class="favorites-apartment__layout">
+			<img :src="apartment.image" alt="" />
 		</div>
-		<div class="favorite__rooms">
-			<div v-if="favorite.type === 5">
-				<p>Студия</p>
+		<div class="favorites-apartment__rooms">
+			<div>
+				<p>
+					{{
+						apartment.type === 5
+							? "Студия"
+							: `${apartment.type}-комнатная`
+					}}
+				</p>
 			</div>
-			<div v-else>
-				<p>{{ favorite.type }}-комнатная</p>
-			</div>
-			<div class="favorite__price">
+			<div class="favorites-apartment__price">
 				<span>Стоимость:</span>
-				<p>{{ favorite.cost }}</p>
+				<p>{{ apartment.cost }}</p>
 			</div>
 		</div>
-		<div class="favorite__area">
+		<div class="favorites-apartment__area">
 			<div><p>Площадь</p></div>
-			<p>{{ favorite.area }} м2</p>
+			<p>{{ apartment.area }} м2</p>
 		</div>
-		<div class="favorite__floor">
+		<div class="favorites-apartment__floor">
 			<div><p>Этаж</p></div>
-			<p>{{ favorite.floor }}</p>
+			<p>{{ apartment.floor }}</p>
 		</div>
-		<div class="favorite__project">
+		<div class="favorites-apartment__project">
 			<div>
 				<p>Проект</p>
 			</div>
 			<p>Академический</p>
 		</div>
-		<div class="favorite__section">
+		<div class="favorites-apartment__section">
 			<div><p>Секция</p></div>
-			<p>{{ favorite.section }}</p>
+			<p>{{ apartment.section }}</p>
 		</div>
 		<v-button
 			text="Получить консультацию"
@@ -50,7 +49,7 @@
 		></v-button>
 		<v-button text="Забронировать" type="button"></v-button>
 
-		<div class="favorite__link">
+		<div class="favorites-apartment__link">
 			<img src="/img/icon/cabinet/link.svg" alt="" />
 		</div>
 	</div>
@@ -58,20 +57,18 @@
 
 <script>
 	import { removeFavorite } from "@/api/favorite";
-	import { mapState } from "vuex";
 
 	export default {
-		name: "TheFavorite",
-		props: { sorted: String },
-		computed: {
-			...mapState({
-				favorites: (state) => state.cabinet.favorites,
-			}),
+		name: "FavoritesApartment",
+		props: {
+			sorted: String,
+			apartment: {
+				value: Object,
+				required: true,
+			},
 		},
 		methods: {
-			remove(id, sort) {
-				removeFavorite(id, sort);
-			},
+			removeFavorite,
 		},
 	};
 </script>
@@ -79,7 +76,7 @@
 <style lang="scss" scoped>
 	@import "@/assets/scss/variables";
 
-	.favorite {
+	.favorites-apartment {
 		display: grid;
 		grid-template-columns: 19rem repeat(5, max-content);
 		grid-template-rows: 10rem 5rem;
@@ -89,7 +86,7 @@
 		padding: 4rem 7.4rem 4.5rem 7.4rem;
 		border-radius: 3rem;
 		box-shadow: $shadow;
-		+ .favorite {
+		+ .favorites-apartment {
 			margin-top: 2.3rem;
 		}
 		.blue {
@@ -161,21 +158,15 @@
 				font-size: 1.6rem;
 			}
 		}
-		&__area {
-		}
-		&__floor {
-		}
 		&__project {
 			margin-right: 4rem;
-		}
-		&__section {
 		}
 
 		&__link {
 			cursor: pointer;
 			background-color: $blue;
-			width: 4.5rem;
-			height: 4.5rem;
+			width: 4rem;
+			height: 4rem;
 			border-radius: 1rem;
 			display: flex;
 			justify-content: center;
@@ -188,13 +179,16 @@
 				box-shadow: $shadow;
 				transition: all 0.3s ease;
 			}
+			img {
+				width: 2rem;
+				height: 2rem;
+			}
 		}
 	}
 	.v-button {
 		align-self: center;
 		border-radius: 1rem;
 		font-weight: 500;
-		height: 4.5rem;
 		padding: 1rem 4rem;
 	}
 </style>

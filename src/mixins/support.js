@@ -3,26 +3,45 @@ import { returnErrorMessages } from "@/js/returnErrorMessages";
 
 import { mapState } from 'vuex';
 
+export const requestSupportForm = {
+	computed: {
+		isRequestSupportFormValid() {
+			if (
+				this.request_support_form_data.name.length > 0 &&
+				this.request_support_form_data.phone_number.length > 0 &&
+				this.request_support_form_data.privacyPolicy === true
+			) { return true; }
+			else { return false; }
+		},
+	},
+	data: () => ({
+		request_support_form_data: {
+			name: '',
+			phone_number: '',
+			privacyPolicy: false,
+		}
+	}),
+	methods: {
+	},
+}
+
 export const supportForm = {
 	computed: {
 		...mapState({ user_id: (state) => state.cabinet.user.id, }),
 
-		isFormValid() {
+		isSupportFormValid() {
 			if (
-				this.form_data.name.length > 0 &&
-				this.form_data.phone_number.length > 0 &&
-				this.form_data.email.length > 0 &&
-				this.form_data.topic_type !== "" &&
-				this.form_data.message.length > 0
-			) {
-				return true;
-			} else {
-				return false;
-			}
+				this.support_form_data.name.length > 0 &&
+				this.support_form_data.phone_number.length > 0 &&
+				this.support_form_data.email.length > 0 &&
+				this.support_form_data.topic_type !== "" &&
+				this.support_form_data.message.length > 0
+			) { return true; }
+			else { return false; }
 		},
 	},
 	data: () => ({
-		form_data: {
+		support_form_data: {
 			name: "",
 			phone_number: "",
 			email: "",
@@ -46,11 +65,11 @@ export const supportForm = {
 		async send_message(event) {
 			try {
 				const response = await send_support_message({
-					name: this.form_data.name,
-					phone_number: this.form_data.phone_number,
-					email: this.form_data.email,
-					topic_type: this.form_data.topic_type.id,
-					message: this.form_data.message,
+					name: this.support_form_data.name,
+					phone_number: this.support_form_data.phone_number,
+					email: this.support_form_data.email,
+					topic_type: this.support_form_data.topic_type.id,
+					message: this.support_form_data.message,
 					user: this.user_id,
 				});
 				if (response.status === 201) {
@@ -74,9 +93,9 @@ export const supportForm = {
 		},
 
 		resetForm() {
-			for (const key in this.form_data) {
-				if (Object.hasOwnProperty.call(this.form_data, key)) {
-					this.form_data[key] = "";
+			for (const key in this.support_form_data) {
+				if (Object.hasOwnProperty.call(this.support_form_data, key)) {
+					this.support_form_data[key] = "";
 				}
 			}
 		},

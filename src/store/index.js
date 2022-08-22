@@ -6,10 +6,22 @@ import CRM from '@/store/modules/crm'
 import Catalog from '@/store/modules/catalog';
 
 export default createStore({
-	state: { baseURL: process.env.VUE_APP_BACKEND_BASEURL, },
+	state: {
+		baseURL: process.env.VUE_APP_BACKEND_BASEURL,
+		document_width: document.documentElement.clientWidth,
+	},
 	getters: {},
-	mutations: {},
-	actions: {},
+	mutations: { SET_DOCUMENT_WIDTH: (state, payload) => state.document_width = payload, },
+	actions: {
+		getDocumentWidth: async (context) => {
+			await context.commit('SET_DOCUMENT_WIDTH', document.documentElement.clientWidth);
+			await window.addEventListener("resize", () => {
+				setTimeout(() => {
+					context.commit('SET_DOCUMENT_WIDTH', document.documentElement.clientWidth);
+				}, 100);
+			});
+		},
+	},
 	modules: {
 		cabinet: Cabinet,
 		academ: Academ,

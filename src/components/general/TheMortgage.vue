@@ -52,7 +52,7 @@
 						<v-button
 							text="Отправить"
 							type="button"
-							@click="openPopup"
+							@click="this.$emit('openPopup')"
 						></v-button>
 					</div>
 					<div
@@ -117,68 +117,12 @@
 				</form>
 			</div>
 		</div>
-		<transition>
-			<v-popup
-				title="3DOM консультация"
-				v-if="isPopupVisible"
-				@closePopup="closePopup"
-			>
-				<p class="v-popup__description">
-					Отправьте заявку<br />
-					для получения консультации
-				</p>
-				<academ-input
-					placeholder="Имя"
-					type="text"
-					dark="dark"
-					v-model="name"
-				></academ-input>
-				<academ-input
-					placeholder="Телефон"
-					type="tel"
-					dark="dark"
-					v-model="tel"
-				></academ-input>
-				<v-checkbox
-					v-model="privacyPolicy"
-					text="Даю согласие на обработку персональных данных"
-					:dark="'dark'"
-				></v-checkbox>
-				<v-button text="Отправить заявку" type="button"></v-button>
-			</v-popup>
-		</transition>
 	</section>
 </template>
 
 <script>
-	import AcademInput from "../academ/academ-input.vue";
-	import vCheckbox from "../academ/v-checkbox.vue";
-
 	export default {
 		name: "TheMortgage",
-		components: {
-			AcademInput,
-			vCheckbox,
-		},
-		data() {
-			return {
-				isPopupVisible: false,
-
-				name: "",
-				tel: "",
-				privacyPolicy: false,
-			};
-		},
-		methods: {
-			closePopup() {
-				this.isPopupVisible = false;
-				document.body.classList.remove("locked");
-			},
-			openPopup() {
-				this.isPopupVisible = true;
-				document.body.classList.add("locked");
-			},
-		},
 	};
 </script>
 
@@ -325,19 +269,6 @@
 		&__last {
 			background-color: $blue;
 			color: $white;
-		}
-
-		.v-popup {
-			&__description {
-				font-size: 1.8rem;
-				margin-bottom: 2rem;
-			}
-			.v-checkbox {
-				margin: 2rem 0;
-			}
-			.v-button {
-				width: 100%;
-			}
 		}
 	}
 

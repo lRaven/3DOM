@@ -1,13 +1,13 @@
 <template>
-	<section class="price">
-		<div class="price__container center">
-			<div class="price__calculate">
-				<h2 class="price__title">Узнайте цену квартиры</h2>
-				<h3 class="price__subtitle">
+	<section class="the-price">
+		<div class="the-price__container center">
+			<div class="the-price__calculate">
+				<h2 class="the-price__title">Узнайте цену квартиры</h2>
+				<h3 class="the-price__subtitle">
 					Укажите данные квартиры<br />
 					и узнайте цену
 				</h3>
-				<div class="price__rooms">
+				<div class="the-price__rooms">
 					<p>Количество комнат</p>
 					<v-radio
 						:items="[
@@ -41,83 +41,29 @@
 					:customClass="'pale'"
 					:minMax="true"
 				></v-slider>
-				<v-button text="Узнать цену" @click="openPopup"></v-button>
+				<v-button
+					text="Узнать цену"
+					@click="this.$emit('openPopup')"
+				></v-button>
 			</div>
 			<img src="/img/trade-in/price-img.svg" alt="" />
 		</div>
-		<transition>
-			<v-popup
-				title="3DOM консультация"
-				v-if="isPopupVisible"
-				@closePopup="closePopup"
-			>
-				<p class="v-popup__description">
-					Отправьте заявку<br />
-					для получения консультации
-				</p>
-				<academ-input
-					placeholder="Имя"
-					type="text"
-					dark="dark"
-					v-model="name"
-				></academ-input>
-				<academ-input
-					placeholder="Телефон"
-					type="tel"
-					dark="dark"
-					v-model="tel"
-				></academ-input>
-				<v-checkbox
-					v-model="privacyPolicy"
-					text="Даю согласие на обработку персональных данных"
-					dark="dark"
-				></v-checkbox>
-				<v-button text="Отправить заявку" type="button"></v-button>
-			</v-popup>
-		</transition>
 	</section>
 </template>
 
 <script>
 	import vInput from "@/components/UI/general/v-input.vue";
 
-	import AcademInput from "../academ/academ-input.vue";
-	import vCheckbox from "../academ/v-checkbox.vue";
-
 	export default {
 		name: "ThePrice",
-		components: {
-			vInput,
-
-			AcademInput,
-			vCheckbox,
-		},
-		data() {
-			return {
-				isPopupVisible: false,
-
-				name: "",
-				tel: "",
-				privacyPolicy: false,
-			};
-		},
-		methods: {
-			closePopup() {
-				this.isPopupVisible = false;
-				document.body.classList.remove("locked");
-			},
-			openPopup() {
-				this.isPopupVisible = true;
-				document.body.classList.add("locked");
-			},
-		},
+		components: { vInput },
 	};
 </script>
 
 <style lang="scss" scoped>
 	@import "@/assets/scss/variables";
 
-	.price {
+	.the-price {
 		background: linear-gradient(
 			180deg,
 			rgba(255, 255, 255, 1) 0%,
@@ -176,19 +122,6 @@
 			font-size: 2.5rem;
 			font-weight: 500;
 			margin-bottom: 5rem;
-		}
-
-		.v-popup {
-			&__description {
-				font-size: 1.8rem;
-				margin-bottom: 2rem;
-			}
-			.v-checkbox {
-				margin: 2rem 0;
-			}
-			.v-button {
-				width: 100%;
-			}
 		}
 	}
 </style>

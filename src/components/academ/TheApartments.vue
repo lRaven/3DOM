@@ -47,7 +47,7 @@
 						:gallery="SINGLE_ROOM"
 						:price="true"
 						textColor="color: #fff9d0"
-						v-if="bodyWidth < 1024"
+						v-if="document_width < 1024"
 					></academ-swiper>
 					<figure
 						v-else
@@ -70,7 +70,7 @@
 						:gallery="TWO_ROOM"
 						:price="true"
 						textColor="color: #e4cda1"
-						v-if="bodyWidth < 1024"
+						v-if="document_width < 1024"
 					></academ-swiper>
 					<figure
 						v-else
@@ -93,7 +93,7 @@
 						:gallery="THREE_ROOM"
 						:price="true"
 						textColor="color: #f6d6b9"
-						v-if="bodyWidth < 1024"
+						v-if="document_width < 1024"
 					></academ-swiper>
 					<figure
 						v-else
@@ -7714,13 +7714,12 @@
 
 <script>
 	import AcademSwiper from "@/components/academ/academ-swiper";
-	import { mapGetters } from "vuex";
+	import { mapState, mapGetters } from "vuex";
 
 	export default {
 		name: "TheApartments",
 		components: { AcademSwiper },
 		data: () => ({
-			bodyWidth: document.body.clientWidth,
 			tab: 1,
 			selectedApartment: {
 				type: null,
@@ -7728,6 +7727,7 @@
 			},
 		}),
 		computed: {
+			...mapState(["document_width"]),
 			...mapGetters(["SINGLE_ROOM", "TWO_ROOM", "THREE_ROOM"]),
 		},
 		methods: {
@@ -7793,7 +7793,7 @@
 				}
 			},
 
-			// //*подсветка на общей схеме квартиры при наведении на квартиру из списка выше
+			//* подсветка на общей схеме квартиры при наведении на квартиру из списка выше
 			// selectApartment(numberOfRooms) {
 			// 	switch (numberOfRooms) {
 			// 		case 1: {
@@ -7961,13 +7961,6 @@
 				});
 			},
 
-			//*проверка ширины экрана
-			checkPageWidth() {
-				window.addEventListener("resize", () => {
-					this.bodyWidth = document.body.clientWidth;
-				});
-			},
-
 			selectApartment(apartment, ordinalNumber) {
 				this.selectedApartment.type = apartment;
 				this.selectedApartment.ordinalNumber = ordinalNumber;
@@ -7980,17 +7973,7 @@
 		},
 		mounted() {
 			this.showApartments(1);
-
-			// const interval = setInterval(() => {
-			// 	if (this.single_room.length > 0) {
-			// 		// this.selectApartment(1);
-			// 		// this.selectApartment(2);
-			// 		// this.selectApartment(3);
 			this.openApartmentFromSlider();
-			// 		clearInterval(interval);
-			// 	}
-			// }, 100);
-			this.checkPageWidth();
 		},
 	};
 </script>

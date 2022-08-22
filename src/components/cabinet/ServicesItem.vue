@@ -1,9 +1,12 @@
 <template>
-	<div class="service" :class="bg">
+	<div class="service" :class="color">
 		<h2 class="service__title">{{ title }}</h2>
-		<p class="service__description">{{ description1 }}</p>
-		<p class="service__description">{{ description2 }}</p>
-		<v-button :text="'Подробнее'" :class="btn"></v-button>
+		<p class="service__description">{{ description }}</p>
+		<v-button
+			text="Подробнее"
+			:color="buttonColor"
+			@click="this.$emit('buttonAction')"
+		></v-button>
 	</div>
 </template>
 
@@ -11,11 +14,22 @@
 	export default {
 		name: "TheService",
 		props: {
-			bg: String,
-			title: String,
-			description1: String,
-			description2: String,
-			btn: String,
+			color: {
+				value: String,
+				default: "blue",
+			},
+			title: {
+				value: String,
+				default: "title",
+			},
+			description: {
+				value: String,
+				default: "description",
+			},
+			buttonColor: {
+				value: String,
+				default: "blue",
+			},
 		},
 	};
 </script>
@@ -40,19 +54,15 @@
 			font-size: 2rem;
 			line-height: 2.4rem;
 			font-weight: 500;
-			&:nth-child(3) {
-				margin-bottom: 2.3rem;
-			}
+			margin-bottom: 2.3rem;
+			white-space: pre-wrap;
 		}
-		.button {
-			width: 17rem;
+		.v-button {
+			min-width: 17rem;
 		}
 		&.blue {
 			background-color: $blue;
 			color: $white;
-			.button {
-				color: $blue;
-			}
 		}
 		&.gray {
 			background-color: $light-gray;

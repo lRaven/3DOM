@@ -5,7 +5,14 @@
 			:class="{ center: !isCabinetVersion }"
 		>
 			<div class="the-header__col">
-				<div class="the-header__burger" @click="showHideMenu()">
+				<div
+					class="the-header__burger"
+					@click="
+						isMobileMenuOpen
+							? (isMobileMenuOpen = false)
+							: (isMobileMenuOpen = true)
+					"
+				>
 					<img src="/img/icon/general/burger.svg" alt="" />
 				</div>
 				<router-link
@@ -16,7 +23,10 @@
 				</router-link>
 			</div>
 			<div class="the-header__col">
-				<nav class="the-header__nav animate__animated animate__fadeIn">
+				<nav
+					class="the-header__nav animate__animated animate__fadeIn"
+					:class="{ open: isMobileMenuOpen }"
+				>
 					<router-link
 						class="the-header__link"
 						:to="{
@@ -92,7 +102,10 @@
 							/>
 						</svg>
 					</router-link>
-					<a class="the-header__link" @click="openPopup">
+					<a
+						class="the-header__link"
+						@click="this.$emit('openPopup')"
+					>
 						Услуги
 						<svg
 							width="7"
@@ -130,7 +143,7 @@
 					</router-link>
 					<a
 						class="the-header__link the-header__link-mobile"
-						@click="openPopup"
+						@click="this.$emit('openPopup')"
 					>
 						Заказать консультацию
 						<svg
@@ -151,6 +164,7 @@
 			<div class="the-header__col">
 				<div
 					class="the-header__right animate__animated animate__fadeIn"
+					:class="{ open: isMobileMenuOpen }"
 					v-if="!isAuth"
 				>
 					<router-link to="/login" class="the-header__link">
@@ -192,6 +206,7 @@
 				</div>
 				<div
 					class="the-header__right-auth animate__animated animate__fadeIn"
+					:class="{ open: isMobileMenuOpen }"
 					v-if="isAuth"
 				>
 					<router-link
@@ -220,118 +235,45 @@
 				/>
 			</div>
 		</div>
-
-		<transition>
-			<v-popup
-				v-if="isPopupVisible"
-				@closePopup="closePopup"
-				title="3DOM консультация"
-			>
-				<p class="v-popup__description">
-					Отправьте заявку<br />
-					для получения консультации
-				</p>
-				<academ-input
-					placeholder="Имя"
-					type="text"
-					dark="dark"
-					v-model="name"
-				></academ-input>
-				<academ-input
-					placeholder="Телефон"
-					type="tel"
-					dark="dark"
-					v-model="tel"
-				></academ-input>
-				<v-checkbox
-					v-model="privacyPolicy"
-					text="Даю согласие на обработку персональных данных"
-					dark="dark"
-				></v-checkbox>
-				<v-button text="Отправить заявку" type="button"></v-button>
-			</v-popup>
-		</transition>
 	</header>
 
-	<div
-		class="blur"
-		:class="{ open: isPopupVisible }"
-		@click="showHideMenu()"
-	></div>
+	<transition mode="out-in">
+		<div class="blur" v-show="isMobileMenuOpen"></div>
+	</transition>
 </template>
 
 <script>
-	import AcademInput from "@/components/academ/academ-input.vue";
-	import vCheckbox from "@/components/academ/v-checkbox.vue";
-
 	import { mapState } from "vuex";
 
 	export default {
 		name: "TheHeader",
-		emits: ["openMortgageCalculator"],
+		emits: ["openMortgageCalculator", "openPopup"],
 		props: {
 			isCabinetVersion: {
 				value: Boolean,
 				default: false,
 			},
 		},
-		data: () => ({
-			isPopupVisible: false,
-
-			name: "",
-			tel: "",
-			privacyPolicy: false,
-		}),
-		components: {
-			AcademInput,
-			vCheckbox,
+		watch: {
+			document_width() {
+				if (this.document_width > 1050 && this.isMobileMenuOpen) {
+					this.isMobileMenuOpen = false;
+				}
+			},
+			isMobileMenuOpen() {
+				this.isMobileMenuOpen
+					? document.body.classList.add("locked")
+					: document.body.classList.remove("locked");
+			},
 		},
+		data: () => ({ isMobileMenuOpen: false }),
 		computed: {
 			...mapState({
 				avatar: (state) => state.cabinet.user.avatar,
 				favorites: (state) => state.cabinet.favorites.length,
 				isAuth: (state) => state.cabinet.user_auth,
+				document_width: (state) => state.document_width,
 			}),
-		},
-		methods: {
-			//* скрытие или показ меню в мобилке
-			showHideMenu() {
-				const header = document.querySelector(".the-header");
-				const nav = header.querySelector(".the-header__nav");
-				const auth = header.querySelector(".the-header__right");
-				const cabinet = header.querySelector(".the-header__right-auth");
-				const blur = document.querySelector(".blur");
-
-				if (nav.classList.contains("open")) {
-					if (!this.isAuth) {
-						auth.classList.remove("open");
-					} else if (this.isAuth) {
-						cabinet.classList.remove("open");
-					}
-					nav.classList.remove("open");
-					document.querySelector("body").classList.remove("locked");
-					blur.classList.remove("open");
-				} else {
-					if (!this.isAuth) {
-						auth.classList.add("open");
-					} else if (this.isAuth) {
-						cabinet.classList.add("open");
-					}
-					document.querySelector("body").classList.add("locked");
-
-					nav.classList.add("open");
-					blur.classList.add("open");
-				}
-			},
-
-			closePopup() {
-				this.isPopupVisible = false;
-				document.body.classList.remove("locked");
-			},
-			openPopup() {
-				this.isPopupVisible = true;
-				document.body.classList.add("locked");
-			},
 		},
 	};
 </script>
@@ -471,16 +413,20 @@
 			display: none;
 		}
 
-		.v-popup {
-			&__description {
+		&__consultation-request {
+			display: flex;
+			flex-direction: column;
+			&-description {
 				font-size: 1.8rem;
-				margin-bottom: 2rem;
+				margin-bottom: 6rem;
+				line-height: 1.3;
 			}
 			.v-checkbox {
-				margin: 2rem 0;
+				margin: 2rem 0 4rem 0;
 			}
 			.v-button {
-				width: 100%;
+				margin: auto;
+				padding: 1.8rem 5rem;
 			}
 		}
 	}
@@ -491,12 +437,10 @@
 		right: 0;
 		top: 0;
 		bottom: 0;
-		background-color: rgba(0, 0, 0, 0);
-		z-index: -1;
+		z-index: 3;
+		background-color: rgba(0, 0, 0, 0.5);
 		transition: all 0.2s ease;
 		&.open {
-			z-index: 3;
-			background-color: rgba(0, 0, 0, 0.5);
 		}
 	}
 

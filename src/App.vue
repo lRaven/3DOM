@@ -22,13 +22,14 @@
 			},
 		},
 		methods: {
-			...mapActions(["getUser"]),
+			...mapActions(["getUser", "getDocumentWidth"]),
 			getFavoriteApartmentNumber,
 		},
 		created() {
 			this.getUser();
 		},
 		mounted() {
+			this.getDocumentWidth();
 			if (this.$cookies.get("auth_token")) {
 				getFavoriteApartmentNumber();
 			}

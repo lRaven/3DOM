@@ -3,6 +3,7 @@
 		<input
 			type="checkbox"
 			class="v-checkbox__real"
+			:checked="modelValue"
 			@change="$emit('update:modelValue', $event.target.checked)"
 			required
 		/>
@@ -27,6 +28,7 @@
 	export default {
 		name: "vCheckbox",
 		props: {
+			modelValue: Boolean,
 			text: String,
 			dark: String,
 			academ: String,

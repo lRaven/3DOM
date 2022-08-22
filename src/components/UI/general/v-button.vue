@@ -27,7 +27,7 @@
 		user-select: none;
 		display: flex;
 		justify-content: center;
-		align-content: center;
+		align-items: center;
 		padding: 1.4rem 2.4rem;
 		border-radius: 2.5rem;
 		min-width: 13.8rem;
