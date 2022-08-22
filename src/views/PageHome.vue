@@ -132,7 +132,6 @@
 			},
 			openPopup() {
 				this.isPopupVisible = true;
-				document.body.classList.add("locked");
 			},
 		},
 	};

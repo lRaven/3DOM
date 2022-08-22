@@ -1,7 +1,7 @@
 <template>
-	<div class="service" :class="color">
-		<h2 class="service__title">{{ title }}</h2>
-		<p class="service__description">{{ description }}</p>
+	<div class="services-item" :class="color">
+		<h2 class="services-item__title">{{ title }}</h2>
+		<p class="services-item__description">{{ description }}</p>
 		<v-button
 			text="Подробнее"
 			:color="buttonColor"
@@ -12,7 +12,7 @@
 
 <script>
 	export default {
-		name: "TheService",
+		name: "ServicesItem",
 		props: {
 			color: {
 				value: String,
@@ -37,18 +37,20 @@
 <style lang="scss" scoped>
 	@import "@/assets/scss/variables";
 
-	.service {
+	.services-item {
 		padding: 3.5rem 7rem 5.2rem 7rem;
 		border-radius: 3rem;
 		box-shadow: $shadow;
 		overflow: hidden;
-		+ .service {
+		+ .services-item {
 			margin-top: 2.3rem;
 		}
 		&__title {
 			font-size: 3rem;
 			font-weight: 600;
 			margin-bottom: 3rem;
+			white-space: pre-wrap;
+			line-height: 1.3;
 		}
 		&__description {
 			font-size: 2rem;
