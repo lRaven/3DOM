@@ -118,7 +118,7 @@
 
 	import TheFooter from "@/components/academ/TheFooter";
 
-	import { mapState } from "vuex";
+	import { mapState, mapMutations } from "vuex";
 
 	export default {
 		name: "PageCRM",
@@ -150,6 +150,8 @@
 		}),
 
 		methods: {
+			...mapMutations(["CLEAR_APARTMENTS_ON_FLOOR"]),
+
 			selectFloor(floor) {
 				this.floor = floor;
 			},
@@ -189,6 +191,10 @@
 				this.isMortgageCalculatorOpen = false;
 				document.body.classList.remove("locked");
 			},
+		},
+
+		unmounted() {
+			this.CLEAR_APARTMENTS_ON_FLOOR();
 		},
 	};
 </script>

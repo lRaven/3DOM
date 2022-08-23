@@ -19,22 +19,15 @@ const getters = {
 }
 
 const mutations = {
-	SET_APARTMENTS(state, payload) {
-		state.apartments = payload;
-	},
-
-	SET_SINGLE_ROOM(state, payload) {
-		state.single_room = payload;
-	},
-	SET_TWO_ROOM(state, payload) {
-		state.two_room = payload;
-	},
-	SET_THREE_ROOM(state, payload) {
-		state.three_room = payload;
-	},
+	SET_APARTMENTS(state, payload) { state.apartments = payload; },
+	CLEAR_APARTMENTS(state) { state.apartments = [] }
 }
 
-const actions = {}
+const actions = {
+	clearAcademState(context) {
+		context.commit('CLEAR_APARTMENTS');
+	}
+}
 
 export default {
 	state,

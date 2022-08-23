@@ -5,7 +5,7 @@ const baseURL = store.state.baseURL;
 
 const send_support_message = async (form_data) => {
 	try {
-		const response = await axios.post(`${baseURL}/academ/support/`,
+		const response = await axios.post(`${baseURL}/users/support/`,
 			{ ...form_data })
 
 		return response;

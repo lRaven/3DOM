@@ -266,15 +266,13 @@
 			userData: {},
 		}),
 		methods: {
-			...mapMutations([
-				"SET_ID",
-				"SET_USER",
-				"SET_USER_AUTH",
-				"SET_TAB",
-				"SET_BOOKING",
-				"SET_FAVORITES",
+			...mapMutations(["SET_TAB"]),
+			...mapActions([
+				"getUser",
+				"clearCabinetState",
+				"clearAcademState",
+				"clearCRMState",
 			]),
-			...mapActions(["getUser"]),
 
 			//* выход с аккаунта
 			async logging_out() {
@@ -285,12 +283,9 @@
 						//* стереть из vuex,cookies данные юзера
 						this.$cookies.remove("auth_token");
 
-						this.SET_USER_AUTH(false);
-						this.SET_ID(null);
-						this.SET_USER({});
-						this.SET_TAB(null);
-						this.SET_BOOKING([]);
-						this.SET_FAVORITES(null);
+						this.clearCabinetState();
+						this.clearAcademState();
+						this.clearCRMState();
 						console.log("Logout successfully");
 					}
 				} catch (err) {

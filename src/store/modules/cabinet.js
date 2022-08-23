@@ -31,7 +31,6 @@ const state = () => ({
 	booking: [],
 
 	favorites: [],
-	sort: 'price',
 
 	//* user
 	token: cookie.get('auth_token') || null,
@@ -44,16 +43,21 @@ const getters = {}
 const mutations = {
 	//* main
 	SET_TAB(state, payload) { state.tab = payload; },
+	CLEAR_TAB(state) { state.tab = 'profile' },
 
 	SET_BOOKING(state, payload) { state.booking = payload; },
+	CLEAR_BOOKING(state) { state.booking = [] },
 
 	SET_FAVORITES(state, payload) { state.favorites = payload; },
-	SET_SORT(state, payload) { state.sort = payload; },
+	CLEAR_FAVORITES(state) { state.favorites = [] },
 
 	//* user
 	SET_ID(state, payload) { state.user.id = payload; },
 	SET_USER(state, payload) { state.user = payload; },
+	CLEAR_USER(state) { state.user = {} },
+
 	SET_USER_AUTH(state, payload) { state.user_auth = payload; },
+	CLEAR_USER_AUTH(state) { state.user_auth = false },
 }
 
 const actions = {
@@ -116,6 +120,14 @@ const actions = {
 			throw new Error(err);
 		}
 	},
+
+	clearCabinetState(context) {
+		context.commit('CLEAR_TAB');
+		context.commit('CLEAR_BOOKING');
+		context.commit('CLEAR_FAVORITES');
+		context.commit('CLEAR_USER');
+		context.commit('CLEAR_USER_AUTH');
+	}
 }
 
 export default {

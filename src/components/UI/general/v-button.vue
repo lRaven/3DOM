@@ -1,5 +1,8 @@
 <template>
-	<button class="v-button" :class="color">{{ text }}</button>
+	<button class="v-button" :class="color">
+		{{ text }}
+		<slot name="icon"></slot>
+	</button>
 </template>
 
 <script>
@@ -28,6 +31,7 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		gap: 2rem;
 		padding: 1.4rem 2.4rem;
 		border-radius: 2.5rem;
 		min-width: 13.8rem;

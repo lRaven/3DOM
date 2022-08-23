@@ -51,7 +51,7 @@
 			apartments: false,
 		}),
 		methods: {
-			...mapMutations(["SET_TAB"]),
+			...mapMutations(["SET_TAB", "CLEAR_BOOKING"]),
 
 			openPopup() {
 				const images = document.querySelectorAll(".apartment__layout");
@@ -89,6 +89,9 @@
 			setInterval(() => {
 				getBookingList();
 			}, 300000);
+		},
+		unmounted() {
+			this.CLEAR_BOOKING();
 		},
 	};
 </script>

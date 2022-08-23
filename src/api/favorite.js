@@ -4,7 +4,6 @@ import cookie from 'vue-cookies';
 
 const baseURL = store.state.baseURL;
 
-
 //* получение списка квартир избранных юзером и передача в функцию выборки
 async function getFavoriteApartmentNumber() {
 	try {
@@ -56,12 +55,9 @@ async function removeFavorite(id) {
 			headers: { Authorization: `token ${cookie.get('auth_token')}` }
 		})
 
-		if (response.status === 204) {
-			console.log(`Квартира под номером ${id} удалена из Избранного`);
-			getFavoriteApartmentNumber();
-		}
+		return response;
 	}
-	catch (err) { throw new Error(err) }
+	catch (err) { return err.response }
 }
 
 //* добавить в избранное
@@ -71,11 +67,10 @@ async function addFavorite(user, apartment) {
 			{ user: user, apartment: apartment, },
 			{ headers: { Authorization: `token ${cookie.get('auth_token')}` } },
 		)
-		if (response.status === 201) {
-			getFavoriteApartmentNumber();
-		}
+
+		return response;
 	}
-	catch (err) { throw new Error(err) }
+	catch (err) { return err.response }
 }
 
 //* сортировка по-возрастанию (по цене или по площади)
