@@ -105,7 +105,6 @@
 	export default {
 		name: "FavoritesApartment",
 		props: {
-			sorted: String,
 			apartment: {
 				value: Object,
 				required: true,

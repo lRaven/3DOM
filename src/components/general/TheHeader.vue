@@ -216,6 +216,7 @@
 						<img src="/img/icon/general/favorites.svg" alt="" />
 						<span
 							class="the-header__favorites-sum"
+							:class="{ wide: favorites > 99 }"
 							v-if="favorites > 0"
 						>
 							{{ favorites }}
@@ -393,6 +394,12 @@
 				right: -0.8rem;
 				width: 2rem;
 				height: 2rem;
+				&.wide {
+					width: max-content;
+					border-radius: 2rem;
+					padding: 0 1rem;
+					right: -2rem;
+				}
 			}
 		}
 
@@ -440,8 +447,6 @@
 		z-index: 3;
 		background-color: rgba(0, 0, 0, 0.5);
 		transition: all 0.2s ease;
-		&.open {
-		}
 	}
 
 	@media (max-width: 1250px) {

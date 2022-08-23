@@ -42,7 +42,6 @@ async function getFavoriteApartments(favorites) {
 				}
 			}
 			store.commit('SET_FAVORITES', favorites);
-			sortFavoriteList();
 		}
 	}
 	catch (err) { throw new Error(err) }
@@ -73,41 +72,4 @@ async function addFavorite(user, apartment) {
 	catch (err) { return err.response }
 }
 
-//* сортировка по-возрастанию (по цене или по площади)
-function sortFavoriteList(way = store.state.cabinet.sort) {
-	let favoriteList = store.state.cabinet.favorites;
-	switch (way) {
-		//* сортировка по цене (по-возрастанию)
-		case 'price': {
-			for (let index = 0; index < favoriteList.length - 1; index++) {
-				for (let i = 0; i < favoriteList.length - 1; i++) {
-					if (favoriteList[i].cost > favoriteList[i + 1].cost) {
-						let item = favoriteList[i];
-						favoriteList[i] = favoriteList[i + 1];
-						favoriteList[i + 1] = item;
-					}
-				}
-			}
-			break;
-		}
-
-		//* сортировка по площади (по-возрастанию)
-		case 'area': {
-			for (let index = 0; index < favoriteList.length - 1; index++) {
-				for (let i = 0; i < favoriteList.length - 1; i++) {
-					if (favoriteList[i].area > favoriteList[i + 1].area) {
-						let item = favoriteList[i];
-						favoriteList[i] = favoriteList[i + 1];
-						favoriteList[i + 1] = item;
-					}
-				}
-			}
-			break;
-		}
-		default: {
-			break;
-		}
-	}
-}
-
-export { getFavoriteApartmentNumber, getFavoriteApartments, removeFavorite, addFavorite, sortFavoriteList }
+export { getFavoriteApartmentNumber, getFavoriteApartments, removeFavorite, addFavorite }

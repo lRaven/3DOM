@@ -1,23 +1,39 @@
 <template>
 	<div class="the-favorites">
-		<h1 class="the-favorites__title">
-			{{ isAllApartmentVisible ? "Добавление в избранное" : "Избранное" }}
-		</h1>
+		<div class="the-favorites__header">
+			<h1 class="the-favorites__title">
+				{{
+					isAllApartmentVisible
+						? "Добавление в избранное"
+						: "Избранное"
+				}}
+			</h1>
 
-		<div
-			class="the-favorites__empty"
-			v-show="favorites.length === 0 && !isAllApartmentVisible"
-		>
-			<img src="/img/cabinet/empty.svg" alt="" />
-			<div class="the-favorites__empty-text">
-				<p>Вы пока ничего не добавили в избранное</p>
+			<transition mode="out-in">
 				<v-button
-					text="Выбрать планировку"
-					type="button"
-					@click="isAllApartmentVisible = true"
-				></v-button>
-			</div>
+					text="Моё избранное"
+					v-show="isAllApartmentVisible"
+					@click="isAllApartmentVisible = false"
+				></v-button
+			></transition>
 		</div>
+
+		<transition mode="out-in" name="fade-up-fast">
+			<div
+				class="the-favorites__empty"
+				v-show="favorites.length === 0 && !isAllApartmentVisible"
+			>
+				<img src="/img/cabinet/empty.svg" alt="" />
+				<div class="the-favorites__empty-text">
+					<p>Вы пока ничего не добавили в избранное</p>
+					<v-button
+						text="Выбрать планировку"
+						type="button"
+						@click="isAllApartmentVisible = true"
+					></v-button>
+				</div>
+			</div>
+		</transition>
 
 		<div
 			class="the-favorites__sort-panel"
@@ -28,51 +44,55 @@
 				<input
 					type="radio"
 					name="sort"
+					value="cost"
 					class="the-favorites__radio-real"
+					v-model="sortBy"
 					checked
 				/>
-				<span class="the-favorites__radio-fake" @click="sort('price')">
-					Цене
-				</span>
+				<span class="the-favorites__radio-fake"> Цене </span>
 			</label>
 			<label class="the-favorites__sort">
 				<input
 					type="radio"
 					name="sort"
+					value="area"
 					class="the-favorites__radio-real"
+					v-model="sortBy"
 				/>
-				<span class="the-favorites__radio-fake" @click="sort('area')">
-					Площади
-				</span>
+				<span class="the-favorites__radio-fake"> Площади </span>
 			</label>
 		</div>
 
-		<div
-			class="the-favorites__body"
-			v-show="favorites.length !== 0 && !isAllApartmentVisible"
-		>
-			<favorites-apartment
-				v-for="apartment in favorites"
-				:key="apartment.id"
-				:apartment="apartment"
-				:favorites="favorites"
-			></favorites-apartment>
+		<transition mode="out-in" name="fade-up-fast">
+			<div
+				class="the-favorites__body"
+				v-show="favorites.length !== 0 && !isAllApartmentVisible"
+			>
+				<favorites-apartment
+					v-for="apartment in sortedFavoriteApartments"
+					:key="apartment.id"
+					:apartment="apartment"
+					:favorites="favorites"
+				></favorites-apartment>
 
-			<v-button
-				text="Показать ещё"
-				class="the-favorites__body-more"
-				@click="isAllApartmentVisible = true"
-			></v-button>
-		</div>
+				<v-button
+					text="Показать ещё"
+					class="the-favorites__body-more"
+					@click="isAllApartmentVisible = true"
+				></v-button>
+			</div>
+		</transition>
 
-		<div class="the-favorites__body" v-show="isAllApartmentVisible">
-			<favorites-apartment
-				v-for="apartment in favoritesAndApartments"
-				:key="apartment.id"
-				:apartment="apartment"
-				:favorites="favorites"
-			></favorites-apartment>
-		</div>
+		<transition mode="out-in" name="fade-up-fast">
+			<div class="the-favorites__body" v-show="isAllApartmentVisible">
+				<favorites-apartment
+					v-for="apartment in favoritesAndApartments"
+					:key="apartment.id"
+					:apartment="apartment"
+					:favorites="favorites"
+				></favorites-apartment>
+			</div>
+		</transition>
 	</div>
 </template>
 
@@ -81,7 +101,7 @@
 	import { mapState, mapMutations } from "vuex";
 
 	import { getApartments } from "@/api/academ";
-	import { sortFavoriteList } from "@/api/favorite";
+	import { sortArrayByNumberKey } from "@/js/sortArray";
 
 	export default {
 		name: "TheFavorites",
@@ -116,9 +136,41 @@
 				return [...favorites, ...otherApartments];
 			},
 		},
-		data: () => ({ isAllApartmentVisible: false }),
+		watch: {
+			isAllApartmentVisible() {
+				if (this.isAllApartmentVisible) {
+					getApartments();
+					window.scrollTo(0, 0);
+				}
+			},
+			favorites: {
+				handler() {
+					this.sortedFavoriteApartments = [...this.favorites];
+				},
+				deep: true,
+			},
+
+			sortBy() {
+				this.sortedFavoriteApartments = sortArrayByNumberKey({
+					array: this.favorites,
+					key: this.sortBy,
+					direction: "ascending",
+				});
+			},
+		},
+		data: () => ({
+			isAllApartmentVisible: false,
+			sortBy: "cost",
+
+			sortedFavoriteApartments: [],
+		}),
 		methods: {
-			...mapMutations(["SET_SORT", "SET_TAB"]),
+			...mapMutations([
+				"SET_SORT",
+				"SET_TAB",
+				"SET_FAVORITES",
+				"CLEAR_APARTMENTS",
+			]),
 
 			//* функция для открытия всплывающего окна
 			openPopup() {
@@ -139,25 +191,13 @@
 					});
 				});
 			},
-
-			//* вызов функции сортировки
-			sort(way) {
-				switch (way) {
-					case "price": {
-						this.SET_SORT("price");
-						break;
-					}
-					case "area": {
-						this.SET_SORT("area");
-						break;
-					}
-				}
-				sortFavoriteList();
-			},
 		},
 		created() {
 			this.SET_TAB("favorites");
-			getApartments();
+			this.sortedFavoriteApartments = [...this.favorites];
+		},
+		unmounted() {
+			this.CLEAR_APARTMENTS();
 		},
 	};
 </script>
@@ -167,10 +207,24 @@
 
 	.the-favorites {
 		color: $dark;
+		display: grid;
+
+		&__header {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 5rem;
+			margin-bottom: 4rem;
+			min-height: 5rem;
+		}
+
+		.v-button {
+			border-radius: 1rem;
+		}
+
 		&__title {
 			font-size: 3rem;
 			font-weight: 600;
-			margin-bottom: 4rem;
 		}
 		&__empty {
 			display: flex;
@@ -178,6 +232,7 @@
 			box-shadow: $shadow;
 			border-radius: 3rem;
 			padding: 6rem;
+			grid-area: 3/1/3/1;
 			&-text {
 				padding: 1rem 0;
 				display: flex;
@@ -217,14 +272,11 @@
 		}
 
 		&__body {
+			grid-area: 3/1/3/1;
 			&-more {
 				margin: auto;
 				margin-top: 4rem;
 			}
 		}
-	}
-
-	.button {
-		border-radius: 1rem;
 	}
 </style>
