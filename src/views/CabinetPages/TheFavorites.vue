@@ -194,7 +194,11 @@
 		},
 		created() {
 			this.SET_TAB("favorites");
-			this.sortedFavoriteApartments = [...this.favorites];
+			this.sortedFavoriteApartments = sortArrayByNumberKey({
+				array: this.favorites,
+				key: this.sortBy,
+				direction: "ascending",
+			});
 		},
 		unmounted() {
 			this.CLEAR_APARTMENTS();

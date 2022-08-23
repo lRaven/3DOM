@@ -57,4 +57,20 @@ const change_password = async (new_password, current_password) => {
 	catch (err) { return err.response }
 }
 
-export { login, registration, logout, change_user_data, change_password }
+const upload_avatar = async (user_id, avatar) => {
+	try {
+		const response = await axios.put(`${baseURL}/auth/users/upload_avatar/${user_id}`,
+			{ avatar },
+			{
+				headers: {
+					Authorization: `token ${cookie.get("auth_token")}`,
+					"Content-Type": "multipart/form-data",
+				},
+			}
+		);
+		return response;
+	}
+	catch (err) { return err.response }
+}
+
+export { login, registration, logout, change_user_data, change_password, upload_avatar }
