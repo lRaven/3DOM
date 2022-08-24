@@ -1,5 +1,13 @@
 <template>
-	<section class="page-mortgage"></section>
+	<div class="page-mortgage">
+		<iframe
+			src="https://ipoteka.domclick.ru/calc-reg/calculator.html"
+			frameborder="0"
+			width="100%"
+			height="100%"
+			name="mortgageCalculator"
+		></iframe>
+	</div>
 </template>
 
 <script>
@@ -18,5 +26,6 @@
 
 <style lang="scss" scoped>
 	.page-mortgage {
+		height: 100%;
 	}
 </style>

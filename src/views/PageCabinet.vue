@@ -261,7 +261,7 @@
 		}
 
 		&__main {
-			padding: 6rem 2rem 17rem 36rem;
+			padding: 6rem 2rem 2rem 36rem;
 			width: 100%;
 			grid-area: 1/1;
 			transition: all 0.3s ease;
