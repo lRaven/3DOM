@@ -1,12 +1,12 @@
 <template>
-	<section class="the-mortgage"></section>
+	<section class="page-mortgage"></section>
 </template>
 
 <script>
 	import { mapMutations } from "vuex";
 
 	export default {
-		name: "TheMortgage",
+		name: "PageMortgage",
 		methods: {
 			...mapMutations(["SET_TAB"]),
 		},
@@ -17,6 +17,6 @@
 </script>
 
 <style lang="scss" scoped>
-	.the-mortgage {
+	.page-mortgage {
 	}
 </style>

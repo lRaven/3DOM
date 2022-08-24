@@ -1,26 +1,26 @@
 <template>
-	<div class="the-booking">
-		<div class="the-booking__header">
-			<h1 class="the-booking__title">Бронирование</h1>
-			<div class="the-booking__notification">
+	<div class="page-booking">
+		<div class="page-booking__header">
+			<h1 class="page-booking__title">Бронирование</h1>
+			<div class="page-booking__notification">
 				<div>
 					<img src="/img/icon/cabinet/notifications.svg" alt="" />
 				</div>
 				<h3
-					class="the-booking__notification-desc"
+					class="page-booking__notification-desc"
 					v-show="apartments === true"
 				>
 					У вас есть предварительное бронирование
 				</h3>
 				<h3
-					class="the-booking__notification-desc"
+					class="page-booking__notification-desc"
 					v-show="apartments === false"
 				>
 					У вас нет предварительных бронирований
 				</h3>
 			</div>
 		</div>
-		<div class="the-booking__body">
+		<div class="page-booking__body">
 			<booking-apartment></booking-apartment>
 		</div>
 	</div>
@@ -32,7 +32,7 @@
 	import { mapState, mapMutations } from "vuex";
 
 	export default {
-		name: "TheBooking",
+		name: "PageBooking",
 		components: { BookingApartment },
 		watch: {
 			booking: {
@@ -99,7 +99,7 @@
 <style lang="scss" scoped>
 	@import "@/assets/scss/variables";
 
-	.the-booking {
+	.page-booking {
 		color: $dark;
 
 		&__header {

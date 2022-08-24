@@ -1,18 +1,18 @@
 <template>
-	<div class="the-feedback">
-		<div class="the-feedback-form">
-			<div class="the-feedback-form__header">
-				<h1 class="the-feedback-form__title">Обратная связь</h1>
+	<div class="page-feedback">
+		<div class="page-feedback-form">
+			<div class="page-feedback-form__header">
+				<h1 class="page-feedback-form__title">Обратная связь</h1>
 			</div>
-			<div class="the-feedback-form__body">
+			<div class="page-feedback-form__body">
 				<form @submit.prevent="send_message">
-					<p class="the-feedback-form__description">ФИО:</p>
+					<p class="page-feedback-form__description">ФИО:</p>
 					<v-input
 						type="text"
 						v-model="support_form_data.name"
 					></v-input>
 
-					<p class="the-feedback-form__description">
+					<p class="page-feedback-form__description">
 						Номер телефона:
 					</p>
 
@@ -21,13 +21,13 @@
 						v-model="support_form_data.phone_number"
 					></v-input>
 
-					<p class="the-feedback-form__description">Email:</p>
+					<p class="page-feedback-form__description">Email:</p>
 					<v-input
 						type="email"
 						v-model="support_form_data.email"
 					></v-input>
 
-					<p class="the-feedback-form__description">
+					<p class="page-feedback-form__description">
 						Тема обращения:
 					</p>
 					<v-dropdown
@@ -51,7 +51,7 @@
 						:disabled="!isSupportFormValid"
 					></v-button>
 
-					<p class="the-feedback-form__bottom">
+					<p class="page-feedback-form__bottom">
 						Нажимая кнопку «Отправить», вы подтверждаете своё
 						согласие <br />
 						на обработку <a>персональных данных</a>.
@@ -73,7 +73,7 @@
 	import { useToast } from "vue-toastification";
 
 	export default {
-		name: "TheFeedback",
+		name: "PageFeedback",
 		mixins: [supportForm],
 		components: {
 			vInput,
@@ -96,7 +96,7 @@
 <style lang="scss" scoped>
 	@import "@/assets/scss/variables";
 
-	.the-feedback-form {
+	.page-feedback-form {
 		border-radius: 3rem;
 		box-shadow: $shadow;
 		&__header {

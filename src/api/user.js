@@ -59,7 +59,7 @@ const change_password = async (new_password, current_password) => {
 
 const upload_avatar = async (user_id, avatar) => {
 	try {
-		const response = await axios.put(`${baseURL}/auth/users/upload_avatar/${user_id}`,
+		const response = await axios.put(`${baseURL}/auth/users/upload_avatar/${user_id}/`,
 			{ avatar },
 			{
 				headers: {

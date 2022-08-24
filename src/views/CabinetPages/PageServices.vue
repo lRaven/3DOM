@@ -1,17 +1,17 @@
 <template>
-	<div class="the-services">
-		<div class="the-services__header">
-			<h1 class="the-services__title">Услуги</h1>
-			<div class="the-services__notification">
+	<div class="page-services">
+		<div class="page-services__header">
+			<h1 class="page-services__title">Услуги</h1>
+			<div class="page-services__notification">
 				<div>
 					<img src="/img/icon/cabinet/notifications.svg" alt="" />
 				</div>
-				<h3 class="the-services__notification-desc">
+				<h3 class="page-services__notification-desc">
 					У вас нет подключенных услуг
 				</h3>
 			</div>
 		</div>
-		<div class="the-services__body">
+		<div class="page-services__body">
 			<services-item
 				title="Trade-in"
 				:description="`Trade-in — это программа, которая поможет обменять вашу\nстарую квартиру на новую.`"
@@ -40,9 +40,9 @@
 			>
 				<form
 					@submit.prevent=""
-					class="the-services__consultation-request"
+					class="page-services__consultation-request"
 				>
-					<p class="the-services__consultation-request-description">
+					<p class="page-services__consultation-request-description">
 						Отправьте заявку<br />
 						для получения консультации
 					</p>
@@ -108,7 +108,7 @@
 <style lang="scss" scoped>
 	@import "@/assets/scss/variables";
 
-	.the-services {
+	.page-services {
 		color: $dark;
 		&__header {
 			margin-bottom: 3rem;

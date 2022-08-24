@@ -1,31 +1,47 @@
 <template>
-	<div class="the-profile">
-		<h1 class="the-profile__title">Мой профиль</h1>
+	<div class="page-profile">
+		<h1 class="page-profile__title">Мой профиль</h1>
 
-		<div class="the-profile__header">
-			<div class="the-profile__me">
-				<img
-					:src="userData.avatar"
-					alt="avatar"
-					class="the-profile__avatar"
-				/>
-				<p class="the-profile__full-name">
+		<div class="page-profile__header">
+			<div class="page-profile__me">
+				<div class="page-profile__avatar-wrapper">
+					<img
+						:src="userData.avatar"
+						alt="avatar"
+						class="page-profile__avatar"
+					/>
+					<label class="page-profile__image-pick">
+						<input
+							type="file"
+							name=""
+							class="page-profile__image-pick-input"
+							accept="image/*"
+							@change="change_avatar($event.target)"
+						/>
+						<div class="page-profile__image-pick-btn">
+							<!-- <img src="/img/icon/cabinet/edit.svg" alt="" /> -->
+							Изменить
+						</div>
+					</label>
+				</div>
+
+				<p class="page-profile__full-name">
 					{{ userData.last_name }} {{ userData.first_name }}
 				</p>
 			</div>
-			<form class="the-profile__logout" @submit.prevent="logging_out">
+			<form class="page-profile__logout" @submit.prevent="logging_out">
 				<v-button text="Выйти" type="submit" color="gray"></v-button>
 			</form>
 		</div>
 
-		<div class="the-profile__main">
-			<div class="the-profile__item">
-				<div class="the-profile__item-header">
-					<h2 class="the-profile__item-title">ФИО</h2>
+		<div class="page-profile__main">
+			<div class="page-profile__item">
+				<div class="page-profile__item-header">
+					<h2 class="page-profile__item-title">ФИО</h2>
 				</div>
-				<form class="the-profile__item-body">
-					<div class="the-profile__item-row">
-						<p class="the-profile__item-key">Фамилия:</p>
+				<form class="page-profile__item-body">
+					<div class="page-profile__item-row">
+						<p class="page-profile__item-key">Фамилия:</p>
 
 						<v-input
 							type="text"
@@ -34,8 +50,8 @@
 							:isTransparent="isNameFormDisabled"
 						></v-input>
 					</div>
-					<div class="the-profile__item-row">
-						<p class="the-profile__item-key">Имя:</p>
+					<div class="page-profile__item-row">
+						<p class="page-profile__item-key">Имя:</p>
 
 						<v-input
 							type="text"
@@ -44,8 +60,8 @@
 							:isTransparent="isNameFormDisabled"
 						></v-input>
 					</div>
-					<div class="the-profile__item-row">
-						<p class="the-profile__item-key">Отчество:</p>
+					<div class="page-profile__item-row">
+						<p class="page-profile__item-key">Отчество:</p>
 
 						<v-input
 							type="text"
@@ -56,7 +72,7 @@
 
 						<button
 							type="button"
-							class="the-profile__item-change"
+							class="page-profile__item-change"
 							@click="
 								isNameFormDisabled
 									? (isNameFormDisabled = false)
@@ -69,10 +85,10 @@
 				</form>
 			</div>
 
-			<div class="the-profile__item">
-				<form class="the-profile__item-body">
-					<div class="the-profile__item-row">
-						<p class="the-profile__item-key">Номер телефона:</p>
+			<div class="page-profile__item">
+				<form class="page-profile__item-body">
+					<div class="page-profile__item-row">
+						<p class="page-profile__item-key">Номер телефона:</p>
 
 						<v-input
 							type="tel"
@@ -83,7 +99,7 @@
 
 						<button
 							type="button"
-							class="the-profile__item-change"
+							class="page-profile__item-change"
 							@click="
 								isPhoneFormDisabled
 									? (isPhoneFormDisabled = false)
@@ -96,10 +112,10 @@
 				</form>
 			</div>
 
-			<div class="the-profile__item">
-				<form class="the-profile__item-body">
-					<div class="the-profile__item-row">
-						<p class="the-profile__item-key">Email:</p>
+			<div class="page-profile__item">
+				<form class="page-profile__item-body">
+					<div class="page-profile__item-row">
+						<p class="page-profile__item-key">Email:</p>
 
 						<v-input
 							type="email"
@@ -110,7 +126,7 @@
 
 						<button
 							type="button"
-							class="the-profile__item-change"
+							class="page-profile__item-change"
 							@click="
 								isEmailFormDisabled
 									? (isEmailFormDisabled = false)
@@ -123,15 +139,15 @@
 				</form>
 			</div>
 
-			<div class="the-profile__item">
+			<div class="page-profile__item">
 				<form
-					class="the-profile__item-body"
+					class="page-profile__item-body"
 					@submit.prevent="send_new_password"
 				>
-					<div class="the-profile__item-row">
-						<p class="the-profile__item-key">Пароль:</p>
+					<div class="page-profile__item-row">
+						<p class="page-profile__item-key">Пароль:</p>
 						<p
-							class="the-profile__item-value the-profile__password"
+							class="page-profile__item-value page-profile__password"
 							v-if="isPasswordFormDisabled"
 						>
 							********
@@ -146,7 +162,7 @@
 
 						<button
 							type="button"
-							class="the-profile__item-change"
+							class="page-profile__item-change"
 							@click="isPasswordFormDisabled = false"
 							v-if="isPasswordFormDisabled"
 						>
@@ -155,10 +171,10 @@
 					</div>
 
 					<div
-						class="the-profile__item-row"
+						class="page-profile__item-row"
 						v-if="!isPasswordFormDisabled"
 					>
-						<p class="the-profile__item-key">Новый пароль:</p>
+						<p class="page-profile__item-key">Новый пароль:</p>
 						<v-input
 							type="password"
 							:disabled="isPasswordFormDisabled"
@@ -168,10 +184,10 @@
 					</div>
 
 					<div
-						class="the-profile__item-row"
+						class="page-profile__item-row"
 						v-if="!isPasswordFormDisabled"
 					>
-						<p class="the-profile__item-key">
+						<p class="page-profile__item-key">
 							Подтверждение пароля:
 						</p>
 						<v-input
@@ -184,7 +200,7 @@
 						<button
 							v-if="isPasswordFormDisabled"
 							type="button"
-							class="the-profile__item-change"
+							class="page-profile__item-change"
 							@click="isPasswordFormDisabled = false"
 						>
 							Изменить
@@ -194,7 +210,7 @@
 							v-else
 							type="submit"
 							:disabled="!isPasswordFormValid"
-							class="the-profile__item-change"
+							class="page-profile__item-change"
 						>
 							Применить
 						</button>
@@ -207,7 +223,12 @@
 
 <script>
 	import { mapState, mapMutations, mapActions } from "vuex";
-	import { logout, change_user_data, change_password } from "@/api/user";
+	import {
+		logout,
+		change_user_data,
+		change_password,
+		upload_avatar,
+	} from "@/api/user";
 	import { returnErrorMessages } from "@/js/returnErrorMessages";
 
 	import vInput from "@/components/UI/cabinet/v-input.vue";
@@ -215,7 +236,7 @@
 	import { useToast } from "vue-toastification";
 
 	export default {
-		name: "TheProfile",
+		name: "PageProfile",
 		components: { vInput },
 		watch: {
 			user: {
@@ -228,6 +249,11 @@
 					};
 				},
 				deep: true,
+			},
+			new_avatar() {
+				if (this.new_avatar) {
+					this.send_avatar();
+				}
 			},
 		},
 		computed: {
@@ -264,6 +290,7 @@
 			isPasswordFormDisabled: true,
 
 			userData: {},
+			new_avatar: "",
 		}),
 		methods: {
 			...mapMutations(["SET_TAB"]),
@@ -301,7 +328,7 @@
 					});
 
 					if (response.status === 200) {
-						this.toast.success("Данные по ФИО изменены");
+						this.toast.success("ФИО обновлена");
 						console.log("personal data changed");
 
 						this.isNameFormDisabled = true;
@@ -343,6 +370,53 @@
 				}
 			},
 
+			async send_avatar() {
+				try {
+					const response = await upload_avatar(
+						this.userData.id,
+						this.new_avatar
+					);
+
+					if (response.status === 200) {
+						console.log("Avatar changed");
+						this.toast.success("Изображение профиля изменено");
+
+						try {
+							const response = await this.getUser();
+							if (response.status === 200) {
+								this.new_avatar = "";
+							}
+						} catch (err) {
+							throw new Error(err);
+						}
+					}
+					if (response.status === 400) {
+						const error_list = returnErrorMessages(response.data);
+						error_list.forEach((el) => {
+							this.toast.error(el);
+						});
+					}
+				} catch (err) {
+					this.toast.error(
+						"Данное изображение не доступно, пожалуйста загрузите '.jpg', '.png', '.svg'.\nМаксимальный размер: 4096px"
+					);
+					throw new Error(err);
+				}
+			},
+
+			change_avatar(target) {
+				//* запись в переменную для отправки на сервер
+				this.new_avatar = target.files[0];
+
+				//* функционал предпросмотра загруженной аватарки
+				const fileReader = new FileReader();
+				fileReader.addEventListener("load", () => {
+					this.userData.avatar = fileReader.result;
+				});
+
+				fileReader.readAsDataURL(target.files[0]);
+			},
+
 			resetPasswordForm() {
 				this.userData.password = "";
 				this.userData.password_new = "";
@@ -368,7 +442,7 @@
 <style lang="scss" scoped>
 	@import "@/assets/scss/variables";
 
-	.the-profile {
+	.page-profile {
 		color: $dark;
 
 		&__title {
@@ -393,11 +467,45 @@
 		}
 
 		&__avatar {
-			width: 5.2rem;
-			height: 5.2em;
+			width: 100%;
+			height: 100%;
 			border-radius: 50%;
 			overflow: hidden;
 			object-fit: cover;
+			grid-area: 1/1;
+			pointer-events: all;
+
+			&-wrapper {
+				width: 7rem;
+				height: 7rem;
+				display: grid;
+				&:hover {
+					.page-profile__image-pick {
+						opacity: 1;
+					}
+				}
+			}
+		}
+
+		&__image-pick {
+			cursor: pointer;
+			grid-area: 1/1;
+			background-color: rgba(255, 255, 255, 0.7);
+			backdrop-filter: blur(0.2rem);
+			border-radius: 50%;
+			border: 2px dashed $gray;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			box-shadow: $shadow;
+			opacity: 0;
+			transition: all 0.3s ease;
+			&-input {
+				display: none;
+			}
+			&-btn {
+				font-weight: 700;
+			}
 		}
 
 		&__full-name {

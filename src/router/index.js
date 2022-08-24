@@ -143,7 +143,7 @@ const routes = [
 			{
 				path: 'profile',
 				name: 'Profile',
-				component: () => import(/* webpackChunkName: "profile" */ '@/views/CabinetPages/TheProfile.vue'),
+				component: () => import(/* webpackChunkName: "profile" */ '@/views/CabinetPages/PageProfile.vue'),
 				meta: {
 					title: 'Мой профиль',
 					requiresAuth: true,
@@ -152,7 +152,7 @@ const routes = [
 			{
 				path: 'booking',
 				name: 'Booking',
-				component: () => import(/* webpackChunkName: "booking" */ '@/views/CabinetPages/TheBooking.vue'),
+				component: () => import(/* webpackChunkName: "booking" */ '@/views/CabinetPages/PageBooking.vue'),
 				meta: {
 					title: 'Бронирование',
 					requiresAuth: true,
@@ -161,16 +161,25 @@ const routes = [
 			{
 				path: 'favorites',
 				name: 'Favorites',
-				component: () => import(/* webpackChunkName: "favorites" */ '@/views/CabinetPages/TheFavorites.vue'),
+				component: () => import(/* webpackChunkName: "favorites" */ '@/views/CabinetPages/PageFavorites.vue'),
 				meta: {
 					title: 'Избранное',
 					requiresAuth: true,
 				},
 			},
 			{
+				path: 'documents',
+				name: 'Documents',
+				component: () => import(/* webpackChunkName: "feedback" */ '@/views/CabinetPages/PageDocuments.vue'),
+				meta: {
+					title: 'Документы',
+					requiresAuth: true,
+				}
+			},
+			{
 				path: 'appointments',
 				name: 'Appointments',
-				component: () => import(/* webpackChunkName: "appointments" */ '@/views/CabinetPages/TheAppointments.vue'),
+				component: () => import(/* webpackChunkName: "appointments" */ '@/views/CabinetPages/PageAppointments.vue'),
 				meta: {
 					title: 'Встречи',
 					requiresAuth: true,
@@ -179,7 +188,7 @@ const routes = [
 			{
 				path: 'mortgage',
 				name: 'Mortgage',
-				component: () => import(/* webpackChunkName: "mortgage" */ '@/views/CabinetPages/TheMortgage.vue'),
+				component: () => import(/* webpackChunkName: "mortgage" */ '@/views/CabinetPages/PageMortgage.vue'),
 				meta: {
 					title: 'Ипотека',
 					requiresAuth: true,
@@ -188,7 +197,7 @@ const routes = [
 			{
 				path: 'services',
 				name: 'Services',
-				component: () => import(/* webpackChunkName: "services" */ '@/views/CabinetPages/TheServices.vue'),
+				component: () => import(/* webpackChunkName: "services" */ '@/views/CabinetPages/PageServices.vue'),
 				meta: {
 					title: 'Услуги',
 					requiresAuth: true,
@@ -197,7 +206,7 @@ const routes = [
 			{
 				path: 'bonuses',
 				name: 'Bonuses',
-				component: () => import(/* webpackChunkName: "bonuses" */ '@/views/CabinetPages/TheBonuses.vue'),
+				component: () => import(/* webpackChunkName: "bonuses" */ '@/views/CabinetPages/PageBonuses.vue'),
 				meta: {
 					title: 'Бонусы',
 					requiresAuth: true,
@@ -206,18 +215,9 @@ const routes = [
 			{
 				path: 'feedback',
 				name: 'Feedback',
-				component: () => import(/* webpackChunkName: "feedback" */ '@/views/CabinetPages/TheFeedback.vue'),
+				component: () => import(/* webpackChunkName: "feedback" */ '@/views/CabinetPages/PageFeedback.vue'),
 				meta: {
 					title: 'Обратная связь',
-					requiresAuth: true,
-				}
-			},
-			{
-				path: 'documents',
-				name: 'Documents',
-				component: () => import(/* webpackChunkName: "feedback" */ '@/views/CabinetPages/TheDocuments.vue'),
-				meta: {
-					title: 'Документы',
 					requiresAuth: true,
 				}
 			},

@@ -5,6 +5,7 @@ import vRadio from '@/components/UI/general/v-radio';
 import vSlider from '@/components/UI/general/v-slider';
 import vDropdown from '@/components/UI/general/v-dropdown';
 import vPopup from '@/components/UI/general/v-popup';
+import vLoader from '@/components/UI/general/v-loader';
 
 export default {
 	vButton,
@@ -14,4 +15,5 @@ export default {
 	vSlider,
 	vDropdown,
 	vPopup,
+	vLoader,
 }

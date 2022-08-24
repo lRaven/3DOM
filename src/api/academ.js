@@ -17,6 +17,7 @@ async function getApartments() {
 			});
 			store.commit('SET_APARTMENTS', sort_result);
 		}
+		return response;
 	}
 	catch (err) { throw new Error(err) }
 }

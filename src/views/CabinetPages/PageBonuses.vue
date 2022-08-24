@@ -1,9 +1,9 @@
 <template>
-	<div class="the-bonuses">
-		<div class="the-bonuses__header">
-			<h1 class="the-bonuses__title">Бонусы</h1>
+	<div class="page-bonuses">
+		<div class="page-bonuses__header">
+			<h1 class="page-bonuses__title">Бонусы</h1>
 
-			<div class="the-bonuses__tabs">
+			<div class="page-bonuses__tabs">
 				<label ref="tab_all" @click="this.tab = 'tab_all'">
 					<input
 						type="radio"
@@ -19,12 +19,12 @@
 				</label>
 
 				<hr
-					class="the-bonuses__line"
+					class="page-bonuses__line"
 					:style="`width: ${tabLineWidth}px; transform: translateX(${tabLinePosition}px)`"
 				/>
 			</div>
 		</div>
-		<div class="the-bonuses__body" v-if="tab === 'tab_all'">
+		<div class="page-bonuses__body" v-if="tab === 'tab_all'">
 			<services-item
 				class="animate__animated animate__fadeInUpBig animate__fast wow"
 				title="«Госпрограмма 2020»: ипотека со ставкой 0,1%"
@@ -34,7 +34,7 @@
 			></services-item>
 
 			<services-item
-				class="animate__animated animate__fadeInUpBig animate__fast wow the-bonuses__2"
+				class="animate__animated animate__fadeInUpBig animate__fast wow page-bonuses__2"
 				:title="`Подключить интернет\nв один клик\nДОМ.РУ`"
 				description=""
 				color="gray"
@@ -42,7 +42,7 @@
 			></services-item>
 
 			<services-item
-				class="animate__animated animate__fadeInUpBig animate__fast wow the-bonuses__3"
+				class="animate__animated animate__fadeInUpBig animate__fast wow page-bonuses__3"
 				description=""
 				:title="`«Скидка\nдо 110 000 рублей\nдля онлайн-покупателей`"
 				buttonColor="white"
@@ -50,14 +50,14 @@
 			></services-item>
 
 			<services-item
-				class="animate__animated animate__fadeInUpBig animate__fast wow the-bonuses__4"
+				class="animate__animated animate__fadeInUpBig animate__fast wow page-bonuses__4"
 				title="«Госпрограмма 2020»: ипотека со ставкой 0,1%"
 				:description="`Программа позволяет приобрести недвижимость, не перегружая\nличный бюджет на выплату процентов!`"
 				color="white"
 				@buttonAction="openPopup"
 			></services-item>
 		</div>
-		<div class="the-bonuses__body" v-if="tab === 'tab_personal'">
+		<div class="page-bonuses__body" v-if="tab === 'tab_personal'">
 			<services-item
 				class="animate__animated animate__fadeInUpBig animate__fast wow"
 				title="«Госпрограмма 2020»: ипотека со ставкой 0,1%"
@@ -67,7 +67,7 @@
 			></services-item>
 
 			<services-item
-				class="animate__animated animate__fadeInUpBig animate__fast wow the-bonuses__2"
+				class="animate__animated animate__fadeInUpBig animate__fast wow page-bonuses__2"
 				:title="`Подключить интернет\nв один клик\nДОМ.РУ`"
 				description=""
 				color="gray"
@@ -75,7 +75,7 @@
 			></services-item>
 
 			<services-item
-				class="animate__animated animate__fadeInUpBig animate__fast wow the-bonuses__3"
+				class="animate__animated animate__fadeInUpBig animate__fast wow page-bonuses__3"
 				description=""
 				:title="`«Скидка\nдо 110 000 рублей\nдля онлайн-покупателей`"
 				buttonColor="white"
@@ -83,7 +83,7 @@
 			></services-item>
 
 			<services-item
-				class="animate__animated animate__fadeInUpBig animate__fast wow the-bonuses__4"
+				class="animate__animated animate__fadeInUpBig animate__fast wow page-bonuses__4"
 				title="«Госпрограмма 2020»: ипотека со ставкой 0,1%"
 				:description="`Программа позволяет приобрести недвижимость, не перегружая\nличный бюджет на выплату процентов!`"
 				color="white"
@@ -99,9 +99,9 @@
 			>
 				<form
 					@submit.prevent=""
-					class="the-bonuses__consultation-request"
+					class="page-bonuses__consultation-request"
 				>
-					<p class="the-bonuses__consultation-request-description">
+					<p class="page-bonuses__consultation-request-description">
 						Отправьте заявку<br />
 						для получения консультации
 					</p>
@@ -143,7 +143,7 @@
 	import { requestSupportForm } from "@/mixins/support";
 
 	export default {
-		name: "TheBonuses",
+		name: "PageBonuses",
 		mixins: [requestSupportForm],
 		components: {
 			ServicesItem,
@@ -200,7 +200,7 @@
 <style lang="scss" scoped>
 	@import "@/assets/scss/variables";
 
-	.the-bonuses {
+	.page-bonuses {
 		color: $dark;
 		&__header {
 			margin-bottom: 3rem;

@@ -1,7 +1,7 @@
 <template>
-	<div class="the-favorites">
-		<div class="the-favorites__header">
-			<h1 class="the-favorites__title">
+	<div class="page-favorites">
+		<div class="page-favorites__header">
+			<h1 class="page-favorites__title">
 				{{
 					isAllApartmentVisible
 						? "Добавление в избранное"
@@ -18,93 +18,103 @@
 			></transition>
 		</div>
 
-		<transition mode="out-in" name="fade-up-fast">
+		<div class="page-favorites__body">
+			<transition mode="out-in" name="fade-up-fast">
+				<div
+					class="page-favorites__empty"
+					v-show="favorites.length === 0 && !isAllApartmentVisible"
+				>
+					<img src="/img/cabinet/empty.svg" alt="" />
+					<div class="page-favorites__empty-text">
+						<p>Вы пока ничего не добавили в избранное</p>
+						<v-button
+							text="Выбрать планировку"
+							type="button"
+							@click="isAllApartmentVisible = true"
+						></v-button>
+					</div>
+				</div>
+			</transition>
+
 			<div
-				class="the-favorites__empty"
-				v-show="favorites.length === 0 && !isAllApartmentVisible"
+				class="page-favorites__sort-panel"
+				v-show="favorites.length !== 0 && !isAllApartmentVisible"
 			>
-				<img src="/img/cabinet/empty.svg" alt="" />
-				<div class="the-favorites__empty-text">
-					<p>Вы пока ничего не добавили в избранное</p>
+				<p>Сортировать по:</p>
+				<label class="page-favorites__sort">
+					<input
+						type="radio"
+						name="sort"
+						value="cost"
+						class="page-favorites__radio-real"
+						v-model="sortBy"
+						checked
+					/>
+					<span class="page-favorites__radio-fake"> Цене </span>
+				</label>
+				<label class="page-favorites__sort">
+					<input
+						type="radio"
+						name="sort"
+						value="area"
+						class="page-favorites__radio-real"
+						v-model="sortBy"
+					/>
+					<span class="page-favorites__radio-fake"> Площади </span>
+				</label>
+			</div>
+
+			<transition mode="out-in" name="fade-up-fast">
+				<div
+					class="page-favorites__list"
+					v-show="favorites.length !== 0 && !isAllApartmentVisible"
+				>
+					<favorites-apartment
+						v-for="apartment in sortedFavoriteApartments"
+						:key="apartment.id"
+						:apartment="apartment"
+						:favorites="favorites"
+					></favorites-apartment>
+
 					<v-button
-						text="Выбрать планировку"
-						type="button"
+						text="Показать ещё"
+						class="page-favorites__body-more"
 						@click="isAllApartmentVisible = true"
 					></v-button>
 				</div>
-			</div>
-		</transition>
+			</transition>
 
-		<div
-			class="the-favorites__sort-panel"
-			v-show="favorites.length !== 0 && !isAllApartmentVisible"
-		>
-			<p>Сортировать по:</p>
-			<label class="the-favorites__sort">
-				<input
-					type="radio"
-					name="sort"
-					value="cost"
-					class="the-favorites__radio-real"
-					v-model="sortBy"
-					checked
-				/>
-				<span class="the-favorites__radio-fake"> Цене </span>
-			</label>
-			<label class="the-favorites__sort">
-				<input
-					type="radio"
-					name="sort"
-					value="area"
-					class="the-favorites__radio-real"
-					v-model="sortBy"
-				/>
-				<span class="the-favorites__radio-fake"> Площади </span>
-			</label>
+			<transition mode="out-in" name="fade-up-fast">
+				<div
+					class="page-favorites__list"
+					v-show="isAllApartmentVisible && isAllApartmentsLoaded"
+				>
+					<favorites-apartment
+						v-for="apartment in favoritesAndApartments"
+						:key="apartment.id"
+						:apartment="apartment"
+						:favorites="favorites"
+					></favorites-apartment>
+				</div>
+			</transition>
+
+			<v-loader
+				v-show="!isAllApartmentsLoaded && isAllApartmentVisible"
+			></v-loader>
 		</div>
-
-		<transition mode="out-in" name="fade-up-fast">
-			<div
-				class="the-favorites__body"
-				v-show="favorites.length !== 0 && !isAllApartmentVisible"
-			>
-				<favorites-apartment
-					v-for="apartment in sortedFavoriteApartments"
-					:key="apartment.id"
-					:apartment="apartment"
-					:favorites="favorites"
-				></favorites-apartment>
-
-				<v-button
-					text="Показать ещё"
-					class="the-favorites__body-more"
-					@click="isAllApartmentVisible = true"
-				></v-button>
-			</div>
-		</transition>
-
-		<transition mode="out-in" name="fade-up-fast">
-			<div class="the-favorites__body" v-show="isAllApartmentVisible">
-				<favorites-apartment
-					v-for="apartment in favoritesAndApartments"
-					:key="apartment.id"
-					:apartment="apartment"
-					:favorites="favorites"
-				></favorites-apartment>
-			</div>
-		</transition>
 	</div>
 </template>
 
 <script>
 	import FavoritesApartment from "@/components/cabinet/FavoritesApartment.vue";
+
 	import { mapState, mapMutations } from "vuex";
 
 	import { getApartments } from "@/api/academ";
 	import { sortArrayByNumberKey } from "@/js/sortArray";
 
 	export default {
-		name: "TheFavorites",
+		name: "PageFavorites",
 		components: { FavoritesApartment },
 		computed: {
 			...mapState({
@@ -137,10 +147,20 @@
 			},
 		},
 		watch: {
-			isAllApartmentVisible() {
+			async isAllApartmentVisible() {
 				if (this.isAllApartmentVisible) {
-					getApartments();
-					window.scrollTo(0, 0);
+					try {
+						const response = await getApartments();
+						if (response.status === 200) {
+							this.isAllApartmentsLoaded = true;
+							window.scrollTo(0, 0);
+						}
+					} catch (err) {
+						this.isAllApartmentsLoaded = true;
+						throw new Error(err);
+					}
+				} else {
+					this.sortBy = "cost";
 				}
 			},
 			favorites: {
@@ -160,6 +180,7 @@
 		},
 		data: () => ({
 			isAllApartmentVisible: false,
+			isAllApartmentsLoaded: false,
 			sortBy: "cost",
 
 			sortedFavoriteApartments: [],
@@ -209,9 +230,10 @@
 <style lang="scss" scoped>
 	@import "@/assets/scss/variables";
 
-	.the-favorites {
+	.page-favorites {
 		color: $dark;
-		display: grid;
+		position: relative;
+		height: 100%;
 
 		&__header {
 			display: flex;
@@ -236,7 +258,8 @@
 			box-shadow: $shadow;
 			border-radius: 3rem;
 			padding: 6rem;
-			grid-area: 3/1/3/1;
+			grid-area: 1/1;
+
 			&-text {
 				padding: 1rem 0;
 				display: flex;
@@ -258,6 +281,7 @@
 				font-weight: 500;
 				gap: 4rem;
 				margin-bottom: 5rem;
+				grid-area: 1/1;
 				p {
 					color: #979797;
 				}
@@ -266,7 +290,7 @@
 		&__radio {
 			&-real {
 				display: none;
-				&:checked + .the-favorites__radio-fake {
+				&:checked + .page-favorites__radio-fake {
 					color: $blue;
 				}
 			}
@@ -276,11 +300,19 @@
 		}
 
 		&__body {
-			grid-area: 3/1/3/1;
+			display: grid;
 			&-more {
 				margin: auto;
 				margin-top: 4rem;
 			}
+		}
+
+		&__list {
+			grid-area: 2/1;
+		}
+
+		.v-loader {
+			grid-area: 1/1;
 		}
 	}
 </style>

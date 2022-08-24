@@ -1,18 +1,18 @@
 <template>
-	<div class="the-appointments">
-		<div class="the-appointments__header">
-			<h1 class="the-appointments__title">Встречи</h1>
-			<div class="the-appointments__notification">
+	<div class="page-appointment">
+		<div class="page-appointment__header">
+			<h1 class="page-appointment__title">Встречи</h1>
+			<div class="page-appointment__notification">
 				<div>
 					<img src="/img/icon/cabinet/notifications.svg" alt="" />
 				</div>
-				<h3 class="the-appointments__notification-desc">
+				<h3 class="page-appointment__notification-desc">
 					Для записи на встречу воспользуйтесь формой. У вас нет
 					прошедших встреч.
 				</h3>
 			</div>
 		</div>
-		<div class="the-appointments__body">
+		<div class="page-appointment__body">
 			<appointment-form />
 		</div>
 	</div>
@@ -25,7 +25,7 @@
 	import { getApartments } from "@/api/academ";
 
 	export default {
-		name: "TheAppointments",
+		name: "PageAppointments",
 		components: { AppointmentForm },
 		methods: {
 			...mapMutations(["SET_TAB"]),
@@ -40,7 +40,7 @@
 <style lang="scss" scoped>
 	@import "@/assets/scss/variables";
 
-	.the-appointments {
+	.page-appointment {
 		color: $dark;
 		&__header {
 			margin-bottom: 3rem;
