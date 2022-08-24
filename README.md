@@ -1,4 +1,4 @@
-# 3dom
+# Real estate aggregator «3DOM»
 
 ## Project setup
 ```
