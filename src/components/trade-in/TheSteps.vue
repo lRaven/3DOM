@@ -53,7 +53,7 @@
 					class="steps__img animate__animated animate__fadeInRight wow"
 				>
 					<img src="/img/trade-in/steps-img.svg" alt="" />
-					<router-link to="/trade-in">
+					<router-link :to="{ name: 'TradeIn' }">
 						<v-button
 							text="Оформить заявку"
 							type="button"

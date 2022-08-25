@@ -1,18 +1,16 @@
 <template>
-	<div
-		class="apartment"
-		v-for="apartment in apartments"
-		:key="apartment.id"
-		@click="this.id = apartment.booking_id"
-	>
-		<div class="apartment__header">
-			<div class="apartment__close" @click="remove(apartment.booking_id)">
+	<div class="booking-apartment">
+		<div class="booking-apartment__header">
+			<div
+				class="booking-apartment__close"
+				@click="remove(apartment.booking_id, apartment.number)"
+			>
 				<img src="/img/icon/cabinet/close.svg" alt="" />
 			</div>
-			<div class="apartment__layout">
+			<div class="booking-apartment__layout">
 				<img :src="apartment.image" alt="" />
 			</div>
-			<div class="apartment__rooms">
+			<div class="booking-apartment__rooms">
 				<div v-if="apartment.type === 5">
 					<p>Студия</p>
 				</div>
@@ -24,68 +22,68 @@
 					{{ apartment.expiration_date }}
 				</p>
 			</div>
-			<div class="apartment__area">
+			<div class="booking-apartment__area">
 				<div><p>Площадь</p></div>
 				<p>{{ apartment.area }} м2</p>
 			</div>
-			<div class="apartment__floor">
+			<div class="booking-apartment__floor">
 				<div><p>Этаж</p></div>
 				<p>{{ apartment.floor }}</p>
 			</div>
-			<div class="apartment__project">
+			<div class="booking-apartment__project">
 				<div>
 					<p>Проект</p>
 				</div>
 				<p>Академический</p>
 			</div>
-			<div class="apartment__section">
+			<div class="booking-apartment__section">
 				<div><p>Секция</p></div>
 				<p>{{ apartment.section }}</p>
 			</div>
 			<v-button text="Платное бронирование" type="button"></v-button>
-			<div class="apartment__price">
+			<div class="booking-apartment__price">
 				<span>Стоимость:</span>
 				<p>4 014 433 руб.</p>
 			</div>
 		</div>
-		<div class="apartment__body">
-			<h2 class="apartment__stage">Ход строительства:</h2>
-			<div class="apartment__gallery">
-				<div class="apartment__photos">
-					<div class="apartment__photos-sum">
+		<div class="booking-apartment__body">
+			<h2 class="booking-apartment__stage">Ход строительства:</h2>
+			<div class="booking-apartment__gallery">
+				<div class="booking-apartment__photos">
+					<div class="booking-apartment__photos-sum">
 						<span>1</span>
 						<span>из</span>
 						<span>95</span>
 					</div>
 					<img src="/img/cabinet/apartment__photos1.jpg" alt="" />
-					<div class="apartment__date">12.12.2012</div>
+					<div class="booking-apartment__date">12.12.2012</div>
 				</div>
-				<div class="apartment__photos">
-					<div class="apartment__photos-sum">
+				<div class="booking-apartment__photos">
+					<div class="booking-apartment__photos-sum">
 						<span>1</span>
 						<span>из</span>
 						<span>95</span>
 					</div>
 					<img src="/img/cabinet/apartment__photos2.jpg" alt="" />
-					<div class="apartment__date">12.12.2012</div>
+					<div class="booking-apartment__date">12.12.2012</div>
 				</div>
-				<div class="apartment__photos">
-					<div class="apartment__photos-sum">
+				<div class="booking-apartment__photos">
+					<div class="booking-apartment__photos-sum">
 						<span>1</span>
 						<span>из</span>
 						<span>95</span>
 					</div>
 					<img src="/img/cabinet/apartment__photos3.jpg" alt="" />
-					<div class="apartment__date">12.12.2012</div>
+					<div class="booking-apartment__date">12.12.2012</div>
 				</div>
-				<div class="apartment__photos">
-					<div class="apartment__photos-sum">
+				<div class="booking-apartment__photos">
+					<div class="booking-apartment__photos-sum">
 						<span>1</span>
 						<span>из</span>
 						<span>95</span>
 					</div>
 					<img src="/img/cabinet/apartment__photos4.jpg" alt="" />
-					<div class="apartment__date">12.12.2012</div>
+					<div class="booking-apartment__date">12.12.2012</div>
 				</div>
 			</div>
 			<v-button text="Подробнее" type="button"></v-button>
@@ -94,22 +92,47 @@
 </template>
 
 <script>
-	import { removeReservation } from "@/api/booking";
-	import { mapState } from "vuex";
+	import { getBookingList, removeReservation } from "@/api/booking";
+	import { returnErrorMessages } from "@/js/returnErrorMessages";
+
+	import { useToast } from "vue-toastification";
 
 	export default {
 		name: "BookingApartment",
-		data: () => ({ id: null }),
-		computed: {
-			...mapState({
-				apartments: (state) => state.cabinet.booking,
-			}),
+		props: {
+			apartment: {
+				value: Object,
+				required: true,
+			},
 		},
 		methods: {
 			//* отмена бронирования
-			remove(id) {
-				removeReservation(id);
+			async remove(apartment_id, apartment_number) {
+				try {
+					const response = await removeReservation(apartment_id);
+
+					if (response.status === 204) {
+						this.toast.success(
+							`Бронирование квартиры №${apartment_number} отменено`
+						);
+						console.log("Apartment booking removed");
+
+						getBookingList();
+					}
+					if (response.status === 400) {
+						const error_list = returnErrorMessages(response.data);
+						error_list.forEach((el) => {
+							this.toast.error(el);
+						});
+					}
+				} catch (err) {
+					throw new Error(err);
+				}
 			},
+		},
+		setup() {
+			const toast = useToast();
+			return { toast };
 		},
 	};
 </script>
@@ -117,7 +140,7 @@
 <style lang="scss" scoped>
 	@import "@/assets/scss/variables";
 
-	.apartment {
+	.booking-apartment {
 		box-shadow: $shadow;
 		border-radius: 3rem;
 

@@ -116,6 +116,39 @@
 	export default {
 		name: "PageFavorites",
 		components: { FavoritesApartment },
+		watch: {
+			async isAllApartmentVisible() {
+				if (this.isAllApartmentVisible) {
+					try {
+						const response = await getApartments();
+						if (response.status === 200) {
+							this.isAllApartmentsLoaded = true;
+							window.scrollTo(0, 0);
+						}
+					} catch (err) {
+						this.isAllApartmentsLoaded = true;
+						throw new Error(err);
+					}
+				} else {
+					this.sortBy = "cost";
+				}
+			},
+
+			favorites: {
+				handler() {
+					this.sortedFavoriteApartments = [...this.favorites];
+				},
+				deep: true,
+			},
+
+			sortBy() {
+				this.sortedFavoriteApartments = sortArrayByNumberKey({
+					array: this.favorites,
+					key: this.sortBy,
+					direction: "ascending",
+				});
+			},
+		},
 		computed: {
 			...mapState({
 				favorites: (state) => state.cabinet.favorites,
@@ -144,38 +177,6 @@
 				}, []);
 
 				return [...favorites, ...otherApartments];
-			},
-		},
-		watch: {
-			async isAllApartmentVisible() {
-				if (this.isAllApartmentVisible) {
-					try {
-						const response = await getApartments();
-						if (response.status === 200) {
-							this.isAllApartmentsLoaded = true;
-							window.scrollTo(0, 0);
-						}
-					} catch (err) {
-						this.isAllApartmentsLoaded = true;
-						throw new Error(err);
-					}
-				} else {
-					this.sortBy = "cost";
-				}
-			},
-			favorites: {
-				handler() {
-					this.sortedFavoriteApartments = [...this.favorites];
-				},
-				deep: true,
-			},
-
-			sortBy() {
-				this.sortedFavoriteApartments = sortArrayByNumberKey({
-					array: this.favorites,
-					key: this.sortBy,
-					direction: "ascending",
-				});
 			},
 		},
 		data: () => ({

@@ -33,7 +33,9 @@
 				<a class="link" @click="this.$emit('openMortgageCalculator')">
 					Ипотека
 				</a>
-				<router-link to="/trade-in" class="link">Trade-in</router-link>
+				<router-link :to="{ name: 'TradeIn' }" class="link">
+					Trade-in
+				</router-link>
 				<a class="link">Ремонт</a>
 			</nav>
 		</div>

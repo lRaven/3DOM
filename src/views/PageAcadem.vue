@@ -49,6 +49,8 @@
 	import imagePopup from "@/components/academ/image-popup";
 	import MortgageCalculator from "@/components/academ/MortgageCalculator";
 
+	import { getApartments, getApartmentsOnTheFloor } from "@/api/academ";
+
 	export default {
 		name: "PageAcadem",
 		components: {
@@ -82,6 +84,10 @@
 				this.isMortgageCalculatorOpen = false;
 				document.body.classList.remove("locked");
 			},
+		},
+		created() {
+			getApartments();
+			getApartmentsOnTheFloor(4);
 		},
 	};
 </script>

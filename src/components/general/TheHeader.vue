@@ -87,7 +87,10 @@
 							/>
 						</svg>
 					</a>
-					<router-link to="/trade-in" class="the-header__link">
+					<router-link
+						:to="{ name: 'TradeIn' }"
+						class="the-header__link"
+					>
 						Trade-in
 						<svg
 							width="7"
@@ -167,7 +170,10 @@
 					:class="{ open: isMobileMenuOpen }"
 					v-if="!isAuth"
 				>
-					<router-link to="/login" class="the-header__link">
+					<router-link
+						:to="{ name: 'Login' }"
+						class="the-header__link"
+					>
 						<svg
 							width="46"
 							height="30"

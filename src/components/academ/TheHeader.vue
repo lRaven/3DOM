@@ -16,7 +16,7 @@
 					<img src="/img/icon/academ/burger.svg" alt="" />
 				</button>
 				<nav class="nav" :class="{ open: isMobileMenuOpen }">
-					<router-link to="/" class="link">
+					<router-link :to="{ name: 'Home' }" class="link">
 						Главная
 						<svg
 							width="7"
@@ -114,7 +114,7 @@
 							/>
 						</svg>
 					</a>
-					<router-link to="/trade-in" class="link">
+					<router-link :to="{ name: 'TradeIn' }" class="link">
 						Trade-in
 						<svg
 							width="7"

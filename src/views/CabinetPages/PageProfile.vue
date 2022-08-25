@@ -19,8 +19,7 @@
 							@change="change_avatar($event.target)"
 						/>
 						<div class="page-profile__image-pick-btn">
-							<!-- <img src="/img/icon/cabinet/edit.svg" alt="" /> -->
-							Изменить
+							Изменить фото
 						</div>
 					</label>
 				</div>
@@ -505,6 +504,7 @@
 			}
 			&-btn {
 				font-weight: 700;
+				text-align: center;
 			}
 		}
 

@@ -87,6 +87,7 @@
 	import TheFooter from "@/components/academ/TheFooter";
 
 	import { fixClient } from "@/api/fix-client";
+	import { getApartments, getApartmentsOnTheFloor } from "@/api/academ";
 
 	import { mapState } from "vuex";
 
@@ -172,6 +173,10 @@
 			closeNotification() {
 				this.isNotificationVisible = false;
 			},
+		},
+		created() {
+			getApartments();
+			getApartmentsOnTheFloor(4);
 		},
 		mounted() {
 			if (this.apartmentNumber === undefined) {

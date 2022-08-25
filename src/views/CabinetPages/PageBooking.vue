@@ -8,20 +8,27 @@
 				</div>
 				<h3
 					class="page-booking__notification-desc"
-					v-show="apartments === true"
+					v-show="booking.length > 0"
 				>
 					У вас есть предварительное бронирование
 				</h3>
 				<h3
 					class="page-booking__notification-desc"
-					v-show="apartments === false"
+					v-show="booking.length === 0"
 				>
 					У вас нет предварительных бронирований
 				</h3>
 			</div>
 		</div>
+
 		<div class="page-booking__body">
-			<booking-apartment></booking-apartment>
+			<transition-group mode="out-in" name="fade-up-fast">
+				<booking-apartment
+					v-for="apartment in booking"
+					:key="apartment.id"
+					:apartment="apartment"
+				></booking-apartment>
+			</transition-group>
 		</div>
 	</div>
 </template>
@@ -34,61 +41,15 @@
 	export default {
 		name: "PageBooking",
 		components: { BookingApartment },
-		watch: {
-			booking: {
-				handler() {
-					if (this.booking.length > 0) {
-						this.apartments = true;
-					} else this.apartments = false;
-				},
-				deep: true,
-			},
-		},
 		computed: {
 			...mapState({ booking: (state) => state.cabinet.booking }),
 		},
-		data: () => ({
-			apartments: false,
-		}),
 		methods: {
 			...mapMutations(["SET_TAB", "CLEAR_BOOKING"]),
-
-			openPopup() {
-				const images = document.querySelectorAll(".apartment__layout");
-				images.forEach((image) => {
-					image.addEventListener("click", () => {
-						const src = image
-							.querySelector("img")
-							.getAttribute("src");
-						const popup = document.querySelector(".popup");
-						const popupImg = popup.querySelector(".popup__image");
-
-						popupImg.setAttribute("src", src);
-						document
-							.querySelector("body")
-							.setAttribute("style", "overflow: hidden");
-						popup.classList.add("open");
-					});
-				});
-			},
 		},
 		created() {
 			this.SET_TAB("booking");
-		},
-		mounted() {
-			this.openPopup();
-
 			getBookingList();
-
-			if (this.booking) {
-				if (this.booking.length > 0) {
-					this.apartments = true;
-				} else this.apartments = false;
-			}
-
-			setInterval(() => {
-				getBookingList();
-			}, 300000);
 		},
 		unmounted() {
 			this.CLEAR_BOOKING();

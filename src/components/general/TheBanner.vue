@@ -1,9 +1,9 @@
 <template>
-	<section class="banner" id="banner">
-		<div class="banner__container center">
-			<div class="banner__watch-wrapper">
+	<section class="the-banner" id="banner">
+		<div class="the-banner__container center">
+			<div class="the-banner__watch-wrapper">
 				<div
-					class="banner__watch animate__animated animate__fadeInLeft wow"
+					class="the-banner__watch animate__animated animate__fadeInLeft wow"
 				>
 					<h2>На всё готовенькое!</h2>
 					<p>
@@ -25,14 +25,14 @@
 					</router-link>
 				</div>
 			</div>
-			<div class="banner__order-wrapper">
+			<div class="the-banner__order-wrapper">
 				<img
 					src="/img/trade-in/banner-img.svg"
 					alt=""
-					class="banner__order-img animate__animated animate__fadeInRight wow"
+					class="the-banner__order-img animate__animated animate__fadeInRight wow"
 				/>
 				<div
-					class="banner__order animate__animated animate__fadeInLeft wow"
+					class="the-banner__order animate__animated animate__fadeInLeft wow"
 				>
 					<h2>«Зачётная квартира»</h2>
 					<p>
@@ -40,7 +40,10 @@
 						квартиру по программе «Trade-In». Поменяем ваше жилье на
 						квартиру в новостройке.
 					</p>
-					<router-link to="/trade-in" style="display: inline-block">
+					<router-link
+						:to="{ name: 'TradeIn' }"
+						style="display: inline-block"
+					>
 						<v-button
 							text="Оформить заявку"
 							type="button"
@@ -74,7 +77,7 @@
 <style lang="scss" scoped>
 	@import "@/assets/scss/variables";
 
-	.banner {
+	.the-banner {
 		display: grid;
 		grid-template-columns: 1fr;
 		align-items: center;
@@ -103,6 +106,7 @@
 			margin-bottom: 4.2rem;
 			max-width: 69rem;
 			z-index: 2;
+			--animate-duration: 0.6s;
 			h2 {
 				font-size: 4.2rem;
 				font-weight: 600;
@@ -126,6 +130,7 @@
 		&__order {
 			background-color: $blue;
 			color: $white;
+			animation-delay: 0.5s;
 			&-img {
 				display: none;
 			}
@@ -133,7 +138,7 @@
 	}
 
 	@media (max-width: 1023px) {
-		.banner {
+		.the-banner {
 			grid-template-rows: 1fr min-content;
 			&__container {
 				display: flex;
@@ -180,14 +185,14 @@
 		}
 	}
 	@media (max-width: 540px) {
-		.banner {
+		.the-banner {
 			&__order-wrapper {
 				padding: 2rem 1rem;
 			}
 		}
 	}
 	@media (max-width: 424px) {
-		.banner {
+		.the-banner {
 			&__container {
 			}
 			&__watch {

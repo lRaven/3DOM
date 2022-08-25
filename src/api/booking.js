@@ -16,49 +16,55 @@ async function getBookingList() {
 		)
 
 		if (response.status === 200) {
-			//* id квартир
-			let apartmentsId = [];
+			try {
+				const responseApartments = await apartmentsInfo(response.data);
 
-			//* список id резерваций
-			let bookingsId = [];
-
-			//* сроки резерваций
-			let dates = [];
-
-			for (let i = 0, j = 0; i < response.data.length; i++) {
-				if (response.data[i].user == `${store.state.cabinet.user.id}`) {
-					apartmentsId[j] = response.data[i].apartment;
-					bookingsId[j] = response.data[i].id;
-					dates[j] = response.data[i].expiration_date.substring(0, 10);
-					j++;
+				if (responseApartments.status === 200) {
+					return true;
 				}
 			}
-			apartmentsInfo(apartmentsId, bookingsId, dates);
+			catch (err) { throw new Error(err) }
 		}
 	}
 	catch (err) { throw new Error(err) }
 }
 
 //* получение всей инфы по зарезирвированным квартирам юзера
-async function apartmentsInfo(apartmentsId, bookingsId, dates) {
+async function apartmentsInfo(bookingApartments) {
 	try {
 		const response = await axios.get(`${baseURL}/academ/apartment/`,
 			{ headers: { Authorization: `token ${cookie.get('auth_token')}` }, })
 
 		if (response.status === 200) {
-			let apartments = [];
+			const apartments = response.data.reduce((acc, cur) => {
+				//* получить забронированную квартиру которая равна квартире из общего списка 
+				const findedBooking = bookingApartments.find(apartment => {
+					return apartment.apartment === cur.id
+				})
 
-			response.data.forEach(element => {
-				for (let i = 0; i < apartmentsId.length; i++) {
-					if (element.id == apartmentsId[i]) {
-						apartments[i] = element;
-						apartments[i].expiration_date = dates[i];
-						apartments[i].booking_id = bookingsId[i];
+				if (findedBooking) {
+					//* если есть совпадение, то впихнуть все данные квартиры к bookingApartment 
+					for (const key in findedBooking) {
+						if (Object.hasOwnProperty.call(findedBooking, key)) {
+							if (key !== 'id' && key !== 'apartment') {
+								cur[key] = findedBooking[key]
+							}
+							else if (key === 'id') {
+								cur.booking_id = findedBooking[key]
+							}
+						}
 					}
+
+					acc.push(cur);
 				}
-			});
+
+				return acc
+			}, [])
+
 			store.commit('SET_BOOKING', apartments);
 		}
+
+		return response;
 	}
 	catch (err) { throw new Error(err) }
 }
@@ -70,12 +76,13 @@ async function removeReservation(id) {
 			headers: { Authorization: `token ${cookie.get('auth_token')}` }
 		})
 
-		if (response.status === 204) {
-			console.log(`Бронирование под номером ${id} успешно отменено`);
-			getBookingList();
-		}
+		// if (response.status === 204) {
+		// 	console.log(`Бронирование под номером ${id} успешно отменено`);
+		// 	getBookingList();
+		// }
+		return response;
 	}
-	catch (err) { throw new Error(err) }
+	catch (err) { return err.response }
 }
 
 async function addReservation(user, apartment) {
@@ -90,4 +97,5 @@ async function addReservation(user, apartment) {
 	}
 	catch (err) { throw new Error(err) }
 }
+
 export { getBookingList, apartmentsInfo, removeReservation, addReservation }

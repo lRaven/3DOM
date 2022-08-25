@@ -26,7 +26,7 @@
 							/>
 						</svg>
 					</a>
-					<a
+					<!-- <a
 						href="https://instagram.com/3dom_vlg?utm_medium=copy_link"
 						target="_blank"
 						class="the-footer__social"
@@ -51,7 +51,7 @@
 								fill="#007BFC"
 							/>
 						</svg>
-					</a>
+					</a> -->
 					<a
 						href="https://t.me/tridom_vlg"
 						class="the-footer__social the-footer__tg"
@@ -85,7 +85,9 @@
 					<a href="#" target="_blank">Финансы</a>
 				</li>
 				<li class="the-footer__link">
-					<router-link to="/trade-in">Trade-in</router-link>
+					<router-link :to="{ name: 'TradeIn' }">
+						Trade-in
+					</router-link>
 				</li>
 				<li class="the-footer__link">
 					<a href="#" target="_blank">Реквизиты</a>

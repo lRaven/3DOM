@@ -156,11 +156,6 @@
 					transform: rotate(90deg);
 				}
 			}
-			&:active {
-				svg {
-					transform: rotate(180deg);
-				}
-			}
 			svg {
 				width: 100%;
 				height: 100%;

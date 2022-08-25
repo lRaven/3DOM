@@ -119,6 +119,7 @@
 	import TheFooter from "@/components/academ/TheFooter";
 
 	import { mapState, mapMutations } from "vuex";
+	import { getApartments, getApartmentsOnTheFloor } from "@/api/academ";
 
 	export default {
 		name: "PageCRM",
@@ -150,7 +151,7 @@
 		}),
 
 		methods: {
-			...mapMutations(["CLEAR_APARTMENTS_ON_FLOOR"]),
+			...mapMutations(["CLEAR_APARTMENTS_ON_FLOOR", "CLEAR_APARTMENTS"]),
 
 			selectFloor(floor) {
 				this.floor = floor;
@@ -192,8 +193,12 @@
 				document.body.classList.remove("locked");
 			},
 		},
-
+		created() {
+			getApartments();
+			getApartmentsOnTheFloor(4);
+		},
 		unmounted() {
+			this.CLEAR_APARTMENTS();
 			this.CLEAR_APARTMENTS_ON_FLOOR();
 		},
 	};

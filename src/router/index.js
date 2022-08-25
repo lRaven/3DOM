@@ -1,15 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import PageHome from '@/views/PageHome';
 
-import PageLogin from '@/views/PageLogin';
-import PageRegistration from '@/views/PageRegistration';
+import PageHome from '@/views/PageHome'
+import PageLogin from '@/views/PageLogin'
+import PageRegistration from '@/views/PageRegistration'
+import PageNotFound from '@/views/PageNotFound'
 
-import PageNotFound from '@/views/PageNotFound';
-
-import { getApartments, getApartmentsOnTheFloor } from "@/api/academ";
-
-import store from '@/store';
-import cookie from 'vue-cookies';
+import store from '@/store'
+import cookie from 'vue-cookies'
 
 const routes = [
 	{
@@ -46,8 +43,6 @@ const routes = [
 		props: true,
 
 		beforeEnter(from, to, next) {
-			getApartments();
-			getApartmentsOnTheFloor(4);
 			next();
 		},
 	},
@@ -63,8 +58,6 @@ const routes = [
 
 					if (response.status === 200) {
 						if (response.data.is_superuser === true || response.data.role === 'AdminCRM') {
-							getApartments();
-							getApartmentsOnTheFloor(4);
 							next();
 						}
 						else {
@@ -94,8 +87,6 @@ const routes = [
 
 					if (response.status === 200) {
 						if (response.data.is_superuser === true || response.data.role === 'AdminCRM') {
-							getApartments();
-							getApartmentsOnTheFloor(4);
 							next();
 						}
 						else {
@@ -223,7 +214,6 @@ const routes = [
 			},
 		],
 	},
-
 	{
 		path: '/404',
 		name: '404',
