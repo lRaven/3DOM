@@ -14,7 +14,7 @@
 					<router-link
 						:to="{
 							name: 'Academ',
-							params: { section: '#apartments' },
+							query: { section: '#apartments' },
 						}"
 						style="display: inline-block"
 					>

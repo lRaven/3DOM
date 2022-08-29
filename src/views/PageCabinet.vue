@@ -33,7 +33,10 @@
 			>
 				<router-view v-slot="{ Component }">
 					<transition name="fade-up-fast" mode="out-in">
-						<component :is="Component" />
+						<component
+							:is="Component"
+							@openPopup="isPopupOpen = true"
+						/>
 					</transition>
 				</router-view>
 			</div>
@@ -114,7 +117,7 @@
 				v-if="isMortgageCalculatorOpen"
 				closeIcon="/img/icon/cabinet/close.svg"
 				light="light"
-				@closeMortgageCalculator="closeMortgageCalculator"
+				@closeMortgageCalculator="isPopupOpen = true"
 			></mortgage-calculator>
 		</transition>
 	</div>
@@ -230,7 +233,6 @@
 			overflow-y: auto;
 			height: max-content;
 			width: 34rem;
-			background-color: #fff;
 			z-index: 2;
 			transition: all 0.3s ease;
 			-ms-overflow-style: none;

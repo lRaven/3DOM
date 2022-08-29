@@ -24,7 +24,7 @@
 					style="display: inline-block"
 					:to="{
 						name: 'Academ',
-						params: { section: '#apartments' },
+						query: { section: '#apartments' },
 					}"
 				>
 					<v-button

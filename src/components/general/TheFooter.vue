@@ -100,7 +100,7 @@
 					<router-link
 						:to="{
 							name: 'Academ',
-							params: { section: '#feedback' },
+							query: { section: '#feedback' },
 						}"
 					>
 						Офисы продаж

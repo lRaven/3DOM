@@ -14,6 +14,7 @@ const state = () => ({
 		{ id: 6, icon: '/img/icon/cabinet/bonuses.svg', icon_selected: '/img/icon/cabinet/bonuses-selected.svg', description: 'Бонусы', tab: 'bonuses', link: { name: 'Bonuses' } },
 		{ id: 7, icon: '/img/icon/cabinet/beater.svg', icon_selected: null, description: 'Колоток', tab: 'kolotok', link: null },
 		{ id: 8, icon: '/img/icon/cabinet/feedback.svg', icon_selected: '/img/icon/cabinet/feedback-selected.svg', description: 'Обратная связь', tab: 'feedback', link: { name: 'Feedback' } },
+		{ id: 9, icon: '/img/icon/cabinet/appeals.svg', icon_selected: '/img/icon/cabinet/appeals-selected.svg', description: 'Обращения', tab: 'appeals', link: { name: 'Appeals' } },
 	],
 	tabs_admin: [
 		{ id: 1, icon: '/img/icon/cabinet/profile.svg', icon_selected: '/img/icon/cabinet/profile-selected.svg', description: 'Мой профиль', tab: 'profile', link: { name: 'Profile' } },
@@ -26,6 +27,7 @@ const state = () => ({
 		{ id: 8, icon: '/img/icon/cabinet/bonuses.svg', icon_selected: '/img/icon/cabinet/bonuses-selected.svg', description: 'Бонусы', tab: 'bonuses', link: { name: 'Bonuses' } },
 		{ id: 9, icon: '/img/icon/cabinet/crm.svg', icon_selected: '/img/icon/cabinet/crm-selected.svg', description: 'Кабинет CRM', tab: '', link: { name: "CRM" } },
 		{ id: 10, icon: '/img/icon/cabinet/feedback.svg', icon_selected: '/img/icon/cabinet/feedback-selected.svg', description: 'Обратная связь', tab: 'feedback', link: { name: 'Feedback' } },
+		{ id: 11, icon: '/img/icon/cabinet/appeals.svg', icon_selected: '/img/icon/cabinet/appeals-selected.svg', description: 'Обращения', tab: 'appeals', link: { name: 'Appeals' } },
 	],
 
 	booking: [],
@@ -68,15 +70,10 @@ const actions = {
 					headers: { Authorization: `token ${cookie.get('auth_token')}` },
 				})
 			if (response.status === 200) {
-				for (const key in response.data) {
-					if (
-						response.data[key].username ===
-						store.state.cabinet.user.username
-					) {
-						const id = response.data[key].id;
-						context.commit("SET_ID", id);
-					}
-				}
+				const userMe = response.data.find(user => {
+					return user.username === context.state.user.username;
+				})
+				context.commit("SET_ID", userMe.id);
 			}
 		}
 		catch (err) { throw new Error(err) }
@@ -94,28 +91,19 @@ const actions = {
 				context.commit('SET_USER_AUTH', true);
 			}
 			else if (response.status >= 400) {
-				//* стереть из vuex,cookies данные юзера
+				//* clear cookies, cabinet data
 				cookie.remove('auth_token');
 
-				context.commit('SET_USER_AUTH', false);
-				context.commit("SET_ID", null);
-				context.commit("SET_USER", {});
-				context.commit("SET_TAB", null);
-				context.commit("SET_BOOKING", []);
-				context.commit("SET_FAVORITES", null);
+				context.dispatch('clearCabinetState');
 			}
 
 			return response;
 		}
 		catch (err) {
-			//* стереть из vuex,cookies данные юзера
+			//* clear cookies, cabinet data
 			cookie.remove('auth_token');
 
-			context.commit("SET_ID", null);
-			context.commit("SET_USER", {});
-			context.commit("SET_TAB", null);
-			context.commit("SET_BOOKING", []);
-			context.commit("SET_FAVORITES", null);
+			context.dispatch('clearCabinetState');
 
 			throw new Error(err);
 		}

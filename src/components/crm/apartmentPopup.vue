@@ -172,7 +172,7 @@
 										style="color: #cc9964"
 										:to="{
 											name: 'Fix Client',
-											params: {
+											query: {
 												building: apartment.building,
 												apartmentNumber:
 													apartment.number,

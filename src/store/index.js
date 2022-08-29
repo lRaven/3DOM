@@ -4,6 +4,7 @@ import Cabinet from '@/store/modules/cabinet'
 import Academ from '@/store/modules/academ'
 import CRM from '@/store/modules/crm'
 import Catalog from '@/store/modules/catalog';
+import Messenger from '@/store/modules/messenger';
 
 export default createStore({
 	state: {
@@ -27,6 +28,7 @@ export default createStore({
 		academ: Academ,
 		crm: CRM,
 		catalog: Catalog,
+		messenger: Messenger,
 	},
 	plugins: [],
 });

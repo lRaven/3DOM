@@ -1,0 +1,81 @@
+<template>
+	<div class="appeal-card">
+		<p class="appeal-card__id appeal-card__col">#{{ appeal.id }}</p>
+
+		<p class="appeal-card__name appeal-card__col">{{ appeal.name }}</p>
+
+		<p class="appeal-card__topic appeal-card__col">{{ topic.value }}</p>
+
+		<p class="appeal-card__message appeal-card__col">
+			{{ appeal.message }}
+		</p>
+
+		<v-button
+			text="Подробнее"
+			color="bordered"
+			@click="this.$router.push(`/cabinet/appeal/${appeal.id}`)"
+		></v-button>
+	</div>
+</template>
+
+<script>
+	import { mapState } from "vuex";
+
+	export default {
+		name: "AppealCard",
+		props: {
+			appeal: {
+				value: Object,
+				required: true,
+			},
+		},
+		computed: {
+			...mapState({ topics: (state) => state.messenger.topics }),
+
+			topic() {
+				return this.topics.find(
+					(topic) => (topic.id = this.appeal.topic_type)
+				);
+			},
+		},
+	};
+</script>
+
+<style lang="scss" scoped>
+	@import "@/assets/scss/variables";
+
+	.appeal-card {
+		box-shadow: $shadow;
+		padding: 1rem;
+		border-radius: 1rem;
+		display: grid;
+		grid-template-columns: 5rem 1fr 25rem 2fr max-content;
+		grid-gap: 2rem;
+		align-items: center;
+		font-size: 1.6rem;
+		&__col {
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+		&__id {
+			font-weight: 300;
+			color: $gray;
+		}
+		&__name {
+		}
+		&__topic {
+			background-color: $light-gray;
+			border-radius: 5rem;
+			padding: 1rem;
+			text-align: center;
+			font-weight: 600;
+		}
+		&__message {
+		}
+		.v-button {
+			border-radius: 1rem;
+			padding: 1rem 2rem;
+		}
+	}
+</style>

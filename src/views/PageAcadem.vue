@@ -2,7 +2,7 @@
 	<div class="page-academ theme-container">
 		<the-header
 			@openMortgageCalculator="openMortgageCalculator"
-			:section="section"
+			:section="this.$route.query.section"
 		></the-header>
 		<main class="main" id="main">
 			<the-banner />
@@ -72,7 +72,6 @@
 			imagePopup,
 			MortgageCalculator,
 		},
-		props: { section: String },
 		data: () => ({ isMortgageCalculatorOpen: false }),
 		methods: {
 			openMortgageCalculator() {

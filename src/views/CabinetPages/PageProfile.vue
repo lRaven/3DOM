@@ -58,16 +58,6 @@
 							v-model="userData.first_name"
 							:isTransparent="isNameFormDisabled"
 						></v-input>
-					</div>
-					<div class="page-profile__item-row">
-						<p class="page-profile__item-key">Отчество:</p>
-
-						<v-input
-							type="text"
-							:disabled="isNameFormDisabled"
-							v-model="userData.patronymic"
-							:isTransparent="isNameFormDisabled"
-						></v-input>
 
 						<button
 							type="button"

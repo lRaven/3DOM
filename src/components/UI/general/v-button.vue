@@ -38,7 +38,6 @@
 		width: max-content;
 		font-size: 1.5rem;
 		font-weight: 600;
-		box-shadow: $shadow;
 		transition: all 0.2s ease;
 
 		&:active {
@@ -85,6 +84,16 @@
 			&:hover {
 				background-color: #e3e3e3;
 				transition: all 0.2s ease;
+			}
+		}
+
+		&.bordered {
+			background-color: $white;
+			color: $gray;
+			border: 0.1rem solid $gray;
+			&:hover {
+				border-color: $blue;
+				color: $blue;
 			}
 		}
 	}

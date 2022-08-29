@@ -31,7 +31,7 @@
 						class="the-header__link"
 						:to="{
 							name: 'Academ',
-							params: { section: '#apartments' },
+							query: { section: '#apartments' },
 						}"
 					>
 						Ремонты
@@ -52,7 +52,7 @@
 						class="the-header__link"
 						:to="{
 							name: 'Academ',
-							params: { section: '#apartments' },
+							query: { section: '#apartments' },
 						}"
 					>
 						Квартиры
@@ -127,7 +127,7 @@
 						class="the-header__link"
 						:to="{
 							name: 'Academ',
-							params: { section: '#feedback' },
+							query: { section: '#feedback' },
 						}"
 					>
 						Офисы продаж

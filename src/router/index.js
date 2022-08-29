@@ -40,7 +40,6 @@ const routes = [
 		meta: {
 			title: 'Академический',
 		},
-		props: true,
 
 		beforeEnter(from, to, next) {
 			next();
@@ -209,6 +208,24 @@ const routes = [
 				component: () => import(/* webpackChunkName: "feedback" */ '@/views/CabinetPages/PageFeedback.vue'),
 				meta: {
 					title: 'Обратная связь',
+					requiresAuth: true,
+				}
+			},
+			{
+				path: 'appeals',
+				name: 'Appeals',
+				component: () => import(/* webpackChunkName: "appeals" */ '@/views/CabinetPages/PageAppeals.vue'),
+				meta: {
+					title: 'Обращения',
+					requiresAuth: true,
+				}
+			},
+			{
+				path: 'appeal/:id',
+				name: 'Appeal',
+				component: () => import(/* webpackChunkName: "appeal" */ '@/views/CabinetPages/PageAppeal.vue'),
+				meta: {
+					title: 'Обращение',
 					requiresAuth: true,
 				}
 			},
