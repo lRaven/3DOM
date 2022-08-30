@@ -14,6 +14,11 @@
 		watch: {
 			$route(to) {
 				document.title = to.meta.title || "Default Title";
+				if (to.name === "Academ" || to.name === "CRM") {
+					document.body.classList.add("dark");
+				} else {
+					document.body.classList.remove("dark");
+				}
 			},
 
 			"$route.path"() {
@@ -40,17 +45,58 @@
 <style lang="scss">
 	@import "@/assets/scss/center";
 	@import "@/assets/scss/animation";
+	@import "@/assets/scss/variables";
+
+	* {
+		scroll-behavior: smooth;
+		font-family: "Montserrat";
+
+		//*chrome/safari
+		&::-webkit-scrollbar {
+			width: $scrollbarWidth; /* ширина scrollbar */
+		}
+		&::-webkit-scrollbar-track {
+			background: $scrollbarBg; /* цвет дорожки */
+		}
+		&::-webkit-scrollbar-thumb {
+			background-color: $scrollbarThumb; /* цвет плашки */
+			border-radius: $scrollbarBorderRadius; /* закругления плашки */
+			border: $scrollbarBorder; /* padding вокруг плашки */
+		}
+		//*firefox
+		scrollbar-width: thin; /* "auto" или "thin"  */
+		scrollbar-color: $scrollbarThumb $scrollbarBg;
+	}
 
 	body {
 		height: max-content;
 		&.locked {
 			overflow: hidden;
 		}
-	}
 
-	* {
-		scroll-behavior: smooth;
-		font-family: "Montserrat";
+		&.dark {
+			&::-webkit-scrollbar-track {
+				background: $dark-green; /* цвет дорожки */
+			}
+			&::-webkit-scrollbar-thumb {
+				background-color: $gold; /* цвет плашки */
+				border: $dark-green; /* padding вокруг плашки */
+			}
+			//*firefox
+			scrollbar-color: $scrollbarThumb $dark-green;
+
+			* {
+				&::-webkit-scrollbar-track {
+					background: $dark-green; /* цвет дорожки */
+				}
+				&::-webkit-scrollbar-thumb {
+					background-color: $gold; /* цвет плашки */
+					border: $dark-green; /* padding вокруг плашки */
+				}
+				//*firefox
+				scrollbar-color: $scrollbarThumb $dark-green;
+			}
+		}
 	}
 
 	section {

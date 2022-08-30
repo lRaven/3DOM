@@ -1,7 +1,7 @@
 import { send_support_message } from "@/api/support";
 import { returnErrorMessages } from "@/js/returnErrorMessages";
 
-import { mapState } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 
 export const requestSupportForm = {
 	computed: {
@@ -53,6 +53,7 @@ export const supportForm = {
 		},
 	}),
 	methods: {
+		...mapActions(['getChats']),
 		//* отправка сообщения в поддержку
 		async send_message(event) {
 			try {
@@ -70,8 +71,12 @@ export const supportForm = {
 					);
 					console.log("support message send");
 
+					this.getChats();
+
 					event.target.reset();
 					this.resetForm();
+
+					this.$router.push({ name: 'Appeals' })
 				}
 				if (response.status === 400) {
 					const error_list = returnErrorMessages(response.data);

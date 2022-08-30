@@ -3,7 +3,7 @@ import store from '@/store';
 
 import { sortArrayByNumberKey } from "@/js/sortArray";
 
-const baseURL = store.state.baseURL;
+const baseURL = process.env.VUE_APP_BACKEND_BASEURL;
 
 async function getApartments() {
 	try {

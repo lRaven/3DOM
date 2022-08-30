@@ -1,12 +1,21 @@
 <template>
 	<div class="appeal-card">
-		<p class="appeal-card__id appeal-card__col">#{{ appeal.id }}</p>
+		<p class="appeal-card__id appeal-card__col" :title="`#${appeal.id}`">
+			#{{ appeal.id }}
+		</p>
 
-		<p class="appeal-card__name appeal-card__col">{{ appeal.name }}</p>
+		<p class="appeal-card__name appeal-card__col" :title="appeal.name">
+			{{ appeal.name }}
+		</p>
 
-		<p class="appeal-card__topic appeal-card__col">{{ topic.value }}</p>
+		<p class="appeal-card__topic appeal-card__col" :title="topic.value">
+			{{ topic.value }}
+		</p>
 
-		<p class="appeal-card__message appeal-card__col">
+		<p
+			class="appeal-card__message appeal-card__col"
+			:title="appeal.message"
+		>
 			{{ appeal.message }}
 		</p>
 
@@ -28,13 +37,14 @@
 				value: Object,
 				required: true,
 			},
+			messages: Array,
 		},
 		computed: {
 			...mapState({ topics: (state) => state.messenger.topics }),
 
 			topic() {
 				return this.topics.find(
-					(topic) => (topic.id = this.appeal.topic_type)
+					(topic) => topic.id === this.appeal.topic_type
 				);
 			},
 		},
@@ -46,7 +56,7 @@
 
 	.appeal-card {
 		box-shadow: $shadow;
-		padding: 1rem;
+		padding: 1.5rem 2rem;
 		border-radius: 1rem;
 		display: grid;
 		grid-template-columns: 5rem 1fr 25rem 2fr max-content;
@@ -67,7 +77,7 @@
 		&__topic {
 			background-color: $light-gray;
 			border-radius: 5rem;
-			padding: 1rem;
+			padding: 1rem 2rem;
 			text-align: center;
 			font-weight: 600;
 		}

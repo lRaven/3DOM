@@ -103,10 +103,7 @@
 			padding: 5.5rem 7.4rem;
 			border-bottom: 1px solid #c4c4c4;
 		}
-		&__title {
-			font-size: 3rem;
-			font-weight: 600;
-		}
+
 		&__body {
 			padding: 4rem 6.5rem 10.5rem 7.4rem;
 			form {

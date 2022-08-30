@@ -1,7 +1,6 @@
 import axios from "axios";
-import store from '@/store';
 
-const baseURL = store.state.baseURL;
+const baseURL = process.env.VUE_APP_BACKEND_BASEURL;
 
 const send_support_message = async (form_data) => {
 	try {

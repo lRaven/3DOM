@@ -21,4 +21,11 @@ $pink: #f6d6b9;
 $dark-green: #00212d;
 $green: #00ff00;
 
+//* scrollbar
+$scrollbarBg: rgb(235, 235, 235);
+$scrollbarThumb: $blue;
+$scrollbarWidth: 1rem;
+$scrollbarBorder: 0.2rem solid $scrollbarBg;
+$scrollbarBorderRadius: calc(($scrollbarWidth) / 2);
+
 $shadow: 0 0 1.5rem rgba(0, 0, 0, 0.2);

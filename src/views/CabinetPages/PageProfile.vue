@@ -437,8 +437,6 @@
 		&__title {
 			margin-bottom: 1rem;
 			padding-left: 2rem;
-			font-size: 3rem;
-			font-weight: 600;
 		}
 
 		&__header {

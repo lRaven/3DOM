@@ -111,6 +111,7 @@
 	import { mapState, mapMutations } from "vuex";
 
 	import { getApartments } from "@/api/academ";
+	import { getFavoriteApartmentNumber } from "@/api/favorite";
 	import { sortArrayByNumberKey } from "@/js/sortArray";
 
 	export default {
@@ -216,6 +217,7 @@
 		},
 		created() {
 			this.SET_TAB("favorites");
+			getFavoriteApartmentNumber();
 			this.sortedFavoriteApartments = sortArrayByNumberKey({
 				array: this.favorites,
 				key: this.sortBy,
@@ -249,10 +251,6 @@
 			border-radius: 1rem;
 		}
 
-		&__title {
-			font-size: 3rem;
-			font-weight: 600;
-		}
 		&__empty {
 			display: flex;
 			gap: 4rem;

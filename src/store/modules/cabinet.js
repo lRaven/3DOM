@@ -1,6 +1,7 @@
 import axios from 'axios';
-import store from '@/store';
 import cookie from 'vue-cookies';
+
+const baseURL = process.env.VUE_APP_BACKEND_BASEURL;
 
 const state = () => ({
 	//* main
@@ -66,7 +67,7 @@ const actions = {
 	getUserId: async (context) => {
 		try {
 			const response = await axios
-				.get(`${store.state.baseURL}/auth/users/`, {
+				.get(`${baseURL}/auth/users/`, {
 					headers: { Authorization: `token ${cookie.get('auth_token')}` },
 				})
 			if (response.status === 200) {
@@ -81,7 +82,7 @@ const actions = {
 
 	getUser: async (context) => {
 		try {
-			const response = await axios.get(`${store.state.baseURL}/auth/users/me`, {
+			const response = await axios.get(`${baseURL}/auth/users/me`, {
 				headers: { Authorization: `token ${cookie.get('auth_token')}` },
 			})
 

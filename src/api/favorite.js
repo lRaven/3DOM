@@ -2,7 +2,7 @@ import axios from "axios";
 import store from '@/store';
 import cookie from 'vue-cookies';
 
-const baseURL = store.state.baseURL;
+const baseURL = process.env.VUE_APP_BACKEND_BASEURL;
 
 //* получение списка квартир избранных юзером и передача в функцию выборки
 async function getFavoriteApartmentNumber() {

@@ -30,6 +30,7 @@
 						v-for="chat in chats"
 						:key="chat.id"
 						:appeal="chat"
+						:messages="messages"
 					></appeal-card>
 				</transition-group>
 			</div>
@@ -38,28 +39,44 @@
 </template>
 
 <script>
-	import { mapState, mapMutations, mapActions } from "vuex";
+	import { mapMutations } from "vuex";
+	import { getMessages, getChats } from "@/api/messenger";
 
 	import AppealCard from "@/components/cabinet/appeals/AppealCard.vue";
 
 	export default {
 		name: "PageAppeals",
 		components: { AppealCard },
-		data: () => ({ isChatsLoaded: false }),
-		computed: { ...mapState({ chats: (state) => state.messenger.chats }) },
+		data: () => ({
+			isChatsLoaded: false,
+			chats: [],
+			messages: [],
+		}),
+
 		methods: {
-			...mapMutations(["SET_TAB", "CLEAR_CHATS"]),
-			...mapActions(["getChats"]),
+			...mapMutations(["SET_TAB"]),
 
 			async getAppealChats() {
 				try {
-					const response = await this.getChats();
+					const response = await getChats();
 
 					if (response.status === 200) {
 						this.isChatsLoaded = true;
+						this.chats = response.data;
 					}
 				} catch (err) {
 					this.isChatsLoaded = true;
+					throw new Error(err);
+				}
+			},
+			async getChatMessages() {
+				try {
+					const response = await getMessages();
+
+					if (response.status === 200) {
+						this.messages = response.data;
+					}
+				} catch (err) {
 					throw new Error(err);
 				}
 			},
@@ -67,9 +84,7 @@
 		created() {
 			this.SET_TAB("appeals");
 			this.getAppealChats();
-		},
-		unmounted() {
-			this.CLEAR_CHATS();
+			this.getChatMessages();
 		},
 	};
 </script>
@@ -79,10 +94,8 @@
 
 	.page-appeals {
 		position: relative;
-		min-height: calc(100vh - 14.5rem);
+		min-height: calc(100vh - 13rem);
 		&__title {
-			font-size: 3rem;
-			font-weight: 500;
 			margin-bottom: 4rem;
 		}
 		&__main {

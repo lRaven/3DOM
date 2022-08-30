@@ -140,14 +140,14 @@
 		flex-direction: column;
 		background-color: $blue;
 		color: $white;
-		padding: 14.5rem 3rem 6rem 3rem;
+		padding: 13rem 3rem 6rem 3rem;
 		border-radius: 0 0 3rem 0;
 		width: 34rem;
 		overflow: hidden;
 		transition: all 0.3s ease;
 		&.minimized {
 			width: 7rem;
-			padding: 10rem 0 5rem 0;
+			padding: 13rem 0 5rem 0;
 		}
 
 		&__title {

@@ -117,7 +117,7 @@
 				v-if="isMortgageCalculatorOpen"
 				closeIcon="/img/icon/cabinet/close.svg"
 				light="light"
-				@closeMortgageCalculator="isPopupOpen = true"
+				@closeMortgageCalculator="isMortgageCalculatorOpen = false"
 			></mortgage-calculator>
 		</transition>
 	</div>
@@ -229,8 +229,6 @@
 			position: sticky;
 			left: 0;
 			top: 8.5rem;
-			transform: translateY(-8.5rem);
-			overflow-y: auto;
 			height: max-content;
 			width: 34rem;
 			z-index: 2;
@@ -238,6 +236,7 @@
 			-ms-overflow-style: none;
 			scrollbar-width: none;
 			grid-area: 1/1;
+			transform: translateY(-8.5rem);
 
 			&::-webkit-scrollbar {
 				display: none;
@@ -251,8 +250,8 @@
 
 		&__hint {
 			position: relative;
-			margin-top: 9rem;
-			padding: 0 0 8rem 2.5rem;
+			margin-top: 5rem;
+			padding: 0 0 0rem 2.5rem;
 			transition: all 0.3s ease;
 
 			p {
@@ -263,10 +262,11 @@
 		}
 
 		&__main {
-			padding: 6rem 2rem 2rem 36rem;
+			padding: 4rem 2rem 2rem 36rem;
 			width: 100%;
 			grid-area: 1/1;
 			transition: all 0.3s ease;
+			height: max-content;
 
 			&.maximized {
 				padding-left: 9rem;
@@ -313,6 +313,17 @@
 				@media (max-width: 1023px) {
 					grid-column: inherit;
 				}
+			}
+		}
+	}
+</style>
+
+<style lang="scss">
+	.page-cabinet {
+		&__main {
+			h1 {
+				font-size: 3rem;
+				font-weight: 600;
 			}
 		}
 	}

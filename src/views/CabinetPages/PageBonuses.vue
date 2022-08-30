@@ -208,8 +208,6 @@
 		}
 		&__title {
 			margin-bottom: 1.5rem;
-			font-size: 3rem;
-			font-weight: 600;
 		}
 		&__tabs {
 			position: relative;

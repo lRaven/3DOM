@@ -8,6 +8,7 @@ import PageNotFound from '@/views/PageNotFound'
 import store from '@/store'
 import cookie from 'vue-cookies'
 
+
 const routes = [
 	{
 		path: '/',
@@ -39,10 +40,6 @@ const routes = [
 		component: () => import(/* webpackChunkName: "academ" */ '@/views/PageAcadem.vue'),
 		meta: {
 			title: 'Академический',
-		},
-
-		beforeEnter(from, to, next) {
-			next();
 		},
 	},
 	{

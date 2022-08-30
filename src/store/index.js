@@ -11,7 +11,7 @@ export default createStore({
 		baseURL: process.env.VUE_APP_BACKEND_BASEURL,
 		document_width: document.documentElement.clientWidth,
 	},
-	getters: {},
+	getters: { BASEURL_WITHOUT_PROTOCOL(state) { return state.baseURL.split("/")[2] } },
 	mutations: { SET_DOCUMENT_WIDTH: (state, payload) => state.document_width = payload, },
 	actions: {
 		getDocumentWidth: async (context) => {
