@@ -2,7 +2,7 @@ import { createApp } from 'vue'
 import App from '@/App'
 import store from '@/store'
 import router from '@/router'
-import 'animate.css'
+
 import Toast, { POSITION } from "vue-toastification"
 import "vue-toastification/dist/index.css"
 import VueCookies from 'vue-cookies'

@@ -26,7 +26,7 @@
 		</div>
 		<div class="page-bonuses__body" v-if="tab === 'tab_all'">
 			<services-item
-				class="animate__animated animate__fadeInUpBig animate__fast wow"
+				data-aos="fade-up"
 				title="«Госпрограмма 2020»: ипотека со ставкой 0,1%"
 				:description="`Программа позволяет приобрести недвижимость, не перегружая\nличный бюджет на выплату процентов!`"
 				buttonColor="white"
@@ -34,7 +34,8 @@
 			></services-item>
 
 			<services-item
-				class="animate__animated animate__fadeInUpBig animate__fast wow page-bonuses__2"
+				data-aos="fade-up"
+				data-aos-delay="250"
 				:title="`Подключить интернет\nв один клик\nДОМ.РУ`"
 				description=""
 				color="gray"
@@ -42,7 +43,8 @@
 			></services-item>
 
 			<services-item
-				class="animate__animated animate__fadeInUpBig animate__fast wow page-bonuses__3"
+				data-aos="fade-up"
+				data-aos-delay="500"
 				description=""
 				:title="`«Скидка\nдо 110 000 рублей\nдля онлайн-покупателей`"
 				buttonColor="white"
@@ -50,7 +52,8 @@
 			></services-item>
 
 			<services-item
-				class="animate__animated animate__fadeInUpBig animate__fast wow page-bonuses__4"
+				data-aos="fade-up"
+				data-aos-delay="750"
 				title="«Госпрограмма 2020»: ипотека со ставкой 0,1%"
 				:description="`Программа позволяет приобрести недвижимость, не перегружая\nличный бюджет на выплату процентов!`"
 				color="white"
@@ -59,7 +62,7 @@
 		</div>
 		<div class="page-bonuses__body" v-if="tab === 'tab_personal'">
 			<services-item
-				class="animate__animated animate__fadeInUpBig animate__fast wow"
+				data-aos="fade-up"
 				title="«Госпрограмма 2020»: ипотека со ставкой 0,1%"
 				:description="`Программа позволяет приобрести недвижимость, не перегружая\nличный бюджет на выплату процентов!`"
 				buttonColor="white"
@@ -67,7 +70,8 @@
 			></services-item>
 
 			<services-item
-				class="animate__animated animate__fadeInUpBig animate__fast wow page-bonuses__2"
+				data-aos="fade-up"
+				data-aos-delay="250"
 				:title="`Подключить интернет\nв один клик\nДОМ.РУ`"
 				description=""
 				color="gray"
@@ -75,7 +79,8 @@
 			></services-item>
 
 			<services-item
-				class="animate__animated animate__fadeInUpBig animate__fast wow page-bonuses__3"
+				data-aos="fade-up"
+				data-aos-delay="500"
 				description=""
 				:title="`«Скидка\nдо 110 000 рублей\nдля онлайн-покупателей`"
 				buttonColor="white"
@@ -83,7 +88,8 @@
 			></services-item>
 
 			<services-item
-				class="animate__animated animate__fadeInUpBig animate__fast wow page-bonuses__4"
+				data-aos="fade-up"
+				data-aos-delay="750"
 				title="«Госпрограмма 2020»: ипотека со ставкой 0,1%"
 				:description="`Программа позволяет приобрести недвижимость, не перегружая\nличный бюджет на выплату процентов!`"
 				color="white"

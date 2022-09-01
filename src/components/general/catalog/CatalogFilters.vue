@@ -1,5 +1,5 @@
 <template>
-	<div class="catalog-filters animate__animated animate__fadeInUp wow">
+	<div data-aos="fade-up" class="catalog-filters">
 		<div class="catalog-filters__settings">
 			<div class="catalog-filters__type">
 				<button

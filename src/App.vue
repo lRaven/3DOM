@@ -9,11 +9,14 @@
 <script>
 	import { mapActions } from "vuex";
 	import { getFavoriteApartmentNumber } from "@/api/favorite";
+	import Aos from "aos";
+	import "aos/dist/aos.css";
 
 	export default {
 		watch: {
 			$route(to) {
 				document.title = to.meta.title || "Default Title";
+
 				if (to.name === "Academ" || to.name === "CRM") {
 					document.body.classList.add("dark");
 				} else {
@@ -35,6 +38,12 @@
 			if (this.$cookies.get("auth_token")) {
 				getFavoriteApartmentNumber();
 			}
+
+			Aos.init();
+
+			setInterval(() => {
+				Aos.refresh();
+			}, 500);
 		},
 	};
 </script>

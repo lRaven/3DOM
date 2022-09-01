@@ -3,55 +3,41 @@
 		<div class="steps__container center">
 			<div class="steps__top">
 				<div class="steps__list">
-					<h2
-						class="steps__title animate__animated animate__fadeInUp wow"
-					>
+					<h2 data-aos="fade-up" class="steps__title">
 						Trade-in — это просто
 					</h2>
-					<div
-						class="steps__list-item animate__animated animate__fadeInUp wow"
-					>
+					<div data-aos="fade-up" class="steps__list-item">
 						<span class="steps__step">1</span>
 						<p class="steps__description">
 							Независимая оценка вашей квартиры.
 						</p>
 					</div>
-					<div
-						class="steps__list-item animate__animated animate__fadeInUp wow"
-					>
+					<div data-aos="fade-up" class="steps__list-item">
 						<span class="steps__step">2</span>
 						<p class="steps__description">
 							Продаем ваше вторичное жильё.
 						</p>
 					</div>
-					<div
-						class="steps__list-item animate__animated animate__fadeInUp wow"
-					>
+					<div data-aos="fade-up" class="steps__list-item">
 						<span class="steps__step">3</span>
 						<p class="steps__description">
 							Собираем документы и проводим сделку.
 						</p>
 					</div>
-					<div
-						class="steps__list-item animate__animated animate__fadeInUp wow"
-					>
+					<div data-aos="fade-up" class="steps__list-item">
 						<span class="steps__step">4</span>
 						<p class="steps__description">
 							Деньги с продажи старой квартиры в счёт опаты новой.
 						</p>
 					</div>
-					<div
-						class="steps__list-item animate__animated animate__fadeInUp wow"
-					>
+					<div data-aos="fade-up" class="steps__list-item">
 						<span class="steps__step">5</span>
 						<p class="steps__description">
 							Забрать ключи и въехать в новую квартиру.
 						</p>
 					</div>
 				</div>
-				<div
-					class="steps__img animate__animated animate__fadeInRight wow"
-				>
+				<div data-aos="fade-left" class="steps__img">
 					<img src="/img/trade-in/steps-img.svg" alt="" />
 					<router-link :to="{ name: 'TradeIn' }">
 						<v-button
@@ -62,82 +48,50 @@
 				</div>
 			</div>
 			<div class="steps__stages">
-				<div
-					class="steps__benefit animate__animated animate__fadeInUp wow"
-				>
+				<div data-aos="fade-up" class="steps__benefit">
 					<img
 						src="/img/icon/trade-in/tick.svg"
-						class="steps__benefit-icon animate__animated animate__fadeInUp wow"
+						class="steps__benefit-icon"
 						alt=""
 					/>
-					<h3
-						class="steps__benefit-title animate__animated animate__fadeInUp wow"
-					>
-						Кураторство
-					</h3>
-					<p
-						class="steps__benefit-text animate__animated animate__fadeInUp wow"
-					>
+					<h3 class="steps__benefit-title">Кураторство</h3>
+					<p class="steps__benefit-text">
 						Поможем решить все вопросы со сделкой<br />
 						и документами
 					</p>
 				</div>
-				<div
-					class="steps__benefit animate__animated animate__fadeInUp wow"
-				>
+				<div data-aos="fade-up" class="steps__benefit">
 					<img
 						src="/img/icon/trade-in/tick.svg"
-						class="steps__benefit-icon animate__animated animate__fadeInUp wow"
+						class="steps__benefit-icon"
 						alt=""
 					/>
-					<h3
-						class="steps__benefit-title animate__animated animate__fadeInUp wow"
-					>
-						Быстрые сроки
-					</h3>
-					<p
-						class="steps__benefit-text animate__animated animate__fadeInUp wow"
-					>
+					<h3 class="steps__benefit-title">Быстрые сроки</h3>
+					<p class="steps__benefit-text">
 						Проведём сделку<br />
 						в быстрые сроки и учтём все детали
 					</p>
 				</div>
-				<div
-					class="steps__benefit animate__animated animate__fadeInUp wow"
-				>
+				<div data-aos="fade-up" class="steps__benefit">
 					<img
 						src="/img/icon/trade-in/tick.svg"
-						class="steps__benefit-icon animate__animated animate__fadeInUp wow"
+						class="steps__benefit-icon"
 						alt=""
 					/>
-					<h3
-						class="steps__benefit-title animate__animated animate__fadeInUp wow"
-					>
-						Выберем квартиру
-					</h3>
-					<p
-						class="steps__benefit-text animate__animated animate__fadeInUp wow"
-					>
+					<h3 class="steps__benefit-title">Выберем квартиру</h3>
+					<p class="steps__benefit-text">
 						Предложим квартиры <br />
 						из числа наших проектов
 					</p>
 				</div>
-				<div
-					class="steps__benefit animate__animated animate__fadeInUp wow"
-				>
+				<div data-aos="fade-up" class="steps__benefit">
 					<img
 						src="/img/icon/trade-in/tick.svg"
-						class="steps__benefit-icon animate__animated animate__fadeInUp wow"
+						class="steps__benefit-icon"
 						alt=""
 					/>
-					<h3
-						class="steps__benefit-title animate__animated animate__fadeInUp wow"
-					>
-						Ипотека
-					</h3>
-					<p
-						class="steps__benefit-text animate__animated animate__fadeInUp wow"
-					>
+					<h3 class="steps__benefit-title">Ипотека</h3>
+					<p class="steps__benefit-text">
 						Если требуется поможем с оформлением ипотеки
 					</p>
 				</div>

@@ -1,8 +1,5 @@
 <template>
-	<div
-		class="v-call animate__animated animate__bounceInUp"
-		@click="this.$emit('openPopup')"
-	>
+	<div class="v-call" @click="this.$emit('openPopup')">
 		<img
 			src="/img/icon/general/call-circle.svg"
 			class="v-call__img"
@@ -35,6 +32,7 @@
 		width: 6rem;
 		height: 6rem;
 		z-index: 2;
+		animation: bounceInUp 1s;
 		&__img {
 			width: 100%;
 			height: 100%;

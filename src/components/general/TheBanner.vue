@@ -2,9 +2,7 @@
 	<section class="the-banner" id="banner">
 		<div class="the-banner__container center">
 			<div class="the-banner__card-wrapper">
-				<div
-					class="the-banner__card glass animate__animated animate__fadeInLeft wow"
-				>
+				<div data-aos="fade-right" class="the-banner__card glass">
 					<h2 class="the-banner__card-title">На всё готовенькое!</h2>
 					<p class="the-banner__card-description">
 						Уютные квартиры для молодых семей, со встроенной
@@ -25,13 +23,12 @@
 			</div>
 			<div class="the-banner__card-wrapper">
 				<img
+					data-aos="fade-right"
 					src="/img/trade-in/banner-img.svg"
 					alt=""
-					class="the-banner__card-img animate__animated animate__fadeInRight wow"
+					class="the-banner__card-img"
 				/>
-				<div
-					class="the-banner__card blue animate__animated animate__fadeInLeft wow"
-				>
+				<div data-aos="fade-right" class="the-banner__card blue">
 					<h2 class="the-banner__card-title">«Зачётная квартира»</h2>
 					<p class="the-banner__card-description">
 						Вам предоставляется уникальная возможность приобрести
@@ -52,6 +49,9 @@
 			</div>
 		</div>
 		<v-swiper
+			:isAutoplay="true"
+			:isHasNavigation="false"
+			size="fullscreen"
 			:gallery="[
 				{ image: '/img/general/banner-bg1.jpg' },
 				{ image: '/img/general/banner-bg1.jpg' },

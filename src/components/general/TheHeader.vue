@@ -1,5 +1,5 @@
 <template>
-	<header class="the-header animate__animated animate__fadeIn" id="header">
+	<header data-aos="fade-down" class="the-header" id="header">
 		<div
 			class="the-header__container"
 			:class="{ center: !isCabinetVersion }"
@@ -16,15 +16,19 @@
 					<img src="/img/icon/general/burger.svg" alt="" />
 				</div>
 				<router-link
+					data-aos="fade-down"
+					data-aos-delay="300"
 					:to="{ name: 'Home' }"
-					class="the-header__logo animate__animated animate__fadeIn"
+					class="the-header__logo"
 				>
 					<img src="/img/icon/general/logo.svg" alt="logo" />
 				</router-link>
 			</div>
 			<div class="the-header__col">
 				<nav
-					class="the-header__nav animate__animated animate__fadeIn"
+					data-aos="fade-down"
+					data-aos-delay="300"
+					class="the-header__nav"
 					:class="{ open: isMobileMenuOpen }"
 				>
 					<router-link
@@ -163,7 +167,9 @@
 			</div>
 			<div class="the-header__col">
 				<div
-					class="the-header__right animate__animated animate__fadeIn"
+					data-aos="fade-down"
+					data-aos-delay="300"
+					class="the-header__right"
 					:class="{ open: isMobileMenuOpen }"
 					v-if="!isAuth"
 				>
@@ -208,7 +214,9 @@
 					</router-link>
 				</div>
 				<div
-					class="the-header__right-auth animate__animated animate__fadeIn"
+					data-aos="fade-down"
+					data-aos-delay="300"
+					class="the-header__right-auth"
 					:class="{ open: isMobileMenuOpen }"
 					v-if="isAuth"
 				>

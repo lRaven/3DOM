@@ -2,22 +2,16 @@
 	<section class="the-insurance" id="insurance">
 		<div class="the-insurance__container center">
 			<div class="the-insurance__header">
-				<h2
-					class="the-insurance__title animate__animated animate__fadeInUp wow"
-				>
+				<h2 data-aos="fade-up" class="the-insurance__title">
 					Страхование недвижимости
 				</h2>
-				<h3
-					class="the-insurance__subtitle animate__animated animate__fadeInUp wow"
-				>
+				<h3 data-aos="fade-up" class="the-insurance__subtitle">
 					При оформлении ипотеки страхование недвижимости является
 					требованием закона.
 				</h3>
 			</div>
 			<div class="the-insurance__body">
-				<form
-					class="the-insurance__form animate__animated animate__fadeInLeft wow"
-				>
+				<form data-aos="fade-right" class="the-insurance__form">
 					<h4 class="the-insurance__form-title">
 						Оформить страхование
 					</h4>
@@ -53,16 +47,15 @@
 						@click="this.$emit('openPopup')"
 					></v-button>
 				</form>
-				<p
-					class="the-insurance__subtitle-mobile animate__animated animate__fadeInUp wow"
-				>
+				<p data-aos="fade-up" class="the-insurance__subtitle-mobile">
 					При оформлении ипотеки страхование недвижимости является
 					требованием закона.
 				</p>
 				<img
+					data-aos="fade-left"
 					src="/img/general/insurance-img.png"
 					alt=""
-					class="the-insurance__img animate__animated animate__fadeInRight wow"
+					class="the-insurance__img"
 				/>
 			</div>
 		</div>

@@ -2,9 +2,7 @@
 	<section class="the-banner" id="banner">
 		<div class="the-banner__container center">
 			<div class="the-banner__card-wrapper">
-				<div
-					class="the-banner__card animate__animated animate__fadeInLeft wow"
-				>
+				<div data-aos="fade-right" class="the-banner__card">
 					<h2 class="the-banner__card-title">
 						Дизайн проекты и узаконива&shy;ние переплани&shy;ровки
 					</h2>
@@ -23,9 +21,7 @@
 			</div>
 
 			<div class="the-banner__card-wrapper">
-				<div
-					class="the-banner__card animate__animated animate__fadeInLeft wow"
-				>
+				<div data-aos="fade-right" class="the-banner__card">
 					<h2 class="the-banner__card-title">
 						Заказать ремонт в компании 3Dom
 					</h2>
@@ -48,6 +44,9 @@
 		</div>
 
 		<v-swiper
+			:isAutoplay="true"
+			:isHasNavigation="false"
+			size="fullscreen"
 			:gallery="[
 				{ image: '/img/repair/banner-bg1.jpg' },
 				{ image: '/img/repair/banner-bg1.jpg' },

@@ -1,9 +1,7 @@
 <template>
 	<section class="the-banner">
 		<div class="the-banner__container center">
-			<div
-				class="the-banner__description animate__animated animate__fadeInLeft wow"
-			>
+			<div data-aos="fade-right" class="the-banner__description">
 				<h1 class="the-banner__title">Trade-in</h1>
 				<h3 class="the-banner__subtitle">
 					Trade-in — это программа, которая поможет обменять вашу
@@ -15,49 +13,33 @@
 					@click="this.$emit('openPopup')"
 				></v-button>
 			</div>
-			<div
-				class="the-banner__img animate__animated animate__fadeInRight wow"
-			>
+			<div data-aos="fade-left" class="the-banner__img">
 				<img src="/img/trade-in/banner-img.svg" alt="" />
 			</div>
-			<div
-				class="the-banner__footer animate__animated animate__fadeInUp wow"
-			>
+			<div data-aos="fade-up" class="the-banner__footer">
 				<div class="the-banner__info">
-					<h4
-						class="the-banner__info-title animate__animated animate__fadeInUp wow"
-					>
+					<h4 data-aos="fade-up" class="the-banner__info-title">
 						Услуга страхования
 					</h4>
-					<h5
-						class="the-banner__info-subtitle animate__animated animate__fadeInUp wow"
-					>
+					<h5 data-aos="fade-up" class="the-banner__info-subtitle">
 						Финансовая защита всех<br />
 						участников сделки
 					</h5>
 				</div>
 				<div class="the-banner__info">
-					<h4
-						class="the-banner__info-title animate__animated animate__fadeInUp wow"
-					>
+					<h4 data-aos="fade-up" class="the-banner__info-title">
 						Независимая оценка жилья
 					</h4>
-					<h5
-						class="the-banner__info-subtitle animate__animated animate__fadeInUp wow"
-					>
+					<h5 data-aos="fade-up" class="the-banner__info-subtitle">
 						Финансовая защита всех<br />
 						участников сделки
 					</h5>
 				</div>
 				<div class="the-banner__info">
-					<h4
-						class="the-banner__info-title animate__animated animate__fadeInUp wow"
-					>
+					<h4 data-aos="fade-up" class="the-banner__info-title">
 						Собираем документы
 					</h4>
-					<h5
-						class="the-banner__info-subtitle animate__animated animate__fadeInUp wow"
-					>
+					<h5 data-aos="fade-up" class="the-banner__info-subtitle">
 						Финансовая защита всех<br />
 						участников сделки
 					</h5>

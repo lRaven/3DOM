@@ -3,13 +3,12 @@
 		<div class="the-layout__container center">
 			<h2 class="the-layout__title">Всё пойдёт по плану!</h2>
 			<img
+				data-aos="fade-right"
 				src="/img/general/layout-img.svg"
 				alt=""
-				class="the-layout__img animate__animated animate__fadeInLeft wow"
+				class="the-layout__img"
 			/>
-			<div
-				class="the-layout__content animate__animated animate__fadeInRight wow"
-			>
+			<div data-aos="fade-left" class="the-layout__content">
 				<h2>Всё пойдёт по плану!</h2>
 				<h3>Вы можете выбрать планировку квартиры уже сейчас.</h3>
 				<p>
@@ -19,19 +18,18 @@
 					как всего комплекса работ, так и отдельных элементов,
 					комнат, помещений.
 				</p>
-				<router-link
-					class="animate__animated animate__fadeInUp wow"
-					style="display: inline-block"
-					:to="{
-						name: 'Academ',
-						query: { section: '#apartments' },
-					}"
-				>
-					<v-button
-						type="button"
-						text="Смотреть планировки"
-					></v-button>
-				</router-link>
+
+				<v-button
+					data-aos="fade-up"
+					type="button"
+					text="Смотреть планировки"
+					@click="
+						this.$router.push({
+							name: 'Academ',
+							query: { section: '#apartments' },
+						})
+					"
+				></v-button>
 			</div>
 		</div>
 	</section>

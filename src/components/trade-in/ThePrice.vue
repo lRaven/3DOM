@@ -37,7 +37,7 @@
 					:max="100"
 					:value="22.2"
 					:step="0.2"
-					class="min-max animate__animated animate__fadeInUp wow"
+					class="min-max"
 					:customClass="'pale'"
 					:minMax="true"
 				></v-slider>

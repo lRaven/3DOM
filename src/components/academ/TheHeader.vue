@@ -1,8 +1,5 @@
 <template>
-	<header
-		class="the-header animate__animated animate__fadeInDown"
-		id="header"
-	>
+	<header data-aos="fade-down" class="the-header" id="header">
 		<div class="the-header__container center">
 			<div class="the-header__left">
 				<button

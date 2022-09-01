@@ -2,42 +2,53 @@
 	<section class="the-kolotok">
 		<div class="the-kolotok__container center">
 			<div class="the-kolotok__column">
-				<h2
-					class="the-kolotok__title animate__animated animate__fadeInUp wow"
-				>
+				<h2 data-aos="fade-up" class="the-kolotok__title">
 					Всё для ремонта
 				</h2>
-				<h3
-					class="the-kolotok__subtitle animate__animated animate__fadeInUp wow"
-				>
+				<h3 data-aos="fade-up" class="the-kolotok__subtitle">
 					Удобный интернет-магазин<br />
 					от застройщика
 				</h3>
 				<div class="the-kolotok__tags">
 					<span
-						class="the-kolotok__tag animate__animated animate__fadeInUp wow"
-						>Дизайн интерьера</span
+						data-aos="fade-up"
+						data-aos-delay="250"
+						class="the-kolotok__tag"
 					>
+						Дизайн интерьера
+					</span>
 					<span
-						class="the-kolotok__tag animate__animated animate__fadeInUp wow"
-						>Черновые работы</span
+						data-aos="fade-up"
+						data-aos-delay="500"
+						class="the-kolotok__tag"
 					>
+						Черновые работы
+					</span>
 					<span
-						class="the-kolotok__tag animate__animated animate__fadeInUp wow"
-						>Материалы для ремонта</span
+						data-aos="fade-up"
+						data-aos-delay="750"
+						class="the-kolotok__tag"
 					>
+						Материалы для ремонта
+					</span>
 					<span
-						class="the-kolotok__tag animate__animated animate__fadeInUp wow"
-						>Ремонт под ключ</span
+						data-aos="fade-up"
+						data-aos-delay="1000"
+						class="the-kolotok__tag"
 					>
+						Ремонт под ключ
+					</span>
 				</div>
 				<div class="the-kolotok__link" @click="openPopup">
 					<img
+						data-aos="fade-right"
+						data-aos-delay="1200"
 						src="/img/icon/general/arrow-long.svg"
 						alt=""
-						class="animate__animated animate__fadeInLeft wow"
 					/>
-					<p>Перейти в магазин</p>
+					<p data-aos="fade-up" data-aos-delay="1200">
+						Перейти в магазин
+					</p>
 				</div>
 			</div>
 			<div class="the-kolotok__column">
@@ -57,22 +68,30 @@
 		<div class="the-kolotok__tags-mobile">
 			<p>Всё для ремонта</p>
 			<span
-				class="the-kolotok__tag animate__animated animate__fadeInUp wow"
+				data-aos="fade-up"
+				data-aos-delay="250"
+				class="the-kolotok__tag"
 			>
 				Ремонт под ключ
 			</span>
 			<span
-				class="the-kolotok__tag animate__animated animate__fadeInUp wow"
+				data-aos="fade-up"
+				data-aos-delay="500"
+				class="the-kolotok__tag"
 			>
 				Материалы для ремонта
 			</span>
 			<span
-				class="the-kolotok__tag animate__animated animate__fadeInUp wow"
+				data-aos="fade-up"
+				data-aos-delay="750"
+				class="the-kolotok__tag"
 			>
 				Дизайн интерьера
 			</span>
 			<span
-				class="the-kolotok__tag animate__animated animate__fadeInUp wow"
+				data-aos="fade-up"
+				data-aos-delay="1000"
+				class="the-kolotok__tag"
 			>
 				Черновые работы
 			</span>
@@ -168,15 +187,6 @@
 			font-weight: 600;
 			border-radius: 2.5rem;
 			padding: 1.2rem 2.7rem;
-			&:nth-child(2) {
-				animation-delay: 0.2s;
-			}
-			&:nth-child(3) {
-				animation-delay: 0.4s;
-			}
-			&:nth-child(4) {
-				animation-delay: 0.6s;
-			}
 		}
 		&__link {
 			cursor: pointer;

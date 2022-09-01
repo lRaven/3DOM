@@ -2,16 +2,17 @@
 	<section class="the-catalog">
 		<div class="the-catalog__container center">
 			<h2
-				class="the-catalog__title animate__animated animate__fadeInUp wow"
+				data-aos="fade-up"
+				class="the-catalog__title"
 			>
 				{{ title }}
 			</h2>
 			<div class="the-catalog__body">
 				<v-card
+					data-aos="fade-up"
 					v-for="project in projects"
 					:key="project.id"
 					:data="project"
-					class="animate__animated animate__fadeInUp wow"
 				>
 				</v-card>
 
@@ -20,7 +21,7 @@
 				></catalog-filters>
 
 				<v-card-min
-					class="animate__animated animate__fadeInUp wow"
+					data-aos="fade-up"
 					v-for="apartment in secondary_housing"
 					:key="apartment.id"
 					:data="apartment"

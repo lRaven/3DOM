@@ -5,9 +5,10 @@
 		</h1>
 		<ul class="the-navigation__list" v-if="currentTabs === 'admin'">
 			<li
+				data-aos="fade-up"
 				v-for="tab in tabs_admin"
 				:key="tab.id"
-				class="the-navigation__item animate__animated animate__fadeInUp"
+				class="the-navigation__item"
 				:title="tab.description"
 				@click="this.$router.push(tab.link)"
 			>
@@ -37,9 +38,10 @@
 		</ul>
 		<ul class="the-navigation__list" v-else>
 			<li
+				data-aos="fade-up"
 				v-for="tab in tabs_user"
 				:key="tab.id"
-				class="the-navigation__item animate__animated animate__fadeInUp"
+				class="the-navigation__item"
 				:title="tab.description"
 				@click="
 					tab.link !== null
@@ -72,7 +74,7 @@
 			</li>
 		</ul>
 		<div
-			class="the-navigation__hide animate__animated animate__fadeInRight"
+			class="the-navigation__hide"
 			:class="{ minimized: isNavMinimized }"
 			@click="
 				isNavMinimized === true

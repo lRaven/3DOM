@@ -7,7 +7,7 @@
 				<div class="page-catalog__list-wrapper center">
 					<catalog-filters />
 					<v-card-min
-						class="animate__animated animate__fadeInUp wow"
+						data-aos="fade-up"
 						v-for="apartment in apartments"
 						:key="apartment.id"
 						:data="apartment"

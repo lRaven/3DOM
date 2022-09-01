@@ -2,13 +2,11 @@
 	<section class="the-mortgage" id="mortgage">
 		<div class="the-mortgage__container center">
 			<div class="the-mortgage__header">
-				<h2 class="animate__animated animate__fadeInUp wow">
-					Встречайте: Ипотека — 4,2%
-				</h2>
-				<p class="animate__animated animate__fadeInUp wow">
+				<h2 data-aos="fade-up">Встречайте: Ипотека — 4,2%</h2>
+				<p data-aos="fade-up">
 					Как вы полагаете, оформить ипотеку просто или очень просто?
 				</p>
-				<p class="animate__animated animate__fadeInUp wow">
+				<p data-aos="fade-up">
 					Так вот, оформить — легко, а выплачивать — комфортно.
 				</p>
 			</div>
@@ -16,7 +14,9 @@
 			<div class="the-mortgage__main">
 				<form action="#">
 					<div
-						class="the-mortgage__calculation animate__animated animate__fadeInUp wow"
+						data-aos="fade-up"
+						data-aos-delay="250"
+						class="the-mortgage__calculation"
 					>
 						<v-toggle :description="'Семья с детьми'"></v-toggle>
 						<v-slider
@@ -56,7 +56,9 @@
 						></v-button>
 					</div>
 					<div
-						class="the-mortgage__middle animate__animated animate__fadeInUp wow"
+						data-aos="fade-up"
+						data-aos-delay="500"
+						class="the-mortgage__middle"
 					>
 						<h3>Стандартное ипотечное предложение</h3>
 						<div class="the-mortgage__item">
@@ -80,7 +82,9 @@
 						</div>
 					</div>
 					<div
-						class="the-mortgage__last animate__animated animate__fadeInUp wow"
+						data-aos="fade-up"
+						data-aos-delay="750"
+						class="the-mortgage__last"
 					>
 						<h3>
 							Ипотечное предложение <br />

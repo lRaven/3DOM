@@ -3,8 +3,9 @@ import { createStore } from 'vuex'
 import Cabinet from '@/store/modules/cabinet'
 import Academ from '@/store/modules/academ'
 import CRM from '@/store/modules/crm'
-import Catalog from '@/store/modules/catalog';
-import Messenger from '@/store/modules/messenger';
+import Catalog from '@/store/modules/catalog'
+import Messenger from '@/store/modules/messenger'
+import Repair from '@/store/modules/repair'
 
 export default createStore({
 	state: {
@@ -29,6 +30,7 @@ export default createStore({
 		crm: CRM,
 		catalog: Catalog,
 		messenger: Messenger,
+		repair: Repair,
 	},
 	plugins: [],
 });
