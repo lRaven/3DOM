@@ -29,10 +29,7 @@
 				>
 					<router-link
 						class="the-header__link"
-						:to="{
-							name: 'Academ',
-							query: { section: '#apartments' },
-						}"
+						:to="{ name: 'Repair' }"
 					>
 						Ремонты
 						<svg
@@ -321,7 +318,7 @@
 
 		&__logo {
 			display: block;
-			height: 3.5rem;
+			height: 5rem;
 
 			img {
 				height: 100%;

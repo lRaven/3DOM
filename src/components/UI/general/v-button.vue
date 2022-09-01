@@ -1,5 +1,5 @@
 <template>
-	<button class="v-button" :class="color">
+	<button class="v-button" :class="[color, direction]">
 		{{ text }}
 		<slot name="icon"></slot>
 	</button>
@@ -17,6 +17,7 @@
 				value: String,
 				default: "button",
 			},
+			direction: String,
 		},
 	};
 </script>
@@ -38,7 +39,11 @@
 		width: max-content;
 		font-size: 1.5rem;
 		font-weight: 600;
+		box-shadow: $shadow;
 		transition: all 0.2s ease;
+		&.reverse {
+			flex-direction: row-reverse;
+		}
 
 		&:active {
 			transform: scale(0.97);
@@ -65,7 +70,6 @@
 			color: $white;
 
 			&:hover {
-				box-shadow: $shadow;
 				background-color: $middle-blue;
 				transition: all 0.2s ease;
 			}
@@ -78,7 +82,6 @@
 
 		&.gray {
 			background-color: $light-gray;
-			box-shadow: $shadow;
 			color: $blue;
 
 			&:hover {

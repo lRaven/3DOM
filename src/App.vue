@@ -27,11 +27,8 @@
 			},
 		},
 		methods: {
-			...mapActions(["getUser", "getDocumentWidth"]),
+			...mapActions(["getDocumentWidth"]),
 			getFavoriteApartmentNumber,
-		},
-		created() {
-			this.getUser();
 		},
 		mounted() {
 			this.getDocumentWidth();

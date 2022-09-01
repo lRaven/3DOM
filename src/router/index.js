@@ -19,6 +19,14 @@ const routes = [
 		}
 	},
 	{
+		path: '/repair',
+		name: 'Repair',
+		component: () => import(/* webpackChunkName: "repair" */ '@/views/PageRepair.vue'),
+		meta: {
+			title: 'Ремонты',
+		},
+	},
+	{
 		path: '/catalog',
 		name: 'Catalog',
 		component: () => import(/* webpackChunkName: "catalog" */ '@/views/PageCatalog.vue'),
@@ -247,12 +255,22 @@ const router = createRouter({
 	routes,
 })
 
-router.beforeEach((to) => {
+router.beforeEach(async (to) => {
 	window.scrollTo(0, 0);
 
-	if (to.meta.requiresAuth === true) {
-		if (cookie.get('auth_token')) { return true }
-		else { return { name: 'Login' } }
+	try {
+		const response = await store.dispatch('getUser');
+
+		if (to.meta.requiresAuth === true) {
+			if (response.status === 200) { return true }
+			else { return { name: 'Login' } }
+		}
+	}
+	catch (err) {
+		if (to.meta.requiresAuth === true) {
+			return { name: 'Login' }
+		}
+		else return true;
 	}
 })
 
