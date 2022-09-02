@@ -43,7 +43,7 @@
 
 			setInterval(() => {
 				Aos.refresh();
-			}, 500);
+			}, 1000);
 		},
 	};
 </script>

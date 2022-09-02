@@ -127,7 +127,6 @@
 	@import "@/assets/scss/variables";
 
 	.the-kolotok {
-		padding: 2rem 1.5rem;
 		&__container {
 			background: url(/public/img/general/kolotok-bg.png) center / cover
 				no-repeat;

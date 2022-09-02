@@ -9,6 +9,8 @@
 			<the-banner />
 			<the-benefits />
 			<the-rates />
+			<the-portfolio />
+			<the-steps />
 		</main>
 
 		<the-footer />
@@ -72,6 +74,8 @@
 	import TheBanner from "@/components/repair/TheBanner.vue";
 	import TheBenefits from "@/components/repair/TheBenefits.vue";
 	import TheRates from "@/components/repair/TheRates.vue";
+	import ThePortfolio from "@/components/repair/ThePortfolio.vue";
+	import TheSteps from "@/components/repair/TheSteps.vue";
 
 	import vCall from "@/components/general/v-call.vue";
 	import mortgageCalculator from "@/components/academ/MortgageCalculator.vue";
@@ -92,6 +96,8 @@
 			TheBanner,
 			TheBenefits,
 			TheRates,
+			ThePortfolio,
+			TheSteps,
 
 			vCall,
 			mortgageCalculator,
@@ -142,6 +148,11 @@
 				margin: auto;
 				padding: 1.8rem 5rem;
 			}
+		}
+
+		section {
+			padding-top: 4rem;
+			padding-bottom: 4rem;
 		}
 	}
 </style>

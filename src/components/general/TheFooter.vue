@@ -1,7 +1,11 @@
 <template>
 	<footer class="the-footer center" id="footer">
 		<div class="the-footer__top">
-			<div class="the-footer__socials">
+			<div
+				data-aos="fade-up"
+				data-aos-anchor-placement="top-bottom"
+				class="the-footer__socials"
+			>
 				<p>Соцсети</p>
 				<div class="the-footer__socials-group">
 					<a
@@ -70,7 +74,11 @@
 					</a>
 				</div>
 			</div>
-			<ul class="the-footer__links">
+			<ul
+				data-aos="fade-up"
+				data-aos-anchor-placement="top-bottom"
+				class="the-footer__links"
+			>
 				<li class="the-footer__link">
 					<a href="#" target="_blank">О компании</a>
 				</li>
@@ -104,7 +112,11 @@
 				</li>
 			</ul>
 		</div>
-		<div class="the-footer__disclaimer">
+		<div
+			data-aos="fade-up"
+			data-aos-anchor-placement="top-bottom"
+			class="the-footer__disclaimer"
+		>
 			<p>
 				Любая информация, представленная на данном сайте, носит
 				исключительно информационный характер и ни при каких условиях не
@@ -129,7 +141,6 @@
 	@import "@/assets/scss/variables";
 
 	.the-footer {
-		height: 8rem;
 		overflow: hidden;
 		padding: 0 1.5rem;
 		&__top {

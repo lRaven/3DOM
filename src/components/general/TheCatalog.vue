@@ -1,10 +1,7 @@
 <template>
 	<section class="the-catalog">
 		<div class="the-catalog__container center">
-			<h2
-				data-aos="fade-up"
-				class="the-catalog__title"
-			>
+			<h2 data-aos="fade-up" class="the-catalog__title" v-show="title">
 				{{ title }}
 			</h2>
 			<div class="the-catalog__body">

@@ -1,24 +1,10 @@
 <template>
 	<section class="the-banner" id="banner">
 		<div class="the-banner__container center">
-			<div class="the-banner__card-wrapper">
-				<div data-aos="fade-right" class="the-banner__card">
-					<h2 class="the-banner__card-title">
-						Дизайн проекты и узаконива&shy;ние переплани&shy;ровки
-					</h2>
-					<p class="the-banner__card-description">
-						Значит получить готовое решение всех вопросов, связанных
-						с уютом и комфортом.
-					</p>
-
-					<v-button
-						text="Посмотреть работы в ВК"
-						type="button"
-						color="white"
-						@click="this.$router.push({ name: 'Home' })"
-					></v-button>
-				</div>
-			</div>
+			<h1 class="the-banner__title">
+				Готовый ремонт «под ключ»<br />
+				с гаратией
+			</h1>
 
 			<div class="the-banner__card-wrapper">
 				<div data-aos="fade-right" class="the-banner__card">
@@ -74,9 +60,19 @@
 		align-items: center;
 		background-color: $light-gray;
 		min-height: calc(100vh - 6rem);
-		padding: 0;
+		padding: 0 !important;
+		color: $white;
 		@media (max-width: 1023px) {
 			grid-template-rows: 1fr min-content;
+		}
+		&__title {
+			z-index: 2;
+			position: relative;
+			font-size: 8rem;
+			font-weight: 700;
+			text-shadow: 0 0 1rem rgba(0, 0, 0, 0.4);
+			line-height: 1.2;
+			margin-bottom: 9rem;
 		}
 
 		.swiper {
@@ -111,10 +107,14 @@
 			border-radius: 2rem;
 			box-shadow: $shadow;
 			margin-bottom: 4.2rem;
-			max-width: 80rem;
+			max-width: 96rem;
 			z-index: 2;
-			background-color: $blue;
-			color: $white;
+			background: linear-gradient(
+				243.53deg,
+				#003b78 53.51%,
+				rgba(0, 123, 252, 0) 126.9%
+			);
+
 			animation-delay: 0.5s;
 			--animate-duration: 0.6s;
 			@media (max-width: 1023px) {
@@ -139,25 +139,6 @@
 				@media (max-width: 540px) {
 					padding: 2rem 1rem;
 				}
-
-				&:first-child {
-					.the-banner__card {
-						background: linear-gradient(
-							258.02deg,
-							#165394 51.36%,
-							rgba(0, 123, 252, 0.51) 106.99%
-						);
-					}
-				}
-				&:nth-child(2) {
-					.the-banner__card {
-						background: linear-gradient(
-							243.53deg,
-							#003b78 53.51%,
-							rgba(0, 123, 252, 0) 126.9%
-						);
-					}
-				}
 			}
 			&-img {
 				display: none;
@@ -169,18 +150,17 @@
 				}
 			}
 			&-title {
-				font-size: 3.6rem;
+				font-size: 3.2rem;
 				font-weight: 600;
-				margin-bottom: 2.5rem;
+				margin-bottom: 2rem;
 				@media (max-width: 424px) {
-					font-size: 3.6rem;
-					margin-bottom: 2rem;
+					font-size: 2.6rem;
 				}
 			}
 			&-description {
-				font-size: 1.8rem;
+				font-size: 1.6rem;
 				font-weight: 600;
-				margin-bottom: 5.8rem;
+				margin-bottom: 4rem;
 				line-height: 2.2rem;
 				@media (max-width: 424px) {
 					margin-bottom: 2rem;

@@ -67,7 +67,8 @@
 		min-height: calc(100vh - 6rem);
 		display: flex;
 		align-items: center;
-		padding: 5rem 0;
+		padding-top: 5rem !important;
+		padding-bottom: 5rem !important;
 		&__container {
 			display: grid;
 			grid-column-gap: 15rem;

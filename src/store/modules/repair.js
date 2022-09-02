@@ -12,11 +12,11 @@ const state = () => ({
 				{ id: 4, image: '/img/repair/apartment-4.jpg' },
 			],
 			checklist: [
-				{ id: 1, description: 'Предчистовая отделка стен', value: true },
+				{ id: 1, description: 'Предчистовая отделка стен (штукатурка, шпатлевка, грунтовка)', value: true },
 				{ id: 2, description: 'Шпатлевка откосов и подготовка дверных проемов', value: true },
 				{ id: 3, description: 'Разводка труб и вывод под сантехнику', value: true },
 				{ id: 4, description: 'Электроразводка и устройство электрических точек', value: true },
-				{ id: 5, description: 'Устройство вертикального короба в санузле', value: true },
+				{ id: 5, description: 'Устройство вертикального короба в санузле', value: false },
 				{ id: 6, description: 'Отделка стен, потолков и пола', value: false },
 				{ id: 7, description: 'Установка входной и межкомнатных дверей', value: false },
 				{ id: 8, description: 'Установка ванны, унитаза и раковины', value: false },

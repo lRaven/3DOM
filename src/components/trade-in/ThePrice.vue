@@ -71,7 +71,6 @@
 			rgba(237, 245, 253, 1) 92%,
 			rgba(255, 255, 255, 1) 100%
 		);
-		padding: 5rem 1.5rem;
 		&__container {
 			display: flex;
 			gap: 2rem;

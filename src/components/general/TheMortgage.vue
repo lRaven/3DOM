@@ -134,11 +134,9 @@
 	@import "@/assets/scss/variables";
 
 	.the-mortgage {
-		padding: 1.5rem 1.5rem 3rem 1.5rem;
 		&__header {
 			margin-bottom: 5rem;
 			h2 {
-				margin-top: 10rem;
 				font-size: 4.2rem;
 				color: $dark;
 				font-weight: 600;

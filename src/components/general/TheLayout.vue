@@ -43,7 +43,6 @@
 	@import "@/assets/scss/variables";
 
 	.the-layout {
-		padding: 1.5rem;
 		&__container {
 			display: flex;
 			gap: 1.5rem;

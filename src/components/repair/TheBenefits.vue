@@ -1,39 +1,60 @@
 <template>
 	<section class="the-benefits center">
 		<div class="the-benefits__list">
-			<div
-				class="the-benefits__benefit"
-				v-for="benefit in benefits"
-				:key="benefit.id"
-			>
-				<img
-					src="/img/icon/trade-in/tick.svg"
-					alt=""
-					class="the-benefits__benefit-icon"
-				/>
-
+			<div data-aos="fade-up" class="the-benefits__benefit">
 				<h3 class="the-benefits__benefit-description">
-					{{ benefit.title }}
+					<span class="the-benefits__benefit-description_blue">
+						Гарантия 3 года
+					</span>
+					<br />
+					на выполненные работы
+				</h3>
+			</div>
+			<div data-aos="fade-up" class="the-benefits__benefit">
+				<h3 class="the-benefits__benefit-description">
+					Фиксированная
+					<span class="the-benefits__benefit-description_blue">
+						стоимость и сроки
+					</span>
+				</h3>
+			</div>
+			<div data-aos="fade-up" class="the-benefits__benefit">
+				<h3 class="the-benefits__benefit-description">
+					Широкий
+					<span class="the-benefits__benefit-description_blue">
+						выбор материалов
+					</span>
+				</h3>
+			</div>
+			<div data-aos="fade-up" class="the-benefits__benefit">
+				<h3 class="the-benefits__benefit-description">
+					<span class="the-benefits__benefit-description_blue">
+						Ремонт
+					</span>
+					<br />
+					в ипотеку
+				</h3>
+			</div>
+			<div data-aos="fade-up" class="the-benefits__benefit">
+				<h3 class="the-benefits__benefit-description">
+					Мебель, свет,<br />
+					<span class="the-benefits__benefit-description_blue">
+						декор
+					</span>
 				</h3>
 			</div>
 		</div>
 
 		<div class="the-benefits__cards">
-			<div class="the-benefits__card">
+			<div data-aos="fade-right" class="the-benefits__card materials">
 				<h2 class="the-benefits__card-title">
-					Заказать черновые материалы
+					Заказать<br />
+					черновые материалы
 				</h2>
 
-				<p class="the-benefits__card-description">
-					Удобный интернет-магазин<br />
-					от застройщика
-				</p>
+				<p class="the-benefits__card-description">Галерея проектов</p>
 
-				<v-button
-					text="Перейти в каталог"
-					color="white"
-					direction="reverse"
-				>
+				<v-button text="Заказать" color="white" direction="reverse">
 					<template v-slot:icon>
 						<svg
 							width="57"
@@ -54,8 +75,11 @@
 				</v-button>
 			</div>
 
-			<div class="the-benefits__card">
-				<h2 class="the-benefits__card-title">Заказать дизайн проект</h2>
+			<div data-aos="fade-left" class="the-benefits__card design">
+				<h2 class="the-benefits__card-title">
+					Заказать<br />
+					дизайн проект
+				</h2>
 
 				<p class="the-benefits__card-description">Галерея проектов</p>
 
@@ -88,11 +112,11 @@
 		name: "TheBenefits",
 		data: () => ({
 			benefits: [
-				{ id: 1, title: "Гарантия 3 года" },
+				{ id: 1, title: "Гарантия 3 года\nна выполненные работы" },
 				{ id: 2, title: "Фиксированная стоимость и сроки" },
-				{ id: 3, title: "Ремонт в ипотеку" },
-				{ id: 4, title: "Подключение к ТВ и интернету" },
-				{ id: 5, title: "Страхование" },
+				{ id: 3, title: "Широкий выбор материалов" },
+				{ id: 4, title: "Ремонт\nв ипотеку" },
+				{ id: 5, title: "Мебель, свет,\nдекор" },
 			],
 		}),
 	};
@@ -103,7 +127,7 @@
 
 	.the-benefits {
 		padding-top: 8rem;
-		padding-bottom: 4rem;
+		overflow: visible;
 		&__list {
 			display: grid;
 			grid-template-columns: repeat(5, 1fr);
@@ -111,20 +135,18 @@
 			margin-bottom: 9rem;
 		}
 		&__benefit {
-			box-shadow: $shadow;
 			background-color: $white;
-			border-radius: 3rem;
-			padding: 3rem 2rem;
-			&-icon {
-				width: 6rem;
-				height: 6rem;
-				margin-bottom: 2.5rem;
-			}
+			border-radius: 1rem;
+			padding: 2.4rem 2rem 4.4rem 2rem;
+			background: $light-blue url(/public/img/icon/repair/tick-big.svg)
+				bottom right / auto 60% no-repeat;
 			&-description {
-				color: $blue;
-				font-size: 2.5rem;
-				font-weight: 600;
+				font-size: 2rem;
+				font-weight: 800;
 				line-height: 1.2;
+				&_blue {
+					color: $blue;
+				}
 			}
 		}
 
@@ -133,29 +155,37 @@
 			gap: 2.4rem;
 		}
 		&__card {
-			color: #000888;
+			color: $white;
 			display: flex;
 			flex-direction: column;
 			background-color: $light-gray;
 			border-radius: 2rem;
-			padding: 5rem 4rem 4rem 5rem;
+			padding: 6rem 5rem 3rem 5rem;
 			width: 100%;
+			&.materials {
+				background: $soft-blue url(/public/img/repair/order-bg-1.png)
+					126% center / auto 90% no-repeat;
+			}
+			&.design {
+				background: $gray-blue url(/public/img/repair/order-bg-2.png)
+					110% center / auto 90% no-repeat;
+			}
 			&-title {
-				font-size: 3.6rem;
-				font-weight: 500;
+				font-size: 3.2rem;
+				font-weight: 700;
 				margin-bottom: 2rem;
 			}
 			&-description {
-				font-size: 2rem;
-				margin-bottom: 10rem;
+				font-size: 1.8rem;
+				margin-bottom: 6.7rem;
 				line-height: 1.3;
 			}
 			.v-button {
 				font-size: 1.8rem;
-				color: #000888;
 				margin-top: auto;
 				padding: 2rem 3rem;
 				border-radius: 5rem;
+				font-weight: 700;
 			}
 		}
 	}

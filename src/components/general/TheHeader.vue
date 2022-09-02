@@ -15,19 +15,12 @@
 				>
 					<img src="/img/icon/general/burger.svg" alt="" />
 				</div>
-				<router-link
-					data-aos="fade-down"
-					data-aos-delay="300"
-					:to="{ name: 'Home' }"
-					class="the-header__logo"
-				>
+				<router-link :to="{ name: 'Home' }" class="the-header__logo">
 					<img src="/img/icon/general/logo.svg" alt="logo" />
 				</router-link>
 			</div>
 			<div class="the-header__col">
 				<nav
-					data-aos="fade-down"
-					data-aos-delay="300"
 					class="the-header__nav"
 					:class="{ open: isMobileMenuOpen }"
 				>
@@ -167,8 +160,6 @@
 			</div>
 			<div class="the-header__col">
 				<div
-					data-aos="fade-down"
-					data-aos-delay="300"
 					class="the-header__right"
 					:class="{ open: isMobileMenuOpen }"
 					v-if="!isAuth"
@@ -214,8 +205,6 @@
 					</router-link>
 				</div>
 				<div
-					data-aos="fade-down"
-					data-aos-delay="300"
 					class="the-header__right-auth"
 					:class="{ open: isMobileMenuOpen }"
 					v-if="isAuth"

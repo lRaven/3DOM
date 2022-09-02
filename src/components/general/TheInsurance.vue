@@ -16,7 +16,7 @@
 						Оформить страхование
 					</h4>
 					<p class="the-insurance__form-text">
-						Приведенные расчеты актуальны<br />
+						Приведенные расчёты актуальны<br />
 						при полученом праве собственности.
 					</p>
 					<v-dropdown
@@ -76,7 +76,6 @@
 
 	.the-insurance {
 		color: $dark;
-		padding: 5rem 1.5rem;
 		&__container {
 		}
 		&__header {

@@ -1,11 +1,11 @@
 <template>
-	<section class="service">
-		<div class="service__container center">
-			<div class="service__header">
-				<h2 data-aos="fade-up" class="service__title">
+	<section class="the-service">
+		<div class="the-service__container center">
+			<div class="the-service__header">
+				<h2 data-aos="fade-up" class="the-service__title">
 					Удобный сервис
 				</h2>
-				<h3 data-aos="fade-up" class="service__subtitle">
+				<h3 data-aos="fade-up" class="the-service__subtitle">
 					Быстрое получение финансирования на покупку новой квартиры.
 				</h3>
 			</div>
@@ -14,28 +14,30 @@
 				src="/img/trade-in/service-img.svg"
 				alt=""
 				data-aos="fade-up"
-				class="service__img"
+				class="the-service__img"
 			/>
 
-			<div class="service__description">
-				<div data-aos="fade-up" class="service__list">
-					<h3 class="service__list-title">Безопасность сделки</h3>
-					<p class="service__list-text">
+			<div class="the-service__description">
+				<div data-aos="fade-up" class="the-service__list">
+					<h3 class="the-service__list-title">Безопасность сделки</h3>
+					<p class="the-service__list-text">
 						Сделка пройдёт с сопровождением экспертов, с
 						использованием услуг электронной регистрации и проверки
 						юридической чистоты 3DOM.
 					</p>
 				</div>
-				<div data-aos="fade-up" class="service__list">
-					<h3 class="service__list-title">Сопровождение экспертов</h3>
-					<p class="service__list-text">
+				<div data-aos="fade-up" class="the-service__list">
+					<h3 class="the-service__list-title">
+						Сопровождение экспертов
+					</h3>
+					<p class="the-service__list-text">
 						Экспертно оценим вашу квартиру. Предложим подходящую
 						недвижимости из наших проектов.
 					</p>
 				</div>
-				<div data-aos="fade-up" class="service__list">
-					<h3 class="service__list-title">Экономия времени</h3>
-					<h4 class="service__list-text">
+				<div data-aos="fade-up" class="the-service__list">
+					<h3 class="the-service__list-title">Экономия времени</h3>
+					<h4 class="the-service__list-text">
 						Подготовим документы и проведём сделки. Возможна ипотека
 						со сниженной ставкой, если понадобятся дополнительные
 						деньги.
@@ -55,10 +57,9 @@
 <style lang="scss" scoped>
 	@import "@/assets/scss/variables";
 
-	.service {
+	.the-service {
 		display: flex;
 		align-items: center;
-		padding: 2rem 1.5rem;
 		&__container {
 			color: $dark;
 			display: grid;
@@ -93,7 +94,7 @@
 			justify-content: flex-end;
 		}
 		&__list {
-			+ .service__list {
+			+ .the-service__list {
 				margin-top: 5rem;
 			}
 			&-title {

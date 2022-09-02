@@ -81,7 +81,7 @@
 		align-items: center;
 		background-color: $light-gray;
 		min-height: calc(100vh - 6rem);
-		padding: 0;
+		padding: 0 !important;
 		@media (max-width: 1023px) {
 			grid-template-rows: 1fr min-content;
 		}
