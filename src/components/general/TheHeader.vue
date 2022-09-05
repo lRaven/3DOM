@@ -5,159 +5,67 @@
 			:class="{ center: !isCabinetVersion }"
 		>
 			<div class="the-header__col">
-				<div
+				<button
+					v-show="document_width <= 1050"
+					type="button"
 					class="the-header__burger"
 					@click="
-						isMobileMenuOpen
-							? (isMobileMenuOpen = false)
-							: (isMobileMenuOpen = true)
+						isMobileMenuOpen === true
+							? closeMobileMenu()
+							: showMobileMenu()
 					"
 				>
-					<img src="/img/icon/general/burger.svg" alt="" />
-				</div>
+					<img
+						src="/img/icon/general/burger.svg"
+						alt=""
+						class="the-header__burger-icon"
+					/>
+				</button>
+				<button
+					v-show="document_width <= 767 && isCabinetVersion"
+					type="button"
+					class="the-header__sidebar-btn"
+					@click="isNavMinimized ? showNavMenu() : closeNavMenu()"
+				>
+					<img
+						src="/img/icon/cabinet/sidebar.svg"
+						alt=""
+						class="the-header__sidebar-btn-icon"
+					/>
+				</button>
+
 				<router-link :to="{ name: 'Home' }" class="the-header__logo">
 					<img src="/img/icon/general/logo.svg" alt="logo" />
 				</router-link>
 			</div>
-			<div class="the-header__col">
-				<nav
-					class="the-header__nav"
-					:class="{ open: isMobileMenuOpen }"
+
+			<nav class="the-header__nav" :class="{ open: isMobileMenuOpen }">
+				<li
+					class="the-header__link"
+					:class="{
+						'the-header__link-mobile': link.action === 'modal',
+						selected: link.link.name === this.$route.name,
+					}"
+					v-for="link in navItems"
+					:key="link.id"
+					@click="navActions(link.action, link.link)"
 				>
-					<router-link
-						class="the-header__link"
-						:to="{ name: 'Repair' }"
+					{{ link.description }}
+					<svg
+						width="7"
+						height="12"
+						viewBox="0 0 7 12"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
 					>
-						Ремонты
-						<svg
-							width="7"
-							height="12"
-							viewBox="0 0 7 12"
-							fill="none"
-							xmlns="http://www.w3.org/2000/svg"
-						>
-							<path
-								d="M0.349534 10.9566C-0.0409904 10.5661 -0.0409904 9.93292 0.349534 9.54239L3.88507 6.00686L0.349534 2.47132C-0.0409904 2.0808 -0.0409904 1.44763 0.349534 1.05711C0.740058 0.666586 1.37322 0.666585 1.76375 1.05711L6.00639 5.29975C6.39691 5.69027 6.39691 6.32344 6.00639 6.71396L1.76375 10.9566C1.37322 11.3471 0.740058 11.3471 0.349534 10.9566Z"
-								fill="#021921"
-							/>
-						</svg>
-					</router-link>
-					<router-link
-						class="the-header__link"
-						:to="{
-							name: 'Academ',
-							query: { section: '#apartments' },
-						}"
-					>
-						Квартиры
-						<svg
-							width="7"
-							height="12"
-							viewBox="0 0 7 12"
-							fill="none"
-							xmlns="http://www.w3.org/2000/svg"
-						>
-							<path
-								d="M0.349534 10.9566C-0.0409904 10.5661 -0.0409904 9.93292 0.349534 9.54239L3.88507 6.00686L0.349534 2.47132C-0.0409904 2.0808 -0.0409904 1.44763 0.349534 1.05711C0.740058 0.666586 1.37322 0.666585 1.76375 1.05711L6.00639 5.29975C6.39691 5.69027 6.39691 6.32344 6.00639 6.71396L1.76375 10.9566C1.37322 11.3471 0.740058 11.3471 0.349534 10.9566Z"
-								fill="#021921"
-							/>
-						</svg>
-					</router-link>
-					<a
-						class="the-header__link"
-						@click="this.$emit('openMortgageCalculator')"
-					>
-						Ипотека
-						<svg
-							width="7"
-							height="12"
-							viewBox="0 0 7 12"
-							fill="none"
-							xmlns="http://www.w3.org/2000/svg"
-						>
-							<path
-								d="M0.349534 10.9566C-0.0409904 10.5661 -0.0409904 9.93292 0.349534 9.54239L3.88507 6.00686L0.349534 2.47132C-0.0409904 2.0808 -0.0409904 1.44763 0.349534 1.05711C0.740058 0.666586 1.37322 0.666585 1.76375 1.05711L6.00639 5.29975C6.39691 5.69027 6.39691 6.32344 6.00639 6.71396L1.76375 10.9566C1.37322 11.3471 0.740058 11.3471 0.349534 10.9566Z"
-								fill="#021921"
-							/>
-						</svg>
-					</a>
-					<router-link
-						:to="{ name: 'TradeIn' }"
-						class="the-header__link"
-					>
-						Trade-in
-						<svg
-							width="7"
-							height="12"
-							viewBox="0 0 7 12"
-							fill="none"
-							xmlns="http://www.w3.org/2000/svg"
-						>
-							<path
-								d="M0.349534 10.9566C-0.0409904 10.5661 -0.0409904 9.93292 0.349534 9.54239L3.88507 6.00686L0.349534 2.47132C-0.0409904 2.0808 -0.0409904 1.44763 0.349534 1.05711C0.740058 0.666586 1.37322 0.666585 1.76375 1.05711L6.00639 5.29975C6.39691 5.69027 6.39691 6.32344 6.00639 6.71396L1.76375 10.9566C1.37322 11.3471 0.740058 11.3471 0.349534 10.9566Z"
-								fill="#021921"
-							/>
-						</svg>
-					</router-link>
-					<a
-						class="the-header__link"
-						@click="this.$emit('openPopup')"
-					>
-						Услуги
-						<svg
-							width="7"
-							height="12"
-							viewBox="0 0 7 12"
-							fill="none"
-							xmlns="http://www.w3.org/2000/svg"
-						>
-							<path
-								d="M0.349534 10.9566C-0.0409904 10.5661 -0.0409904 9.93292 0.349534 9.54239L3.88507 6.00686L0.349534 2.47132C-0.0409904 2.0808 -0.0409904 1.44763 0.349534 1.05711C0.740058 0.666586 1.37322 0.666585 1.76375 1.05711L6.00639 5.29975C6.39691 5.69027 6.39691 6.32344 6.00639 6.71396L1.76375 10.9566C1.37322 11.3471 0.740058 11.3471 0.349534 10.9566Z"
-								fill="#021921"
-							/>
-						</svg>
-					</a>
-					<router-link
-						class="the-header__link"
-						:to="{
-							name: 'Academ',
-							query: { section: '#feedback' },
-						}"
-					>
-						Офисы продаж
-						<svg
-							width="7"
-							height="12"
-							viewBox="0 0 7 12"
-							fill="none"
-							xmlns="http://www.w3.org/2000/svg"
-						>
-							<path
-								d="M0.349534 10.9566C-0.0409904 10.5661 -0.0409904 9.93292 0.349534 9.54239L3.88507 6.00686L0.349534 2.47132C-0.0409904 2.0808 -0.0409904 1.44763 0.349534 1.05711C0.740058 0.666586 1.37322 0.666585 1.76375 1.05711L6.00639 5.29975C6.39691 5.69027 6.39691 6.32344 6.00639 6.71396L1.76375 10.9566C1.37322 11.3471 0.740058 11.3471 0.349534 10.9566Z"
-								fill="#021921"
-							/>
-						</svg>
-					</router-link>
-					<a
-						class="the-header__link the-header__link-mobile"
-						@click="this.$emit('openPopup')"
-					>
-						Заказать консультацию
-						<svg
-							width="7"
-							height="12"
-							viewBox="0 0 7 12"
-							fill="none"
-							xmlns="http://www.w3.org/2000/svg"
-						>
-							<path
-								d="M0.349534 10.9566C-0.0409904 10.5661 -0.0409904 9.93292 0.349534 9.54239L3.88507 6.00686L0.349534 2.47132C-0.0409904 2.0808 -0.0409904 1.44763 0.349534 1.05711C0.740058 0.666586 1.37322 0.666585 1.76375 1.05711L6.00639 5.29975C6.39691 5.69027 6.39691 6.32344 6.00639 6.71396L1.76375 10.9566C1.37322 11.3471 0.740058 11.3471 0.349534 10.9566Z"
-								fill="#021921"
-							/>
-						</svg>
-					</a>
-				</nav>
-			</div>
+						<path
+							d="M0.349534 10.9566C-0.0409904 10.5661 -0.0409904 9.93292 0.349534 9.54239L3.88507 6.00686L0.349534 2.47132C-0.0409904 2.0808 -0.0409904 1.44763 0.349534 1.05711C0.740058 0.666586 1.37322 0.666585 1.76375 1.05711L6.00639 5.29975C6.39691 5.69027 6.39691 6.32344 6.00639 6.71396L1.76375 10.9566C1.37322 11.3471 0.740058 11.3471 0.349534 10.9566Z"
+							fill="#021921"
+						/>
+					</svg>
+				</li>
+			</nav>
+
 			<div class="the-header__col">
 				<div
 					class="the-header__right"
@@ -166,7 +74,7 @@
 				>
 					<router-link
 						:to="{ name: 'Login' }"
-						class="the-header__link"
+						class="the-header__auth-link"
 					>
 						<svg
 							width="46"
@@ -194,12 +102,13 @@
 								stroke-width="2"
 							/>
 						</svg>
-						Войти <span class="link__full">в 3D-клуб</span>
+						Войти
+						<span class="the-header__link-full">в 3D-клуб</span>
 					</router-link>
 					<span>/</span>
 					<router-link
 						:to="{ name: 'Registration' }"
-						class="the-header__link"
+						class="the-header__auth-link"
 					>
 						Регистрация
 					</router-link>
@@ -248,12 +157,18 @@
 
 	export default {
 		name: "TheHeader",
-		emits: ["openMortgageCalculator", "openPopup"],
+		emits: [
+			"openMortgageCalculator",
+			"openPopup",
+			"minimizeNav",
+			"maximizeNav",
+		],
 		props: {
 			isCabinetVersion: {
 				value: Boolean,
 				default: false,
 			},
+			isNavMinimized: Boolean,
 		},
 		watch: {
 			document_width() {
@@ -267,7 +182,42 @@
 					: document.body.classList.remove("locked");
 			},
 		},
-		data: () => ({ isMobileMenuOpen: false }),
+		data: () => ({
+			isMobileMenuOpen: false,
+			navItems: [
+				{ id: 1, link: { name: "Repair" }, description: "Ремонты" },
+				{
+					id: 2,
+					link: {
+						name: "Academ",
+						query: { section: "#apartments" },
+					},
+					description: "Квартиры",
+				},
+				{
+					id: 3,
+					link: "",
+					description: "Ипотека",
+					action: "modal-mortgage",
+				},
+				{ id: 4, link: { name: "TradeIn" }, description: "Trade-in" },
+				{ id: 5, link: "/", description: "Услуги" },
+				{
+					id: 6,
+					link: {
+						name: "Academ",
+						query: { section: "#feedback" },
+					},
+					description: "Офисы продаж",
+				},
+				{
+					id: 7,
+					link: "",
+					description: "Заказать консультацию",
+					action: "modal",
+				},
+			],
+		}),
 		computed: {
 			...mapState({
 				avatar: (state) => state.cabinet.user.avatar,
@@ -275,6 +225,41 @@
 				isAuth: (state) => state.cabinet.user_auth,
 				document_width: (state) => state.document_width,
 			}),
+		},
+		methods: {
+			navActions(action, link) {
+				if (this.isMobileMenuOpen) {
+					this.isMobileMenuOpen = false;
+				}
+
+				action === "modal-mortgage"
+					? this.$emit("openMortgageCalculator")
+					: action === "modal"
+					? this.$emit("openPopup")
+					: this.$router.push(link);
+			},
+
+			showMobileMenu() {
+				this.isMobileMenuOpen = true;
+
+				if (this.document_width <= 767) {
+					this.$emit("minimizeNav");
+				}
+			},
+			closeMobileMenu() {
+				this.isMobileMenuOpen = false;
+			},
+
+			showNavMenu() {
+				this.$emit("maximizeNav");
+
+				if (this.document_width <= 767) {
+					this.isMobileMenuOpen = false;
+				}
+			},
+			closeNavMenu() {
+				this.$emit("minimizeNav");
+			},
 		},
 	};
 </script>
@@ -293,9 +278,9 @@
 		font-size: 1.6rem;
 		border-radius: 0 0 3rem 3rem;
 		box-shadow: $shadow;
-		a,
-		span {
-			color: $dark;
+		color: $dark;
+		@media (max-width: 767px) {
+			height: 6rem;
 		}
 
 		&__container {
@@ -307,15 +292,40 @@
 			margin: 0 auto;
 			border-radius: 0 0 3rem 3rem;
 			overflow: hidden;
+			@media (max-width: 1250px) {
+				gap: 1.5rem;
+			}
+			@media (max-width: 1050px) {
+				background-color: $blue;
+				border-radius: 0;
+			}
 		}
 
-		&__burger {
-			display: none;
+		&__col {
+			display: flex;
+			align-items: center;
+			gap: 2rem;
+		}
+
+		&__burger,
+		&__sidebar-btn {
+			background-color: transparent;
+			display: flex;
+			height: 3rem;
+			color: $white;
+			&-icon {
+				height: 100%;
+				width: 100%;
+				object-fit: contain;
+			}
 		}
 
 		&__logo {
 			display: block;
 			height: 5rem;
+			@media (max-width: 1050px) {
+				display: none;
+			}
 
 			img {
 				height: 100%;
@@ -327,6 +337,31 @@
 			align-items: center;
 			height: 100%;
 			gap: 4rem;
+			@media (max-width: 1250px) {
+				gap: 1.5rem;
+			}
+			@media (max-width: 1050px) {
+				display: block;
+				position: absolute;
+				left: -100%;
+				top: 14.5rem;
+				height: fit-content;
+				width: 66rem;
+				background-color: #fff;
+				z-index: -1;
+				transition: all 0.2s ease;
+			}
+			@media (max-width: 767px) {
+				width: 100%;
+				top: 12rem;
+				font-size: 1.4rem;
+			}
+
+			&.open {
+				@media (max-width: 1050px) {
+					left: 0;
+				}
+			}
 			.the-header__link svg {
 				display: none;
 				@media (max-width: 1050px) {
@@ -342,31 +377,123 @@
 			cursor: pointer;
 			width: max-content;
 			transition: all 0.2s ease;
-			&-mobile {
-				display: none;
+			color: inherit;
+			@media (max-width: 1050px) {
+				padding: 1.5rem;
+				display: flex;
+				justify-content: space-between;
+				width: 100%;
+				transition: all 0.2s ease;
+				border-top: 0.1rem solid $blue;
 			}
-
 			&:hover {
 				color: $blue;
+				@media (max-width: 1050px) {
+					background-color: $blue;
+					color: $white;
+					svg path {
+						fill: $white;
+					}
+				}
+			}
+			&.selected {
+				color: $blue;
+			}
+			&-full {
+				color: currentColor;
+			}
+			&-mobile {
+				display: none;
+				@media (max-width: 1050px) {
+					display: flex;
+				}
+			}
 
-				.link__full {
+			svg path {
+				transition: all 0.2s ease;
+			}
+		}
+
+		&__auth {
+			&-link {
+				display: flex;
+				align-items: center;
+				gap: 1rem;
+				color: $gray;
+				transition: all 0.2s ease;
+				&:hover {
 					color: $blue;
+				}
+
+				svg {
+					@media (max-width: 1250px) and (min-width: 1051px) {
+						display: none;
+					}
+					@media (max-width: 1050px) {
+						display: block;
+					}
+					@media (max-width: 540px) {
+						display: none;
+					}
 				}
 			}
 		}
-		.link__full {
-			transition: all 0.2s ease;
-		}
+
 		&__right {
 			display: flex;
 			align-items: center;
 			height: 5rem;
 			gap: 1rem;
+			@media (max-width: 1050px) {
+				position: absolute;
+				left: -100%;
+				top: 8.5rem;
+				width: 66rem;
+				padding: 1.5rem;
+				height: 6rem;
+				background-color: $white;
+				z-index: -1;
+				transition: all 0.2s ease;
+			}
+			@media (max-width: 767px) {
+				width: 100%;
+				top: 6rem;
+				font-size: 1.4rem;
+			}
+
+			&.open {
+				@media (max-width: 1050px) {
+					left: 0;
+				}
+			}
+
 			&-auth {
 				display: flex;
 				align-items: center;
 				height: 5rem;
 				gap: 3rem;
+				@media (max-width: 1050px) {
+					position: absolute;
+					left: -100%;
+					top: 8.5rem;
+					width: 66rem;
+					padding: 1.5rem;
+					height: 6rem;
+					background-color: $white;
+					z-index: -1;
+					transition: all 0.2s ease;
+				}
+				@media (max-width: 767px) {
+					width: 100%;
+					top: 6rem;
+					font-size: 1.4rem;
+				}
+
+				&.open {
+					@media (max-width: 1050px) {
+						left: 0;
+					}
+				}
 			}
 		}
 
@@ -418,6 +545,10 @@
 
 		&__call {
 			display: none;
+
+			@media (max-width: 1050px) {
+				display: block;
+			}
 		}
 
 		&__consultation-request {
@@ -447,160 +578,5 @@
 		z-index: 3;
 		background-color: rgba(0, 0, 0, 0.5);
 		transition: all 0.2s ease;
-	}
-
-	@media (max-width: 1250px) {
-		.the-header {
-			&__container {
-				gap: 1.5rem;
-			}
-			&__nav {
-				gap: 1.5rem;
-			}
-
-			&__right {
-				svg {
-					display: none;
-				}
-			}
-		}
-	}
-
-	@media (max-width: 1050px) {
-		.the-header {
-			&__container {
-				background-color: $blue;
-				border-radius: 0;
-			}
-
-			&__burger {
-				cursor: pointer;
-				display: block;
-			}
-			&__logo {
-				display: none;
-			}
-
-			&__nav {
-				display: block;
-				position: absolute;
-				left: -100%;
-				top: 14.5rem;
-				height: fit-content;
-				width: 66rem;
-				background-color: #fff;
-				z-index: -1;
-				transition: all 0.2s ease;
-				&.open {
-					left: 0;
-				}
-
-				.the-header__link {
-					padding: 1.5rem;
-					display: flex;
-					justify-content: space-between;
-					width: 100%;
-					transition: all 0.2s ease;
-					border-top: 0.1rem solid $blue;
-					&:hover {
-						background-color: $blue;
-						color: $white;
-						svg {
-							path {
-								fill: $white;
-							}
-						}
-					}
-				}
-			}
-
-			&__link {
-				&-mobile {
-					display: block;
-				}
-
-				svg {
-					display: block;
-					path {
-						transition: all 0.2s ease;
-					}
-				}
-			}
-
-			&__right {
-				position: absolute;
-				left: -100%;
-				top: 8.5rem;
-				width: 66rem;
-				padding: 1.5rem;
-				height: 6rem;
-				background-color: $white;
-				z-index: -1;
-				transition: all 0.2s ease;
-
-				&.open {
-					left: 0;
-				}
-				&-auth {
-					position: absolute;
-					left: -100%;
-					top: 8.5rem;
-					width: 66rem;
-					padding: 1.5rem;
-					height: 6rem;
-					background-color: $white;
-					z-index: -1;
-					transition: all 0.2s ease;
-					&.open {
-						left: 0;
-					}
-				}
-
-				svg {
-					display: block;
-					path:nth-child(1) {
-						fill: $blue;
-						stroke: $blue;
-					}
-
-					path {
-						fill: $blue;
-						stroke: $blue;
-					}
-					rect {
-						stroke: $blue;
-					}
-				}
-			}
-
-			&__call {
-				display: block;
-			}
-		}
-		.link {
-			&__full {
-				display: none;
-			}
-		}
-	}
-
-	@media (max-width: 767px) {
-		.the-header {
-			height: 6rem;
-			&__nav,
-			&__right,
-			&__right-auth {
-				width: 95%;
-			}
-			&__nav {
-				top: 12rem;
-				font-size: 1.4rem;
-			}
-			&__right,
-			&__right-auth {
-				top: 6rem;
-				font-size: 1.4rem;
-			}
-		}
 	}
 </style>

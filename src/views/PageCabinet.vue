@@ -2,7 +2,11 @@
 	<div class="page-cabinet theme-container">
 		<the-header
 			:isCabinetVersion="true"
+			:isNavMinimized="isNavMinimized"
 			@openMortgageCalculator="openMortgageCalculator"
+			@openPopup="openPopup"
+			@maximizeNav="maximizeNav"
+			@minimizeNav="minimizeNav"
 		></the-header>
 		<main class="page-cabinet__wrapper">
 			<div
@@ -10,9 +14,12 @@
 				:class="{ minimized: isNavMinimized }"
 			>
 				<the-navigation
-					@openPopup="openPopupKolotok"
+					@openPopupKolotok="openPopupKolotok"
+					@openPopup="openPopup"
+					@maximizeNav="maximizeNav"
+					@minimizeNav="minimizeNav"
 					:selectedTab="tab"
-					v-model="isNavMinimized"
+					:isNavMinimized="isNavMinimized"
 				></the-navigation>
 				<div class="page-cabinet__hint" v-show="!isNavMinimized">
 					<p>
@@ -33,10 +40,7 @@
 			>
 				<router-view v-slot="{ Component }">
 					<transition name="fade-up-fast" mode="out-in">
-						<component
-							:is="Component"
-							@openPopup="isPopupOpen = true"
-						/>
+						<component :is="Component" @openPopup="openPopup" />
 					</transition>
 				</router-view>
 			</div>
@@ -174,6 +178,7 @@
 			...mapState({
 				tab: (state) => state.cabinet.tab,
 				user_auth: (state) => state.cabinet.user_auth,
+				document_width: (state) => state.document_width,
 			}),
 		},
 		methods: {
@@ -186,6 +191,9 @@
 				document.body.classList.remove("locked");
 			},
 
+			openPopup() {
+				this.isPopupOpen = true;
+			},
 			closePopup() {
 				this.isPopupOpen = false;
 				document.body.classList.remove("locked");
@@ -195,10 +203,23 @@
 				this.isMortgageCalculatorOpen = true;
 				document.body.classList.add("locked");
 			},
-
 			closeMortgageCalculator() {
 				this.isMortgageCalculatorOpen = false;
 				document.body.classList.remove("locked");
+			},
+
+			minimizeNav() {
+				this.isNavMinimized = true;
+				document.body.classList.remove("locked");
+			},
+			maximizeNav() {
+				this.isNavMinimized = false;
+
+				if (this.document_width <= 767) {
+					document.body.classList.add("locked");
+				} else {
+					document.body.classList.remove("locked");
+				}
 			},
 		},
 		setup() {
@@ -237,6 +258,9 @@
 			scrollbar-width: none;
 			grid-area: 1/1;
 			transform: translateY(-8.5rem);
+			@media (max-width: 1050px) {
+				width: max-content;
+			}
 
 			&::-webkit-scrollbar {
 				display: none;
@@ -253,6 +277,9 @@
 			margin-top: 5rem;
 			padding: 0 0 0rem 2.5rem;
 			transition: all 0.3s ease;
+			@media (max-width: 1050px) {
+				display: none;
+			}
 
 			p {
 				font-size: 1.6rem;
@@ -267,9 +294,18 @@
 			grid-area: 1/1;
 			transition: all 0.3s ease;
 			height: max-content;
+			@media (max-width: 1050px) {
+				padding-left: 9rem;
+			}
+			@media (max-width: 767px) {
+				padding-left: 2rem;
+			}
 
 			&.maximized {
 				padding-left: 9rem;
+				@media (max-width: 767px) {
+					padding-left: 2rem;
+				}
 			}
 		}
 
