@@ -96,61 +96,96 @@
 <style lang="scss" scoped>
 	@import "@/assets/scss/variables";
 
-	.page-feedback-form {
-		border-radius: 3rem;
-		box-shadow: $shadow;
-		&__header {
-			padding: 5.5rem 7.4rem;
-			border-bottom: 1px solid #c4c4c4;
-		}
+	.page-feedback {
+		&-form {
+			border-radius: 3rem;
+			box-shadow: $shadow;
+			&__header {
+				padding: 5.5rem 7.4rem;
+				border-bottom: 1px solid #c4c4c4;
+				@media (max-width: 767px) {
+					padding: 2rem 1.5rem;
+				}
+			}
 
-		&__body {
-			padding: 4rem 6.5rem 10.5rem 7.4rem;
-			form {
-				display: grid;
-				grid-template-columns: 20rem 1fr;
-				grid-gap: 2rem;
+			&__body {
+				padding: 4rem 6.5rem 10.5rem 7.4rem;
+				@media (max-width: 767px) {
+					padding: 2rem 1.5rem;
+				}
+
+				form {
+					display: grid;
+					grid-template-columns: 20rem 1fr;
+					grid-gap: 2rem;
+					@media (max-width: 540px) {
+						grid-template-columns: 1fr;
+					}
+				}
+			}
+			&__description {
+				display: flex;
+				align-items: center;
+				color: #979797;
+				font-size: 1.8rem;
+				font-weight: 500;
+				@media (max-width: 540px) {
+					font-size: 1.4rem;
+				}
+			}
+			.v-input {
+				grid-column: 2/3;
+				@media (max-width: 540px) {
+					grid-column: inherit;
+				}
+				&:invalid {
+					border-color: $red;
+				}
+			}
+			.v-dropdown {
+				grid-column: 2/3;
+				font-size: 1.8rem;
+				@media (max-width: 540px) {
+					grid-column: inherit;
+				}
+			}
+			.v-textarea {
+				grid-column: 2/3;
+				height: 24rem;
+				@media (max-width: 540px) {
+					grid-column: inherit;
+					height: 15rem;
+				}
+			}
+			.v-button {
+				border-radius: 1rem;
+				width: 100%;
+				grid-column: 2/3;
+				height: 5.5rem;
+				display: flex;
+				align-items: center;
+				@media (max-width: 540px) {
+					grid-column: inherit;
+					height: inherit;
+				}
+			}
+			&__bottom {
+				grid-column: 2/3;
+				font-size: 1.8rem;
+				font-weight: 500;
+				line-height: 2.2rem;
+				color: #979797;
+				@media (max-width: 540px) {
+					grid-column: inherit;
+					font-size: 1.2rem;
+					line-height: 1.2;
+				}
+
+				a {
+					cursor: pointer;
+					color: $blue;
+				}
 			}
 		}
-		&__description {
-			display: flex;
-			align-items: center;
-			color: #979797;
-			font-size: 1.8rem;
-			font-weight: 500;
-		}
-		.v-input {
-			grid-column: 2/3;
-			&:invalid {
-				border-color: $red;
-			}
-		}
-		.v-dropdown {
-			grid-column: 2/3;
-			font-size: 1.8rem;
-		}
-		.v-textarea {
-			grid-column: 2/3;
-			height: 24rem;
-		}
-		&__bottom {
-			grid-column: 2/3;
-			font-size: 1.8rem;
-			font-weight: 500;
-			line-height: 2.2rem;
-			color: #979797;
-			a {
-				cursor: pointer;
-				color: $blue;
-			}
-		}
-	}
-	.v-button {
-		border-radius: 1rem;
-		width: 100%;
-		grid-column: 2/3;
-		height: 5.5rem;
-		display: flex;
-		align-items: center;
 	}
 </style>

@@ -11,15 +11,18 @@
 				<img :src="apartment.image" alt="" />
 			</div>
 			<div class="booking-apartment__rooms">
-				<div v-if="apartment.type === 5">
-					<p>Студия</p>
-				</div>
-				<div v-else>
-					<p>{{ apartment.type }}-комнатная</p>
+				<div>
+					<p>
+						{{
+							apartment.type === 5
+								? "Студия"
+								: `${apartment.type}-комнатная`
+						}}
+					</p>
 				</div>
 				<p>
 					Предварительное бронирование истекает
-					{{ apartment.expiration_date }}
+					{{ formattedDate }}
 				</p>
 			</div>
 			<div class="booking-apartment__area">
@@ -46,6 +49,7 @@
 				<p>4 014 433 руб.</p>
 			</div>
 		</div>
+
 		<div class="booking-apartment__body">
 			<h2 class="booking-apartment__stage">Ход строительства:</h2>
 			<div class="booking-apartment__gallery">
@@ -94,6 +98,7 @@
 <script>
 	import { getBookingList, removeReservation } from "@/api/booking";
 	import { returnErrorMessages } from "@/js/returnErrorMessages";
+	import { utcToLocalDate } from "@/js/utcToLocalDate";
 
 	import { useToast } from "vue-toastification";
 
@@ -103,6 +108,11 @@
 			apartment: {
 				value: Object,
 				required: true,
+			},
+		},
+		computed: {
+			formattedDate() {
+				return utcToLocalDate(this.apartment.expiration_date);
 			},
 		},
 		methods: {
@@ -149,11 +159,25 @@
 			grid-template-columns: 19rem repeat(5, max-content);
 			grid-template-rows: 10rem 5rem;
 			justify-content: space-between;
-			grid-column-gap: 3rem;
-			grid-row-gap: 5rem;
+			grid-gap: 3rem 5rem;
 			position: relative;
 			padding: 4rem 7.4rem 4.5rem 7.4rem;
-			border-bottom: 1px solid #c4c4c4;
+			border-bottom: 0.1rem solid #c4c4c4;
+			@media (max-width: 1600px) {
+				padding: 4rem 1.5rem 2rem 1.5rem;
+				grid-gap: 2rem;
+				grid-template-columns: 15rem repeat(2, 1fr);
+			}
+			@media (max-width: 767px) {
+				display: flex;
+				flex-direction: column;
+			}
+
+			.v-button {
+				@media (max-width: 1600px) {
+					margin-top: auto;
+				}
+			}
 		}
 
 		&__close {
@@ -177,11 +201,20 @@
 			align-items: center;
 			justify-content: center;
 			grid-area: 1/1/3/1;
+			@media (max-width: 767px) {
+				grid-area: inherit;
+				height: 30rem;
+				justify-content: flex-start;
+			}
 
 			img {
 				width: 100%;
 				max-height: 100%;
 				object-fit: contain;
+				@media (max-width: 767px) {
+					width: inherit;
+					max-width: 100%;
+				}
 			}
 		}
 
@@ -233,6 +266,12 @@
 		}
 
 		&__section {
+			@media (max-width: 1600px) {
+				grid-column: 2/3;
+			}
+			@media (max-width: 767px) {
+				grid-column: inherit;
+			}
 		}
 
 		&__price {
@@ -241,6 +280,14 @@
 			align-items: flex-end;
 			justify-content: flex-end;
 			gap: 1rem;
+			@media (max-width: 1600px) {
+				grid-area: inherit;
+				justify-content: flex-start;
+				grid-column: 2/4;
+			}
+			@media (max-width: 767px) {
+				grid-column: inherit;
+			}
 
 			span {
 				color: #979797;
@@ -259,8 +306,11 @@
 			padding: 3.5rem 6.4rem 6.2rem 6.4rem;
 			display: flex;
 			flex-direction: column;
+			@media (max-width: 1600px) {
+				padding: 2rem 1.5rem;
+			}
 
-			.button {
+			.v-button {
 				align-self: flex-end;
 			}
 		}
@@ -275,7 +325,10 @@
 			display: grid;
 			grid-gap: 2rem;
 			grid-template-columns: repeat(2, 1fr);
-			margin-bottom: 4.5em;
+			margin-bottom: 4.5rem;
+			@media (max-width: 767px) {
+				grid-template-columns: 1fr;
+			}
 		}
 
 		&__photos {
@@ -286,6 +339,7 @@
 			img {
 				border-radius: 2.5rem;
 				overflow: hidden;
+				width: 100%;
 			}
 
 			&-sum {
@@ -310,10 +364,11 @@
 			padding: 1rem 2.2rem;
 			border-radius: 2.5rem;
 		}
-	}
 
-	.button {
-		border-radius: 1rem;
-		font-weight: 500;
+		.v-button {
+			border-radius: 1rem;
+			font-weight: 500;
+			height: max-content;
+		}
 	}
 </style>

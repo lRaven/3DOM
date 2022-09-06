@@ -6,7 +6,7 @@
 				data-aos-anchor-placement="top-bottom"
 				class="the-footer__socials"
 			>
-				<p>Соцсети</p>
+				<p class="the-footer__socials-description">Соцсети</p>
 				<div class="the-footer__socials-group">
 					<a
 						href="https://wa.me/79616670163"
@@ -19,6 +19,7 @@
 							viewBox="0 0 30 31"
 							fill="none"
 							xmlns="http://www.w3.org/2000/svg"
+							class="the-footer__social-icon"
 						>
 							<path
 								fill-rule="evenodd"
@@ -39,6 +40,7 @@
 							viewBox="0 0 31 31"
 							fill="none"
 							xmlns="http://www.w3.org/2000/svg"
+							class="the-footer__social-icon"
 						>
 							<path
 								d="M15.8305 3.29257C19.8209 3.29257 20.2795 3.31551 21.8619 3.38431C23.3067 3.45311 24.1094 3.68244 24.6369 3.88884C25.3249 4.16404 25.8294 4.4851 26.3569 5.01257C26.8843 5.54004 27.2054 6.02164 27.4806 6.73257C27.687 7.26003 27.9393 8.03977 27.9851 9.5075C28.0539 11.0899 28.0769 11.5486 28.0769 15.539C28.0769 19.5294 28.0539 19.988 27.9851 21.5704C27.9163 23.0152 27.687 23.8179 27.4806 24.3453C27.2054 25.0333 26.8843 25.5379 26.3569 26.0653C25.8294 26.5928 25.3478 26.9139 24.6369 27.1891C24.1094 27.3955 23.3297 27.6477 21.8619 27.6936C20.2795 27.7624 19.8209 27.7853 15.8305 27.7853C11.8401 27.7853 11.3814 27.7624 9.79903 27.6936C8.35424 27.6248 7.55155 27.3955 7.02408 27.1891C6.33608 26.9139 5.83155 26.5928 5.30408 26.0653C4.77662 25.5379 4.45557 25.0563 4.18037 24.3453C3.97397 23.8179 3.72169 23.0381 3.67582 21.5704C3.60702 19.988 3.58409 19.5294 3.58409 15.539C3.58409 11.5486 3.60702 11.0899 3.67582 9.5075C3.74462 8.0627 3.97397 7.26003 4.18037 6.73257C4.45557 6.04457 4.77662 5.54004 5.30408 5.01257C5.83155 4.4851 6.31315 4.16404 7.02408 3.88884C7.55155 3.68244 8.3313 3.43017 9.79903 3.38431C11.3814 3.31551 11.8401 3.29257 15.8305 3.29257ZM15.8305 0.609375C11.7713 0.609375 11.2668 0.632309 9.68437 0.701109C8.10197 0.769908 7.00116 1.02217 6.06089 1.38911C5.07476 1.77897 4.24916 2.28351 3.42356 3.1091C2.59796 3.9347 2.09343 4.7603 1.70357 5.74643C1.33663 6.6867 1.08437 7.7875 1.01557 9.3699C0.946767 10.9523 0.923828 11.4798 0.923828 15.516C0.923828 19.5752 0.946767 20.0798 1.01557 21.6621C1.08437 23.2445 1.33663 24.3453 1.70357 25.2856C2.09343 26.2717 2.59796 27.0973 3.42356 27.9229C4.24916 28.7485 5.07476 29.2531 6.06089 29.6429C7.00116 30.0099 8.10197 30.2621 9.68437 30.3309C11.2668 30.3997 11.7942 30.4227 15.8305 30.4227C19.8897 30.4227 20.3942 30.3997 21.9766 30.3309C23.559 30.2621 24.6598 30.0099 25.6001 29.6429C26.5862 29.2531 27.4118 28.7485 28.2374 27.9229C29.063 27.0973 29.5675 26.2717 29.9574 25.2856C30.3243 24.3453 30.5766 23.2445 30.6454 21.6621C30.7142 20.0798 30.7371 19.5523 30.7371 15.516C30.7371 11.4798 30.7142 10.9523 30.6454 9.3699C30.5766 7.7875 30.3243 6.6867 29.9574 5.74643C29.5675 4.7603 29.063 3.9347 28.2374 3.1091C27.4118 2.28351 26.5862 1.77897 25.6001 1.38911C24.6598 1.02217 23.559 0.769908 21.9766 0.701109C20.3942 0.632309 19.8897 0.609375 15.8305 0.609375Z"
@@ -56,7 +58,7 @@
 					</a> -->
 					<a
 						href="https://t.me/tridom_vlg"
-						class="the-footer__social the-footer__tg"
+						class="the-footer__social"
 						target="_blank"
 					>
 						<svg
@@ -65,6 +67,7 @@
 							viewBox="0 0 28 24"
 							fill="none"
 							xmlns="http://www.w3.org/2000/svg"
+							class="the-footer__social-icon"
 						>
 							<path
 								d="M26.136 0.195049L1.05653 9.82201C-0.317121 10.2231 -0.275495 11.5954 0.744336 11.9332L7.02981 13.9177L9.44412 21.3912C9.7355 22.2146 9.98525 22.5101 10.4848 22.5312C11.0051 22.5312 11.2132 22.3412 11.7543 21.8557C12.3995 21.2434 13.3569 20.2934 14.8971 18.7733L21.4323 23.6713C22.6395 24.3469 23.5136 23.9879 23.805 22.5312L27.9051 1.96844C28.3214 0.195054 27.3016 -0.332744 26.136 0.195049ZM8.02884 13.4532L22.3065 4.37518C23.0141 3.88961 23.2222 4.43851 22.91 4.79741L11.0467 15.6066L10.4431 21.0112L8.02884 13.4532Z"
@@ -74,58 +77,73 @@
 					</a>
 				</div>
 			</div>
+
 			<ul
 				data-aos="fade-up"
 				data-aos-anchor-placement="top-bottom"
 				class="the-footer__links"
 			>
-				<li class="the-footer__link">
-					<a href="#" target="_blank">О компании</a>
+				<li class="the-footer__links-item">
+					<a href="#" target="_blank" class="the-footer__link">
+						О компании
+					</a>
 				</li>
-				<li class="the-footer__link">
-					<a href="#" target="_blank">Новости</a>
+				<li class="the-footer__links-item">
+					<a href="#" target="_blank" class="the-footer__link">
+						Новости
+					</a>
 				</li>
-				<li class="the-footer__link">
-					<a href="#" target="_blank">Финансы</a>
+				<li class="the-footer__links-item">
+					<a href="#" target="_blank" class="the-footer__link">
+						Финансы
+					</a>
 				</li>
-				<li class="the-footer__link">
-					<router-link :to="{ name: 'TradeIn' }">
+				<li class="the-footer__links-item">
+					<router-link
+						:to="{ name: 'TradeIn' }"
+						class="the-footer__link"
+					>
 						Trade-in
 					</router-link>
 				</li>
-				<li class="the-footer__link">
-					<a href="#" target="_blank">Реквизиты</a>
+				<li class="the-footer__links-item">
+					<a href="#" target="_blank" class="the-footer__link">
+						Реквизиты
+					</a>
 				</li>
-				<li class="the-footer__link">
-					<a href="#" target="_blank">Вакансии</a>
+				<li class="the-footer__links-item">
+					<a href="#" target="_blank" class="the-footer__link">
+						Вакансии
+					</a>
 				</li>
-
-				<li class="the-footer__link">
+				<li class="the-footer__links-item">
 					<router-link
 						:to="{
 							name: 'Academ',
 							query: { section: '#feedback' },
 						}"
+						class="the-footer__link"
 					>
 						Офисы продаж
 					</router-link>
 				</li>
 			</ul>
 		</div>
+
 		<div
 			data-aos="fade-up"
 			data-aos-anchor-placement="top-bottom"
-			class="the-footer__disclaimer"
+			class="the-footer__row"
 		>
-			<p>
+			<p class="the-footer__disclaimer">
 				Любая информация, представленная на данном сайте, носит
 				исключительно информационный характер и ни при каких условиях не
 				является публичной офертой, определяемой положениями статьи 437
-				ГК РФ. Информация ПАО «ООООООО»,<br />
-				раскрываемая в соответствии с Положением о раскрытии информации
-				эмитентами эмиссионных ценных бумаг (утв. Банком России
-				30.12.2014 N 454-П), размещена на странице Центра раскрытия
-				корпоративной информации Интерфакс в сети Интернет
+				ГК РФ.<br />Информация ПАО&nbsp;«ООООООО», раскрываемая в
+				соответствии с Положением о раскрытии информации эмитентами
+				эмиссионных ценных бумаг (утв. Банком России 30.12.2014 N
+				454-П), размещена на странице Центра раскрытия корпоративной
+				информации Интерфакс в сети Интернет
 			</p>
 		</div>
 	</footer>
@@ -143,17 +161,28 @@
 	.the-footer {
 		overflow: hidden;
 		padding: 0 1.5rem;
+		@media (max-width: 1110px) {
+			height: fit-content;
+			display: flex;
+			align-items: center;
+		}
+		@media (max-width: 767px) {
+			background-color: $blue;
+			padding: 2rem 0 1rem 0;
+		}
+
 		&__top {
 			display: flex;
 			justify-content: center;
 			gap: 5rem;
 			font-size: 1.6rem;
 			color: $dark;
-			height: 4rem;
-
-			p {
-				font-weight: 600;
-				margin-right: 1rem;
+			@media (max-width: 1110px) {
+				flex-direction: column;
+				align-items: center;
+				width: 100%;
+				gap: 0;
+				height: fit-content;
 			}
 		}
 		&__socials {
@@ -161,15 +190,30 @@
 			align-items: center;
 			max-height: 4rem;
 			gap: 1rem;
+			@media (max-width: 767px) {
+				flex-direction: column;
+				width: 100%;
+				max-height: inherit;
+				gap: 0;
+			}
+			&-description {
+				font-weight: 600;
+				margin-right: 1rem;
+
+				@media (max-width: 767px) {
+					color: $white;
+				}
+			}
 			&-group {
 				display: flex;
 				align-items: center;
 				gap: 2rem;
-			}
-			a {
-				height: 3rem;
-				img {
-					height: 100%;
+				@media (max-width: 767px) {
+					width: 100%;
+					display: grid;
+					grid-template-columns: repeat(2, 1fr);
+					gap: 0;
+					padding: 1rem 0;
 				}
 			}
 		}
@@ -177,126 +221,54 @@
 			display: flex;
 			justify-content: center;
 			align-items: center;
+			@media (max-width: 767px) {
+				&:nth-child(1) {
+					border-right: 0.1rem solid $white;
+				}
+			}
+
+			&-icon {
+				height: 3rem;
+				@media (max-width: 767px) {
+					height: 4rem;
+					width: 4rem;
+					path {
+						fill: $white;
+					}
+				}
+			}
 		}
 		&__links {
 			display: flex;
 			align-items: center;
 			gap: 3rem;
+			@media (max-width: 1110px) {
+				gap: 1rem;
+			}
+			@media (max-width: 767px) {
+				display: none;
+			}
 		}
 		&__link {
-			a {
-				cursor: pointer;
-				position: relative;
-				display: inline-block;
-				color: $dark;
-				height: 100%;
-				width: max-content;
-				padding: 1.2rem 0;
-				transition: all 0.2s ease;
-				&:hover {
-					color: $blue;
-					transition: all 0.3s ease;
-				}
+			cursor: pointer;
+			position: relative;
+			display: inline-block;
+			color: $dark;
+			height: 100%;
+			width: max-content;
+			padding: 1.2rem 0;
+			transition: all 0.2s ease;
+			&:hover {
+				color: $blue;
+				transition: all 0.3s ease;
 			}
 		}
 		&__disclaimer {
 			padding: 0.8rem 0;
 			text-align: center;
-			height: 4rem;
 			color: $middle-gray;
-		}
-	}
-
-	@media (max-width: 1110px) {
-		.the-footer {
-			height: fit-content;
-			display: flex;
-			align-items: center;
-			&__disclaimer {
+			@media (max-width: 1110px) {
 				display: none;
-			}
-			&__top {
-				flex-direction: column;
-				align-items: center;
-				width: 100%;
-				gap: 0;
-				height: fit-content;
-			}
-			&__links {
-				gap: 1rem;
-			}
-		}
-	}
-
-	@media (max-width: 720px) {
-		.the-footer {
-			background-color: $blue;
-			color: $white;
-			height: 11rem;
-			&__links {
-				display: none;
-			}
-			&__socials {
-				flex-direction: column;
-				width: 100%;
-				max-height: inherit;
-
-				p {
-					color: $white;
-					grid-column: 1/3;
-					margin-right: 0;
-				}
-				&-group {
-					display: flex;
-					width: 100%;
-					height: 6rem;
-					gap: 0;
-					a {
-						display: flex;
-						justify-content: center;
-						align-items: center;
-						height: 100%;
-						width: 100%;
-						&:nth-child(-n + 2) {
-							position: relative;
-							&::after {
-								content: "";
-								position: absolute;
-								top: 0;
-								right: 0;
-								width: 0.1rem;
-								height: 100%;
-								background-color: #fff;
-							}
-						}
-					}
-					svg {
-						height: 5rem;
-						width: 5rem;
-						path {
-							fill: $white;
-						}
-					}
-				}
-			}
-		}
-	}
-
-	@media (max-width: 540px) {
-		.the-footer {
-			&__socials-group {
-				height: 4rem;
-				a {
-					height: 100%;
-					svg {
-						height: 100%;
-					}
-					&:last-child {
-						svg {
-							height: 90%;
-						}
-					}
-				}
 			}
 		}
 	}

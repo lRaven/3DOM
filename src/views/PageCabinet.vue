@@ -231,7 +231,7 @@
 <style lang="scss" scoped>
 	.theme-container {
 		display: grid;
-		grid-template-rows: 1fr 8rem;
+		grid-template-rows: 1fr max-content;
 		height: 100%;
 		min-height: 100vh;
 		background-color: #fff;
@@ -245,6 +245,7 @@
 			grid-template-columns: 1fr;
 			@media (max-width: 767px) {
 				padding-top: 6rem;
+				padding-bottom: 2rem;
 			}
 		}
 
@@ -295,7 +296,6 @@
 			width: 100%;
 			grid-area: 1/1;
 			transition: all 0.3s ease;
-			height: max-content;
 			@media (max-width: 1050px) {
 				padding-left: 9rem;
 			}

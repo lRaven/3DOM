@@ -336,7 +336,7 @@
 				}
 			}
 			&__address {
-				margin-bottom: 2.5em;
+				margin-bottom: 2.5rem;
 				h3 {
 					font-size: 5.4rem;
 				}

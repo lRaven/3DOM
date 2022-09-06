@@ -160,20 +160,24 @@
 			tab() {
 				this.getTabLineWidth();
 			},
-			user: {
-				handler() {
-					this.getTabLineWidth();
-				},
-				deep: true,
+			document_width() {
+				this.getTabLineWidth();
 			},
 		},
 		computed: {
 			...mapState({
 				user: (state) => state.cabinet.user,
+				document_width: (state) => state.document_width,
 			}),
 			tabLinePosition() {
 				if (this.tab === "tab_all") return 0;
-				else return this.$refs.tab_all.clientWidth + 50;
+				else {
+					if (this.document_width <= 540) {
+						return this.document_width / 2 - 15;
+					} else {
+						return this.$refs.tab_all.clientWidth + 50;
+					}
+				}
 			},
 		},
 		data: () => ({
@@ -186,7 +190,11 @@
 			...mapMutations(["SET_TAB"]),
 
 			getTabLineWidth() {
-				this.tabLineWidth = this.$refs[this.tab].clientWidth;
+				if (this.document_width <= 540) {
+					this.tabLineWidth = this.document_width / 2 - 15;
+				} else {
+					this.tabLineWidth = this.$refs[this.tab].clientWidth;
+				}
 			},
 
 			closePopup() {
@@ -196,6 +204,9 @@
 			openPopup() {
 				this.isPopupVisible = true;
 			},
+		},
+		mounted() {
+			this.getTabLineWidth();
 		},
 		created() {
 			this.SET_TAB("bonuses");
@@ -211,9 +222,15 @@
 		&__header {
 			margin-bottom: 3rem;
 			padding: 0 2.4rem;
+			@media (max-width: 767px) {
+				padding: 0;
+			}
 		}
 		&__title {
 			margin-bottom: 1.5rem;
+			@media (max-width: 1500px) {
+				margin-bottom: 0;
+			}
 		}
 		&__tabs {
 			position: relative;
@@ -223,6 +240,10 @@
 			font-size: 2rem;
 			font-weight: 600;
 			color: #979797;
+			@media (max-width: 540px) {
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+			}
 
 			label {
 				cursor: pointer;
@@ -240,6 +261,12 @@
 				}
 				&__fake {
 					user-select: none;
+					@media (max-width: 767px) {
+						font-size: 1.8rem;
+					}
+					@media (max-width: 540px) {
+						font-size: 1.4rem;
+					}
 				}
 			}
 		}
@@ -255,23 +282,24 @@
 			display: grid;
 			grid-column-gap: 2.3rem;
 			grid-template-columns: repeat(2, 1fr);
-			div {
+			@media (max-width: 1500px) {
+				grid-template-columns: 1fr;
+			}
+
+			.services-item {
 				&:first-child {
 					grid-area: 1/1/1/3;
+					@media (max-width: 1500px) {
+						grid-area: inherit;
+					}
 				}
 				&:last-child {
 					grid-area: 3/1/3/3;
+					@media (max-width: 1500px) {
+						grid-area: inherit;
+					}
 				}
 			}
-		}
-		&__2 {
-			animation-delay: 200ms;
-		}
-		&__3 {
-			animation-delay: 400ms;
-		}
-		&__4 {
-			animation-delay: 600ms;
 		}
 
 		&__consultation-request {

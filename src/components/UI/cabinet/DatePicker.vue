@@ -56,6 +56,12 @@
 			font-size: 1.8rem;
 			padding: 2rem;
 			border-radius: 1rem;
+			@media (max-width: 767px) {
+				padding: 1rem;
+			}
+			@media (max-width: 540px) {
+				font-size: 1.4rem;
+			}
 		}
 		&__calendar {
 			&-cell {

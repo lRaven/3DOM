@@ -199,17 +199,33 @@
 		&__header {
 			padding: 5.5rem 7.4rem;
 			border-bottom: 0.1rem solid #c4c4c4;
+			@media (max-width: 767px) {
+				padding: 2rem 1.5rem;
+			}
 		}
 		&__title {
 			font-size: 3rem;
 			font-weight: 600;
+			@media (max-width: 767px) {
+				text-align: center;
+			}
+			@media (max-width: 540px) {
+				font-size: 2.4rem;
+			}
 		}
 		&__body {
 			padding: 4rem 6.5rem 10.5rem 7.4rem;
+			@media (max-width: 767px) {
+				padding: 2rem 1.5rem;
+			}
+
 			form {
 				display: grid;
 				grid-template-columns: 20rem 1fr 1fr;
 				grid-gap: 2rem;
+				@media (max-width: 540px) {
+					grid-template-columns: 1fr;
+				}
 			}
 		}
 		&__description {
@@ -218,38 +234,73 @@
 			color: #979797;
 			font-size: 1.8rem;
 			font-weight: 500;
+			@media (max-width: 540px) {
+				font-size: 1.4rem;
+			}
 		}
 		.v-input {
 			grid-column: 2/4;
+			@media (max-width: 540px) {
+				grid-column: inherit;
+			}
+		}
+		.v-dropdown {
+			&:nth-child(6) {
+				grid-column: 2/4;
+				@media (max-width: 540px) {
+					grid-column: inherit;
+				}
+			}
+			&:nth-child(8) {
+				grid-column: 2/4;
+				@media (max-width: 540px) {
+					grid-column: inherit;
+				}
+			}
+		}
+		.date-picker {
+			grid-column: 2/3;
+			@media (max-width: 1260px) {
+				grid-column: 2/4;
+			}
+			@media (max-width: 540px) {
+				grid-column: inherit;
+			}
+		}
+		.time-picker {
+			@media (max-width: 1260px) {
+				grid-column: 2/4;
+			}
+			@media (max-width: 540px) {
+				grid-column: inherit;
+			}
+		}
+		.v-button {
+			grid-column: 2/4;
+			border-radius: 1rem;
+			width: 100%;
+			height: 5.5rem;
+			display: flex;
+			align-items: center;
+			@media (max-width: 540px) {
+				grid-column: inherit;
+				height: auto;
+			}
 		}
 		&__bottom {
 			grid-column: 2/4;
 			font-size: 1.8rem;
 			font-weight: 500;
 			line-height: 2.2rem;
+			@media (max-width: 540px) {
+				grid-column: inherit;
+				font-size: 1.2rem;
+				line-height: 1.2;
+			}
 			a {
 				cursor: pointer;
 				color: $blue;
 			}
 		}
-	}
-	.v-dropdown {
-		&:nth-child(6) {
-			grid-column: 2/4;
-		}
-		&:nth-child(8) {
-			grid-column: 2/4;
-		}
-	}
-	.date-picker {
-		grid-column: 2/3;
-	}
-	.v-button {
-		grid-column: 2/4;
-		border-radius: 1rem;
-		width: 100%;
-		height: 5.5rem;
-		display: flex;
-		align-items: center;
 	}
 </style>

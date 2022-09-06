@@ -53,6 +53,7 @@
 			text="Получить консультацию"
 			type="button"
 			color="gray"
+			class="favorites-apartment__consultation"
 		></v-button>
 
 		<v-button
@@ -208,6 +209,19 @@
 		box-shadow: $shadow;
 		background-color: #fff;
 		font-size: 1.6rem;
+		@media (max-width: 1440px) {
+			padding: 2rem 1.5rem;
+		}
+		@media (max-width: 1300px) {
+			grid-template-columns: 13rem repeat(2, 1fr);
+		}
+		@media (max-width: 767px) {
+			grid-template-columns: 1fr 2fr;
+		}
+		@media (max-width: 540px) {
+			grid-template-columns: 1fr;
+		}
+
 		+ .favorites-apartment {
 			margin-top: 2.3rem;
 		}
@@ -218,6 +232,11 @@
 			max-height: 20rem;
 			object-fit: contain;
 			grid-area: 1/1/3/1;
+			@media (max-width: 540px) {
+				grid-area: inherit;
+				width: inherit;
+				max-width: 100%;
+			}
 		}
 
 		&__price {
@@ -235,6 +254,20 @@
 			display: flex;
 			flex-direction: column;
 			gap: 2rem;
+			@media (max-width: 1300px) {
+				&:nth-child(6) {
+					grid-column: 2/3;
+				}
+			}
+			@media (max-width: 767px) {
+				grid-column: 2/3;
+			}
+			@media (max-width: 540px) {
+				grid-column: inherit;
+				&:nth-child(6) {
+					grid-column: inherit;
+				}
+			}
 		}
 
 		&__description {
@@ -246,6 +279,9 @@
 			font-weight: 600;
 			&.centered {
 				text-align: center;
+				@media (max-width: 1300px) {
+				}
+				text-align: left;
 			}
 		}
 
@@ -255,6 +291,14 @@
 			background-color: transparent;
 			margin-left: auto;
 			margin-right: auto;
+			@media (max-width: 1300px) {
+				position: absolute;
+				right: 1.5rem;
+				top: 2rem;
+				height: 3rem;
+				width: 3rem;
+			}
+
 			svg {
 				path {
 					transition: all 0.2s ease;
@@ -262,13 +306,48 @@
 			}
 		}
 
+		&__consultation {
+			@media (max-width: 1300px) {
+				order: 2;
+				grid-column: 2/3;
+			}
+			@media (max-width: 767px) {
+				grid-area: 3/1/3/1;
+				width: inherit;
+			}
+			@media (max-width: 540px) {
+				grid-area: inherit;
+				grid-column: inherit;
+			}
+		}
 		&__booking {
 			grid-column: 3/5;
+			@media (max-width: 1300px) {
+				grid-column: inherit;
+				order: 3;
+			}
+			@media (max-width: 767px) {
+				grid-area: 4/1/4/1;
+				width: inherit;
+			}
+			@media (max-width: 540px) {
+				grid-area: inherit;
+				grid-column: inherit;
+			}
 		}
 
 		&__link {
 			padding: 1rem !important;
 			min-width: inherit;
+			@media (max-width: 1300px) {
+				order: 1;
+			}
+			@media (max-width: 767px) {
+				grid-area: 5/1/5/1;
+			}
+			@media (max-width: 540px) {
+				grid-area: inherit;
+			}
 			&-icon {
 				height: 2rem;
 				width: 2rem;
@@ -279,6 +358,9 @@
 			border-radius: 1rem;
 			font-weight: 500;
 			padding: 1rem 4rem;
+			@media (max-width: 1023px) {
+				padding: 1rem 2rem;
+			}
 		}
 
 		.v-button,

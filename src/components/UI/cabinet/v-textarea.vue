@@ -28,6 +28,12 @@
 
 		-ms-overflow-style: none;
 		scrollbar-width: none;
+		@media (max-width: 767px) {
+			padding: 1rem;
+		}
+		@media (max-width: 540px) {
+			font-size: 1.4rem;
+		}
 
 		&::-webkit-scrollbar {
 			display: none;

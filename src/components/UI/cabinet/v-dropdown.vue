@@ -143,6 +143,12 @@
 			font-size: 1.8rem;
 			font-weight: 500;
 			transition: all 0.1s ease;
+			@media (max-width: 767px) {
+				padding: 1rem;
+			}
+			@media (max-width: 540px) {
+				font-size: 1.4rem;
+			}
 			&:hover {
 				border-color: $dark;
 				transition: all 0.2s ease;
@@ -164,6 +170,9 @@
 			justify-content: center;
 			align-items: center;
 			transition: all 0.1s ease;
+			@media (max-width: 540px) {
+				padding: 0;
+			}
 			&.open {
 				transform: rotate(180deg);
 				transition: all 0.2s ease;
@@ -192,6 +201,12 @@
 			font-size: 1.8rem;
 			font-weight: 500;
 			transition: all 0.1s ease;
+			@media (max-width: 767px) {
+				padding: 1rem;
+			}
+			@media (max-width: 540px) {
+				font-size: 1.4rem;
+			}
 			&:hover {
 				transition: all 0.2s ease;
 				background-color: #edf5fd;

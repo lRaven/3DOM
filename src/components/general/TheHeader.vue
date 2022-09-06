@@ -126,6 +126,7 @@
 					<router-link
 						:to="{ name: 'Favorites' }"
 						class="the-header__favorites"
+						@click="isMobileMenuOpen = false"
 					>
 						<img src="/img/icon/general/favorites.svg" alt="" />
 						<span
@@ -139,6 +140,7 @@
 					<router-link
 						:to="{ name: 'Cabinet' }"
 						class="the-header__avatar"
+						@click="isMobileMenuOpen = false"
 					>
 						<img :src="avatar" alt="avatar" />
 					</router-link>

@@ -24,9 +24,13 @@
 					class="page-favorites__empty"
 					v-show="favorites.length === 0 && !isAllApartmentVisible"
 				>
-					<img src="/img/cabinet/empty.svg" alt="" />
+					<img
+						src="/img/cabinet/empty.svg"
+						alt=""
+						class="page-favorites__empty-image"
+					/>
 					<div class="page-favorites__empty-text">
-						<p>Вы пока ничего не добавили в избранное</p>
+						<p>Вы пока ничего не&nbsp;добавили в&nbsp;избранное</p>
 						<v-button
 							text="Выбрать планировку"
 							type="button"
@@ -245,6 +249,12 @@
 			gap: 5rem;
 			margin-bottom: 4rem;
 			min-height: 5rem;
+			@media (max-width: 767px) {
+				margin-bottom: 2rem;
+				flex-direction: column;
+				align-items: flex-start;
+				gap: 1.5rem;
+			}
 		}
 
 		.v-button {
@@ -258,15 +268,33 @@
 			border-radius: 3rem;
 			padding: 6rem;
 			grid-area: 1/1;
+			@media (max-width: 767px) {
+				padding: 2rem 1.5rem;
+			}
+			@media (max-width: 540px) {
+				flex-direction: column;
+			}
 
+			&-image {
+				@media (max-width: 540px) {
+					max-height: 20rem;
+				}
+			}
 			&-text {
 				padding: 1rem 0;
 				display: flex;
 				flex-direction: column;
 				justify-content: space-between;
+				gap: 2rem;
 				p {
 					font-size: 3rem;
 					font-weight: 600;
+					@media (max-width: 767px) {
+						font-size: 2.4rem;
+					}
+					@media (max-width: 540px) {
+						font-size: 2rem;
+					}
 				}
 			}
 		}
@@ -281,8 +309,17 @@
 				gap: 4rem;
 				margin-bottom: 5rem;
 				grid-area: 1/1;
+				@media (max-width: 767px) {
+					margin-bottom: 3rem;
+					flex-wrap: wrap;
+					gap: 1.5rem;
+				}
 				p {
 					color: #979797;
+					@media (max-width: 767px) {
+						display: block;
+						width: 100%;
+					}
 				}
 			}
 		}

@@ -1,29 +1,68 @@
 <template>
 	<div class="appeal-card">
-		<p class="appeal-card__id appeal-card__col" :title="`#${appeal.id}`">
-			#{{ appeal.id }}
-		</p>
+		<template v-if="document_width > 1260">
+			<p
+				class="appeal-card__id appeal-card__col"
+				:title="`#${appeal.id}`"
+			>
+				#{{ appeal.id }}
+			</p>
 
-		<p class="appeal-card__name appeal-card__col" :title="appeal.name">
-			{{ appeal.name }}
-		</p>
+			<p class="appeal-card__name appeal-card__col" :title="appeal.name">
+				{{ appeal.name }}
+			</p>
 
-		<p class="appeal-card__topic appeal-card__col" :title="topic.value">
-			{{ topic.value }}
-		</p>
+			<p class="appeal-card__topic appeal-card__col" :title="topic.value">
+				{{ topic.value }}
+			</p>
 
-		<p
-			class="appeal-card__message appeal-card__col"
-			:title="appeal.message"
-		>
-			{{ appeal.message }}
-		</p>
+			<p
+				class="appeal-card__message appeal-card__col"
+				:title="appeal.message"
+			>
+				{{ appeal.message }}
+			</p>
 
-		<v-button
-			text="Подробнее"
-			color="bordered"
-			@click="this.$router.push(`/cabinet/appeal/${appeal.id}`)"
-		></v-button>
+			<v-button
+				text="Подробнее"
+				color="bordered"
+				@click="this.$router.push(`/cabinet/appeal/${appeal.id}`)"
+			></v-button>
+		</template>
+
+		<template v-else>
+			<div class="appeal-card__row">
+				<p
+					class="appeal-card__id appeal-card__col"
+					:title="`#${appeal.id}`"
+				>
+					#{{ appeal.id }}
+				</p>
+				<p
+					class="appeal-card__topic appeal-card__col"
+					:title="topic.value"
+				>
+					{{ topic.value }}
+				</p>
+
+				<v-button
+					text="Подробнее"
+					color="bordered"
+					@click="this.$router.push(`/cabinet/appeal/${appeal.id}`)"
+				></v-button>
+			</div>
+
+			<p class="appeal-card__name appeal-card__col" :title="appeal.name">
+				{{ appeal.name }}
+			</p>
+
+			<p
+				class="appeal-card__message appeal-card__col"
+				:title="appeal.message"
+			>
+				{{ appeal.message }}
+			</p>
+		</template>
 	</div>
 </template>
 
@@ -40,7 +79,10 @@
 			messages: Array,
 		},
 		computed: {
-			...mapState({ topics: (state) => state.messenger.topics }),
+			...mapState({
+				topics: (state) => state.messenger.topics,
+				document_width: (state) => state.document_width,
+			}),
 
 			topic() {
 				return this.topics.find(
@@ -63,6 +105,19 @@
 		grid-gap: 2rem;
 		align-items: center;
 		font-size: 1.6rem;
+		@media (max-width: 1260px) {
+			grid-template-columns: 1fr;
+		}
+
+		&__row {
+			display: flex;
+			align-items: center;
+			gap: 2rem;
+			@media (max-width: 540px) {
+				flex-direction: column;
+				align-items: flex-start;
+			}
+		}
 		&__col {
 			white-space: nowrap;
 			overflow: hidden;
@@ -86,6 +141,12 @@
 		.v-button {
 			border-radius: 1rem;
 			padding: 1rem 2rem;
+			@media (max-width: 1260px) {
+				margin-left: auto;
+			}
+			@media (max-width: 540px) {
+				margin-left: 0;
+			}
 		}
 	}
 </style>

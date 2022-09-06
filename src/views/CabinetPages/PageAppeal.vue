@@ -84,6 +84,12 @@
 		grid-template-rows: max-content 1fr;
 		grid-gap: 4rem;
 		height: calc(100vh - 13rem);
+		@media (max-width: 767px) {
+			height: calc(100vh - 8rem);
+		}
+		@media (max-width: 540px) {
+			grid-gap: 2rem;
+		}
 		&__header {
 			display: flex;
 			align-items: center;
@@ -94,6 +100,9 @@
 			background-color: transparent;
 			height: 3rem;
 			color: $blue;
+			@media (max-width: 767px) {
+				min-width: 3rem;
+			}
 			&-icon {
 				width: 100%;
 				height: 100%;

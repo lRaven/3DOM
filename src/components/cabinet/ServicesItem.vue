@@ -42,6 +42,9 @@
 		border-radius: 3rem;
 		box-shadow: $shadow;
 		overflow: hidden;
+		@media (max-width: 767px) {
+			padding: 2rem 1.5rem;
+		}
 		+ .services-item {
 			margin-top: 2.3rem;
 		}
@@ -51,6 +54,10 @@
 			margin-bottom: 3rem;
 			white-space: pre-wrap;
 			line-height: 1.3;
+			@media (max-width: 767px) {
+				font-size: 2.4rem;
+				margin-bottom: 2rem;
+			}
 		}
 		&__description {
 			font-size: 2rem;
@@ -58,6 +65,9 @@
 			font-weight: 500;
 			margin-bottom: 2.3rem;
 			white-space: pre-wrap;
+			@media (max-width: 767px) {
+				font-size: 1.6rem;
+			}
 		}
 		.v-button {
 			min-width: 17rem;
