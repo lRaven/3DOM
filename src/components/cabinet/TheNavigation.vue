@@ -135,10 +135,6 @@
 			},
 		},
 		watch: {
-			isNavMinimized() {
-				this.$emit("update:modelValue", this.isNavMinimized);
-			},
-
 			document_width() {
 				if (this.document_width <= 1050) {
 					this.$emit("minimizeNav");
@@ -164,9 +160,11 @@
 		},
 		methods: {
 			navActions(link) {
-				link
-					? (this.$router.push(link), this.$emit("minimizeNav"))
-					: this.$emit("openPopupKolotok");
+				link ? this.$router.push(link) : this.$emit("openPopupKolotok");
+
+				if (this.document_width <= 767) {
+					this.$emit("minimizeNav");
+				}
 			},
 		},
 		mounted() {

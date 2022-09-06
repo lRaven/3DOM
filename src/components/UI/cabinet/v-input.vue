@@ -78,6 +78,13 @@
 			font-size: 1.8rem;
 			transition: all 0.2s ease;
 			width: 100%;
+			@media (max-width: 767px) {
+				padding: 1rem;
+			}
+			@media (max-width: 540px) {
+				font-size: 1.4rem;
+			}
+
 			&.transparent {
 				border-color: transparent;
 				background-color: transparent;

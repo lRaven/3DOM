@@ -8,8 +8,8 @@
 			вычету опций!
 		</h3>
 
-		<div class="the-rates__list">
-			<div data-aos="fade-up" class="the-rates__row">
+		<div data-aos="fade-up" class="the-rates__list">
+			<div class="the-rates__row">
 				<div
 					class="the-rates__rate-top"
 					:class="{ selected: selectedRate === rate.id }"
@@ -33,7 +33,9 @@
 								{{ rate.price }} руб.
 							</span>
 						</p>
-						<p class="the-rates__rate-period">Срок от 20 дней</p>
+						<p class="the-rates__rate-period">
+							Срок от {{ rate.period }} дней
+						</p>
 					</template>
 
 					<p class="the-rates__rate-price-individual" v-else>
@@ -59,10 +61,7 @@
 				</div>
 			</div>
 
-			<div
-				data-aos="fade-up"
-				class="the-rates__row the-rates__rate-checklist"
-			>
+			<div class="the-rates__row the-rates__rate-checklist">
 				<div
 					class="the-rates__rate-checklist-item"
 					v-for="checklist in rates[0].checklist"
@@ -93,7 +92,7 @@
 				</div>
 			</div>
 
-			<div data-aos="fade-up" class="the-rates__row">
+			<div class="the-rates__row">
 				<div
 					class="the-rates__rate-buttons"
 					:class="{ selected: rate.id === this.selectedRate }"
@@ -151,7 +150,7 @@
 		}
 		&__row {
 			display: grid;
-			grid-template-columns: 27rem repeat(4, 1fr);
+			grid-template-columns: 21rem repeat(4, 1fr);
 			gap: 1rem;
 			&:first-child,
 			&:nth-child(3) {
@@ -267,21 +266,27 @@
 				display: block;
 				&-item {
 					display: grid;
-					grid-template-columns: 27rem repeat(4, 1fr);
+					grid-template-columns: 21rem repeat(4, 1fr);
 					gap: 1rem;
 					align-items: center;
 
 					&-description {
-						font-size: 1.4rem;
-						font-weight: 600;
+						font-size: 1.2rem;
+						font-weight: 500;
+						line-height: 1.2;
 						padding: 0.5rem 1rem;
 					}
 					&-tick {
+						height: 4rem;
+						width: 4rem;
+
 						&-wrapper {
 							position: relative;
 							display: flex;
 							justify-content: center;
+							align-items: center;
 							padding: 0.5rem 1rem;
+							height: 100%;
 							transition: all 0.2s ease;
 							background-color: $light-blue;
 							transition: all 0.2s ease;
@@ -303,7 +308,7 @@
 			}
 
 			&-buttons {
-				padding: 4rem 1rem 2rem 1rem;
+				padding: 2rem 1rem 2rem 1rem;
 				display: flex;
 				flex-direction: column;
 				gap: 1.5rem;

@@ -1,5 +1,10 @@
 <template>
-	<header data-aos="fade-down" class="the-header" id="header">
+	<header
+		data-aos="fade-down"
+		class="the-header"
+		id="header"
+		v-click-away="closeMobileMenu"
+	>
 		<div
 			class="the-header__container"
 			:class="{ center: !isCabinetVersion }"
@@ -154,6 +159,7 @@
 
 <script>
 	import { mapState } from "vuex";
+	import { directive } from "vue3-click-away";
 
 	export default {
 		name: "TheHeader",
@@ -241,10 +247,6 @@
 
 			showMobileMenu() {
 				this.isMobileMenuOpen = true;
-
-				if (this.document_width <= 767) {
-					this.$emit("minimizeNav");
-				}
 			},
 			closeMobileMenu() {
 				this.isMobileMenuOpen = false;
@@ -252,15 +254,12 @@
 
 			showNavMenu() {
 				this.$emit("maximizeNav");
-
-				if (this.document_width <= 767) {
-					this.isMobileMenuOpen = false;
-				}
 			},
 			closeNavMenu() {
 				this.$emit("minimizeNav");
 			},
 		},
+		directives: { ClickAway: directive },
 	};
 </script>
 
@@ -343,13 +342,14 @@
 			@media (max-width: 1050px) {
 				display: block;
 				position: absolute;
-				left: -100%;
+				left: 0;
+				transform: translateX(-100vw);
 				top: 14.5rem;
 				height: fit-content;
 				width: 66rem;
 				background-color: #fff;
 				z-index: -1;
-				transition: all 0.2s ease;
+				transition: all 0.3s ease;
 			}
 			@media (max-width: 767px) {
 				width: 100%;
@@ -359,7 +359,7 @@
 
 			&.open {
 				@media (max-width: 1050px) {
-					left: 0;
+					transform: none;
 				}
 			}
 			.the-header__link svg {
@@ -446,14 +446,15 @@
 			gap: 1rem;
 			@media (max-width: 1050px) {
 				position: absolute;
-				left: -100%;
+				left: 0;
+				transform: translateX(-100vw);
 				top: 8.5rem;
 				width: 66rem;
 				padding: 1.5rem;
 				height: 6rem;
 				background-color: $white;
 				z-index: -1;
-				transition: all 0.2s ease;
+				transition: all 0.3s ease;
 			}
 			@media (max-width: 767px) {
 				width: 100%;
@@ -463,7 +464,7 @@
 
 			&.open {
 				@media (max-width: 1050px) {
-					left: 0;
+					transform: none;
 				}
 			}
 
@@ -474,14 +475,15 @@
 				gap: 3rem;
 				@media (max-width: 1050px) {
 					position: absolute;
-					left: -100%;
+					left: 0;
 					top: 8.5rem;
+					transform: translateX(-100vw);
 					width: 66rem;
 					padding: 1.5rem;
 					height: 6rem;
 					background-color: $white;
 					z-index: -1;
-					transition: all 0.2s ease;
+					transition: all 0.3s ease;
 				}
 				@media (max-width: 767px) {
 					width: 100%;
@@ -491,7 +493,7 @@
 
 				&.open {
 					@media (max-width: 1050px) {
-						left: 0;
+						transform: none;
 					}
 				}
 			}

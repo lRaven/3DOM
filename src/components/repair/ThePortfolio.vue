@@ -1,6 +1,6 @@
 <template>
 	<section class="the-portfolio center">
-		<div class="the-portfolio__card">
+		<div data-aos="fade-up" class="the-portfolio__card">
 			<h2 class="the-portfolio__card-title">
 				Больше наших работ на vk.com
 			</h2>

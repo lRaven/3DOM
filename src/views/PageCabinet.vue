@@ -173,6 +173,7 @@
 			isMortgageCalculatorOpen: false,
 
 			isNavMinimized: false,
+			isMobileMenuOpen: false,
 		}),
 		computed: {
 			...mapState({
@@ -217,8 +218,6 @@
 
 				if (this.document_width <= 767) {
 					document.body.classList.add("locked");
-				} else {
-					document.body.classList.remove("locked");
 				}
 			},
 		},
@@ -244,6 +243,9 @@
 			padding-bottom: 5rem;
 			display: grid;
 			grid-template-columns: 1fr;
+			@media (max-width: 767px) {
+				padding-top: 6rem;
+			}
 		}
 
 		&__left-panel {
@@ -298,13 +300,13 @@
 				padding-left: 9rem;
 			}
 			@media (max-width: 767px) {
-				padding-left: 2rem;
+				padding: 2rem 1.5rem;
 			}
 
 			&.maximized {
 				padding-left: 9rem;
 				@media (max-width: 767px) {
-					padding-left: 2rem;
+					padding: 2rem 1.5rem;
 				}
 			}
 		}
@@ -360,6 +362,9 @@
 			h1 {
 				font-size: 3rem;
 				font-weight: 600;
+				@media (max-width: 540px) {
+					font-size: 2.4rem;
+				}
 			}
 		}
 	}

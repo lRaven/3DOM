@@ -44,6 +44,11 @@
 
 						<v-input
 							type="text"
+							:placeholder="
+								!userData.last_name && isNameFormDisabled
+									? 'Не указано'
+									: ''
+							"
 							:disabled="isNameFormDisabled"
 							v-model="userData.last_name"
 							:isTransparent="isNameFormDisabled"
@@ -54,6 +59,11 @@
 
 						<v-input
 							type="text"
+							:placeholder="
+								!userData.first_name && isNameFormDisabled
+									? 'Не указано'
+									: ''
+							"
 							:disabled="isNameFormDisabled"
 							v-model="userData.first_name"
 							:isTransparent="isNameFormDisabled"
@@ -81,6 +91,11 @@
 
 						<v-input
 							type="tel"
+							:placeholder="
+								!userData.phone_number && isPhoneFormDisabled
+									? 'Не указано'
+									: ''
+							"
 							:disabled="isPhoneFormDisabled"
 							v-model="userData.phone_number"
 							:isTransparent="isPhoneFormDisabled"
@@ -108,6 +123,11 @@
 
 						<v-input
 							type="email"
+							:placeholder="
+								!userData.email && isEmailFormDisabled
+									? 'Не указано'
+									: ''
+							"
 							:disabled="isEmailFormDisabled"
 							v-model="userData.email"
 							:isTransparent="isEmailFormDisabled"
@@ -437,6 +457,9 @@
 		&__title {
 			margin-bottom: 1rem;
 			padding-left: 2rem;
+			@media (max-width: 767px) {
+				padding-left: 0;
+			}
 		}
 
 		&__header {
@@ -445,6 +468,9 @@
 			align-items: center;
 			padding: 0 5rem 0 2rem;
 			margin-bottom: 3rem;
+			@media (max-width: 767px) {
+				padding: 0;
+			}
 		}
 
 		&__me {
@@ -466,6 +492,7 @@
 				width: 7rem;
 				height: 7rem;
 				display: grid;
+
 				&:hover {
 					.page-profile__image-pick {
 						opacity: 1;
@@ -505,6 +532,9 @@
 			.v-button {
 				box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
 				border-radius: 1rem;
+				@media (max-width: 540px) {
+					padding: 1rem;
+				}
 			}
 		}
 
@@ -521,12 +551,18 @@
 			&-header {
 				padding: 3rem 7rem;
 				border-bottom: 0.1rem solid #c4c4c4;
+				@media (max-width: 767px) {
+					padding: 2rem 1.5rem;
+				}
 			}
 
 			&-title {
 				color: $blue;
 				font-size: 2rem;
 				font-weight: 600;
+				@media (max-width: 540px) {
+					font-size: 1.8rem;
+				}
 			}
 
 			&-body {
@@ -535,23 +571,36 @@
 				justify-content: center;
 				flex-direction: column;
 				gap: 2rem;
+				@media (max-width: 767px) {
+					padding: 3rem 1.5rem;
+				}
 			}
 
 			&-row {
 				display: grid;
 				grid-template-columns: 1fr 2fr 1fr;
 				align-items: center;
+				grid-gap: 2rem;
 				font-size: 1.8rem;
 				font-weight: 500;
 				min-height: 2.2rem;
+				@media (max-width: 540px) {
+					grid-template-columns: 1fr;
+				}
 			}
 
 			&-key {
 				color: #979797;
+				@media (max-width: 540px) {
+					font-size: 1.4rem;
+				}
 			}
 
 			&-value {
 				font-size: 2.2rem;
+				@media (max-width: 540px) {
+					font-size: 1.4rem;
+				}
 			}
 
 			&-change {
@@ -563,6 +612,10 @@
 				font-weight: 600;
 				background-color: transparent;
 				font-size: inherit;
+				@media (max-width: 540px) {
+					font-size: 1.4rem;
+					justify-self: flex-start;
+				}
 
 				&::after {
 					content: "";
@@ -586,6 +639,24 @@
 
 		&__password {
 			padding: 0 2rem;
+			@media (max-width: 540px) {
+				padding: 0;
+			}
+		}
+	}
+</style>
+
+<style lang="scss">
+	.page-profile {
+		&__item {
+			&-row {
+				.v-input {
+					&__input.transparent {
+						padding-left: 0;
+						padding-right: 0;
+					}
+				}
+			}
 		}
 	}
 </style>
