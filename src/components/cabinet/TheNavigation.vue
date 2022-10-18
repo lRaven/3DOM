@@ -7,8 +7,8 @@
 			:class="{ minimized: isNavMinimized }"
 			@click="
 				isNavMinimized === true
-					? this.$emit('maximizeNav')
-					: this.$emit('minimizeNav')
+					? this.$emit('maximize-nav')
+					: this.$emit('minimize-nav')
 			"
 		>
 			<img
@@ -22,10 +22,11 @@
 		<h1 class="the-navigation__title" v-show="!isNavMinimized">
 			Личный кабинет
 		</h1>
-		<ul class="the-navigation__list" v-if="currentTabs === 'admin'">
+
+		<ul class="the-navigation__list">
 			<li
 				data-aos="fade-up"
-				v-for="tab in tabsAdmin"
+				v-for="tab in tabs"
 				:key="tab.id"
 				class="the-navigation__item"
 				:title="tab.description"
@@ -38,7 +39,7 @@
 					<img
 						:src="selectedTab === tab.tab ? tab.iconSelected : tab.icon"
 						class="the-navigation__icon"
-						alt=""
+						alt="icon"
 					/>
 				</div>
 				<p
@@ -51,35 +52,7 @@
 				</p>
 			</li>
 		</ul>
-		<ul class="the-navigation__list" v-else>
-			<li
-				data-aos="fade-up"
-				v-for="tab in tabsUser"
-				:key="tab.id"
-				class="the-navigation__item"
-				:title="tab.description"
-				@click="navActions(tab.link)"
-			>
-				<div
-					class="the-navigation__icon-wrapper"
-					:class="{ minimized: isNavMinimized }"
-				>
-					<img
-						:src="selectedTab === tab.tab ? tab.iconSelected : tab.icon"
-						class="the-navigation__icon"
-						alt=""
-					/>
-				</div>
-				<p
-					v-show="!isNavMinimized"
-					:class="`the-navigation__description${
-						selectedTab === tab.tab ? '-bold' : ''
-					}`"
-				>
-					{{ tab.description }}
-				</p>
-			</li>
-		</ul>
+
 		<button
 			v-show="documentWidth > 1050"
 			type="button"
@@ -87,8 +60,8 @@
 			:class="{ minimized: isNavMinimized }"
 			@click="
 				isNavMinimized === true
-					? this.$emit('maximizeNav')
-					: this.$emit('minimizeNav')
+					? this.$emit('maximize-nav')
+					: this.$emit('minimize-nav')
 			"
 		>
 			<img
@@ -107,16 +80,19 @@
 			text="Напишите нам"
 			type="button"
 			color="white"
-			@click="this.$emit('openPopup')"
+			@click="this.$emit('open-popup')"
 		></v-button>
 	</div>
 </template>
 
 <script>
-	import { mapState } from 'vuex';
+	import { computed, watch, onMounted } from 'vue';
+	import { useStore } from 'vuex';
+	import { useRouter } from 'vue-router';
 
 	export default {
 		name: 'TheNavigation',
+		emits: ['minimize-nav', 'maximize-nav', 'open-popup-kolotok'],
 		props: {
 			selectedTab: String,
 			isNavMinimized: {
@@ -124,43 +100,28 @@
 				required: true,
 			},
 		},
-		watch: {
-			documentWidth() {
-				if (this.documentWidth <= 1050) {
-					this.$emit('minimizeNav');
-				}
-			},
-		},
-		computed: {
-			currentTabs() {
-				if (this.role === 'AdminCRM' || this.is_superuser === true) {
-					return 'admin';
-				} else return 'user';
-			},
 
-			...mapState({
-				tabsUser: (state) => state.cabinet.tabsUser,
-				tabsAdmin: (state) => state.cabinet.tabsAdmin,
+		setup(_, { emit }) {
+			const store = useStore();
+			const tabs = computed(() => store.getters.userTabs);
+			const documentWidth = computed(() => store.state.documentWidth);
 
-				role: (state) => state.cabinet.user.role,
-				is_superuser: (state) => state.cabinet.user.is_superuser,
+			watch(documentWidth, () => {
+				if (documentWidth.value <= 1050) emit('minimize-nav');
+			});
 
-				documentWidth: (state) => state.documentWidth,
-			}),
-		},
-		methods: {
-			navActions(link) {
-				link ? this.$router.push(link) : this.$emit('openPopupKolotok');
+			const router = useRouter();
+			const navActions = (link) => {
+				link ? router.push(link) : emit('open-popup-kolotok');
 
-				if (this.documentWidth <= 767) {
-					this.$emit('minimizeNav');
-				}
-			},
-		},
-		mounted() {
-			if (this.documentWidth <= 1050) {
-				this.$emit('minimizeNav');
-			}
+				if (this.documentWidth <= 767) emit('minimize-nav');
+			};
+
+			onMounted(() => {
+				if (documentWidth.value <= 1050) emit('minimize-nav');
+			});
+
+			return { tabs, documentWidth, navActions };
 		},
 	};
 </script>

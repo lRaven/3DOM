@@ -14,12 +14,12 @@
 				:class="{ minimized: isNavMinimized }"
 			>
 				<the-navigation
-					@openPopupKolotok="openPopupKolotok"
-					@openPopup="openPopup"
-					@maximizeNav="maximizeNav"
-					@minimizeNav="minimizeNav"
-					:selectedTab="tab"
-					:isNavMinimized="isNavMinimized"
+					@open-popup-kolotok="openPopupKolotok"
+					@open-popup="openPopup"
+					@maximize-nav="maximizeNav"
+					@minimize-nav="minimizeNav"
+					:selected-tab="tab"
+					:is-nav-minimized="isNavMinimized"
 				></the-navigation>
 				<div class="page-cabinet__hint" v-show="!isNavMinimized">
 					<p>
@@ -113,7 +113,10 @@
 </template>
 
 <script>
-	import { mapState } from 'vuex';
+	import { useStore } from 'vuex';
+	import { useRouter } from 'vue-router';
+	import { ref, watch, computed } from 'vue';
+
 	import { supportForm } from '@/mixins/support';
 
 	import TheHeader from '@/components/general/TheHeader';
@@ -146,68 +149,82 @@
 
 			mortgageCalculator,
 		},
-		watch: {
-			userAuth() {
-				if (this.userAuth === false) this.$router.push({ name: 'Login' });
-			},
-		},
-		data: () => ({
-			isPopupKolotokOpen: false,
-			isPopupOpen: false,
-			isMortgageCalculatorOpen: false,
+		setup() {
+			const store = useStore();
+			const documentWidth = computed(() => store.state.documentWidth);
+			const tab = computed(() => store.state.cabinet.tab);
+			const userAuth = computed(() => store.state.cabinet.userAuth);
 
-			isNavMinimized: false,
-			isMobileMenuOpen: false,
-		}),
-		computed: {
-			...mapState({
-				tab: (state) => state.cabinet.tab,
-				userAuth: (state) => state.cabinet.userAuth,
-				documentWidth: (state) => state.documentWidth,
-			}),
-		},
-		methods: {
-			openPopupKolotok() {
-				this.isPopupKolotokOpen = true;
+			const router = useRouter();
+			watch(userAuth, () => {
+				if (userAuth.value === false) router.push({ name: 'Login' });
+			});
+
+			const isPopupKolotokOpen = ref(false);
+			const openPopupKolotok = () => {
+				isPopupKolotokOpen.value = true;
 				document.body.classList.add('locked');
-			},
-			closePopupKolotok() {
-				this.isPopupKolotokOpen = false;
+			};
+			const closePopupKolotok = () => {
+				isPopupKolotokOpen.value = false;
 				document.body.classList.remove('locked');
-			},
+			};
 
-			openPopup() {
-				this.isPopupOpen = true;
-			},
-			closePopup() {
-				this.isPopupOpen = false;
+			const isPopupOpen = ref(false);
+			const openPopup = () => {
+				isPopupOpen.value = true;
+			};
+			const closePopup = () => {
+				isPopupOpen.value = false;
 				document.body.classList.remove('locked');
-			},
+			};
 
-			openMortgageCalculator() {
-				this.isMortgageCalculatorOpen = true;
+			const isMortgageCalculatorOpen = ref(false);
+			const openMortgageCalculator = () => {
+				isMortgageCalculatorOpen.value = true;
 				document.body.classList.add('locked');
-			},
-			closeMortgageCalculator() {
-				this.isMortgageCalculatorOpen = false;
+			};
+			const closeMortgageCalculator = () => {
+				isMortgageCalculatorOpen.value = false;
 				document.body.classList.remove('locked');
-			},
+			};
 
-			minimizeNav() {
-				this.isNavMinimized = true;
+			const isNavMinimized = ref(false);
+			const minimizeNav = () => {
+				isNavMinimized.value = true;
 				document.body.classList.remove('locked');
-			},
-			maximizeNav() {
-				this.isNavMinimized = false;
+			};
+			const maximizeNav = () => {
+				isNavMinimized.value = false;
 
-				if (this.documentWidth <= 767) {
+				if (documentWidth.value <= 767) {
 					document.body.classList.add('locked');
 				}
-			},
-		},
-		setup() {
+			};
+
 			const toast = useToast();
-			return { toast };
+			return {
+				documentWidth,
+				tab,
+				userAuth,
+				toast,
+
+				isPopupKolotokOpen,
+				openPopupKolotok,
+				closePopupKolotok,
+
+				isPopupOpen,
+				openPopup,
+				closePopup,
+
+				isMortgageCalculatorOpen,
+				openMortgageCalculator,
+				closeMortgageCalculator,
+
+				isNavMinimized,
+				minimizeNav,
+				maximizeNav,
+			};
 		},
 	};
 </script>
@@ -276,21 +293,21 @@
 		}
 
 		&__main {
-			padding: 4rem 2rem 2rem 36rem;
+			padding-left: 34rem;
 			width: 100%;
 			grid-area: 1/1;
 			transition: all 0.3s ease;
 			@media (max-width: 1050px) {
-				padding-left: 9rem;
+				padding-left: 7rem;
 			}
 			@media (max-width: 767px) {
-				padding: 2rem 1.5rem;
+				padding: 0;
 			}
 
 			&.maximized {
-				padding-left: 9rem;
+				padding-left: 7rem;
 				@media (max-width: 767px) {
-					padding: 2rem 1.5rem;
+					padding: 0;
 				}
 			}
 		}
@@ -341,11 +358,23 @@
 </style>
 
 <style lang="scss">
+	@import '@/assets/scss/variables';
+
 	.page-cabinet {
 		&__main {
+			section {
+				padding: 4rem;
+				@media (max-width: 1023px) {
+					padding: 2rem;
+				}
+				@media (max-width: 767px) {
+					padding: 2rem 1.5rem;
+				}
+			}
 			h1 {
 				font-size: 3rem;
 				font-weight: 600;
+				color: $dark;
 				@media (max-width: 540px) {
 					font-size: 2.4rem;
 				}

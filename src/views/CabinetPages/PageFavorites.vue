@@ -1,12 +1,8 @@
 <template>
-	<div class="page-favorites">
+	<section class="page-favorites">
 		<div class="page-favorites__header">
 			<h1 class="page-favorites__title">
-				{{
-					isAllApartmentVisible
-						? "Добавление в избранное"
-						: "Избранное"
-				}}
+				{{ isAllApartmentVisible ? 'Добавление в избранное' : 'Избранное' }}
 			</h1>
 
 			<transition mode="out-in">
@@ -107,20 +103,20 @@
 				v-show="!isAllApartmentsLoaded && isAllApartmentVisible"
 			></v-loader>
 		</div>
-	</div>
+	</section>
 </template>
 
 <script>
-	import FavoritesApartment from "@/components/cabinet/FavoritesApartment.vue";
+	import FavoritesApartment from '@/components/cabinet/FavoritesApartment.vue';
 
-	import { mapState, mapMutations } from "vuex";
+	import { mapState, mapMutations } from 'vuex';
 
-	import { getApartments } from "@/api/academ";
-	import { getFavoriteApartmentNumber } from "@/api/favorite";
-	import { sortArrayByNumberKey } from "@/js/sortArray";
+	import { getApartments } from '@/api/academ';
+	import { getFavoriteApartmentNumber } from '@/api/favorite';
+	import { sortArrayByNumberKey } from '@/js/sortArray';
 
 	export default {
-		name: "PageFavorites",
+		name: 'PageFavorites',
 		components: { FavoritesApartment },
 		watch: {
 			async isAllApartmentVisible() {
@@ -136,7 +132,7 @@
 						throw new Error(err);
 					}
 				} else {
-					this.sortBy = "cost";
+					this.sortBy = 'cost';
 				}
 			},
 
@@ -151,7 +147,7 @@
 				this.sortedFavoriteApartments = sortArrayByNumberKey({
 					array: this.favorites,
 					key: this.sortBy,
-					direction: "ascending",
+					direction: 'ascending',
 				});
 			},
 		},
@@ -188,45 +184,43 @@
 		data: () => ({
 			isAllApartmentVisible: false,
 			isAllApartmentsLoaded: false,
-			sortBy: "cost",
+			sortBy: 'cost',
 
 			sortedFavoriteApartments: [],
 		}),
 		methods: {
 			...mapMutations([
-				"SET_SORT",
-				"setTab",
-				"setFavorites",
-				"clearApartments",
+				'SET_SORT',
+				'setTab',
+				'setFavorites',
+				'clearApartments',
 			]),
 
 			//* функция для открытия всплывающего окна
 			openPopup() {
-				const images = document.querySelectorAll(".favorite__layout");
+				const images = document.querySelectorAll('.favorite__layout');
 				images.forEach((image) => {
-					image.addEventListener("click", () => {
-						const src = image
-							.querySelector("img")
-							.getAttribute("src");
-						const popup = document.querySelector(".popup");
-						const popupImg = popup.querySelector(".popup__image");
+					image.addEventListener('click', () => {
+						const src = image.querySelector('img').getAttribute('src');
+						const popup = document.querySelector('.popup');
+						const popupImg = popup.querySelector('.popup__image');
 
-						popupImg.setAttribute("src", src);
+						popupImg.setAttribute('src', src);
 						document
-							.querySelector("body")
-							.setAttribute("style", "overflow: hidden");
-						popup.classList.add("open");
+							.querySelector('body')
+							.setAttribute('style', 'overflow: hidden');
+						popup.classList.add('open');
 					});
 				});
 			},
 		},
 		created() {
-			this.setTab("favorites");
+			this.setTab('favorites');
 			getFavoriteApartmentNumber();
 			this.sortedFavoriteApartments = sortArrayByNumberKey({
 				array: this.favorites,
 				key: this.sortBy,
-				direction: "ascending",
+				direction: 'ascending',
 			});
 		},
 		unmounted() {
@@ -236,7 +230,7 @@
 </script>
 
 <style lang="scss" scoped>
-	@import "@/assets/scss/variables";
+	@import '@/assets/scss/variables';
 
 	.page-favorites {
 		color: $dark;

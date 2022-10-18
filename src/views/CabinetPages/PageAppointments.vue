@@ -1,5 +1,5 @@
 <template>
-	<div class="page-appointment">
+	<section class="page-appointment">
 		<div class="page-appointment__header" v-once>
 			<h1 class="page-appointment__title">Встречи</h1>
 			<div class="page-appointment__notification">
@@ -20,7 +20,7 @@
 		<div class="page-appointment__body">
 			<appointment-form />
 		</div>
-	</div>
+	</section>
 </template>
 
 <script>

@@ -1,23 +1,22 @@
 <template>
-	<label class="v-checkbox" v-for="item in items" :key="item.id">
+	<label class="v-checkbox">
 		<input type="checkbox" class="v-checkbox__real" :name="name" />
-		<span class="v-checkbox__fake" :class="circle">{{ item.text }}</span>
+		<span class="v-checkbox__fake">{{ description }}</span>
 	</label>
 </template>
 
 <script>
 	export default {
-		name: "vCheckbox",
+		name: 'vCheckbox',
 		props: {
-			items: Array,
 			name: String,
-			circle: String,
+			description: [String, Number],
 		},
 	};
 </script>
 
 <style lang="scss" scoped>
-	@import "@/assets/scss/variables";
+	@import '@/assets/scss/variables';
 
 	.v-checkbox {
 		&__real {
@@ -48,14 +47,5 @@
 				transition: all 0.5s ease;
 			}
 		}
-	}
-	.circle {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		padding: 0;
-		border-radius: 50%;
-		width: 4.5rem;
-		height: 4.5rem;
 	}
 </style>

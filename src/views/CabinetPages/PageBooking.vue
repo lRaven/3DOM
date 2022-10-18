@@ -1,5 +1,5 @@
 <template>
-	<div class="page-booking">
+	<section class="page-booking">
 		<div class="page-booking__header">
 			<h1 class="page-booking__title" v-once>Бронирование</h1>
 			<div class="page-booking__notification" v-once>
@@ -31,7 +31,7 @@
 				></booking-apartment>
 			</transition-group>
 		</div>
-	</div>
+	</section>
 </template>
 
 <script>

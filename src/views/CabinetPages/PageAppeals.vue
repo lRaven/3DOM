@@ -1,5 +1,5 @@
 <template>
-	<div class="page-appeals">
+	<section class="page-appeals">
 		<h1 class="page-appeals__title" v-once>Обращения</h1>
 
 		<v-loader v-show="!isChatsLoaded"></v-loader>
@@ -15,9 +15,7 @@
 					class="page-appeals__empty-img"
 					v-once
 				/>
-				<p class="page-appeals__empty-description" v-once>
-					Обращений нет
-				</p>
+				<p class="page-appeals__empty-description" v-once>Обращений нет</p>
 				<v-button
 					text="Написать нам"
 					@click="this.$emit('openPopup')"
@@ -39,17 +37,17 @@
 				</transition-group>
 			</div>
 		</div>
-	</div>
+	</section>
 </template>
 
 <script>
-	import { mapMutations } from "vuex";
-	import { getMessages, getChats } from "@/api/messenger";
+	import { mapMutations } from 'vuex';
+	import { getMessages, getChats } from '@/api/messenger';
 
-	import AppealCard from "@/components/cabinet/appeals/AppealCard.vue";
+	import AppealCard from '@/components/cabinet/appeals/AppealCard.vue';
 
 	export default {
-		name: "PageAppeals",
+		name: 'PageAppeals',
 		components: { AppealCard },
 		data: () => ({
 			isChatsLoaded: false,
@@ -58,7 +56,7 @@
 		}),
 
 		methods: {
-			...mapMutations(["setTab"]),
+			...mapMutations(['setTab']),
 
 			async getAppealChats() {
 				try {
@@ -86,7 +84,7 @@
 			},
 		},
 		created() {
-			this.setTab("appeals");
+			this.setTab('appeals');
 			this.getAppealChats();
 			this.getChatMessages();
 		},
@@ -94,7 +92,7 @@
 </script>
 
 <style lang="scss" scoped>
-	@import "@/assets/scss/variables";
+	@import '@/assets/scss/variables';
 
 	.page-appeals {
 		position: relative;

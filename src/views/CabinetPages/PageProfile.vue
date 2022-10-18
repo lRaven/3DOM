@@ -1,5 +1,5 @@
 <template>
-	<div class="page-profile">
+	<section class="page-profile">
 		<h1 class="page-profile__title" v-once>Мой профиль</h1>
 
 		<div class="page-profile__header">
@@ -18,9 +18,7 @@
 							accept="image/*"
 							@change="change_avatar($event.target)"
 						/>
-						<div class="page-profile__image-pick-btn">
-							Изменить фото
-						</div>
+						<div class="page-profile__image-pick-btn">Изменить фото</div>
 					</label>
 				</div>
 
@@ -45,9 +43,7 @@
 						<v-input
 							type="text"
 							:placeholder="
-								!userData.last_name && isNameFormDisabled
-									? 'Не указано'
-									: ''
+								!userData.last_name && isNameFormDisabled ? 'Не указано' : ''
 							"
 							:disabled="isNameFormDisabled"
 							v-model="userData.last_name"
@@ -60,9 +56,7 @@
 						<v-input
 							type="text"
 							:placeholder="
-								!userData.first_name && isNameFormDisabled
-									? 'Не указано'
-									: ''
+								!userData.first_name && isNameFormDisabled ? 'Не указано' : ''
 							"
 							:disabled="isNameFormDisabled"
 							v-model="userData.first_name"
@@ -78,7 +72,7 @@
 									: send_new_personal_data()
 							"
 						>
-							{{ isNameFormDisabled ? "Изменить" : "Применить" }}
+							{{ isNameFormDisabled ? 'Изменить' : 'Применить' }}
 						</button>
 					</div>
 				</form>
@@ -87,9 +81,7 @@
 			<div class="page-profile__item">
 				<form class="page-profile__item-body">
 					<div class="page-profile__item-row">
-						<p class="page-profile__item-key" v-once>
-							Номер телефона:
-						</p>
+						<p class="page-profile__item-key" v-once>Номер телефона:</p>
 
 						<v-input
 							type="tel"
@@ -112,7 +104,7 @@
 									: (isPhoneFormDisabled = true)
 							"
 						>
-							{{ isPhoneFormDisabled ? "Изменить" : "Применить" }}
+							{{ isPhoneFormDisabled ? 'Изменить' : 'Применить' }}
 						</button>
 					</div>
 				</form>
@@ -126,9 +118,7 @@
 						<v-input
 							type="email"
 							:placeholder="
-								!userData.email && isEmailFormDisabled
-									? 'Не указано'
-									: ''
+								!userData.email && isEmailFormDisabled ? 'Не указано' : ''
 							"
 							:disabled="isEmailFormDisabled"
 							v-model="userData.email"
@@ -144,7 +134,7 @@
 									: (isEmailFormDisabled = true)
 							"
 						>
-							{{ isEmailFormDisabled ? "Изменить" : "Применить" }}
+							{{ isEmailFormDisabled ? 'Изменить' : 'Применить' }}
 						</button>
 					</div>
 				</form>
@@ -181,13 +171,8 @@
 						</button>
 					</div>
 
-					<div
-						class="page-profile__item-row"
-						v-if="!isPasswordFormDisabled"
-					>
-						<p class="page-profile__item-key" v-once>
-							Новый пароль:
-						</p>
+					<div class="page-profile__item-row" v-if="!isPasswordFormDisabled">
+						<p class="page-profile__item-key" v-once>Новый пароль:</p>
 						<v-input
 							type="password"
 							:disabled="isPasswordFormDisabled"
@@ -196,13 +181,8 @@
 						></v-input>
 					</div>
 
-					<div
-						class="page-profile__item-row"
-						v-if="!isPasswordFormDisabled"
-					>
-						<p class="page-profile__item-key" v-once>
-							Подтверждение пароля:
-						</p>
+					<div class="page-profile__item-row" v-if="!isPasswordFormDisabled">
+						<p class="page-profile__item-key" v-once>Подтверждение пароля:</p>
 						<v-input
 							type="password"
 							:disabled="isPasswordFormDisabled"
@@ -231,33 +211,33 @@
 				</form>
 			</div>
 		</div>
-	</div>
+	</section>
 </template>
 
 <script>
-	import { mapState, mapMutations, mapActions } from "vuex";
+	import { mapState, mapMutations, mapActions } from 'vuex';
 	import {
 		logout,
 		change_user_data,
 		change_password,
 		upload_avatar,
-	} from "@/api/user";
-	import { returnErrorMessages } from "@/js/returnErrorMessages";
+	} from '@/api/user';
+	import { returnErrorMessages } from '@/js/returnErrorMessages';
 
-	import vInput from "@/components/UI/cabinet/v-input.vue";
+	import vInput from '@/components/UI/cabinet/v-input.vue';
 
-	import { useToast } from "vue-toastification";
+	import { useToast } from 'vue-toastification';
 
 	export default {
-		name: "PageProfile",
+		name: 'PageProfile',
 		components: { vInput },
 		watch: {
 			user: {
 				handler() {
 					this.userData = {
-						password: "",
-						password_new: "",
-						password_repeat: "",
+						password: '',
+						password_new: '',
+						password_repeat: '',
 						...this.user,
 					};
 				},
@@ -276,9 +256,7 @@
 			}),
 
 			isPasswordsSame() {
-				if (
-					this.userData.password_new === this.userData.password_repeat
-				)
+				if (this.userData.password_new === this.userData.password_repeat)
 					return true;
 				else return false;
 			},
@@ -303,15 +281,15 @@
 			isPasswordFormDisabled: true,
 
 			userData: {},
-			new_avatar: "",
+			new_avatar: '',
 		}),
 		methods: {
-			...mapMutations(["setTab"]),
+			...mapMutations(['setTab']),
 			...mapActions([
-				"getUser",
-				"clearCabinetState",
-				"clearAcademState",
-				"clearCRMState",
+				'getUser',
+				'clearCabinetState',
+				'clearAcademState',
+				'clearCRMState',
 			]),
 
 			//* выход с аккаунта
@@ -321,12 +299,12 @@
 
 					if (response.status === 204) {
 						//* стереть из vuex,cookies данные юзера
-						this.$cookies.remove("auth_token");
+						this.$cookies.remove('auth_token');
 
 						this.clearCabinetState();
 						this.clearAcademState();
 						this.clearCRMState();
-						console.log("Logout successfully");
+						console.log('Logout successfully');
 					}
 				} catch (err) {
 					throw new Error(err);
@@ -341,8 +319,8 @@
 					});
 
 					if (response.status === 200) {
-						this.toast.success("ФИО обновлена");
-						console.log("personal data changed");
+						this.toast.success('ФИО обновлена');
+						console.log('personal data changed');
 
 						this.isNameFormDisabled = true;
 
@@ -367,8 +345,8 @@
 					);
 
 					if (response.status === 204) {
-						this.toast.success("Пароль изменён");
-						console.log("password changed");
+						this.toast.success('Пароль изменён');
+						console.log('password changed');
 						this.resetPasswordForm();
 						this.isPasswordFormDisabled = true;
 					}
@@ -391,13 +369,13 @@
 					);
 
 					if (response.status === 200) {
-						console.log("Avatar changed");
-						this.toast.success("Изображение профиля изменено");
+						console.log('Avatar changed');
+						this.toast.success('Изображение профиля изменено');
 
 						try {
 							const response = await this.getUser();
 							if (response.status === 200) {
-								this.new_avatar = "";
+								this.new_avatar = '';
 							}
 						} catch (err) {
 							throw new Error(err);
@@ -423,7 +401,7 @@
 
 				//* функционал предпросмотра загруженной аватарки
 				const fileReader = new FileReader();
-				fileReader.addEventListener("load", () => {
+				fileReader.addEventListener('load', () => {
 					this.userData.avatar = fileReader.result;
 				});
 
@@ -431,17 +409,17 @@
 			},
 
 			resetPasswordForm() {
-				this.userData.password = "";
-				this.userData.password_new = "";
-				this.userData.password_repeat = "";
+				this.userData.password = '';
+				this.userData.password_new = '';
+				this.userData.password_repeat = '';
 			},
 		},
 		created() {
-			this.setTab("profile");
+			this.setTab('profile');
 			this.userData = {
-				password: "",
-				password_new: "",
-				password_repeat: "",
+				password: '',
+				password_new: '',
+				password_repeat: '',
 				...this.user,
 			};
 		},
@@ -453,7 +431,7 @@
 </script>
 
 <style lang="scss" scoped>
-	@import "@/assets/scss/variables";
+	@import '@/assets/scss/variables';
 
 	.page-profile {
 		color: $dark;
@@ -622,7 +600,7 @@
 				}
 
 				&::after {
-					content: "";
+					content: '';
 					position: absolute;
 					bottom: -0.2rem;
 					left: 0;

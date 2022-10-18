@@ -1,16 +1,11 @@
 <template>
-	<div class="page-bonuses">
+	<section class="page-bonuses">
 		<div class="page-bonuses__header">
 			<h1 class="page-bonuses__title" v-once>Бонусы</h1>
 
 			<div class="page-bonuses__tabs">
 				<label ref="tab_all" @click="this.tab = 'tab_all'">
-					<input
-						type="radio"
-						name="tabs"
-						class="radio__real"
-						checked
-					/>
+					<input type="radio" name="tabs" class="radio__real" checked />
 					<span class="radio__fake"> Бонусные программы </span>
 				</label>
 				<label ref="tab_personal" @click="this.tab = 'tab_personal'">
@@ -112,10 +107,7 @@
 				@closePopup="closePopup"
 				title="3DOM консультация"
 			>
-				<form
-					@submit.prevent=""
-					class="page-bonuses__consultation-request"
-				>
+				<form @submit.prevent="" class="page-bonuses__consultation-request">
 					<p class="page-bonuses__consultation-request-description">
 						Отправьте заявку<br />
 						для получения консультации
@@ -145,20 +137,20 @@
 				</form>
 			</v-popup>
 		</transition>
-	</div>
+	</section>
 </template>
 
 <script>
-	import ServicesItem from "@/components/cabinet/ServicesItem.vue";
+	import ServicesItem from '@/components/cabinet/ServicesItem.vue';
 
-	import AcademInput from "@/components/academ/academ-input.vue";
-	import vCheckbox from "@/components/academ/v-checkbox.vue";
+	import AcademInput from '@/components/academ/academ-input.vue';
+	import vCheckbox from '@/components/academ/v-checkbox.vue';
 
-	import { mapState, mapMutations } from "vuex";
-	import { requestSupportForm } from "@/mixins/support";
+	import { mapState, mapMutations } from 'vuex';
+	import { requestSupportForm } from '@/mixins/support';
 
 	export default {
-		name: "PageBonuses",
+		name: 'PageBonuses',
 		mixins: [requestSupportForm],
 		components: {
 			ServicesItem,
@@ -179,7 +171,7 @@
 				documentWidth: (state) => state.documentWidth,
 			}),
 			tabLinePosition() {
-				if (this.tab === "tab_all") return 0;
+				if (this.tab === 'tab_all') return 0;
 				else {
 					if (this.documentWidth <= 540) {
 						return this.documentWidth / 2 - 15;
@@ -190,13 +182,13 @@
 			},
 		},
 		data: () => ({
-			tab: "tab_all",
+			tab: 'tab_all',
 			isPopupVisible: false,
 
 			tabLineWidth: 0,
 		}),
 		methods: {
-			...mapMutations(["setTab"]),
+			...mapMutations(['setTab']),
 
 			getTabLineWidth() {
 				if (this.documentWidth <= 540) {
@@ -208,14 +200,14 @@
 
 			closePopup() {
 				this.isPopupVisible = false;
-				document.body.classList.remove("locked");
+				document.body.classList.remove('locked');
 			},
 			openPopup() {
 				this.isPopupVisible = true;
 			},
 		},
 		created() {
-			this.setTab("bonuses");
+			this.setTab('bonuses');
 		},
 		mounted() {
 			this.getTabLineWidth();
@@ -224,7 +216,7 @@
 </script>
 
 <style lang="scss" scoped>
-	@import "@/assets/scss/variables";
+	@import '@/assets/scss/variables';
 
 	.page-bonuses {
 		color: $dark;

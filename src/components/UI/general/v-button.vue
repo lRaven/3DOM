@@ -7,15 +7,15 @@
 
 <script>
 	export default {
-		name: "vButton",
+		name: 'vButton',
 		props: {
 			color: {
 				value: String,
-				default: "blue",
+				default: 'blue',
 			},
 			text: {
 				value: String,
-				default: "button",
+				default: 'button',
 			},
 			direction: String,
 		},
@@ -23,7 +23,7 @@
 </script>
 
 <style lang="scss" scoped>
-	@import "@/assets/scss/variables";
+	@import '@/assets/scss/variables';
 
 	.v-button {
 		cursor: pointer;

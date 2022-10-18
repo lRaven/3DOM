@@ -4,15 +4,15 @@
 			<div class="catalog-filters__type">
 				<button
 					class="catalog-filters__tab-btn"
-					:class="{ active: this.tab === 'secondary' }"
-					@click="this.tab = 'secondary'"
+					:class="{ active: tab === 'secondary' }"
+					@click="tab = 'secondary'"
 				>
 					Вторичное
 				</button>
 				<button
 					class="catalog-filters__tab-btn"
-					:class="{ active: this.tab === 'commercial' }"
-					@click="this.tab = 'commercial'"
+					:class="{ active: tab === 'commercial' }"
+					@click="tab = 'commercial'"
 				>
 					Коммерческое
 				</button>
@@ -23,12 +23,7 @@
 					description="Тип недвижимости"
 					selected="Выберите из списка"
 					v-show="tab === 'commercial'"
-					:options="[
-						'Торговые',
-						'Офисные',
-						'Индустриальные',
-						'Социальные',
-					]"
+					:options="['Торговые', 'Офисные', 'Индустриальные', 'Социальные']"
 				></v-dropdown>
 
 				<v-dropdown
@@ -46,26 +41,16 @@
 					]"
 				></v-dropdown>
 
-				<v-input
-					text="Улица"
-					placeholder="Введите название улицы"
-				></v-input>
+				<v-input text="Улица" placeholder="Введите название улицы"></v-input>
 
-				<div
-					class="catalog-filters__apartments"
-					v-show="tab === 'secondary'"
-				>
+				<div class="catalog-filters__apartments" v-show="tab === 'secondary'">
 					<p class="catalog-filters__apartments-title">Комнатность</p>
 					<div class="catalog-filters__apartments-list">
 						<v-checkbox
-							:items="[
-								{ id: 1, text: 'Студия' },
-								{ id: 2, text: '1' },
-								{ id: 3, text: '2' },
-								{ id: 4, text: '3' },
-								{ id: 5, text: '4+' },
-							]"
-							name="dates"
+							v-for="room in filters.rooms"
+							:key="room.id"
+							name="rooms"
+							:description="room.description"
 						></v-checkbox>
 					</div>
 				</div>
@@ -86,30 +71,37 @@
 
 		<div class="catalog-filters__submit">
 			<hr />
-			<v-button
-				text="Посмотреть"
-				@click="this.$emit('action_btn')"
-			></v-button>
+			<v-button text="Посмотреть" @click="this.$emit('action_btn')"></v-button>
 			<hr />
 		</div>
 	</div>
 </template>
 
 <script>
-	import vInput from "@/components/UI/general/v-input.vue";
+	import vInput from '@/components/UI/general/v-input.vue';
 
 	export default {
-		name: "CatalogFilters",
-		data: () => ({
-			tab: "secondary",
-			filters: [],
-		}),
+		name: 'CatalogFilters',
 		components: { vInput },
+		setup() {
+			const tab = 'secondary';
+			const filters = {
+				rooms: [
+					{ id: 1, description: 'Студия' },
+					{ id: 2, description: '1' },
+					{ id: 3, description: '2' },
+					{ id: 4, description: '3' },
+					{ id: 5, description: '4+' },
+				],
+			};
+
+			return { tab, filters };
+		},
 	};
 </script>
 
 <style lang="scss" scoped>
-	@import "@/assets/scss/variables";
+	@import '@/assets/scss/variables';
 
 	.catalog-filters {
 		box-shadow: $shadow;

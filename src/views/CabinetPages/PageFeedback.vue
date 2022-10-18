@@ -1,5 +1,5 @@
 <template>
-	<div class="page-feedback">
+	<section class="page-feedback">
 		<div class="page-feedback-form">
 			<div class="page-feedback-form__header" v-once>
 				<h1 class="page-feedback-form__title">Обратная связь</h1>
@@ -7,14 +7,9 @@
 			<div class="page-feedback-form__body">
 				<form @submit.prevent="send_message">
 					<p class="page-feedback-form__description" v-once>ФИО:</p>
-					<v-input
-						type="text"
-						v-model="support_form_data.name"
-					></v-input>
+					<v-input type="text" v-model="support_form_data.name"></v-input>
 
-					<p class="page-feedback-form__description" v-once>
-						Номер телефона:
-					</p>
+					<p class="page-feedback-form__description" v-once>Номер телефона:</p>
 
 					<v-input
 						type="tel"
@@ -22,14 +17,9 @@
 					></v-input>
 
 					<p class="page-feedback-form__description" v-once>Email:</p>
-					<v-input
-						type="email"
-						v-model="support_form_data.email"
-					></v-input>
+					<v-input type="email" v-model="support_form_data.email"></v-input>
 
-					<p class="page-feedback-form__description" v-once>
-						Тема обращения:
-					</p>
+					<p class="page-feedback-form__description" v-once>Тема обращения:</p>
 					<v-dropdown
 						showedValue="value"
 						placeholder="Выберите тему*"
@@ -52,28 +42,27 @@
 					></v-button>
 
 					<p class="page-feedback-form__bottom" v-once>
-						Нажимая кнопку «Отправить», вы подтверждаете своё
-						согласие <br />
+						Нажимая кнопку «Отправить», вы подтверждаете своё согласие <br />
 						на обработку <a>персональных данных</a>.
 					</p>
 				</form>
 			</div>
 		</div>
-	</div>
+	</section>
 </template>
 
 <script>
-	import { mapMutations } from "vuex";
-	import { supportForm } from "@/mixins/support";
+	import { mapMutations } from 'vuex';
+	import { supportForm } from '@/mixins/support';
 
-	import vInput from "@/components/UI/cabinet/v-input";
-	import vDropdown from "@/components/UI/cabinet/v-dropdown";
-	import vTextarea from "@/components/UI/cabinet/v-textarea";
+	import vInput from '@/components/UI/cabinet/v-input';
+	import vDropdown from '@/components/UI/cabinet/v-dropdown';
+	import vTextarea from '@/components/UI/cabinet/v-textarea';
 
-	import { useToast } from "vue-toastification";
+	import { useToast } from 'vue-toastification';
 
 	export default {
-		name: "PageFeedback",
+		name: 'PageFeedback',
 		mixins: [supportForm],
 		components: {
 			vInput,
@@ -81,10 +70,10 @@
 			vTextarea,
 		},
 		methods: {
-			...mapMutations(["setTab"]),
+			...mapMutations(['setTab']),
 		},
 		created() {
-			this.setTab("feedback");
+			this.setTab('feedback');
 		},
 		setup() {
 			const toast = useToast();
@@ -94,7 +83,7 @@
 </script>
 
 <style lang="scss" scoped>
-	@import "@/assets/scss/variables";
+	@import '@/assets/scss/variables';
 
 	.page-feedback {
 		&-form {

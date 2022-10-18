@@ -1,5 +1,5 @@
 <template>
-	<div class="page-services">
+	<section class="page-services">
 		<div class="page-services__header" v-once>
 			<h1 class="page-services__title">Услуги</h1>
 			<div class="page-services__notification">
@@ -73,7 +73,7 @@
 				</form>
 			</v-popup>
 		</transition>
-	</div>
+	</section>
 </template>
 
 <script>

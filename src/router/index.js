@@ -205,6 +205,15 @@ const routes = [
 				}
 			},
 			{
+				path: 'rates',
+				name: 'Rates',
+				component: () => import(/* webpackChunkName: "rates" */ '@/views/CabinetPages/PageRates.vue'),
+				meta: {
+					title: 'Тарифы',
+					requiresAuth: true,
+				}
+			},
+			{
 				path: 'feedback',
 				name: 'Feedback',
 				component: () => import(/* webpackChunkName: "feedback" */ '@/views/CabinetPages/PageFeedback.vue'),

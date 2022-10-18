@@ -1,5 +1,5 @@
 <template>
-	<div class="page-appeal">
+	<section class="page-appeal">
 		<div class="page-appeal__header">
 			<button
 				type="button"
@@ -30,17 +30,17 @@
 			:chat_data="chat_data"
 			:appeal_id="appeal_id"
 		></the-messenger>
-	</div>
+	</section>
 </template>
 
 <script>
-	import { mapMutations } from "vuex";
-	import { getChat } from "@/api/messenger";
+	import { mapMutations } from 'vuex';
+	import { getChat } from '@/api/messenger';
 
-	import TheMessenger from "@/components/cabinet/messenger/TheMessenger.vue";
+	import TheMessenger from '@/components/cabinet/messenger/TheMessenger.vue';
 
 	export default {
-		name: "PageAppeal",
+		name: 'PageAppeal',
 		components: { TheMessenger },
 		computed: {
 			appeal_id() {
@@ -49,7 +49,7 @@
 		},
 		data: () => ({ chat_data: {} }),
 		methods: {
-			...mapMutations(["setTab"]),
+			...mapMutations(['setTab']),
 
 			async getChatData() {
 				try {
@@ -59,25 +59,25 @@
 						this.chat_data = response.data;
 					}
 				} catch (err) {
-					this.$router.push({ name: "Appeals" });
+					this.$router.push({ name: 'Appeals' });
 					throw new Error(err);
 				}
 			},
 		},
 		created() {
-			this.setTab("appeals");
+			this.setTab('appeals');
 
 			if (this.appeal_id) {
 				this.getChatData();
 			} else {
-				this.$router.push({ name: "Appeals" });
+				this.$router.push({ name: 'Appeals' });
 			}
 		},
 	};
 </script>
 
 <style lang="scss" scoped>
-	@import "@/assets/scss/variables";
+	@import '@/assets/scss/variables';
 
 	.page-appeal {
 		display: grid;

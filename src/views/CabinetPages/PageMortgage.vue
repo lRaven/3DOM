@@ -1,5 +1,5 @@
 <template>
-	<div class="page-mortgage" v-once>
+	<section class="page-mortgage" v-once>
 		<iframe
 			src="https://ipoteka.domclick.ru/calc-reg/calculator.html"
 			frameborder="0"
@@ -7,19 +7,19 @@
 			height="100%"
 			name="mortgageCalculator"
 		></iframe>
-	</div>
+	</section>
 </template>
 
 <script>
-	import { mapMutations } from "vuex";
+	import { mapMutations } from 'vuex';
 
 	export default {
-		name: "PageMortgage",
+		name: 'PageMortgage',
 		methods: {
-			...mapMutations(["setTab"]),
+			...mapMutations(['setTab']),
 		},
 		created() {
-			this.setTab("mortgage");
+			this.setTab('mortgage');
 		},
 	};
 </script>

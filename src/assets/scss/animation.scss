@@ -63,6 +63,19 @@
 	transition: all 0.5s ease;
 }
 
+.fade-left-enter-active,
+.fade-left-leave-active {
+	transition: all 0.3s ease;
+	transform: translateY(0);
+}
+
+.fade-left-enter-from,
+.fade-left-leave-to {
+	opacity: 0;
+	transform: translateX(-3rem);
+	transition: all 0.3s ease;
+}
+
 @keyframes bounceInUp {
 	from,
 	60%,
