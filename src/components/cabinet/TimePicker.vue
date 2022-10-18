@@ -3,9 +3,7 @@
 		<div
 			class="time-picker__selected"
 			@click="
-				isDropdownOpen
-					? (isDropdownOpen = false)
-					: (isDropdownOpen = true)
+				isDropdownOpen ? (isDropdownOpen = false) : (isDropdownOpen = true)
 			"
 		>
 			<p
@@ -15,7 +13,7 @@
 				{{ selectedOption ? selectedOption : placeholder }}
 			</p>
 			<div class="time-picker__arrow" :class="{ open: isDropdownOpen }">
-				<img src="/img/icon/general/arrow.svg" alt="" />
+				<img src="/img/icons/general/arrow.svg" alt="" />
 			</div>
 		</div>
 		<transition mode="out-in" name="fade-up">
@@ -35,10 +33,10 @@
 </template>
 
 <script>
-	import { directive } from "vue3-click-away";
+	import { directive } from 'vue3-click-away';
 
 	export default {
-		name: "TimePicker",
+		name: 'TimePicker',
 		props: {
 			placeholder: String,
 			options: Array,
@@ -55,7 +53,7 @@
 		methods: {
 			selectValue(el) {
 				this.selectedOption = el;
-				this.$emit("update:modelValue", this.selectedOption);
+				this.$emit('update:modelValue', this.selectedOption);
 
 				this.closeDropdown();
 			},
@@ -68,7 +66,7 @@
 </script>
 
 <style lang="scss" scoped>
-	@import "@/assets/scss/variables";
+	@import '@/assets/scss/variables';
 
 	.time-picker {
 		user-select: none;

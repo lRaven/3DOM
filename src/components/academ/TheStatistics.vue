@@ -1,5 +1,5 @@
 <template>
-	<section class="statistics">
+	<section class="statistics" v-once>
 		<div class="statistics__container center">
 			<div class="statistics__stats">
 				<div class="statistics__title">

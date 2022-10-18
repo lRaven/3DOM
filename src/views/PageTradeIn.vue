@@ -1,8 +1,8 @@
 <template>
 	<div class="page-trade-in theme-container">
 		<the-header
-			@openMortgageCalculator="openMortgageCalculator"
-			@openPopup="openPopup"
+			@open-mortgage-calculator="openMortgageCalculator"
+			@open-popup="openPopup"
 		></the-header>
 
 		<main class="main">
@@ -22,7 +22,7 @@
 			<mortgage-calculator
 				v-if="isMortgageCalculatorOpen"
 				light="light"
-				closeIcon="/img/icon/cabinet/close.svg"
+				closeIcon="/img/icons/cabinet/close.svg"
 				@closeMortgageCalculator="closeMortgageCalculator"
 			></mortgage-calculator>
 		</transition>
@@ -33,10 +33,7 @@
 				@closePopup="closePopup"
 				title="3DOM консультация"
 			>
-				<form
-					@submit.prevent=""
-					class="page-trade-in__consultation-request"
-				>
+				<form @submit.prevent="" class="page-trade-in__consultation-request">
 					<p class="page-trade-in__consultation-request-description">
 						Отправьте заявку<br />
 						для получения консультации
@@ -70,27 +67,27 @@
 </template>
 
 <script>
-	import TheHeader from "@/components/general/TheHeader";
+	import TheHeader from '@/components/general/TheHeader';
 
-	import TheBanner from "@/components/trade-in/TheBanner";
-	import TheService from "@/components/trade-in/TheService";
-	import TheSteps from "@/components/trade-in/TheSteps";
-	import TheCatalog from "@/components/general/TheCatalog";
-	import ThePrice from "@/components/trade-in/ThePrice";
+	import TheBanner from '@/components/trade-in/TheBanner';
+	import TheService from '@/components/trade-in/TheService';
+	import TheSteps from '@/components/trade-in/TheSteps';
+	import TheCatalog from '@/components/general/TheCatalog';
+	import ThePrice from '@/components/trade-in/ThePrice';
 
-	import vCall from "@/components/general/v-call";
+	import vCall from '@/components/general/v-call';
 
-	import TheFooter from "@/components/general/TheFooter";
+	import TheFooter from '@/components/general/TheFooter';
 
-	import MortgageCalculator from "@/components/academ/MortgageCalculator";
+	import MortgageCalculator from '@/components/academ/MortgageCalculator';
 
-	import AcademInput from "@/components/academ/academ-input";
-	import vCheckbox from "@/components/academ/v-checkbox";
+	import AcademInput from '@/components/academ/academ-input';
+	import vCheckbox from '@/components/academ/v-checkbox';
 
-	import { requestSupportForm } from "@/mixins/support";
+	import { requestSupportForm } from '@/mixins/support';
 
 	export default {
-		name: "PageTradeIn",
+		name: 'PageTradeIn',
 		mixins: [requestSupportForm],
 		data: () => ({
 			isMortgageCalculatorOpen: false,
@@ -117,16 +114,16 @@
 		methods: {
 			openMortgageCalculator() {
 				this.isMortgageCalculatorOpen = true;
-				document.body.classList.add("locked");
+				document.body.classList.add('locked');
 			},
 			closeMortgageCalculator() {
 				this.isMortgageCalculatorOpen = false;
-				document.body.classList.remove("locked");
+				document.body.classList.remove('locked');
 			},
 
 			closePopup() {
 				this.isPopupVisible = false;
-				document.body.classList.remove("locked");
+				document.body.classList.remove('locked');
 			},
 			openPopup() {
 				this.isPopupVisible = true;
@@ -161,7 +158,7 @@
 </style>
 
 <style lang="scss">
-	@import "@/assets/scss/variables";
+	@import '@/assets/scss/variables';
 
 	.page-trade-in {
 		.router-link-active {

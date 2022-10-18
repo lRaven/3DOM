@@ -44,15 +44,15 @@
 			<div class="the-apartments__schematics">
 				<div class="slide slide__single" v-show="tab === 1">
 					<academ-swiper
-						:gallery="SINGLE_ROOM"
+						:gallery="singleRoom"
 						:price="true"
 						textColor="color: #fff9d0"
-						v-if="document_width < 1024"
+						v-if="documentWidth < 1024"
 					></academ-swiper>
 					<figure
 						v-else
 						class="slide__item"
-						v-for="(apartment, index) in SINGLE_ROOM"
+						v-for="(apartment, index) in singleRoom"
 						:key="apartment.id"
 						@click="openApartment(apartment.image)"
 						@mouseover="selectApartment(apartment.type, index)"
@@ -67,15 +67,15 @@
 				</div>
 				<div class="slide slide__two" v-show="tab === 2">
 					<academ-swiper
-						:gallery="TWO_ROOM"
+						:gallery="twoRoom"
 						:price="true"
 						textColor="color: #e4cda1"
-						v-if="document_width < 1024"
+						v-if="documentWidth < 1024"
 					></academ-swiper>
 					<figure
 						v-else
 						class="slide__item"
-						v-for="(apartment, index) in TWO_ROOM"
+						v-for="(apartment, index) in twoRoom"
 						:key="apartment.id"
 						@click="openApartment(apartment.image)"
 						@mouseover="selectApartment(apartment.type, index)"
@@ -90,15 +90,15 @@
 				</div>
 				<div class="slide slide__three" v-show="tab === 3">
 					<academ-swiper
-						:gallery="THREE_ROOM"
+						:gallery="threeRoom"
 						:price="true"
 						textColor="color: #f6d6b9"
-						v-if="document_width < 1024"
+						v-if="documentWidth < 1024"
 					></academ-swiper>
 					<figure
 						v-else
 						class="slide__item"
-						v-for="(apartment, index) in THREE_ROOM"
+						v-for="(apartment, index) in threeRoom"
 						:key="apartment.id"
 						@click="openApartment(apartment.image)"
 						@mouseover="selectApartment(apartment.type, index)"
@@ -7727,8 +7727,8 @@
 			},
 		}),
 		computed: {
-			...mapState(["document_width"]),
-			...mapGetters(["SINGLE_ROOM", "TWO_ROOM", "THREE_ROOM"]),
+			...mapState(["documentWidth"]),
+			...mapGetters(["singleRoom", "twoRoom", "threeRoom"]),
 		},
 		methods: {
 			//* выбор вкладки с  группами квартир

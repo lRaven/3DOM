@@ -1,10 +1,8 @@
 <template>
 	<section class="the-kolotok">
-		<div class="the-kolotok__container center">
+		<div class="the-kolotok__container center" v-once>
 			<div class="the-kolotok__column">
-				<h2 data-aos="fade-up" class="the-kolotok__title">
-					Всё для ремонта
-				</h2>
+				<h2 data-aos="fade-up" class="the-kolotok__title">Всё для ремонта</h2>
 				<h3 data-aos="fade-up" class="the-kolotok__subtitle">
 					Удобный интернет-магазин<br />
 					от застройщика
@@ -43,59 +41,40 @@
 					<img
 						data-aos="fade-right"
 						data-aos-delay="1200"
-						src="/img/icon/general/arrow-long.svg"
+						src="/img/icons/general/arrow-long.svg"
 						alt=""
 					/>
-					<p data-aos="fade-up" data-aos-delay="1200">
-						Перейти в магазин
-					</p>
+					<p data-aos="fade-up" data-aos-delay="1200">Перейти в магазин</p>
 				</div>
 			</div>
 			<div class="the-kolotok__column">
 				<img
-					src="/img/icon/kolotok/logo.svg"
+					src="/img/icons/kolotok/logo.svg"
 					alt=""
 					class="the-kolotok__logo"
 				/>
 				<div class="the-kolotok__logo-text">
 					<p class="the-kolotok__logo-title">КОЛОТОК</p>
-					<p class="the-kolotok__logo-subtitle">
-						магазин для тех, кто строит
-					</p>
+					<p class="the-kolotok__logo-subtitle">магазин для тех, кто строит</p>
 				</div>
 			</div>
 		</div>
-		<div class="the-kolotok__tags-mobile">
+		<div class="the-kolotok__tags-mobile" v-once>
 			<p>Всё для ремонта</p>
-			<span
-				data-aos="fade-up"
-				data-aos-delay="250"
-				class="the-kolotok__tag"
-			>
+			<span data-aos="fade-up" data-aos-delay="250" class="the-kolotok__tag">
 				Ремонт под ключ
 			</span>
-			<span
-				data-aos="fade-up"
-				data-aos-delay="500"
-				class="the-kolotok__tag"
-			>
+			<span data-aos="fade-up" data-aos-delay="500" class="the-kolotok__tag">
 				Материалы для ремонта
 			</span>
-			<span
-				data-aos="fade-up"
-				data-aos-delay="750"
-				class="the-kolotok__tag"
-			>
+			<span data-aos="fade-up" data-aos-delay="750" class="the-kolotok__tag">
 				Дизайн интерьера
 			</span>
-			<span
-				data-aos="fade-up"
-				data-aos-delay="1000"
-				class="the-kolotok__tag"
-			>
+			<span data-aos="fade-up" data-aos-delay="1000" class="the-kolotok__tag">
 				Черновые работы
 			</span>
 		</div>
+
 		<transition>
 			<popup-kolotok
 				v-if="isPopupVisible"
@@ -106,10 +85,10 @@
 </template>
 
 <script>
-	import PopupKolotok from "@/components/general/PopupKolotok";
+	import PopupKolotok from '@/components/general/PopupKolotok';
 
 	export default {
-		name: "TheKolotok",
+		name: 'TheKolotok',
 		components: { PopupKolotok },
 		data: () => ({ isPopupVisible: false }),
 		methods: {
@@ -124,7 +103,7 @@
 </script>
 
 <style lang="scss" scoped>
-	@import "@/assets/scss/variables";
+	@import '@/assets/scss/variables';
 
 	.the-kolotok {
 		&__container {

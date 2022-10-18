@@ -61,7 +61,7 @@ async function apartmentsInfo(bookingApartments) {
 				return acc
 			}, [])
 
-			store.commit('SET_BOOKING', apartments);
+			store.commit('setBooking', apartments);
 		}
 
 		return response;

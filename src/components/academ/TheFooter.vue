@@ -5,14 +5,14 @@
 				<span>Соцсети</span>
 
 				<a href="https://wa.me/79616670163" target="_blank">
-					<img src="/img/icon/academ/wa.svg" alt="WhatsApp" />
+					<img src="/img/icons/academ/wa.svg" alt="WhatsApp" />
 				</a>
 
 				<!-- <a
 					href="https://instagram.com/3dom_vlg?utm_medium=copy_link"
 					target="_blank"
 				>
-					<img src="/img/icon/academ/ig.svg" alt="" />
+					<img src="/img/icons/academ/ig.svg" alt="" />
 				</a> -->
 
 				<a
@@ -20,13 +20,11 @@
 					target="_blank"
 					class="the-footer__tg"
 				>
-					<img src="/img/icon/academ/tg.svg" alt="telegram" />
+					<img src="/img/icons/academ/tg.svg" alt="telegram" />
 				</a>
 			</div>
 			<nav class="nav">
-				<router-link :to="{ name: 'Home' }" class="link">
-					Главная
-				</router-link>
+				<router-link :to="{ name: 'Home' }" class="link"> Главная </router-link>
 				<a class="link" @click="scroll('#apartments')">Квартиры</a>
 				<a class="link" @click="scroll('#office')">Офисы</a>
 				<a class="link" @click="scroll('#parking')">Парковки</a>
@@ -40,30 +38,30 @@
 			</nav>
 		</div>
 		<div class="the-footer__disclaimer">
-			Любая информация, представленная на данном сайте, носит
-			исключительно информационный характер и ни при каких условиях не
-			является публичной офертой, определяемой положениями статьи 437 ГК
-			РФ. Информация ПАО «ООООООО»,
+			Любая информация, представленная на данном сайте, носит исключительно
+			информационный характер и ни при каких условиях не является публичной
+			офертой, определяемой положениями статьи 437 ГК РФ. Информация ПАО
+			«ООООООО»,
 			<br />
-			раскрываемая в соответствии с Положением о раскрытии информации
-			эмитентами эмиссионных ценных бумаг (утв. Банком России 30.12.2014 N
-			454-П), размещена на странице Центра раскрытия корпоративной
-			информации Интерфакс в сети Интернет
+			раскрываемая в соответствии с Положением о раскрытии информации эмитентами
+			эмиссионных ценных бумаг (утв. Банком России 30.12.2014 N 454-П),
+			размещена на странице Центра раскрытия корпоративной информации Интерфакс
+			в сети Интернет
 		</div>
 	</footer>
 </template>
 
 <script>
-	import { scroll } from "@/js/scroll";
+	import { scroll } from '@/js/scroll';
 
 	export default {
-		name: "TheFooter",
+		name: 'TheFooter',
 		methods: { scroll },
 	};
 </script>
 
 <style lang="scss" scoped>
-	@import "@/assets/scss/variables";
+	@import '@/assets/scss/variables';
 
 	.the-footer {
 		user-select: none;
@@ -117,7 +115,7 @@
 		width: max-content;
 		font-weight: 600;
 		&::after {
-			content: "";
+			content: '';
 			position: absolute;
 			left: 0;
 			bottom: -0.3rem;
@@ -178,7 +176,7 @@
 					&:nth-child(-n + 3) {
 						position: relative;
 						&::after {
-							content: "";
+							content: '';
 							position: absolute;
 							right: 0;
 							top: 0;

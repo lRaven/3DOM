@@ -1,6 +1,6 @@
 <template>
 	<section class="the-banner" id="banner">
-		<div class="the-banner__container center">
+		<div class="the-banner__container center" v-once>
 			<div class="the-banner__card-wrapper">
 				<div data-aos="fade-right" class="the-banner__card glass">
 					<h2 class="the-banner__card-title">На всё готовенькое!</h2>

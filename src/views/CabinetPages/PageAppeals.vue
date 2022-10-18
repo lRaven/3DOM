@@ -1,6 +1,6 @@
 <template>
 	<div class="page-appeals">
-		<h1 class="page-appeals__title">Обращения</h1>
+		<h1 class="page-appeals__title" v-once>Обращения</h1>
 
 		<v-loader v-show="!isChatsLoaded"></v-loader>
 
@@ -13,11 +13,15 @@
 					src="/img/cabinet/empty.svg"
 					alt="empty"
 					class="page-appeals__empty-img"
+					v-once
 				/>
-				<p class="page-appeals__empty-description">Обращений нет</p>
+				<p class="page-appeals__empty-description" v-once>
+					Обращений нет
+				</p>
 				<v-button
 					text="Написать нам"
 					@click="this.$emit('openPopup')"
+					v-once
 				></v-button>
 			</div>
 
@@ -54,7 +58,7 @@
 		}),
 
 		methods: {
-			...mapMutations(["SET_TAB"]),
+			...mapMutations(["setTab"]),
 
 			async getAppealChats() {
 				try {
@@ -82,7 +86,7 @@
 			},
 		},
 		created() {
-			this.SET_TAB("appeals");
+			this.setTab("appeals");
 			this.getAppealChats();
 			this.getChatMessages();
 		},

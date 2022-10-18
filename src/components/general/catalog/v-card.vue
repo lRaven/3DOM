@@ -16,7 +16,7 @@
 					{{ data.subtitle }}
 				</h4>
 				<img
-					src="/img/icon/trade-in/periscope.svg"
+					src="/img/icons/trade-in/periscope.svg"
 					alt=""
 					class="v-card__icon"
 				/>
@@ -42,7 +42,7 @@
 					<p class="v-card__price-mobile">1-комн. кв.</p>
 					<div class="v-card__min">
 						<span>от</span>
-						<span>{{ data.prices.single_room }}</span>
+						<span>{{ data.prices.singleRoom }}</span>
 					</div>
 				</div>
 				<div class="v-card__price v-card__two">
@@ -50,7 +50,7 @@
 					<p class="v-card__price-mobile">2-комн. кв.</p>
 					<div class="v-card__min">
 						<span>от</span>
-						<span>{{ data.prices.two_room }}</span>
+						<span>{{ data.prices.twoRoom }}</span>
 					</div>
 				</div>
 				<div class="v-card__price v-card__three">
@@ -58,7 +58,7 @@
 					<p class="v-card__price-mobile">3-комн. кв.</p>
 					<div class="v-card__min">
 						<span>от</span>
-						<span>{{ data.prices.three_room }}</span>
+						<span>{{ data.prices.threeRoom }}</span>
 					</div>
 				</div>
 			</div>
@@ -79,17 +79,17 @@
 </template>
 
 <script>
-	import vCardTag from "@/components/general/catalog/v-card-tag.vue";
+	import vCardTag from '@/components/general/catalog/v-card-tag.vue';
 
 	export default {
-		name: "vCard",
+		name: 'vCard',
 		components: { vCardTag },
 		props: { data: Object },
 	};
 </script>
 
 <style lang="scss" scoped>
-	@import "@/assets/scss/variables";
+	@import '@/assets/scss/variables';
 
 	.v-card {
 		cursor: pointer;
@@ -211,7 +211,7 @@
 			color: $blue;
 			font-weight: 600;
 			&::after {
-				content: "";
+				content: '';
 				position: absolute;
 				left: 0;
 				bottom: -0.2rem;
@@ -329,7 +329,7 @@
 				position: relative;
 				margin-bottom: 2rem;
 				&::after {
-					content: "";
+					content: '';
 					position: absolute;
 					left: 50%;
 					bottom: 0;

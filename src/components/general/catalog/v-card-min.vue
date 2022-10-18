@@ -7,7 +7,7 @@
 			<div class="v-card-min__title">
 				<h4 class="v-card-min__rooms">{{ data.rooms }}-к квартира</h4>
 				<img
-					src="/img/icon/trade-in/periscope.svg"
+					src="/img/icons/trade-in/periscope.svg"
 					alt=""
 					class="v-card-min__icon"
 				/>
@@ -38,13 +38,13 @@
 
 <script>
 	export default {
-		name: "vCardMin",
+		name: 'vCardMin',
 		props: { data: Object },
 	};
 </script>
 
 <style lang="scss" scoped>
-	@import "@/assets/scss/variables";
+	@import '@/assets/scss/variables';
 
 	.v-card-min {
 		cursor: pointer;
@@ -123,7 +123,7 @@
 			font-weight: 600;
 			font-size: 1.4rem;
 			&::after {
-				content: "";
+				content: '';
 				position: absolute;
 				left: 0;
 				bottom: -0.4rem;

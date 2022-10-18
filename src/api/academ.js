@@ -15,7 +15,7 @@ async function getApartments() {
 				key: 'number',
 				direction: 'ascending',
 			});
-			store.commit('SET_APARTMENTS', sort_result);
+			store.commit('setApartments', sort_result);
 		}
 		return response;
 	}
@@ -40,7 +40,7 @@ async function getApartmentsOnTheFloor(floor) {
 				key: 'number',
 				direction: 'ascending',
 			});
-			store.commit('SET_APARTMENTS_ON_FLOOR', sort_result);
+			store.commit('setApartmentsOnFloor', sort_result);
 		}
 	} catch { e => { throw new Error(e) } }
 }

@@ -1,23 +1,23 @@
 <template>
 	<div class="appointment-form">
-		<div class="appointment-form__header">
+		<div class="appointment-form__header" v-once>
 			<h1 class="appointment-form__title">Запись на встречу</h1>
 		</div>
 		<div class="appointment-form__body">
 			<form @submit.prevent="sendForm">
-				<div class="appointment-form__description">
+				<div class="appointment-form__description" v-once>
 					<p>ФИО:</p>
 				</div>
 				<v-input type="text" v-model="appointmentForm.client"></v-input>
 
-				<div class="appointment-form__description">
+				<div class="appointment-form__description" v-once>
 					<p>Номер телефона:</p>
 				</div>
 				<v-input
 					type="tel"
 					v-model="appointmentForm.phone_number"
 				></v-input>
-				<div class="appointment-form__description">
+				<div class="appointment-form__description" v-once>
 					<p>Проект:</p>
 				</div>
 				<v-dropdown
@@ -28,7 +28,7 @@
 					v-model="appointmentForm.building"
 				></v-dropdown>
 
-				<div class="appointment-form__description">
+				<div class="appointment-form__description" v-once>
 					<p>Квартира:</p>
 				</div>
 				<v-dropdown
@@ -40,7 +40,7 @@
 					:options="apartments"
 				></v-dropdown>
 
-				<div class="appointment-form__description">
+				<div class="appointment-form__description" v-once>
 					<p>Дата и время:</p>
 				</div>
 				<date-picker
@@ -79,7 +79,7 @@
 					type="submit"
 				></v-button>
 
-				<div class="appointment-form__bottom">
+				<div class="appointment-form__bottom" v-once>
 					<p>
 						Нажимая кнопку «Отправить», вы подтверждаете своё
 						согласие <br />

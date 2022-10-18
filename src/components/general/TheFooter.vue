@@ -1,5 +1,5 @@
 <template>
-	<footer class="the-footer center" id="footer">
+	<footer class="the-footer center" id="footer" v-once>
 		<div class="the-footer__top">
 			<div
 				data-aos="fade-up"

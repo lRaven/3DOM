@@ -1,24 +1,24 @@
 <template>
-	<div class="v-call" @click="this.$emit('openPopup')">
+	<div class="v-call" @click="this.$emit('open-popup')" v-once>
 		<img
-			src="/img/icon/general/call-circle.svg"
+			src="/img/icons/general/call-circle.svg"
 			class="v-call__img"
-			alt=""
+			alt="call"
 		/>
 	</div>
 </template>
 
 <script>
-	import { requestSupportForm } from "@/mixins/support";
+	import { requestSupportForm } from '@/mixins/support';
 
 	export default {
-		name: "vCall",
+		name: 'vCall',
 		mixins: [requestSupportForm],
 	};
 </script>
 
 <style lang="scss" scoped>
-	@import "@/assets/scss/variables";
+	@import '@/assets/scss/variables';
 
 	.v-call {
 		cursor: pointer;

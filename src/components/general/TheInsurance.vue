@@ -1,7 +1,7 @@
 <template>
 	<section class="the-insurance" id="insurance">
 		<div class="the-insurance__container center">
-			<div class="the-insurance__header">
+			<div class="the-insurance__header" v-once>
 				<h2 data-aos="fade-up" class="the-insurance__title">
 					Страхование недвижимости
 				</h2>
@@ -10,12 +10,13 @@
 					требованием закона.
 				</h3>
 			</div>
+
 			<div class="the-insurance__body">
 				<form data-aos="fade-right" class="the-insurance__form">
-					<h4 class="the-insurance__form-title">
+					<h4 class="the-insurance__form-title" v-once>
 						Оформить страхование
 					</h4>
-					<p class="the-insurance__form-text">
+					<p class="the-insurance__form-text" v-once>
 						Приведенные расчёты актуальны<br />
 						при полученом праве собственности.
 					</p>
@@ -47,7 +48,11 @@
 						@click="this.$emit('openPopup')"
 					></v-button>
 				</form>
-				<p data-aos="fade-up" class="the-insurance__subtitle-mobile">
+				<p
+					data-aos="fade-up"
+					class="the-insurance__subtitle-mobile"
+					v-once
+				>
 					При оформлении ипотеки страхование недвижимости является
 					требованием закона.
 				</p>
@@ -56,6 +61,7 @@
 					src="/img/general/insurance-img.png"
 					alt=""
 					class="the-insurance__img"
+					v-once
 				/>
 			</div>
 		</div>

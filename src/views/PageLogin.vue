@@ -4,8 +4,10 @@
 		<main class="main">
 			<section class="login-wrapper center">
 				<form class="login" @submit.prevent="auth">
-					<div class="login__header">
-						<h1>Вход в личный кабинет</h1>
+					<div class="login__header" v-once>
+						<h1 class="login__header-title">
+							Вход в личный кабинет
+						</h1>
 					</div>
 					<div class="login__body">
 						<v-input
@@ -13,22 +15,22 @@
 							type="text"
 							placeholder="Логин"
 							name="username"
-							v-model="user_data.username"
+							v-model="userData.username"
 						></v-input>
 						<v-input
 							text="Пароль:"
 							type="password"
 							placeholder="Пароль"
 							name="password"
-							v-model="user_data.password"
+							v-model="userData.password"
 						></v-input>
 						<v-button
 							text="Войти"
 							color="blue"
-							:disabled="!isFormValid"
+							:disabled="v$.$invalid"
 							type="submit"
 						></v-button>
-						<p class="login__description">
+						<p class="login__description" v-once>
 							Нажимая кнопку «Войти», вы подтверждаете своё
 							согласие на
 							<a> обработку персональных данных </a>
@@ -52,6 +54,8 @@
 	import { mapActions } from "vuex";
 
 	import { useToast } from "vue-toastification";
+	import { useVuelidate } from "@vuelidate/core";
+	import { minLength, required } from "@vuelidate/validators";
 
 	export default {
 		name: "PageLogin",
@@ -60,22 +64,22 @@
 			vInput,
 			TheFooter,
 		},
-		computed: {
-			isFormValid() {
-				if (
-					this.user_data.username.length > 0 &&
-					this.user_data.password.length >= 8
-				) {
-					return true;
-				} else {
-					return false;
-				}
-			},
-		},
 		data: () => ({
-			user_data: {
+			userData: {
 				username: "",
 				password: "",
+			},
+		}),
+		validations: () => ({
+			userData: {
+				username: {
+					required,
+					minLength: minLength(1),
+				},
+				password: {
+					required,
+					minLength: minLength(8),
+				},
 			},
 		}),
 
@@ -85,10 +89,8 @@
 			//* логин
 			async auth() {
 				try {
-					const response = await login(
-						this.user_data.username,
-						this.user_data.password
-					);
+					const response = await login(this.userData);
+
 					if (response.status === 200) {
 						this.saveUserData(response.data.auth_token);
 						this.toast.success("Вход выполнен успешно");
@@ -117,7 +119,7 @@
 		},
 		setup() {
 			const toast = useToast();
-			return { toast };
+			return { toast, v$: useVuelidate() };
 		},
 	};
 </script>

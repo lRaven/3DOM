@@ -42,24 +42,23 @@
 			</div>
 			<div class="feedback__disclaimer">
 				<p>
-					Любая информация, представленная на данном сайте, носит
-					исключительно информационный характер и ни при каких
-					условиях не является публичной офертой, определяемой
-					положениями статьи 437 ГК РФ. Информация ПАО «ООООООО»,
-					раскрываемая в соответствии с Положением о раскрытии
-					информации эмитентами эмиссионных ценных бумаг (утв. Банком
-					России 30.12.2014 N 454-П), размещена на странице Центра
-					раскрытия корпоративной информации Интерфакс в сети Интернет
+					Любая информация, представленная на данном сайте, носит исключительно
+					информационный характер и ни при каких условиях не является публичной
+					офертой, определяемой положениями статьи 437 ГК РФ. Информация ПАО
+					«ООООООО», раскрываемая в соответствии с Положением о раскрытии
+					информации эмитентами эмиссионных ценных бумаг (утв. Банком России
+					30.12.2014 N 454-П), размещена на странице Центра раскрытия
+					корпоративной информации Интерфакс в сети Интернет
 				</p>
 			</div>
 			<div class="feedback__more">
 				<div class="feedback__more-inner">
 					<a
-						href="/img/icon/academ/paperclip.svg"
+						href="/img/icons/academ/paperclip.svg"
 						download
 						class="feedback__more-icon"
 					>
-						<img src="/img/icon/academ/paperclip.svg" alt="" />
+						<img src="/img/icons/academ/paperclip.svg" alt="" />
 					</a>
 					<p>
 						Разрешение<br />
@@ -68,11 +67,11 @@
 				</div>
 				<div class="feedback__more-inner">
 					<a
-						href="/img/icon/academ/paperclip.svg"
+						href="/img/icons/academ/paperclip.svg"
 						download
 						class="feedback__more-icon"
 					>
-						<img src="/img/icon/academ/paperclip.svg" alt="" />
+						<img src="/img/icons/academ/paperclip.svg" alt="" />
 					</a>
 					<p>
 						Проектная<br />
@@ -81,11 +80,11 @@
 				</div>
 				<div class="feedback__more-inner">
 					<a
-						href="/img/icon/academ/paperclip.svg"
+						href="/img/icons/academ/paperclip.svg"
 						download
 						class="feedback__more-icon"
 					>
-						<img src="/img/icon/academ/paperclip.svg" alt="" />
+						<img src="/img/icons/academ/paperclip.svg" alt="" />
 					</a>
 					<p>
 						Договор аренды<br />
@@ -97,7 +96,7 @@
 		<transition>
 			<v-notification
 				color="green"
-				image="/img/icon/academ/check.svg"
+				image="/img/icons/academ/check.svg"
 				message="Спасибо за обращение, с вами скоро свяжутся"
 				v-if="isNotificationVisible"
 				@closeNotification="closeNotification"
@@ -107,13 +106,13 @@
 </template>
 
 <script>
-	import AcademInput from "@/components/academ/academ-input";
-	import vCheckbox from "@/components/academ/v-checkbox";
-	import vButton from "@/components/academ/v-button";
-	import vNotification from "@/components/academ/v-notification";
+	import AcademInput from '@/components/academ/academ-input';
+	import vCheckbox from '@/components/academ/v-checkbox';
+	import vButton from '@/components/academ/v-button';
+	import vNotification from '@/components/academ/v-notification';
 
 	export default {
-		name: "TheFeedback",
+		name: 'TheFeedback',
 		components: {
 			AcademInput,
 			vCheckbox,
@@ -122,8 +121,8 @@
 		},
 		data() {
 			return {
-				name: "",
-				tel: "",
+				name: '',
+				tel: '',
 				privacyPolicy: false,
 				isNotificationVisible: false,
 			};
@@ -138,33 +137,33 @@
 			},
 
 			validateForm() {
-				const form = document.querySelector(".feedback__form");
-				const inputs = form.querySelectorAll("input");
-				const button = form.querySelector(".academ-button");
+				const form = document.querySelector('.feedback__form');
+				const inputs = form.querySelectorAll('input');
+				const button = form.querySelector('.academ-button');
 
 				inputs.forEach((input) => {
-					if (input.getAttribute("type") !== "checkbox") {
-						input.addEventListener("input", () => {
+					if (input.getAttribute('type') !== 'checkbox') {
+						input.addEventListener('input', () => {
 							if (
 								this.name.length > 0 &&
 								this.tel.length > 0 &&
 								this.privacyPolicy === true
 							) {
-								button.setAttribute("type", "submit");
+								button.setAttribute('type', 'submit');
 							} else {
-								button.setAttribute("type", "button");
+								button.setAttribute('type', 'button');
 							}
 						});
-					} else if (input.getAttribute("type") === "checkbox") {
-						input.addEventListener("change", () => {
+					} else if (input.getAttribute('type') === 'checkbox') {
+						input.addEventListener('change', () => {
 							if (
 								this.name.length > 0 &&
 								this.tel.length > 0 &&
 								this.privacyPolicy === true
 							) {
-								button.setAttribute("type", "submit");
+								button.setAttribute('type', 'submit');
 							} else {
-								button.setAttribute("type", "button");
+								button.setAttribute('type', 'button');
 							}
 						});
 					}
@@ -175,9 +174,9 @@
 					this.tel.length > 0 &&
 					this.privacyPolicy === true
 				) {
-					button.setAttribute("type", "submit");
+					button.setAttribute('type', 'submit');
 				} else {
-					button.setAttribute("type", "button");
+					button.setAttribute('type', 'button');
 				}
 			},
 
@@ -195,7 +194,7 @@
 </script>
 
 <style lang="scss" scoped>
-	@import "@/assets/scss/variables";
+	@import '@/assets/scss/variables';
 
 	.feedback {
 		min-height: calc(100vh - 17rem);

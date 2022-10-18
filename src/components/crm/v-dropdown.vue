@@ -4,7 +4,7 @@
 		<div class="v-dropdown__selected">
 			<p>{{ selected }}</p>
 			<div class="v-dropdown__arrow">
-				<img src="/img/icon/general/arrow.svg" alt="" />
+				<img src="/img/icons/general/arrow.svg" alt="" />
 			</div>
 		</div>
 		<div class="v-dropdown__content">
@@ -22,7 +22,7 @@
 
 <script>
 	export default {
-		name: "vDropdown",
+		name: 'vDropdown',
 		props: {
 			description: String,
 			selected: String,
@@ -31,68 +31,66 @@
 		methods: {
 			//* функция выпадающего меню
 			dropdown() {
-				const dropdowns = document.querySelectorAll(".v-dropdown");
+				const dropdowns = document.querySelectorAll('.v-dropdown');
 
 				dropdowns.forEach((dropdown) => {
-					const arrow = dropdown.querySelector(".v-dropdown__arrow");
-					const options =
-						dropdown.querySelectorAll(".v-dropdown__item");
+					const arrow = dropdown.querySelector('.v-dropdown__arrow');
+					const options = dropdown.querySelectorAll('.v-dropdown__item');
 					const dropdownSelected = dropdown.querySelector(
-						".v-dropdown__selected"
+						'.v-dropdown__selected'
 					);
 					const dropdownContent = dropdown.querySelector(
-						".v-dropdown__content"
+						'.v-dropdown__content'
 					);
 
-					dropdownSelected.addEventListener("click", () => {
+					dropdownSelected.addEventListener('click', () => {
 						//*выборать все dropdown'ы и закрыть их
 						dropdowns.forEach((dropdown) => {
-							const arrow =
-								dropdown.querySelector(".v-dropdown__arrow");
+							const arrow = dropdown.querySelector('.v-dropdown__arrow');
 							const dropdownSelected = dropdown.querySelector(
-								".v-dropdown__selected"
+								'.v-dropdown__selected'
 							);
 							const dropdownContent = dropdown.querySelector(
-								".v-dropdown__content"
+								'.v-dropdown__content'
 							);
 
-							arrow.classList.remove("open");
-							dropdownSelected.classList.remove("open");
-							dropdownContent.removeAttribute("style");
+							arrow.classList.remove('open');
+							dropdownSelected.classList.remove('open');
+							dropdownContent.removeAttribute('style');
 						});
 
 						//* toggle dropdown текущий
 						if (dropdownContent.clientHeight === 0) {
-							arrow.classList.add("open");
-							dropdownSelected.classList.add("open");
+							arrow.classList.add('open');
+							dropdownSelected.classList.add('open');
 							dropdownContent.setAttribute(
-								"style",
+								'style',
 								`height: ${dropdownContent.scrollHeight}px`
 							);
 						} else {
-							arrow.classList.remove("open");
-							dropdownSelected.classList.remove("open");
-							dropdownContent.removeAttribute("style");
+							arrow.classList.remove('open');
+							dropdownSelected.classList.remove('open');
+							dropdownContent.removeAttribute('style');
 						}
 					});
 
 					//*скрытие выпадающего списка при клике вне элемента
-					window.addEventListener("click", (e) => {
+					window.addEventListener('click', (e) => {
 						const target = e.target;
-						if (!target.closest(".v-dropdown__selected")) {
-							arrow.classList.remove("open");
-							dropdownContent.removeAttribute("style");
-							dropdownSelected.classList.remove("open");
+						if (!target.closest('.v-dropdown__selected')) {
+							arrow.classList.remove('open');
+							dropdownContent.removeAttribute('style');
+							dropdownSelected.classList.remove('open');
 						}
 					});
 
 					//*скрытие dropdown при клике на элемент списка
 					options.forEach((option) => {
-						option.addEventListener("click", () => {
-							arrow.classList.remove("open");
-							dropdownSelected.classList.remove("open");
-							dropdownContent.classList.remove("open");
-							dropdownContent.removeAttribute("style");
+						option.addEventListener('click', () => {
+							arrow.classList.remove('open');
+							dropdownSelected.classList.remove('open');
+							dropdownContent.classList.remove('open');
+							dropdownContent.removeAttribute('style');
 						});
 					});
 				});
@@ -100,20 +98,16 @@
 
 			//* запись в selected значения выбранного элемента
 			setOption() {
-				const dropdowns = document.querySelectorAll(".v-dropdown");
+				const dropdowns = document.querySelectorAll('.v-dropdown');
 				dropdowns.forEach((dropdown) => {
-					const options =
-						dropdown.querySelectorAll(".v-dropdown__item");
+					const options = dropdown.querySelectorAll('.v-dropdown__item');
 					const selectedOption = dropdown.querySelector(
-						".v-dropdown__selected p"
+						'.v-dropdown__selected p'
 					);
 					options.forEach((option) => {
-						option.addEventListener("click", () => {
+						option.addEventListener('click', () => {
 							selectedOption.textContent = option.textContent;
-							selectedOption.setAttribute(
-								"style",
-								"color: #4b4b4b;"
-							);
+							selectedOption.setAttribute('style', 'color: #4b4b4b;');
 						});
 					});
 				});
@@ -127,7 +121,7 @@
 </script>
 
 <style lang="scss" scoped>
-	@import "@/assets/scss/variables";
+	@import '@/assets/scss/variables';
 
 	.v-dropdown {
 		user-select: none;

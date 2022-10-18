@@ -3,38 +3,38 @@
 		<the-header />
 		<main class="main">
 			<section class="registration-wrapper center">
-				<form class="registration" @submit.prevent="create_user">
-					<div class="registration__header">
-						<h1>Регистрация</h1>
+				<form class="registration" @submit.prevent="createUser">
+					<div class="registration__header" v-once>
+						<h1 class="registration__header-title">Регистрация</h1>
 					</div>
 					<div class="registration__body">
 						<v-input
 							text="Логин:"
 							type="text"
-							placeholder="username"
+							placeholder="Логин"
 							name="username"
-							v-model="user_data.username"
+							v-model="userData.username"
 						></v-input>
 						<v-input
 							text="E-mail:"
 							type="email"
-							placeholder="e-mail"
+							placeholder="E-mail"
 							name="email"
-							v-model="user_data.email"
+							v-model="userData.email"
 						></v-input>
 						<v-input
 							text="Пароль:"
 							type="password"
-							placeholder="'password"
+							placeholder="Пароль"
 							name="password"
-							v-model="user_data.password"
+							v-model="userData.password"
 						></v-input>
 						<v-button
 							text="Зарегистрироваться"
 							type="submit"
-							:disabled="!isFormValid"
+							:disabled="v$.$invalid"
 						></v-button>
-						<p class="registration__description">
+						<p class="registration__description" v-once>
 							Нажимая кнопку «Зарегистрироваться», вы
 							подтверждаете своё согласие на
 							<a> обработку персональных данных </a>
@@ -57,6 +57,8 @@
 	import TheFooter from "@/components/general/TheFooter";
 
 	import { useToast } from "vue-toastification";
+	import { useVuelidate } from "@vuelidate/core";
+	import { minLength, required, email } from "@vuelidate/validators";
 
 	export default {
 		name: "PageRegistration",
@@ -66,39 +68,42 @@
 			TheFooter,
 		},
 		computed: {
-			...mapState({
-				baseURL: (state) => state.baseURL,
-			}),
-
-			isFormValid() {
-				if (
-					this.user_data.username.length > 0 &&
-					this.user_data.email.length > 0 &&
-					this.user_data.password.length >= 8
-				) {
-					return true;
-				} else {
-					return false;
-				}
-			},
+			...mapState(["baseURL"]),
 		},
 		data: () => ({
-			user_data: {
+			userData: {
 				username: "",
 				password: "",
 				email: "",
 			},
 		}),
+		validations: () => ({
+			userData: {
+				username: {
+					required,
+					minLength: minLength(1),
+				},
+				email: {
+					required,
+					email,
+				},
+				password: {
+					required,
+					minLength: minLength(8),
+				},
+			},
+		}),
 
 		methods: {
-			async create_user() {
+			async createUser() {
 				try {
-					const response = await registration(this.user_data);
+					const response = await registration(this.userData);
+
 					if (response.status === 201) {
-						this.$router.push({ name: "Login" });
 						this.toast.success(
 							"Вы успешно зарегистрировали свой аккаунт"
 						);
+						this.$router.push({ name: "Login" });
 					}
 					if (response.status === 400) {
 						const error_list = returnErrorMessages(response.data);
@@ -113,7 +118,7 @@
 		},
 		setup() {
 			const toast = useToast();
-			return { toast };
+			return { toast, v$: useVuelidate() };
 		},
 	};
 </script>

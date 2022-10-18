@@ -7,10 +7,10 @@
 				buttonText="Оформить заявку"
 			></steps-card>
 
-			<div class="the-steps__stages">
+			<div class="the-steps__stages" v-once>
 				<div data-aos="fade-up" class="the-steps__benefit">
 					<img
-						src="/img/icon/trade-in/tick.svg"
+						src="/img/icons/trade-in/tick.svg"
 						class="the-steps__benefit-icon"
 						alt=""
 					/>
@@ -22,7 +22,7 @@
 				</div>
 				<div data-aos="fade-up" class="the-steps__benefit">
 					<img
-						src="/img/icon/trade-in/tick.svg"
+						src="/img/icons/trade-in/tick.svg"
 						class="the-steps__benefit-icon"
 						alt=""
 					/>
@@ -34,7 +34,7 @@
 				</div>
 				<div data-aos="fade-up" class="the-steps__benefit">
 					<img
-						src="/img/icon/trade-in/tick.svg"
+						src="/img/icons/trade-in/tick.svg"
 						class="the-steps__benefit-icon"
 						alt=""
 					/>
@@ -46,7 +46,7 @@
 				</div>
 				<div data-aos="fade-up" class="the-steps__benefit">
 					<img
-						src="/img/icon/trade-in/tick.svg"
+						src="/img/icons/trade-in/tick.svg"
 						class="the-steps__benefit-icon"
 						alt=""
 					/>
@@ -61,26 +61,25 @@
 </template>
 
 <script>
-	import StepsCard from "@/components/trade-in/StepsCard.vue";
+	import StepsCard from '@/components/trade-in/StepsCard.vue';
 
 	export default {
-		name: "TheSteps",
+		name: 'TheSteps',
 		components: {
 			StepsCard,
 		},
 		data: () => ({
 			checklist: [
-				{ id: 1, description: "Независимая оценка вашей квартиры." },
-				{ id: 2, description: "Продаем ваше вторичное жильё." },
-				{ id: 3, description: "Собираем документы и проводим сделку." },
+				{ id: 1, description: 'Независимая оценка вашей квартиры.' },
+				{ id: 2, description: 'Продаем ваше вторичное жильё.' },
+				{ id: 3, description: 'Собираем документы и проводим сделку.' },
 				{
 					id: 4,
-					description:
-						"Деньги с продажи старой квартиры в счёт опаты новой.",
+					description: 'Деньги с продажи старой квартиры в счёт опаты новой.',
 				},
 				{
 					id: 5,
-					description: "Забрать ключи и въехать в новую квартиру.",
+					description: 'Забрать ключи и въехать в новую квартиру.',
 				},
 			],
 		}),
@@ -88,7 +87,7 @@
 </script>
 
 <style lang="scss" scoped>
-	@import "@/assets/scss/variables";
+	@import '@/assets/scss/variables';
 
 	.the-steps {
 		display: flex;

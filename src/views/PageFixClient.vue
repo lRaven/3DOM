@@ -3,55 +3,35 @@
 		<the-header />
 		<main class="main">
 			<form class="fix" @submit.prevent="sendFixForm">
-				<h1 class="fix__title">Зафиксировать клиента</h1>
+				<h1 class="fix__title" v-once>Зафиксировать клиента</h1>
 
 				<fieldset class="fix__row">
-					<legend class="fix__row-title">Данные клиента</legend>
-					<v-input
-						text="Фамилия *"
-						type="text"
-						v-model="last_name"
-					></v-input>
-					<v-input
-						text="Имя *"
-						type="text"
-						v-model="first_name"
-					></v-input>
-					<v-input
-						text="Отчество *"
-						type="text"
-						v-model="patronymic"
-					></v-input>
-					<v-input
-						text="Номер телефона *"
-						type="tel"
-						v-model="tel"
-					></v-input>
+					<legend class="fix__row-title" v-once>Данные клиента</legend>
+					<v-input text="Фамилия *" type="text" v-model="last_name"></v-input>
+					<v-input text="Имя *" type="text" v-model="first_name"></v-input>
+					<v-input text="Отчество *" type="text" v-model="patronymic"></v-input>
+					<v-input text="Номер телефона *" type="tel" v-model="tel"></v-input>
 				</fieldset>
 
-				<fieldset class="fix__row">
+				<fieldset class="fix__row" v-once>
 					<legend class="fix__row-title">Застройщики</legend>
 					<div class="fix__row-colored">
 						<div class="fix__building">
 							<p>ЖК Академический</p>
 						</div>
-						<div class="fix__apartment">
-							Квартира №{{ apartmentNumber }}
-						</div>
+						<div class="fix__apartment">Квартира №{{ apartmentNumber }}</div>
 						<a class="fix__link">Условия фиксации</a>
 					</div>
 				</fieldset>
 
 				<fieldset class="fix__row">
-					<legend class="fix__row-title">
-						Дополнительные сведения
-					</legend>
+					<legend class="fix__row-title" v-once>Дополнительные сведения</legend>
 					<v-textarea
 						description="Ваш комментарий к заявке"
 						v-model="info"
 					></v-textarea>
 				</fieldset>
-				<span class="fix__hint"> * Поле обязательно к заполнению </span>
+				<span class="fix__hint" v-once> * Поле обязательно к заполнению </span>
 				<button class="fix__button" type="button">Зафиксировать</button>
 			</form>
 		</main>
@@ -59,7 +39,7 @@
 		<transition>
 			<v-notification
 				color="green"
-				image="/img/icon/academ/check.svg"
+				image="/img/icons/academ/check.svg"
 				message="Клиент успешно зафиксирован"
 				v-if="isNotificationVisible && status === 'success'"
 				@closeNotification="closeNotification"
@@ -68,7 +48,7 @@
 		<transition>
 			<v-notification
 				color="red"
-				image="/img/icon/academ/error.svg"
+				image="/img/icons/academ/error.svg"
 				message="Клиент с таким номером телефона уже зафиксирован"
 				v-if="isNotificationVisible && status === 'failed'"
 				@closeNotification="closeNotification"
@@ -78,21 +58,21 @@
 </template>
 
 <script>
-	import TheHeader from "@/components/academ/TheHeader";
+	import TheHeader from '@/components/academ/TheHeader';
 
-	import vInput from "@/components/crm/v-input";
-	import vTextarea from "@/components/crm/v-textarea";
-	import vNotification from "@/components/academ/v-notification";
+	import vInput from '@/components/crm/v-input';
+	import vTextarea from '@/components/crm/v-textarea';
+	import vNotification from '@/components/academ/v-notification';
 
-	import TheFooter from "@/components/academ/TheFooter";
+	import TheFooter from '@/components/academ/TheFooter';
 
-	import { fixClient } from "@/api/fix-client";
-	import { getApartments, getApartmentsOnTheFloor } from "@/api/academ";
+	import { fixClient } from '@/api/fix-client';
+	import { getApartments, getApartmentsOnTheFloor } from '@/api/academ';
 
-	import { mapState } from "vuex";
+	import { mapState } from 'vuex';
 
 	export default {
-		name: "PageFixClient",
+		name: 'PageFixClient',
 		components: {
 			TheHeader,
 
@@ -115,19 +95,19 @@
 			}),
 		},
 		data: () => ({
-			last_name: "",
-			first_name: "",
-			patronymic: "",
-			tel: "",
-			info: "",
+			last_name: '',
+			first_name: '',
+			patronymic: '',
+			tel: '',
+			info: '',
 
 			isNotificationVisible: false,
 		}),
 		methods: {
 			checkRequiredInputs() {
-				const fixForm = document.querySelector(".fix");
-				const button = fixForm.querySelector(".fix__button");
-				const inputs = fixForm.querySelectorAll(".input");
+				const fixForm = document.querySelector('.fix');
+				const button = fixForm.querySelector('.fix__button');
+				const inputs = fixForm.querySelectorAll('.input');
 
 				if (
 					this.last_name.length > 0 &&
@@ -135,19 +115,19 @@
 					this.patronymic.length > 0 &&
 					this.tel.length > 0
 				) {
-					button.setAttribute("type", "submit");
-				} else button.setAttribute("type", "button");
+					button.setAttribute('type', 'submit');
+				} else button.setAttribute('type', 'button');
 
 				inputs.forEach((input) => {
-					input.addEventListener("input", () => {
+					input.addEventListener('input', () => {
 						if (
 							this.last_name.length > 0 &&
 							this.first_name.length > 0 &&
 							this.patronymic.length > 0 &&
 							this.tel.length > 0
 						) {
-							button.setAttribute("type", "submit");
-						} else button.setAttribute("type", "button");
+							button.setAttribute('type', 'submit');
+						} else button.setAttribute('type', 'button');
 					});
 				});
 			},
@@ -180,7 +160,7 @@
 		},
 		mounted() {
 			if (this.apartmentNumber === undefined) {
-				this.$router.push("/crm");
+				this.$router.push('/crm');
 			}
 			this.checkRequiredInputs();
 		},
@@ -188,7 +168,7 @@
 </script>
 
 <style lang="scss" scoped>
-	@import "@/assets/scss/variables";
+	@import '@/assets/scss/variables';
 
 	.fix {
 		max-width: 90rem;

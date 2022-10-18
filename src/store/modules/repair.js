@@ -4,7 +4,7 @@ const state = () => ({
 			id: 1,
 			name: 'White box',
 			description: 'для творческих людей, которые хотят избежать грязной работы',
-			price: 6500,
+			price: '6 500',
 			period: 20,
 			images: [
 				{ id: 1, image: '/img/repair/apartment-1.jpg' },
@@ -35,7 +35,7 @@ const state = () => ({
 			id: 2,
 			name: 'Базовый',
 			description: 'для тех, кому нужно быстро запустить квартиру для сдачи в аренду, или быстро и с минимальным бюджетом заехать самим',
-			price: 12400,
+			price: '12 400',
 			period: 30,
 			images: [
 				{ id: 1, image: '/img/repair/apartment-2.jpg' },
@@ -65,8 +65,8 @@ const state = () => ({
 		{
 			id: 3,
 			name: 'Комфорт',
-			description: 'для тех, кто любит основательность и индивидуальный подход',
-			price: 16500,
+			description: 'для тех, кто любит выбор и основательность',
+			price: '16 500',
 			period: 35,
 			images: [
 				{ id: 1, image: '/img/repair/apartment-3.jpg' },
@@ -129,7 +129,7 @@ const state = () => ({
 const getters = {}
 
 const mutations = {
-	SET_RATES(state, payload) { state.rates = payload; },
+	setRates(state, payload) { state.rates = payload; },
 }
 
 const actions = {}

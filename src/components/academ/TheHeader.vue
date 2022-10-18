@@ -10,7 +10,7 @@
 							: (isMobileMenuOpen = true)
 					"
 				>
-					<img src="/img/icon/academ/burger.svg" alt="" />
+					<img src="/img/icons/academ/burger.svg" alt="" />
 				</button>
 				<nav class="nav" :class="{ open: isMobileMenuOpen }">
 					<router-link :to="{ name: 'Home' }" class="link">
@@ -144,11 +144,8 @@
 				</nav>
 			</div>
 			<div class="the-header__right" v-if="isAuth === false">
-				<div
-					class="the-header__auth"
-					:class="{ open: isMobileMenuOpen }"
-				>
-					<img src="/img/icon/academ/person.svg" alt="" />
+				<div class="the-header__auth" :class="{ open: isMobileMenuOpen }">
+					<img src="/img/icons/academ/person.svg" alt="" />
 					<router-link :to="{ name: 'Login' }" class="link">
 						Войти <span class="link__full">в 3D-клуб</span>
 					</router-link>
@@ -158,7 +155,7 @@
 					</router-link>
 				</div>
 				<div class="the-header__call">
-					<img src="/img/icon/academ/call.svg" alt="" />
+					<img src="/img/icons/academ/call.svg" alt="" />
 					<span>+7 (8442) 60-05-51</span>
 				</div>
 			</div>
@@ -180,30 +177,29 @@
 </template>
 
 <script>
-	import { mapState, mapMutations } from "vuex";
-	import { scroll } from "@/js/scroll";
+	import { mapState } from 'vuex';
+	import { scroll } from '@/js/scroll';
 
 	export default {
-		name: "TheHeader",
-		emits: ["openMortgageCalculator"],
+		name: 'TheHeader',
+		emits: ['openMortgageCalculator'],
 		props: { section: String },
 		computed: {
 			...mapState({
 				avatar: (state) => state.cabinet.user.avatar,
-				isAuth: (state) => state.cabinet.user_auth,
+				isAuth: (state) => state.cabinet.userAuth,
 			}),
 		},
 		watch: {
 			isMobileMenuOpen() {
 				this.isMobileMenuOpen
-					? document.body.classList.add("locked")
-					: document.body.classList.remove("locked");
+					? document.body.classList.add('locked')
+					: document.body.classList.remove('locked');
 			},
 		},
 		data: () => ({ isMobileMenuOpen: false }),
 		methods: {
 			scroll,
-			...mapMutations(["SET_TAB"]),
 
 			closeMobileMenu() {
 				this.isMobileMenuOpen = false;
@@ -218,7 +214,7 @@
 </script>
 
 <style lang="scss" scoped>
-	@import "@/assets/scss/variables";
+	@import '@/assets/scss/variables';
 
 	.the-header {
 		position: fixed;
@@ -302,7 +298,7 @@
 		}
 
 		&::after {
-			content: "";
+			content: '';
 			position: absolute;
 			left: 0;
 			bottom: -0.3rem;

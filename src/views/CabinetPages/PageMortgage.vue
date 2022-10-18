@@ -1,5 +1,5 @@
 <template>
-	<div class="page-mortgage">
+	<div class="page-mortgage" v-once>
 		<iframe
 			src="https://ipoteka.domclick.ru/calc-reg/calculator.html"
 			frameborder="0"
@@ -16,10 +16,10 @@
 	export default {
 		name: "PageMortgage",
 		methods: {
-			...mapMutations(["SET_TAB"]),
+			...mapMutations(["setTab"]),
 		},
 		created() {
-			this.SET_TAB("mortgage");
+			this.setTab("mortgage");
 		},
 	};
 </script>

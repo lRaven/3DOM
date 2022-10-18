@@ -17,7 +17,7 @@
 				{{ new_option === null ? selected : new_option }}
 			</p>
 			<div class="v-dropdown__arrow" :class="{ open: isDropdownOpen }">
-				<img src="/img/icon/general/arrow.svg" alt="" />
+				<img src="/img/icons/general/arrow.svg" alt="" />
 			</div>
 		</div>
 		<div class="v-dropdown__content" :style="`height: ${contentHeight}rem`">
@@ -34,10 +34,10 @@
 </template>
 
 <script>
-	import { directive } from "vue3-click-away";
+	import { directive } from 'vue3-click-away';
 
 	export default {
-		name: "vDropdown",
+		name: 'vDropdown',
 		props: {
 			description: String,
 			selected: String,
@@ -71,7 +71,7 @@
 			//* запись в selected значения выбранного элемента
 			setOption(value) {
 				this.new_option = value;
-				this.$emit("update:modeValue", value);
+				this.$emit('update:modeValue', value);
 			},
 		},
 		directives: { ClickAway: directive },
@@ -79,7 +79,7 @@
 </script>
 
 <style lang="scss" scoped>
-	@import "@/assets/scss/variables";
+	@import '@/assets/scss/variables';
 
 	.v-dropdown {
 		user-select: none;

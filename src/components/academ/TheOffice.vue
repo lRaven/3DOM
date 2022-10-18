@@ -1,6 +1,6 @@
 <template>
 	<section class="office" id="office">
-		<div class="office__left">
+		<div class="office__left" v-once>
 			<div class="office__feature">
 				<p class="office__feature-word">ቢሮ</p>
 				<p class="office__feature-description">
@@ -9,7 +9,7 @@
 				</p>
 			</div>
 		</div>
-		<div class="office__right">
+		<div class="office__right" v-once>
 			<div class="office__right-container">
 				<div class="office__right-top">
 					<div class="office__right-top-left">
@@ -97,6 +97,7 @@
 				class="office__mobile-img"
 			/>
 		</div>
+
 		<transition>
 			<v-popup v-if="isPopupVisible" @closePopup="closePopup">
 				<p class="academ-popup__description">

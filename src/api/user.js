@@ -3,10 +3,10 @@ import cookie from 'vue-cookies';
 
 const baseURL = process.env.VUE_APP_BACKEND_BASEURL;
 
-const login = async (username, password) => {
+const login = async (userData) => {
 	try {
 		const response = await axios.post(`${baseURL}/auth/token/login/`,
-			{ username, password, }
+			{ ...userData }
 		);
 		return response;
 	}

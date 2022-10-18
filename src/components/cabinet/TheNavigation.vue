@@ -1,7 +1,7 @@
 <template>
 	<div class="the-navigation" :class="{ minimized: isNavMinimized }">
 		<button
-			v-show="(document_width <= 1050) & (document_width > 767)"
+			v-show="(documentWidth <= 1050) & (documentWidth > 767)"
 			type="button"
 			class="the-navigation__close"
 			:class="{ minimized: isNavMinimized }"
@@ -12,9 +12,10 @@
 			"
 		>
 			<img
-				src="/img/icon/general/arrow.svg"
+				src="/img/icons/general/arrow.svg"
 				alt="icon"
 				class="the-navigation__close-icon"
+				v-once
 			/>
 		</button>
 
@@ -24,7 +25,7 @@
 		<ul class="the-navigation__list" v-if="currentTabs === 'admin'">
 			<li
 				data-aos="fade-up"
-				v-for="tab in tabs_admin"
+				v-for="tab in tabsAdmin"
 				:key="tab.id"
 				class="the-navigation__item"
 				:title="tab.description"
@@ -35,11 +36,7 @@
 					:class="{ minimized: isNavMinimized }"
 				>
 					<img
-						:src="
-							selectedTab === tab.tab
-								? tab.icon_selected
-								: tab.icon
-						"
+						:src="selectedTab === tab.tab ? tab.iconSelected : tab.icon"
 						class="the-navigation__icon"
 						alt=""
 					/>
@@ -57,7 +54,7 @@
 		<ul class="the-navigation__list" v-else>
 			<li
 				data-aos="fade-up"
-				v-for="tab in tabs_user"
+				v-for="tab in tabsUser"
 				:key="tab.id"
 				class="the-navigation__item"
 				:title="tab.description"
@@ -68,11 +65,7 @@
 					:class="{ minimized: isNavMinimized }"
 				>
 					<img
-						:src="
-							selectedTab === tab.tab
-								? tab.icon_selected
-								: tab.icon
-						"
+						:src="selectedTab === tab.tab ? tab.iconSelected : tab.icon"
 						class="the-navigation__icon"
 						alt=""
 					/>
@@ -88,7 +81,7 @@
 			</li>
 		</ul>
 		<button
-			v-show="document_width > 1050"
+			v-show="documentWidth > 1050"
 			type="button"
 			class="the-navigation__close-full"
 			:class="{ minimized: isNavMinimized }"
@@ -99,21 +92,18 @@
 			"
 		>
 			<img
-				src="/img/icon/cabinet/arrow.svg"
+				src="/img/icons/cabinet/arrow.svg"
 				class="the-navigation__close-full-icon"
 				:class="{ minimized: isNavMinimized }"
 				alt=""
 			/>
-			<p
-				class="the-navigation__close-full-description"
-				v-if="!isNavMinimized"
-			>
+			<p class="the-navigation__close-full-description" v-if="!isNavMinimized">
 				Свернуть
 			</p>
 		</button>
 
 		<v-button
-			v-show="document_width <= 1050 && !isNavMinimized"
+			v-show="documentWidth <= 1050 && !isNavMinimized"
 			text="Напишите нам"
 			type="button"
 			color="white"
@@ -123,10 +113,10 @@
 </template>
 
 <script>
-	import { mapState } from "vuex";
+	import { mapState } from 'vuex';
 
 	export default {
-		name: "TheNavigation",
+		name: 'TheNavigation',
 		props: {
 			selectedTab: String,
 			isNavMinimized: {
@@ -135,48 +125,48 @@
 			},
 		},
 		watch: {
-			document_width() {
-				if (this.document_width <= 1050) {
-					this.$emit("minimizeNav");
+			documentWidth() {
+				if (this.documentWidth <= 1050) {
+					this.$emit('minimizeNav');
 				}
 			},
 		},
 		computed: {
 			currentTabs() {
-				if (this.role === "AdminCRM" || this.is_superuser === true) {
-					return "admin";
-				} else return "user";
+				if (this.role === 'AdminCRM' || this.is_superuser === true) {
+					return 'admin';
+				} else return 'user';
 			},
 
 			...mapState({
-				tabs_user: (state) => state.cabinet.tabs_user,
-				tabs_admin: (state) => state.cabinet.tabs_admin,
+				tabsUser: (state) => state.cabinet.tabsUser,
+				tabsAdmin: (state) => state.cabinet.tabsAdmin,
 
 				role: (state) => state.cabinet.user.role,
 				is_superuser: (state) => state.cabinet.user.is_superuser,
 
-				document_width: (state) => state.document_width,
+				documentWidth: (state) => state.documentWidth,
 			}),
 		},
 		methods: {
 			navActions(link) {
-				link ? this.$router.push(link) : this.$emit("openPopupKolotok");
+				link ? this.$router.push(link) : this.$emit('openPopupKolotok');
 
-				if (this.document_width <= 767) {
-					this.$emit("minimizeNav");
+				if (this.documentWidth <= 767) {
+					this.$emit('minimizeNav');
 				}
 			},
 		},
 		mounted() {
-			if (this.document_width <= 1050) {
-				this.$emit("minimizeNav");
+			if (this.documentWidth <= 1050) {
+				this.$emit('minimizeNav');
 			}
 		},
 	};
 </script>
 
 <style lang="scss" scoped>
-	@import "@/assets/scss/variables";
+	@import '@/assets/scss/variables';
 
 	.the-navigation {
 		display: flex;

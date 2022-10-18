@@ -1,19 +1,16 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import PageHome from '@/views/PageHome'
-import PageLogin from '@/views/PageLogin'
-import PageRegistration from '@/views/PageRegistration'
 import PageNotFound from '@/views/PageNotFound'
 
 import store from '@/store'
-import cookie from 'vue-cookies'
+import cookies from 'vue-cookies'
 
 
 const routes = [
 	{
 		path: '/',
 		name: 'Home',
-		component: PageHome,
+		component: () => import(/* webpackChunkName: "home" */ '@/views/PageHome.vue'),
 		meta: {
 			title: '3DOM',
 		}
@@ -56,7 +53,7 @@ const routes = [
 		component: () => import(/* webpackChunkName: "crm" */ '@/views/PageCRM.vue'),
 
 		async beforeEnter(to, from, next) {
-			if (cookie.get('auth_token')) {
+			if (cookies.get('auth_token')) {
 				try {
 					const response = await store.dispatch('getUser');
 
@@ -85,7 +82,7 @@ const routes = [
 		props: true,
 
 		async beforeEnter(to, from, next) {
-			if (cookie.get('auth_token')) {
+			if (cookies.get('auth_token')) {
 				try {
 					const response = await store.dispatch('getUser');
 
@@ -109,7 +106,7 @@ const routes = [
 	{
 		path: '/login',
 		name: 'Login',
-		component: PageLogin,
+		component: () => import(/* webpackChunkName: "login" */ '@/views/PageLogin.vue'),
 
 		meta: {
 			title: 'Авторизация',
@@ -118,7 +115,7 @@ const routes = [
 	{
 		path: '/registration',
 		name: 'Registration',
-		component: PageRegistration,
+		component: () => import(/* webpackChunkName: "registration" */ '@/views/PageRegistration.vue'),
 
 		meta: {
 			title: 'Регистрация',
@@ -255,23 +252,14 @@ const router = createRouter({
 	routes,
 })
 
-router.beforeEach(async (to) => {
+router.beforeEach((to) => {
 	window.scrollTo(0, 0);
 
-	try {
-		const response = await store.dispatch('getUser');
-
-		if (to.meta.requiresAuth === true) {
-			if (response.status === 200) { return true }
-			else { return { name: 'Login' } }
-		}
+	if (to.meta.requiresAuth) {
+		if (cookies.get('auth_token')) return true
+		else return { name: 'Login' }
 	}
-	catch (err) {
-		if (to.meta.requiresAuth === true) {
-			return { name: 'Login' }
-		}
-		else return true;
-	}
+	else return true
 })
 
 export default router

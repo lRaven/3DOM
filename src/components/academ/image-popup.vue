@@ -2,7 +2,7 @@
 	<div class="popup">
 		<div class="popup__header">
 			<div class="popup__close" @click="closePopup()">
-				<img src="/img/icon/academ/close.svg" alt="" />
+				<img src="/img/icons/academ/close.svg" alt="" />
 			</div>
 		</div>
 		<div class="popup__body">
@@ -11,14 +11,14 @@
 				v-show="fullscreen === false"
 				@click="fullscreenPopup(1)"
 			>
-				<img src="/img/icon/academ/fullscreen.svg" alt="" />
+				<img src="/img/icons/academ/fullscreen.svg" alt="" />
 			</div>
 			<div
 				class="popup__button popup__default"
 				v-show="fullscreen === true"
 				@click="fullscreenPopup(2)"
 			>
-				<img src="/img/icon/academ/minimize.svg" alt="" />
+				<img src="/img/icons/academ/minimize.svg" alt="" />
 			</div>
 			<img alt="" :src="src" class="popup__image" />
 		</div>
@@ -28,7 +28,7 @@
 
 <script>
 	export default {
-		name: "ImagePopup",
+		name: 'ImagePopup',
 		props: {
 			src: String,
 		},
@@ -40,24 +40,24 @@
 		components: {},
 		methods: {
 			closePopup() {
-				const popup = document.querySelector(".popup");
-				popup.classList.remove("open");
-				popup.classList.remove("fullscreen");
+				const popup = document.querySelector('.popup');
+				popup.classList.remove('open');
+				popup.classList.remove('fullscreen');
 				this.fullscreen = false;
-				document.querySelector("body").classList.remove("locked");
+				document.querySelector('body').classList.remove('locked');
 			},
 
 			fullscreenPopup(choice) {
-				const popup = document.querySelector(".popup");
+				const popup = document.querySelector('.popup');
 
 				switch (choice) {
 					case 1: {
-						popup.classList.add("fullscreen");
+						popup.classList.add('fullscreen');
 						this.fullscreen = true;
 						break;
 					}
 					case 2: {
-						popup.classList.remove("fullscreen");
+						popup.classList.remove('fullscreen');
 						this.fullscreen = false;
 						break;
 					}
@@ -69,7 +69,7 @@
 </script>
 
 <style lang="scss" scoped>
-	@import "@/assets/scss/variables";
+	@import '@/assets/scss/variables';
 
 	.popup {
 		display: flex;

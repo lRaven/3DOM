@@ -1,7 +1,7 @@
 <template>
 	<section class="the-mortgage" id="mortgage">
 		<div class="the-mortgage__container center">
-			<div class="the-mortgage__header">
+			<div class="the-mortgage__header" v-once>
 				<h2 data-aos="fade-up">Встречайте: Ипотека — 4,2%</h2>
 				<p data-aos="fade-up">
 					Как вы полагаете, оформить ипотеку просто или очень просто?
@@ -59,6 +59,7 @@
 						data-aos="fade-up"
 						data-aos-delay="500"
 						class="the-mortgage__middle"
+						v-once
 					>
 						<h3>Стандартное ипотечное предложение</h3>
 						<div class="the-mortgage__item">
@@ -85,6 +86,7 @@
 						data-aos="fade-up"
 						data-aos-delay="750"
 						class="the-mortgage__last"
+						v-once
 					>
 						<h3>
 							Ипотечное предложение <br />

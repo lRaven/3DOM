@@ -1,8 +1,8 @@
 <template>
 	<div class="page-home theme-container">
 		<the-header
-			@openMortgageCalculator="openMortgageCalculator"
-			@openPopup="openPopup"
+			@open-mortgage-calculator="openMortgageCalculator"
+			@open-popup="openPopup"
 		></the-header>
 
 		<main class="main">
@@ -17,12 +17,12 @@
 
 		<the-footer />
 
-		<v-call @openPopup="openPopup"></v-call>
+		<v-call @open-popup="openPopup"></v-call>
 
 		<transition mode="out-in" name="fade-up">
 			<mortgage-calculator
 				v-if="isMortgageCalculatorOpen"
-				closeIcon="/img/icon/cabinet/close.svg"
+				closeIcon="/img/icons/cabinet/close.svg"
 				light="light"
 				@closeMortgageCalculator="closeMortgageCalculator"
 			></mortgage-calculator>
@@ -34,10 +34,7 @@
 				@closePopup="closePopup"
 				title="3DOM консультация"
 			>
-				<form
-					@submit.prevent=""
-					class="page-home__consultation-request"
-				>
+				<form @submit.prevent="" class="page-home__consultation-request">
 					<p class="page-home__consultation-request-description">
 						Отправьте заявку<br />
 						для получения консультации
@@ -71,28 +68,28 @@
 </template>
 
 <script>
-	import TheHeader from "@/components/general/TheHeader";
+	import TheHeader from '@/components/general/TheHeader';
 
-	import TheBanner from "@/components/general/TheBanner";
-	import TheCatalog from "@/components/general/TheCatalog";
-	import TheKolotok from "@/components/general/TheKolotok";
-	import TheLayout from "@/components/general/TheLayout";
-	import TheMortgage from "@/components/general/TheMortgage";
-	import TheSteps from "@/components/trade-in/TheSteps";
-	import TheInsurance from "@/components/general/TheInsurance";
+	import TheBanner from '@/components/general/TheBanner';
+	import TheCatalog from '@/components/general/TheCatalog';
+	import TheKolotok from '@/components/general/TheKolotok';
+	import TheLayout from '@/components/general/TheLayout';
+	import TheMortgage from '@/components/general/TheMortgage';
+	import TheSteps from '@/components/trade-in/TheSteps';
+	import TheInsurance from '@/components/general/TheInsurance';
 
-	import vCall from "@/components/general/v-call";
-	import mortgageCalculator from "@/components/academ/MortgageCalculator";
+	import vCall from '@/components/general/v-call';
+	import mortgageCalculator from '@/components/academ/MortgageCalculator';
 
-	import AcademInput from "@/components/academ/academ-input.vue";
-	import vCheckbox from "@/components/academ/v-checkbox.vue";
+	import AcademInput from '@/components/academ/academ-input.vue';
+	import vCheckbox from '@/components/academ/v-checkbox.vue';
 
-	import TheFooter from "@/components/general/TheFooter";
+	import TheFooter from '@/components/general/TheFooter';
 
-	import { requestSupportForm } from "@/mixins/support";
+	import { requestSupportForm } from '@/mixins/support';
 
 	export default {
-		name: "PageHome",
+		name: 'PageHome',
 		mixins: [requestSupportForm],
 		components: {
 			TheHeader,
@@ -119,16 +116,16 @@
 		methods: {
 			openMortgageCalculator() {
 				this.isMortgageCalculatorOpen = true;
-				document.body.classList.add("locked");
+				document.body.classList.add('locked');
 			},
 			closeMortgageCalculator() {
 				this.isMortgageCalculatorOpen = false;
-				document.body.classList.remove("locked");
+				document.body.classList.remove('locked');
 			},
 
 			closePopup() {
 				this.isPopupVisible = false;
-				document.body.classList.remove("locked");
+				document.body.classList.remove('locked');
 			},
 			openPopup() {
 				this.isPopupVisible = true;

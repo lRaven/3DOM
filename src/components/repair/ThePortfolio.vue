@@ -1,18 +1,10 @@
 <template>
-	<section class="the-portfolio center">
+	<section class="the-portfolio center" v-once>
 		<div data-aos="fade-up" class="the-portfolio__card">
-			<h2 class="the-portfolio__card-title">
-				Больше наших работ на vk.com
-			</h2>
-			<h3 class="the-portfolio__card-subtitle">
-				Свежие работы наших дизайнов
-			</h3>
+			<h2 class="the-portfolio__card-title">Больше наших работ на vk.com</h2>
+			<h3 class="the-portfolio__card-subtitle">Свежие работы наших дизайнов</h3>
 
-			<v-button
-				text="Перейти к работам"
-				color="white"
-				direction="reverse"
-			>
+			<v-button text="Перейти к работам" color="white" direction="reverse">
 				<template v-slot:icon>
 					<svg
 						width="57"
@@ -36,18 +28,16 @@
 </template>
 
 <script>
-	export default {
-		name: "ThePortfolio",
-	};
+	export default { name: 'ThePortfolio' };
 </script>
 
 <style lang="scss" scoped>
-	@import "@/assets/scss/variables";
+	@import '@/assets/scss/variables';
 
 	.the-portfolio {
 		&__card {
-			background: $light-gray url(/public/img/repair/portfolio-bg.png)
-				right center / contain no-repeat;
+			background: #cee5ff url(/public/img/repair/portfolio-bg.png) right center /
+				contain no-repeat;
 			border-radius: 3rem;
 			padding: 5rem 10rem;
 			color: $dark-blue;

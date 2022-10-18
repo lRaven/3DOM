@@ -49,7 +49,7 @@
 		},
 		data: () => ({ chat_data: {} }),
 		methods: {
-			...mapMutations(["SET_TAB"]),
+			...mapMutations(["setTab"]),
 
 			async getChatData() {
 				try {
@@ -65,7 +65,7 @@
 			},
 		},
 		created() {
-			this.SET_TAB("appeals");
+			this.setTab("appeals");
 
 			if (this.appeal_id) {
 				this.getChatData();

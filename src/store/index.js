@@ -10,16 +10,16 @@ import Repair from '@/store/modules/repair'
 export default createStore({
 	state: {
 		baseURL: process.env.VUE_APP_BACKEND_BASEURL,
-		document_width: document.documentElement.clientWidth,
+		documentWidth: document.documentElement.clientWidth,
 	},
-	getters: { BASEURL_WITHOUT_PROTOCOL(state) { return state.baseURL.split("/")[2] } },
-	mutations: { SET_DOCUMENT_WIDTH: (state, payload) => state.document_width = payload, },
+	getters: { baseURLWithoutProtocol(state) { return state.baseURL.split("/")[2] } },
+	mutations: { setDocumentWidth: (state, payload) => state.documentWidth = payload, },
 	actions: {
-		getDocumentWidth: async (context) => {
-			await context.commit('SET_DOCUMENT_WIDTH', document.documentElement.clientWidth);
-			await window.addEventListener("resize", () => {
+		getDocumentWidth: (context) => {
+			context.commit('setDocumentWidth', document.documentElement.clientWidth);
+			window.addEventListener("resize", () => {
 				setTimeout(() => {
-					context.commit('SET_DOCUMENT_WIDTH', document.documentElement.clientWidth);
+					context.commit('setDocumentWidth', document.documentElement.clientWidth);
 				}, 100);
 			});
 		},

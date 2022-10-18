@@ -12,14 +12,11 @@
 					: (isDropdownOpen = false)
 			"
 		>
-			<p
-				class="v-dropdown__selected-text"
-				:class="{ selected: selectedText }"
-			>
+			<p class="v-dropdown__selected-text" :class="{ selected: selectedText }">
 				{{ selectedText === null ? placeholder : selectedText }}
 			</p>
 			<div class="v-dropdown__arrow" :class="{ open: isDropdownOpen }">
-				<img src="/img/icon/general/arrow.svg" alt="arrow" />
+				<img src="/img/icons/general/arrow.svg" alt="arrow" />
 			</div>
 		</div>
 		<transition name="fade-up" mode="out-in">
@@ -41,9 +38,7 @@
 					}`"
 				>
 					{{
-						`${showedValuePrefix ? showedValuePrefix : ""}${
-							item[showedValue]
-						}`
+						`${showedValuePrefix ? showedValuePrefix : ''}${item[showedValue]}`
 					}}
 				</li>
 			</ul>
@@ -52,10 +47,10 @@
 </template>
 
 <script>
-	import { directive } from "vue3-click-away";
+	import { directive } from 'vue3-click-away';
 
 	export default {
-		name: "vDropdown",
+		name: 'vDropdown',
 		props: {
 			isDisabled: {
 				value: Boolean,
@@ -69,17 +64,17 @@
 
 			sendValue: {
 				value: [String, Number],
-				default: "id",
+				default: 'id',
 			},
 			getValue: [String, Number, Object],
 
 			showedValue: {
 				value: String,
-				default: "description",
+				default: 'description',
 			},
 			showedValuePrefix: {
 				value: String,
-				default: "",
+				default: '',
 			},
 		},
 		watch: {
@@ -110,7 +105,7 @@
 				this.selectedText = text;
 				this.selectedEl = { ...sendValue };
 
-				this.$emit("update:modelValue", sendValue);
+				this.$emit('update:modelValue', sendValue);
 				this.closeDropdown();
 			},
 		},
@@ -119,7 +114,7 @@
 </script>
 
 <style lang="scss" scoped>
-	@import "@/assets/scss/variables";
+	@import '@/assets/scss/variables';
 
 	.v-dropdown {
 		user-select: none;

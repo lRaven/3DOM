@@ -1,9 +1,9 @@
 <template>
 	<section class="the-banner" id="banner">
-		<div class="the-banner__container center">
+		<div class="the-banner__container center" v-once>
 			<h1 class="the-banner__title">
 				Готовый ремонт «под ключ»<br />
-				с гаратией
+				с гарантией
 			</h1>
 
 			<div class="the-banner__card-wrapper">
@@ -12,10 +12,10 @@
 						Заказать ремонт в компании 3Dom
 					</h2>
 					<p class="the-banner__card-description">
-						Значит получить готовое решение всех вопросов, связанных
-						с уютом и комфортом.<br />
-						От базового ремонта до полного обустройства, включая
-						меблировку, текстиль, декор и т.п.<br />
+						Значит получить готовое решение всех вопросов, связанных с уютом и
+						комфортом.<br />
+						От базового ремонта до полного обустройства, включая меблировку,
+						текстиль, декор и т.п.<br />
 						За 5 лет нами отработаны схемы полного дистанционного
 						благоустройства недвижимости.
 					</p>
@@ -43,16 +43,16 @@
 </template>
 
 <script>
-	import vSwiper from "@/components/general/v-swiper.vue";
+	import vSwiper from '@/components/general/v-swiper.vue';
 
 	export default {
-		name: "TheBanner",
+		name: 'TheBanner',
 		components: { vSwiper },
 	};
 </script>
 
 <style lang="scss" scoped>
-	@import "@/assets/scss/variables";
+	@import '@/assets/scss/variables';
 
 	.the-banner {
 		display: grid;

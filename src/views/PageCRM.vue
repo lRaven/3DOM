@@ -1,8 +1,6 @@
 <template>
 	<div class="page-crm theme-container">
-		<the-header
-			@openMortgageCalculator="openMortgageCalculator"
-		></the-header>
+		<the-header @openMortgageCalculator="openMortgageCalculator"></the-header>
 		<main class="main">
 			<div class="apartments">
 				<div class="apartments-floor">
@@ -37,10 +35,7 @@
 						<TypeList v-bind:text="'Коммерция'" colors="#9FA8DA" />
 					</div>
 					<div class="colorsTypeObject-Type3">
-						<TypeList
-							v-bind:text="'Кладовки и машиноместа'"
-							colors="#757575"
-						/>
+						<TypeList v-bind:text="'Кладовки и машиноместа'" colors="#757575" />
 					</div>
 					<div class="colorsTypeObject-Type4">
 						<TypeList
@@ -64,10 +59,7 @@
 						/>
 					</div>
 					<div class="colorsTypeObject-Type8">
-						<TypeList
-							v-bind:text="'Не подходит под запрос'"
-							colors="#eee"
-						/>
+						<TypeList v-bind:text="'Не подходит под запрос'" colors="#eee" />
 					</div>
 				</div>
 			</div>
@@ -96,7 +88,7 @@
 		<transition mode="out-in" name="fade-up">
 			<mortgage-calculator
 				v-if="isMortgageCalculatorOpen"
-				closeIcon="/img/icon/academ/close.svg"
+				closeIcon="/img/icons/academ/close.svg"
 				@closeMortgageCalculator="closeMortgageCalculator"
 			></mortgage-calculator>
 		</transition>
@@ -104,25 +96,25 @@
 </template>
 
 <script>
-	import TheHeader from "@/components/academ/TheHeader";
+	import TheHeader from '@/components/academ/TheHeader';
 
-	import SectionOne from "@/components/academ/ApartmentsPage/SectionOne";
-	import SectionTwo from "@/components/academ/ApartmentsPage/SectionTwo";
-	import SectionThree from "@/components/academ/ApartmentsPage/SectionThree";
-	import SectionFloor from "@/components/academ/ApartmentsPage/SectionFloor";
-	import TypeList from "@/components/academ/ApartmentsPage/TypeList";
-	import sectionPopup from "@/components/crm/sectionPopup";
-	import apartmentPopup from "@/components/crm/apartmentPopup";
+	import SectionOne from '@/components/academ/ApartmentsPage/SectionOne';
+	import SectionTwo from '@/components/academ/ApartmentsPage/SectionTwo';
+	import SectionThree from '@/components/academ/ApartmentsPage/SectionThree';
+	import SectionFloor from '@/components/academ/ApartmentsPage/SectionFloor';
+	import TypeList from '@/components/academ/ApartmentsPage/TypeList';
+	import sectionPopup from '@/components/crm/sectionPopup';
+	import apartmentPopup from '@/components/crm/apartmentPopup';
 
-	import MortgageCalculator from "@/components/academ/MortgageCalculator";
+	import MortgageCalculator from '@/components/academ/MortgageCalculator';
 
-	import TheFooter from "@/components/academ/TheFooter";
+	import TheFooter from '@/components/academ/TheFooter';
 
-	import { mapState, mapMutations } from "vuex";
-	import { getApartments, getApartmentsOnTheFloor } from "@/api/academ";
+	import { mapState, mapMutations } from 'vuex';
+	import { getApartments, getApartmentsOnTheFloor } from '@/api/academ';
 
 	export default {
-		name: "PageCRM",
+		name: 'PageCRM',
 		components: {
 			TheHeader,
 
@@ -151,14 +143,14 @@
 		}),
 
 		methods: {
-			...mapMutations(["CLEAR_APARTMENTS_ON_FLOOR", "CLEAR_APARTMENTS"]),
+			...mapMutations(['clearApartmentsOnFloor', 'clearApartments']),
 
 			selectFloor(floor) {
 				this.floor = floor;
 			},
 
 			async showDialogApartment(id, section) {
-				document.querySelector("body").classList.add("locked");
+				document.querySelector('body').classList.add('locked');
 				this.isApartmentReview = true;
 				for (let apartment of this.apartments) {
 					if (apartment.id === id) {
@@ -175,7 +167,7 @@
 			},
 
 			showDialog(section) {
-				document.querySelector("body").classList.add("locked");
+				document.querySelector('body').classList.add('locked');
 				this.isSectionReview = true;
 				this.section = section;
 			},
@@ -185,12 +177,12 @@
 
 			openMortgageCalculator() {
 				this.isMortgageCalculatorOpen = true;
-				document.body.classList.add("locked");
+				document.body.classList.add('locked');
 			},
 
 			closeMortgageCalculator() {
 				this.isMortgageCalculatorOpen = false;
-				document.body.classList.remove("locked");
+				document.body.classList.remove('locked');
 			},
 		},
 		created() {
@@ -198,14 +190,14 @@
 			getApartmentsOnTheFloor(4);
 		},
 		unmounted() {
-			this.CLEAR_APARTMENTS();
-			this.CLEAR_APARTMENTS_ON_FLOOR();
+			this.clearApartments();
+			this.clearApartmentsOnFloor();
 		},
 	};
 </script>
 
 <style lang="scss" scoped>
-	@import "@/assets/scss/variables";
+	@import '@/assets/scss/variables';
 
 	main {
 		display: flex;

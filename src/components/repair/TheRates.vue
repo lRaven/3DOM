@@ -1,11 +1,11 @@
 <template>
 	<section class="the-rates center">
-		<h2 data-aos="fade-up" class="the-rates__title">
+		<h2 data-aos="fade-up" class="the-rates__title" v-once>
 			Пакетные предложения
 		</h2>
-		<h3 data-aos="fade-up" class="the-rates__subtitle">
-			В рамках каждого пакета возможны корректировки по добавлению или
-			вычету опций!
+		<h3 data-aos="fade-up" class="the-rates__subtitle" v-once>
+			В рамках каждого пакета возможны корректировки по добавлению или вычету
+			опций!
 		</h3>
 
 		<div data-aos="fade-up" class="the-rates__list">
@@ -15,10 +15,10 @@
 					:class="{ selected: selectedRate === rate.id }"
 					v-for="rate in rates"
 					:key="rate.id"
-					@mouseenter="this.selectedRate = rate.id"
-					@mouseleave="this.selectedRate = null"
+					@mouseenter="selectedRate = rate.id"
+					@mouseleave="selectedRate = null"
 				>
-					<h3 class="the-rates__rate-title">Пакет</h3>
+					<h3 class="the-rates__rate-title" v-once>Пакет</h3>
 
 					<p class="the-rates__rate-name">«{{ rate.name }}»</p>
 
@@ -33,9 +33,7 @@
 								{{ rate.price }} руб.
 							</span>
 						</p>
-						<p class="the-rates__rate-period">
-							Срок от {{ rate.period }} дней
-						</p>
+						<p class="the-rates__rate-period">Срок от {{ rate.period }} дней</p>
 					</template>
 
 					<p class="the-rates__rate-price-individual" v-else>
@@ -52,7 +50,7 @@
 
 					<a href="#" target="_blank" class="the-rates__rate-link">
 						<img
-							src="/img/icon/repair/vk.svg"
+							src="/img/icons/repair/vk.svg"
 							alt="vk"
 							class="the-rates__rate-link-icon"
 						/>
@@ -76,14 +74,14 @@
 						:class="{ selected: rate.id === selectedRate }"
 						v-for="rate in rates"
 						:key="rate.id"
-						@mouseenter="this.selectedRate = rate.id"
-						@mouseleave="this.selectedRate = null"
+						@mouseenter="selectedRate = rate.id"
+						@mouseleave="selectedRate = null"
 					>
 						<img
 							:src="
 								rate.checklist[checklist.id - 1].value
-									? `/img/icon/repair/tick.svg`
-									: '/img/icon/repair/tick-not.svg'
+									? `/img/icons/repair/tick.svg`
+									: '/img/icons/repair/tick-not.svg'
 							"
 							alt="tick"
 							class="the-rates__rate-checklist-item-tick"
@@ -95,11 +93,11 @@
 			<div class="the-rates__row">
 				<div
 					class="the-rates__rate-buttons"
-					:class="{ selected: rate.id === this.selectedRate }"
+					:class="{ selected: rate.id === selectedRate }"
 					v-for="rate in rates"
 					:key="rate.id"
-					@mouseenter="this.selectedRate = rate.id"
-					@mouseleave="this.selectedRate = null"
+					@mouseenter="selectedRate = rate.id"
+					@mouseleave="selectedRate = null"
 				>
 					<v-button text="Заказать ремонт"></v-button>
 					<v-button
@@ -114,24 +112,27 @@
 </template>
 
 <script>
-	import vSwiper from "@/components/general/v-swiper.vue";
+	import vSwiper from '@/components/general/v-swiper.vue';
 
-	import { mapState } from "vuex";
+	import { useStore } from 'vuex';
+	import { computed, ref } from 'vue';
 
 	export default {
-		name: "TheRates",
+		name: 'TheRates',
 		components: { vSwiper },
-		computed: {
-			...mapState({
-				rates: (state) => state.repair.rates,
-			}),
+		setup() {
+			const store = useStore();
+			const rates = computed(() => store.state.repair.rates);
+
+			const selectedRate = ref(null);
+
+			return { rates, selectedRate };
 		},
-		data: () => ({ selectedRate: null }),
 	};
 </script>
 
 <style lang="scss" scoped>
-	@import "@/assets/scss/variables";
+	@import '@/assets/scss/variables';
 
 	.the-rates {
 		&__title {
@@ -154,7 +155,7 @@
 			gap: 1rem;
 			&:first-child,
 			&:nth-child(3) {
-				grid-template-areas: ". rate1 rate2 rate3 rate4";
+				grid-template-areas: '. rate1 rate2 rate3 rate4';
 				.the-rates__rate-buttons {
 					&:first-child {
 						grid-area: rate1;
@@ -212,7 +213,7 @@
 				font-size: 1.2rem;
 				font-weight: 300;
 				line-height: 1.3;
-				height: 5rem;
+				height: 6rem;
 				overflow: hidden;
 				margin-bottom: 1rem;
 			}
@@ -294,7 +295,7 @@
 								background-color: #cfe6ff;
 							}
 							&::before {
-								content: "";
+								content: '';
 								position: absolute;
 								top: 0;
 								left: 1rem;

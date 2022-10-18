@@ -6,29 +6,29 @@ const baseURL = process.env.VUE_APP_BACKEND_BASEURL;
 const state = () => ({
 	//* main
 	tab: 'profile',
-	tabs_user: [
-		{ id: 1, icon: '/img/icon/cabinet/profile.svg', icon_selected: '/img/icon/cabinet/profile-selected.svg', description: 'Мой профиль', tab: 'profile', link: { name: 'Profile' } },
-		{ id: 2, icon: '/img/icon/cabinet/favorites.svg', icon_selected: '/img/icon/cabinet/favorites-selected.svg', description: 'Избранное', tab: 'favorites', link: { name: 'Favorites' } },
-		{ id: 3, icon: '/img/icon/cabinet/appointments.svg', icon_selected: '/img/icon/cabinet/appointments-selected.svg', description: 'Встречи', tab: 'appointments', link: { name: 'Appointments' } },
-		{ id: 4, icon: '/img/icon/cabinet/mortgage.svg', icon_selected: '/img/icon/cabinet/mortgage-selected.svg', description: 'Ипотека', tab: 'mortgage', link: { name: 'Mortgage' } },
-		{ id: 5, icon: '/img/icon/cabinet/services.svg', icon_selected: '/img/icon/cabinet/services-selected.svg', description: 'Услуги', tab: 'services', link: { name: 'Services' } },
-		{ id: 6, icon: '/img/icon/cabinet/bonuses.svg', icon_selected: '/img/icon/cabinet/bonuses-selected.svg', description: 'Бонусы', tab: 'bonuses', link: { name: 'Bonuses' } },
-		{ id: 7, icon: '/img/icon/cabinet/beater.svg', icon_selected: null, description: 'Колоток', tab: 'kolotok', link: null },
-		{ id: 8, icon: '/img/icon/cabinet/feedback.svg', icon_selected: '/img/icon/cabinet/feedback-selected.svg', description: 'Обратная связь', tab: 'feedback', link: { name: 'Feedback' } },
-		{ id: 9, icon: '/img/icon/cabinet/appeals.svg', icon_selected: '/img/icon/cabinet/appeals-selected.svg', description: 'Обращения', tab: 'appeals', link: { name: 'Appeals' } },
+	tabsUser: [
+		{ id: 1, icon: '/img/icons/cabinet/profile.svg', iconSelected: '/img/icons/cabinet/profile-selected.svg', description: 'Мой профиль', tab: 'profile', link: { name: 'Profile' } },
+		{ id: 2, icon: '/img/icons/cabinet/favorites.svg', iconSelected: '/img/icons/cabinet/favorites-selected.svg', description: 'Избранное', tab: 'favorites', link: { name: 'Favorites' } },
+		{ id: 3, icon: '/img/icons/cabinet/appointments.svg', iconSelected: '/img/icons/cabinet/appointments-selected.svg', description: 'Встречи', tab: 'appointments', link: { name: 'Appointments' } },
+		{ id: 4, icon: '/img/icons/cabinet/mortgage.svg', iconSelected: '/img/icons/cabinet/mortgage-selected.svg', description: 'Ипотека', tab: 'mortgage', link: { name: 'Mortgage' } },
+		{ id: 5, icon: '/img/icons/cabinet/services.svg', iconSelected: '/img/icons/cabinet/services-selected.svg', description: 'Услуги', tab: 'services', link: { name: 'Services' } },
+		{ id: 6, icon: '/img/icons/cabinet/bonuses.svg', iconSelected: '/img/icons/cabinet/bonuses-selected.svg', description: 'Бонусы', tab: 'bonuses', link: { name: 'Bonuses' } },
+		{ id: 7, icon: '/img/icons/cabinet/beater.svg', iconSelected: null, description: 'Колоток', tab: 'kolotok', link: null },
+		{ id: 8, icon: '/img/icons/cabinet/feedback.svg', iconSelected: '/img/icons/cabinet/feedback-selected.svg', description: 'Обратная связь', tab: 'feedback', link: { name: 'Feedback' } },
+		{ id: 9, icon: '/img/icons/cabinet/appeals.svg', iconSelected: '/img/icons/cabinet/appeals-selected.svg', description: 'Обращения', tab: 'appeals', link: { name: 'Appeals' } },
 	],
-	tabs_admin: [
-		{ id: 1, icon: '/img/icon/cabinet/profile.svg', icon_selected: '/img/icon/cabinet/profile-selected.svg', description: 'Мой профиль', tab: 'profile', link: { name: 'Profile' } },
-		{ id: 2, icon: '/img/icon/cabinet/booking.svg', icon_selected: '/img/icon/cabinet/booking-selected.svg', description: 'Бронирование', tab: 'booking', link: { name: 'Booking' } },
-		{ id: 3, icon: '/img/icon/cabinet/favorites.svg', icon_selected: '/img/icon/cabinet/favorites-selected.svg', description: 'Избранное', tab: 'favorites', link: { name: 'Favorites' } },
-		{ id: 4, icon: '/img/icon/cabinet/documents.svg', icon_selected: '/img/icon/cabinet/documents-selected.svg', description: 'Документы', tab: 'documents', link: { name: 'Documents' } },
-		{ id: 5, icon: '/img/icon/cabinet/appointments.svg', icon_selected: '/img/icon/cabinet/appointments-selected.svg', description: 'Встречи', tab: 'appointments', link: { name: 'Appointments' } },
-		{ id: 6, icon: '/img/icon/cabinet/mortgage.svg', icon_selected: '/img/icon/cabinet/mortgage-selected.svg', description: 'Ипотека', tab: 'mortgage', link: { name: 'Mortgage' } },
-		{ id: 7, icon: '/img/icon/cabinet/services.svg', icon_selected: '/img/icon/cabinet/services-selected.svg', description: 'Услуги', tab: 'services', link: { name: 'Services' } },
-		{ id: 8, icon: '/img/icon/cabinet/bonuses.svg', icon_selected: '/img/icon/cabinet/bonuses-selected.svg', description: 'Бонусы', tab: 'bonuses', link: { name: 'Bonuses' } },
-		{ id: 9, icon: '/img/icon/cabinet/crm.svg', icon_selected: '/img/icon/cabinet/crm-selected.svg', description: 'Кабинет CRM', tab: '', link: { name: "CRM" } },
-		{ id: 10, icon: '/img/icon/cabinet/feedback.svg', icon_selected: '/img/icon/cabinet/feedback-selected.svg', description: 'Обратная связь', tab: 'feedback', link: { name: 'Feedback' } },
-		{ id: 11, icon: '/img/icon/cabinet/appeals.svg', icon_selected: '/img/icon/cabinet/appeals-selected.svg', description: 'Обращения', tab: 'appeals', link: { name: 'Appeals' } },
+	tabsAdmin: [
+		{ id: 1, icon: '/img/icons/cabinet/profile.svg', iconSelected: '/img/icons/cabinet/profile-selected.svg', description: 'Мой профиль', tab: 'profile', link: { name: 'Profile' } },
+		{ id: 2, icon: '/img/icons/cabinet/booking.svg', iconSelected: '/img/icons/cabinet/booking-selected.svg', description: 'Бронирование', tab: 'booking', link: { name: 'Booking' } },
+		{ id: 3, icon: '/img/icons/cabinet/favorites.svg', iconSelected: '/img/icons/cabinet/favorites-selected.svg', description: 'Избранное', tab: 'favorites', link: { name: 'Favorites' } },
+		{ id: 4, icon: '/img/icons/cabinet/documents.svg', iconSelected: '/img/icons/cabinet/documents-selected.svg', description: 'Документы', tab: 'documents', link: { name: 'Documents' } },
+		{ id: 5, icon: '/img/icons/cabinet/appointments.svg', iconSelected: '/img/icons/cabinet/appointments-selected.svg', description: 'Встречи', tab: 'appointments', link: { name: 'Appointments' } },
+		{ id: 6, icon: '/img/icons/cabinet/mortgage.svg', iconSelected: '/img/icons/cabinet/mortgage-selected.svg', description: 'Ипотека', tab: 'mortgage', link: { name: 'Mortgage' } },
+		{ id: 7, icon: '/img/icons/cabinet/services.svg', iconSelected: '/img/icons/cabinet/services-selected.svg', description: 'Услуги', tab: 'services', link: { name: 'Services' } },
+		{ id: 8, icon: '/img/icons/cabinet/bonuses.svg', iconSelected: '/img/icons/cabinet/bonuses-selected.svg', description: 'Бонусы', tab: 'bonuses', link: { name: 'Bonuses' } },
+		{ id: 9, icon: '/img/icons/cabinet/crm.svg', iconSelected: '/img/icons/cabinet/crm-selected.svg', description: 'Кабинет CRM', tab: '', link: { name: "CRM" } },
+		{ id: 10, icon: '/img/icons/cabinet/feedback.svg', iconSelected: '/img/icons/cabinet/feedback-selected.svg', description: 'Обратная связь', tab: 'feedback', link: { name: 'Feedback' } },
+		{ id: 11, icon: '/img/icons/cabinet/appeals.svg', iconSelected: '/img/icons/cabinet/appeals-selected.svg', description: 'Обращения', tab: 'appeals', link: { name: 'Appeals' } },
 	],
 
 	booking: [],
@@ -38,29 +38,29 @@ const state = () => ({
 	//* user
 	token: cookie.get('auth_token') || null,
 	user: {},
-	user_auth: null,
+	userAuth: null,
 })
 
 const getters = {}
 
 const mutations = {
 	//* main
-	SET_TAB(state, payload) { state.tab = payload; },
-	CLEAR_TAB(state) { state.tab = 'profile' },
+	setTab(state, payload) { state.tab = payload; },
+	clearTab(state) { state.tab = 'profile' },
 
-	SET_BOOKING(state, payload) { state.booking = payload; },
-	CLEAR_BOOKING(state) { state.booking = [] },
+	setBooking(state, payload) { state.booking = payload; },
+	clearBooking(state) { state.booking = [] },
 
-	SET_FAVORITES(state, payload) { state.favorites = payload; },
-	CLEAR_FAVORITES(state) { state.favorites = [] },
+	setFavorites(state, payload) { state.favorites = payload; },
+	clearFavorites(state) { state.favorites = [] },
 
 	//* user
-	SET_ID(state, payload) { state.user.id = payload; },
-	SET_USER(state, payload) { state.user = payload; },
-	CLEAR_USER(state) { state.user = {} },
+	setID(state, payload) { state.user.id = payload; },
+	setUser(state, payload) { state.user = payload; },
+	clearUser(state) { state.user = {} },
 
-	SET_USER_AUTH(state, payload) { state.user_auth = payload; },
-	CLEAR_USER_AUTH(state) { state.user_auth = false },
+	setUserAuth(state, payload) { state.userAuth = payload; },
+	clearUserAuth(state) { state.userAuth = false },
 }
 
 const actions = {
@@ -74,7 +74,7 @@ const actions = {
 				const userMe = response.data.find(user => {
 					return user.username === context.state.user.username;
 				})
-				context.commit("SET_ID", userMe.id);
+				context.commit("setID", userMe.id);
 			}
 		}
 		catch (err) { throw new Error(err) }
@@ -87,9 +87,9 @@ const actions = {
 			})
 
 			if (response.status === 200) {
-				context.commit("SET_USER", response.data);
+				context.commit("setUser", response.data);
 				context.dispatch('getUserId');
-				context.commit('SET_USER_AUTH', true);
+				context.commit('setUserAuth', true);
 			}
 			else if (response.status >= 400) {
 				//* clear cookies, cabinet data
@@ -111,11 +111,11 @@ const actions = {
 	},
 
 	clearCabinetState(context) {
-		context.commit('CLEAR_TAB');
-		context.commit('CLEAR_BOOKING');
-		context.commit('CLEAR_FAVORITES');
-		context.commit('CLEAR_USER');
-		context.commit('CLEAR_USER_AUTH');
+		context.commit('clearTab');
+		context.commit('clearBooking');
+		context.commit('clearFavorites');
+		context.commit('clearUser');
+		context.commit('clearUserAuth');
 	}
 }
 

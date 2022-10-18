@@ -1,7 +1,7 @@
 <template>
 	<div class="page-bonuses">
 		<div class="page-bonuses__header">
-			<h1 class="page-bonuses__title">Бонусы</h1>
+			<h1 class="page-bonuses__title" v-once>Бонусы</h1>
 
 			<div class="page-bonuses__tabs">
 				<label ref="tab_all" @click="this.tab = 'tab_all'">
@@ -24,6 +24,7 @@
 				/>
 			</div>
 		</div>
+
 		<div class="page-bonuses__body" v-if="tab === 'tab_all'">
 			<services-item
 				data-aos="fade-up"
@@ -31,6 +32,7 @@
 				:description="`Программа позволяет приобрести недвижимость, не перегружая\nличный бюджет на выплату процентов!`"
 				buttonColor="white"
 				@buttonAction="openPopup"
+				v-once
 			></services-item>
 
 			<services-item
@@ -40,6 +42,7 @@
 				description=""
 				color="gray"
 				@buttonAction="openPopup"
+				v-once
 			></services-item>
 
 			<services-item
@@ -49,6 +52,7 @@
 				:title="`«Скидка\nдо 110 000 рублей\nдля онлайн-покупателей`"
 				buttonColor="white"
 				@buttonAction="openPopup"
+				v-once
 			></services-item>
 
 			<services-item
@@ -58,6 +62,7 @@
 				:description="`Программа позволяет приобрести недвижимость, не перегружая\nличный бюджет на выплату процентов!`"
 				color="white"
 				@buttonAction="openPopup"
+				v-once
 			></services-item>
 		</div>
 		<div class="page-bonuses__body" v-if="tab === 'tab_personal'">
@@ -67,6 +72,7 @@
 				:description="`Программа позволяет приобрести недвижимость, не перегружая\nличный бюджет на выплату процентов!`"
 				buttonColor="white"
 				@buttonAction="openPopup"
+				v-once
 			></services-item>
 
 			<services-item
@@ -76,6 +82,7 @@
 				description=""
 				color="gray"
 				@buttonAction="openPopup"
+				v-once
 			></services-item>
 
 			<services-item
@@ -85,6 +92,7 @@
 				:title="`«Скидка\nдо 110 000 рублей\nдля онлайн-покупателей`"
 				buttonColor="white"
 				@buttonAction="openPopup"
+				v-once
 			></services-item>
 
 			<services-item
@@ -94,6 +102,7 @@
 				:description="`Программа позволяет приобрести недвижимость, не перегружая\nличный бюджет на выплату процентов!`"
 				color="white"
 				@buttonAction="openPopup"
+				v-once
 			></services-item>
 		</div>
 
@@ -160,20 +169,20 @@
 			tab() {
 				this.getTabLineWidth();
 			},
-			document_width() {
+			documentWidth() {
 				this.getTabLineWidth();
 			},
 		},
 		computed: {
 			...mapState({
 				user: (state) => state.cabinet.user,
-				document_width: (state) => state.document_width,
+				documentWidth: (state) => state.documentWidth,
 			}),
 			tabLinePosition() {
 				if (this.tab === "tab_all") return 0;
 				else {
-					if (this.document_width <= 540) {
-						return this.document_width / 2 - 15;
+					if (this.documentWidth <= 540) {
+						return this.documentWidth / 2 - 15;
 					} else {
 						return this.$refs.tab_all.clientWidth + 50;
 					}
@@ -187,11 +196,11 @@
 			tabLineWidth: 0,
 		}),
 		methods: {
-			...mapMutations(["SET_TAB"]),
+			...mapMutations(["setTab"]),
 
 			getTabLineWidth() {
-				if (this.document_width <= 540) {
-					this.tabLineWidth = this.document_width / 2 - 15;
+				if (this.documentWidth <= 540) {
+					this.tabLineWidth = this.documentWidth / 2 - 15;
 				} else {
 					this.tabLineWidth = this.$refs[this.tab].clientWidth;
 				}
@@ -205,11 +214,11 @@
 				this.isPopupVisible = true;
 			},
 		},
+		created() {
+			this.setTab("bonuses");
+		},
 		mounted() {
 			this.getTabLineWidth();
-		},
-		created() {
-			this.SET_TAB("bonuses");
 		},
 	};
 </script>

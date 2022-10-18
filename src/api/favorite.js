@@ -41,7 +41,7 @@ async function getFavoriteApartments(favorites) {
 					}
 				}
 			}
-			store.commit('SET_FAVORITES', favorites);
+			store.commit('setFavorites', favorites);
 		}
 	}
 	catch (err) { throw new Error(err) }

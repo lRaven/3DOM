@@ -2,13 +2,13 @@
 	<section class="the-price">
 		<div class="the-price__container center">
 			<div class="the-price__calculate">
-				<h2 class="the-price__title">Узнайте цену квартиры</h2>
-				<h3 class="the-price__subtitle">
+				<h2 class="the-price__title" v-once>Узнайте цену квартиры</h2>
+				<h3 class="the-price__subtitle" v-once>
 					Укажите данные квартиры<br />
 					и узнайте цену
 				</h3>
 				<div class="the-price__rooms">
-					<p>Количество комнат</p>
+					<p v-once>Количество комнат</p>
 					<v-radio
 						:items="[
 							{ id: 1, text: '1' },
@@ -46,7 +46,7 @@
 					@click="this.$emit('openPopup')"
 				></v-button>
 			</div>
-			<img src="/img/trade-in/price-img.svg" alt="" />
+			<img src="/img/trade-in/price-img.svg" alt="" v-once />
 		</div>
 	</section>
 </template>

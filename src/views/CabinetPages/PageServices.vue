@@ -1,11 +1,11 @@
 <template>
 	<div class="page-services">
-		<div class="page-services__header">
+		<div class="page-services__header" v-once>
 			<h1 class="page-services__title">Услуги</h1>
 			<div class="page-services__notification">
 				<div class="page-services__notification-icon-wrapper">
 					<img
-						src="/img/icon/cabinet/notifications.svg"
+						src="/img/icons/cabinet/notifications.svg"
 						alt="icon"
 						class="page-services__notification-icon"
 					/>
@@ -15,7 +15,8 @@
 				</h3>
 			</div>
 		</div>
-		<div class="page-services__body">
+
+		<div class="page-services__body" v-once>
 			<services-item
 				title="Trade-in"
 				:description="`Trade-in — это программа, которая поможет обменять вашу\nстарую квартиру на новую.`"
@@ -42,10 +43,7 @@
 				@closePopup="closePopup"
 				title="3DOM консультация"
 			>
-				<form
-					@submit.prevent=""
-					class="page-services__consultation-request"
-				>
+				<form @submit.prevent="" class="page-services__consultation-request">
 					<p class="page-services__consultation-request-description">
 						Отправьте заявку<br />
 						для получения консультации
@@ -79,38 +77,38 @@
 </template>
 
 <script>
-	import ServicesItem from "@/components/cabinet/ServicesItem.vue";
-	import AcademInput from "@/components/academ/academ-input.vue";
-	import vCheckbox from "@/components/academ/v-checkbox.vue";
+	import ServicesItem from '@/components/cabinet/ServicesItem.vue';
+	import AcademInput from '@/components/academ/academ-input.vue';
+	import vCheckbox from '@/components/academ/v-checkbox.vue';
 
-	import { mapMutations } from "vuex";
+	import { mapMutations } from 'vuex';
 
-	import { requestSupportForm } from "@/mixins/support";
+	import { requestSupportForm } from '@/mixins/support';
 
 	export default {
-		name: "TheServices",
+		name: 'TheServices',
 		mixins: [requestSupportForm],
 		components: { ServicesItem, AcademInput, vCheckbox },
 		data: () => ({ isPopupVisible: false }),
 		methods: {
-			...mapMutations(["SET_TAB"]),
+			...mapMutations(['setTab']),
 
 			closePopup() {
 				this.isPopupVisible = false;
-				document.body.classList.remove("locked");
+				document.body.classList.remove('locked');
 			},
 			openPopup() {
 				this.isPopupVisible = true;
 			},
 		},
 		created() {
-			this.SET_TAB("services");
+			this.setTab('services');
 		},
 	};
 </script>
 
 <style lang="scss" scoped>
-	@import "@/assets/scss/variables";
+	@import '@/assets/scss/variables';
 
 	.page-services {
 		color: $dark;

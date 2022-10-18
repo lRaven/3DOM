@@ -28,8 +28,9 @@
 						src="/img/cabinet/empty.svg"
 						alt=""
 						class="page-favorites__empty-image"
+						v-once
 					/>
-					<div class="page-favorites__empty-text">
+					<div class="page-favorites__empty-text" v-once>
 						<p>Вы пока ничего не&nbsp;добавили в&nbsp;избранное</p>
 						<v-button
 							text="Выбрать планировку"
@@ -194,9 +195,9 @@
 		methods: {
 			...mapMutations([
 				"SET_SORT",
-				"SET_TAB",
-				"SET_FAVORITES",
-				"CLEAR_APARTMENTS",
+				"setTab",
+				"setFavorites",
+				"clearApartments",
 			]),
 
 			//* функция для открытия всплывающего окна
@@ -220,7 +221,7 @@
 			},
 		},
 		created() {
-			this.SET_TAB("favorites");
+			this.setTab("favorites");
 			getFavoriteApartmentNumber();
 			this.sortedFavoriteApartments = sortArrayByNumberKey({
 				array: this.favorites,
@@ -229,7 +230,7 @@
 			});
 		},
 		unmounted() {
-			this.CLEAR_APARTMENTS();
+			this.clearApartments();
 		},
 	};
 </script>

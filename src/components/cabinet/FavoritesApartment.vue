@@ -4,44 +4,38 @@
 
 		<div class="favorites-apartment__block">
 			<p class="favorites-apartment__rooms">
-				{{
-					apartment.type === 5
-						? "Студия"
-						: `${apartment.type}-комнатная`
-				}}
+				{{ apartment.type === 5 ? 'Студия' : `${apartment.type}-комнатная` }}
 			</p>
 
 			<div class="favorites-apartment__price-wrapper">
-				<p class="favorites-apartment__description">Стоимость:</p>
-				<p class="favorites-apartment__price">
-					{{ apartment.cost }} руб.
-				</p>
+				<p class="favorites-apartment__description" v-once>Стоимость:</p>
+				<p class="favorites-apartment__price">{{ apartment.cost }} руб.</p>
 			</div>
 		</div>
 
 		<div class="favorites-apartment__block">
-			<p class="favorites-apartment__description">Площадь</p>
+			<p class="favorites-apartment__description" v-once>Площадь</p>
 			<p class="favorites-apartment__area favorites-apartment__value">
 				{{ apartment.area }} м2
 			</p>
 		</div>
 
 		<div class="favorites-apartment__block">
-			<p class="favorites-apartment__description">Этаж</p>
+			<p class="favorites-apartment__description" v-once>Этаж</p>
 			<p class="favorites-apartment__floor favorites-apartment__value">
 				{{ apartment.floor }}
 			</p>
 		</div>
 
 		<div class="favorites-apartment__block">
-			<p class="favorites-apartment__description">Проект</p>
+			<p class="favorites-apartment__description" v-once>Проект</p>
 			<p class="favorites-apartment__project favorites-apartment__value">
 				Академический
 			</p>
 		</div>
 
 		<div class="favorites-apartment__block">
-			<p class="favorites-apartment__description">Секция</p>
+			<p class="favorites-apartment__description" v-once>Секция</p>
 			<p
 				class="favorites-apartment__section favorites-apartment__value centered"
 			>
@@ -65,7 +59,7 @@
 		<v-button text="" class="favorites-apartment__link">
 			<template v-slot:icon>
 				<img
-					src="/img/icon/cabinet/link.svg"
+					src="/img/icons/cabinet/link.svg"
 					alt=""
 					class="favorites-apartment__link-icon"
 				/>
@@ -96,15 +90,15 @@
 		getFavoriteApartmentNumber,
 		addFavorite,
 		removeFavorite,
-	} from "@/api/favorite";
-	import { returnErrorMessages } from "@/js/returnErrorMessages";
+	} from '@/api/favorite';
+	import { returnErrorMessages } from '@/js/returnErrorMessages';
 
-	import { mapState } from "vuex";
+	import { mapState } from 'vuex';
 
-	import { useToast } from "vue-toastification";
+	import { useToast } from 'vue-toastification';
 
 	export default {
-		name: "FavoritesApartment",
+		name: 'FavoritesApartment',
 		props: {
 			apartment: {
 				value: Object,
@@ -141,15 +135,12 @@
 
 			async addToFavoriteList() {
 				try {
-					const response = await addFavorite(
-						this.user_id,
-						this.apartment.id
-					);
+					const response = await addFavorite(this.user_id, this.apartment.id);
 					if (response.status === 201) {
 						this.toast.success(
 							`Квартира №${this.apartment.number} добавлена в избранное`
 						);
-						console.log("Add to favorite");
+						console.log('Add to favorite');
 
 						getFavoriteApartmentNumber();
 					}
@@ -173,7 +164,7 @@
 						this.toast.success(
 							`Квартира №${this.apartment.number} удалена из избранного`
 						);
-						console.log("Removed from favorite");
+						console.log('Removed from favorite');
 
 						getFavoriteApartmentNumber();
 					}
@@ -196,7 +187,7 @@
 </script>
 
 <style lang="scss" scoped>
-	@import "@/assets/scss/variables";
+	@import '@/assets/scss/variables';
 
 	.favorites-apartment {
 		display: grid;

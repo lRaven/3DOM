@@ -18,11 +18,11 @@ async function fixClient(first_name, last_name, patronymic, tel, info, apartment
 			{ headers: { Authorization: `token ${cookie.get('auth_token')}` } })
 
 		if (response.status === 201) {
-			store.commit('SET_FIX_STATUS', 'success');
+			store.commit('setFixStatus', 'success');
 		}
 	}
 	catch (err) {
-		store.commit("SET_FIX_STATUS", 'failed');
+		store.commit("setFixStatus", 'failed');
 		throw new Error(err)
 	}
 }

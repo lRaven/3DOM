@@ -1,5 +1,5 @@
 <template>
-	<section class="the-banner">
+	<section class="the-banner" v-once>
 		<div class="the-banner__container center">
 			<div data-aos="fade-right" class="the-banner__description">
 				<h1 class="the-banner__title">Trade-in</h1>

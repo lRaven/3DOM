@@ -1,12 +1,12 @@
 <template>
 	<div class="page-cabinet theme-container">
 		<the-header
-			:isCabinetVersion="true"
-			:isNavMinimized="isNavMinimized"
-			@openMortgageCalculator="openMortgageCalculator"
-			@openPopup="openPopup"
-			@maximizeNav="maximizeNav"
-			@minimizeNav="minimizeNav"
+			:is-cabinet-version="true"
+			:is-nav-minimized="isNavMinimized"
+			@open-mortgage-calculator="openMortgageCalculator"
+			@open-popup="openPopup"
+			@maximize-nav="maximizeNav"
+			@minimize-nav="minimizeNav"
 		></the-header>
 		<main class="page-cabinet__wrapper">
 			<div
@@ -34,10 +34,7 @@
 					></v-button>
 				</div>
 			</div>
-			<div
-				class="page-cabinet__main"
-				:class="{ maximized: isNavMinimized }"
-			>
+			<div class="page-cabinet__main" :class="{ maximized: isNavMinimized }">
 				<router-view v-slot="{ Component }">
 					<transition name="fade-up-fast" mode="out-in">
 						<component :is="Component" @openPopup="openPopup" />
@@ -65,29 +62,17 @@
 						class="page-cabinet__questions-suggestions"
 						@submit.prevent="send_message"
 					>
-						<p class="page-cabinet__questions-suggestions-key">
-							ФИО:
-						</p>
-						<v-input
-							type="text"
-							v-model="support_form_data.name"
-						></v-input>
+						<p class="page-cabinet__questions-suggestions-key">ФИО:</p>
+						<v-input type="text" v-model="support_form_data.name"></v-input>
 
-						<p class="page-cabinet__questions-suggestions-key">
-							Телефон:
-						</p>
+						<p class="page-cabinet__questions-suggestions-key">Телефон:</p>
 						<v-input
 							type="tel"
 							v-model="support_form_data.phone_number"
 						></v-input>
 
-						<p class="page-cabinet__questions-suggestions-key">
-							E-mail:
-						</p>
-						<v-input
-							type="email"
-							v-model="support_form_data.email"
-						></v-input>
+						<p class="page-cabinet__questions-suggestions-key">E-mail:</p>
+						<v-input type="email" v-model="support_form_data.email"></v-input>
 
 						<p class="page-cabinet__questions-suggestions-key">
 							Тема обращения:
@@ -119,7 +104,7 @@
 		<transition mode="out-in" name="fade-up">
 			<mortgage-calculator
 				v-if="isMortgageCalculatorOpen"
-				closeIcon="/img/icon/cabinet/close.svg"
+				closeIcon="/img/icons/cabinet/close.svg"
 				light="light"
 				@closeMortgageCalculator="isMortgageCalculatorOpen = false"
 			></mortgage-calculator>
@@ -128,25 +113,25 @@
 </template>
 
 <script>
-	import { mapState } from "vuex";
-	import { supportForm } from "@/mixins/support";
+	import { mapState } from 'vuex';
+	import { supportForm } from '@/mixins/support';
 
-	import TheHeader from "@/components/general/TheHeader";
+	import TheHeader from '@/components/general/TheHeader';
 
-	import TheNavigation from "@/components/cabinet/TheNavigation";
-	import PopupKolotok from "@/components/general/PopupKolotok";
-	import vInput from "@/components/UI/cabinet/v-input.vue";
-	import vTextarea from "@/components/UI/cabinet/v-textarea.vue";
-	import vDropdown from "@/components/UI/cabinet/v-dropdown.vue";
+	import TheNavigation from '@/components/cabinet/TheNavigation';
+	import PopupKolotok from '@/components/general/PopupKolotok';
+	import vInput from '@/components/UI/cabinet/v-input.vue';
+	import vTextarea from '@/components/UI/cabinet/v-textarea.vue';
+	import vDropdown from '@/components/UI/cabinet/v-dropdown.vue';
 
-	import TheFooter from "@/components/general/TheFooter";
+	import TheFooter from '@/components/general/TheFooter';
 
-	import mortgageCalculator from "@/components/academ/MortgageCalculator";
+	import mortgageCalculator from '@/components/academ/MortgageCalculator';
 
-	import { useToast } from "vue-toastification";
+	import { useToast } from 'vue-toastification';
 
 	export default {
-		name: "PageCabinet",
+		name: 'PageCabinet',
 		mixins: [supportForm],
 		components: {
 			TheHeader,
@@ -162,9 +147,8 @@
 			mortgageCalculator,
 		},
 		watch: {
-			user_auth() {
-				if (this.user_auth === false)
-					this.$router.push({ name: "Login" });
+			userAuth() {
+				if (this.userAuth === false) this.$router.push({ name: 'Login' });
 			},
 		},
 		data: () => ({
@@ -178,18 +162,18 @@
 		computed: {
 			...mapState({
 				tab: (state) => state.cabinet.tab,
-				user_auth: (state) => state.cabinet.user_auth,
-				document_width: (state) => state.document_width,
+				userAuth: (state) => state.cabinet.userAuth,
+				documentWidth: (state) => state.documentWidth,
 			}),
 		},
 		methods: {
 			openPopupKolotok() {
 				this.isPopupKolotokOpen = true;
-				document.body.classList.add("locked");
+				document.body.classList.add('locked');
 			},
 			closePopupKolotok() {
 				this.isPopupKolotokOpen = false;
-				document.body.classList.remove("locked");
+				document.body.classList.remove('locked');
 			},
 
 			openPopup() {
@@ -197,27 +181,27 @@
 			},
 			closePopup() {
 				this.isPopupOpen = false;
-				document.body.classList.remove("locked");
+				document.body.classList.remove('locked');
 			},
 
 			openMortgageCalculator() {
 				this.isMortgageCalculatorOpen = true;
-				document.body.classList.add("locked");
+				document.body.classList.add('locked');
 			},
 			closeMortgageCalculator() {
 				this.isMortgageCalculatorOpen = false;
-				document.body.classList.remove("locked");
+				document.body.classList.remove('locked');
 			},
 
 			minimizeNav() {
 				this.isNavMinimized = true;
-				document.body.classList.remove("locked");
+				document.body.classList.remove('locked');
 			},
 			maximizeNav() {
 				this.isNavMinimized = false;
 
-				if (this.document_width <= 767) {
-					document.body.classList.add("locked");
+				if (this.documentWidth <= 767) {
+					document.body.classList.add('locked');
 				}
 			},
 		},

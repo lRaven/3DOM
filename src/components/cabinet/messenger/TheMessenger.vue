@@ -41,7 +41,7 @@
 		},
 		computed: {
 			...mapState({ user: (state) => state.cabinet.user }),
-			...mapGetters(["BASEURL_WITHOUT_PROTOCOL"]),
+			...mapGetters(["baseURLWithoutProtocol"]),
 		},
 		data() {
 			return {
@@ -101,7 +101,7 @@
 		},
 		created() {
 			this.createWebSocket(
-				this.BASEURL_WITHOUT_PROTOCOL,
+				this.baseURLWithoutProtocol,
 				this.appeal_id,
 				this.$cookies.get("auth_token")
 			);

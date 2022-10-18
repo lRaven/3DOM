@@ -7,7 +7,7 @@
 					<h3>АКАДЕМИЧЕСКИЙ</h3>
 				</div>
 				<div class="academ-popup__close" @click="closePopup">
-					<img src="/img/icon/academ/close.svg" alt="close" />
+					<img src="/img/icons/academ/close.svg" alt="close" />
 				</div>
 			</div>
 			<div class="academ-popup__body">
@@ -19,17 +19,17 @@
 
 <script>
 	export default {
-		name: "vPopup",
+		name: 'vPopup',
 		methods: {
 			closePopup() {
-				this.$emit("closePopup");
+				this.$emit('closePopup');
 			},
 		},
 	};
 </script>
 
 <style lang="scss">
-	@import "@/assets/scss/variables";
+	@import '@/assets/scss/variables';
 
 	.academ-popup {
 		display: flex;

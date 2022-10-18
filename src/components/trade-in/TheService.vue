@@ -1,5 +1,5 @@
 <template>
-	<section class="the-service">
+	<section class="the-service" v-once>
 		<div class="the-service__container center">
 			<div class="the-service__header">
 				<h2 data-aos="fade-up" class="the-service__title">

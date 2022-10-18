@@ -1,5 +1,5 @@
 <template>
-	<section class="the-layout">
+	<section class="the-layout" v-once>
 		<div class="the-layout__container center">
 			<h2 class="the-layout__title">Всё пойдёт по плану!</h2>
 			<img

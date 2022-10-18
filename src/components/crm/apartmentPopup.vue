@@ -3,36 +3,24 @@
 		<div class="apartment-popup">
 			<div class="apartment-popup__header">
 				<div class="apartment-popup__col">
-					<span class="apartment-popup__header-decorative"></span>
+					<span class="apartment-popup__header-decorative" v-once></span>
 					<div class="apartment-popup__text">
 						<div class="apartment-popup__info">
-							<p
-								class="apartment-popup__rooms"
-								v-if="apartment.type === 5"
-							>
+							<p class="apartment-popup__rooms" v-if="apartment.type === 5">
 								Студия
 							</p>
 							<p class="apartment-popup__rooms" v-else>
 								{{ apartment.type }}-комн
 							</p>
-							<p class="apartment-popup__number">
-								№{{ apartment.number }}
-							</p>
-							<p class="apartment-popup__area">
-								{{ apartment.area }} кв.м.
-							</p>
+							<p class="apartment-popup__number">№{{ apartment.number }}</p>
+							<p class="apartment-popup__area">{{ apartment.area }} кв.м.</p>
 						</div>
-						<p class="apartment-popup__project">
-							«ЖК Академический»
-						</p>
+						<p class="apartment-popup__project" v-once>«ЖК Академический»</p>
 					</div>
 				</div>
-				<div class="apartment-popup__col">
-					<div
-						class="apartment-popup__close"
-						@click="closeDialogApartment()"
-					>
-						<img src="/img/icon/academ/close2.svg" alt="" />
+				<div class="apartment-popup__col" v-once>
+					<div class="apartment-popup__close" @click="closeDialogApartment()">
+						<img src="/img/icons/academ/close2.svg" alt="" />
 					</div>
 				</div>
 			</div>
@@ -42,6 +30,7 @@
 						<div class="apartment-popup__stats">
 							<p
 								class="apartment-popup__stats-col apartment-popup__stats-key"
+								v-once
 							>
 								Секция
 							</p>
@@ -53,6 +42,7 @@
 
 							<p
 								class="apartment-popup__stats-col apartment-popup__stats-key"
+								v-once
 							>
 								Этаж
 							</p>
@@ -64,17 +54,20 @@
 
 							<p
 								class="apartment-popup__stats-col apartment-popup__stats-key"
+								v-once
 							>
 								Адрес
 							</p>
 							<p
 								class="apartment-popup__stats-col apartment-popup__stats-value"
+								v-once
 							>
 								Волгоград, ул. Баррикадная,1.
 							</p>
 
 							<p
 								class="apartment-popup__stats-col apartment-popup__stats-key"
+								v-once
 							>
 								Цена при 100%
 							</p>
@@ -86,6 +79,7 @@
 
 							<p
 								class="apartment-popup__stats-col apartment-popup__stats-key"
+								v-once
 							>
 								Цена при ипотеке
 							</p>
@@ -97,6 +91,7 @@
 
 							<p
 								class="apartment-popup__stats-col apartment-popup__stats-key"
+								v-once
 							>
 								Цена базовая
 							</p>
@@ -108,12 +103,12 @@
 						</div>
 						<div class="apartment-popup__buttons">
 							<v-button
-								icon="/img/icon/crm/registration.svg"
+								icon="/img/icons/crm/registration.svg"
 								color="gold"
 								text="Оформить ипотеку"
 							></v-button>
 							<v-button
-								icon="/img/icon/crm/calc.svg"
+								icon="/img/icons/crm/calc.svg"
 								color="gray"
 								text="Калькулятор ипотеки"
 							></v-button>
@@ -124,21 +119,17 @@
 							<div
 								class="apartment-popup__action"
 								v-if="isReserved === false"
-								@click="
-									addReservation(
-										this.userID,
-										this.apartment.id
-									)
-								"
+								@click="addReservation(this.userID, this.apartment.id)"
 							>
-								<p class="apartment-popup__action-description">
+								<p class="apartment-popup__action-description" v-once>
 									Забронировать
 								</p>
 
 								<img
-									src="/img/icon/crm/lock.svg"
+									src="/img/icons/crm/lock.svg"
 									alt="icon"
 									class="apartment-popup__action-icon"
+									v-once
 								/>
 							</div>
 							<div
@@ -146,22 +137,23 @@
 								style="cursor: default"
 								v-else
 							>
-								<p class="apartment-popup__action-description">
+								<p class="apartment-popup__action-description" v-once>
 									Забронирована
 								</p>
 								<img
-									src="/img/icon/crm/lock.svg"
+									src="/img/icons/crm/lock.svg"
 									alt="icon"
 									class="apartment-popup__action-icon"
+									v-once
 								/>
 							</div>
 
-							<div class="apartment-popup__action">
+							<div class="apartment-popup__action" v-once>
 								<p class="apartment-popup__action-description">
 									Запись на просмотр
 								</p>
 								<img
-									src="/img/icon/crm/eye.svg"
+									src="/img/icons/crm/eye.svg"
 									alt="icon"
 									class="apartment-popup__action-icon"
 								/>
@@ -174,8 +166,7 @@
 											name: 'Fix Client',
 											query: {
 												building: apartment.building,
-												apartmentNumber:
-													apartment.number,
+												apartmentNumber: apartment.number,
 												apartmentId: apartment.id,
 												apartmentFloor: apartment.floor,
 												apartmentArea: apartment.area,
@@ -186,12 +177,13 @@
 									</router-link>
 								</p>
 								<img
-									src="/img/icon/crm/fix.svg"
+									src="/img/icons/crm/fix.svg"
 									alt="icon"
 									class="apartment-popup__action-icon"
+									v-once
 								/>
 							</div>
-							<div class="apartment-popup__action">
+							<div class="apartment-popup__action" v-once>
 								<p
 									class="apartment-popup__action-description"
 									@click="this.downloadPDF()"
@@ -199,7 +191,7 @@
 									Презентация квартиры
 								</p>
 								<img
-									src="/img/icon/crm/presentation.svg"
+									src="/img/icons/crm/presentation.svg"
 									alt="icon"
 									class="apartment-popup__action-icon"
 								/>
@@ -210,14 +202,15 @@
 								v-if="isFavorite === false"
 								@click="addFavorite"
 							>
-								<p class="apartment-popup__action-description">
+								<p class="apartment-popup__action-description" v-once>
 									В избранное
 								</p>
 
 								<img
-									src="/img/icon/crm/favorite.svg"
+									src="/img/icons/crm/favorite.svg"
 									alt="icon"
 									class="apartment-popup__action-icon"
+									v-once
 								/>
 							</div>
 							<div
@@ -225,22 +218,23 @@
 								style="cursor: default"
 								v-else
 							>
-								<p class="apartment-popup__action-description">
+								<p class="apartment-popup__action-description" v-once>
 									В избранном
 								</p>
 								<img
-									src="/img/icon/crm/favorite.svg"
+									src="/img/icons/crm/favorite.svg"
 									alt="icon"
 									class="apartment-popup__action-icon"
+									v-once
 								/>
 							</div>
 
-							<div class="apartment-popup__action">
+							<div class="apartment-popup__action" v-once>
 								<p class="apartment-popup__action-description">
 									Условия бронирования, оплаты, рассрочки
 								</p>
 								<img
-									src="/img/icon/crm/document.svg"
+									src="/img/icons/crm/document.svg"
 									alt="icon"
 									class="apartment-popup__action-icon"
 								/>
@@ -255,26 +249,22 @@
 					class="apartment-popup__scheme"
 				/>
 			</div>
-			<pdf-page
-				:apartment="apartment"
-				v-show="false"
-				ref="pdf"
-			></pdf-page>
+			<pdf-page :apartment="apartment" v-show="false" ref="pdf"></pdf-page>
 		</div>
 	</div>
 </template>
 
 <script>
-	import vButton from "./v-button.vue";
-	import pdfPage from "./pdfPage";
+	import vButton from './v-button.vue';
+	import pdfPage from './pdfPage';
 
-	import { addReservation } from "@/api/booking";
-	import { addFavorite } from "@/api/favorite";
+	import { addReservation } from '@/api/booking';
+	import { addFavorite } from '@/api/favorite';
 
-	import { mapState } from "vuex";
+	import { mapState } from 'vuex';
 
 	export default {
-		name: "apartmentPopup",
+		name: 'apartmentPopup',
 		components: {
 			vButton,
 			pdfPage,
@@ -308,8 +298,8 @@
 		methods: {
 			addReservation,
 			closeDialogApartment() {
-				document.querySelector("body").classList.remove("locked");
-				this.$emit("closeDialogApartment");
+				document.querySelector('body').classList.remove('locked');
+				this.$emit('closeDialogApartment');
 			},
 
 			downloadPDF() {
@@ -327,7 +317,7 @@
 </script>
 
 <style lang="scss" scoped>
-	@import "@/assets/scss/variables";
+	@import '@/assets/scss/variables';
 
 	.apartment-popup {
 		display: flex;

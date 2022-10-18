@@ -1,6 +1,6 @@
 <template>
 	<section class="parking" id="parking">
-		<div class="parking__container center">
+		<div class="parking__container center" v-once>
 			<figure class="parking__img">
 				<img src="/img/academ/advantage-img2.png" alt="" />
 			</figure>
@@ -37,13 +37,14 @@
 				></v-button>
 			</div>
 		</div>
-		<div class="parking__footer">
+		<div class="parking__footer" v-once>
 			<div class="parking__container center">
 				<div @click="openImage()" class="parking__footer-bottom">
 					<img src="/img/academ/parking.svg" alt="" />
 				</div>
 			</div>
 		</div>
+
 		<transition>
 			<v-popup v-if="isPopupVisible" @closePopup="closePopup">
 				<p class="academ-popup__description">

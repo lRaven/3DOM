@@ -49,27 +49,20 @@
 				<!-- //* default -->
 				<button
 					class="item-btn"
-					v-if="
-						apartment.floor !== 14 && apartment.reserved === false
-					"
+					v-if="apartment.floor !== 14 && apartment.reserved === false"
 					@click="showDialog"
 				>
 					<div class="img"></div>
 				</button>
 			</div>
 			<!-- //*зарезервирована -->
-			<div
-				class="whiteSpaceShort reserved"
-				v-if="apartment.reserved === true"
-			>
+			<div class="whiteSpaceShort reserved" v-if="apartment.reserved === true">
 				-
 			</div>
 			<!-- //* default -->
 			<div class="whiteSpaceShort" v-else>-</div>
 			<div class="data">
-				<div class="data-number" v-if="apartment">
-					№{{ apartment.number }}
-				</div>
+				<div class="data-number" v-if="apartment">№{{ apartment.number }}</div>
 				<div class="data-area">{{ apartment.area }}</div>
 			</div>
 			<div class="whiteSpaceLong"></div>
@@ -82,28 +75,21 @@
 		props: {
 			apartment: Object,
 			style() {
-				if (
-					this.apartment.number === 212 ||
-					this.apartment.number === 213
-				) {
-					return "background-color: " + this.colors;
+				if (this.apartment.number === 212 || this.apartment.number === 213) {
+					return 'background-color: ' + this.colors;
 				}
 			},
 		},
 		methods: {
 			showDialog() {
-				this.$emit(
-					"showDialog",
-					this.apartment.id,
-					this.apartment.section
-				);
+				this.$emit('showDialog', this.apartment.id, this.apartment.section);
 			},
 		},
 	};
 </script>
 
 <style lang="scss" scoped>
-	@import "@/assets/scss/variables";
+	@import '@/assets/scss/variables';
 
 	.flatItem {
 		border: 0.1rem solid $light-gray;
@@ -127,8 +113,7 @@
 					margin-left: 0.4rem;
 					width: 1.6rem;
 					height: 1.6rem;
-					background: url(/public/img/icon/crm/scheme.svg) no-repeat
-						top right;
+					background: url(/public/img/icons/crm/scheme.svg) no-repeat top right;
 				}
 			}
 		}
@@ -204,8 +189,7 @@
 				.img {
 					width: 1.6rem;
 					height: 1.6rem;
-					background: url(/public/img/icon/crm/scheme.svg) no-repeat
-						center;
+					background: url(/public/img/icons/crm/scheme.svg) no-repeat center;
 				}
 			}
 		}

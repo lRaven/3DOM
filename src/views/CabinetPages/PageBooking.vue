@@ -1,19 +1,16 @@
 <template>
 	<div class="page-booking">
 		<div class="page-booking__header">
-			<h1 class="page-booking__title">Бронирование</h1>
-			<div class="page-booking__notification">
+			<h1 class="page-booking__title" v-once>Бронирование</h1>
+			<div class="page-booking__notification" v-once>
 				<div class="page-booking__notification-icon-wrapper">
 					<img
-						src="/img/icon/cabinet/notifications.svg"
+						src="/img/icons/cabinet/notifications.svg"
 						alt="icon"
 						class="page-booking__notification-icon"
 					/>
 				</div>
-				<h3
-					class="page-booking__notification-desc"
-					v-show="booking.length > 0"
-				>
+				<h3 class="page-booking__notification-desc" v-show="booking.length > 0">
 					У вас есть предварительное бронирование
 				</h3>
 				<h3
@@ -38,31 +35,31 @@
 </template>
 
 <script>
-	import BookingApartment from "@/components/cabinet/BookingApartment.vue";
-	import { getBookingList } from "@/api/booking";
-	import { mapState, mapMutations } from "vuex";
+	import BookingApartment from '@/components/cabinet/BookingApartment.vue';
+	import { getBookingList } from '@/api/booking';
+	import { mapState, mapMutations } from 'vuex';
 
 	export default {
-		name: "PageBooking",
+		name: 'PageBooking',
 		components: { BookingApartment },
 		computed: {
 			...mapState({ booking: (state) => state.cabinet.booking }),
 		},
 		methods: {
-			...mapMutations(["SET_TAB", "CLEAR_BOOKING"]),
+			...mapMutations(['setTab', 'clearBooking']),
 		},
 		created() {
-			this.SET_TAB("booking");
+			this.setTab('booking');
 			getBookingList();
 		},
 		unmounted() {
-			this.CLEAR_BOOKING();
+			this.clearBooking();
 		},
 	};
 </script>
 
 <style lang="scss" scoped>
-	@import "@/assets/scss/variables";
+	@import '@/assets/scss/variables';
 
 	.page-booking {
 		color: $dark;

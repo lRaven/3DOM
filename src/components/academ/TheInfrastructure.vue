@@ -1,5 +1,5 @@
 <template>
-	<section class="infrastructure" id="infrastructure">
+	<section class="infrastructure" id="infrastructure" v-once>
 		<div class="infrastructure__container center">
 			<figure>
 				<img
@@ -19,22 +19,21 @@
 				</div>
 				<div class="infrastructure__middle">
 					<p>
-						На первом и втором этаже кружки и секции для детей и
-						подростков.
+						На первом и втором этаже кружки и секции для детей и подростков.
 					</p>
 
 					<p>В шаговой доступности бассейн и театр юного зрителя.</p>
 
 					<p>
-						Можно гулять без опаски: за порядком проследят
-						видеокамеры наблюдения и консьерж-служба.
+						Можно гулять без опаски: за порядком проследят видеокамеры
+						наблюдения и консьерж-служба.
 					</p>
 
 					<p>Посторонних не будет, только свои.</p>
 				</div>
 				<div class="infrastructure__right">
 					<img src="/img/academ/circle-img2.png" alt="" />
-					<img src="/img/icon/academ/semicircle.svg" alt="" />
+					<img src="/img/icons/academ/semicircle.svg" alt="" />
 				</div>
 			</div>
 		</div>
@@ -43,12 +42,12 @@
 
 <script>
 	export default {
-		name: "TheInfrastructure",
+		name: 'TheInfrastructure',
 	};
 </script>
 
 <style lang="scss" scoped>
-	@import "@/assets/scss/variables";
+	@import '@/assets/scss/variables';
 
 	.infrastructure {
 		display: block;

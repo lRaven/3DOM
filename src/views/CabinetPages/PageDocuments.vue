@@ -1,5 +1,5 @@
 <template>
-	<section class="page-documents"></section>
+	<section class="page-documents" v-once></section>
 </template>
 
 <script>
@@ -8,10 +8,10 @@
 	export default {
 		name: "PageDocuments",
 		methods: {
-			...mapMutations(["SET_TAB"]),
+			...mapMutations(["setTab"]),
 		},
 		created() {
-			this.SET_TAB("documents");
+			this.setTab("documents");
 		},
 	};
 </script>

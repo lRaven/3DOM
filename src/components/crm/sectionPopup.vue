@@ -1,7 +1,7 @@
 <template>
 	<div class="blur">
 		<div class="popup">
-			<div class="popup__header">
+			<div class="popup__header" v-once>
 				<div class="popup__title">
 					<p>
 						Волгоград, ул. Баррикадная, 1, секция
@@ -9,7 +9,7 @@
 					</p>
 				</div>
 				<div class="popup__close" @click="closePopup()">
-					<img src="/img/icon/academ/close.svg" alt="" />
+					<img src="/img/icons/academ/close.svg" alt="close" />
 				</div>
 			</div>
 			<div class="popup__body">
@@ -18,14 +18,14 @@
 					v-show="fullscreen === false"
 					@click="fullscreenPopup(1)"
 				>
-					<img src="/img/icon/academ/fullscreen.svg" alt="" />
+					<img src="/img/icons/academ/fullscreen.svg" alt="" v-once />
 				</div>
 				<div
 					class="popup__button popup__default"
 					v-show="fullscreen === true"
 					@click="fullscreenPopup(2)"
 				>
-					<img src="/img/icon/academ/minimize.svg" alt="" />
+					<img src="/img/icons/academ/minimize.svg" alt="" v-once />
 				</div>
 				<div class="popup__col">
 					<div class="popup__description">
@@ -35,7 +35,7 @@
 							<br />
 							план 4-13 этажей.
 						</p>
-						<p>Планировки квартир</p>
+						<p v-once>Планировки квартир</p>
 					</div>
 					<div class="popup__full-scheme">
 						<section-two-scheme
@@ -70,7 +70,7 @@
 						></section-three-scheme>
 					</transition-group>
 				</div>
-				<div class="popup__col">
+				<div class="popup__col" v-once>
 					<svg
 						width="114"
 						height="116"
@@ -177,16 +177,16 @@
 </template>
 
 <script>
-	import { mapState } from "vuex";
+	import { mapState } from 'vuex';
 
-	import sectionOneScheme from "./sectionOneScheme";
-	import sectionTwoScheme from "./sectionTwoScheme";
-	import sectionThreeScheme from "./sectionThreeScheme";
+	import sectionOneScheme from './sectionOneScheme';
+	import sectionTwoScheme from './sectionTwoScheme';
+	import sectionThreeScheme from './sectionThreeScheme';
 
-	import { getApartmentsOnTheFloor } from "@/api/academ";
+	import { getApartmentsOnTheFloor } from '@/api/academ';
 
 	export default {
-		name: "SectionPopup",
+		name: 'SectionPopup',
 		components: {
 			sectionOneScheme,
 			sectionTwoScheme,
@@ -209,28 +209,28 @@
 		methods: {
 			//* открытие и закрытие этой модалки
 			closePopup() {
-				const popup = document.querySelector(".popup");
-				popup.classList.remove("fullscreen");
+				const popup = document.querySelector('.popup');
+				popup.classList.remove('fullscreen');
 				this.fullscreen = false;
-				document.querySelector("body").classList.remove("locked");
-				this.$emit("closeDialog");
+				document.querySelector('body').classList.remove('locked');
+				this.$emit('closeDialog');
 			},
 			openPopup() {
-				this.$emit("showDialog");
+				this.$emit('showDialog');
 			},
 
 			//*функция перехода модалки в полноэкранный режим
 			fullscreenPopup(choice) {
-				const popup = document.querySelector(".popup");
+				const popup = document.querySelector('.popup');
 
 				switch (choice) {
 					case 1: {
-						popup.classList.add("fullscreen");
+						popup.classList.add('fullscreen');
 						this.fullscreen = true;
 						break;
 					}
 					case 2: {
-						popup.classList.remove("fullscreen");
+						popup.classList.remove('fullscreen');
 						this.fullscreen = false;
 						break;
 					}
@@ -251,7 +251,7 @@
 						});
 						this.apartmentsInSection = apartments;
 
-						this.paintCompass("west");
+						this.paintCompass('west');
 						break;
 					}
 					case 2: {
@@ -264,7 +264,7 @@
 						});
 						this.apartmentsInSection = apartments;
 
-						this.paintCompass("north");
+						this.paintCompass('north');
 						break;
 					}
 					case 3: {
@@ -277,7 +277,7 @@
 						});
 						this.apartmentsInSection = apartments;
 
-						this.paintCompass("east");
+						this.paintCompass('east');
 						break;
 					}
 				}
@@ -285,31 +285,31 @@
 
 			//*декортивная перекраска иконки компаса
 			paintCompass(variation) {
-				const compass = document.querySelector(".compass");
-				const compassSides = compass.querySelectorAll(".compass__side");
+				const compass = document.querySelector('.compass');
+				const compassSides = compass.querySelectorAll('.compass__side');
 				compassSides.forEach((compassSide) => {
-					compassSide.setAttribute("fill", "#CFD0D0");
+					compassSide.setAttribute('fill', '#CFD0D0');
 				});
 
 				switch (variation) {
-					case "north": {
-						const north = compass.querySelector(".compass__north");
-						north.setAttribute("fill", "#cc9964");
+					case 'north': {
+						const north = compass.querySelector('.compass__north');
+						north.setAttribute('fill', '#cc9964');
 						break;
 					}
-					case "west": {
-						const west = compass.querySelector(".compass__west");
-						west.setAttribute("fill", "#cc9964");
+					case 'west': {
+						const west = compass.querySelector('.compass__west');
+						west.setAttribute('fill', '#cc9964');
 						break;
 					}
-					case "east": {
-						const east = compass.querySelector(".compass__east");
-						east.setAttribute("fill", "#cc9964");
+					case 'east': {
+						const east = compass.querySelector('.compass__east');
+						east.setAttribute('fill', '#cc9964');
 						break;
 					}
-					case "south": {
-						const south = compass.querySelector(".compass__south");
-						south.setAttribute("fill", "#cc9964");
+					case 'south': {
+						const south = compass.querySelector('.compass__south');
+						south.setAttribute('fill', '#cc9964');
 						break;
 					}
 				}
@@ -318,7 +318,7 @@
 			//* открытие модалки квартиры
 			openApartment(floor, section, ordinalNumber) {
 				this.$emit(
-					"showDialogApartment",
+					'showDialogApartment',
 					this.apartmentsInSection[ordinalNumber].id,
 					section
 				);
@@ -331,7 +331,7 @@
 </script>
 
 <style lang="scss" scoped>
-	@import "@/assets/scss/variables";
+	@import '@/assets/scss/variables';
 
 	.popup {
 		display: flex;

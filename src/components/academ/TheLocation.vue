@@ -1,7 +1,7 @@
 <template>
 	<section class="location" id="location">
 		<div class="location__container center">
-			<h2>ПО ДОРОГЕ ДОМОЙ</h2>
+			<h2 v-once>ПО ДОРОГЕ ДОМОЙ</h2>
 			<div class="location__nav">
 				<label class="location__item" @click="selectBuilding(1)">
 					<input
@@ -10,60 +10,40 @@
 						name="location__item"
 						checked
 					/>
-					<span class="radio__fake">Школы и детские сады, вузы</span>
+					<span class="radio__fake" v-once>Школы и детские сады, вузы</span>
 				</label>
 				<label class="location__item" @click="selectBuilding(2)">
-					<input
-						type="radio"
-						class="radio__real"
-						name="location__item"
-					/>
-					<span class="radio__fake">
+					<input type="radio" class="radio__real" name="location__item" />
+					<span class="radio__fake" v-once>
 						Поликлиники, аптеки и медицинские центры
 					</span>
 				</label>
 				<label class="location__item" @click="selectBuilding(3)">
-					<input
-						type="radio"
-						class="radio__real"
-						name="location__item"
-					/>
-					<span class="radio__fake">
+					<input type="radio" class="radio__real" name="location__item" />
+					<span class="radio__fake" v-once>
 						Магазины, торговые центры и супермаркеты
 					</span>
 				</label>
 				<label class="location__item" @click="selectBuilding(4)">
-					<input
-						type="radio"
-						class="radio__real"
-						name="location__item"
-					/>
-					<span class="radio__fake">Развлечения</span>
+					<input type="radio" class="radio__real" name="location__item" />
+					<span class="radio__fake" v-once>Развлечения</span>
 				</label>
 				<label class="location__item" @click="selectBuilding(5)">
-					<input
-						type="radio"
-						class="radio__real"
-						name="location__item"
-					/>
-					<span class="radio__fake">Кафе и рестораны</span>
+					<input type="radio" class="radio__real" name="location__item" />
+					<span class="radio__fake" v-once>Кафе и рестораны</span>
 				</label>
 				<label class="location__item" @click="selectBuilding(6)">
-					<input
-						type="radio"
-						class="radio__real"
-						name="location__item"
-					/>
-					<span class="radio__fake">Банки и банкоматы</span>
+					<input type="radio" class="radio__real" name="location__item" />
+					<span class="radio__fake" v-once>Банки и банкоматы</span>
 				</label>
 			</div>
-			<div class="location__img">
-				<img src="/img/icon/academ/semicircle.svg" alt="" />
+			<div class="location__img" v-once>
+				<img src="/img/icons/academ/semicircle.svg" alt="" />
 				<img src="/img/academ/circle-img2.png" alt="" />
 			</div>
-			<h1>ВСЁ РЯДОМ</h1>
+			<h1 v-once>ВСЁ РЯДОМ</h1>
 			<div class="location__map">
-				<div class="arrow-top" @click="moveMap('top')">
+				<div class="arrow-top" @click="moveMap('top')" v-once>
 					<svg
 						class="arrow"
 						width="7"
@@ -78,7 +58,7 @@
 						/>
 					</svg>
 				</div>
-				<div class="arrow-left" @click="moveMap('left')">
+				<div class="arrow-left" @click="moveMap('left')" v-once>
 					<svg
 						class="arrow"
 						width="7"
@@ -94,7 +74,7 @@
 					</svg>
 				</div>
 
-				<div class="location__svg">
+				<div class="location__svg" v-once>
 					<figure>
 						<svg
 							width="1027"
@@ -103,10 +83,7 @@
 							fill="none"
 							xmlns="http://www.w3.org/2000/svg"
 						>
-							<path
-								d="M1026.88 1H2.17401V888.901H1026.88V1Z"
-								fill="#00212D"
-							/>
+							<path d="M1026.88 1H2.17401V888.901H1026.88V1Z" fill="#00212D" />
 							<path
 								d="M485.153 464.167L979.854 4.18311"
 								stroke="#757575"
@@ -635,7 +612,7 @@
 					</figure>
 				</div>
 
-				<div class="arrow-right" @click="moveMap('right')">
+				<div class="arrow-right" @click="moveMap('right')" v-once>
 					<svg
 						class="arrow"
 						width="7"
@@ -650,7 +627,7 @@
 						/>
 					</svg>
 				</div>
-				<div class="arrow-bottom" @click="moveMap('bottom')">
+				<div class="arrow-bottom" @click="moveMap('bottom')" v-once>
 					<svg
 						class="arrow"
 						width="7"
@@ -672,65 +649,56 @@
 
 <script>
 	export default {
-		name: "TheLocation",
+		name: 'TheLocation',
 		methods: {
 			//* подсветка групп-строений на карте
 			selectBuilding(option) {
-				const builds = document.querySelectorAll(".build");
+				const builds = document.querySelectorAll('.build');
 				builds.forEach((build) => {
-					build.removeAttribute("style");
+					build.removeAttribute('style');
 				});
 				switch (option) {
 					case 1: {
-						const educationList =
-							document.querySelectorAll(".education");
+						const educationList = document.querySelectorAll('.education');
 						educationList.forEach((education) => {
-							education.setAttribute("style", "fill: #cc9964");
+							education.setAttribute('style', 'fill: #cc9964');
 						});
 						break;
 					}
 					case 2: {
-						const medicineList =
-							document.querySelectorAll(".medicine");
+						const medicineList = document.querySelectorAll('.medicine');
 						medicineList.forEach((medicine) => {
-							medicine.setAttribute("style", "fill: #cc9964");
+							medicine.setAttribute('style', 'fill: #cc9964');
 						});
 						break;
 					}
 					case 3: {
-						const storeList = document.querySelectorAll(".store");
+						const storeList = document.querySelectorAll('.store');
 						storeList.forEach((store) => {
-							store.setAttribute("style", "fill: #cc9964");
+							store.setAttribute('style', 'fill: #cc9964');
 						});
 						break;
 					}
 					case 4: {
 						const entertainmentList =
-							document.querySelectorAll(".entertainment");
+							document.querySelectorAll('.entertainment');
 						entertainmentList.forEach((entertainment) => {
-							entertainment.setAttribute(
-								"style",
-								"fill: #cc9964"
-							);
+							entertainment.setAttribute('style', 'fill: #cc9964');
 						});
 						break;
 					}
 					case 5: {
 						const cafesRestaurantsList =
-							document.querySelectorAll(".cafes-restaurants");
+							document.querySelectorAll('.cafes-restaurants');
 						cafesRestaurantsList.forEach((cafeRestaurant) => {
-							cafeRestaurant.setAttribute(
-								"style",
-								"fill: #cc9964"
-							);
+							cafeRestaurant.setAttribute('style', 'fill: #cc9964');
 						});
 						break;
 					}
 					case 6: {
-						const bankAtmList =
-							document.querySelectorAll(".bank-atm");
+						const bankAtmList = document.querySelectorAll('.bank-atm');
 						bankAtmList.forEach((bankAtm) => {
-							bankAtm.setAttribute("style", "fill: #cc9964");
+							bankAtm.setAttribute('style', 'fill: #cc9964');
 						});
 						break;
 					}
@@ -741,25 +709,25 @@
 			},
 
 			moveMap(direction) {
-				const map = document.querySelector(".location__svg");
+				const map = document.querySelector('.location__svg');
 				switch (direction) {
-					case "left": {
+					case 'left': {
 						map.scrollBy(-100, 0);
 						break;
 					}
-					case "right": {
+					case 'right': {
 						map.scrollBy(100, 0);
 						break;
 					}
-					case "top": {
+					case 'top': {
 						map.scrollBy(0, -100);
 						break;
 					}
-					case "bottom": {
+					case 'bottom': {
 						map.scrollBy(0, 100);
 						break;
 					}
-					case "center": {
+					case 'center': {
 						const x = map.scrollWidth / 3;
 						const y = map.scrollHeight / 4;
 
@@ -774,13 +742,13 @@
 		},
 		mounted() {
 			this.selectBuilding(1);
-			this.moveMap("center");
+			this.moveMap('center');
 		},
 	};
 </script>
 
 <style lang="scss" scoped>
-	@import "@/assets/scss/variables";
+	@import '@/assets/scss/variables';
 
 	.location {
 		color: $white;

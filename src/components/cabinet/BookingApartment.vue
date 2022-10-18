@@ -4,8 +4,9 @@
 			<div
 				class="booking-apartment__close"
 				@click="remove(apartment.booking_id, apartment.number)"
+				v-once
 			>
-				<img src="/img/icon/cabinet/close.svg" alt="" />
+				<img src="/img/icons/cabinet/close.svg" alt="" />
 			</div>
 			<div class="booking-apartment__layout">
 				<img :src="apartment.image" alt="" />
@@ -14,9 +15,7 @@
 				<div>
 					<p>
 						{{
-							apartment.type === 5
-								? "Студия"
-								: `${apartment.type}-комнатная`
+							apartment.type === 5 ? 'Студия' : `${apartment.type}-комнатная`
 						}}
 					</p>
 				</div>
@@ -26,31 +25,31 @@
 				</p>
 			</div>
 			<div class="booking-apartment__area">
-				<div><p>Площадь</p></div>
+				<div v-once><p>Площадь</p></div>
 				<p>{{ apartment.area }} м2</p>
 			</div>
 			<div class="booking-apartment__floor">
-				<div><p>Этаж</p></div>
+				<div v-once><p>Этаж</p></div>
 				<p>{{ apartment.floor }}</p>
 			</div>
-			<div class="booking-apartment__project">
+			<div class="booking-apartment__project" v-once>
 				<div>
 					<p>Проект</p>
 				</div>
 				<p>Академический</p>
 			</div>
 			<div class="booking-apartment__section">
-				<div><p>Секция</p></div>
+				<div v-once><p>Секция</p></div>
 				<p>{{ apartment.section }}</p>
 			</div>
 			<v-button text="Платное бронирование" type="button"></v-button>
-			<div class="booking-apartment__price">
+			<div class="booking-apartment__price" v-once>
 				<span>Стоимость:</span>
 				<p>4 014 433 руб.</p>
 			</div>
 		</div>
 
-		<div class="booking-apartment__body">
+		<div class="booking-apartment__body" v-once>
 			<h2 class="booking-apartment__stage">Ход строительства:</h2>
 			<div class="booking-apartment__gallery">
 				<div class="booking-apartment__photos">
@@ -96,14 +95,14 @@
 </template>
 
 <script>
-	import { getBookingList, removeReservation } from "@/api/booking";
-	import { returnErrorMessages } from "@/js/returnErrorMessages";
-	import { utcToLocalDate } from "@/js/utcToLocalDate";
+	import { getBookingList, removeReservation } from '@/api/booking';
+	import { returnErrorMessages } from '@/js/returnErrorMessages';
+	import { utcToLocalDate } from '@/js/utcToLocalDate';
 
-	import { useToast } from "vue-toastification";
+	import { useToast } from 'vue-toastification';
 
 	export default {
-		name: "BookingApartment",
+		name: 'BookingApartment',
 		props: {
 			apartment: {
 				value: Object,
@@ -125,7 +124,7 @@
 						this.toast.success(
 							`Бронирование квартиры №${apartment_number} отменено`
 						);
-						console.log("Apartment booking removed");
+						console.log('Apartment booking removed');
 
 						getBookingList();
 					}
@@ -148,7 +147,7 @@
 </script>
 
 <style lang="scss" scoped>
-	@import "@/assets/scss/variables";
+	@import '@/assets/scss/variables';
 
 	.booking-apartment {
 		box-shadow: $shadow;

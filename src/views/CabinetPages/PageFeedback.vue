@@ -1,18 +1,18 @@
 <template>
 	<div class="page-feedback">
 		<div class="page-feedback-form">
-			<div class="page-feedback-form__header">
+			<div class="page-feedback-form__header" v-once>
 				<h1 class="page-feedback-form__title">Обратная связь</h1>
 			</div>
 			<div class="page-feedback-form__body">
 				<form @submit.prevent="send_message">
-					<p class="page-feedback-form__description">ФИО:</p>
+					<p class="page-feedback-form__description" v-once>ФИО:</p>
 					<v-input
 						type="text"
 						v-model="support_form_data.name"
 					></v-input>
 
-					<p class="page-feedback-form__description">
+					<p class="page-feedback-form__description" v-once>
 						Номер телефона:
 					</p>
 
@@ -21,13 +21,13 @@
 						v-model="support_form_data.phone_number"
 					></v-input>
 
-					<p class="page-feedback-form__description">Email:</p>
+					<p class="page-feedback-form__description" v-once>Email:</p>
 					<v-input
 						type="email"
 						v-model="support_form_data.email"
 					></v-input>
 
-					<p class="page-feedback-form__description">
+					<p class="page-feedback-form__description" v-once>
 						Тема обращения:
 					</p>
 					<v-dropdown
@@ -51,7 +51,7 @@
 						:disabled="!isSupportFormValid"
 					></v-button>
 
-					<p class="page-feedback-form__bottom">
+					<p class="page-feedback-form__bottom" v-once>
 						Нажимая кнопку «Отправить», вы подтверждаете своё
 						согласие <br />
 						на обработку <a>персональных данных</a>.
@@ -81,10 +81,10 @@
 			vTextarea,
 		},
 		methods: {
-			...mapMutations(["SET_TAB"]),
+			...mapMutations(["setTab"]),
 		},
 		created() {
-			this.SET_TAB("feedback");
+			this.setTab("feedback");
 		},
 		setup() {
 			const toast = useToast();

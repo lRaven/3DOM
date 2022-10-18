@@ -25,7 +25,7 @@
 			/>
 			<img
 				class="v-input__eye-icon"
-				:src="`/img/icon/cabinet/eye-${
+				:src="`/img/icons/cabinet/eye-${
 					isPasswordVisible ? 'open' : 'closed'
 				}.svg`"
 				:alt="`eye-${isPasswordVisible ? 'open' : 'closed'}`"
@@ -36,7 +36,7 @@
 
 <script>
 	export default {
-		name: "vInput",
+		name: 'vInput',
 		props: {
 			isTransparent: {
 				value: Boolean,
@@ -53,8 +53,8 @@
 		watch: {
 			isPasswordVisible() {
 				this.isPasswordVisible
-					? (this.input_type = "text")
-					: (this.input_type = "password");
+					? (this.input_type = 'text')
+					: (this.input_type = 'password');
 			},
 		},
 		data() {
@@ -67,7 +67,7 @@
 </script>
 
 <style lang="scss" scoped>
-	@import "@/assets/scss/variables";
+	@import '@/assets/scss/variables';
 
 	.v-input {
 		position: relative;

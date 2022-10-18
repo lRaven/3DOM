@@ -1,6 +1,6 @@
 <template>
 	<div class="appeal-card">
-		<template v-if="document_width > 1260">
+		<template v-if="documentWidth > 1260">
 			<p
 				class="appeal-card__id appeal-card__col"
 				:title="`#${appeal.id}`"
@@ -81,7 +81,7 @@
 		computed: {
 			...mapState({
 				topics: (state) => state.messenger.topics,
-				document_width: (state) => state.document_width,
+				documentWidth: (state) => state.documentWidth,
 			}),
 
 			topic() {

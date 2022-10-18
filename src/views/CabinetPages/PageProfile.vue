@@ -1,6 +1,6 @@
 <template>
 	<div class="page-profile">
-		<h1 class="page-profile__title">Мой профиль</h1>
+		<h1 class="page-profile__title" v-once>Мой профиль</h1>
 
 		<div class="page-profile__header">
 			<div class="page-profile__me">
@@ -35,12 +35,12 @@
 
 		<div class="page-profile__main">
 			<div class="page-profile__item">
-				<div class="page-profile__item-header">
+				<div class="page-profile__item-header" v-once>
 					<h2 class="page-profile__item-title">ФИО</h2>
 				</div>
 				<form class="page-profile__item-body">
 					<div class="page-profile__item-row">
-						<p class="page-profile__item-key">Фамилия:</p>
+						<p class="page-profile__item-key" v-once>Фамилия:</p>
 
 						<v-input
 							type="text"
@@ -55,7 +55,7 @@
 						></v-input>
 					</div>
 					<div class="page-profile__item-row">
-						<p class="page-profile__item-key">Имя:</p>
+						<p class="page-profile__item-key" v-once>Имя:</p>
 
 						<v-input
 							type="text"
@@ -87,7 +87,9 @@
 			<div class="page-profile__item">
 				<form class="page-profile__item-body">
 					<div class="page-profile__item-row">
-						<p class="page-profile__item-key">Номер телефона:</p>
+						<p class="page-profile__item-key" v-once>
+							Номер телефона:
+						</p>
 
 						<v-input
 							type="tel"
@@ -119,7 +121,7 @@
 			<div class="page-profile__item">
 				<form class="page-profile__item-body">
 					<div class="page-profile__item-row">
-						<p class="page-profile__item-key">Email:</p>
+						<p class="page-profile__item-key" v-once>Email:</p>
 
 						<v-input
 							type="email"
@@ -154,7 +156,7 @@
 					@submit.prevent="send_new_password"
 				>
 					<div class="page-profile__item-row">
-						<p class="page-profile__item-key">Пароль:</p>
+						<p class="page-profile__item-key" v-once>Пароль:</p>
 						<p
 							class="page-profile__item-value page-profile__password"
 							v-if="isPasswordFormDisabled"
@@ -183,7 +185,9 @@
 						class="page-profile__item-row"
 						v-if="!isPasswordFormDisabled"
 					>
-						<p class="page-profile__item-key">Новый пароль:</p>
+						<p class="page-profile__item-key" v-once>
+							Новый пароль:
+						</p>
 						<v-input
 							type="password"
 							:disabled="isPasswordFormDisabled"
@@ -196,7 +200,7 @@
 						class="page-profile__item-row"
 						v-if="!isPasswordFormDisabled"
 					>
-						<p class="page-profile__item-key">
+						<p class="page-profile__item-key" v-once>
 							Подтверждение пароля:
 						</p>
 						<v-input
@@ -302,7 +306,7 @@
 			new_avatar: "",
 		}),
 		methods: {
-			...mapMutations(["SET_TAB"]),
+			...mapMutations(["setTab"]),
 			...mapActions([
 				"getUser",
 				"clearCabinetState",
@@ -433,7 +437,7 @@
 			},
 		},
 		created() {
-			this.SET_TAB("profile");
+			this.setTab("profile");
 			this.userData = {
 				password: "",
 				password_new: "",

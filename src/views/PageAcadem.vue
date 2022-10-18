@@ -16,14 +16,12 @@
 			<the-office />
 			<the-feedback />
 		</main>
-		<the-footer
-			@openMortgageCalculator="openMortgageCalculator"
-		></the-footer>
+		<the-footer @openMortgageCalculator="openMortgageCalculator"></the-footer>
 		<image-popup />
 		<transition mode="out-in" name="fade-up">
 			<mortgage-calculator
 				v-if="isMortgageCalculatorOpen"
-				closeIcon="/img/icon/academ/close.svg"
+				closeIcon="/img/icons/academ/close.svg"
 				@closeMortgageCalculator="closeMortgageCalculator"
 			></mortgage-calculator>
 		</transition>
@@ -31,28 +29,28 @@
 </template>
 
 <script>
-	import TheHeader from "@/components/academ/TheHeader";
+	import TheHeader from '@/components/academ/TheHeader';
 
-	import TheBanner from "@/components/academ/TheBanner";
-	import TheApartments from "@/components/academ/TheApartments";
-	import TheLocation from "@/components/academ/TheLocation";
-	import TheGallery from "@/components/academ/TheGallery";
-	import TheInfrastructure from "@/components/academ/TheInfrastructure";
-	import TheBroadcast from "@/components/academ/TheBroadcast";
-	import TheParking from "@/components/academ/TheParking";
-	import ThePantry from "@/components/academ/ThePantry";
-	import TheOffice from "@/components/academ/TheOffice";
-	import TheFeedback from "@/components/academ/TheFeedback";
+	import TheBanner from '@/components/academ/TheBanner';
+	import TheApartments from '@/components/academ/TheApartments';
+	import TheLocation from '@/components/academ/TheLocation';
+	import TheGallery from '@/components/academ/TheGallery';
+	import TheInfrastructure from '@/components/academ/TheInfrastructure';
+	import TheBroadcast from '@/components/academ/TheBroadcast';
+	import TheParking from '@/components/academ/TheParking';
+	import ThePantry from '@/components/academ/ThePantry';
+	import TheOffice from '@/components/academ/TheOffice';
+	import TheFeedback from '@/components/academ/TheFeedback';
 
-	import TheFooter from "@/components/academ/TheFooter";
+	import TheFooter from '@/components/academ/TheFooter';
 
-	import imagePopup from "@/components/academ/image-popup";
-	import MortgageCalculator from "@/components/academ/MortgageCalculator";
+	import imagePopup from '@/components/academ/image-popup';
+	import MortgageCalculator from '@/components/academ/MortgageCalculator';
 
-	import { getApartments, getApartmentsOnTheFloor } from "@/api/academ";
+	import { getApartments, getApartmentsOnTheFloor } from '@/api/academ';
 
 	export default {
-		name: "PageAcadem",
+		name: 'PageAcadem',
 		components: {
 			TheHeader,
 
@@ -76,12 +74,12 @@
 		methods: {
 			openMortgageCalculator() {
 				this.isMortgageCalculatorOpen = true;
-				document.body.classList.add("locked");
+				document.body.classList.add('locked');
 			},
 
 			closeMortgageCalculator() {
 				this.isMortgageCalculatorOpen = false;
-				document.body.classList.remove("locked");
+				document.body.classList.remove('locked');
 			},
 		},
 		created() {
@@ -92,7 +90,7 @@
 </script>
 
 <style lang="scss" scoped>
-	@import "@/assets/scss/variables";
+	@import '@/assets/scss/variables';
 
 	main {
 		background-color: $dark-green;
@@ -126,7 +124,7 @@
 	.link {
 		position: relative;
 		&::after {
-			content: "";
+			content: '';
 			position: absolute;
 			left: 0;
 			bottom: -0.3rem;

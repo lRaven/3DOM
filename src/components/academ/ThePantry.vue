@@ -1,6 +1,6 @@
 <template>
 	<section class="pantry" id="pantry">
-		<div class="pantry__container center">
+		<div class="pantry__container center" v-once>
 			<div class="pantry__body">
 				<div class="pantry__content">
 					<h2>кладовочка!</h2>
@@ -40,6 +40,7 @@
 				</div>
 			</div>
 		</div>
+
 		<transition>
 			<v-popup v-if="isPopupVisible" @closePopup="closePopup">
 				<p class="academ-popup__description">

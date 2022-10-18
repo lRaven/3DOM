@@ -5,42 +5,37 @@
 		id="header"
 		v-click-away="closeMobileMenu"
 	>
-		<div
-			class="the-header__container"
-			:class="{ center: !isCabinetVersion }"
-		>
+		<div class="the-header__container" :class="{ center: !isCabinetVersion }">
 			<div class="the-header__col">
 				<button
-					v-show="document_width <= 1050"
+					v-show="documentWidth <= 1050"
 					type="button"
 					class="the-header__burger"
 					@click="
-						isMobileMenuOpen === true
-							? closeMobileMenu()
-							: showMobileMenu()
+						isMobileMenuOpen === true ? closeMobileMenu() : showMobileMenu()
 					"
 				>
 					<img
-						src="/img/icon/general/burger.svg"
+						src="/img/icons/general/burger.svg"
 						alt=""
 						class="the-header__burger-icon"
 					/>
 				</button>
 				<button
-					v-show="document_width <= 767 && isCabinetVersion"
+					v-show="documentWidth <= 767 && isCabinetVersion"
 					type="button"
 					class="the-header__sidebar-btn"
 					@click="isNavMinimized ? showNavMenu() : closeNavMenu()"
 				>
 					<img
-						src="/img/icon/cabinet/sidebar.svg"
+						src="/img/icons/cabinet/sidebar.svg"
 						alt=""
 						class="the-header__sidebar-btn-icon"
 					/>
 				</button>
 
-				<router-link :to="{ name: 'Home' }" class="the-header__logo">
-					<img src="/img/icon/general/logo.svg" alt="logo" />
+				<router-link :to="{ name: 'Home' }" class="the-header__logo" v-once>
+					<img src="/img/icons/general/logo.svg" alt="logo" />
 				</router-link>
 			</div>
 
@@ -62,6 +57,7 @@
 						viewBox="0 0 7 12"
 						fill="none"
 						xmlns="http://www.w3.org/2000/svg"
+						v-once
 					>
 						<path
 							d="M0.349534 10.9566C-0.0409904 10.5661 -0.0409904 9.93292 0.349534 9.54239L3.88507 6.00686L0.349534 2.47132C-0.0409904 2.0808 -0.0409904 1.44763 0.349534 1.05711C0.740058 0.666586 1.37322 0.666585 1.76375 1.05711L6.00639 5.29975C6.39691 5.69027 6.39691 6.32344 6.00639 6.71396L1.76375 10.9566C1.37322 11.3471 0.740058 11.3471 0.349534 10.9566Z"
@@ -80,6 +76,7 @@
 					<router-link
 						:to="{ name: 'Login' }"
 						class="the-header__auth-link"
+						v-once
 					>
 						<svg
 							width="46"
@@ -110,10 +107,11 @@
 						Войти
 						<span class="the-header__link-full">в 3D-клуб</span>
 					</router-link>
-					<span>/</span>
+					<span v-once>/</span>
 					<router-link
 						:to="{ name: 'Registration' }"
 						class="the-header__auth-link"
+						v-once
 					>
 						Регистрация
 					</router-link>
@@ -128,7 +126,7 @@
 						class="the-header__favorites"
 						@click="isMobileMenuOpen = false"
 					>
-						<img src="/img/icon/general/favorites.svg" alt="" />
+						<img src="/img/icons/general/favorites.svg" alt="" v-once />
 						<span
 							class="the-header__favorites-sum"
 							:class="{ wide: favorites > 99 }"
@@ -146,9 +144,10 @@
 					</router-link>
 				</div>
 				<img
-					src="/img/icon/general/call.svg"
+					src="/img/icons/general/call.svg"
 					alt=""
 					class="the-header__call"
+					v-once
 				/>
 			</div>
 		</div>
@@ -160,16 +159,16 @@
 </template>
 
 <script>
-	import { mapState } from "vuex";
-	import { directive } from "vue3-click-away";
+	import { mapState } from 'vuex';
+	import { directive } from 'vue3-click-away';
 
 	export default {
-		name: "TheHeader",
+		name: 'TheHeader',
 		emits: [
-			"openMortgageCalculator",
-			"openPopup",
-			"minimizeNav",
-			"maximizeNav",
+			'open-mortgage-calculator',
+			'open-popup',
+			'minimize-nav',
+			'maximize-nav',
 		],
 		props: {
 			isCabinetVersion: {
@@ -179,50 +178,50 @@
 			isNavMinimized: Boolean,
 		},
 		watch: {
-			document_width() {
-				if (this.document_width > 1050 && this.isMobileMenuOpen) {
+			documentWidth() {
+				if (this.documentWidth > 1050 && this.isMobileMenuOpen) {
 					this.isMobileMenuOpen = false;
 				}
 			},
 			isMobileMenuOpen() {
 				this.isMobileMenuOpen
-					? document.body.classList.add("locked")
-					: document.body.classList.remove("locked");
+					? document.body.classList.add('locked')
+					: document.body.classList.remove('locked');
 			},
 		},
 		data: () => ({
 			isMobileMenuOpen: false,
 			navItems: [
-				{ id: 1, link: { name: "Repair" }, description: "Ремонты" },
+				{ id: 1, link: { name: 'Repair' }, description: 'Ремонты' },
 				{
 					id: 2,
 					link: {
-						name: "Academ",
-						query: { section: "#apartments" },
+						name: 'Academ',
+						query: { section: '#apartments' },
 					},
-					description: "Квартиры",
+					description: 'Квартиры',
 				},
 				{
 					id: 3,
-					link: "",
-					description: "Ипотека",
-					action: "modal-mortgage",
+					link: '',
+					description: 'Ипотека',
+					action: 'modal-mortgage',
 				},
-				{ id: 4, link: { name: "TradeIn" }, description: "Trade-in" },
-				{ id: 5, link: "/", description: "Услуги" },
+				{ id: 4, link: { name: 'TradeIn' }, description: 'Trade-in' },
+				{ id: 5, link: '/', description: 'Услуги' },
 				{
 					id: 6,
 					link: {
-						name: "Academ",
-						query: { section: "#feedback" },
+						name: 'Academ',
+						query: { section: '#feedback' },
 					},
-					description: "Офисы продаж",
+					description: 'Офисы продаж',
 				},
 				{
 					id: 7,
-					link: "",
-					description: "Заказать консультацию",
-					action: "modal",
+					link: '',
+					description: 'Заказать консультацию',
+					action: 'modal',
 				},
 			],
 		}),
@@ -230,8 +229,8 @@
 			...mapState({
 				avatar: (state) => state.cabinet.user.avatar,
 				favorites: (state) => state.cabinet.favorites.length,
-				isAuth: (state) => state.cabinet.user_auth,
-				document_width: (state) => state.document_width,
+				isAuth: (state) => state.cabinet.userAuth,
+				documentWidth: (state) => state.documentWidth,
 			}),
 		},
 		methods: {
@@ -240,10 +239,10 @@
 					this.isMobileMenuOpen = false;
 				}
 
-				action === "modal-mortgage"
-					? this.$emit("openMortgageCalculator")
-					: action === "modal"
-					? this.$emit("openPopup")
+				action === 'modal-mortgage'
+					? this.$emit('open-mortgage-calculator')
+					: action === 'modal'
+					? this.$emit('open-popup')
 					: this.$router.push(link);
 			},
 
@@ -255,10 +254,10 @@
 			},
 
 			showNavMenu() {
-				this.$emit("maximizeNav");
+				this.$emit('maximize-nav');
 			},
 			closeNavMenu() {
-				this.$emit("minimizeNav");
+				this.$emit('minimize-nav');
 			},
 		},
 		directives: { ClickAway: directive },
@@ -266,7 +265,7 @@
 </script>
 
 <style lang="scss" scoped>
-	@import "@/assets/scss/variables";
+	@import '@/assets/scss/variables';
 
 	.the-header {
 		user-select: none;

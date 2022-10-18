@@ -30,13 +30,15 @@
 			},
 		},
 		methods: {
-			...mapActions(["getDocumentWidth"]),
+			...mapActions(["getDocumentWidth", "getUser"]),
 			getFavoriteApartmentNumber,
 		},
 		mounted() {
 			this.getDocumentWidth();
+
 			if (this.$cookies.get("auth_token")) {
 				getFavoriteApartmentNumber();
+				this.getUser();
 			}
 
 			Aos.init();

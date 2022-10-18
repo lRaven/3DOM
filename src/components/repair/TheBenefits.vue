@@ -1,5 +1,5 @@
 <template>
-	<section class="the-benefits center">
+	<section class="the-benefits center" v-once>
 		<div class="the-benefits__list">
 			<div data-aos="fade-up" class="the-benefits__benefit">
 				<h3 class="the-benefits__benefit-description">
@@ -28,9 +28,7 @@
 			</div>
 			<div data-aos="fade-up" class="the-benefits__benefit">
 				<h3 class="the-benefits__benefit-description">
-					<span class="the-benefits__benefit-description_blue">
-						Ремонт
-					</span>
+					<span class="the-benefits__benefit-description_blue"> Ремонт </span>
 					<br />
 					в ипотеку
 				</h3>
@@ -38,9 +36,7 @@
 			<div data-aos="fade-up" class="the-benefits__benefit">
 				<h3 class="the-benefits__benefit-description">
 					Мебель, свет,<br />
-					<span class="the-benefits__benefit-description_blue">
-						декор
-					</span>
+					<span class="the-benefits__benefit-description_blue"> декор </span>
 				</h3>
 			</div>
 		</div>
@@ -52,7 +48,7 @@
 					черновые материалы
 				</h2>
 
-				<p class="the-benefits__card-description">Галерея проектов</p>
+				<p class="the-benefits__card-description">Удобный интернет-магазин</p>
 
 				<v-button text="Заказать" color="white" direction="reverse">
 					<template v-slot:icon>
@@ -77,13 +73,12 @@
 
 			<div data-aos="fade-left" class="the-benefits__card design">
 				<h2 class="the-benefits__card-title">
-					Заказать<br />
-					дизайн проект
+					Заказать дизайн<br />
+					проект и узаконить<br />
+					перепланировку
 				</h2>
 
-				<p class="the-benefits__card-description">Галерея проектов</p>
-
-				<v-button text="Заказать" color="white" direction="reverse">
+				<v-button text="Узнать подробнее" color="white" direction="reverse">
 					<template v-slot:icon>
 						<svg
 							width="57"
@@ -109,21 +104,22 @@
 
 <script>
 	export default {
-		name: "TheBenefits",
-		data: () => ({
-			benefits: [
-				{ id: 1, title: "Гарантия 3 года\nна выполненные работы" },
-				{ id: 2, title: "Фиксированная стоимость и сроки" },
-				{ id: 3, title: "Широкий выбор материалов" },
-				{ id: 4, title: "Ремонт\nв ипотеку" },
-				{ id: 5, title: "Мебель, свет,\nдекор" },
-			],
-		}),
+		name: 'TheBenefits',
+		setup() {
+			const benefits = [
+				{ id: 1, title: 'Гарантия 3 года\nна выполненные работы' },
+				{ id: 2, title: 'Фиксированная стоимость и сроки' },
+				{ id: 3, title: 'Широкий выбор материалов' },
+				{ id: 4, title: 'Ремонт\nв ипотеку' },
+				{ id: 5, title: 'Мебель, свет,\nдекор' },
+			];
+			return { benefits };
+		},
 	};
 </script>
 
 <style lang="scss" scoped>
-	@import "@/assets/scss/variables";
+	@import '@/assets/scss/variables';
 
 	.the-benefits {
 		padding-top: 8rem;
@@ -138,8 +134,8 @@
 			background-color: $white;
 			border-radius: 1rem;
 			padding: 2.4rem 2rem 4.4rem 2rem;
-			background: $light-blue url(/public/img/icon/repair/tick-big.svg)
-				bottom right / auto 60% no-repeat;
+			background: $light-blue url(/public/img/icons/repair/tick-big.svg) bottom
+				right / auto 60% no-repeat;
 			&-description {
 				font-size: 2rem;
 				font-weight: 800;
@@ -163,12 +159,12 @@
 			padding: 6rem 5rem 3rem 5rem;
 			width: 100%;
 			&.materials {
-				background: $soft-blue url(/public/img/repair/order-bg-1.png)
-					126% center / auto 90% no-repeat;
+				background: $soft-blue url(/public/img/repair/order-bg-1.png) 126%
+					center / auto 90% no-repeat;
 			}
 			&.design {
-				background: $gray-blue url(/public/img/repair/order-bg-2.png)
-					110% center / auto 90% no-repeat;
+				background: $gray-blue url(/public/img/repair/order-bg-2.png) 110%
+					center / auto 90% no-repeat;
 			}
 			&-title {
 				font-size: 3.2rem;

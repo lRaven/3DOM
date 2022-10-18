@@ -1,7 +1,12 @@
 <template>
 	<section class="the-catalog">
 		<div class="the-catalog__container center">
-			<h2 data-aos="fade-up" class="the-catalog__title" v-show="title">
+			<h2
+				data-aos="fade-up"
+				class="the-catalog__title"
+				v-show="title"
+				v-once
+			>
 				{{ title }}
 			</h2>
 			<div class="the-catalog__body">
@@ -51,9 +56,9 @@
 					min: "1.5 млн ₽",
 					prices: {
 						studios: "1,5 млн ₽",
-						single_room: "2,5 млн ₽",
-						two_room: "3,5 млн ₽",
-						three_room: "4,5 млн ₽",
+						singleRoom: "2,5 млн ₽",
+						twoRoom: "3,5 млн ₽",
+						threeRoom: "4,5 млн ₽",
 					},
 					tags: [
 						{ id: 1, text: "Волгоград" },
@@ -70,9 +75,9 @@
 					min: "1.5 млн ₽",
 					prices: {
 						studios: "1,5 млн ₽",
-						single_room: "2,5 млн ₽",
-						two_room: "3,5 млн ₽",
-						three_room: "4,5 млн ₽",
+						singleRoom: "2,5 млн ₽",
+						twoRoom: "3,5 млн ₽",
+						threeRoom: "4,5 млн ₽",
 					},
 					tags: [
 						{ id: 1, text: "Волгоград" },
