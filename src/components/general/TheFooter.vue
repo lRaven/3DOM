@@ -83,48 +83,9 @@
 				data-aos-anchor-placement="top-bottom"
 				class="the-footer__links"
 			>
-				<li class="the-footer__links-item">
-					<a href="#" target="_blank" class="the-footer__link">
-						О компании
-					</a>
-				</li>
-				<li class="the-footer__links-item">
-					<a href="#" target="_blank" class="the-footer__link">
-						Новости
-					</a>
-				</li>
-				<li class="the-footer__links-item">
-					<a href="#" target="_blank" class="the-footer__link">
-						Финансы
-					</a>
-				</li>
-				<li class="the-footer__links-item">
-					<router-link
-						:to="{ name: 'TradeIn' }"
-						class="the-footer__link"
-					>
-						Trade-in
-					</router-link>
-				</li>
-				<li class="the-footer__links-item">
-					<a href="#" target="_blank" class="the-footer__link">
-						Реквизиты
-					</a>
-				</li>
-				<li class="the-footer__links-item">
-					<a href="#" target="_blank" class="the-footer__link">
-						Вакансии
-					</a>
-				</li>
-				<li class="the-footer__links-item">
-					<router-link
-						:to="{
-							name: 'Academ',
-							query: { section: '#feedback' },
-						}"
-						class="the-footer__link"
-					>
-						Офисы продаж
+				<li class="the-footer__links-item" v-for="link in links" :key="link.id">
+					<router-link :to="link.link" class="the-footer__link">
+						{{ link.description }}
 					</router-link>
 				</li>
 			</ul>
@@ -136,14 +97,13 @@
 			class="the-footer__row"
 		>
 			<p class="the-footer__disclaimer">
-				Любая информация, представленная на данном сайте, носит
-				исключительно информационный характер и ни при каких условиях не
-				является публичной офертой, определяемой положениями статьи 437
-				ГК РФ.<br />Информация ПАО&nbsp;«ООООООО», раскрываемая в
-				соответствии с Положением о раскрытии информации эмитентами
-				эмиссионных ценных бумаг (утв. Банком России 30.12.2014 N
-				454-П), размещена на странице Центра раскрытия корпоративной
-				информации Интерфакс в сети Интернет
+				Любая информация, представленная на данном сайте, носит исключительно
+				информационный характер и ни при каких условиях не является публичной
+				офертой, определяемой положениями статьи 437 ГК РФ.<br />Информация
+				ПАО&nbsp;«ООООООО», раскрываемая в соответствии с Положением о раскрытии
+				информации эмитентами эмиссионных ценных бумаг (утв. Банком России
+				30.12.2014 N 454-П), размещена на странице Центра раскрытия
+				корпоративной информации Интерфакс в сети Интернет
 			</p>
 		</div>
 	</footer>
@@ -151,12 +111,31 @@
 
 <script>
 	export default {
-		name: "TheFooter",
+		name: 'TheFooter',
+		setup() {
+			const links = [
+				{ id: 1, description: 'О компании', link: { name: 'Home' } },
+				{ id: 2, description: 'Новости', link: { name: 'Home' } },
+				{ id: 3, description: 'Финансы', link: { name: 'Home' } },
+				{ id: 4, description: 'Trade-in', link: { name: 'TradeIn' } },
+				{ id: 5, description: 'Реквизиты', link: { name: 'Home' } },
+				{ id: 6, description: 'Вакансии', link: { name: 'Home' } },
+				{
+					id: 7,
+					description: 'Офисы продаж',
+					link: {
+						name: 'Academ',
+						query: { section: '#feedback' },
+					},
+				},
+			];
+			return { links };
+		},
 	};
 </script>
 
 <style lang="scss" scoped>
-	@import "@/assets/scss/variables";
+	@import '@/assets/scss/variables';
 
 	.the-footer {
 		overflow: hidden;
