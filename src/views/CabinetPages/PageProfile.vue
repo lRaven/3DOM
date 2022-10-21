@@ -16,17 +16,17 @@
 							name=""
 							class="page-profile__image-pick-input"
 							accept="image/*"
-							@change="change_avatar($event.target)"
+							@change="changeAvatar($event.target)"
 						/>
 						<div class="page-profile__image-pick-btn">Изменить фото</div>
 					</label>
 				</div>
 
 				<p class="page-profile__full-name">
-					{{ userData.last_name }} {{ userData.first_name }}
+					{{ user.last_name }} {{ user.first_name }}
 				</p>
 			</div>
-			<form class="page-profile__logout" @submit.prevent="logging_out">
+			<form class="page-profile__logout" @submit.prevent="loggingOut">
 				<v-button text="Выйти" type="submit" color="gray"></v-button>
 			</form>
 		</div>
@@ -43,11 +43,13 @@
 						<v-input
 							type="text"
 							:placeholder="
-								!userData.last_name && isNameFormDisabled ? 'Не указано' : ''
+								!userData.last_name && formTriggers.isNameFormDisabled
+									? 'Не указано'
+									: ''
 							"
-							:disabled="isNameFormDisabled"
+							:disabled="formTriggers.isNameFormDisabled"
 							v-model="userData.last_name"
-							:isTransparent="isNameFormDisabled"
+							:isTransparent="formTriggers.isNameFormDisabled"
 						></v-input>
 					</div>
 					<div class="page-profile__item-row">
@@ -56,23 +58,25 @@
 						<v-input
 							type="text"
 							:placeholder="
-								!userData.first_name && isNameFormDisabled ? 'Не указано' : ''
+								!userData.first_name && formTriggers.isNameFormDisabled
+									? 'Не указано'
+									: ''
 							"
-							:disabled="isNameFormDisabled"
+							:disabled="formTriggers.isNameFormDisabled"
 							v-model="userData.first_name"
-							:isTransparent="isNameFormDisabled"
+							:is-transparent="formTriggers.isNameFormDisabled"
 						></v-input>
 
 						<button
 							type="button"
 							class="page-profile__item-change"
 							@click="
-								isNameFormDisabled
-									? (isNameFormDisabled = false)
-									: send_new_personal_data()
+								formTriggers.isNameFormDisabled
+									? (formTriggers.isNameFormDisabled = false)
+									: sendNewPersonalData()
 							"
 						>
-							{{ isNameFormDisabled ? 'Изменить' : 'Применить' }}
+							{{ formTriggers.isNameFormDisabled ? 'Изменить' : 'Применить' }}
 						</button>
 					</div>
 				</form>
@@ -86,25 +90,25 @@
 						<v-input
 							type="tel"
 							:placeholder="
-								!userData.phone_number && isPhoneFormDisabled
+								!userData.phone_number && formTriggers.isPhoneFormDisabled
 									? 'Не указано'
 									: ''
 							"
-							:disabled="isPhoneFormDisabled"
+							:disabled="formTriggers.isPhoneFormDisabled"
 							v-model="userData.phone_number"
-							:isTransparent="isPhoneFormDisabled"
+							:isTransparent="formTriggers.isPhoneFormDisabled"
 						></v-input>
 
 						<button
 							type="button"
 							class="page-profile__item-change"
 							@click="
-								isPhoneFormDisabled
-									? (isPhoneFormDisabled = false)
-									: (isPhoneFormDisabled = true)
+								formTriggers.isPhoneFormDisabled
+									? (formTriggers.isPhoneFormDisabled = false)
+									: (formTriggers.isPhoneFormDisabled = true)
 							"
 						>
-							{{ isPhoneFormDisabled ? 'Изменить' : 'Применить' }}
+							{{ formTriggers.isPhoneFormDisabled ? 'Изменить' : 'Применить' }}
 						</button>
 					</div>
 				</form>
@@ -118,83 +122,91 @@
 						<v-input
 							type="email"
 							:placeholder="
-								!userData.email && isEmailFormDisabled ? 'Не указано' : ''
+								!userData.email && formTriggers.isEmailFormDisabled
+									? 'Не указано'
+									: ''
 							"
-							:disabled="isEmailFormDisabled"
+							:disabled="formTriggers.isEmailFormDisabled"
 							v-model="userData.email"
-							:isTransparent="isEmailFormDisabled"
+							:isTransparent="formTriggers.isEmailFormDisabled"
 						></v-input>
 
 						<button
 							type="button"
 							class="page-profile__item-change"
 							@click="
-								isEmailFormDisabled
-									? (isEmailFormDisabled = false)
-									: (isEmailFormDisabled = true)
+								formTriggers.isEmailFormDisabled
+									? (formTriggers.isEmailFormDisabled = false)
+									: sendNewEmail()
 							"
 						>
-							{{ isEmailFormDisabled ? 'Изменить' : 'Применить' }}
+							{{ formTriggers.isEmailFormDisabled ? 'Изменить' : 'Применить' }}
 						</button>
 					</div>
 				</form>
 			</div>
 
 			<div class="page-profile__item">
-				<form
-					class="page-profile__item-body"
-					@submit.prevent="send_new_password"
-				>
+				<form class="page-profile__item-body" @submit.prevent="sendNewPassword">
 					<div class="page-profile__item-row">
 						<p class="page-profile__item-key" v-once>Пароль:</p>
 						<p
 							class="page-profile__item-value page-profile__password"
-							v-if="isPasswordFormDisabled"
+							v-if="formTriggers.isPasswordFormDisabled"
 						>
 							********
 						</p>
 						<v-input
 							type="password"
-							:disabled="isPasswordFormDisabled"
+							placeholder=""
+							:disabled="formTriggers.isPasswordFormDisabled"
 							v-model="userData.password"
-							:isTransparent="isPasswordFormDisabled"
+							:is-transparent="formTriggers.isPasswordFormDisabled"
 							v-else
 						></v-input>
 
 						<button
 							type="button"
 							class="page-profile__item-change"
-							@click="isPasswordFormDisabled = false"
-							v-if="isPasswordFormDisabled"
+							@click="formTriggers.isPasswordFormDisabled = false"
+							v-if="formTriggers.isPasswordFormDisabled"
 						>
 							Изменить
 						</button>
 					</div>
 
-					<div class="page-profile__item-row" v-if="!isPasswordFormDisabled">
+					<div
+						class="page-profile__item-row"
+						v-if="!formTriggers.isPasswordFormDisabled"
+					>
 						<p class="page-profile__item-key" v-once>Новый пароль:</p>
 						<v-input
 							type="password"
-							:disabled="isPasswordFormDisabled"
+							placeholder=""
+							:disabled="formTriggers.isPasswordFormDisabled"
 							v-model="userData.password_new"
-							:isTransparent="isPasswordFormDisabled"
+							:is-transparent="formTriggers.isPasswordFormDisabled"
 						></v-input>
 					</div>
 
-					<div class="page-profile__item-row" v-if="!isPasswordFormDisabled">
+					<div
+						class="page-profile__item-row"
+						v-if="!formTriggers.isPasswordFormDisabled"
+					>
 						<p class="page-profile__item-key" v-once>Подтверждение пароля:</p>
 						<v-input
 							type="password"
-							:disabled="isPasswordFormDisabled"
+							placeholder=""
+							:disabled="formTriggers.isPasswordFormDisabled"
 							v-model="userData.password_repeat"
-							:isTransparent="isPasswordFormDisabled"
+							:is-transparent="formTriggers.isPasswordFormDisabled"
 						></v-input>
 
 						<button
-							v-if="isPasswordFormDisabled"
+							v-if="formTriggers.isPasswordFormDisabled"
 							type="button"
 							class="page-profile__item-change"
-							@click="isPasswordFormDisabled = false"
+							@click="formTriggers.isPasswordFormDisabled = false"
 						>
 							Изменить
 						</button>
@@ -202,7 +214,7 @@
 						<button
 							v-else
 							type="submit"
-							:disabled="!isPasswordFormValid"
+							:disabled="v$.$invalid"
 							class="page-profile__item-change"
 						>
 							Применить
@@ -215,7 +227,8 @@
 </template>
 
 <script>
-	import { mapState, mapMutations, mapActions } from 'vuex';
+	import { ref, computed, watch } from 'vue';
+	import { useStore } from 'vuex';
 	import {
 		logout,
 		change_user_data,
@@ -223,159 +236,53 @@
 		upload_avatar,
 	} from '@/api/user';
 	import { returnErrorMessages } from '@/js/returnErrorMessages';
-
+	import cookies from 'vue-cookies';
 	import vInput from '@/components/UI/cabinet/v-input.vue';
 
 	import { useToast } from 'vue-toastification';
+	import { useVuelidate } from '@vuelidate/core';
+	import {
+		minLength,
+		maxLength,
+		sameAs,
+		required,
+	} from '@vuelidate/validators';
 
 	export default {
 		name: 'PageProfile',
 		components: { vInput },
-		watch: {
-			user: {
-				handler() {
-					this.userData = {
-						password: '',
-						password_new: '',
-						password_repeat: '',
-						...this.user,
-					};
-				},
-				deep: true,
-			},
-			new_avatar() {
-				if (this.new_avatar) {
-					this.send_avatar();
-				}
-			},
-		},
-		computed: {
-			...mapState({
-				baseURL: (state) => state.baseURL,
-				user: (state) => state.cabinet.user,
-			}),
+		setup() {
+			const store = useStore();
+			store.commit('setTab', 'profile');
 
-			isPasswordsSame() {
-				if (this.userData.password_new === this.userData.password_repeat)
-					return true;
-				else return false;
-			},
-			isPasswordsNotEmpty() {
-				if (this.userData.password_new.length >= 8) return true;
-				else return false;
-			},
-			isPasswordFormValid() {
-				if (
-					this.userData.password.length >= 8 &&
-					this.isPasswordsSame &&
-					this.isPasswordsNotEmpty
-				)
-					return true;
-				else return false;
-			},
-		},
-		data: () => ({
-			isNameFormDisabled: true,
-			isPhoneFormDisabled: true,
-			isEmailFormDisabled: true,
-			isPasswordFormDisabled: true,
+			const newAvatar = ref('');
+			const changeAvatar = (target) => {
+				//* запись в переменную для отправки на сервер
+				newAvatar.value = target.files[0];
 
-			userData: {},
-			new_avatar: '',
-		}),
-		methods: {
-			...mapMutations(['setTab']),
-			...mapActions([
-				'getUser',
-				'clearCabinetState',
-				'clearAcademState',
-				'clearCRMState',
-			]),
+				//* функционал предпросмотра загруженной аватарки
+				const fileReader = new FileReader();
+				fileReader.addEventListener('load', () => {
+					userData.value.avatar = fileReader.result;
+				});
 
-			//* выход с аккаунта
-			async logging_out() {
-				try {
-					const response = await logout();
-
-					if (response.status === 204) {
-						//* стереть из vuex,cookies данные юзера
-						this.$cookies.remove('auth_token');
-
-						this.clearCabinetState();
-						this.clearAcademState();
-						this.clearCRMState();
-						console.log('Logout successfully');
-					}
-				} catch (err) {
-					throw new Error(err);
-				}
-			},
-
-			async send_new_personal_data() {
-				try {
-					const response = await change_user_data({
-						first_name: this.userData.first_name,
-						last_name: this.userData.last_name,
-					});
-
-					if (response.status === 200) {
-						this.toast.success('ФИО обновлена');
-						console.log('personal data changed');
-
-						this.isNameFormDisabled = true;
-
-						this.getUser();
-					}
-					if (response.status === 400) {
-						const error_list = returnErrorMessages(response.data);
-						error_list.forEach((el) => {
-							this.toast.error(el);
-						});
-					}
-				} catch (err) {
-					throw new Error(err);
-				}
-			},
-
-			async send_new_password() {
-				try {
-					const response = await change_password(
-						this.userData.password_new,
-						this.userData.password
-					);
-
-					if (response.status === 204) {
-						this.toast.success('Пароль изменён');
-						console.log('password changed');
-						this.resetPasswordForm();
-						this.isPasswordFormDisabled = true;
-					}
-					if (response.status === 400) {
-						const error_list = returnErrorMessages(response.data);
-						error_list.forEach((el) => {
-							this.toast.error(el);
-						});
-					}
-				} catch (err) {
-					throw new Error(err);
-				}
-			},
-
-			async send_avatar() {
+				fileReader.readAsDataURL(target.files[0]);
+			};
+			const sendAvatar = async () => {
 				try {
 					const response = await upload_avatar(
-						this.userData.id,
-						this.new_avatar
+						userData.value.id,
+						newAvatar.value
 					);
 
 					if (response.status === 200) {
 						console.log('Avatar changed');
-						this.toast.success('Изображение профиля изменено');
+						toast.success('Изображение профиля изменено');
 
 						try {
-							const response = await this.getUser();
+							const response = await store.dispatch('getUser');
 							if (response.status === 200) {
-								this.new_avatar = '';
+								newAvatar.value = '';
 							}
 						} catch (err) {
 							throw new Error(err);
@@ -384,48 +291,179 @@
 					if (response.status === 400) {
 						const error_list = returnErrorMessages(response.data);
 						error_list.forEach((el) => {
-							this.toast.error(el);
+							toast.error(el);
 						});
 					}
 				} catch (err) {
-					this.toast.error(
+					toast.error(
 						"Данное изображение не доступно, пожалуйста загрузите '.jpg', '.png', '.svg'.\nМаксимальный размер: 4096px"
 					);
 					throw new Error(err);
 				}
-			},
+			};
+			watch(newAvatar, () => {
+				if (newAvatar.value) {
+					sendAvatar();
+				}
+			});
 
-			change_avatar(target) {
-				//* запись в переменную для отправки на сервер
-				this.new_avatar = target.files[0];
-
-				//* функционал предпросмотра загруженной аватарки
-				const fileReader = new FileReader();
-				fileReader.addEventListener('load', () => {
-					this.userData.avatar = fileReader.result;
-				});
-
-				fileReader.readAsDataURL(target.files[0]);
-			},
-
-			resetPasswordForm() {
-				this.userData.password = '';
-				this.userData.password_new = '';
-				this.userData.password_repeat = '';
-			},
-		},
-		created() {
-			this.setTab('profile');
-			this.userData = {
+			const user = computed(() => store.state.cabinet.user);
+			const userData = ref({
 				password: '',
 				password_new: '',
 				password_repeat: '',
-				...this.user,
+				...user.value,
+			});
+			const sendNewPersonalData = async () => {
+				try {
+					const response = await change_user_data({
+						first_name: userData.value.first_name,
+						last_name: userData.value.last_name,
+					});
+
+					if (response.status === 200) {
+						toast.success('ФИО обновлены');
+						console.log('personal data changed');
+
+						formTriggers.value.isNameFormDisabled = true;
+
+						store.dispatch('getUser');
+					}
+					if (response.status === 400) {
+						const error_list = returnErrorMessages(response.data);
+						error_list.forEach((el) => {
+							toast.error(el);
+						});
+					}
+				} catch (err) {
+					throw new Error(err);
+				}
 			};
-		},
-		setup() {
+			const sendNewEmail = async () => {
+				try {
+					const response = await change_user_data({
+						email: userData.value.email,
+					});
+
+					if (response.status === 200) {
+						toast.success('Email изменён');
+						console.log('email changed');
+
+						formTriggers.value.isEmailFormDisabled = true;
+
+						store.dispatch('getUser');
+					}
+					if (response.status === 400) {
+						const error_list = returnErrorMessages(response.data);
+						error_list.forEach((el) => {
+							toast.error(el);
+						});
+					}
+				} catch (err) {
+					throw new Error(err);
+				}
+			};
+			const sendNewPassword = async () => {
+				try {
+					const isFormValid = await v$.value.$validate();
+					if (isFormValid) {
+						const response = await change_password(
+							userData.value.password_new,
+							userData.value.password
+						);
+
+						if (response.status === 204) {
+							toast.success('Пароль изменён');
+							console.log('password changed');
+							resetPasswordForm();
+							formTriggers.value.isPasswordFormDisabled = true;
+						}
+						if (response.status === 400) {
+							const error_list = returnErrorMessages(response.data);
+							error_list.forEach((el) => {
+								toast.error(el);
+							});
+						}
+					}
+				} catch (err) {
+					throw new Error(err);
+				}
+			};
+			const resetPasswordForm = () => {
+				userData.value.password = '';
+				userData.value.password_new = '';
+				userData.value.password_repeat = '';
+			};
+
+			const formTriggers = ref({
+				isNameFormDisabled: true,
+				isPhoneFormDisabled: true,
+				isEmailFormDisabled: true,
+				isPasswordFormDisabled: true,
+			});
+
+			const rules = computed(() => ({
+				first_name: {
+					maxLength: maxLength(150),
+				},
+				last_name: {
+					maxLength: maxLength(150),
+				},
+				password: {
+					minLength: minLength(8),
+					required,
+				},
+				password_new: {
+					minLength: minLength(8),
+					required,
+				},
+				password_repeat: {
+					minLength: minLength(8),
+					sameAs: sameAs(userData.value.password_new),
+					required,
+				},
+			}));
+
+			//* выход с аккаунта
+			const loggingOut = async () => {
+				try {
+					const response = await logout();
+
+					if (response.status === 204) {
+						//* стереть из vuex, cookies данные юзера
+						cookies.remove('auth_token');
+
+						store.dispatch('clearCabinetState');
+						store.dispatch('clearAcademState');
+						store.dispatch('clearCRMState');
+						console.log('Logout successfully');
+					}
+				} catch (err) {
+					throw new Error(err);
+				}
+			};
+
 			const toast = useToast();
-			return { toast };
+
+			const v$ = useVuelidate(rules, userData);
+
+			return {
+				newAvatar,
+				changeAvatar,
+				sendAvatar,
+
+				user,
+				userData,
+				sendNewPersonalData,
+				sendNewEmail,
+				sendNewPassword,
+
+				formTriggers,
+				loggingOut,
+
+				toast,
+				v$,
+			};
 		},
 	};
 </script>
@@ -508,6 +546,7 @@
 		&__full-name {
 			font-size: 2rem;
 			font-weight: 600;
+			word-break: break-all;
 		}
 
 		&__logout {
@@ -616,13 +655,6 @@
 						transition: all 0.3s ease;
 					}
 				}
-			}
-		}
-
-		&__password {
-			padding: 0 2rem;
-			@media (max-width: 540px) {
-				padding: 0;
 			}
 		}
 	}
