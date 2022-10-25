@@ -35,7 +35,7 @@
 
 <script>
 	export default {
-		name: "vSlider",
+		name: 'vSlider',
 		props: {
 			title: String,
 			text: String,
@@ -49,61 +49,50 @@
 		},
 		methods: {
 			setMaxValue() {
-				const sliders = document.querySelectorAll(".min-max");
+				const sliders = document.querySelectorAll('.min-max');
 				sliders.forEach((slider) => {
-					let sliderRange = slider.querySelector(".slider__range");
-					let sliderMax = slider.querySelector(".slider__max-value");
+					let sliderRange = slider.querySelector('.slider__range');
+					let sliderMax = slider.querySelector('.slider__max-value');
 
 					sliderMax.textContent = sliderRange.value;
-					sliderRange.addEventListener("input", () => {
+					sliderRange.addEventListener('input', () => {
 						sliderMax.textContent = sliderRange.value;
 					});
 				});
 			},
 
 			setValue() {
-				const sliders = document.querySelectorAll(".value");
+				const sliders = document.querySelectorAll('.value');
 				sliders.forEach((slider) => {
-					const sliderValue = slider.querySelector(".slider__value");
-					const sliderRange = slider.querySelector(".slider__range");
+					const sliderValue = slider.querySelector('.slider__value');
+					const sliderRange = slider.querySelector('.slider__range');
 
 					let sliderRangeValue = Number(sliderRange.value);
 					sliderValue.textContent = sliderRangeValue.toLocaleString();
-					sliderRange.addEventListener("input", () => {
+					sliderRange.addEventListener('input', () => {
 						let sliderRangeValue = Number(sliderRange.value);
-						sliderValue.textContent =
-							sliderRangeValue.toLocaleString();
+						sliderValue.textContent = sliderRangeValue.toLocaleString();
 					});
 				});
 			},
 			setWordDeclension() {
-				const sliders = document.querySelectorAll(".value");
+				const sliders = document.querySelectorAll('.value');
 				sliders.forEach((slider) => {
-					const sliderText = slider.querySelector(".slider__text");
-					const sliderRange = slider.querySelector(".slider__range");
+					const sliderText = slider.querySelector('.slider__text');
+					const sliderRange = slider.querySelector('.slider__range');
 
-					if (sliderText.textContent == "лет") {
-						sliderRange.addEventListener("input", () => {
-							let sliderValueEnd = sliderRange.value
-								.toString()
-								.slice(-1);
-							let sliderValueTwoEnd = sliderRange.value
-								.toString()
-								.slice(-2);
+					if (sliderText.textContent == 'лет') {
+						sliderRange.addEventListener('input', () => {
+							let sliderValueEnd = sliderRange.value.toString().slice(-1);
+							let sliderValueTwoEnd = sliderRange.value.toString().slice(-2);
 
-							if (
-								sliderValueTwoEnd < "11" ||
-								sliderValueTwoEnd > "14"
-							) {
-								if (sliderValueEnd == "1") {
-									sliderText.textContent = "год";
-								} else if (
-									sliderValueEnd > "1" &&
-									sliderValueEnd <= "4"
-								) {
-									sliderText.textContent = "года";
+							if (sliderValueTwoEnd < '11' || sliderValueTwoEnd > '14') {
+								if (sliderValueEnd == '1') {
+									sliderText.textContent = 'год';
+								} else if (sliderValueEnd > '1' && sliderValueEnd <= '4') {
+									sliderText.textContent = 'года';
 								} else {
-									sliderText.textContent = "лет";
+									sliderText.textContent = 'лет';
 								}
 							}
 						});
@@ -120,7 +109,7 @@
 </script>
 
 <style lang="scss" scoped>
-	@import "@/assets/scss/variables";
+	@import '@/assets/scss/variables';
 
 	p {
 		font-size: 1.5rem;

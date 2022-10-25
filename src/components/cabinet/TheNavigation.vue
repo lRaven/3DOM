@@ -25,7 +25,6 @@
 
 		<ul class="the-navigation__list">
 			<li
-				data-aos="fade-up"
 				v-for="tab in tabs"
 				:key="tab.id"
 				class="the-navigation__item"

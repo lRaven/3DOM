@@ -9,23 +9,18 @@
 				</h3>
 				<div class="the-price__rooms">
 					<p v-once>Количество комнат</p>
-					<v-radio
-						:items="[
-							{ id: 1, text: '1' },
-							{ id: 2, text: '2' },
-							{ id: 3, text: '3' },
-							{ id: 4, text: '4' },
-							{ id: 5, text: '5+' },
-						]"
-						:name="'rooms'"
-					></v-radio>
+					<TextRadio
+						v-for="room in rooms"
+						:key="room.id"
+						:description="room.description"
+						radioGroup="rooms"
+					></TextRadio>
 				</div>
-				<v-input
-					:text="'Площадь'"
-					:type="'number'"
-					:min="30"
-					:placeholder="'м²'"
-				></v-input>
+				<div class="the-price__area">
+					<p class="the-price__area-description">Площадь</p>
+					<v-input :isGray="true" type="number" placeholder="м²"></v-input>
+				</div>
+
 				<v-dropdown
 					:description="'Выберите один из наших проектов:'"
 					:selected="'Выберите из списка'"
@@ -52,21 +47,31 @@
 </template>
 
 <script>
-	import vInput from "@/components/UI/general/v-input.vue";
-
 	export default {
-		name: "ThePrice",
-		components: { vInput },
+		name: 'ThePrice',
+		setup() {
+			const rooms = [
+				{ id: 1, description: '1' },
+				{ id: 2, description: '2' },
+				{ id: 3, description: '3' },
+				{ id: 4, description: '4' },
+				{ id: 5, description: '5+' },
+			];
+
+			return {
+				rooms,
+			};
+		},
 	};
 </script>
 
 <style lang="scss" scoped>
-	@import "@/assets/scss/variables";
+	@import '@/assets/scss/variables';
 
 	.the-price {
 		background: linear-gradient(
 			180deg,
-			rgba(255, 255, 255, 1) 0%,
+			$white 0%,
 			rgba(237, 245, 253, 1) 8%,
 			rgba(237, 245, 253, 1) 92%,
 			rgba(255, 255, 255, 1) 100%
@@ -121,6 +126,25 @@
 			font-size: 2.5rem;
 			font-weight: 500;
 			margin-bottom: 5rem;
+		}
+		&__area {
+			&-description {
+				margin-bottom: 1.3rem;
+				font-size: 1.8rem;
+			}
+		}
+	}
+</style>
+
+<style lang="scss">
+	.the-price {
+		&__calculate {
+			.v-radio__fake {
+				padding: 0;
+				height: 4.5rem;
+				width: 4.5rem;
+				border-radius: 50%;
+			}
 		}
 	}
 </style>

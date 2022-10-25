@@ -41,30 +41,47 @@
 					]"
 				></v-dropdown>
 
-				<v-input text="Улица" placeholder="Введите название улицы"></v-input>
+				<div class="catalog-filters__item">
+					<p class="catalog-filters__item-title">Улица</p>
+					<v-input
+						:isGray="true"
+						placeholder="Введите название улицы"
+					></v-input>
+				</div>
 
-				<div class="catalog-filters__apartments" v-show="tab === 'secondary'">
-					<p class="catalog-filters__apartments-title">Комнатность</p>
+				<div
+					class="catalog-filters__item catalog-filters__apartments"
+					v-show="tab === 'secondary'"
+				>
+					<p
+						class="catalog-filters__item-title catalog-filters__apartments-title"
+					>
+						Комнатность
+					</p>
 					<div class="catalog-filters__apartments-list">
-						<v-checkbox
+						<TextCheckbox
 							v-for="room in filters.rooms"
 							:key="room.id"
 							name="rooms"
 							:description="room.description"
-						></v-checkbox>
+						></TextCheckbox>
 					</div>
 				</div>
 
-				<div class="catalog-filters__areas">
-					<p class="catalog-filters__areas-title">Площадь</p>
-					<v-input placeholder="От"></v-input>
-					<v-input placeholder="До"></v-input>
+				<div class="catalog-filters__item catalog-filters__areas">
+					<p class="catalog-filters__item-title catalog-filters__areas-title">
+						Площадь
+					</p>
+					<v-input :isGray="true" type="number" placeholder="От"></v-input>
+					<v-input :isGray="true" type="number" placeholder="До"></v-input>
 				</div>
 
-				<div class="catalog-filters__prices">
-					<p class="catalog-filters__prices-title">Стоимость</p>
-					<v-input placeholder="От"></v-input>
-					<v-input placeholder="До"></v-input>
+				<div class="catalog-filters__item catalog-filters__prices">
+					<p class="catalog-filters__item-title catalog-filters__prices-title">
+						Стоимость
+					</p>
+					<v-input :isGray="true" type="number" placeholder="От"></v-input>
+					<v-input :isGray="true" type="number" placeholder="До"></v-input>
 				</div>
 			</div>
 		</div>
@@ -78,13 +95,12 @@
 </template>
 
 <script>
-	import vInput from '@/components/UI/general/v-input.vue';
+	import { ref } from 'vue';
 
 	export default {
 		name: 'CatalogFilters',
-		components: { vInput },
 		setup() {
-			const tab = 'secondary';
+			const tab = ref('secondary');
 			const filters = {
 				rooms: [
 					{ id: 1, description: 'Студия' },
@@ -106,7 +122,7 @@
 	.catalog-filters {
 		box-shadow: $shadow;
 		border-radius: 1rem;
-		background-color: #fff;
+		background-color: $white;
 		&__type {
 			display: flex;
 			margin-bottom: 2rem;
@@ -153,6 +169,16 @@
 				padding: 1rem;
 			}
 		}
+		&__item {
+			&-title {
+				font-size: 1.5rem;
+				color: $gray;
+				font-weight: 600;
+				grid-column: 1/6;
+				margin-bottom: 1.3rem;
+			}
+		}
+
 		&__areas,
 		&__prices {
 			display: grid;
@@ -160,9 +186,6 @@
 			grid-gap: 0 2rem;
 			&-title {
 				grid-column: 1/3;
-				font-size: 1.5rem;
-				font-weight: 600;
-				color: $gray;
 			}
 		}
 		&__settings {
@@ -172,13 +195,6 @@
 			}
 		}
 		&__apartments {
-			&-title {
-				font-size: 1.5rem;
-				color: $gray;
-				font-weight: 600;
-				grid-column: 1/6;
-				margin-bottom: 1.3rem;
-			}
 			&-list {
 				display: flex;
 				align-items: center;
@@ -186,6 +202,7 @@
 				gap: 1.3rem;
 			}
 		}
+
 		&__submit {
 			display: flex;
 			align-items: center;

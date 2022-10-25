@@ -13,10 +13,7 @@
 				<div class="appointment-form__description" v-once>
 					<p>Номер телефона:</p>
 				</div>
-				<v-input
-					type="tel"
-					v-model="appointmentForm.phone_number"
-				></v-input>
+				<v-input type="tel" v-model="appointmentForm.phone_number"></v-input>
 				<div class="appointment-form__description" v-once>
 					<p>Проект:</p>
 				</div>
@@ -81,8 +78,7 @@
 
 				<div class="appointment-form__bottom" v-once>
 					<p>
-						Нажимая кнопку «Отправить», вы подтверждаете своё
-						согласие <br />
+						Нажимая кнопку «Отправить», вы подтверждаете своё согласие <br />
 						на обработку <a>персональных данных</a>.
 					</p>
 				</div>
@@ -92,22 +88,20 @@
 </template>
 
 <script>
-	import { mapState } from "vuex";
+	import { mapState } from 'vuex';
 
-	import vInput from "@/components/UI/cabinet/v-input";
-	import vDropdown from "@/components/UI/cabinet/v-dropdown";
-	import DatePicker from "@/components/UI/cabinet/DatePicker";
-	import TimePicker from "@/components/cabinet/TimePicker";
+	import vDropdown from '@/components/UI/cabinet/v-dropdown';
+	import DatePicker from '@/components/UI/cabinet/DatePicker';
+	import TimePicker from '@/components/cabinet/TimePicker';
 
-	import { postAppointment } from "@/api/appointment";
-	import { returnErrorMessages } from "@/js/returnErrorMessages";
+	import { postAppointment } from '@/api/appointment';
+	import { returnErrorMessages } from '@/js/returnErrorMessages';
 
-	import { useToast } from "vue-toastification";
+	import { useToast } from 'vue-toastification';
 
 	export default {
-		name: "AppointmentForm",
+		name: 'AppointmentForm',
 		components: {
-			vInput,
 			vDropdown,
 			DatePicker,
 			TimePicker,
@@ -119,10 +113,10 @@
 				if (
 					this.appointmentForm.client.length > 0 &&
 					this.appointmentForm.phone_number.length > 0 &&
-					this.appointmentForm.building !== "" &&
-					this.appointmentForm.apartment !== "" &&
-					this.appointmentForm.date !== "" &&
-					this.appointmentForm.time !== ""
+					this.appointmentForm.building !== '' &&
+					this.appointmentForm.apartment !== '' &&
+					this.appointmentForm.date !== '' &&
+					this.appointmentForm.time !== ''
 				) {
 					return true;
 				} else {
@@ -132,15 +126,15 @@
 		},
 		data: () => ({
 			appointmentForm: {
-				client: "",
-				phone_number: "",
-				date: "",
-				time: "",
+				client: '',
+				phone_number: '',
+				date: '',
+				time: '',
 				manager: 1,
-				building: "",
-				apartment: "",
+				building: '',
+				apartment: '',
 			},
-			buildings: [{ id: 1, value: "АКАДЕМИЧЕСКИЙ" }],
+			buildings: [{ id: 1, value: 'АКАДЕМИЧЕСКИЙ' }],
 		}),
 		methods: {
 			async sendForm(event) {
@@ -156,9 +150,9 @@
 					});
 					if (response.status === 201) {
 						this.toast.success(
-							"Спасибо! Вы записаны на просмотр квартиры.\nОжидайте звонка Вашего менеджера."
+							'Спасибо! Вы записаны на просмотр квартиры.\nОжидайте звонка Вашего менеджера.'
 						);
-						console.log("Appeal created");
+						console.log('Appeal created');
 						event.target.reset();
 						this.resetForm();
 					}
@@ -176,9 +170,9 @@
 			resetForm() {
 				for (const key in this.appointmentForm) {
 					if (Object.hasOwnProperty.call(this.appointmentForm, key)) {
-						key === "manager"
+						key === 'manager'
 							? (this.appointmentForm[key] = 1)
-							: (this.appointmentForm[key] = "");
+							: (this.appointmentForm[key] = '');
 					}
 				}
 			},
@@ -191,7 +185,7 @@
 </script>
 
 <style lang="scss" scoped>
-	@import "@/assets/scss/variables";
+	@import '@/assets/scss/variables';
 
 	.appointment-form {
 		border-radius: 3rem;

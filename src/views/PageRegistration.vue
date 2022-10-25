@@ -35,8 +35,8 @@
 							:disabled="v$.$invalid"
 						></v-button>
 						<p class="registration__description" v-once>
-							Нажимая кнопку «Зарегистрироваться», вы
-							подтверждаете своё согласие на
+							Нажимая кнопку «Зарегистрироваться», вы подтверждаете своё
+							согласие на
 							<a> обработку персональных данных </a>
 						</p>
 					</div>
@@ -48,33 +48,31 @@
 </template>
 
 <script>
-	import { mapState } from "vuex";
-	import { registration } from "@/api/user";
-	import { returnErrorMessages } from "@/js/returnErrorMessages";
+	import { mapState } from 'vuex';
+	import { registration } from '@/api/user';
+	import { returnErrorMessages } from '@/js/returnErrorMessages';
 
-	import TheHeader from "@/components/general/TheHeader";
-	import vInput from "@/components/UI/cabinet/v-input";
-	import TheFooter from "@/components/general/TheFooter";
+	import TheHeader from '@/components/general/TheHeader';
+	import TheFooter from '@/components/general/TheFooter';
 
-	import { useToast } from "vue-toastification";
-	import { useVuelidate } from "@vuelidate/core";
-	import { minLength, required, email } from "@vuelidate/validators";
+	import { useToast } from 'vue-toastification';
+	import { useVuelidate } from '@vuelidate/core';
+	import { minLength, required, email } from '@vuelidate/validators';
 
 	export default {
-		name: "PageRegistration",
+		name: 'PageRegistration',
 		components: {
 			TheHeader,
-			vInput,
 			TheFooter,
 		},
 		computed: {
-			...mapState(["baseURL"]),
+			...mapState(['baseURL']),
 		},
 		data: () => ({
 			userData: {
-				username: "",
-				password: "",
-				email: "",
+				username: '',
+				password: '',
+				email: '',
 			},
 		}),
 		validations: () => ({
@@ -100,10 +98,8 @@
 					const response = await registration(this.userData);
 
 					if (response.status === 201) {
-						this.toast.success(
-							"Вы успешно зарегистрировали свой аккаунт"
-						);
-						this.$router.push({ name: "Login" });
+						this.toast.success('Вы успешно зарегистрировали свой аккаунт');
+						this.$router.push({ name: 'Login' });
 					}
 					if (response.status === 400) {
 						const error_list = returnErrorMessages(response.data);
@@ -124,7 +120,7 @@
 </script>
 
 <style lang="scss" scoped>
-	@import "@/assets/scss/variables";
+	@import '@/assets/scss/variables';
 
 	.main {
 		background: linear-gradient(

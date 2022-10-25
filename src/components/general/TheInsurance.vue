@@ -6,16 +6,14 @@
 					Страхование недвижимости
 				</h2>
 				<h3 data-aos="fade-up" class="the-insurance__subtitle">
-					При оформлении ипотеки страхование недвижимости является
-					требованием закона.
+					При оформлении ипотеки страхование недвижимости является требованием
+					закона.
 				</h3>
 			</div>
 
 			<div class="the-insurance__body">
 				<form data-aos="fade-right" class="the-insurance__form">
-					<h4 class="the-insurance__form-title" v-once>
-						Оформить страхование
-					</h4>
+					<h4 class="the-insurance__form-title" v-once>Оформить страхование</h4>
 					<p class="the-insurance__form-text" v-once>
 						Приведенные расчёты актуальны<br />
 						при полученом праве собственности.
@@ -35,26 +33,20 @@
 						:selected="'Женский'"
 						:options="['Мужской', 'Женский']"
 					></v-dropdown>
-					<v-input
-						:type="'number'"
-						:maxlength="3"
-						:max="100"
-						:min="18"
-						:text="'Укажите возраст'"
-					></v-input>
+
+					<div class="the-insurance__age">
+						<p class="the-insurance__age-description">Укажите возраст</p>
+						<v-input :isGray="true" type="number"></v-input>
+					</div>
 					<v-button
 						text="Оформить"
 						type="button"
-						@click="this.$emit('openPopup')"
+						@click="$emit('openPopup')"
 					></v-button>
 				</form>
-				<p
-					data-aos="fade-up"
-					class="the-insurance__subtitle-mobile"
-					v-once
-				>
-					При оформлении ипотеки страхование недвижимости является
-					требованием закона.
+				<p data-aos="fade-up" class="the-insurance__subtitle-mobile" v-once>
+					При оформлении ипотеки страхование недвижимости является требованием
+					закона.
 				</p>
 				<img
 					data-aos="fade-left"
@@ -69,21 +61,16 @@
 </template>
 
 <script>
-	import vInput from "@/components/UI/general/v-input.vue";
-
 	export default {
-		name: "TheInsurance",
-		components: { vInput },
+		name: 'TheInsurance',
 	};
 </script>
 
 <style lang="scss" scoped>
-	@import "@/assets/scss/variables";
+	@import '@/assets/scss/variables';
 
 	.the-insurance {
 		color: $dark;
-		&__container {
-		}
 		&__header {
 			margin-bottom: 5rem;
 		}
@@ -140,6 +127,15 @@
 				width: 16rem;
 			}
 		}
+		&__age {
+			&-description {
+				font-size: 1.5rem;
+				color: $gray;
+				font-weight: 600;
+				margin-bottom: 1.3rem;
+			}
+		}
+
 		&__img {
 			width: 100%;
 			height: 100%;
@@ -207,7 +203,7 @@
 					width: 18rem;
 				}
 			}
-			.input-wrapper {
+			.v-input {
 				width: 18rem;
 			}
 			.v-button {

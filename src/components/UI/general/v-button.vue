@@ -74,12 +74,13 @@
 				transition: all 0.2s ease;
 			}
 		}
-
+		&.yellow {
+			background-color: $yellow;
+		}
 		&.white {
 			background-color: $white;
 			color: $blue;
 		}
-
 		&.gray {
 			background-color: $light-gray;
 			color: $blue;

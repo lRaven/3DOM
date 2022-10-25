@@ -5,9 +5,7 @@
 			<section class="login-wrapper center">
 				<form class="login" @submit.prevent="auth">
 					<div class="login__header" v-once>
-						<h1 class="login__header-title">
-							Вход в личный кабинет
-						</h1>
+						<h1 class="login__header-title">Вход в личный кабинет</h1>
 					</div>
 					<div class="login__body">
 						<v-input
@@ -31,8 +29,7 @@
 							type="submit"
 						></v-button>
 						<p class="login__description" v-once>
-							Нажимая кнопку «Войти», вы подтверждаете своё
-							согласие на
+							Нажимая кнопку «Войти», вы подтверждаете своё согласие на
 							<a> обработку персональных данных </a>
 						</p>
 					</div>
@@ -44,30 +41,28 @@
 </template>
 
 <script>
-	import TheHeader from "@/components/general/TheHeader";
-	import vInput from "@/components/UI/cabinet/v-input";
-	import TheFooter from "@/components/general/TheFooter";
+	import TheHeader from '@/components/general/TheHeader';
+	import TheFooter from '@/components/general/TheFooter';
 
-	import { login } from "@/api/user";
-	import { getFavoriteApartmentNumber } from "@/api/favorite";
-	import { returnErrorMessages } from "@/js/returnErrorMessages";
-	import { mapActions } from "vuex";
+	import { login } from '@/api/user';
+	import { getFavoriteApartmentNumber } from '@/api/favorite';
+	import { returnErrorMessages } from '@/js/returnErrorMessages';
+	import { mapActions } from 'vuex';
 
-	import { useToast } from "vue-toastification";
-	import { useVuelidate } from "@vuelidate/core";
-	import { minLength, required } from "@vuelidate/validators";
+	import { useToast } from 'vue-toastification';
+	import { useVuelidate } from '@vuelidate/core';
+	import { minLength, required } from '@vuelidate/validators';
 
 	export default {
-		name: "PageLogin",
+		name: 'PageLogin',
 		components: {
 			TheHeader,
-			vInput,
 			TheFooter,
 		},
 		data: () => ({
 			userData: {
-				username: "",
-				password: "",
+				username: '',
+				password: '',
 			},
 		}),
 		validations: () => ({
@@ -84,7 +79,7 @@
 		}),
 
 		methods: {
-			...mapActions(["getUser"]),
+			...mapActions(['getUser']),
 
 			//* логин
 			async auth() {
@@ -93,8 +88,8 @@
 
 					if (response.status === 200) {
 						this.saveUserData(response.data.auth_token);
-						this.toast.success("Вход выполнен успешно");
-						console.log("Login successfully");
+						this.toast.success('Вход выполнен успешно');
+						console.log('Login successfully');
 					}
 					if (response.status === 400) {
 						const error_list = returnErrorMessages(response.data);
@@ -110,11 +105,11 @@
 
 			//* запись данных в vuex
 			saveUserData(token) {
-				this.$cookies.set("auth_token", token);
+				this.$cookies.set('auth_token', token);
 
 				this.getUser();
 				getFavoriteApartmentNumber();
-				this.$router.push({ name: "Profile" });
+				this.$router.push({ name: 'Profile' });
 			},
 		},
 		setup() {
@@ -125,7 +120,7 @@
 </script>
 
 <style lang="scss" scoped>
-	@import "@/assets/scss/variables";
+	@import '@/assets/scss/variables';
 
 	.main {
 		background: linear-gradient(

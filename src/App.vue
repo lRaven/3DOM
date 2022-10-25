@@ -7,36 +7,36 @@
 </template>
 
 <script>
-	import { mapActions } from "vuex";
-	import { getFavoriteApartmentNumber } from "@/api/favorite";
-	import Aos from "aos";
-	import "aos/dist/aos.css";
+	import { mapActions } from 'vuex';
+	import { getFavoriteApartmentNumber } from '@/api/favorite';
+	import Aos from 'aos';
+	import 'aos/dist/aos.css';
 
 	export default {
 		watch: {
 			$route(to) {
-				document.title = to.meta.title || "Default Title";
+				document.title = to.meta.title || 'Default Title';
 
-				if (to.name === "Academ" || to.name === "CRM") {
-					document.body.classList.add("dark");
+				if (to.name === 'Academ' || to.name === 'CRM') {
+					document.body.classList.add('dark');
 				} else {
-					document.body.classList.remove("dark");
+					document.body.classList.remove('dark');
 				}
 			},
 
-			"$route.path"() {
+			'$route.path'() {
 				//* срабатывает при переходе по router-link
-				document.querySelector("body").classList.remove("locked");
+				document.querySelector('body').classList.remove('locked');
 			},
 		},
 		methods: {
-			...mapActions(["getDocumentWidth", "getUser"]),
+			...mapActions(['getDocumentWidth', 'getUser']),
 			getFavoriteApartmentNumber,
 		},
 		mounted() {
 			this.getDocumentWidth();
 
-			if (this.$cookies.get("auth_token")) {
+			if (this.$cookies.get('auth_token')) {
 				getFavoriteApartmentNumber();
 				this.getUser();
 			}
@@ -51,13 +51,13 @@
 </script>
 
 <style lang="scss">
-	@import "@/assets/scss/center";
-	@import "@/assets/scss/animation";
-	@import "@/assets/scss/variables";
+	@import '@/assets/scss/center';
+	@import '@/assets/scss/animation';
+	@import '@/assets/scss/variables';
 
 	* {
 		scroll-behavior: smooth;
-		font-family: "Montserrat";
+		font-family: 'Montserrat';
 
 		//*chrome/safari
 		&::-webkit-scrollbar {
@@ -71,7 +71,7 @@
 			border-radius: $scrollbarBorderRadius; /* закругления плашки */
 			border: $scrollbarBorder; /* padding вокруг плашки */
 		}
-		//*firefox
+		//* firefox
 		scrollbar-width: thin; /* "auto" или "thin"  */
 		scrollbar-color: $scrollbarThumb $scrollbarBg;
 	}

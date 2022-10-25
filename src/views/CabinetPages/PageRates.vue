@@ -22,19 +22,42 @@
 		</div>
 
 		<div class="page-rates__tabs">
-			<transition mode="out-in" name="fade-left">
+			<transition mode="out-in" name="fade-left" v-if="false">
 				<RateSelect
 					v-show="step === 1"
 					class="page-rates__tab"
 					@next-step="nextStep"
+					v-model:rate="params.rate"
 				></RateSelect>
 			</transition>
 
-			<transition mode="out-in" name="fade-left">
+			<transition mode="out-in" name="fade-left" v-if="false">
 				<ProjectSelect
 					v-show="step === 2"
 					class="page-rates__tab"
+					@next-step="nextStep"
+					@prev-step="prevStep"
+					v-model:estate="params.estate.type"
+					v-model:project="params.estate.project"
 				></ProjectSelect>
+			</transition>
+
+			<transition mode="out-in" name="fade-left" v-if="false">
+				<ConfigurationSetting
+					v-show="step === 3"
+					class="page-rates__tab"
+					@next-step="nextStep"
+					@prev-step="prevStep"
+					v-model:configurations="params.configurations"
+				></ConfigurationSetting>
+			</transition>
+
+			<transition mode="out-in" name="fade-left">
+				<ApartmentParameters
+					v-model:rooms="params.apartmentParameters.rooms"
+					v-model:layouts="params.apartmentParameters.layout"
+				>
+				</ApartmentParameters>
 			</transition>
 		</div>
 	</section>
@@ -42,14 +65,21 @@
 
 <script>
 	import { useStore } from 'vuex';
-	import { ref } from 'vue';
+	import { ref, watch } from 'vue';
 
 	import RateSelect from '@/components/cabinet/rates/RateSelect.vue';
 	import ProjectSelect from '@/components/cabinet/rates/ProjectSelect.vue';
+	import ConfigurationSetting from '@/components/cabinet/rates/ConfigurationSetting.vue';
+	import ApartmentParameters from '@/components/cabinet/rates/ApartmentParameters.vue';
 
 	export default {
 		name: 'PageRates',
-		components: { RateSelect, ProjectSelect },
+		components: {
+			RateSelect,
+			ProjectSelect,
+			ConfigurationSetting,
+			ApartmentParameters,
+		},
 		setup() {
 			const store = useStore();
 			store.commit('setTab', 'rates');
@@ -61,12 +91,37 @@
 				{ id: 4, description: 'Параметры квартиры' },
 				{ id: 5, description: 'Итоги расчёта' },
 			];
-			const step = ref(2);
-			const nextStep = () => {
-				step.value++;
-			};
+			const step = ref(4);
+			watch(step, () => {
+				if (step.value <= 0) step.value = 1;
+				else if (step.value >= steps.length) step.value = steps.length;
+			});
+			const nextStep = () => step.value++;
+			const prevStep = () => step.value--;
 
-			return { steps, step, nextStep };
+			const params = ref({
+				rate: null,
+				estate: {
+					type: null,
+					project: null,
+				},
+				configurations: [],
+				additionalProducts: [],
+				apartmentParameters: {
+					rooms: null,
+					area: null,
+					layout: null,
+				},
+			});
+
+			return {
+				steps,
+				step,
+				nextStep,
+				prevStep,
+
+				params,
+			};
 		},
 	};
 </script>

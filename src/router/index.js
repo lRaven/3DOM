@@ -5,7 +5,6 @@ import PageNotFound from '@/views/PageNotFound'
 import store from '@/store'
 import cookies from 'vue-cookies'
 
-
 const routes = [
 	{
 		path: '/',

@@ -46,9 +46,9 @@
 
 	export default {
 		name: 'RateSelect',
-		emits: ['next-step'],
+		emits: ['update:rate', 'next-step'],
 		components: { RateCard },
-		setup() {
+		setup(_, { emit }) {
 			const store = useStore();
 
 			const rates = computed(() => store.state.repair.rates);
@@ -56,6 +56,7 @@
 			const selectedRate = ref(null);
 			const selectRate = (rateID) => {
 				selectedRate.value = rateID;
+				emit('update:rate', selectedRate.value);
 			};
 
 			return { rates, selectedRate, selectRate };
@@ -72,9 +73,8 @@
 
 		&__list {
 			display: flex;
-			// flex-wrap: wrap;
 			gap: 3rem;
-			margin-bottom: 6rem;
+			margin-bottom: 8rem;
 		}
 		&__next {
 			margin-left: auto;

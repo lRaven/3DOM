@@ -49,7 +49,7 @@
 							"
 							:disabled="formTriggers.isNameFormDisabled"
 							v-model="userData.last_name"
-							:isTransparent="formTriggers.isNameFormDisabled"
+							:is-transparent="formTriggers.isNameFormDisabled"
 						></v-input>
 					</div>
 					<div class="page-profile__item-row">
@@ -96,7 +96,7 @@
 							"
 							:disabled="formTriggers.isPhoneFormDisabled"
 							v-model="userData.phone_number"
-							:isTransparent="formTriggers.isPhoneFormDisabled"
+							:is-transparent="formTriggers.isPhoneFormDisabled"
 						></v-input>
 
 						<button
@@ -128,7 +128,7 @@
 							"
 							:disabled="formTriggers.isEmailFormDisabled"
 							v-model="userData.email"
-							:isTransparent="formTriggers.isEmailFormDisabled"
+							:is-transparent="formTriggers.isEmailFormDisabled"
 						></v-input>
 
 						<button
@@ -237,7 +237,7 @@
 	} from '@/api/user';
 	import { returnErrorMessages } from '@/js/returnErrorMessages';
 	import cookies from 'vue-cookies';
-	import vInput from '@/components/UI/cabinet/v-input.vue';
+	import vInput from '@/components/UI/general/v-input.vue';
 
 	import { useToast } from 'vue-toastification';
 	import { useVuelidate } from '@vuelidate/core';
@@ -307,13 +307,21 @@
 				}
 			});
 
+			const userData = ref({});
 			const user = computed(() => store.state.cabinet.user);
-			const userData = ref({
-				password: '',
-				password_new: '',
-				password_repeat: '',
-				...user.value,
-			});
+			watch(
+				user,
+				() => {
+					userData.value = {
+						password: '',
+						password_new: '',
+						password_repeat: '',
+						...user.value,
+					};
+				},
+				{ deep: true }
+			);
+
 			const sendNewPersonalData = async () => {
 				try {
 					const response = await change_user_data({
@@ -452,8 +460,9 @@
 				changeAvatar,
 				sendAvatar,
 
-				user,
 				userData,
+				user,
+
 				sendNewPersonalData,
 				sendNewEmail,
 				sendNewPassword,

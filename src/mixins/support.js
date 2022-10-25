@@ -21,8 +21,6 @@ export const requestSupportForm = {
 			privacyPolicy: false,
 		}
 	}),
-	methods: {
-	},
 }
 
 export const supportForm = {

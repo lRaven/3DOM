@@ -123,7 +123,7 @@
 
 	import TheNavigation from '@/components/cabinet/TheNavigation';
 	import PopupKolotok from '@/components/general/PopupKolotok';
-	import vInput from '@/components/UI/cabinet/v-input.vue';
+	import vInput from '@/components/UI/general/v-input.vue';
 	import vTextarea from '@/components/UI/cabinet/v-textarea.vue';
 	import vDropdown from '@/components/UI/cabinet/v-dropdown.vue';
 

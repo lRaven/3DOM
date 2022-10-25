@@ -55,7 +55,6 @@
 	import { mapMutations } from 'vuex';
 	import { supportForm } from '@/mixins/support';
 
-	import vInput from '@/components/UI/cabinet/v-input';
 	import vDropdown from '@/components/UI/cabinet/v-dropdown';
 	import vTextarea from '@/components/UI/cabinet/v-textarea';
 
@@ -65,7 +64,6 @@
 		name: 'PageFeedback',
 		mixins: [supportForm],
 		components: {
-			vInput,
 			vDropdown,
 			vTextarea,
 		},
