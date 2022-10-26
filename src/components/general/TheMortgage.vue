@@ -19,35 +19,46 @@
 						class="the-mortgage__calculation"
 					>
 						<v-toggle :description="'Семья с детьми'"></v-toggle>
+						<p class="the-mortgage__slider-description">
+							Стоимость квартиры, руб
+						</p>
 						<v-slider
-							title="Стоимость квартиры, руб"
-							text="руб"
-							:min="2000000"
-							:max="20000000"
-							:value="5000000"
-							:step="100000"
-							class="value"
-							:minMax="false"
+							:params="{
+								isMinVisible: false,
+								description: 'руб',
+								min: 2000000,
+								max: 20000000,
+								value: 5000000,
+								step: 100000,
+							}"
 						></v-slider>
+
+						<p class="the-mortgage__slider-description">
+							Первоначальный взнос, руб
+						</p>
 						<v-slider
-							title="Первоначальный взнос, руб"
-							text="руб"
-							:min="100000"
-							:max="10000000"
-							:value="1500000"
-							:step="100000"
-							class="value"
-							:minMax="false"
+							:params="{
+								isMinVisible: false,
+								description: 'руб',
+								min: 100000,
+								max: 10000000,
+								value: 1500000,
+								step: 100000,
+							}"
 						></v-slider>
+
+						<p class="the-mortgage__slider-description">
+							Срок погашения кредита
+						</p>
 						<v-slider
-							title="Срок погашения кредита"
-							text="лет"
-							:min="1"
-							:max="30"
-							:value="25"
-							:step="1"
-							class="value"
-							:minMax="false"
+							:params="{
+								isMinVisible: false,
+								descriptionDeclension: ['год', 'года', 'лет'],
+								min: 1,
+								max: 30,
+								value: 25,
+								step: 1,
+							}"
 						></v-slider>
 						<v-button
 							text="Отправить"
@@ -128,12 +139,12 @@
 
 <script>
 	export default {
-		name: "TheMortgage",
+		name: 'TheMortgage',
 	};
 </script>
 
 <style lang="scss" scoped>
-	@import "@/assets/scss/variables";
+	@import '@/assets/scss/variables';
 
 	.the-mortgage {
 		&__header {
@@ -149,8 +160,6 @@
 				font-weight: 600;
 				color: $gray;
 			}
-		}
-		&__title {
 		}
 		&__main {
 			form {
@@ -176,6 +185,15 @@
 				align-self: flex-start;
 				padding-left: 4rem;
 				padding-right: 4rem;
+			}
+		}
+		&__slider {
+			&-description {
+				align-self: flex-start;
+				font-size: 1.5rem;
+				color: #505c74;
+				font-weight: 600;
+				margin-bottom: -2rem;
 			}
 		}
 

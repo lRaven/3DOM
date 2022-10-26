@@ -40,28 +40,49 @@
 
 		<transition mode="out-in" name="fade-up-fast">
 			<div
+				v-show="isCardOpen"
 				class="category-card__body"
 				:class="{ active: isCardOpen }"
-				v-show="isCardOpen"
 			>
-				<v-card
-					v-for="product in products"
-					:key="product.id"
-					:card="product"
-				></v-card>
+				<div
+					class="category-card__subcategories"
+					v-if="currentSubcategories.length > 0"
+				>
+					<SubcategoryCard
+						v-for="subcategory in currentSubcategories"
+						:key="subcategory.id"
+						:subcategory="subcategory"
+						:selected-subcategory="selectedSubcategory"
+						@select-subcategory="selectSubcategory"
+					></SubcategoryCard>
+				</div>
+				<p class="category-card__empty" v-else>Подкатегорий нет</p>
+
+				<div class="category-card__products">
+					<v-card
+						v-for="product in products"
+						:key="product.id"
+						:card="product"
+						@add-product="addProduct"
+						@remove-product="removeProduct"
+					></v-card>
+				</div>
 			</div>
 		</transition>
 	</div>
 </template>
 
 <script>
-	import { ref } from 'vue';
+	import { ref, computed, watch } from 'vue';
+	import { getProducts } from '@/api/kolotok';
 
+	import SubcategoryCard from '@/components/kolotok/SubcategoryCard.vue';
 	import vCard from '@/components/kolotok/v-card.vue';
 
 	export default {
 		name: 'CategoryCard',
 		components: {
+			SubcategoryCard,
 			vCard,
 		},
 		props: {
@@ -69,15 +90,64 @@
 				value: Object,
 				required: true,
 			},
-			products: {
+			subcategories: {
 				value: Array,
 				required: true,
 			},
 		},
-		setup() {
+		setup(props) {
 			const isCardOpen = ref(false);
+			watch(isCardOpen, () => {
+				if (isCardOpen.value && products.value.length === 0) {
+					// getProductList();
+				}
+			});
+
+			const currentSubcategories = computed(() => {
+				const find = props.subcategories.filter(
+					(el) => el.category.id === props.category.id
+				);
+				if (find) return find;
+				else return [];
+			});
+			const selectedSubcategory = ref(null);
+			const selectSubcategory = (subcategoryId) => {
+				selectedSubcategory.value = subcategoryId;
+			};
+			watch(selectedSubcategory, () => getProductList());
+
+			const products = ref([]);
+			const getProductList = async () => {
+				try {
+					const response = await getProducts(
+						`?sub_category=${selectedSubcategory.value}`
+					);
+					if (response.status === 200) {
+						products.value = response.data.results;
+					}
+				} catch (err) {
+					throw new Error(err);
+				}
+			};
+
+			const addProduct = (product) => {
+				console.log(product);
+			};
+			const removeProduct = (product) => {
+				console.log(product);
+			};
+
 			return {
 				isCardOpen,
+
+				currentSubcategories,
+				selectedSubcategory,
+				selectSubcategory,
+
+				products,
+
+				addProduct,
+				removeProduct,
 			};
 		},
 	};
@@ -137,6 +207,28 @@
 		}
 
 		&__body {
+			&.active {
+				padding: 4rem 0 6rem 0;
+			}
+		}
+
+		&__subcategories {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 3rem;
+			margin-bottom: 3rem;
+			.subcategory-card {
+				min-width: 28rem;
+				width: fit-content;
+			}
+		}
+		&__empty {
+			font-size: 2rem;
+			font-weight: 500;
+			color: $gray;
+		}
+
+		&__products {
 			display: grid;
 			grid-template-columns: repeat(4, 1fr);
 			grid-gap: 4rem;
@@ -161,10 +253,6 @@
 			}
 			@media (max-width: 475px) {
 				grid-template-columns: 1fr;
-			}
-
-			&.active {
-				padding: 4rem 0 6rem 0;
 			}
 		}
 	}

@@ -307,8 +307,14 @@
 				}
 			});
 
-			const userData = ref({});
 			const user = computed(() => store.state.cabinet.user);
+			const userData = ref({
+				password: '',
+				password_new: '',
+				password_repeat: '',
+				...user.value,
+			});
+
 			watch(
 				user,
 				() => {
@@ -460,8 +466,8 @@
 				changeAvatar,
 				sendAvatar,
 
-				userData,
 				user,
+				userData,
 
 				sendNewPersonalData,
 				sendNewEmail,

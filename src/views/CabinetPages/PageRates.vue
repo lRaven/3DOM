@@ -22,7 +22,7 @@
 		</div>
 
 		<div class="page-rates__tabs">
-			<transition mode="out-in" name="fade-left" v-if="false">
+			<transition mode="out-in" name="fade-left">
 				<RateSelect
 					v-show="step === 1"
 					class="page-rates__tab"
@@ -31,7 +31,7 @@
 				></RateSelect>
 			</transition>
 
-			<transition mode="out-in" name="fade-left" v-if="false">
+			<transition mode="out-in" name="fade-left">
 				<ProjectSelect
 					v-show="step === 2"
 					class="page-rates__tab"
@@ -42,7 +42,7 @@
 				></ProjectSelect>
 			</transition>
 
-			<transition mode="out-in" name="fade-left" v-if="false">
+			<transition mode="out-in" name="fade-left">
 				<ConfigurationSetting
 					v-show="step === 3"
 					class="page-rates__tab"
@@ -54,8 +54,12 @@
 
 			<transition mode="out-in" name="fade-left">
 				<ApartmentParameters
+					v-show="step === 4"
 					v-model:rooms="params.apartmentParameters.rooms"
-					v-model:layouts="params.apartmentParameters.layout"
+					v-model:area="params.apartmentParameters.area"
+					v-model:layouts="params.apartmentParameters.layouts"
+					@next-step="nextStep"
+					@prev-step="prevStep"
 				>
 				</ApartmentParameters>
 			</transition>
@@ -91,7 +95,7 @@
 				{ id: 4, description: 'Параметры квартиры' },
 				{ id: 5, description: 'Итоги расчёта' },
 			];
-			const step = ref(4);
+			const step = ref(3);
 			watch(step, () => {
 				if (step.value <= 0) step.value = 1;
 				else if (step.value >= steps.length) step.value = steps.length;
@@ -110,7 +114,7 @@
 				apartmentParameters: {
 					rooms: null,
 					area: null,
-					layout: null,
+					layouts: null,
 				},
 			});
 

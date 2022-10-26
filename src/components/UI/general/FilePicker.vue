@@ -15,10 +15,7 @@
 			class="file-picker__input"
 			multiple
 			accept="image/*"
-			@change="
-				selectFiles($event.target);
-				$emit('update:modelValue', files);
-			"
+			@change="selectFiles($event.target)"
 			ref="input"
 		/>
 
@@ -37,7 +34,7 @@
 </template>
 
 <script>
-	import { ref } from 'vue';
+	import { ref, watch } from 'vue';
 
 	export default {
 		name: 'FilePicker',
@@ -52,8 +49,16 @@
 				default: 16,
 			},
 		},
-		setup() {
+		setup(_, { emit }) {
 			const files = ref([]);
+			watch(
+				files,
+				() => {
+					emit('update:modelValue', files.value);
+				},
+				{ deep: true }
+			);
+
 			const filesPreview = ref([]);
 
 			const selectFiles = (target) => {
@@ -64,19 +69,6 @@
 				const droppedFiles = dt.files;
 				files.value.push(...droppedFiles);
 			};
-
-			// const previewImage = (image, id) => {
-			// 	let imageUrl = { id, url: null };
-
-			// 	const fileReader = new FileReader();
-			// 	fileReader.addEventListener('load', () => {
-			// 		imageUrl.url = fileReader.result;
-			// 	});
-
-			// 	fileReader.readAsDataURL(image[0]);
-
-			// 	filesPreview.value.push(imageUrl);
-			// };
 
 			const isActive = ref(false);
 
@@ -108,8 +100,19 @@
 		border-radius: 0.5rem;
 		padding: 1.2rem 1.2rem 2.8rem 1.2rem;
 		transition: all 0.2s ease;
+		&:hover {
+			border-color: $blue;
+			.v-button {
+				border-color: $blue;
+				color: $blue;
+			}
+		}
 		&.active {
 			border-color: $blue;
+			.v-button {
+				border-color: $blue;
+				color: $blue;
+			}
 		}
 		&__description {
 			font-size: 1.4rem;

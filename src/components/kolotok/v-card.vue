@@ -11,13 +11,6 @@
 					v-show="card.discount_percent"
 					:discount="card.discount_percent"
 				></v-discount>
-				<v-favorite
-					@add-favorite="addFavorite"
-					@remove-favorite="removeFavorite"
-					class="v-card__favorite"
-					:is-favorite="isFavorite"
-					v-model="isFavorite"
-				></v-favorite>
 
 				<img
 					:src="card.img ? card.img : '/img/cabinet/catalog__photo-default.svg'"
@@ -41,10 +34,8 @@
 			<v-card-maximize
 				v-show="isMaximize"
 				:card="card"
-				:is-favorite="isFavorite"
-				@add-favorite="addFavorite"
-				@remove-favorite="removeFavorite"
-				@remove-maximize-Card="removeMaximizeCard"
+				@remove-maximize-card="removeMaximizeCard"
+				@select-product="selectProduct"
 			></v-card-maximize>
 		</transition>
 	</div>
@@ -54,7 +45,6 @@
 	import { ref } from 'vue';
 
 	import vDiscount from '@/components/kolotok/v-discount';
-	import vFavorite from '@/components/kolotok/v-favorite';
 
 	import { defineAsyncComponent } from 'vue';
 	const vCardMaximize = defineAsyncComponent(() =>
@@ -63,21 +53,13 @@
 
 	export default {
 		name: 'vCard',
+		emits: ['add-product', 'remove-product'],
 		components: {
 			vDiscount,
-			vFavorite,
 			vCardMaximize,
 		},
 		props: { card: Object },
-		setup() {
-			const isFavorite = ref(false);
-			const addFavorite = () => {
-				isFavorite.value = true;
-			};
-			const removeFavorite = () => {
-				isFavorite.value = false;
-			};
-
+		setup(_, { emit }) {
 			const isMaximize = ref(false);
 			const maximizeCard = () => {
 				isMaximize.value = true;
@@ -86,14 +68,18 @@
 				isMaximize.value = false;
 			};
 
-			return {
-				isFavorite,
-				addFavorite,
-				removeFavorite,
+			// const selectedProduct = ref(null);
+			const selectProduct = (product) => {
+				if (product.selected) emit('add-product', product);
+				else emit('remove-product', product);
+			};
 
+			return {
 				isMaximize,
 				maximizeCard,
 				removeMaximizeCard,
+
+				selectProduct,
 			};
 		},
 	};
@@ -151,19 +137,6 @@
 			font-weight: 600;
 			animation-delay: 0.2s;
 		}
-		&__favorite {
-			cursor: pointer;
-			align-self: flex-end;
-			justify-content: flex-start;
-			position: absolute;
-			right: 1.5rem;
-			top: 1.5rem;
-			animation-delay: 0.2s;
-
-			&-icon {
-				pointer-events: all;
-			}
-		}
 		&__img {
 			max-width: 100%;
 			max-height: 20rem;
@@ -173,8 +146,6 @@
 			}
 		}
 
-		&__footer {
-		}
 		&__row {
 			display: flex;
 			align-items: center;

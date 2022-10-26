@@ -57,21 +57,22 @@
 </template>
 
 <script>
+	import { ref, watch } from 'vue';
+
 	export default {
 		name: 'vCounter',
+		emits: ['update:modelValue'],
 		props: {
 			getMin: Number,
 			getMax: Number,
 			getValue: Number,
 		},
-		watch: {
-			value() {
-				this.$emit('update:modelValue', this.value);
-			},
-		},
-		data() {
+		setup(props, { emit }) {
+			const value = ref(props.getValue);
+			watch(value, () => emit('update:modelValue', value.value));
+
 			return {
-				value: this.getValue,
+				value,
 			};
 		},
 	};

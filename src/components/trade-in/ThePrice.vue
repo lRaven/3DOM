@@ -26,16 +26,21 @@
 					:selected="'Выберите из списка'"
 					:options="['АКАДЕМИЧЕСКИЙ']"
 				></v-dropdown>
-				<v-slider
-					title="Укажите примерную стоимость, млн руб"
-					:min="2.2"
-					:max="100"
-					:value="22.2"
-					:step="0.2"
-					class="min-max"
-					:customClass="'pale'"
-					:minMax="true"
-				></v-slider>
+
+				<div class="the-price__slider">
+					<p class="the-price__slider-description">
+						Укажите примерную стоимость, млн руб
+					</p>
+					<v-slider
+						:params="{
+							isMinVisible: true,
+							min: 2.2,
+							max: 100,
+							value: 22.2,
+							step: 0.2,
+						}"
+					></v-slider>
+				</div>
 				<v-button
 					text="Узнать цену"
 					@click="this.$emit('openPopup')"
@@ -86,10 +91,10 @@
 			font-size: 1.8rem;
 			display: grid;
 			grid-template-columns: repeat(5, max-content);
+			grid-gap: 1rem;
 			justify-content: space-between;
 			p {
 				grid-column: 1/6;
-				margin-bottom: 1rem;
 			}
 		}
 		&__calculate {
@@ -102,8 +107,7 @@
 			padding: 8rem 6rem 10rem 6rem;
 			width: max-content;
 			color: #979797;
-			.v-dropdown,
-			.min-max {
+			.v-dropdown {
 				grid-column: 1/3;
 				margin-top: 5rem;
 			}
@@ -133,6 +137,16 @@
 				font-size: 1.8rem;
 			}
 		}
+		&__slider {
+			grid-column: 1/3;
+			margin-top: 5rem;
+			&-description {
+				font-size: 1.5rem;
+				color: $gray;
+				font-weight: 600;
+				margin-bottom: 1.3rem;
+			}
+		}
 	}
 </style>
 
@@ -144,6 +158,16 @@
 				height: 4.5rem;
 				width: 4.5rem;
 				border-radius: 50%;
+			}
+		}
+		&__rooms {
+			.text-radio {
+				&__fake {
+					padding: 0;
+					border-radius: 50%;
+					height: 5rem;
+					width: 5rem;
+				}
 			}
 		}
 	}

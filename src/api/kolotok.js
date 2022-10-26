@@ -19,7 +19,16 @@ const getCategories = async () => {
 	catch (err) { throw new Error(err) }
 }
 
+const getSubcategories = async () => {
+	try {
+		const response = await axios.get(`${baseURL}/kolotok/sub_categories`);
+		return response
+	}
+	catch (err) { throw new Error(err) }
+}
+
 export {
 	getProducts,
 	getCategories,
+	getSubcategories,
 }

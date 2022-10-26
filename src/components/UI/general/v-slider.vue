@@ -1,80 +1,78 @@
 <template>
-	<div class="v-slider" :class="customClass">
-		<p>{{ title }}</p>
-		<div class="slider">
-			<div class="slider__values" v-if="minMax">
-				<div class="slider__min">
-					<span>От</span>
-					<span class="slider__min-value">{{ min }}</span>
+	<div class="v-slider">
+		<div class="v-slider__values">
+			<template v-if="params.isMinVisible">
+				<div class="v-slider__min">
+					<span class="v-slider__min-description">От</span>
+					<span class="v-slider__min-value">{{ params.min }}</span>
 				</div>
-				<div class="slider__max">
-					<span>до</span>
-					<span class="slider__max-value">{{ max }}</span>
+				<div class="v-slider__max">
+					<span class="v-slider__max-description">до</span>
+					<span class="v-slider__max-value">{{ selectedValue }}</span>
 				</div>
-			</div>
-			<div class="slider__sum" v-else>
-				<span class="slider__value"></span>
-				<span class="slider__text">{{ text }}</span>
-			</div>
-			<div class="slider__range-container">
-				<span class="slider__range-circle1"></span>
-				<input
-					type="range"
-					:min="min"
-					:max="max"
-					:value="value"
-					:step="step"
-					:text="text"
-					class="slider__range"
-				/>
-				<span class="slider__range-circle2"></span>
-			</div>
+			</template>
+
+			<template v-else>
+				<div class="v-slider__sum">
+					<span class="v-slider__value">{{ selectedValue }}</span>
+					<span
+						class="v-slider__text"
+						v-if="descriptionDeclension || params.description"
+					>
+						{{ descriptionDeclension || params.description }}
+					</span>
+				</div>
+			</template>
+		</div>
+
+		<div class="v-slider__range-container">
+			<span class="v-slider__range-circle v-slider__range-circle-start"></span>
+			<input
+				class="v-slider__range"
+				type="range"
+				:min="params.min"
+				:max="params.max"
+				:step="params.step"
+				v-model="selectedValue"
+				@input="$emit('update:modelValue', +selectedValue)"
+			/>
+			<span class="v-slider__range-circle v-slider__range-circle-end"></span>
 		</div>
 	</div>
 </template>
 
 <script>
+	import { ref, computed } from 'vue';
+	import { wordDeclension } from '@/js/wordDeclension';
+
 	export default {
 		name: 'vSlider',
 		props: {
-			title: String,
-			text: String,
-			min: Number,
-			max: Number,
-			value: Number,
-			step: Number,
-			minMax: Boolean,
+			params: {
+				value: Object,
+				default: {
+					value: 0,
+				},
+			},
+		},
+		setup(props) {
+			const selectedValue = ref(props.params.value);
 
-			customClass: String,
+			const descriptionDeclension = computed(() => {
+				if (props.params.descriptionDeclension) {
+					return wordDeclension(
+						+selectedValue.value,
+						props.params.descriptionDeclension
+					);
+				} else return null;
+			});
+
+			return {
+				selectedValue,
+				descriptionDeclension,
+			};
 		},
 		methods: {
-			setMaxValue() {
-				const sliders = document.querySelectorAll('.min-max');
-				sliders.forEach((slider) => {
-					let sliderRange = slider.querySelector('.slider__range');
-					let sliderMax = slider.querySelector('.slider__max-value');
-
-					sliderMax.textContent = sliderRange.value;
-					sliderRange.addEventListener('input', () => {
-						sliderMax.textContent = sliderRange.value;
-					});
-				});
-			},
-
-			setValue() {
-				const sliders = document.querySelectorAll('.value');
-				sliders.forEach((slider) => {
-					const sliderValue = slider.querySelector('.slider__value');
-					const sliderRange = slider.querySelector('.slider__range');
-
-					let sliderRangeValue = Number(sliderRange.value);
-					sliderValue.textContent = sliderRangeValue.toLocaleString();
-					sliderRange.addEventListener('input', () => {
-						let sliderRangeValue = Number(sliderRange.value);
-						sliderValue.textContent = sliderRangeValue.toLocaleString();
-					});
-				});
-			},
 			setWordDeclension() {
 				const sliders = document.querySelectorAll('.value');
 				sliders.forEach((slider) => {
@@ -101,9 +99,9 @@
 			},
 		},
 		mounted() {
-			this.setMaxValue();
-			this.setValue();
-			this.setWordDeclension();
+			// this.setMaxValue();
+			// this.setValue();
+			// this.setWordDeclension();
 		},
 	};
 </script>
@@ -111,14 +109,7 @@
 <style lang="scss" scoped>
 	@import '@/assets/scss/variables';
 
-	p {
-		font-size: 1.5rem;
-		color: $gray;
-		font-weight: 600;
-		margin-left: 1.5rem;
-		margin-bottom: 1.3rem;
-	}
-	.slider {
+	.v-slider {
 		position: relative;
 		padding: 2.2rem 1.5rem;
 		border-radius: 2rem;
@@ -134,32 +125,30 @@
 			font-size: 1.6rem;
 			font-weight: 600;
 			color: $gray;
-			span + span {
-				margin-left: 0.6rem;
-			}
 		}
+		&__value {
+			margin-right: 0.6rem;
+		}
+
 		&__min {
-			span {
+			&-description {
 				color: $middle-gray;
-				+ span {
-					margin-left: 0.5rem;
-				}
+				margin-right: 0.5rem;
 			}
 			&-value {
-				color: $gray !important;
+				color: $gray;
 			}
 		}
 		&__max {
-			span {
+			&-description {
 				color: $middle-gray;
-				+ span {
-					margin-left: 0.5rem;
-				}
+				margin-right: 0.5rem;
 			}
 			&-value {
-				color: $gray !important;
+				color: $gray;
 			}
 		}
+
 		&__range {
 			cursor: pointer;
 			position: relative;
@@ -174,30 +163,23 @@
 				display: flex;
 				justify-content: space-between;
 				align-items: flex-end;
-				span {
-					position: absolute;
-					top: 50%;
-					transform: translateY(-50%);
-					display: inline-block;
-					border-radius: 50%;
-					height: 1.2rem;
-					width: 1.2rem;
-					background-color: $middle-gray;
+			}
+			&-circle {
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+				display: inline-block;
+				border-radius: 50%;
+				height: 1.2rem;
+				width: 1.2rem;
+				background-color: $middle-gray;
+				&-start {
+					left: 0;
+				}
+				&-end {
+					right: 0;
 				}
 			}
-			&-circle1 {
-				left: 0;
-			}
-			&-circle2 {
-				right: 0;
-			}
-		}
-	}
-	.pale {
-		p {
-			font-size: 1.8rem;
-			color: #979797;
-			margin-left: 0;
 		}
 	}
 </style>

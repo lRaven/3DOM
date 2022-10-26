@@ -31,7 +31,7 @@
 				v-for="category in categories"
 				:key="category.id"
 				:category="category"
-				:products="products"
+				:subcategories="subcategories"
 			></CategoryCard>
 		</div>
 
@@ -89,7 +89,7 @@
 
 <script>
 	import { ref, watch, onMounted } from 'vue';
-	import { getCategories, getProducts } from '@/api/kolotok';
+	import { getCategories, getSubcategories } from '@/api/kolotok';
 
 	import CategoryCard from '@/components/kolotok/CategoryCard.vue';
 
@@ -175,19 +175,19 @@
 				getCategoryList();
 			});
 
-			const products = ref([]);
-			const getProductList = async () => {
+			const subcategories = ref([]);
+			const getSubcategoryList = async () => {
 				try {
-					const response = await getProducts();
+					const response = await getSubcategories();
 					if (response.status === 200) {
-						products.value = response.data.results;
+						subcategories.value = response.data;
 					}
 				} catch (err) {
 					throw new Error(err);
 				}
 			};
 			onMounted(() => {
-				getProductList();
+				getSubcategoryList();
 			});
 
 			return {
@@ -196,7 +196,7 @@
 				collectConfigurations,
 
 				categories,
-				products,
+				subcategories,
 			};
 		},
 	};
