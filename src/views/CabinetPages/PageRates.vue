@@ -55,13 +55,23 @@
 			<transition mode="out-in" name="fade-left">
 				<ApartmentParameters
 					v-show="step === 4"
+					class="page-rates__tab"
+					@next-step="nextStep"
+					@prev-step="prevStep"
 					v-model:rooms="params.apartmentParameters.rooms"
 					v-model:area="params.apartmentParameters.area"
 					v-model:layouts="params.apartmentParameters.layouts"
-					@next-step="nextStep"
-					@prev-step="prevStep"
 				>
 				</ApartmentParameters>
+			</transition>
+
+			<transition mode="out-in" name="fade-left">
+				<ResultCalculation
+					:result="params"
+					v-show="step === 5"
+					class="page-rates__tab"
+				>
+				</ResultCalculation>
 			</transition>
 		</div>
 	</section>
@@ -75,6 +85,7 @@
 	import ProjectSelect from '@/components/cabinet/rates/ProjectSelect.vue';
 	import ConfigurationSetting from '@/components/cabinet/rates/ConfigurationSetting.vue';
 	import ApartmentParameters from '@/components/cabinet/rates/ApartmentParameters.vue';
+	import ResultCalculation from '@/components/cabinet/rates/ResultCalculation.vue';
 
 	export default {
 		name: 'PageRates',
@@ -83,6 +94,7 @@
 			ProjectSelect,
 			ConfigurationSetting,
 			ApartmentParameters,
+			ResultCalculation,
 		},
 		setup() {
 			const store = useStore();

@@ -2,8 +2,8 @@
 	<label
 		class="file-picker"
 		:class="{ active: isActive }"
+		@dragover.prevent
 		@dragenter.prevent="highlightBlock"
-		@dragover.prevent="highlightBlock"
 		@dragleave.prevent="unHighlightBlock"
 		@drop.prevent="
 			unHighlightBlock();
@@ -16,7 +16,6 @@
 			multiple
 			accept="image/*"
 			@change="selectFiles($event.target)"
-			ref="input"
 		/>
 
 		<p class="file-picker__description">
@@ -25,11 +24,22 @@
 			{{ number }} файлов размером до {{ size }} мб каждый
 		</p>
 
-		<v-button
-			text="+ Прикрепить файл"
-			color="bordered"
-			@click="$refs.input.click()"
-		></v-button>
+		<div class="file-picker__selected-files" v-show="files.length > 0">
+			<div class="file-picker__selected-files-description">
+				Загруженные файлы:
+			</div>
+			<div class="file-picker__selected-files-list">
+				<p
+					class="file-picker__file-name"
+					v-for="(item, index) in filesPreview"
+					:key="item.id"
+				>
+					{{ item }}{{ index < filesPreview.length - 1 ? ',' : '' }}
+				</p>
+			</div>
+		</div>
+
+		<v-button text="+ Прикрепить файл" color="bordered"></v-button>
 	</label>
 </template>
 
@@ -60,18 +70,28 @@
 			);
 
 			const filesPreview = ref([]);
+			const collectFilesPreview = (files) => {
+				filesPreview.value = files.reduce((acc, cur) => {
+					acc.push(cur.name);
+					return acc;
+				}, []);
+			};
 
 			const selectFiles = (target) => {
 				files.value = [...target.files];
+
+				collectFilesPreview([...target.files]);
 			};
+
 			const handleDrop = (e) => {
 				const dt = e.dataTransfer;
 				const droppedFiles = dt.files;
 				files.value.push(...droppedFiles);
+
+				collectFilesPreview([...droppedFiles]);
 			};
 
 			const isActive = ref(false);
-
 			const highlightBlock = () => (isActive.value = true);
 			const unHighlightBlock = () => (isActive.value = false);
 
@@ -114,6 +134,9 @@
 				color: $blue;
 			}
 		}
+		* {
+			pointer-events: none;
+		}
 		&__description {
 			font-size: 1.4rem;
 			color: $gray;
@@ -127,6 +150,21 @@
 
 		&__input {
 			display: none;
+		}
+
+		&__selected-files {
+			margin-bottom: 2rem;
+			&-description {
+				font-size: 1.6rem;
+				font-weight: 500;
+				color: $gray;
+				margin-bottom: 0.5rem;
+			}
+			&-list {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 1rem;
+			}
 		}
 	}
 </style>

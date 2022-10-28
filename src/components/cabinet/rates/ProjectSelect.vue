@@ -112,7 +112,7 @@
 			];
 			const selectedEstate = ref(null);
 			watch(selectedEstate, () => {
-				emit('update:estate', selectedEstate.value);
+				emit('update:estate', estates[selectedEstate.value - 1]);
 				if (selectedEstate.value && selectedProject.value !== null) {
 					selectedProject.value = null;
 				}
@@ -121,7 +121,7 @@
 			const projects = [{ id: 1, description: 'ЖК «Академический»' }];
 			const selectedProject = ref(null);
 			watch(selectedProject, () => {
-				emit('update:project', selectedProject.value);
+				emit('update:project', projects[selectedProject.value - 1]);
 			});
 
 			return {

@@ -63,8 +63,7 @@
 						v-for="product in products"
 						:key="product.id"
 						:card="product"
-						@add-product="addProduct"
-						@remove-product="removeProduct"
+						@update-product="updateProduct"
 					></v-card>
 				</div>
 			</div>
@@ -81,6 +80,7 @@
 
 	export default {
 		name: 'CategoryCard',
+		emits: ['update-product'],
 		components: {
 			SubcategoryCard,
 			vCard,
@@ -95,13 +95,8 @@
 				required: true,
 			},
 		},
-		setup(props) {
+		setup(props, { emit }) {
 			const isCardOpen = ref(false);
-			watch(isCardOpen, () => {
-				if (isCardOpen.value && products.value.length === 0) {
-					// getProductList();
-				}
-			});
 
 			const currentSubcategories = computed(() => {
 				const find = props.subcategories.filter(
@@ -130,11 +125,8 @@
 				}
 			};
 
-			const addProduct = (product) => {
-				console.log(product);
-			};
-			const removeProduct = (product) => {
-				console.log(product);
+			const updateProduct = (product) => {
+				emit('update-product', product);
 			};
 
 			return {
@@ -146,8 +138,7 @@
 
 				products,
 
-				addProduct,
-				removeProduct,
+				updateProduct,
 			};
 		},
 	};

@@ -53,7 +53,7 @@
 
 	export default {
 		name: 'vCard',
-		emits: ['add-product', 'remove-product'],
+		emits: ['update-product'],
 		components: {
 			vDiscount,
 			vCardMaximize,
@@ -68,10 +68,8 @@
 				isMaximize.value = false;
 			};
 
-			// const selectedProduct = ref(null);
 			const selectProduct = (product) => {
-				if (product.selected) emit('add-product', product);
-				else emit('remove-product', product);
+				emit('update-product', product);
 			};
 
 			return {

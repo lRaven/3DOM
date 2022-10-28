@@ -56,7 +56,7 @@
 			const selectedRate = ref(null);
 			const selectRate = (rateID) => {
 				selectedRate.value = rateID;
-				emit('update:rate', selectedRate.value);
+				emit('update:rate', rates.value[selectedRate.value - 1]);
 			};
 
 			return { rates, selectedRate, selectRate };

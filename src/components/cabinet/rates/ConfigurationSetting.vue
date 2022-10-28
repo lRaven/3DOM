@@ -32,6 +32,7 @@
 				:key="category.id"
 				:category="category"
 				:subcategories="subcategories"
+				@update-product="updateProduct"
 			></CategoryCard>
 		</div>
 
@@ -96,7 +97,12 @@
 	export default {
 		name: 'ConfigurationSetting',
 		components: { CategoryCard },
-		emits: ['prev-step', 'next-step', 'update:configurations'],
+		emits: [
+			'prev-step',
+			'next-step',
+			'update:configurations',
+			'update:products',
+		],
 		setup(_, { emit }) {
 			const configurations = [
 				{
@@ -138,22 +144,23 @@
 			watch(
 				selectedConfigurations,
 				() => {
-					emit('update:configurations', selectedConfigurations.value);
+					emit('update:configurations', selectedConfigurations);
 				},
 				{ deep: true }
 			);
 
 			const collectConfigurations = (value, checked) => {
-				const find = selectedConfigurations.value.find((el) => el === value);
+				const find = selectedConfigurations.value.find((el) => el.id === value);
 
 				switch (checked) {
 					case true: {
-						if (!find) selectedConfigurations.value.push(value);
+						if (!find)
+							selectedConfigurations.value.push(configurations[value - 1]);
 						break;
 					}
 					case false: {
 						selectedConfigurations.value = selectedConfigurations.value.filter(
-							(el) => el !== value
+							(el) => el.id !== value
 						);
 						break;
 					}
@@ -190,6 +197,28 @@
 				getSubcategoryList();
 			});
 
+			const products = ref([]);
+			const updateProduct = (product) => {
+				switch (product.selected) {
+					case true: {
+						const find = products.value.find((el) => el.id === product.id);
+
+						if (find) {
+							const index = products.value.findIndex((el) => el.id === find.id);
+							products.value[index] = product;
+						} else products.value.push(product);
+
+						break;
+					}
+					case false: {
+						products.value = products.value.filter(
+							(el) => el.id !== product.id
+						);
+						break;
+					}
+				}
+			};
+
 			return {
 				configurations,
 				selectedConfigurations,
@@ -197,6 +226,9 @@
 
 				categories,
 				subcategories,
+
+				products,
+				updateProduct,
 			};
 		},
 	};

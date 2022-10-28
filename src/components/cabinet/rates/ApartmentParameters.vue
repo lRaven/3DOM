@@ -131,7 +131,6 @@
 			const layouts = ref([]);
 			watch(layouts, () => {
 				emit('update:layouts', layouts.value);
-				console.log(layouts.value);
 			});
 
 			return {

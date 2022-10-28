@@ -63,8 +63,22 @@
 			const productParams = ref({
 				id: props.card.id,
 				number: 1,
+				name: props.card.name,
+				price: props.card.price,
 			});
 
+			watch(
+				productParams,
+				() => {
+					if (isProductSelected.value) {
+						emit('select-product', {
+							selected: isProductSelected.value,
+							...productParams.value,
+						});
+					}
+				},
+				{ deep: true }
+			);
 			watch(isProductSelected, () => {
 				emit('select-product', {
 					selected: isProductSelected.value,
